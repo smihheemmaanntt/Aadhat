@@ -1,0 +1,1960 @@
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.MultiCompaniesLedger.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.PrintDayBook.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Print_Outstanding.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.TransPrint.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.TransRegisterprint.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat Multiuser\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1Daily Work\Aadhat New\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.PrintDayBook.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Print_Outstanding.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.TransPrint.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.TransRegisterprint.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat New\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1Daily Work\Aadhat\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PrintDayBook.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Outstanding.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TransPrint.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TransRegisterprint.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1Daily Work\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.PrintDayBook.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Print_Outstanding.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.TransPrint.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.TransRegisterprint.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1Daily Work\Aadhat - Font Changes\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Data.SQLite.EF6.1.0.117.0.Fakes.fakesconfig
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.CrystalReports.Engine.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportSource.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.Shared.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.Windows.Forms.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\EntityFramework.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\EntityFramework.SqlServer.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Data.SQLite.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Data.SQLite.EF6.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Data.SQLite.Linq.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\FlashControlV71.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\stdole.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\ShockwaveFlashObjects.dll
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\EntityFramework.xml
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\EntityFramework.SqlServer.xml
+D:\1\Aadhat - 4.8\AADHAT\bin\x86\Debug\System.Data.SQLite.xml
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.vbprojFakesResolveAssemblyReference.cache
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.vbproj.AssemblyReference.cache
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.vbproj.SuggestedBindingRedirects.cache
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Settle_Ledger.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.PrintDayBook.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Print_Outstanding.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.TransPrint.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.TransRegisterprint.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.cache
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.vbproj.CoreCompileInputs.cache
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.vbproj.CopyComplete
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat - 4.8\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Data.SQLite.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.vbprojFakesResolveAssemblyReference.cache
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Settle_Ledger.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.PrintDayBook.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Print_Outstanding.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.TransPrint.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.TransRegisterprint.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat - 4.8  TO 3.5\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Data.SQLite.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.LocalBackup.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Backup_Local.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Restore.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Color_and_Font_Setting.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Settle_Ledger.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Purchase_Entry.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Prime_Sale.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Fast_Print_Bills.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.OtherSoftware_Import.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Registers_Viewer.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.TestSellOut.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Print_Beejak.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto_Detailed.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Autosizer.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ActivationForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.RcptRegisterForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ScripPrint.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.StandardPrint.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Test_Form.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.WhatsApp_API.resources
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat WhatsappAPI\AADHAT\obj\x86\Debug\Aadhat.vbprojResolveAssemblyReference.cache
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Ionic.Zip.Reduced.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat\Aadhat\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CarryForword.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Monthly_Summary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Item_Summary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_VS_Item_Summary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sub_Ledger.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Settle_Ledger.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SP_Query_Maker.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RateMaster.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale_Profit_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual_Detialed_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RcptRegister.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TermsAndConditions.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TestForm.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.WhatsApp_API.resources
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Ionic.Zip.Reduced.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CarryForword.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Monthly_Summary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Item_Summary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_VS_Item_Summary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sub_Ledger.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Settle_Ledger.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SP_Query_Maker.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RateMaster.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale_Profit_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual_Detialed_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RcptRegister.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TermsAndConditions.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TestForm.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.WhatsApp_API.resources
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Ionic.Zip.Reduced.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CreateAccount.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Authorised_Person_Only.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Backup_On_Server.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Balance_Editor.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Balance_Editor.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.bank_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPayment.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CashBookPaymentDayWise.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CarryForword.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Monthly_Summary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Daily_Nakal.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss_New.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_AccountNew.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Combine_Reports.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Item_Summary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_VS_Item_Summary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Ledger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sub_Ledger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Settle_Ledger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt_Net_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSaleReceipt_Net.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Options.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SP_Query_Maker.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RateMaster.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sale_Challan.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_cum_Marka_Outstanding.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Summary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateCrateAccountCumMarkaLedger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateMarkaLedger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_IN.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Out.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Crate_Outstanding.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateAccountLedger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateReceivableTotal.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateWiseOutstanding.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CustomerWiseSaleSummary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_Summary.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Journal_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Bank_Entry.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ApplyLicenseKey.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.LicenceInfo.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SystemInfo.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Login.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.User_Rights.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Users_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Market_Tax.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Merge_Accounts.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Import_From_Server.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Mobile_App.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.msgAlert.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OptionsAllForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Book.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Query_Maker.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Rearrange_Invoice_No.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Pdf_Genrate.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Viewer.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Report_Viewer.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Total_sale_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale_Profit_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Profit_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Profit_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Auto_Scrip_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual_Detialed_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Auto.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Bank_Book.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_book.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CrateForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_marka_list.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.JournalEntry.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ledger.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenPicture.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Payment_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PayMentform.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RcptRegister.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Sale_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Standard_Sale.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Lot_Wise_Stock_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Balance.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Vehicle_Wise_Stock.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Seller_Report1.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Stock_Sale.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Receipt.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.On_Sale.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OnSale_Receipt_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Seller_Day_Book.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store_Transfer.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Storage_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Store.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register_Simple.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale_Supplier_Wise.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Super_Sale.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SellOUT_Value.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sell_Out_Pending_Bills.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Supplier_Statement.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallan.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TermsAndConditions.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TestForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CheckUpdate.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.WhatsApp_API.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb

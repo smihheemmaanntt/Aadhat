@@ -1,0 +1,13 @@
+# Ignore specific folders only
+**/bin/x86/Debug/Data/
+**/bin/x86/Debug/Whatsapp/
+**/bin/x86/Debug/BackUpGoogle/
+**/bin/x86/Debug/Backup/
+
+
+# Optional: Ignore common build files
+*.suo
+*.user
+*.log
+*.tmp
+*.pdb

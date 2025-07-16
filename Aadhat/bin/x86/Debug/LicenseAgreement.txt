@@ -1,0 +1,25 @@
+SOFT MANAGEMENT (Aadhat) LICENSE AGREEMENT
+
+By using this accounting software software developed by M/s SOFT MANAGEMENT(LICENSOR) (लेखा सॉफ़्टवेयर का उपयोग करके जिसके निर्माता M/s SOFT MANAGEMENT),
+ you agree to the following terms and conditions (आप निम्नलिखित नियम और शर्तों से सहमति देते हैं):
+
+Data Loss Disclaimer (डेटा हानि की अस्वीकृति):
+We do not guarantee the safety or integrity of your data. (हम आपके डेटा की सुरक्षा या पूर्णता की गारंटी नहीं देते हैं।).
+You are responsible for regularly backing up your data (आपकी जिम्मेदारी है कि आप अपने डेटा का नियमित बैकअप बनाएं।).
+In case of data loss, we will not be held liable (डेटा हानि के मामले में, हम जिम्मेदार नहीं होंगे).
+
+No Source Code Provided (स्रोत कोड नहीं प्रदान किया जाएगा):
+We do not provide access to the source code of this software (हम इस सॉफ़्टवेयर के स्रोत कोड तक पहुँच प्रदान नहीं करते हैं।).
+You are not allowed to reverse engineer, modify, or distribute the software (आपको सॉफ़्टवेयर के साथ छेड़छाड़, संशोधित करने, या वितरित करने की अनुमति नहीं है।).
+
+Updates and Changes (अपडेट और परिवर्तन):
+We reserve the right to make updates and changes to the software without prior notice (हमे पूर्व सूचना के बिना सॉफ़्टवेयर में अपडेट और परिवर्तन करने का अधिकार सुरक्षित रहता है।).
+These updates may affect the functionality and features of the software (इन अपडेट्स से सॉफ़्टवेयर की कार्यक्षमता और विशेषताएँ प्रभावित हो सकती हैं।)
+
+Please read these terms and conditions carefully before using the accounting software (कृपया लेखा सॉफ़्टवेयर का उपयोग करने से पहले इन नियमों और शर्तों को ध्यान से पढ़ें...). If you do not agree with any of these terms, do not use the software (अगर आपको इनमें से कोई भी नियम पसंद नहीं है, तो सॉफ़्टवेयर का उपयोग न करें।).
+
+These terms and conditions are subject to change without notice (इन नियमों और शर्तों को बिना सूचना के बदला जा सकता है।). It is your responsibility to review them periodically (यह आपकी जिम्मेदारी है कि आप नियमों की नियमित रूप से समीक्षा करें।).
+
+Soft management will not be responsible for any kind of financial profit or loss in the customer's (Aadhat Software user) business.(सॉफ्ट मैनेजमेंट, ग्राहक (AADHAT USER) के व्यवसाय में किसी भी प्रकार के वित्तीय लाभ या हानि का जिम्मेदार नहीं होगा ।)
+
+By using the accounting software, you acknowledge and accept these terms and conditions in their entirety (लेखा सॉफ़्टवेयर का उपयोग करके, आप इन नियमों और शर्तों को पूर्णतः स्वीकार करते हैं और उन्हें मान्यता देते हैं।)

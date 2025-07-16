@@ -1,0 +1,30 @@
+﻿Module Constants
+    Public isCompanyOpen As Boolean = False
+    Public tmpConstr As String = String.Empty
+    Public compname As String = String.Empty
+    Public compnameHindi As String = String.Empty
+    Public Mob1 As String = String.Empty
+    Public Mob2 As String = String.Empty
+    Public Address As String = String.Empty
+    Public AddressHindi As String = String.Empty
+    Public City As String = String.Empty
+    Public CityHindi As String = String.Empty
+    Public State As String = String.Empty
+    Public StateHindi As String = String.Empty
+    Public Fax As String = String.Empty
+    Public Email As String = String.Empty
+    Public Phone As String = String.Empty
+    Public Website As String = String.Empty
+    Public Gstn As String = String.Empty
+    Public DealsIN As String = String.Empty
+    Public Registration As String = String.Empty
+    Public Pan As String = String.Empty
+    Public Marka As String = String.Empty
+    Public other As String = String.Empty
+    Public sCompCode As Integer = 0
+    Public OrgID As Integer = 0
+    Public Data As String = String.Empty
+    Public sCompData As String = String.Empty
+    Public FinYearStart As Date = CDate("01/01/1900")
+    Public FinYearEnd As Date = CDate("01/01/1900")
+End Module

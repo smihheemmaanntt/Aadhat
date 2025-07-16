@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpZipWrapperDemo", "SharpZipWrapperDemo\SharpZipWrapperDemo.csproj", "{6B5CCAA6-EC22-4092-BFA2-E543387147F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpZipWrapper", "SharpZipWrapper\SharpZipWrapper.csproj", "{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B5CCAA6-EC22-4092-BFA2-E543387147F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5CCAA6-EC22-4092-BFA2-E543387147F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5CCAA6-EC22-4092-BFA2-E543387147F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5CCAA6-EC22-4092-BFA2-E543387147F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

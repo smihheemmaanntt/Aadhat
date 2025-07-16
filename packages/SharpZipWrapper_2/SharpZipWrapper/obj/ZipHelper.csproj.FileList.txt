@@ -1,0 +1,6 @@
+bin\Debug\ZipHelper.dll
+bin\Debug\ZipHelper.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ZipHelper.dll
+obj\Debug\ZipHelper.pdb
+bin\Debug\SharpZipLib.dll
