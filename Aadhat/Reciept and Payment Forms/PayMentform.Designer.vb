@@ -83,6 +83,11 @@ Partial Class PayMentform
         Me.btnPrevious = New System.Windows.Forms.Button()
         Me.tmpgrid = New System.Windows.Forms.DataGridView()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.btnRadioEnglish = New System.Windows.Forms.RadioButton()
+        Me.RadioRegional = New System.Windows.Forms.RadioButton()
+        Me.RadioMsgOnly = New System.Windows.Forms.RadioButton()
+        Me.RadioPDFMsg = New System.Windows.Forms.RadioButton()
+        Me.RadioPdfOnly = New System.Windows.Forms.RadioButton()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -91,11 +96,7 @@ Partial Class PayMentform
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.RadioMsgOnly = New System.Windows.Forms.RadioButton()
-        Me.RadioPDFMsg = New System.Windows.Forms.RadioButton()
-        Me.RadioPdfOnly = New System.Windows.Forms.RadioButton()
-        Me.btnRadioEnglish = New System.Windows.Forms.RadioButton()
-        Me.RadioRegional = New System.Windows.Forms.RadioButton()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgMode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,6 +105,7 @@ Partial Class PayMentform
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWhatsapp.SuspendLayout()
         CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'DgAccountSearch
@@ -746,8 +748,7 @@ Partial Class PayMentform
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.pnlWhatsapp.Controls.Add(Me.btnRadioEnglish)
-        Me.pnlWhatsapp.Controls.Add(Me.RadioRegional)
+        Me.pnlWhatsapp.Controls.Add(Me.Panel1)
         Me.pnlWhatsapp.Controls.Add(Me.RadioMsgOnly)
         Me.pnlWhatsapp.Controls.Add(Me.RadioPDFMsg)
         Me.pnlWhatsapp.Controls.Add(Me.RadioPdfOnly)
@@ -763,6 +764,71 @@ Partial Class PayMentform
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
         Me.pnlWhatsapp.TabIndex = 91264
         Me.pnlWhatsapp.Visible = False
+        '
+        'btnRadioEnglish
+        '
+        Me.btnRadioEnglish.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnRadioEnglish.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnRadioEnglish.ForeColor = System.Drawing.Color.GhostWhite
+        Me.btnRadioEnglish.Location = New System.Drawing.Point(0, 1)
+        Me.btnRadioEnglish.Name = "btnRadioEnglish"
+        Me.btnRadioEnglish.Size = New System.Drawing.Size(104, 25)
+        Me.btnRadioEnglish.TabIndex = 91238
+        Me.btnRadioEnglish.TabStop = True
+        Me.btnRadioEnglish.Text = "English"
+        Me.btnRadioEnglish.UseVisualStyleBackColor = False
+        '
+        'RadioRegional
+        '
+        Me.RadioRegional.BackColor = System.Drawing.Color.DeepPink
+        Me.RadioRegional.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.RadioRegional.ForeColor = System.Drawing.Color.GhostWhite
+        Me.RadioRegional.Location = New System.Drawing.Point(104, 1)
+        Me.RadioRegional.Name = "RadioRegional"
+        Me.RadioRegional.Size = New System.Drawing.Size(96, 25)
+        Me.RadioRegional.TabIndex = 91239
+        Me.RadioRegional.TabStop = True
+        Me.RadioRegional.Text = "Regional"
+        Me.RadioRegional.UseVisualStyleBackColor = False
+        '
+        'RadioMsgOnly
+        '
+        Me.RadioMsgOnly.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.RadioMsgOnly.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.RadioMsgOnly.ForeColor = System.Drawing.Color.GhostWhite
+        Me.RadioMsgOnly.Location = New System.Drawing.Point(381, 285)
+        Me.RadioMsgOnly.Name = "RadioMsgOnly"
+        Me.RadioMsgOnly.Size = New System.Drawing.Size(117, 30)
+        Me.RadioMsgOnly.TabIndex = 91237
+        Me.RadioMsgOnly.TabStop = True
+        Me.RadioMsgOnly.Text = "Message Only"
+        Me.RadioMsgOnly.UseVisualStyleBackColor = False
+        '
+        'RadioPDFMsg
+        '
+        Me.RadioPDFMsg.BackColor = System.Drawing.Color.Goldenrod
+        Me.RadioPDFMsg.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.RadioPDFMsg.ForeColor = System.Drawing.Color.GhostWhite
+        Me.RadioPDFMsg.Location = New System.Drawing.Point(498, 285)
+        Me.RadioPDFMsg.Name = "RadioPDFMsg"
+        Me.RadioPDFMsg.Size = New System.Drawing.Size(128, 30)
+        Me.RadioPDFMsg.TabIndex = 91236
+        Me.RadioPDFMsg.TabStop = True
+        Me.RadioPDFMsg.Text = "PDF + Message"
+        Me.RadioPDFMsg.UseVisualStyleBackColor = False
+        '
+        'RadioPdfOnly
+        '
+        Me.RadioPdfOnly.BackColor = System.Drawing.Color.YellowGreen
+        Me.RadioPdfOnly.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.RadioPdfOnly.ForeColor = System.Drawing.Color.GhostWhite
+        Me.RadioPdfOnly.Location = New System.Drawing.Point(292, 285)
+        Me.RadioPdfOnly.Name = "RadioPdfOnly"
+        Me.RadioPdfOnly.Size = New System.Drawing.Size(89, 30)
+        Me.RadioPdfOnly.TabIndex = 91235
+        Me.RadioPdfOnly.TabStop = True
+        Me.RadioPdfOnly.Text = "PDF Only"
+        Me.RadioPdfOnly.UseVisualStyleBackColor = False
         '
         'Label12
         '
@@ -902,70 +968,14 @@ Partial Class PayMentform
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.UseVisualStyleBackColor = False
         '
-        'RadioMsgOnly
+        'Panel1
         '
-        Me.RadioMsgOnly.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.RadioMsgOnly.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.RadioMsgOnly.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioMsgOnly.Location = New System.Drawing.Point(380, 285)
-        Me.RadioMsgOnly.Name = "RadioMsgOnly"
-        Me.RadioMsgOnly.Size = New System.Drawing.Size(117, 30)
-        Me.RadioMsgOnly.TabIndex = 91237
-        Me.RadioMsgOnly.TabStop = True
-        Me.RadioMsgOnly.Text = "Message Only"
-        Me.RadioMsgOnly.UseVisualStyleBackColor = False
-        '
-        'RadioPDFMsg
-        '
-        Me.RadioPDFMsg.BackColor = System.Drawing.Color.Goldenrod
-        Me.RadioPDFMsg.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.RadioPDFMsg.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioPDFMsg.Location = New System.Drawing.Point(497, 285)
-        Me.RadioPDFMsg.Name = "RadioPDFMsg"
-        Me.RadioPDFMsg.Size = New System.Drawing.Size(128, 30)
-        Me.RadioPDFMsg.TabIndex = 91236
-        Me.RadioPDFMsg.TabStop = True
-        Me.RadioPDFMsg.Text = "PDF + Message"
-        Me.RadioPDFMsg.UseVisualStyleBackColor = False
-        '
-        'RadioPdfOnly
-        '
-        Me.RadioPdfOnly.BackColor = System.Drawing.Color.YellowGreen
-        Me.RadioPdfOnly.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.RadioPdfOnly.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioPdfOnly.Location = New System.Drawing.Point(291, 285)
-        Me.RadioPdfOnly.Name = "RadioPdfOnly"
-        Me.RadioPdfOnly.Size = New System.Drawing.Size(89, 30)
-        Me.RadioPdfOnly.TabIndex = 91235
-        Me.RadioPdfOnly.TabStop = True
-        Me.RadioPdfOnly.Text = "PDF Only"
-        Me.RadioPdfOnly.UseVisualStyleBackColor = False
-        '
-        'btnRadioEnglish
-        '
-        Me.btnRadioEnglish.BackColor = System.Drawing.Color.PaleVioletRed
-        Me.btnRadioEnglish.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnRadioEnglish.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnRadioEnglish.Location = New System.Drawing.Point(12, 13)
-        Me.btnRadioEnglish.Name = "btnRadioEnglish"
-        Me.btnRadioEnglish.Size = New System.Drawing.Size(104, 25)
-        Me.btnRadioEnglish.TabIndex = 91238
-        Me.btnRadioEnglish.TabStop = True
-        Me.btnRadioEnglish.Text = "English"
-        Me.btnRadioEnglish.UseVisualStyleBackColor = False
-        '
-        'RadioRegional
-        '
-        Me.RadioRegional.BackColor = System.Drawing.Color.DeepPink
-        Me.RadioRegional.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.RadioRegional.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioRegional.Location = New System.Drawing.Point(116, 13)
-        Me.RadioRegional.Name = "RadioRegional"
-        Me.RadioRegional.Size = New System.Drawing.Size(96, 25)
-        Me.RadioRegional.TabIndex = 91239
-        Me.RadioRegional.TabStop = True
-        Me.RadioRegional.Text = "Regional"
-        Me.RadioRegional.UseVisualStyleBackColor = False
+        Me.Panel1.Controls.Add(Me.btnRadioEnglish)
+        Me.Panel1.Controls.Add(Me.RadioRegional)
+        Me.Panel1.Location = New System.Drawing.Point(12, 10)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(200, 28)
+        Me.Panel1.TabIndex = 91240
         '
         'PayMentform
         '
@@ -1031,6 +1041,7 @@ Partial Class PayMentform
         Me.pnlWhatsapp.ResumeLayout(False)
         Me.pnlWhatsapp.PerformLayout()
         CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1094,4 +1105,5 @@ Partial Class PayMentform
     Friend WithEvents RadioPdfOnly As System.Windows.Forms.RadioButton
     Friend WithEvents btnRadioEnglish As System.Windows.Forms.RadioButton
     Friend WithEvents RadioRegional As System.Windows.Forms.RadioButton
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class

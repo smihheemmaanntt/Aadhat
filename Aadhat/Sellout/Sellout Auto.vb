@@ -648,7 +648,6 @@ Public Class Sellout_Auto
                 dg1.SelectedRows(0).Cells(7).Value = Val(txtItemID.Text)
                 dg1.SelectedRows(0).Cells(8).Value = lblCrate.Text
                 dg1.SelectedRows(0).Cells(10).Value = Val(txtGrossWt.Text)
-
                 txtItem.Focus()
                 cleartxt()
                 calc()
@@ -666,7 +665,7 @@ Public Class Sellout_Auto
     End Sub
     Private Sub cleartxt()
         '  txtLotNo.Text = "" : txtNug.Text = ""
-        txtKg.Text = "" : txtTotAmount.Text = ""
+        txtKg.Text = "" : txtTotAmount.Text = "" : txtGrossWt.Text = ""
     End Sub
     Private Sub FootertextClear()
         '  txtid.Text = ""
@@ -1078,12 +1077,12 @@ Public Class Sellout_Auto
             With dg1.Rows(i)
                 FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "" & Val(txtid.Text) & ",'" & .Cells(0).Value & "','" & .Cells(1).Value & "','" & .Cells(2).Value & "'," &
                                             " '" & .Cells(3).Value & "','" & .Cells(4).Value & "','" & .Cells(5).Value & "','" & .Cells(6).Value & "', " &
-                                            "'" & .Cells(7).Value & "'," & txtVehicleID.Text & ""
+                                            "'" & .Cells(7).Value & "'," & Val(txtVehicleID.Text) & ",'" & Val(.Cells(10).Value) & "'"
             End With
         Next
         Try
             If FastQuery = String.Empty Then Exit Sub
-            Sql = "insert into Transaction1(VoucherID, ItemName,Lot, Nug, Weight, Rate, Per,Amount,ItemID,PurchaseID) " & FastQuery & ""
+            Sql = "insert into Transaction1(VoucherID, ItemName,Lot, Nug, Weight, Rate, Per,Amount,ItemID,PurchaseID,GrossWeight) " & FastQuery & ""
             clsFun.ExecNonQuery(Sql)
         Catch ex As Exception
 
@@ -1348,13 +1347,13 @@ Public Class Sellout_Auto
         If cbBillingType.SelectedIndex = 0 Then
             Sql = "Select * from Transaction2 where PurchaseID=" & Val(id) & " order by SRate Desc"
         ElseIf cbBillingType.SelectedIndex = 1 Then
-            Sql = "Select ItemID, ItemName,lot,sum(nug) as nug,sum(weight) as weight,(sum(sallerAmt) / sum(weight)) as Rate, avg(SRate) as SRate,Per,sum(SallerAmt)  As SallerAmt from Transaction2 where PurchaseID=" & id & " Group by ItemName,Lot,Per order by SRate Desc"
+            Sql = "Select ItemID, ItemName,lot,sum(nug) as nug,Round(sum(GrossWeight),2) as GrossWeight ,sum(weight) as weight,(sum(sallerAmt) / sum(weight)) as Rate, avg(SRate) as SRate,Per,sum(SallerAmt)  As SallerAmt from Transaction2 where PurchaseID=" & id & " Group by ItemName,Lot,Per order by SRate Desc"
         ElseIf cbBillingType.SelectedIndex = 2 Then
             Sql = "Select * from Transaction2 where PurchaseID=" & Val(id) & " order by SRate Desc"
         ElseIf cbBillingType.SelectedIndex = 3 Then
-            Sql = "Select ItemID, ItemName,Lot,Round(sum(Nug),2) as nug,Round(sum(Weight),2) as weight,Round(SRate,2) as SRate,Per,Round(sum(SallerAmt),2) as Salleramt from Transaction2 where PurchaseID=" & id & " Group By ItemId,Lot,SRate,Per order by ItemName asc,SRate Desc"
+            Sql = "Select ItemID, ItemName,Lot,Round(sum(Nug),2) as nug,Round(sum(GrossWeight),2) as GrossWeight,Round(sum(Weight),2) as weight,Round(SRate,2) as SRate,Per,Round(sum(SallerAmt),2) as Salleramt from Transaction2 where PurchaseID=" & id & " Group By ItemId,Lot,SRate,Per order by ItemName asc,SRate Desc"
         ElseIf cbBillingType.SelectedIndex = 4 Then
-            Sql = "Select ItemID, ItemName,Lot,Round(sum(Nug),2) as nug,Round(sum(Weight),2) as weight,Round(SRate,2) as SRate,Per,Round(sum(SallerAmt),2) as Salleramt from Transaction2 where PurchaseID=" & id & " Group By ItemId,Lot,SRate,Per order by SRate Desc"
+            Sql = "Select ItemID, ItemName,Lot,Round(sum(Nug),2) as nug,Round(sum(GrossWeight),2) as GrossWeight,Round(sum(Weight),2) as weight,Round(SRate,2) as SRate,Per,Round(sum(SallerAmt),2) as Salleramt from Transaction2 where PurchaseID=" & id & " Group By ItemId,Lot,SRate,Per order by SRate Desc"
         End If
         Dim Ssqll As String = "Select * from ChargesTrans where VoucherID=" & id
         clsFun.con.Open()
@@ -1446,8 +1445,8 @@ Public Class Sellout_Auto
 
     Private Sub txtCharges_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCharges.KeyDown, txtOnValue.KeyDown, txtCalculatePer.KeyDown, txtPlusMinus.KeyDown
         If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
+            e.SuppressKeyPress = True
         End If
         Select Case e.KeyCode
             Case Keys.End
@@ -1492,6 +1491,7 @@ Public Class Sellout_Auto
             Cbper.Text = dg1.SelectedRows(0).Cells(5).Value
             txtTotAmount.Text = dg1.SelectedRows(0).Cells(6).Value
             txtItemID.Text = dg1.SelectedRows(0).Cells(7).Value
+            txtGrossWt.Text = Val(dg1.SelectedRows(0).Cells(10).Value)
             '  lblCrate.Text = dg1.SelectedRows(0).Cells(9).Value
             txtItem.Focus() : e.SuppressKeyPress = True
         End If
@@ -1523,6 +1523,7 @@ Public Class Sellout_Auto
         Cbper.Text = dg1.SelectedRows(0).Cells(5).Value
         txtTotAmount.Text = dg1.SelectedRows(0).Cells(6).Value
         txtItemID.Text = dg1.SelectedRows(0).Cells(7).Value
+        txtGrossWt.Text = Val(dg1.SelectedRows(0).Cells(10).Value)
         'txtItem.Focus()
     End Sub
     Private Sub txtchargesAmount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtchargesAmount.KeyDown
@@ -2067,6 +2068,7 @@ Public Class Sellout_Auto
                 .Rows(i).Cells("Amount").Value = Format(Val(ds.Tables("b").Rows(i)("Amount").ToString()), "0.00")
                 .Rows(i).Cells("ItemID").Value = ds.Tables("b").Rows(i)("ItemID").ToString()
                 txtVehicleID.Text = ds.Tables("b").Rows(i)("PurchaseID").ToString()
+                .Rows(i).Cells("GrossWt").Value = ds.Tables("b").Rows(i)("GrossWeight").ToString()
             Next
 
         End With
@@ -2643,6 +2645,14 @@ Public Class Sellout_Auto
 
     Private Sub txtVehicle_TextChanged(sender As Object, e As EventArgs) Handles txtVehicle.TextChanged
 
+
+    End Sub
+
+    Private Sub txtTotAmount_TextChanged(sender As Object, e As EventArgs) Handles txtTotAmount.TextChanged
+
+    End Sub
+
+    Private Sub txtCharges_TextChanged(sender As Object, e As EventArgs) Handles txtCharges.TextChanged
 
     End Sub
 End Class

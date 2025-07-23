@@ -284,6 +284,10 @@ Public Class CompanyList
                 "Roundoff,CrateTransType,CrateAccountID,CrateAccountName,AddWeight FROM UpdateTrans1 ;DROP TABLE UpdateTrans1 ;PRAGMA foreign_keys = 1;"
             clsFun.ExecNonQuery(sql)
         End If
+        If clsFun.CheckIfColumnExists("Transaction1", "GrossWeight") = False Then
+            Dim sql As String = "ALTER TABLE Transaction1 ADD COLUMN GrossWeight DECIMAL;"
+            clsFun.ExecNonQuery(sql)
+        End If
         If clsFun.CheckIfColumnExists("Charges", "PrintName") = False Then
             Dim sql As String = "PRAGMA foreign_keys = 0;CREATE TABLE TempCharges AS SELECT * FROM Charges;DROP TABLE Charges;CREATE TABLE Charges (ID INTEGER PRIMARY KEY AUTOINCREMENT," & _
                 " ChargeName TEXT,Calculate TEXT,AccountID INTEGER,AccountName TEXT,ApplyType TEXT,ChargesType TEXT,ApplyOn TEXT,CostOn  TEXT,RoundOff DECIMAL,PrintName   TEXT);" & _
@@ -325,25 +329,25 @@ Public Class CompanyList
          " Transaction2.Rate,Transaction2.Per ORDER BY Transaction2.AccountName,Transaction2.ItemName"
         clsFun.ExecNonQuery(sql)
 
-        If clsFun.CheckIfColumnExists("BillPrints2", "OnWeight") = False Then
+        If clsFun.CheckIfColumnExists("BillPrints2", "GrossWeight") = False Then
             sql = ""
-            'sql = "Drop View if  exists BillPrints2;CREATE VIEW BillPrints2 AS SELECT Transaction2.EntryDate, Transaction2.ItemName, Transaction2.AccountName, Transaction2.Nug, Transaction2.Weight, Transaction2.Rate," & _
-            '    "Transaction2.Per, Transaction2.Amount, Transaction2.Charges, Transaction2.TotalAmount, Transaction2.CommPer, Transaction2.CommAmt," & _
-            '    "Transaction2.MPer, Transaction2.MAmt, Transaction2.RdfPer, Transaction2.RdfAmt, Transaction2.Tare, Transaction2.Tareamt," & _
-            '    "Transaction2.Labour, Transaction2.LabourAmt, Transaction2.MaintainCrate, Transaction2.Cratemarka, Transaction2.CrateQty," & _
-            '    "Items.OtherName, Accounts.Othername as AccountNameOther, Transaction2.TransType, Transaction2.AccountID,ifnull(Transaction2.OnWeight,'') as OnWeight " & _
-            '    "FROM (Transaction2 INNER JOIN Accounts ON Transaction2.AccountID = Accounts.ID) INNER JOIN Items ON Transaction2.ItemID = Items.ID " & _
-            '    "WHERE (((Transaction2.TransType) Not In ('Standard Sale')))  GROUP BY Transaction2.EntryDate,Transaction2.AccountID,Transaction2.ItemID, " & _
-            ' " Transaction2.Rate,Transaction2.Per ORDER BY Transaction2.AccountName, Transaction2.ItemName;"
-            sql = "Drop View if exists BillPrints2;CREATE VIEW if not exists BillPrints2 AS SELECT Transaction2.EntryDate, Transaction2.ItemName, Transaction2.AccountName, sum(Transaction2.Nug) AS nug," & _
-         " round(sum(Transaction2.Weight), 2) AS weight,     Transaction2.Rate,  Transaction2.Per, round(sum(Transaction2.Amount), 2) AS amount," & _
-         " sum(Transaction2.Charges) AS Charges,sum(Transaction2.TotalAmount) AS Totalamount, Transaction2.CommPer, sum(Transaction2.CommAmt) AS CommAmt," & _
-         " Transaction2.MPer,sum(Transaction2.MAmt) AS MAmt, Transaction2.RdfPer, sum(Transaction2.RdfAmt) AS RdfAmt,Transaction2.Tare, " & _
-         " sum(Transaction2.Tareamt) AS Tareamt,  Transaction2.Labour,sum(Transaction2.LabourAmt) AS LabourAmt, Transaction2.MaintainCrate," & _
-         " Transaction2.Cratemarka, Transaction2.CrateQty, Items.OtherName, Accounts.Othername as AccountNameOther,Transaction2.TransType, Transaction2.AccountID,transaction2.OnWeight" & _
-         " FROM (Transaction2 INNER JOIN Accounts ON Transaction2.AccountID = Accounts.ID) INNER JOIN Items ON Transaction2.ItemID = Items.ID" & _
-         "  WHERE (((Transaction2.TransType) Not In ('Standard Sale','On Sale')))  GROUP BY Transaction2.EntryDate,Transaction2.AccountID, Transaction2.ItemID," & _
-         " Transaction2.Rate,Transaction2.Per ORDER BY Transaction2.AccountName,Transaction2.ItemName"
+            '   sql = "Drop View if exists BillPrints2;CREATE VIEW if not exists BillPrints2 AS SELECT Transaction2.EntryDate, Transaction2.ItemName, Transaction2.AccountName, sum(Transaction2.Nug) AS nug," & _
+            '" round(sum(Transaction2.Weight), 2) AS weight,     Transaction2.Rate,  Transaction2.Per, round(sum(Transaction2.Amount), 2) AS amount," & _
+            '" sum(Transaction2.Charges) AS Charges,sum(Transaction2.TotalAmount) AS Totalamount, Transaction2.CommPer, sum(Transaction2.CommAmt) AS CommAmt," & _
+            '" Transaction2.MPer,sum(Transaction2.MAmt) AS MAmt, Transaction2.RdfPer, sum(Transaction2.RdfAmt) AS RdfAmt,Transaction2.Tare, " & _
+            '" sum(Transaction2.Tareamt) AS Tareamt,  Transaction2.Labour,sum(Transaction2.LabourAmt) AS LabourAmt, Transaction2.MaintainCrate," & _
+            '" Transaction2.Cratemarka, Transaction2.CrateQty, Items.OtherName, Accounts.Othername as AccountNameOther,Transaction2.TransType, Transaction2.AccountID,transaction2.OnWeight" & _
+            '" FROM (Transaction2 INNER JOIN Accounts ON Transaction2.AccountID = Accounts.ID) INNER JOIN Items ON Transaction2.ItemID = Items.ID" & _
+            '"  WHERE (((Transaction2.TransType) Not In ('Standard Sale','On Sale')))  GROUP BY Transaction2.EntryDate,Transaction2.AccountID, Transaction2.ItemID," & _
+            '" Transaction2.Rate,Transaction2.Per ORDER BY Transaction2.AccountName,Transaction2.ItemName"
+            sql = "DROP VIEW IF EXISTS BillPrints2;" & _
+" CREATE VIEW BillPrints2 AS " & _
+" SELECT Transaction2.EntryDate, Items.ItemName, Accounts.AccountName, sum(Transaction2.Nug) AS Nug, round(sum(Transaction2.Weight), 2) AS Weight, Transaction2.Rate, Transaction2.Per, round(sum(Transaction2.Amount), 2) AS Amount, sum(Transaction2.Charges) AS Charges, sum(Transaction2.TotalAmount) AS TotalAmount, Transaction2.CommPer, sum(Transaction2.CommAmt) AS CommAmt, Transaction2.MPer, sum(Transaction2.MAmt) AS MAmt, Transaction2.RdfPer, sum(Transaction2.RdfAmt) AS RdfAmt, Transaction2.Tare, sum(Transaction2.Tareamt) AS TareAmt, Transaction2.Labour, sum(Transaction2.LabourAmt) AS LabourAmt, Transaction2.MaintainCrate, Transaction2.Cratemarka, Transaction2.CrateQty," & _
+" Items.OtherName, Accounts.Othername AS AccountNameOther, Accounts.Mobile1 AS MobileNo1, Accounts.Mobile2 AS MobileNo2, Accounts.LFNo AS LFNo, Accounts.Area AS Area, Accounts.City, Transaction2.TransType, Transaction2.AccountID, ifnull(Transaction2.OnWeight,'') as OnWeight, ifnull(Transaction2.Lot,'') as lot, ifnull(Transaction2.Cut,'') as Cut, ifnull(Transaction2.GrossWeight,'') AS GrossWeight" & _
+" FROM (Transaction2 INNER JOIN Accounts ON Transaction2.AccountID = Accounts.ID) INNER JOIN Items ON Transaction2.ItemID = Items.ID" & _
+" WHERE Transaction2.TransType NOT IN ('Standard Sale', 'On Sale') " & _
+" GROUP BY Transaction2.EntryDate, Transaction2.AccountID, Transaction2.ItemID, Transaction2.Rate, Transaction2.Per ORDER BY Accounts.AccountName, Items.ItemName;"
+
             clsFun.ExecNonQuery(sql)
         End If
     End Sub

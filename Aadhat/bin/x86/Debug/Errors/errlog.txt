@@ -438,3 +438,373 @@ Message: Login Successfuly...BTC
 StackTrace: BHAGWATI TRADING COMPANY
 Date/Time: 16-Jul-25 11:45:53 AM
 ===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 16-Jul-25 6:04:06 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 17-Jul-25 1:04:01 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 17-Jul-25 1:07:57 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 17-Jul-25 6:03:14 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TULSI FRUIT COMPANY
+Date/Time: 18-Jul-25 2:34:51 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TULSI FRUIT COMPANY
+Date/Time: 18-Jul-25 2:40:24 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 12:04:26 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 12:06:25 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:37:29 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:39:18 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:39:23 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:41:35 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:43:38 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:44:59 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:51:48 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 5:54:27 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:30:11 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:31:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:42:51 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:52:54 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '0','2025-07-19','Stock Sale','Stock in',150,1017,'KGN MUSTAK BHAI', '3','Shop','4','RAM KALI','0', '15','41','998', 'Kg',151
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:54:55 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='25', Entrydate='2025-07-19',  SallerID='1017', SallerName='KGN MUSTAK BHAI',  Nug='450', kg='10853',BasicAmount='591154',  TotalAmount='632538',TotalCharges='41380.78', StorageID='3',Storagename='Shop',InvoiceID='25',  ModifiedByID='1',ModifiedTime='2025-07-20 19:54:57' where ID =151
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:54:57 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-19','25',151, 'Stock Sale','1061','SANTOSH SONKATCH',4,'RAM KALI','15',  '20.00','491','0','58', '58.00','Kg','28478','1993.46', '30471.00','7', '1993.46','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','28478','-0.46' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1028','JAVED KHARGONE',4,'RAM KALI','15',  '8.00','192','0','58', '58.00','Kg','11136','779.52', '11916.00','7', '779.52','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','11136','0.48' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1032','KCB KANNOD',4,'RAM KALI','15',  '10.00','245','0','58', '58.00','Kg','14210','994.7', '15205.00','7', '994.70','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','14210','0.3' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1077','SUNIL DHAMNOD',4,'RAM KALI','15',  '2.00','49','0','58', '58.00','Kg','2842','198.94', '3041.00','7', '198.94','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','2842','0.06' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1100','SURESH KANNOD 1',4,'RAM KALI','15',  '18.00','450','0','57', '57.00','Kg','25650','1795.5', '27446.00','7', '1795.50','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','25650','0.5' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1146','JITENDRA ASHTA',4,'RAM KALI','15',  '4.00','97','0','58', '58.00','Kg','5626','393.82', '6020.00','7', '393.82','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','5626','0.18' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1051','RAVI BADNAGAR',4,'RAM KALI','15',  '20.00','476','0','58', '58.00','Kg','27608','1932.56', '29541.00','7', '1932.56','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','27608','0.44' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1049','HARI MASTER',4,'RAM KALI','15',  '12.00','308','0','57', '57.00','Kg','17556','1228.92', '18785.00','7', '1228.92','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','17556','0.08' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1112','RUPESH NIRANJANPUR',4,'RAM KALI','15',  '5.00','122','0','60', '60.00','Kg','7320','512.4', '7832.00','7', '512.40','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','7320','-0.4' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1082','BABLU HAMMAL',4,'RAM KALI','15',  '10.00','245','0','58', '58.00','Kg','14210','994.7', '15205.00','7', '994.70','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','14210','0.3' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1103','SALIM SUJALPUR',4,'RAM KALI','15',  '1.00','23','0','58', '58.00','Kg','1334','93.38', '1427.00','7', '93.38','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','1334','-0.38' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1111','JAMNA BHOPAL',4,'RAM KALI','15',  '6.00','152','0','58', '58.00','Kg','8816','617.12', '9433.00','7', '617.12','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','8816','-0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1037','AMIT MANDI',4,'RAM KALI','15',  '12.00','293','0','57', '57.00','Kg','16701','1169.07', '17870.00','7', '1169.07','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','16701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1062','SUBHASH DEWAS',4,'RAM KALI','15',  '20.00','491','0','55', '55.00','Kg','27005','1890.35', '28895.00','7', '1890.35','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','27005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1049','HARI MASTER',4,'RAM KALI','15',  '40.00','964','0','57', '57.00','Kg','54948','3846.36', '58794.00','7', '3846.36','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','54948','-0.36' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1041','KANHA BIJALPUR',4,'RAM KALI','15',  '1.00','25','0','58', '58.00','Kg','1450','101.5', '1552.00','7', '101.50','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','1450','0.5' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1037','AMIT MANDI',4,'RAM KALI','15',  '41','998','0','57', '57','Kg','56886','3982.02', '60868.00','7', '3982.02','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','56886','-0.02' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1029','ANWAR DHAR',4,'RAM KALI','15',  '9.00','226','0','58', '58.00','Kg','13108','917.56', '14026.00','7', '917.56','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','13108','0.44' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1040','SURESH DEWAS',4,'RAM KALI','15',  '16.00','374','0','58', '58.00','Kg','21692','1518.44', '23210.00','7', '1518.44','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','21692','-0.44' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1034','DHIRAJ MAMA',4,'RAM KALI','15',  '1.00','24','0','58', '58.00','Kg','1392','97.44', '1489.00','7', '97.44','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','1392','-0.44' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1039','CHAINSINGH HATPIPLIYA',4,'RAM KALI','15',  '10.00','243','0','58', '58.00','Kg','14094','986.58', '15081.00','7', '986.58','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','14094','0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1100','SURESH KANNOD 1',4,'RAM KALI','15',  '22.00','614','0','57', '57.00','Kg','34998','2449.86', '37448.00','7', '2449.86','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','34998','0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1035','MANISH UJJAIN',4,'RAM KALI','15',  '2.00','49','0','58', '58.00','Kg','2842','198.94', '3041.00','7', '198.94','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','2842','0.06' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1133','VISHAL GOTAMPURA',4,'RAM KALI','15',  '3.00','75','0','58', '58.00','Kg','4350','304.5', '4655.00','7', '304.50','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','4350','0.5' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1066','VASU DEWAS',4,'RAM KALI','15',  '4.00','99','0','58', '58.00','Kg','5742','401.94', '6144.00','7', '401.94','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','5742','0.06' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1081','CHUNNI KAKA',4,'RAM KALI','15',  '10.00','243','0','58', '58.00','Kg','14094','986.58', '15081.00','7', '986.58','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','14094','0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1067','VAHID MHOW',4,'RAM KALI','15',  '4.00','97','0','58', '58.00','Kg','5626','393.82', '6020.00','7', '393.82','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','5626','0.18' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1110','RAJJAK MHOW',4,'RAM KALI','15',  '2.00','48','0','58', '58.00','Kg','2784','194.88', '2979.00','7', '194.88','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','2784','0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1097','MANOJ PATNIPURA',4,'RAM KALI','15',  '8.00','197','0','48', '48.00','Kg','9456','661.92', '10118.00','7', '661.92','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','9456','0.08' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','1106','MOHAZZAM CHACHI',4,'RAM KALI','15',  '1.00','21','0','50', '50.00','Kg','1050','73.5', '1124.00','7', '73.50','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','1050','0.5' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '3.00','74','0','60', '60.00','Kg','4440','310.8', '4751.00','7', '310.80','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','4440','0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '47.00','1082','0','57', '57.00','Kg','61674','4317.18', '65991.00','7', '4317.18','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','61674','-0.18' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '15.00','317','0','55', '55.00','Kg','17435','1220.45', '18655.00','7', '1220.45','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','17435','-0.45' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '12.00','274','0','50', '50.00','Kg','13700','959', '14659.00','7', '959.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','13700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '30.00','677','0','33', '33.00','Kg','22341','1563.87', '23905.00','7', '1563.87','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','22341','0.13' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '10.00','242','0','35', '35.00','Kg','8470','592.9', '9063.00','7', '592.90','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','8470','0.1' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '7.00','161','0','40', '40.00','Kg','6440','450.8', '6891.00','7', '450.80','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','6440','0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '2.00','48','0','40', '40.00','Kg','1920','134.4', '2054.00','7', '134.40','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','1920','-0.4' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '1.00','15','0','30', '30.00','Kg','450','31.5', '482.00','7', '31.50','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','450','0.5' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-19','25',151, 'Stock Sale','7','Cash',4,'RAM KALI','15',  '1.00','32','0','40', '40.00','Kg','1280','89.6', '1370.00','7', '89.60','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1017,'KGN MUSTAK BHAI','150','1280','0.4' ,'0','','3','Shop','','0'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 7:54:57 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:05:31 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','2','118', 'Kg',0
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:06:12 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','20','90', 'Kg',0
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:06:28 PM
+===========================================================================================
+Title: Stock Sale Saved
+Message: insert into Vouchers(TransType,BillNo, Entrydate, SallerID, SallerName, Nug, kg,BasicAmount, TotalAmount,TotalCharges,StorageID,Storagename,InvoiceID,UserID,EntryTime)values (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,@11,@12,@13,@14,@15)
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:06:30 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1038','AKHTAR MHEBUB DHAR',3,'AANWLA','100',  '2','118','1','100', '100','Kg','11800','826', '12626','7', '826','0','0', '0','0','0', '0','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','11800','0' ,'0','','3','Shop','','120' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20','90','1','100', '100','Kg','9000','630', '9630','7', '630','0','0', '0','0','0', '0','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','','3','Shop','','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:06:30 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '120','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','2','120', 'Kg',177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:13:18 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='26', Entrydate='2025-07-20',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='22', kg='210',BasicAmount='21000',  TotalAmount='22470',TotalCharges='1470', StorageID='3',Storagename='Shop',InvoiceID='26',  ModifiedByID='1',ModifiedTime='2025-07-20 20:13:19' where ID =177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:13:19 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1038','AKHTAR MHEBUB DHAR',3,'AANWLA','100',  '2','120','1','100', '100','Kg','12000','840', '12840.00','7', '840.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','12000','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20.00','90','1','100', '100.00','Kg','9000','630', '9630.00','7', '630.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','','3','Shop','','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:13:19 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '0','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','2','120', 'Kg',177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:13:47 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:22:09 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='26', Entrydate='2025-07-20',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='22', kg='210',BasicAmount='21000',  TotalAmount='22470',TotalCharges='1470', StorageID='3',Storagename='Shop',InvoiceID='26',  ModifiedByID='1',ModifiedTime='2025-07-20 20:22:30' where ID =177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:22:30 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1038','AKHTAR MHEBUB DHAR',3,'AANWLA','100',  '2.00','120','1','100', '100.00','Kg','12000','840', '12840.00','7', '840.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','12000','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20.00','90','1','100', '100.00','Kg','9000','630', '9630.00','7', '630.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','','3','Shop','','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:22:30 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '0','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','2','120', 'Kg',177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:27:11 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='26', Entrydate='2025-07-20',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='22', kg='210',BasicAmount='21000',  TotalAmount='22470',TotalCharges='1470', StorageID='3',Storagename='Shop',InvoiceID='26',  ModifiedByID='1',ModifiedTime='2025-07-20 20:27:12' where ID =177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:27:12 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '2','120','1','100', '100','Kg','12000','840', '12840.00','7', '840.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','12000','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20.00','90','1','100', '100.00','Kg','9000','630', '9630.00','7', '630.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','','3','Shop','','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:27:12 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '0','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','2','118', 'Kg',177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:28:00 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='26', Entrydate='2025-07-20',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='22', kg='208',BasicAmount='20800',  TotalAmount='22256',TotalCharges='1456', StorageID='3',Storagename='Shop',InvoiceID='26',  ModifiedByID='1',ModifiedTime='2025-07-20 20:28:01' where ID =177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:28:01 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '2','118','1','100', '100','Kg','11800','826', '12626.00','7', '826.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','11800','0' ,'0','--N./A.--','3','Shop','','120' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20.00','90','1','100', '100.00','Kg','9000','630', '9630.00','7', '630.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','','3','Shop','','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:28:01 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '120','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','2','118', 'Kg',177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:29:48 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='26', Entrydate='2025-07-20',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='22', kg='208',BasicAmount='20800',  TotalAmount='22256',TotalCharges='1456', StorageID='3',Storagename='Shop',InvoiceID='26',  ModifiedByID='1',ModifiedTime='2025-07-20 20:29:49' where ID =177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:29:49 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '2','118','1','100', '100','Kg','11800','826', '12626.00','7', '826.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','11800','0' ,'0','--N./A.--','3','Shop','110+8','120' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20.00','90','1','100', '100.00','Kg','9000','630', '9630.00','7', '630.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','','3','Shop','','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:29:50 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '110','2025-07-20','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','1', '100','20','90', 'Kg',177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:30:42 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='26', Entrydate='2025-07-20',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='22', kg='208',BasicAmount='20800',  TotalAmount='22256',TotalCharges='1456', StorageID='3',Storagename='Shop',InvoiceID='26',  ModifiedByID='1',ModifiedTime='2025-07-20 20:30:43' where ID =177
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:30:43 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '2.00','118','1','100', '100.00','Kg','11800','826', '12626.00','7', '826.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','11800','0' ,'0','--N./A.--','3','Shop','110+8','120' UNION ALL SELECT '2025-07-20','26',177, 'Stock Sale','1037','AMIT MANDI',3,'AANWLA','100',  '20','90','1','100', '100','Kg','9000','630', '9630.00','7', '630.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','9000','0' ,'0','--N./A.--','3','Shop','80+10','110'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:30:43 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:32:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 20-Jul-25 8:32:20 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 11:58:55 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 12:05:21 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 12:10:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 12:20:10 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 12:36:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 12:46:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 12:48:56 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 1:27:27 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 1:30:08 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 1:32:53 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-07-23','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','-1', '100','1','119', 'Kg',0
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 1:33:07 PM
+===========================================================================================
+Title: Stock Sale Saved
+Message: insert into Vouchers(TransType,BillNo, Entrydate, SallerID, SallerName, Nug, kg,BasicAmount, TotalAmount,TotalCharges,StorageID,Storagename,InvoiceID,UserID,EntryTime)values (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,@11,@12,@13,@14,@15)
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 1:33:18 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-23','27',178, 'Stock Sale','1038','AKHTAR MHEBUB DHAR',3,'AANWLA','100',  '1','119','-1','20', '20','Kg','2380','166.6', '2547','7', '166.6','0','0', '0','0','0', '0','0','0', '0','','0','N','Stock in',1075,'BHIMA DHARNI','176','2380','0.4' ,'0','','3','Shop','','120'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 1:33:18 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 1:40:28 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 1:42:10 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: N. G.
+Date/Time: 23-Jul-25 1:47:54 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:06:58 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '120','2025-07-23','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','-5', '100','5','495', 'Kg',178
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:10:17 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='27', Entrydate='2025-07-23',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='5', kg='495',BasicAmount='9900',  TotalAmount='10593',TotalCharges='693', StorageID='3',Storagename='Shop',InvoiceID='27',  ModifiedByID='1',ModifiedTime='2025-07-23 14:10:18' where ID =178
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:10:18 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-23','27',178, 'Stock Sale','1038','AKHTAR MHEBUB DHAR',3,'AANWLA','100',  '5','495','-5','20', '20','Kg','9900','693', '10593.00','7', '693.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','9900','0' ,'0','--N./A.--','3','Shop','','500'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:10:18 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:12:38 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '500','2025-07-23','Stock Sale','Stock in',176,1075,'BHIMA DHARNI', '3','Shop','3','AANWLA','-5', '100','5','495', 'Kg',178
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:13:11 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='27', Entrydate='2025-07-23',  SallerID='1075', SallerName='BHIMA DHARNI',  Nug='5', kg='495',BasicAmount='9900',  TotalAmount='10593',TotalCharges='693', StorageID='3',Storagename='Shop',InvoiceID='27',  ModifiedByID='1',ModifiedTime='2025-07-23 14:13:13' where ID =178
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:13:13 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-23','27',178, 'Stock Sale','1038','AKHTAR MHEBUB DHAR',3,'AANWLA','100',  '5','495','-5','20', '20','Kg','9900','693', '10593.00','7', '693.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1075,'BHIMA DHARNI','176','9900','0' ,'0','--N./A.--','3','Shop','','500'
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:13:13 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 2:14:18 PM
+===========================================================================================

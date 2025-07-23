@@ -87,7 +87,7 @@ Public Class ReceiptForm
     End Sub
 
     Sub RowColumsWhatsapp()
-        DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 10
+        DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 11
         Dim headerCellLocation As Point = Me.dg1.GetCellDisplayRectangle(0, -1, True).Location
         'Place the Header CheckBox in the Location of the Header Cell.
         WhatsappCheckBox.Location = New Point(headerCellLocation.X + 10, headerCellLocation.Y + 2)
@@ -110,6 +110,7 @@ Public Class ReceiptForm
         DgWhatsapp.Columns(7).Name = "Mode" : DgWhatsapp.Columns(7).Visible = False
         DgWhatsapp.Columns(8).Name = "Msg1" : DgWhatsapp.Columns(9).Visible = False
         DgWhatsapp.Columns(9).Name = "Msg2" : DgWhatsapp.Columns(9).Visible = False
+        DgWhatsapp.Columns(10).Name = "AccountID" : DgWhatsapp.Columns(10).Visible = False
     End Sub
 
     Private Sub WhatsappCheckBox_Clicked(ByVal sender As Object, ByVal e As EventArgs)
@@ -1461,11 +1462,12 @@ Public Class ReceiptForm
                     End If
                     Dim msg As String = "Dear " & .Cells(4).Value & ", " & vbCrLf & " Thank you for your *payment of ₹ " & dt.Rows(i)("BasicAmount").ToString() & "* deposited today(" & mskEntryDate.Text & ") to *" & compname & "*. Your previous balance Was  *₹ " & OpBal & "*. After todays payment, your new *total outstanding balance is ₹ " & ClBal & "*."
                     Dim msg2 As String = "प्रिय " & .Cells(4).Value & ", " & vbCrLf & " आज दिनांक (" & mskEntryDate.Text & ") *" & compnameHindi & "* को *₹ " & dt.Rows(i)("BasicAmount").ToString() & " जमा* कराने के लिए आपका धन्यवाद।  आपका *पुराना बकाया  ₹ " & OpBal & "* था। आज के भुगतान के बाद, आपका नया *कुल बकाया ₹ " & ClBal & "* है। " & vbCrLf & " *धन्यवाद। " & vbCrLf & " सादर: *" & compnameHindi & "*"
-
+                    .Cells(10).Value = Val(dt.Rows(i)("AccountID").ToString())
                     .Cells(8).Value = msg
                     .Cells(9).Value = msg2
                     .Cells(1).ReadOnly = True : .Cells(2).ReadOnly = True
                     .Cells(0).Value = True
+
                 End With
             Next i
         End If
@@ -1746,10 +1748,23 @@ Public Class ReceiptForm
 
 
     Private Sub btnPnlVisHide_Click(sender As Object, e As EventArgs) Handles btnPnlVisHide.Click
-        Me.Close()
+        pnlWhatsapp.Visible = False
+        mskEntryDate.Focus()
     End Sub
 
     Private Sub lblInword_Click(sender As Object, e As EventArgs) Handles lblInword.Click
 
+    End Sub
+
+    Private Sub DgWhatsapp_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellEndEdit
+        If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(10).Value & "'") = "" And DgWhatsapp.CurrentRow.Cells(3).Value <> "" Then
+            clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(10).Value) & "'")
+        Else
+            If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(10).Value & "'") <> DgWhatsapp.CurrentRow.Cells(3).Value Then
+                If MessageBox.Show("Are you Sure to Change Mobile No in PhoneBook", "Change Number", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(10).Value) & "'")
+                End If
+            End If
+        End If
     End Sub
 End Class

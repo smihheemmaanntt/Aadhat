@@ -1889,6 +1889,7 @@ Public Class Purchase
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If dg1.RowCount = 0 Then MsgBox("There is no record to Save / Update...", vbOKOnly, "Empty") : Exit Sub
+        If txtVehicleNo.Text.Trim = Nothing Then txtVehicleNo.Focus() : Exit Sub
         If BtnSave.Text = "&Save" Then
             Dim AddPurchase As String = clsFun.ExecScalarStr("SELECT Save FROM UserRights AS UR INNER JOIN Users AS U ON UR.UserTypeID = U.UserTypeID Where UserName='" & MainScreenPicture.lblUser.Text & "' and EntryType='Purchase'")
             If AddPurchase <> "Y" Then MsgBox("You Don't Have Rights to Add Purchase... " & vbNewLine & " Please Contact to Admin...", MsgBoxStyle.Critical, "Access Denied") : AlltextClear() : Exit Sub

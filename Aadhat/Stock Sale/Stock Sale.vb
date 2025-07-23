@@ -709,6 +709,8 @@
     Private Sub txtGrossWt_KeyUp(sender As Object, e As KeyEventArgs) Handles txtGrossWt.KeyUp
         If Val(txtGrossWt.Text) = 0 Then Exit Sub
         txtKg.Text = Format(Val(txtGrossWt.Text) - (Val(CUT) * Val(txtNug.Text)), "0.00")
+        txtCut.Text = (Val(txtKg.Text) - Val(txtGrossWt.Text))
+        txtCut.Text = If(Val(txtCut.Text) = 0, "", Format(Val(txtCut.Text), "0.00"))
     End Sub
    
     Public Sub FillControls(ByVal id As Integer)
@@ -3195,6 +3197,10 @@
     End Sub
 
     Private Sub txtTotalAmt_TextChanged(sender As Object, e As EventArgs) Handles txtTotalAmt.TextChanged
+
+    End Sub
+
+    Private Sub txtGrossWt_TextChanged(sender As Object, e As EventArgs) Handles txtGrossWt.TextChanged
 
     End Sub
 End Class

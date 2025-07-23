@@ -992,7 +992,7 @@ Public Class Crate_IN
         End If
     End Sub
     Sub RowColumsWhatsapp()
-        DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 10
+        DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 11
         Dim headerCellLocation As Point = Me.dg1.GetCellDisplayRectangle(0, -1, True).Location
         'Place the Header CheckBox in the Location of the Header Cell.
         WhatsappCheckBox.Location = New Point(headerCellLocation.X + 10, headerCellLocation.Y + 2)
@@ -1056,7 +1056,7 @@ Public Class Crate_IN
                     .Cells(2).Value = dt.Rows(i)("SlipNo").ToString()
                     .Cells(3).Value = clsFun.ExecScalarStr("Select MObile1 From Accounts Where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "'")
                     .Cells(4).Value = dt.Rows(i)("AccountName").ToString()
-                    '.Cells(7).Value = dt.Rows(i)("SallerName").ToString()
+                    .Cells(7).Value = dt.Rows(i)("AccountID").ToString()
                     Dim OpSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
                                           "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "' and Restbal<>0  ;"
                     Dim OpBal As String = clsFun.ExecScalarStr(OpSql)
@@ -1076,8 +1076,8 @@ Public Class Crate_IN
                     Dim msg As String = "Dear " & .Cells(4).Value & ", " & vbCrLf & " Thank you for your *Crate In of Qty " & dt.Rows(i)("Qty").ToString() & "* Received today(" & mskEntryDate.Text & ") to *" & compname & "*. Your previous Total Crate balance Was  *₹ " & OpBal & "*. After todays Deposits, your new *total Crate outstanding balance is ₹ " & ClBal & "*."
                     Dim msg2 As String = "प्रिय " & .Cells(4).Value & ", " & vbCrLf & " आज दिनांक (" & mskEntryDate.Text & ") *" & compnameHindi & "* को क्रैट " & dt.Rows(i)("Qty").ToString() & " जमा* कराने के लिए आपका धन्यवाद।  आपका *पुराना क्रैट बकाया  ₹ " & OpBal & "* था। आज के जमा के बाद, आपका नया *कुल बकाया क्रैट " & ClBal & "* है। " & vbCrLf & " *धन्यवाद। " & vbCrLf & " सादर: *" & compnameHindi & "*"
 
-                    .Cells(8).Value = msg
-                    .Cells(9).Value = msg2
+                    .Cells(8).Value = msg.Trim
+                    .Cells(9).Value = msg2.Trim
                     .Cells(1).ReadOnly = True : .Cells(2).ReadOnly = True
                     .Cells(0).Value = True
                 End With
@@ -1113,27 +1113,6 @@ Public Class Crate_IN
         dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE VoucherID='" & Val(VoucherID) & "'")
         'dt = clsFun.ExecDataTable("Select * from Vouchers where TransType= '" & Me.Text & "'and EntryDate='" & mskEntryDate.Text & "'")
         tmpgrid.Rows.Clear()
-        'Try
-        '    If dt.Rows.Count > 0 Then
-        '        For i = 0 To dt.Rows.Count - 1
-        '            tmpgrid.Rows.Add()
-        '            With tmpgrid.Rows(i)
-        '                .Cells(0).Value = dt.Rows(i)("id").ToString()
-        '                .Cells(1).Value = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
-        '                .Cells(2).Value = dt.Rows(i)("Sallername").ToString()
-        '                .Cells(3).Value = dt.Rows(i)("AccountName").ToString()
-        '                .Cells(4).Value = dt.Rows(i)("BillNo").ToString()
-        '                .Cells(5).Value = Format(Val(dt.Rows(i)("BasicAmount").ToString()), "0.00")
-        '                .Cells(6).Value = Format(Val(dt.Rows(i)("DiscountAmount").ToString()), "0.00")
-        '                .Cells(7).Value = Format(Val(dt.Rows(i)("TotalAmount").ToString()), "0.00")
-        '                .Cells(5).Style.Alignment = DataGridViewContentAlignment.MiddleRight
-        '                .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
-        '                .Cells(7).Style.Alignment = DataGridViewContentAlignment.MiddleRight
-        '                .Cells(8).Value = dt.Rows(i)("Remark").ToString()
-        '                .Cells(9).Value = dt.Rows(i)("AccountID").ToString()
-        '            End With
-        '        Next
-        '    End If
         Try
             If dt.Rows.Count > 0 Then
                 tmpgrid.Rows.Clear()
@@ -1141,7 +1120,6 @@ Public Class Crate_IN
                     tmpgrid.Rows.Add()
                     With tmpgrid.Rows(i)
                         .Cells(0).Value = dt.Rows(i)("VoucherID").ToString()
-                        '  .Cells(0).Value = i + 1
                         .Cells(1).Value = CDate(dt.Rows(i)("Entrydate")).ToString("dd-MM-yyyy")
                         .Cells(2).Value = dt.Rows(i)("SlipNo").ToString()
                         .Cells(3).Value = dt.Rows(i)("AccountName").ToString()
@@ -1198,14 +1176,14 @@ Public Class Crate_IN
                 LastRecord = Val(LastRecord + 1)
             Next
             Try
-                MsgBox("Inserting")
-                MsgBox(FastQuery)
+                'MsgBox("Inserting")
+                ' MsgBox(FastQuery)
                 If FastQuery = String.Empty Then Exit Sub
-                MsgBox(FastQuery)
+                'MsgBox(FastQuery)
                 Sql = "insert into printing (D1,M1,M2,M3,P1,P2,P3,P4,P5,P6,P7,P8) " & FastQuery & ""
-                MsgBox(Sql)
+                'MsgBox(Sql)
                 ClsFunPrimary.ExecNonQuery(Sql)
-                MsgBox("Success")
+                'MsgBox("Success")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 ClsFunPrimary.CloseConnection()
@@ -1232,13 +1210,13 @@ Public Class Crate_IN
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(8).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1249,13 +1227,13 @@ Public Class Crate_IN
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(9).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1270,18 +1248,18 @@ Public Class Crate_IN
         Next
         If ClsFunWhatsapp.ExecNonQuery(sql) > 0 Then
             sql = "Update Settings Set MinState='N'"
-            ClsFunWhatsapp.ExecScalarStr(sql)
+            ClsFunWhatsapp.ExecNonQuery(sql)
             MsgBox("Data Send to Easy Whatsapp Successfully...", vbInformation, "Sended On Easy Whatsapp")
         End If
         UpdateProgressBarVisibility(False)
     End Sub
     Private Sub DgWhatsapp_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellEndEdit
-        If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(1).Value & "'") = "" And DgWhatsapp.CurrentRow.Cells(3).Value <> "" Then
-            clsFun.ExecScalarStr("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(1).Value) & "'")
+        If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(7).Value & "'") = "" And DgWhatsapp.CurrentRow.Cells(3).Value <> "" Then
+            clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(7).Value) & "'")
         Else
-            If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(1).Value & "'") <> DgWhatsapp.CurrentRow.Cells(3).Value Then
+            If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(7).Value & "'") <> DgWhatsapp.CurrentRow.Cells(3).Value Then
                 If MessageBox.Show("Are you Sure to Change Mobile No in PhoneBook", "Change Number", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                    clsFun.ExecScalarStr("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(1).Value) & "'")
+                    clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(7).Value) & "'")
                 End If
             End If
         End If

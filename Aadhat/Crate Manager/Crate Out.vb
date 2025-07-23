@@ -1143,15 +1143,15 @@ Public Class Crate_Out
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
-                            Pdf_Genrate.ExportReport("\transCrate2.rpt")
+                            Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(8).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
-                            Pdf_Genrate.ExportReport("\transCrate2.rpt")
+                            Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioMsgOnly.Checked = True Then
@@ -1160,13 +1160,13 @@ Public Class Crate_Out
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
-                            Pdf_Genrate.ExportReport("\transCrate2.rpt")
+                            Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(9).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1181,7 +1181,7 @@ Public Class Crate_Out
         Next
         If ClsFunWhatsapp.ExecNonQuery(sql) > 0 Then
             sql = "Update Settings Set MinState='N'"
-            ClsFunWhatsapp.ExecScalarStr(sql)
+            ClsFunWhatsapp.ExecNonQuery(sql)
             MsgBox("Data Send to Easy Whatsapp Successfully...", vbInformation, "Sended On Easy Whatsapp")
         End If
         UpdateProgressBarVisibility(False)
@@ -1299,5 +1299,15 @@ Public Class Crate_Out
         Next
         ' pnlWait.Visible = False
     End Sub
-
+    Private Sub DgWhatsapp_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellEndEdit
+        If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(7).Value & "'") = "" And DgWhatsapp.CurrentRow.Cells(3).Value <> "" Then
+            clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(7).Value) & "'")
+        Else
+            If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(7).Value & "'") <> DgWhatsapp.CurrentRow.Cells(3).Value Then
+                If MessageBox.Show("Are you Sure to Change Mobile No in PhoneBook", "Change Number", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                    clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(7).Value) & "'")
+                End If
+            End If
+        End If
+    End Sub
 End Class
