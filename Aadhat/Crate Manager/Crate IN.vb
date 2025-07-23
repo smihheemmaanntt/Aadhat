@@ -1210,13 +1210,13 @@ Public Class Crate_IN
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(8).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1227,13 +1227,13 @@ Public Class Crate_IN
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(9).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(2).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
