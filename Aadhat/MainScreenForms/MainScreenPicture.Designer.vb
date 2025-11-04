@@ -581,7 +581,7 @@ Partial Class MainScreenPicture
         '
         Me.lblDay.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDay.ForeColor = System.Drawing.Color.Black
-        Me.lblDay.Location = New System.Drawing.Point(1084, 158)
+        Me.lblDay.Location = New System.Drawing.Point(1049, 158)
         Me.lblDay.Name = "lblDay"
         Me.lblDay.Size = New System.Drawing.Size(98, 20)
         Me.lblDay.TabIndex = 30
@@ -592,7 +592,7 @@ Partial Class MainScreenPicture
         '
         Me.lblDate.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDate.ForeColor = System.Drawing.Color.Black
-        Me.lblDate.Location = New System.Drawing.Point(1107, 188)
+        Me.lblDate.Location = New System.Drawing.Point(1072, 188)
         Me.lblDate.Name = "lblDate"
         Me.lblDate.Size = New System.Drawing.Size(75, 20)
         Me.lblDate.TabIndex = 29
@@ -603,7 +603,7 @@ Partial Class MainScreenPicture
         '
         Me.lbltime.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltime.ForeColor = System.Drawing.Color.Black
-        Me.lbltime.Location = New System.Drawing.Point(1107, 215)
+        Me.lbltime.Location = New System.Drawing.Point(1072, 215)
         Me.lbltime.Name = "lbltime"
         Me.lbltime.Size = New System.Drawing.Size(75, 20)
         Me.lbltime.TabIndex = 28
@@ -1323,7 +1323,7 @@ Partial Class MainScreenPicture
         'PictureBox16
         '
         Me.PictureBox16.Image = CType(resources.GetObject("PictureBox16.Image"), System.Drawing.Image)
-        Me.PictureBox16.Location = New System.Drawing.Point(1058, 158)
+        Me.PictureBox16.Location = New System.Drawing.Point(1023, 158)
         Me.PictureBox16.Name = "PictureBox16"
         Me.PictureBox16.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1333,7 +1333,7 @@ Partial Class MainScreenPicture
         'PictureBox17
         '
         Me.PictureBox17.Image = CType(resources.GetObject("PictureBox17.Image"), System.Drawing.Image)
-        Me.PictureBox17.Location = New System.Drawing.Point(1058, 188)
+        Me.PictureBox17.Location = New System.Drawing.Point(1023, 188)
         Me.PictureBox17.Name = "PictureBox17"
         Me.PictureBox17.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1343,7 +1343,7 @@ Partial Class MainScreenPicture
         'pbtime
         '
         Me.pbtime.Image = Global.Aadhat.My.Resources.Resources.icons8_sand_watch_20px
-        Me.pbtime.Location = New System.Drawing.Point(1058, 215)
+        Me.pbtime.Location = New System.Drawing.Point(1023, 215)
         Me.pbtime.Name = "pbtime"
         Me.pbtime.Size = New System.Drawing.Size(20, 20)
         Me.pbtime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1407,9 +1407,9 @@ Partial Class MainScreenPicture
         'pbAadhat
         '
         Me.pbAadhat.Image = CType(resources.GetObject("pbAadhat.Image"), System.Drawing.Image)
-        Me.pbAadhat.Location = New System.Drawing.Point(20, 306)
+        Me.pbAadhat.Location = New System.Drawing.Point(43, 306)
         Me.pbAadhat.Name = "pbAadhat"
-        Me.pbAadhat.Size = New System.Drawing.Size(377, 260)
+        Me.pbAadhat.Size = New System.Drawing.Size(295, 260)
         Me.pbAadhat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbAadhat.TabIndex = 69
         Me.pbAadhat.TabStop = False
@@ -1432,8 +1432,8 @@ Partial Class MainScreenPicture
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(1197, 653)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.pnlSale)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.pbAadhat)
         Me.Controls.Add(Me.pnlFirm)
         Me.Controls.Add(Me.pnlpartnerDetails)

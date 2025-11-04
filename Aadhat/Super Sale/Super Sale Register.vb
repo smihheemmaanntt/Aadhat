@@ -677,6 +677,8 @@ Public Class Super_Sale_Register
         Dim cmd As New SQLite.SQLiteCommand
         Dim sql As String = String.Empty
         ClsFunPrimary.ExecNonQuery("Delete from printing")
+        '        Dim lastPayment = clsFun.ExecScalarStr("Select  BasicAmount FROM Vouchers where TransType='Payment' and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  and Accountid=" & Val(txtAccountID.Text) & " and PaymentID= " & Val(txtid.Text) & " ORDER BY Vouchers.Entrydate DESC limit 1 ;")
+
         For Each row As DataGridViewRow In tmpgrid.Rows
             With row
                 If .Cells(6).Value <> "" Then

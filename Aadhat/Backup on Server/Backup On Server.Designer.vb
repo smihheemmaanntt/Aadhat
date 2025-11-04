@@ -194,9 +194,9 @@ Partial Class Backup_On_Server
         Me.Label7.ForeColor = System.Drawing.Color.Navy
         Me.Label7.Location = New System.Drawing.Point(7, 9)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(400, 31)
+        Me.Label7.Size = New System.Drawing.Size(321, 31)
         Me.Label7.TabIndex = 58
-        Me.Label7.Text = "Automatic Cloud Backup System"
+        Me.Label7.Text = "Automatic Backup System"
         '
         'Label2
         '

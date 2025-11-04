@@ -48,6 +48,7 @@ Partial Class MainScreenForm
         Me.NewUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserRegisterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserRightsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EntryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewCaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SuperSaleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -133,6 +134,7 @@ Partial Class MainScreenForm
         Me.LedgerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettleLedgerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettleLedgerToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupLedgwerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CashBookReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CashBankBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CashBankBookGroupedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -154,12 +156,13 @@ Partial Class MainScreenForm
         Me.SellOutPendingBillsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.OutstandingReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OutstandingAmountToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OutstandingAccountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AbsentAccountsListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OutstandingRecievableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OutstandingPayableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OutstandingDayWiseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OutstandingSelectedAccountingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OutstandingAmountToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.DailyReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DayWiseSaleReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -267,8 +270,6 @@ Partial Class MainScreenForm
         Me.btnItem = New System.Windows.Forms.Button()
         Me.lblARC = New System.Windows.Forms.Label()
         Me.blinkTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupLedgwerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -438,6 +439,15 @@ Partial Class MainScreenForm
         Me.UserRightsToolStripMenuItem.Name = "UserRightsToolStripMenuItem"
         Me.UserRightsToolStripMenuItem.Size = New System.Drawing.Size(160, 24)
         Me.UserRightsToolStripMenuItem.Text = "User Rights"
+        '
+        'LogoutToolStripMenuItem
+        '
+        Me.LogoutToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
+        Me.LogoutToolStripMenuItem.ForeColor = System.Drawing.Color.Black
+        Me.LogoutToolStripMenuItem.Image = CType(resources.GetObject("LogoutToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.LogoutToolStripMenuItem.Text = "Log &Off"
         '
         'EntryToolStripMenuItem
         '
@@ -1055,6 +1065,12 @@ Partial Class MainScreenForm
         Me.SettleLedgerToolStripMenuItem2.Size = New System.Drawing.Size(261, 24)
         Me.SettleLedgerToolStripMenuItem2.Text = "Settle Ledger"
         '
+        'GroupLedgwerToolStripMenuItem
+        '
+        Me.GroupLedgwerToolStripMenuItem.Name = "GroupLedgwerToolStripMenuItem"
+        Me.GroupLedgwerToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.GroupLedgwerToolStripMenuItem.Text = "Group Ledger"
+        '
         'CashBookReportToolStripMenuItem
         '
         Me.CashBookReportToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
@@ -1194,50 +1210,56 @@ Partial Class MainScreenForm
         'OutstandingReportToolStripMenuItem
         '
         Me.OutstandingReportToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
-        Me.OutstandingReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OutstandingAmountToolStripMenuItem1, Me.OutstandingAccountToolStripMenuItem, Me.AbsentAccountsListToolStripMenuItem, Me.OutstandingRecievableToolStripMenuItem, Me.OutstandingPayableToolStripMenuItem, Me.OutstandingDayWiseToolStripMenuItem})
+        Me.OutstandingReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OutstandingAccountToolStripMenuItem, Me.AbsentAccountsListToolStripMenuItem, Me.OutstandingRecievableToolStripMenuItem, Me.OutstandingPayableToolStripMenuItem, Me.OutstandingDayWiseToolStripMenuItem, Me.OutstandingSelectedAccountingToolStripMenuItem, Me.OutstandingAmountToolStripMenuItem1})
         Me.OutstandingReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.OutstandingReportToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.OutstandingReportToolStripMenuItem.Name = "OutstandingReportToolStripMenuItem"
         Me.OutstandingReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.OutstandingReportToolStripMenuItem.Text = "Outstanding Report"
         '
-        'OutstandingAmountToolStripMenuItem1
-        '
-        Me.OutstandingAmountToolStripMenuItem1.Name = "OutstandingAmountToolStripMenuItem1"
-        Me.OutstandingAmountToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.OutstandingAmountToolStripMenuItem1.Size = New System.Drawing.Size(244, 22)
-        Me.OutstandingAmountToolStripMenuItem1.Text = "Outstanding"
-        '
         'OutstandingAccountToolStripMenuItem
         '
         Me.OutstandingAccountToolStripMenuItem.Name = "OutstandingAccountToolStripMenuItem"
         Me.OutstandingAccountToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.OutstandingAccountToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.OutstandingAccountToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.OutstandingAccountToolStripMenuItem.Text = "Outstanding Summary"
         '
         'AbsentAccountsListToolStripMenuItem
         '
         Me.AbsentAccountsListToolStripMenuItem.Name = "AbsentAccountsListToolStripMenuItem"
-        Me.AbsentAccountsListToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.AbsentAccountsListToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.AbsentAccountsListToolStripMenuItem.Text = "Absent Accounts List"
         '
         'OutstandingRecievableToolStripMenuItem
         '
         Me.OutstandingRecievableToolStripMenuItem.Name = "OutstandingRecievableToolStripMenuItem"
-        Me.OutstandingRecievableToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.OutstandingRecievableToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.OutstandingRecievableToolStripMenuItem.Text = "Outstanding (Recievable)"
         '
         'OutstandingPayableToolStripMenuItem
         '
         Me.OutstandingPayableToolStripMenuItem.Name = "OutstandingPayableToolStripMenuItem"
-        Me.OutstandingPayableToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.OutstandingPayableToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.OutstandingPayableToolStripMenuItem.Text = "Outstanding (Payable)"
         '
         'OutstandingDayWiseToolStripMenuItem
         '
         Me.OutstandingDayWiseToolStripMenuItem.Name = "OutstandingDayWiseToolStripMenuItem"
-        Me.OutstandingDayWiseToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.OutstandingDayWiseToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.OutstandingDayWiseToolStripMenuItem.Text = "Outstanding (Day Wise)"
+        '
+        'OutstandingSelectedAccountingToolStripMenuItem
+        '
+        Me.OutstandingSelectedAccountingToolStripMenuItem.Name = "OutstandingSelectedAccountingToolStripMenuItem"
+        Me.OutstandingSelectedAccountingToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingSelectedAccountingToolStripMenuItem.Text = "Outstanding (Selected Accounts)"
+        '
+        'OutstandingAmountToolStripMenuItem1
+        '
+        Me.OutstandingAmountToolStripMenuItem1.Name = "OutstandingAmountToolStripMenuItem1"
+        Me.OutstandingAmountToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
+        Me.OutstandingAmountToolStripMenuItem1.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingAmountToolStripMenuItem1.Text = "Outstanding"
         '
         'ToolStripSeparator12
         '
@@ -2272,21 +2294,6 @@ Partial Class MainScreenForm
         'blinkTimer
         '
         '
-        'LogoutToolStripMenuItem
-        '
-        Me.LogoutToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
-        Me.LogoutToolStripMenuItem.ForeColor = System.Drawing.Color.Black
-        Me.LogoutToolStripMenuItem.Image = CType(resources.GetObject("LogoutToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
-        Me.LogoutToolStripMenuItem.Text = "Log &Off"
-        '
-        'GroupLedgwerToolStripMenuItem
-        '
-        Me.GroupLedgwerToolStripMenuItem.Name = "GroupLedgwerToolStripMenuItem"
-        Me.GroupLedgwerToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
-        Me.GroupLedgwerToolStripMenuItem.Text = "Group Ledger"
-        '
         'MainScreenForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2418,7 +2425,6 @@ Partial Class MainScreenForm
     Friend WithEvents VehicleWiseReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutstandingReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutstandingAccountToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OutstandingAmountToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ScripProfitReportToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CashBookReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CashBankBookToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -2582,4 +2588,6 @@ Partial Class MainScreenForm
     Friend WithEvents DailyNakalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents blinkTimer As System.Windows.Forms.Timer
     Friend WithEvents GroupLedgwerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OutstandingAmountToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OutstandingSelectedAccountingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

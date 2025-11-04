@@ -1836,7 +1836,7 @@ Partial Class Sellout_Mannual
         '
         Me.pnlAddWeight.Controls.Add(Me.Label24)
         Me.pnlAddWeight.Controls.Add(Me.txtAddWeight)
-        Me.pnlAddWeight.Location = New System.Drawing.Point(394, 189)
+        Me.pnlAddWeight.Location = New System.Drawing.Point(394, 192)
         Me.pnlAddWeight.Name = "pnlAddWeight"
         Me.pnlAddWeight.Size = New System.Drawing.Size(408, 86)
         Me.pnlAddWeight.TabIndex = 91259

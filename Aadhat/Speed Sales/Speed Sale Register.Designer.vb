@@ -782,7 +782,7 @@ Partial Class Speed_Sale_Register
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(12, 572)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(108, 57)
+        Me.Button1.Size = New System.Drawing.Size(108, 51)
         Me.Button1.TabIndex = 91143
         Me.Button1.Text = "&Delete" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Entries"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight

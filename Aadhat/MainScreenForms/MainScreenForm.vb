@@ -1641,4 +1641,10 @@ Public Class MainScreenForm
         Group_Ledger.Show()
         Group_Ledger.BringToFront()
     End Sub
+
+    Private Sub OutstandingSelectedAccountingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OutstandingSelectedAccountingToolStripMenuItem.Click
+        Selected_Outsanting.MdiParent = Me
+        Selected_Outsanting.Show()
+        Selected_Outsanting.BringToFront()
+    End Sub
 End Class

@@ -81,7 +81,7 @@
     <OptionInfer>Off</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>cherry.ico</ApplicationIcon>
+    <ApplicationIcon>aadhat_Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -463,6 +463,12 @@
     <Compile Include="Loose Sale\Loose Purchase Register.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="OutStanding\OutStanding Amount Only - Copy.Designer.vb">
+      <DependentUpon>OutStanding Amount Only - Copy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OutStanding\OutStanding Amount Only - Copy.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Purchase\Purchase RegisterDetailed.Designer.vb">
       <DependentUpon>Purchase RegisterDetailed.vb</DependentUpon>
     </Compile>
@@ -834,10 +840,10 @@
     <Compile Include="OutStanding\Outstanding_Dabit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OutStanding\OutStanding Amount Only.Designer.vb">
-      <DependentUpon>OutStanding Amount Only.vb</DependentUpon>
+    <Compile Include="OutStanding\Selected_Outsanting.Designer.vb">
+      <DependentUpon>Selected_Outsanting.vb</DependentUpon>
     </Compile>
-    <Compile Include="OutStanding\OutStanding Amount Only.vb">
+    <Compile Include="OutStanding\Selected_Outsanting.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OutStanding\OutStanding.Designer.vb">
@@ -1448,6 +1454,10 @@
     <EmbeddedResource Include="Loose Sale\Loose Purchase Register.resx">
       <DependentUpon>Loose Purchase Register.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OutStanding\OutStanding Amount Only - Copy.resx">
+      <DependentUpon>OutStanding Amount Only - Copy.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Purchase\Purchase RegisterDetailed.resx">
       <DependentUpon>Purchase RegisterDetailed.vb</DependentUpon>
     </EmbeddedResource>
@@ -1622,8 +1632,8 @@
       <DependentUpon>Outstanding_Dabit.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="OutStanding\OutStanding Amount Only.resx">
-      <DependentUpon>OutStanding Amount Only.vb</DependentUpon>
+    <EmbeddedResource Include="OutStanding\Selected_Outsanting.resx">
+      <DependentUpon>Selected_Outsanting.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="OutStanding\OutStanding.resx">
@@ -1919,6 +1929,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="aadhat_Icon.ico" />
     <Content Include="cherry.ico" />
     <None Include="Resources\124034.png" />
   </ItemGroup>

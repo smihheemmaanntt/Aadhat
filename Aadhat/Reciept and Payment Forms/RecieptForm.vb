@@ -1317,7 +1317,7 @@ Public Class ReceiptForm
     Private Sub txtMode_KeyUp(sender As Object, e As KeyEventArgs) Handles txtMode.KeyUp
         If txtMode.Text.Trim() <> "" Then
             dgMode.Visible = True
-            RetriveMode(" And upper(AccountName) Like upper('" & txtMode.Text.Trim() & "%')")
+            RetriveMode(" And upper(AccountName) Like upper('" & txtMode.Text.Trim() & "%') or upper(LfNo) Like upper('" & txtMode.Text.Trim() & "%')")
         Else
             RetriveMode()
         End If
@@ -1331,7 +1331,7 @@ Public Class ReceiptForm
 
     Private Sub txtAccount_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAccount.KeyUp
         If txtAccount.Text.Trim() <> "" Then
-            retriveAccounts(" And upper(accountname) Like upper('" & txtAccount.Text.Trim() & "%')")
+            retriveAccounts(" And upper(accountname) Like upper('" & txtAccount.Text.Trim() & "%') or upper(LfNo) Like upper('" & txtAccount.Text.Trim() & "%')")
         Else
             retriveAccounts()
         End If
@@ -1500,13 +1500,13 @@ Public Class ReceiptForm
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(8).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1517,13 +1517,13 @@ Public Class ReceiptForm
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(9).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1766,5 +1766,13 @@ Public Class ReceiptForm
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub txtAccount_TextChanged(sender As Object, e As EventArgs) Handles txtAccount.TextChanged
+
+    End Sub
+
+    Private Sub txtMode_TextChanged(sender As Object, e As EventArgs) Handles txtMode.TextChanged
+
     End Sub
 End Class

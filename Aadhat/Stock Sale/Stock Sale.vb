@@ -11,6 +11,7 @@
     Dim ServerTag As Integer : Dim ItemPer As String
     Dim crateRate As String = String.Empty : Dim trackStock As String
     Dim CalculationMethod As String : Dim CUT As Decimal = 0.0
+    Dim tmpCount As Integer
 
 
     Public Sub New()
@@ -450,9 +451,7 @@
     End Sub
 
     Private Sub txtAddWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAddWeight.KeyPress
-        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") Or ((e.KeyChar = "+") = -1)))
-        'e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") And (sender.Text.IndexOf(".") = -1)) Or ((e.KeyChar = "+") And (sender.Text.IndexOf(".") = -1)))
-
+        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") Or ((e.KeyChar = "+") = -1) Or ((e.KeyChar = "-") = -1)))
     End Sub
     Private Sub txtAddWeight_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAddWeight.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -957,6 +956,10 @@
         End Try
     End Sub
     Private Sub txtTotalNetAmount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTotalAmt.KeyDown
+        If Val(txtPurchaseTypeID.Text) = 0 Or txtPurchaseType.Text.Trim Is Nothing Then txtPurchaseType.Focus() : Exit Sub
+        If Val(txtStorageID.Text) = 0 Or txtStorage.Text.Trim Is Nothing Then txtStorage.Focus() : Exit Sub
+        If Val(txtItemID.Text) = 0 Or txtItem.Text.Trim Is Nothing Then txtItem.Focus() : Exit Sub
+        If txtLot.Text.Trim Is Nothing Then txtLot.Focus() : Exit Sub
         If Val(txtPurchaseID.Text) = Val(0) Then MsgBox("Invallid Lot No.", MsgBoxStyle.Critical, "Invalid LOT No") : txtLot.Focus() : Exit Sub
         If Cbper.SelectedIndex = 0 Then
             If Val(txtNug.Text) = 0 Then MsgBox("please fill Nug...", MsgBoxStyle.Critical, "Access Denied") : txtNug.Focus() : Exit Sub
@@ -968,11 +971,11 @@
         Else
             If Val(txtKg.Text) = 0 Then MsgBox("please fill Weight...", MsgBoxStyle.Critical, "Access Denied") : txtKg.Focus() : Exit Sub
         End If
-            If Val(LotBal) < Val(txtNug.Text) Then
-                MsgBox("Not Enough Nug", MsgBoxStyle.Critical, "Access Denied") : txtLot.Focus() : Exit Sub
-            End If
-        BalanceRecord()
+        If Val(LotBal) < Val(txtNug.Text) Then
+            MsgBox("Not Enough Nug", MsgBoxStyle.Critical, "Access Denied") : txtLot.Focus() : Exit Sub
+        End If
         If e.KeyCode = Keys.Enter Then
+            BalanceRecord()
             If dg1.SelectedRows.Count = 1 Then
                 dg1.SelectedRows(0).Cells(0).Value = Val(txtItemID.Text)
                 dg1.SelectedRows(0).Cells(1).Value = txtItem.Text
@@ -1317,6 +1320,8 @@
             ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
             lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
             txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
         End If
 
     End Sub
@@ -1365,6 +1370,7 @@
         cbAccountName.Text = dg1.SelectedRows(0).Cells(34).Value
         txtAddWeight.Text = dg1.SelectedRows(0).Cells(35).Value
         txtGrossWt.Text = dg1.SelectedRows(0).Cells(36).Value
+        tmpCount = Val(dg1.SelectedRows(0).Cells(37).Value)
         StockCalculation() ': txtItem.Focus()
     End Sub
     Private Sub dg1_KeyDown(sender As Object, e As KeyEventArgs) Handles dg1.KeyDown
@@ -1407,6 +1413,8 @@
             cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(33).Value)
             cbAccountName.Text = dg1.SelectedRows(0).Cells(34).Value
             txtAddWeight.Text = dg1.SelectedRows(0).Cells(35).Value
+            txtGrossWt.Text = dg1.SelectedRows(0).Cells(36).Value
+            tmpCount = Val(dg1.SelectedRows(0).Cells(37).Value)
             e.SuppressKeyPress = True : StockCalculation() : txtItem.Focus()
         End If
         If e.KeyCode = Keys.Up Then
@@ -1618,9 +1626,9 @@
     '    clsFun.CloseConnection()
     'End Sub
     Private Sub BalanceRecord()
-        If dg1.SelectedRows.Count <> 0 Then clsFun.ExecScalarStr("Delete From Stock Where ID='" & Val(dg1.SelectedRows(0).Cells(36).Value) & "'")
+        If dg1.SelectedRows.Count <> 0 Then clsFun.ExecScalarStr("Delete From Stock Where ID='" & Val(dg1.SelectedRows(0).Cells(37).Value) & "'")
         Dim FastQuery As String = String.Empty
-        Dim RecordCount As Integer = If(dg1.SelectedRows.Count = 1, Val(dg1.SelectedRows(0).Cells(36).Value), (dg1.Rows.Count) + 1)
+        Dim RecordCount As Integer = If(dg1.SelectedRows.Count = 1, Val(dg1.SelectedRows(0).Cells(37).Value), (dg1.Rows.Count) + 1)
         Dim Sql As String = String.Empty
         Dim typeac As String = IIf(txtPurchaseTypeID.Text = 28, "Purchase", "Stock in")
         FastQuery = " SELECT '" & Val(RecordCount) & "','" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & _
@@ -2023,7 +2031,6 @@
         If lblCrate.Text = "Y" Then
             Dim crateRate As String = clsFun.ExecScalarStr("Select CrateBardana From Controls")
             If crateRate = "Yes" Then txtTare.Text = clsFun.ExecScalarStr("Select Rate From CrateMarka Where ID='" & Val(cbCrateMarka.SelectedValue) & "'")
-
         End If
     End Sub
     Private Sub PurchaseTypeColumns()

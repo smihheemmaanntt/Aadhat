@@ -408,14 +408,14 @@ Public Class Print_Bills
                 If selectedindex = 0 Then
                     If btnRadioEnglish.Checked = True AndAlso RadioPDFMsg.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\English.rpt")
                         fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
                         "'" & .Cells(4).Value & "', '" & GlobalData.PdfPath & "'"
                     ElseIf btnRadioEnglish.Checked = True AndAlso RadioPdfOnly.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\English.rpt")
                         fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
@@ -425,14 +425,14 @@ Public Class Print_Bills
                          "'" & .Cells(4).Value & "', ''"
                     ElseIf RadioRegional.Checked = True AndAlso RadioPDFMsg.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
                         fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
                        "'" & .Cells(6).Value & "', '" & GlobalData.PdfPath & "'"
                     ElseIf RadioRegional.Checked = True AndAlso RadioPdfOnly.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
                         fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
@@ -446,7 +446,7 @@ Public Class Print_Bills
                 Else
                     If btnRadioEnglish.Checked = True AndAlso RadioPDFMsg.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\English.rpt")
                         whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -454,7 +454,7 @@ Public Class Print_Bills
                         "'" & .Cells(4).Value & "', '" & whatsappSender.FilePath & "'"
                     ElseIf btnRadioEnglish.Checked = True AndAlso RadioPdfOnly.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\English.rpt")
                         whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -465,7 +465,7 @@ Public Class Print_Bills
                          "'" & .Cells(4).Value & "', ''"
                     ElseIf RadioRegional.Checked = True AndAlso RadioPDFMsg.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
                         whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -473,7 +473,7 @@ Public Class Print_Bills
                        "'" & .Cells(6).Value & "', '" & whatsappSender.FilePath & "'"
                     ElseIf RadioRegional.Checked = True AndAlso RadioPdfOnly.Checked = True Then
                         SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = .Cells(2).Value & "-" & mskFromDate.Text & ".pdf"
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
                         PrintSlips()
                         Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
                         whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -1746,8 +1746,8 @@ Public Class Print_Bills
                         .Cells(81).Value = .Cells(81).Value & Format(Val(dt1.Compute("Sum(Charges)", "")) - Val(dt1.Compute("Sum(LabourAmt)", "")), "0.00") & vbCrLf
                         .Cells(88).Value = .Cells(88).Value & dt1.Rows(j)("OnWeight").ToString() & vbCrLf
                         .Cells(93).Value = .Cells(93).Value & Val(dt1.Rows(j)("Lot").ToString()) & vbCrLf
-                        .Cells(76).Value = .Cells(76).Value & Val(dt1.Rows(j)("GrossWeight").ToString()) & vbCrLf
-                        .Cells(77).Value = .Cells(77).Value & Val(dt1.Rows(j)("Cut").ToString()) & vbCrLf
+                        .Cells(76).Value = .Cells(76).Value & If(Val(dt1.Rows(j)("GrossWeight").ToString()) = 0, Val(dt1.Rows(j)("Weight").ToString()), Val(dt1.Rows(j)("GrossWeight").ToString())) & vbCrLf
+                        .Cells(77).Value = .Cells(77).Value & If(Val(dt1.Rows(j)("Cut").ToString()) = 0, "", Val(dt1.Rows(j)("Cut").ToString())) & vbCrLf
                         .Cells(95).Value = dt1.Rows(j)("MobileNo1").ToString()
                         .Cells(96).Value = dt1.Rows(j)("MobileNo2").ToString()
                         .Cells(97).Value = dt1.Rows(j)("Area").ToString()

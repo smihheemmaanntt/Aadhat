@@ -1812,6 +1812,7 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Options.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List_Day_Wise.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Loose_Purchase_Register.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Purchase_RegisterDetailed.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SP_Query_Maker.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RateMaster.resources
@@ -1869,7 +1870,7 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Order_Register.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Absent_Account_List.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Credit.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Outstanding_Dabit.resources
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding_Amount_Only.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Selected_Outsanting.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OutStanding.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PartnerDetails.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Print_Bills.resources
@@ -1958,3 +1959,4 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbprojResolveAssemblyReference.cache

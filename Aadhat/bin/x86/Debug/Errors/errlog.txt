@@ -823,3 +823,1008 @@ Message: Login Successfuly...BTC
 StackTrace: BHAGWATI TRADING COMPANY
 Date/Time: 23-Jul-25 3:16:21 PM
 ===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 3:39:14 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 3:39:29 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 23-Jul-25 4:38:01 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 28-Jul-25 12:38:32 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 28-Jul-25 12:55:20 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 29-Jul-25 8:58:28 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 29-Jul-25 9:08:55 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 29-Jul-25 9:09:04 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 29-Jul-25 9:15:15 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 30-Jul-25 8:37:28 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 30-Jul-25 9:26:27 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2025-07-23',InvoiceID='1',  billNo='1',ModifiedByID='1',ModifiedTime='2025-07-30 21:26:42'  where ID =179
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 30-Jul-25 9:26:42 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 30-Jul-25 9:35:00 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 30-Jul-25 9:37:37 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHIV SHAKTI SABJI AND FRUIT BHANDAR
+Date/Time: 31-Jul-25 10:47:43 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 31-Jul-25 10:56:27 AM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: HAJI MO UMAR MO HANIF CHOUDHARY
+Date/Time: 31-Jul-25 10:57:11 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 31-Jul-25 9:22:41 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 31-Jul-25 9:24:04 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='94728' ,VehicleNo='', Entrydate='2025-03-31',   SallerID=5522, SallerName='KISHANJI ANAND (MFC)', Nug='0.00', kg='265.00', BasicAmount='54666.00', TotalAmount='50776.00', RoundOFF='0.00',TotalCharges='-3890.00', N1='0',N2='0',InvoiceID='94728',ModifiedByID='1', ModifiedTime='2025-07-31 21:40:25',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =125861
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 31-Jul-25 9:40:25 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='94728' ,VehicleNo='', Entrydate='2025-03-31',   SallerID=5522, SallerName='KISHANJI ANAND (MFC)', Nug='0.00', kg='265.00', BasicAmount='54666.00', TotalAmount='50776.00', RoundOFF='0.00',TotalCharges='-3890.00', N1='0',N2='0',InvoiceID='94728',ModifiedByID='1', ModifiedTime='2025-07-31 21:40:32',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =125861
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 31-Jul-25 9:40:32 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='94728' ,VehicleNo='', Entrydate='2025-03-31',   SallerID=5522, SallerName='KISHANJI ANAND (MFC)', Nug='0.00', kg='265.00', BasicAmount='54666.00', TotalAmount='50776.00', RoundOFF='0.00',TotalCharges='-3890.00', N1='0',N2='0',InvoiceID='94728',ModifiedByID='1', ModifiedTime='2025-07-31 21:41:08',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =125861
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 31-Jul-25 9:41:08 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='94728' ,VehicleNo='', Entrydate='2025-03-31',   SallerID=5522, SallerName='KISHANJI ANAND (MFC)', Nug='0.00', kg='265.00', BasicAmount='54666.00', TotalAmount='50776.00', RoundOFF='0.00',TotalCharges='-3890.00', N1='0',N2='0',InvoiceID='94728',ModifiedByID='1', ModifiedTime='2025-07-31 21:42:03',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =125861
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 31-Jul-25 9:42:03 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:08:05 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','10','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:08:48 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '0','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','1','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:09:10 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','10','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:10:40 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','10','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:14:09 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '0','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','10','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:14:29 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:17:20 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','10','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:17:30 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','1','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:17:46 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','1','100', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:18:10 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','9','120', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:18:22 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2025-08-01','Stock Sale','Stock in',10127,559,'Kalu Ji Choumu', '3','Shop','165','Adark','0', '2','8','120', 'Nug',0
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 01-Aug-25 6:18:37 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 02-Aug-25 12:43:05 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 11:37:23 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 11:48:52 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 12:19:10 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='367', Entrydate='2025-06-27',  SallerID='1298', SallerName='RASHID',  Nug='45', kg='1097.5',BasicAmount='24960.5',  TotalAmount='26933',TotalCharges='1972.24', StorageID='3',Storagename='Shop',InvoiceID='367',  ModifiedByID='1',ModifiedTime='2025-08-04 12:30:34' where ID =1570
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 12:30:34 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-06-27','367',1570, 'Stock Sale','1167','MUNSI NARAYANPUR',4,'Loki','46',  '2.00','50.5','0','22', '22.00','Kg','1111','87.77', '1199.00','6', '66.66','1','11.11', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','1111','0.23' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1175','SURESH PAVTA',4,'Loki','46',  '2.00','52.5','0','22', '22.00','Kg','1155','90.85', '1246.00','6', '69.30','1','11.55', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','1155','0.15' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','7','Cash',4,'Loki','46',  '2.00','47','0','22', '22.00','Kg','1034','82.38', '1116.00','6', '62.04','1','10.34', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','1034','-0.38' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1358','DHARMPAL HASAMPUR',4,'Loki','46',  '1.00','25','0','22', '22.00','Kg','550','43.5', '594.00','6', '33.00','1','5.5', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','550','0.5' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1013','SUNIL HAJARI JADALI',4,'Loki','46',  '1.00','25','0','25', '25.00','Kg','625','48.75', '674.00','6', '37.50','1','6.25', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','625','0.25' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1012','YOGESH NATHU {NATHU RAMSHINGH}',4,'Loki','46',  '1.00','23.5','0','22', '22.00','Kg','517','41.19', '558.00','6', '31.02','1','5.17', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','517','-0.19' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1256','GANGARAM PURANA KUA',4,'Loki','46',  '1.00','26','0','22', '22.00','Kg','572','45.04', '617.00','6', '34.32','1','5.72', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','572','-0.04' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','7','Cash',4,'Loki','46',  '1.00','24','0','22', '22.00','Kg','528','41.96', '570.00','6', '31.68','1','5.28', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','528','0.04' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1182','KALU DEVIDAS',4,'Loki','46',  '1.00','26','0','22', '22.00','Kg','572','45.04', '617.00','6', '34.32','1','5.72', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','572','-0.04' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','7','Cash',4,'Loki','46',  '1.00','24','0','22', '22.00','Kg','528','41.96', '570.00','6', '31.68','1','5.28', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','528','0.04' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1059','MADAN\PANCHU',4,'Loki','46',  '1.00','25','0','25', '25.00','Kg','625','48.75', '674.00','6', '37.50','1','6.25', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','625','0.25' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1188','RUDA PAVTA',4,'Loki','46',  '5.00','125','0','25', '25.00','Kg','3125','243.75', '3369.00','6', '187.50','1','31.25', '0.00','0','5', '25.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','3125','0.25' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1113','LALA THANABANSUR',4,'Loki','46',  '4.00','100','0','25', '25.00','Kg','2500','195', '2695.00','6', '150.00','1','25', '0.00','0','5', '20.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','2500','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1064','MAHESH BANSUR',4,'Loki','46',  '4.00','100','0','25', '25.00','Kg','2500','195', '2695.00','6', '150.00','1','25', '0.00','0','5', '20.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','2500','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1157','MANOJ / RAMSINGH {BHILA BALDOD}',4,'Loki','46',  '5.00','114.5','0','22', '22.00','Kg','2519','201.33', '2720.00','6', '151.14','1','25.19', '0.00','0','5', '25.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','2519','-0.33' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1067','MAESH PAWTA',4,'Loki','46',  '5.00','120','0','21', '21.00','Kg','2520','201.4', '2721.00','6', '151.20','1','25.2', '0.00','0','5', '25.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','2520','-0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1066','RAMVATAR SACHIN PAWTA',4,'Loki','46',  '6.00','144.5','0','21', '21.00','Kg','3034.5','242.42', '3277.00','6', '182.07','1','30.35', '0.00','0','5', '30.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','3034.5','0.08' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-06-27','367',1570, 'Stock Sale','1345','MANOJ PLEDAR AMARPURA',4,'Loki','46',  '2.00','45','0','21', '21.00','Kg','945','76.15', '1021.00','6', '56.70','1','9.45', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1298,'RASHID','1563','945','-0.15' ,'0','','3','Shop','','0'
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 12:30:34 PM
+===========================================================================================
+Title: Updated
+Message: DELETE from Ledger WHERE vourchersID=1698;DELETE from Vouchers WHERE ID=1698; DELETE from Transaction2 WHERE VoucherID=1698;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=1698
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 12:34:27 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 12:38:41 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 12:59:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:01:20 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:04:37 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:19:25 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '15','2025-05-18','Stock Sale','Stock in',269,1114,'SHETAN', '3','Shop','3','TARBUJ','0', '5','5','209', 'Kg',280
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:26:15 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='110', Entrydate='2025-05-18',  SallerID='1114', SallerName='SHETAN',  Nug='46', kg='1996',BasicAmount='8364.75',  TotalAmount='9450',TotalCharges='1085.54', StorageID='3',Storagename='Shop',InvoiceID='110',  ModifiedByID='1',ModifiedTime='2025-08-04 13:26:17' where ID =280
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:26:17 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','3',  '2.00','77.5','0','7', '7.00','Kg','542.5','67.98', '610.00','6', '32.55','1','5.43', '0.00','0','10', '20.00','5','10', '0','','0','N','Stock in',1114,'SHETAN','269','542.5','-0.48' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','3',  '1.00','38','0','5', '5.00','Kg','190','28.3', '218.00','6', '11.40','1','1.9', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','190','-0.3' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','19',  '1.00','45','0','6', '6.00','Kg','270','33.9', '304.00','6', '16.20','1','2.7', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','270','0.1' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1040','MAHAVIR PATAN',19,'LUJE TRBUJ','19',  '3.00','135.5','0','6', '6.00','Kg','813','101.91', '915.00','6', '48.78','1','8.13', '0.00','0','10', '30.00','5','15', '0','','0','N','Stock in',1114,'SHETAN','269','813','0.09' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1067','MAHESH PAVTA',19,'LUJE TRBUJ','19',  '2.00','92','0','5', '5.00','Kg','460','62.2', '522.00','6', '27.60','1','4.6', '0.00','0','10', '20.00','5','10', '0','','0','N','Stock in',1114,'SHETAN','269','460','-0.2' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','19',  '1.00','12','0','7', '7.00','Kg','84','20.88', '105.00','6', '5.04','1','0.84', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','84','0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1134','B L PATAN',19,'LUJE TRBUJ','19',  '1.00','47.5','0','6', '6.00','Kg','285','34.95', '320.00','6', '17.10','1','2.85', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','285','0.05' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','19',  '2.00','71','0','7', '7.00','Kg','497','64.79', '562.00','6', '29.82','1','4.97', '0.00','0','10', '20.00','5','10', '0','','0','N','Stock in',1114,'SHETAN','269','497','0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1093','HUNARDIN',19,'LUJE TRBUJ','19',  '3.00','136','0','6.5', '6.50','Kg','884','106.88', '991.00','6', '53.04','1','8.84', '0.00','0','10', '30.00','5','15', '0','','0','N','Stock in',1114,'SHETAN','269','884','0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','19',  '1.00','41','0','7', '7.00','Kg','287','35.09', '322.00','6', '17.22','1','2.87', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','287','-0.09' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1044','GHIRDHARI PATAN',19,'LUJE TRBUJ','19',  '1.00','43.5','0','6', '6.00','Kg','261','33.27', '294.00','6', '15.66','1','2.61', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','261','-0.27' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1099','DATARAM MANDI',19,'LUJE TRBUJ','19',  '1.00','43.5','0','6', '6.00','Kg','261','33.27', '294.00','6', '15.66','1','2.61', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','261','-0.27' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','19',  '2.00','90.5','0','6.5', '6.50','Kg','588.25','71.18', '659.00','6', '35.30','1','5.88', '0.00','0','10', '20.00','5','10', '0','','0','N','Stock in',1114,'SHETAN','269','588.25','-0.43' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',19,'LUJE TRBUJ','19',  '1.00','46','0','7', '7.00','Kg','322','37.54', '360.00','6', '19.32','1','3.22', '0.00','0','10', '10.00','5','5', '0','','0','N','Stock in',1114,'SHETAN','269','322','0.46' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','1012','YOGESH NATHU {NATHU RAMSHINGH}',3,'TARBUJ','5',  '5','209','0','4', '4','Kg','836','133.52', '970.00','6', '50.16','1','8.36', '0','0','10', '50.00','5','25', '','','0','N','Stock in',1114,'SHETAN','269','836','0.48' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',3,'TARBUJ','17',  '17.00','772','0','2', '2.00','Kg','1544','193.08', '1737.00','6', '92.64','1','15.44', '0.00','0','0', '0.00','5','85', '0','','0','N','Stock in',1114,'SHETAN','269','1544','-0.08' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-05-18','110',280, 'Stock Sale','7','Cash',3,'TARBUJ','2',  '2.00','96','0','2.5', '2.50','Kg','240','26.8', '267.00','6', '14.40','1','2.4', '0.00','0','0', '0.00','5','10', '0','','0','N','Stock in',1114,'SHETAN','269','240','0.2' ,'0','','3','Shop','','0'
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:26:17 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-04','Stock Sale','Stock in',2715,1406,'HARI G CHALPALI MOD', '3','Shop','37','KKODA','0', '3','1','0', 'Nug',0
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:29:55 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:30:31 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:31:49 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 04-Aug-25 1:33:56 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 12:17:03 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 12:25:43 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 12:28:50 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='535', Entrydate='2025-08-01',  SallerID='1390', SallerName='JAYSHINGH SAINI',  Nug='31', kg='599.5',BasicAmount='13908.5',  TotalAmount='15037',TotalCharges='1128.6', StorageID='3',Storagename='Shop',InvoiceID='535',  ModifiedByID='1',ModifiedTime='2025-08-05 12:40:12' where ID =2825
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 12:40:13 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-01','535',2825, 'Stock Sale','1199','JITENDRA PATAN',12,'Krela','22',  '1.00','20','0','24', '24.00','Kg','480','38.6', '519.00','6', '28.80','1','4.8', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','480','0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1116','VIKRAM KOTKASHIM',12,'Krela','22',  '4.00','52.5','0','22', '22.00','Kg','1155','100.85', '1256.00','6', '69.30','1','11.55', '0.00','0','5', '20.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','1155','0.15' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1167','MUNSI NARAYANPUR',12,'Krela','22',  '2.00','36.5','0','22', '22.00','Kg','803','66.21', '869.00','6', '48.18','1','8.03', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1436','KAMAL BANSUR',12,'Krela','22',  '2.00','37.5','0','23', '23.00','Kg','862.5','70.38', '933.00','6', '51.75','1','8.63', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','862.5','0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1389','RAMUTAR / MUKESH PAWTA',12,'Krela','22',  '3.00','65','0','23', '23.00','Kg','1495','119.65', '1615.00','6', '89.70','1','14.95', '0.00','0','5', '15.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','1495','0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','7','Cash',12,'Krela','22',  '2.00','37.5','0','24', '24.00','Kg','900','73', '973.00','6', '54.00','1','9', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','900','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','7','Cash',12,'Krela','22',  '2.00','40','0','23', '23.00','Kg','920','74.4', '994.00','6', '55.20','1','9.2', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','920','-0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1064','MAHESH BANSUR',12,'Krela','22',  '1.00','22','0','23', '23.00','Kg','506','40.42', '546.00','6', '30.36','1','5.06', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','506','-0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1503','BABU AATELA',12,'Krela','22',  '2.00','42','0','24', '24.00','Kg','1008','80.56', '1089.00','6', '60.48','1','10.08', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','1008','0.44' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1174','SHAYAM BALDOD',12,'Krela','22',  '2.00','49','0','24', '24.00','Kg','1176','92.32', '1268.00','6', '70.56','1','11.76', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','1176','-0.32' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1059','MADAN\PANCHU',12,'Krela','8',  '1.00','17','0','23', '23.00','Kg','391','32.37', '423.00','6', '23.46','1','3.91', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','391','-0.37' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1331','RUDA ANDHAWALI',12,'Krela','8',  '1.00','19.5','0','24', '24.00','Kg','468','37.76', '506.00','6', '28.08','1','4.68', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','468','0.24' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1192','FOJI NIMRANA',12,'Krela','8',  '2.00','41','0','24', '24.00','Kg','984','78.88', '1063.00','6', '59.04','1','9.84', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','984','0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1416','RAJU NARAYANPUR',12,'Krela','8',  '2.00','41','0','22', '22.00','Kg','902','73.14', '975.00','6', '54.12','1','9.02', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','902','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','7','Cash',12,'Krela','8',  '1.00','18','0','23', '23.00','Kg','414','33.98', '448.00','6', '24.84','1','4.14', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','414','0.02' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1012','YOGESH NATHU {NATHU RAMSHINGH}',12,'Krela','8',  '1.00','20','0','23', '23.00','Kg','460','37.2', '497.00','6', '27.60','1','4.6', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','460','-0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-01','535',2825, 'Stock Sale','1178','SUBHASH PATAN',12,'Krela','23',  '2.00','41','0','24', '24.00','Kg','984','78.88', '1063.00','6', '59.04','1','9.84', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1390,'JAYSHINGH SAINI','2824','984','0.12' ,'0','','3','Shop','','0'
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 12:40:13 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='520', Entrydate='2025-07-29',  SallerID='1406', SallerName='HARI G CHALPALI MOD',  Nug='40', kg='675',BasicAmount='26439.5',  TotalAmount='28489',TotalCharges='2050.77', StorageID='3',Storagename='Shop',InvoiceID='520',  ModifiedByID='1',ModifiedTime='2025-08-05 13:01:13' where ID =2718
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 1:01:14 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-07-29','520',2718, 'Stock Sale','1168','MADAN MUKESH MANDI',37,'KKODA','5',  '1.00','6','0','65', '65.00','Kg','390','32.3', '422.00','6', '23.40','1','3.9', '0.00','0','0', '0.00','5','5', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','390','-0.3' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1174','SHAYAM BALDOD',37,'KKODA','5',  '1.00','12','0','65', '65.00','Kg','780','59.6', '840.00','6', '46.80','1','7.8', '0.00','0','0', '0.00','5','5', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','780','0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1349','MAHESH SWAMI',11,'Guwar','5',  '4.00','71','0','52', '52.00','Kg','3692','278.44', '3970.00','6', '221.52','1','36.92', '0.00','0','5', '20.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','3692','-0.44' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1352','SIMA NIMRANA',11,'Guwar','5',  '1.00','9.5','0','70', '70.00','Kg','665','51.55', '717.00','6', '39.90','1','6.65', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','665','0.45' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1013','SUNIL HAJARI JADALI',36,'KARUNDA','4',  '1.00','16.5','0','22', '22.00','Kg','363','30.41', '393.00','6', '21.78','1','3.63', '0.00','0','0', '0.00','5','5', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','363','-0.41' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',36,'KARUNDA','4',  '1.00','16.5','0','23', '23.00','Kg','379.5','31.57', '411.00','6', '22.77','1','3.8', '0.00','0','0', '0.00','5','5', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','379.5','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1277','MADAN BHATTA',36,'KARUNDA','4',  '2.00','43','0','20', '20.00','Kg','860','70.2', '930.00','6', '51.60','1','8.6', '0.00','0','0', '0.00','5','10', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','860','-0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',18,'MIRCHI','18',  '1.00','19.5','0','46', '46.00','Kg','897','67.79', '965.00','6', '53.82','1','8.97', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','897','0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1059','MADAN\PANCHU',18,'MIRCHI','18',  '2.00','36.5','0','40', '40.00','Kg','1460','112.2', '1572.00','6', '87.60','1','14.6', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','1460','-0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',18,'MIRCHI','18',  '2.00','31','0','45', '45.00','Kg','1395','107.65', '1503.00','6', '83.70','1','13.95', '0.00','0','5', '10.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','1395','0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1035','SURENDRA NARSINGPURA',18,'MIRCHI','18',  '1.00','19','0','45', '45.00','Kg','855','64.85', '920.00','6', '51.30','1','8.55', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','855','0.15' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1371','RAGHUVEER MYAWALI',18,'MIRCHI','18',  '1.00','18','0','40', '40.00','Kg','720','55.4', '775.00','6', '43.20','1','7.2', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','720','-0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1150','BAJRAG MUNIM',18,'MIRCHI','18',  '1.00','18','0','40', '40.00','Kg','720','55.4', '775.00','6', '43.20','1','7.2', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','720','-0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1188','RUDA PAVTA',18,'MIRCHI','18',  '5.00','76','0','40', '40.00','Kg','3040','237.8', '3278.00','6', '182.40','1','30.4', '0.00','0','5', '25.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','3040','0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1255','JAYRAM MATADIN',18,'MIRCHI','18',  '1.00','20','0','40', '40.00','Kg','800','61', '861.00','6', '48.00','1','8', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','800','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1067','MAHESH PAWTA',18,'MIRCHI','18',  '3.00','53.5','0','38', '38.00','Kg','2033','157.31', '2190.00','6', '121.98','1','20.33', '0.00','0','5', '15.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','2033','-0.31' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',18,'MIRCHI','18',  '1.00','13.5','0','40', '40.00','Kg','540','42.8', '583.00','6', '32.40','1','5.4', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','540','0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1427','BILLU SHYAMWALI',18,'MIRCHI','10',  '1.00','20','0','40', '40.00','Kg','800','61', '861.00','6', '48.00','1','8', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','800','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1352','SIMA NIMRANA',18,'MIRCHI','10',  '1.00','16','0','40', '40.00','Kg','640','49.8', '690.00','6', '38.40','1','6.4', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','640','0.2' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',18,'MIRCHI','10',  '1.00','20','0','35', '35.00','Kg','700','54', '754.00','6', '42.00','1','7', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1349','MAHESH SWAMI',18,'MIRCHI','10',  '4.00','69','0','35', '35.00','Kg','2415','189.05', '2604.00','6', '144.90','1','24.15', '0.00','0','5', '20.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','2415','-0.05' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1349','MAHESH SWAMI',18,'MIRCHI','10',  '1.00','26','0','15', '15.00','Kg','390','32.3', '422.00','6', '23.40','1','3.9', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','390','-0.3' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','1068','BABU AMARPURA',18,'MIRCHI','10',  '1.00','15.5','0','40', '40.00','Kg','620','48.4', '668.00','6', '37.20','1','6.2', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','620','-0.4' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',18,'MIRCHI','10',  '1.00','20','0','35', '35.00','Kg','700','54', '754.00','6', '42.00','1','7', '0.00','0','5', '5.00','0','0', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-07-29','520',2718, 'Stock Sale','7','Cash',37,'KKODA','5',  '1.00','9','0','65', '65.00','Kg','585','45.95', '631.00','6', '35.10','1','5.85', '0.00','0','0', '0.00','5','5', '0','','0','N','Stock in',1406,'HARI G CHALPALI MOD','2715','585','0.05' ,'0','','3','Shop','','0'
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 05-Aug-25 1:01:14 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 06-Aug-25 11:29:05 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHIV SHAKTI SABJI AND FRUIT BHANDAR
+Date/Time: 06-Aug-25 10:35:24 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 16-Aug-25 17:26:41
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 16-Aug-25 17:30:36
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!RADHASWAMI
+StackTrace: GANESHDAS PRITHVIRAJ SANKHLA
+Date/Time: 18-Aug-25 12:29:09 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...RADHASWAMI
+StackTrace: GANESHDAS PRITHVIRAJ SANKHLA
+Date/Time: 18-Aug-25 12:29:14 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: PUNJAB DATA
+Date/Time: 18-Aug-25 3:15:38 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: PUNJAB DATA
+Date/Time: 18-Aug-25 3:28:17 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 25-Aug-25 4:16:28 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TULSI FRUIT COMPANY
+Date/Time: 25-Aug-25 4:18:34 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 25-Aug-25 4:20:13 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!RADHASWAMI
+StackTrace: GANESHDAS PRITHVIRAJ SANKHLA
+Date/Time: 25-Aug-25 4:22:41 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TULSI FRUIT COMPANY
+Date/Time: 25-Aug-25 4:22:47 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: SHIV SHAKTI SABJI AND FRUIT BHANDAR
+Date/Time: 25-Aug-25 4:24:39 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHIV SHAKTI SABJI AND FRUIT BHANDAR
+Date/Time: 25-Aug-25 4:24:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 25-Aug-25 4:25:28 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 25-Aug-25 4:29:37 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 25-Aug-25 5:26:26 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 27-Aug-25 3:13:45 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 27-Aug-25 3:19:15 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '15','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','4','207.5', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 27-Aug-25 3:19:36 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='42', Entrydate='2025-08-27',  SallerID='1275', SallerName='MARUTI TREDRES RATLAM',  Nug='32', kg='1645.5',BasicAmount='27945.75',  TotalAmount='27945.75',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='42',  ModifiedByID='1',ModifiedTime='2025-08-27 15:19:38' where ID =235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 27-Aug-25 3:19:38 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','42',235, 'Stock Sale','1243','NIRMAL SATNAM SINGH',2,'ONION','485',  '1.00','51.5','0','17', '17.00','Kg','875.5','0', '875.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1286','JODDA DIR JANDAILA',2,'ONION','485',  '3.00','157','0','17', '17.00','Kg','2669','0', '2669.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','2669','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105.5','0','17', '17.00','Kg','1793.5','0', '1793.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1793.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','53','0','17.5', '17.50','Kg','927.5','0', '927.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','927.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','100','0','17', '17.00','Kg','1700','0', '1700.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1283','KARAM JIT SATNAM G/B',2,'ONION','485',  '1.00','52','0','17', '17.00','Kg','884','0', '884.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','884','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','17', '17.00','Kg','850','0', '850.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','850','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1214','PARMOD 1',2,'ONION','485',  '7.00','356','0','17.5', '17.50','Kg','6230','0', '6230.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','6230','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1271','MANOHAR JANDAILA',2,'ONION','485',  '1.00','51.5','0','17', '17.00','Kg','875.5','0', '875.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','101.5','0','16.5', '16.50','Kg','1674.75','0', '1674.75','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1674.75','0.25' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105','0','16', '16.00','Kg','1680','0', '1680.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1680','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','103','0','16.5', '16.50','Kg','1699.5','0', '1699.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1699.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','16.5', '16.50','Kg','825','0', '825.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','825','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','102','0','17', '17.00','Kg','1734','0', '1734.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1734','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1314','ASHOK PATTI',2,'ONION','485',  '4','207.5','0','17', '17','Kg','3527.5','0', '3527.50','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','3527.5','0' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 27-Aug-25 3:19:39 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 28-Aug-25 3:09:50 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: PDC KHAIRTHAL
+Date/Time: 28-Aug-25 3:14:14 PM
+===========================================================================================
+Title: Super Sale Saved
+Message: insert into Vouchers(TransType,BillNo,VehicleNo, Entrydate,SallerID, SallerName, Nug, kg,BasicAmount, TotalAmount,TotalCharges, N1,N2,InvoiceID,UserID,EntryTime,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10)values (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,@11,@12,@13,@14,@15,@16,@17, @18, @19, @20, @21, @22, @23, @24, @25, @26)
+StackTrace: PDC KHAIRTHAL
+Date/Time: 28-Aug-25 3:15:23 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:43:20 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-28','Stock Sale','Stock in',9441,6901,'AVINASH TAMATER CTC', '3','Shop','168','TAMATER','0', '1920','5','0', 'Nug',9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:45:02 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-28','Stock Sale','Stock in',9441,6901,'AVINASH TAMATER CTC', '3','Shop','168','TAMATER','0', '1920','5','0', 'Nug',9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:48:02 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-28','Stock Sale','Stock in',9441,6901,'AVINASH TAMATER CTC', '3','Shop','168','TAMATER','0', '1920','5','0', 'Nug',9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:48:22 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-28','Stock Sale','Stock in',9441,6901,'AVINASH TAMATER CTC', '3','Shop','168','TAMATER','0', '1920','5','0', 'Nug',9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:48:39 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:53:05 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='1919', Entrydate='2025-08-28',  SallerID='6901', SallerName='AVINASH TAMATER CTC',  Nug='356', kg='0',BasicAmount='209943',  TotalAmount='224627',TotalCharges='14696.01', StorageID='3',Storagename='Shop',InvoiceID='1919',  ModifiedByID='1',ModifiedTime='2025-08-28 16:55:06' where ID =9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:55:06 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-28','1919',9446, 'Stock Sale','1596','SATYNARAYAN LUNARAM9001838146',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1596','SATYNARAYAN LUNARAM9001838146',168,'TAMATER','1920',  '2.00','0','0','701', '701.00','Nug','1402','98.14', '1500.00','6', '84.12','1','14.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1402','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1615','KHETARAM MAJUR',168,'TAMATER','1920',  '16.00','0','0','601', '601.00','Nug','9616','673.12', '10289.00','6', '576.96','1','96.16', '0.00','0','0', '0.00','0','0', '16','CTC-2025','16','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','9616','-0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1331','PURARAM CHODHARY',168,'TAMATER','1920',  '7.00','0','0','601', '601.00','Nug','4207','294.49', '4501.00','6', '252.42','1','42.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','7','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','4207','-0.49' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1198','PUKHRAJ MADHU9460009915',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6695','TULCHIRAM CHOUDHARY UF8107390797',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5529','TARUN ARJUN RAMU P7014841450',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5529','TARUN ARJUN RAMU P7014841450',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6698','NEW BALA JI SABJI BHANDAR8239121872',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6820','ASHOK SARDARPURA',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3923','DEVENDRA KESARAM BASANI9521207141',168,'TAMATER','1920',  '5.00','0','0','401', '401.00','Nug','2005','140.35', '2145.00','6', '120.30','1','20.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1285','ANANDPURI KERU9929675940',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6690','ASHOK TINWRI9636029451DINESH T',168,'TAMATER','1920',  '1.00','0','0','631', '631.00','Nug','631','44.17', '675.00','6', '37.86','1','6.31', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','631','-0.17' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2315','YUSUF FATAK',168,'TAMATER','1920',  '6.00','0','0','301', '301.00','Nug','1806','126.42', '1932.00','6', '108.36','1','18.06', '0.00','0','0', '0.00','0','0', '16','CTC-2025','6','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1806','-0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6164','KHUSHALKUDCHI9252009308',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6794','TAJARAM KUDI HB9828698729',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1712','SATTAR SAMIM7014119809',168,'TAMATER','1920',  '3.00','0','0','351', '351.00','Nug','1053','73.71', '1127.00','6', '63.18','1','10.53', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1053','0.29' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5686','SAKTISINGH SHAMBHU MJB8690372961',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3927','JETHARAM RAMJAN HATHA9829889084',168,'TAMATER','1920',  '2.00','0','0','751', '751.00','Nug','1502','105.14', '1607.00','6', '90.12','1','15.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1502','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3927','JETHARAM RAMJAN HATHA9829889084',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6902','JAGDISH RASH',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6902','JAGDISH RASH',168,'TAMATER','1920',  '11.00','0','0','601', '601.00','Nug','6611','462.77', '7074.00','6', '396.66','1','66.11', '0.00','0','0', '0.00','0','0', '16','CTC-2025','11','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','6611','0.23' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3129','PARASH GIRI TANAWADA',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1198','PUKHRAJ MADHU9460009915',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5706','MULCHAND HB 9549506303DEEPU HB',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6060','CHAND ANTU JI',168,'TAMATER','1920',  '2.00','0','0','701', '701.00','Nug','1402','98.14', '1500.00','6', '84.12','1','14.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1402','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2835','DHANRAJSING KAKANI9929231480',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3578','KALU KUDI',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5841','KALU MALI PHALODI9509963550',168,'TAMATER','1920',  '3.00','0','0','701', '701.00','Nug','2103','147.21', '2250.00','6', '126.18','1','21.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2103','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6742','PAPU DALI BAI8619858554',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6742','PAPU DALI BAI8619858554',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1376','KAILASH SALAWASH9001867129',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','504', '504.00','Nug','1008','70.56', '1079.00','6', '60.48','1','10.08', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1008','0.44' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3764','DINESH MADHU JI9929598889',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6897','RAM JI 3RD ROAD7737657094',168,'TAMATER','1920',  '11.00','0','0','601', '601.00','Nug','6611','462.77', '7074.00','6', '396.66','1','66.11', '0.00','0','0', '0.00','0','0', '16','CTC-2025','11','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','6611','0.23' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2286','RAMRATAN S-G9829374566',168,'TAMATER','1920',  '4.00','0','0','601', '601.00','Nug','2404','168.28', '2572.00','6', '144.24','1','24.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2404','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2870','NEMARAM PALASNI',168,'TAMATER','1920',  '7.00','0','0','701', '701.00','Nug','4907','343.49', '5250.00','6', '294.42','1','49.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','7','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','4907','-0.49' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6592','JITESH FOUJI SIR6006034405',168,'TAMATER','1920',  '6.00','0','0','601', '601.00','Nug','3606','252.42', '3858.00','6', '216.36','1','36.06', '0.00','0','0', '0.00','0','0', '16','CTC-2025','6','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3606','-0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5686','SAKTISINGH SHAMBHU MJB8690372961',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1808','VISHNU MAHENDRA ANTU JI9829383603',168,'TAMATER','1920',  '1.00','0','0','501', '501.00','Nug','501','35.07', '536.00','6', '30.06','1','5.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','501','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1735','SHYAM ROHIT9461340436',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1735','SHYAM ROHIT9461340436',168,'TAMATER','1920',  '3.00','0','0','501', '501.00','Nug','1503','105.21', '1608.00','6', '90.18','1','15.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1503','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2060','SURJARAM SANGRIYA',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2023','KULDEEP B ROAD8890094056,8619061978',168,'TAMATER','1920',  '4.00','0','0','601', '601.00','Nug','2404','168.28', '2572.00','6', '144.24','1','24.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2404','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6818','FIROJ BHADASHIYA7850011032',168,'TAMATER','1920',  '3.00','0','0','701', '701.00','Nug','2103','147.21', '2250.00','6', '126.18','1','21.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2103','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1354','KULDEEP KERU9660327646',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','505', '505.00','Nug','505','35.35', '540.00','6', '30.30','1','5.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','505','-0.35' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','600', '600.00','Nug','1200','84', '1284.00','6', '72.00','1','12', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1200','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6756','VINOD UP6376437362',168,'TAMATER','1920',  '3.00','0','0','501', '501.00','Nug','1503','105.21', '1608.00','6', '90.18','1','15.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1503','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2279','PUKHRAJ SALAWASH',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1805','NARAYAN MOGARA9352037266',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1470','KAMLESH S-G8290478035',168,'TAMATER','1920',  '4.00','0','0','601', '601.00','Nug','2404','168.28', '2572.00','6', '144.24','1','24.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2404','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1826','PARMESHWAR KAKANI9950319626',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','607', '607.00','Nug','607','42.49', '649.00','6', '36.42','1','6.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','607','-0.49' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','607', '607.00','Nug','607','42.49', '649.00','6', '36.42','1','6.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','607','-0.49' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','505', '505.00','Nug','505','35.35', '540.00','6', '30.30','1','5.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','505','-0.35' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','505', '505.00','Nug','1010','70.7', '1081.00','6', '60.60','1','10.1', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1010','0.3' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4853','MUNARAM KAKANI7297972779',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5812','SUNIL MASHURIYA',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6697','VIRENDRA RAKESH BASANI9358936044',168,'TAMATER','1920',  '4.00','0','0','501', '501.00','Nug','2004','140.28', '2144.00','6', '120.24','1','20.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2004','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5975','SHIV 12 ROAD9799066584',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5766','PAPUSINGH O9828328959,9509587595',168,'TAMATER','1920',  '2.00','0','0','501', '501.00','Nug','1002','70.14', '1072.00','6', '60.12','1','10.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1002','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1774','JITU SOORSAGAR9636147283',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6170','PINTU BASANI7070750248',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1252','TILI CHOTA9414956271',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1592','HARISING DAIJAR9875089251',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2838','SURENDRA SHIKARGAR9660614556',168,'TAMATER','1920',  '5.00','0','0','501', '501.00','Nug','2505','175.35', '2680.00','6', '150.30','1','25.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2505','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1501','BHERARAM MEGHWAL9571205723',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6753','ISHAWAR KALI (SARVAN PIPAR)7427032082',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','504', '504.00','Nug','1008','70.56', '1079.00','6', '60.48','1','10.08', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1008','0.44' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','504', '504.00','Nug','504','35.28', '539.00','6', '30.24','1','5.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','504','-0.28' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6299','PREM SHANAR RATANADA',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6635','EVERGREEN SOORSAGAR6350288536',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6635','EVERGREEN SOORSAGAR6350288536',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1352','ASHOK R9166128011',168,'TAMATER','1920',  '3.00','0','0','701', '701.00','Nug','2103','147.21', '2250.00','6', '126.18','1','21.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2103','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4536','DINESH T8003273248',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6698','NEW BALA JI SABJI BHANDAR8239121872',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6694','GOVIND 9 MIL9602403947',168,'TAMATER','1920',  '3.00','0','0','505', '505.00','Nug','1515','106.05', '1621.00','6', '90.90','1','15.15', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1515','-0.05' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','505', '505.00','Nug','1010','70.7', '1081.00','6', '60.60','1','10.1', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1010','0.3' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2300','SHAYAR JOSHI',168,'TAMATER','1920',  '3.00','0','0','505', '505.00','Nug','1515','106.05', '1621.00','6', '90.90','1','15.15', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1515','-0.05' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5459','S.SSHAMBHU7425012574',168,'TAMATER','1920',  '5.00','0','0','701', '701.00','Nug','3505','245.35', '3750.00','6', '210.30','1','35.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3505','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4183','VISHNU RAMRATAN S-G7976630413',168,'TAMATER','1920',  '7.00','0','0','505', '505.00','Nug','3535','247.45', '3782.00','6', '212.10','1','35.35', '0.00','0','0', '0.00','0','0', '16','CTC-2025','7','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3535','-0.45' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4183','VISHNU RAMRATAN S-G7976630413',168,'TAMATER','1920',  '14.00','0','0','601', '601.00','Nug','8414','588.98', '9003.00','6', '504.84','1','84.14', '0.00','0','0', '0.00','0','0', '16','CTC-2025','14','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','8414','0.02' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5256','SAWAL JI LOSAL SIKAR',168,'TAMATER','1920',  '101.00','0','0','601', '601.00','Nug','60701','4249.07', '64950.00','6', '3642.06','1','607.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','101','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','60701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','505', '505.00','Nug','1010','70.7', '1081.00','6', '60.60','1','10.1', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1010','0.3' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','504', '504.00','Nug','504','35.28', '539.00','6', '30.24','1','5.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','504','-0.28' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 4:56:12 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 5:34:25 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-28','Stock Sale','Stock in',9441,6901,'AVINASH TAMATER CTC', '3','Shop','168','TAMATER','0', '1920','5','0', 'Nug',9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 5:35:23 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='1919', Entrydate='2025-08-28',  SallerID='6901', SallerName='AVINASH TAMATER CTC',  Nug='356', kg='0',BasicAmount='209943',  TotalAmount='224627',TotalCharges='14696.01', StorageID='3',Storagename='Shop',InvoiceID='1919',  ModifiedByID='1',ModifiedTime='2025-08-28 17:35:29' where ID =9446
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 5:35:29 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-28','1919',9446, 'Stock Sale','1596','SATYNARAYAN LUNARAM9001838146',168,'TAMATER','1920',  '5','0','0','601', '601','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1596','SATYNARAYAN LUNARAM9001838146',168,'TAMATER','1920',  '2.00','0','0','701', '701.00','Nug','1402','98.14', '1500.00','6', '84.12','1','14.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1402','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1615','KHETARAM MAJUR',168,'TAMATER','1920',  '16.00','0','0','601', '601.00','Nug','9616','673.12', '10289.00','6', '576.96','1','96.16', '0.00','0','0', '0.00','0','0', '16','CTC-2025','16','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','9616','-0.12' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1331','PURARAM CHODHARY',168,'TAMATER','1920',  '7.00','0','0','601', '601.00','Nug','4207','294.49', '4501.00','6', '252.42','1','42.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','7','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','4207','-0.49' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1198','PUKHRAJ MADHU9460009915',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6695','TULCHIRAM CHOUDHARY UF8107390797',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5529','TARUN ARJUN RAMU P7014841450',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5529','TARUN ARJUN RAMU P7014841450',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6698','NEW BALA JI SABJI BHANDAR8239121872',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6820','ASHOK SARDARPURA',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3923','DEVENDRA KESARAM BASANI9521207141',168,'TAMATER','1920',  '5.00','0','0','401', '401.00','Nug','2005','140.35', '2145.00','6', '120.30','1','20.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1285','ANANDPURI KERU9929675940',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6690','ASHOK TINWRI9636029451DINESH T',168,'TAMATER','1920',  '1.00','0','0','631', '631.00','Nug','631','44.17', '675.00','6', '37.86','1','6.31', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','631','-0.17' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2315','YUSUF FATAK',168,'TAMATER','1920',  '6.00','0','0','301', '301.00','Nug','1806','126.42', '1932.00','6', '108.36','1','18.06', '0.00','0','0', '0.00','0','0', '16','CTC-2025','6','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1806','-0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6164','KHUSHALKUDCHI9252009308',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6794','TAJARAM KUDI HB9828698729',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1712','SATTAR SAMIM7014119809',168,'TAMATER','1920',  '3.00','0','0','351', '351.00','Nug','1053','73.71', '1127.00','6', '63.18','1','10.53', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1053','0.29' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5686','SAKTISINGH SHAMBHU MJB8690372961',168,'TAMATER','1920',  '5.00','0','0','601', '601.00','Nug','3005','210.35', '3215.00','6', '180.30','1','30.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3005','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3927','JETHARAM RAMJAN HATHA9829889084',168,'TAMATER','1920',  '2.00','0','0','751', '751.00','Nug','1502','105.14', '1607.00','6', '90.12','1','15.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1502','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3927','JETHARAM RAMJAN HATHA9829889084',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6902','JAGDISH RASH',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6902','JAGDISH RASH',168,'TAMATER','1920',  '11.00','0','0','601', '601.00','Nug','6611','462.77', '7074.00','6', '396.66','1','66.11', '0.00','0','0', '0.00','0','0', '16','CTC-2025','11','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','6611','0.23' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3129','PARASH GIRI TANAWADA',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1198','PUKHRAJ MADHU9460009915',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5706','MULCHAND HB 9549506303DEEPU HB',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6060','CHAND ANTU JI',168,'TAMATER','1920',  '2.00','0','0','701', '701.00','Nug','1402','98.14', '1500.00','6', '84.12','1','14.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1402','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2835','DHANRAJSING KAKANI9929231480',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3578','KALU KUDI',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5841','KALU MALI PHALODI9509963550',168,'TAMATER','1920',  '3.00','0','0','701', '701.00','Nug','2103','147.21', '2250.00','6', '126.18','1','21.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2103','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6742','PAPU DALI BAI8619858554',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6742','PAPU DALI BAI8619858554',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1376','KAILASH SALAWASH9001867129',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','504', '504.00','Nug','1008','70.56', '1079.00','6', '60.48','1','10.08', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1008','0.44' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','3764','DINESH MADHU JI9929598889',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6897','RAM JI 3RD ROAD7737657094',168,'TAMATER','1920',  '11.00','0','0','601', '601.00','Nug','6611','462.77', '7074.00','6', '396.66','1','66.11', '0.00','0','0', '0.00','0','0', '16','CTC-2025','11','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','6611','0.23' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2286','RAMRATAN S-G9829374566',168,'TAMATER','1920',  '4.00','0','0','601', '601.00','Nug','2404','168.28', '2572.00','6', '144.24','1','24.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2404','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2870','NEMARAM PALASNI',168,'TAMATER','1920',  '7.00','0','0','701', '701.00','Nug','4907','343.49', '5250.00','6', '294.42','1','49.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','7','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','4907','-0.49' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6592','JITESH FOUJI SIR6006034405',168,'TAMATER','1920',  '6.00','0','0','601', '601.00','Nug','3606','252.42', '3858.00','6', '216.36','1','36.06', '0.00','0','0', '0.00','0','0', '16','CTC-2025','6','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3606','-0.42' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5686','SAKTISINGH SHAMBHU MJB8690372961',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1808','VISHNU MAHENDRA ANTU JI9829383603',168,'TAMATER','1920',  '1.00','0','0','501', '501.00','Nug','501','35.07', '536.00','6', '30.06','1','5.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','501','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1735','SHYAM ROHIT9461340436',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1735','SHYAM ROHIT9461340436',168,'TAMATER','1920',  '3.00','0','0','501', '501.00','Nug','1503','105.21', '1608.00','6', '90.18','1','15.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1503','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2060','SURJARAM SANGRIYA',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2023','KULDEEP B ROAD8890094056,8619061978',168,'TAMATER','1920',  '4.00','0','0','601', '601.00','Nug','2404','168.28', '2572.00','6', '144.24','1','24.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2404','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6818','FIROJ BHADASHIYA7850011032',168,'TAMATER','1920',  '3.00','0','0','701', '701.00','Nug','2103','147.21', '2250.00','6', '126.18','1','21.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2103','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1354','KULDEEP KERU9660327646',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','505', '505.00','Nug','505','35.35', '540.00','6', '30.30','1','5.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','505','-0.35' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','600', '600.00','Nug','1200','84', '1284.00','6', '72.00','1','12', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1200','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6756','VINOD UP6376437362',168,'TAMATER','1920',  '3.00','0','0','501', '501.00','Nug','1503','105.21', '1608.00','6', '90.18','1','15.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1503','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2279','PUKHRAJ SALAWASH',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1805','NARAYAN MOGARA9352037266',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1470','KAMLESH S-G8290478035',168,'TAMATER','1920',  '4.00','0','0','601', '601.00','Nug','2404','168.28', '2572.00','6', '144.24','1','24.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2404','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1826','PARMESHWAR KAKANI9950319626',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','607', '607.00','Nug','607','42.49', '649.00','6', '36.42','1','6.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','607','-0.49' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','607', '607.00','Nug','607','42.49', '649.00','6', '36.42','1','6.07', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','607','-0.49' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','505', '505.00','Nug','505','35.35', '540.00','6', '30.30','1','5.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','505','-0.35' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','505', '505.00','Nug','1010','70.7', '1081.00','6', '60.60','1','10.1', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1010','0.3' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4853','MUNARAM KAKANI7297972779',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5812','SUNIL MASHURIYA',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6697','VIRENDRA RAKESH BASANI9358936044',168,'TAMATER','1920',  '4.00','0','0','501', '501.00','Nug','2004','140.28', '2144.00','6', '120.24','1','20.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','4','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2004','-0.28' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5975','SHIV 12 ROAD9799066584',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5766','PAPUSINGH O9828328959,9509587595',168,'TAMATER','1920',  '2.00','0','0','501', '501.00','Nug','1002','70.14', '1072.00','6', '60.12','1','10.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1002','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1774','JITU SOORSAGAR9636147283',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6170','PINTU BASANI7070750248',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1252','TILI CHOTA9414956271',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1592','HARISING DAIJAR9875089251',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2838','SURENDRA SHIKARGAR9660614556',168,'TAMATER','1920',  '5.00','0','0','501', '501.00','Nug','2505','175.35', '2680.00','6', '150.30','1','25.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2505','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1501','BHERARAM MEGHWAL9571205723',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6753','ISHAWAR KALI (SARVAN PIPAR)7427032082',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','504', '504.00','Nug','1008','70.56', '1079.00','6', '60.48','1','10.08', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1008','0.44' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','504', '504.00','Nug','504','35.28', '539.00','6', '30.24','1','5.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','504','-0.28' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6299','PREM SHANAR RATANADA',168,'TAMATER','1920',  '2.00','0','0','601', '601.00','Nug','1202','84.14', '1286.00','6', '72.12','1','12.02', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1202','-0.14' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6635','EVERGREEN SOORSAGAR6350288536',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6635','EVERGREEN SOORSAGAR6350288536',168,'TAMATER','1920',  '1.00','0','0','601', '601.00','Nug','601','42.07', '643.00','6', '36.06','1','6.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','601','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','1352','ASHOK R9166128011',168,'TAMATER','1920',  '3.00','0','0','701', '701.00','Nug','2103','147.21', '2250.00','6', '126.18','1','21.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','2103','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4536','DINESH T8003273248',168,'TAMATER','1920',  '3.00','0','0','601', '601.00','Nug','1803','126.21', '1929.00','6', '108.18','1','18.03', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1803','-0.21' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6698','NEW BALA JI SABJI BHANDAR8239121872',168,'TAMATER','1920',  '1.00','0','0','701', '701.00','Nug','701','49.07', '750.00','6', '42.06','1','7.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','600', '600.00','Nug','600','42', '642.00','6', '36.00','1','6', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','600','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','6694','GOVIND 9 MIL9602403947',168,'TAMATER','1920',  '3.00','0','0','505', '505.00','Nug','1515','106.05', '1621.00','6', '90.90','1','15.15', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1515','-0.05' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','505', '505.00','Nug','1010','70.7', '1081.00','6', '60.60','1','10.1', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1010','0.3' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','2300','SHAYAR JOSHI',168,'TAMATER','1920',  '3.00','0','0','505', '505.00','Nug','1515','106.05', '1621.00','6', '90.90','1','15.15', '0.00','0','0', '0.00','0','0', '16','CTC-2025','3','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1515','-0.05' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5459','S.SSHAMBHU7425012574',168,'TAMATER','1920',  '5.00','0','0','701', '701.00','Nug','3505','245.35', '3750.00','6', '210.30','1','35.05', '0.00','0','0', '0.00','0','0', '16','CTC-2025','5','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3505','-0.35' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4183','VISHNU RAMRATAN S-G7976630413',168,'TAMATER','1920',  '7.00','0','0','505', '505.00','Nug','3535','247.45', '3782.00','6', '212.10','1','35.35', '0.00','0','0', '0.00','0','0', '16','CTC-2025','7','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','3535','-0.45' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','4183','VISHNU RAMRATAN S-G7976630413',168,'TAMATER','1920',  '14.00','0','0','601', '601.00','Nug','8414','588.98', '9003.00','6', '504.84','1','84.14', '0.00','0','0', '0.00','0','0', '16','CTC-2025','14','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','8414','0.02' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','5256','SAWAL JI LOSAL SIKAR',168,'TAMATER','1920',  '101.00','0','0','601', '601.00','Nug','60701','4249.07', '64950.00','6', '3642.06','1','607.01', '0.00','0','0', '0.00','0','0', '16','CTC-2025','101','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','60701','-0.07' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '2.00','0','0','505', '505.00','Nug','1010','70.7', '1081.00','6', '60.60','1','10.1', '0.00','0','0', '0.00','0','0', '16','CTC-2025','2','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','1010','0.3' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-28','1919',9446, 'Stock Sale','7','Cash',168,'TAMATER','1920',  '1.00','0','0','504', '504.00','Nug','504','35.28', '539.00','6', '30.24','1','5.04', '0.00','0','0', '0.00','0','0', '16','CTC-2025','1','Y','Stock in',6901,'AVINASH TAMATER CTC','9441','504','-0.28' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: SHANWARIYA TRADING COMPANY
+Date/Time: 28-Aug-25 5:35:50 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:02:40 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2025-08-27','Stock Sale','Stock in',227,1231,'KURESHI VEGITABLE COMPANY', '3','Shop','2','ONION','0', '463','11','663.5', 'Kg',231
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:03:16 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2025-08-27','Stock Sale','Stock in',227,1231,'KURESHI VEGITABLE COMPANY', '3','Shop','2','ONION','0', '463','11','663.5', 'Kg',231
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:03:41 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '3','2025-08-27','Stock Sale','Stock in',227,1231,'KURESHI VEGITABLE COMPANY', '3','Shop','2','ONION','0', '463','5','322.5', 'Kg',231
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:03:47 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='38', Entrydate='2025-08-27',  SallerID='1231', SallerName='KURESHI VEGITABLE COMPANY',  Nug='53', kg='3361',BasicAmount='57017.75',  TotalAmount='57018',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='38',  ModifiedByID='1',ModifiedTime='2025-09-01 16:03:49' where ID =231
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:03:49 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','38',231, 'Stock Sale','1312','KAMAL BAHAYA',2,'ONION','463',  '20.00','1294','0','16.5', '16.50','Kg','21351','0', '21351.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','21351','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '11','663.5','0','17.5', '17.5','Kg','11611.25','0', '11611.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','11611.25','-0.25' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1080','JAJJI 57',2,'ONION','463',  '5','322.5','0','17', '17','Kg','5482.5','0', '5483.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','5482.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '6.00','387','0','17', '17.00','Kg','6579','0', '6579.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','6579','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '5.00','327','0','17', '17.00','Kg','5559','0', '5559.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','5559','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1285','REMESH P P',2,'ONION','463',  '2.00','132','0','18', '18.00','Kg','2376','0', '2376.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','2376','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '1.00','64','0','18', '18.00','Kg','1152','0', '1152.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','1152','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '2.00','118','0','17', '17.00','Kg','2006','0', '2006.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','2006','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1317','RAJU JODAFATAK',2,'ONION','463',  '1.00','53','0','17', '17.00','Kg','901','0', '901.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','901','0' ,'0','','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:03:56 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '12','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','2','103', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:16 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '10','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','2','101.5', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:20 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '4','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','1','53', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:27 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '3','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','2','105.5', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:32 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','1','51.5', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:40 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='42', Entrydate='2025-08-27',  SallerID='1275', SallerName='MARUTI TREDRES RATLAM',  Nug='32', kg='1645.5',BasicAmount='27945.75',  TotalAmount='27948',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='42',  ModifiedByID='1',ModifiedTime='2025-09-01 16:04:43' where ID =235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:43 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','42',235, 'Stock Sale','1243','NIRMAL SATNAM SINGH',2,'ONION','485',  '1','51.5','0','17', '17','Kg','875.5','0', '876.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1286','JODDA DIR JANDAILA',2,'ONION','485',  '3.00','157','0','17', '17.00','Kg','2669','0', '2669.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','2669','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2','105.5','0','17', '17','Kg','1793.5','0', '1794.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1793.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1','53','0','17.5', '17.5','Kg','927.5','0', '928.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','927.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','100','0','17', '17.00','Kg','1700','0', '1700.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1283','KARAM JIT SATNAM G/B',2,'ONION','485',  '1.00','52','0','17', '17.00','Kg','884','0', '884.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','884','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','17', '17.00','Kg','850','0', '850.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','850','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1214','PARMOD 1',2,'ONION','485',  '7.00','356','0','17.5', '17.50','Kg','6230','0', '6230.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','6230','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1271','MANOHAR JANDAILA',2,'ONION','485',  '1.00','51.5','0','17', '17.00','Kg','875.5','0', '875.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2','101.5','0','16.5', '16.5','Kg','1674.75','0', '1675.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1674.75','0.25' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105','0','16', '16.00','Kg','1680','0', '1680.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1680','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2','103','0','16.5', '16.5','Kg','1699.5','0', '1700.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1699.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','16.5', '16.50','Kg','825','0', '825.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','825','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','102','0','17', '17.00','Kg','1734','0', '1734.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1734','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1314','ASHOK PATTI',2,'ONION','485',  '4.00','207.5','0','17', '17.00','Kg','3527.5','0', '3527.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','3527.5','0' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:04:43 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='38', Entrydate='2025-08-27',  SallerID='1231', SallerName='KURESHI VEGITABLE COMPANY',  Nug='53', kg='3361',BasicAmount='57017.75',  TotalAmount='57018',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='38',  ModifiedByID='1',ModifiedTime='2025-09-01 16:07:01' where ID =231
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:07:01 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','38',231, 'Stock Sale','1312','KAMAL BAHAYA',2,'ONION','463',  '20.00','1294','0','16.5', '16.50','Kg','21351','0', '21351.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','21351','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '11.00','663.5','0','17.5', '17.50','Kg','11611.25','0', '11611.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','11611.25','-0.25' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1080','JAJJI 57',2,'ONION','463',  '5.00','322.5','0','17', '17.00','Kg','5482.5','0', '5483.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','5482.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '6.00','387','0','17', '17.00','Kg','6579','0', '6579.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','6579','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '5.00','327','0','17', '17.00','Kg','5559','0', '5559.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','5559','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1285','REMESH P P',2,'ONION','463',  '2.00','132','0','18', '18.00','Kg','2376','0', '2376.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','2376','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '1.00','64','0','18', '18.00','Kg','1152','0', '1152.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','1152','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1219','CESH RAJAN',2,'ONION','463',  '2.00','118','0','17', '17.00','Kg','2006','0', '2006.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','2006','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','38',231, 'Stock Sale','1317','RAJU JODAFATAK',2,'ONION','463',  '1.00','53','0','17', '17.00','Kg','901','0', '901.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1231,'KURESHI VEGITABLE COMPANY','227','901','0' ,'0','','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:07:01 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '15','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','4','207.5', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:30 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='42', Entrydate='2025-08-27',  SallerID='1275', SallerName='MARUTI TREDRES RATLAM',  Nug='32', kg='1645.5',BasicAmount='27945.75',  TotalAmount='27948.5',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='42',  ModifiedByID='1',ModifiedTime='2025-09-01 16:18:32' where ID =235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:32 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','42',235, 'Stock Sale','1243','NIRMAL SATNAM SINGH',2,'ONION','485',  '1.00','51.5','0','17', '17.00','Kg','875.5','0', '876.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1286','JODDA DIR JANDAILA',2,'ONION','485',  '3.00','157','0','17', '17.00','Kg','2669','0', '2669.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','2669','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105.5','0','17', '17.00','Kg','1793.5','0', '1794.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1793.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','53','0','17.5', '17.50','Kg','927.5','0', '928.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','927.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','100','0','17', '17.00','Kg','1700','0', '1700.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1283','KARAM JIT SATNAM G/B',2,'ONION','485',  '1.00','52','0','17', '17.00','Kg','884','0', '884.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','884','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','17', '17.00','Kg','850','0', '850.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','850','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1214','PARMOD 1',2,'ONION','485',  '7.00','356','0','17.5', '17.50','Kg','6230','0', '6230.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','6230','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1271','MANOHAR JANDAILA',2,'ONION','485',  '1.00','51.5','0','17', '17.00','Kg','875.5','0', '875.50','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','101.5','0','16.5', '16.50','Kg','1674.75','0', '1675.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1674.75','0.25' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105','0','16', '16.00','Kg','1680','0', '1680.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1680','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','103','0','16.5', '16.50','Kg','1699.5','0', '1700.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1699.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','16.5', '16.50','Kg','825','0', '825.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','825','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','102','0','17', '17.00','Kg','1734','0', '1734.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1734','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1314','ASHOK PATTI',2,'ONION','485',  '4','207.5','0','17', '17','Kg','3527.5','0', '3528.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','3527.5','0.5' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:32 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '3','2025-08-27','Stock Sale','Stock in',228,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '594','1','51.5', 'Kg',236
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:52 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '7','2025-08-27','Stock Sale','Stock in',228,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '594','2','103.5', 'Kg',236
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:57 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='43', Entrydate='2025-08-27',  SallerID='1275', SallerName='MARUTI TREDRES RATLAM',  Nug='32', kg='1645.5',BasicAmount='27203',  TotalAmount='27204',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='43',  ModifiedByID='1',ModifiedTime='2025-09-01 16:18:59' where ID =236
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:59 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','43',236, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','594',  '5.00','255.5','0','16', '16.00','Kg','4088','0', '4088.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','4088','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','594',  '5.00','258','0','16', '16.00','Kg','4128','0', '4128.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','4128','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1071','HARDAYALA JANDYLA',2,'ONION','594',  '1','51.5','0','17', '17','Kg','875.5','0', '876.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','594',  '3.00','154','0','17', '17.00','Kg','2618','0', '2618.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','2618','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','594',  '4.00','204','0','17', '17.00','Kg','3468','0', '3468.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','3468','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1164','RAJ CHITA KATRA',2,'ONION','594',  '1.00','52','0','17', '17.00','Kg','884','0', '884.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','884','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','594',  '2','103.5','0','17', '17','Kg','1759.5','0', '1760.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','1759.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1315','SUBASH DHAB',2,'ONION','594',  '5.00','257','0','16', '16.00','Kg','4112','0', '4112.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','4112','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','43',236, 'Stock Sale','1316','DIWAN CHAND VERKA',2,'ONION','594',  '6.00','310','0','17', '17.00','Kg','5270','0', '5270.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','228','5270','0' ,'0','','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:18:59 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '9','2025-08-27','Stock Sale','Stock in',84,1275,'MARUTI TREDRES RATLAM', '3','Shop','2','ONION','0', '485','1','51.5', 'Kg',235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:19:35 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='42', Entrydate='2025-08-27',  SallerID='1275', SallerName='MARUTI TREDRES RATLAM',  Nug='32', kg='1645.5',BasicAmount='27945.75',  TotalAmount='27949',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='42',  ModifiedByID='1',ModifiedTime='2025-09-01 16:19:37' where ID =235
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:19:37 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2025-08-27','42',235, 'Stock Sale','1243','NIRMAL SATNAM SINGH',2,'ONION','485',  '1.00','51.5','0','17', '17.00','Kg','875.5','0', '876.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1286','JODDA DIR JANDAILA',2,'ONION','485',  '3.00','157','0','17', '17.00','Kg','2669','0', '2669.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','2669','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105.5','0','17', '17.00','Kg','1793.5','0', '1794.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1793.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','53','0','17.5', '17.50','Kg','927.5','0', '928.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','927.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','100','0','17', '17.00','Kg','1700','0', '1700.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1700','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1283','KARAM JIT SATNAM G/B',2,'ONION','485',  '1.00','52','0','17', '17.00','Kg','884','0', '884.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','884','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','17', '17.00','Kg','850','0', '850.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','850','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1214','PARMOD 1',2,'ONION','485',  '7.00','356','0','17.5', '17.50','Kg','6230','0', '6230.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','6230','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1271','MANOHAR JANDAILA',2,'ONION','485',  '1','51.5','0','17', '17','Kg','875.5','0', '876.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','875.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','101.5','0','16.5', '16.50','Kg','1674.75','0', '1675.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1674.75','0.25' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','105','0','16', '16.00','Kg','1680','0', '1680.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1680','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','103','0','16.5', '16.50','Kg','1699.5','0', '1700.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1699.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '1.00','50','0','16.5', '16.50','Kg','825','0', '825.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','825','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1220','CESH TILAK RAJ',2,'ONION','485',  '2.00','102','0','17', '17.00','Kg','1734','0', '1734.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','1734','0' ,'0','','3','Shop','','0' UNION ALL SELECT '2025-08-27','42',235, 'Stock Sale','1314','ASHOK PATTI',2,'ONION','485',  '4.00','207.5','0','17', '17.00','Kg','3527.5','0', '3528.00','0', '0.00','0','0', '0.00','0','0', '0.00','0','0', '0','','0','N','Stock in',1275,'MARUTI TREDRES RATLAM','84','3527.5','0.5' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 01-Sep-25 4:19:37 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: BILL FRUIT AND VEGETABLE
+Date/Time: 05-Sep-25 10:12:04 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: BILL FRUIT AND VEGETABLE
+Date/Time: 05-Sep-25 10:21:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: BILL FRUIT AND VEGETABLE
+Date/Time: 05-Sep-25 10:21:22 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: BILL FRUIT AND VEGETABLE
+Date/Time: 05-Sep-25 10:23:50 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: BILL FRUIT AND VEGETABLE
+Date/Time: 05-Sep-25 10:30:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: BILL FRUIT AND VEGETABLE
+Date/Time: 05-Sep-25 11:00:01 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 07-Sep-25 12:32:07 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 10-Sep-25 11:12:15 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 10-Sep-25 11:18:42 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 25-Sep-25 11:01:01 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 25-Sep-25 11:01:07 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 04-Oct-25 10:47:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 04-Oct-25 10:55:13 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 04-Oct-25 10:59:14 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 06-Oct-25 11:25:18 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 06-Oct-25 11:28:38 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Oct-25 11:31:04 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 10-Oct-25 3:22:17 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 11-Oct-25 2:36:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 11-Oct-25 2:37:11 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 12-Oct-25 10:55:22 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 12-Oct-25 11:13:13 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 12-Oct-25 11:13:30 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 13-Oct-25 3:30:06 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:15:39 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:25:45 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:27:52 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:30:12 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:33:32 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:36:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:40:25 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:44:12 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:45:37 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:47:23 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:52:19 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:53:34 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 6:55:54 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 7:00:11 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 13-Oct-25 7:04:02 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 14-Oct-25 5:07:38 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 14-Oct-25 5:08:07 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 15-Oct-25 4:37:14 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 17-Oct-25 12:58:01 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KHOOB खाओ  ! खूब KAMAO !
+Date/Time: 22-Oct-25 6:21:49 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 24-Oct-25 12:32:56 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-24',   SallerID=1914, SallerName='LEELA   ALAPUR', Nug='5.00', kg='206.00', BasicAmount='2631.65', TotalAmount='2592.00', RoundOFF='0.00',TotalCharges='-40.00', N1='0',N2='2592',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-10-24 12:40:55',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =52
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 24-Oct-25 12:40:55 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 24-Oct-25 12:49:49 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:20:26 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1061, SallerName='SAINI FRUIT COMPANY', Nug='56.00', kg='2528.00', BasicAmount='25280.00', TotalAmount='26940.00', RoundOFF='-0.40',TotalCharges='1660.40', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-10-24 13:23:26',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =44
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:23:26 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1062, SallerName='YADAV ONION', Nug='212.00', kg='5498.00', BasicAmount='87382.50', TotalAmount='93676.00', RoundOFF='0.23',TotalCharges='6293.27', N1='0',N2='0',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-10-24 13:23:50',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =45
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:23:50 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 24-Oct-25 1:26:19 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:26:53 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1061, SallerName='SAINI FRUIT COMPANY', Nug='56.00', kg='2528.00', BasicAmount='22120.00', TotalAmount='23780.00', RoundOFF='-0.40',TotalCharges='1660.40', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-10-24 13:26:59',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =44
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:26:59 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1062, SallerName='YADAV ONION', Nug='212.00', kg='5498.00', BasicAmount='83846.75', TotalAmount='90140.00', RoundOFF='-0.02',TotalCharges='6293.27', N1='0',N2='0',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-10-24 13:27:02',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =45
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:27:03 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='3' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1057, SallerName='PDC', Nug='61.00', kg='1379.00', BasicAmount='10428.00', TotalAmount='11585.00', RoundOFF='0.04',TotalCharges='1156.96', N1='0',N2='0',InvoiceID='3',ModifiedByID='1', ModifiedTime='2025-10-24 13:27:06',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =46
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:27:06 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1061, SallerName='SAINI FRUIT COMPANY', Nug='56.00', kg='2528.00', BasicAmount='22120.00', TotalAmount='23780.00', RoundOFF='-0.40',TotalCharges='1660.40', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-10-24 13:27:35',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =44
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:27:35 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1062, SallerName='YADAV ONION', Nug='212.00', kg='5498.00', BasicAmount='83846.75', TotalAmount='90140.00', RoundOFF='-0.02',TotalCharges='6293.27', N1='0',N2='0',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-10-24 13:27:59',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =45
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:27:59 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1061, SallerName='SAINI FRUIT COMPANY', Nug='56.00', kg='2528.00', BasicAmount='22120.00', TotalAmount='23780.00', RoundOFF='-0.40',TotalCharges='1660.40', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-10-24 13:28:35',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =44
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:28:35 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='3' ,VehicleNo='', Entrydate='2025-10-23',   SallerID=1057, SallerName='PDC', Nug='61.00', kg='1379.00', BasicAmount='10428.00', TotalAmount='11585.00', RoundOFF='0.04',TotalCharges='1156.96', N1='0',N2='0',InvoiceID='3',ModifiedByID='1', ModifiedTime='2025-10-24 13:28:44',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =46
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 24-Oct-25 1:28:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 24-Oct-25 4:32:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 24-Oct-25 4:37:52 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 25-Oct-25 11:10:50 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 25-Oct-25 11:11:50 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND
+Date/Time: 25-Oct-25 3:55:49 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND
+Date/Time: 25-Oct-25 3:57:47 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TIKAM KELA STORE
+Date/Time: 25-Oct-25 4:16:59 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND
+Date/Time: 25-Oct-25 4:19:22 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TIKAM KELA STORE
+Date/Time: 25-Oct-25 4:19:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TIKAM KELA STORE
+Date/Time: 25-Oct-25 4:58:00 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TIKAM KELA STORE
+Date/Time: 25-Oct-25 5:26:59 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: TIKAM KELA STORE
+Date/Time: 25-Oct-25 5:33:41 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHREE MAHADEV VEGETABLE COMPANY
+Date/Time: 26-Oct-25 11:34:46 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHREE MAHADEV VEGETABLE COMPANY
+Date/Time: 26-Oct-25 11:43:26 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHREE MAHADEV VEGETABLE COMPANY
+Date/Time: 26-Oct-25 12:12:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SHREE MAHADEV VEGETABLE COMPANY
+Date/Time: 28-Oct-25 7:49:21 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 31-Oct-25 12:06:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 04-Nov-25 6:20:51 PM
+===========================================================================================

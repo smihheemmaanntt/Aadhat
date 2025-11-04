@@ -355,7 +355,7 @@ Partial Class CreateAccount
         Me.txtLimit.ForeColor = System.Drawing.Color.Black
         Me.txtLimit.Location = New System.Drawing.Point(707, 104)
         Me.txtLimit.Name = "txtLimit"
-        Me.txtLimit.Size = New System.Drawing.Size(211, 19)
+        Me.txtLimit.Size = New System.Drawing.Size(76, 19)
         Me.txtLimit.TabIndex = 1
         '
         'txtPhone
@@ -1147,7 +1147,7 @@ Partial Class CreateAccount
         Me.btnAccountList.Location = New System.Drawing.Point(914, 595)
         Me.btnAccountList.Name = "btnAccountList"
         Me.btnAccountList.Size = New System.Drawing.Size(158, 46)
-        Me.btnAccountList.TabIndex = 40149
+        Me.btnAccountList.TabIndex = 27
         Me.btnAccountList.Text = "&Account List"
         Me.btnAccountList.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAccountList.UseVisualStyleBackColor = False
@@ -1164,7 +1164,7 @@ Partial Class CreateAccount
         Me.BtnDelete.Location = New System.Drawing.Point(818, 595)
         Me.BtnDelete.Name = "BtnDelete"
         Me.BtnDelete.Size = New System.Drawing.Size(96, 46)
-        Me.BtnDelete.TabIndex = 27
+        Me.BtnDelete.TabIndex = 28
         Me.BtnDelete.Text = "&Delete"
         Me.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnDelete.UseVisualStyleBackColor = False

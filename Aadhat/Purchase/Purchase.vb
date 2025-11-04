@@ -740,11 +740,11 @@ Public Class Purchase
             If TxtPurchaseLot.Text = "" Then MsgBox("Lot Can't Be Empty." & vbNewLine & "Please fill Lot...", MsgBoxStyle.Critical, "Check Lot") : TxtPurchaseLot.Focus() : Exit Sub
             If dg1.SelectedRows.Count = 1 Then
                 Dim SoldLot As String = clsFun.ExecScalarStr("Select Lot From Transaction2 Where PurchaseID=" & Val(txtid.Text) & " and Lot='" & dg1.SelectedRows(0).Cells(1).Value & "'")
-                'If SoldLot <> "" Then
-                '    If TxtPurchaseLot.Text <> SoldLot Then
-                '        MsgBox("Entry Can't Modify..." & vbNewLine & "Lot No. : " & dg1.SelectedRows(0).Cells(1).Value & " Already in Sale Transaction..." & vbNewLine & "You Entered  Lot No. : " & TxtPurchaseLot.Text & "", MsgBoxStyle.Critical, "Access Denied..") : TxtPurchaseLot.Focus() : Exit Sub
-                '    End If
-                'End If
+                If SoldLot <> "" Then
+                    If TxtPurchaseLot.Text <> SoldLot Then
+                        MsgBox("Entry Can't Modify..." & vbNewLine & "Lot No. : " & dg1.SelectedRows(0).Cells(1).Value & " Already in Sale Transaction..." & vbNewLine & "You Entered  Lot No. : " & TxtPurchaseLot.Text & "", MsgBoxStyle.Critical, "Access Denied..") : TxtPurchaseLot.Focus() : Exit Sub
+                    End If
+                End If
 
                 dg1.SelectedRows(0).Cells(0).Value = txtItem.Text
                 dg1.SelectedRows(0).Cells(1).Value = TxtPurchaseLot.Text
@@ -2560,14 +2560,6 @@ Public Class Purchase
         Dg2.ClearSelection()
     End Sub
 
-    Private Sub txtchargesAmount_TextChanged(sender As Object, e As EventArgs) Handles txtchargesAmount.TextChanged
-
-    End Sub
-
-    Private Sub txtNug_TextChanged(sender As Object, e As EventArgs) Handles txtNug.TextChanged
-
-    End Sub
-
     Private Sub StartBackgroundTask(action As Action)
         If Not bgWorker.IsBusy Then
             bgWorker.RunWorkerAsync(action)
@@ -2701,5 +2693,9 @@ Public Class Purchase
         If Not Report_Viewer Is Nothing Then
             Report_Viewer.BringToFront()
         End If
+    End Sub
+
+    Private Sub txtTotalNetAmount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTotalNetAmount.KeyDown
+
     End Sub
 End Class

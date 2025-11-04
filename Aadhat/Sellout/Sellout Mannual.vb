@@ -43,7 +43,7 @@ Public Class Sellout_Mannual
 
     Private Sub TempRowColumn()
         With tmpgrid
-            .ColumnCount = 52
+            .ColumnCount = 53
             .Columns(0).Name = "ID" : .Columns(0).Visible = False
             .Columns(1).Name = "Date" : .Columns(1).Width = 95
             .Columns(2).Name = "VoucherNo" : .Columns(2).Width = 159
@@ -150,7 +150,9 @@ Public Class Sellout_Mannual
                     .Cells(23).Value = .Cells(23).Value & dt.Rows(i)("OtherName").ToString()
                     .Cells(24).Value = .Cells(24).Value & dt.Rows(i)("OtherName1").ToString()
                     .Cells(50).Value = .Cells(50).Value & dt.Rows(i)("AddWeight").ToString()
-                    .Cells(51).Value = clsFun.ExecScalarStr("Select Sum(Amount) From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' ")
+                    .Cells(51).Value = clsFun.ExecScalarStr("Select Sum(Amount) From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+                    .Cells(52).Value = clsFun.ExecScalarStr("Select 'Last Payment Rs. : '|| Amount || ' On : '|| strftime('%d-%m-%Y', Entrydate) as lastReceipt From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  order by  VourchersID desc limit 1")
+
                     For k = 0 To dt2.Rows.Count - 1
                         If dt2.Rows.Count > 0 Then
                             .Cells(36).Value = .Cells(36).Value & dt2.Rows(k)("ItemName").ToString() & vbCrLf
@@ -557,7 +559,7 @@ Public Class Sellout_Mannual
                                 "'" & .Cells(37).Value & "','" & .Cells(38).Value & "','" & .Cells(39).Value & "','" & .Cells(40).Value & "'," & _
                                 "'" & .Cells(41).Value & "','" & .Cells(42).Value & "','" & .Cells(43).Value & "','" & .Cells(44).Value & "'," & _
                                 "'" & .Cells(45).Value & "','" & .Cells(46).Value & "','" & .Cells(47).Value & "','" & .Cells(48).Value & "', " & _
-                                "'" & .Cells(49).Value & "','" & .Cells(50).Value & "','" & .Cells(51).Value & "'"
+                                "'" & .Cells(49).Value & "','" & .Cells(50).Value & "','" & .Cells(51).Value & "','" & .Cells(52).Value & "'"
                 End If
             End With
         Next
@@ -565,7 +567,7 @@ Public Class Sellout_Mannual
             If FastQuery = String.Empty Then Exit Sub
             sql = sql & "insert into Printing(D1, D2,M1, P1,P2, P3, P4, P5, P6,P7,P8,P9, " &
                        " P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20, P21,P22,P23,P24,P25,P26,P27,P28,P29, " &
-                       " P30,P31,P32,P33,P34,P35,P36,P37,P38,P39,P40,P41,P42,P43,P34,P45,P46,P47,P48,P49,P50,P51,P52)" & FastQuery & ""
+                       " P30,P31,P32,P33,P34,P35,P36,P37,P38,P39,P40,P41,P42,P43,P34,P45,P46,P47,P48,P49,P50,P51,P52,P53)" & FastQuery & ""
             ClsFunPrimary.ExecNonQuery(sql)
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -841,7 +843,7 @@ Public Class Sellout_Mannual
         txtDriverMobile.Text = "" : txtRemark.Text = ""
         txtCustName.Text = "" : dg1.Rows.Clear()
         pnlWhatsapp.Visible = False : BtnSave.Text = "&Save"
-        BtnDelete.Enabled = False
+        BtnDelete.Enabled = False : pnlAddWeight.Visible = False
         Dg2.Rows.Clear() : mskEntryDate.Focus() : mskEntryDate.SelectAll()
     End Sub
     Private Sub cleartxtCharges()
@@ -2403,31 +2405,33 @@ Public Class Sellout_Mannual
         mskEntryDate.BackColor = Color.GhostWhite
     End Sub
 
+    Private Sub txtAddWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAddWeight.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") Or ((e.KeyChar = "+") = -1) Or ((e.KeyChar = "-") = -1)))
+    End Sub
     Private Sub txtAddWeight_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAddWeight.KeyDown
         If e.KeyCode = Keys.Enter Then
             If txtAddWeight.Text = "" Then pnlAddWeight.Visible = False : txtKg.Focus() : Exit Sub
-            Dim code As String = ""
-            Dim a() As String = Split(txtAddWeight.Text, "+")
-            If a.Length >= 1 Then
-                For i = 0 To a.Length - 1
-                    code = Val(code) + Val(a(i).ToString)
-                Next
-            End If
+            Dim code As Double = 0
+            Dim part As String = ""
+            Dim sign As Double = 1
+            For i = 1 To Len(txtAddWeight.Text)
+                Dim ch As Char = Mid(txtAddWeight.Text, i, 1)
+                If ch = "+" Or ch = "-" Then
+                    code += sign * Val(part)
+                    part = ""
+                    sign = If(ch = "-", -1, 1)
+                Else
+                    part &= ch
+                End If
+            Next
+
+            code += sign * Val(part) 'last number add karo
+
             txtKg.Text = code
             txtKg.Focus()
             pnlAddWeight.Visible = False
         End If
     End Sub
 
-    Private Sub txtAccount_TextChanged(sender As Object, e As EventArgs) Handles txtAccount.TextChanged
 
-    End Sub
-
-    Private Sub txtCharges_TextChanged(sender As Object, e As EventArgs) Handles txtCharges.TextChanged
-
-    End Sub
-
-    Private Sub txtNug_TextChanged(sender As Object, e As EventArgs) Handles txtNug.TextChanged
-
-    End Sub
 End Class

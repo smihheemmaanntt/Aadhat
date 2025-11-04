@@ -1847,7 +1847,6 @@ Partial Class Purchase
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.Controls.Add(Me.pnlWhatsapp)
         Me.Controls.Add(Me.lblFarmer)
         Me.Controls.Add(Me.cbFarmer)
         Me.Controls.Add(Me.lblInword)
@@ -1933,6 +1932,7 @@ Partial Class Purchase
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.PnlCustomerBill)
+        Me.Controls.Add(Me.pnlWhatsapp)
         Me.Name = "Purchase"
         Me.Text = "Purchase"
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).EndInit()

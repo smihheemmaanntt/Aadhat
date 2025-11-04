@@ -1162,7 +1162,7 @@ Public Class Ledger
         Dim sql As String = ""
         Dim con As SQLite.SQLiteConnection = clsFun.GetConnection
         ClsFunWhatsapp.ExecNonQuery("Delete from SendingData")
-        GlobalData.PdfName = cbAccountName.Text & "-" & mskFromDate.Text & ".pdf"
+        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(cbAccountName.Text.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
         If ckJoin.Checked = True Then
             WithoutDiscriptionPrint()
         Else

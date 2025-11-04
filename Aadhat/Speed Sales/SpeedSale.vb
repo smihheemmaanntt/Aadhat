@@ -345,6 +345,7 @@
             cbAccountName.SelectedValue = Val(ds.Tables("a").Rows(0)("CrateAccountID").ToString())
             cbAccountName.Text = ds.Tables("a").Rows(0)("CrateAccountName").ToString()
             lblRoundOff.Text = Format(Val(ds.Tables("a").Rows(0)("RoundOff").ToString()), "0.00")
+            txtCut.Text = Format(Val(ds.Tables("a").Rows(0)("Cut").ToString()), "0.00")
             txtGrossWt.Text = Format(Val(ds.Tables("a").Rows(0)("GrossWeight").ToString()), "0.00")
         End If
         SpeedCalculation()
@@ -414,14 +415,14 @@
         txtLaboutAmt.Text = "0.00" : txtNet.Text = "0.00"
         cbAccountName.SelectedValue = 0 ': txtNug.Text = ""
         cbAccountName.Text = "" : txtCrateQty.Text = ""
-        VNumber() : txtNetRate.Text = "0.00"
+        VNumber() : txtNetRate.Text = "0.00" : txtCut.Clear()
         txtKg.Clear() : txtGrossWt.Text = 0
         txtTotal.Text = "0.00" : dg1.ClearSelection()
         txtid.Text = "" : dg1.ClearSelection()
         btnSave.Text = "&Save" : btnSave.BackColor = Color.DarkTurquoise
         btnSave.Image = My.Resources.Save : pnlMarka.Visible = False
         lblAddWeight.Text = "" : txtAddWeight.Clear()
-        txtItem.Focus()
+        pnlAddWeight.Visible = False : txtItem.Focus()
     End Sub
 
 
@@ -844,18 +845,27 @@
         lblAddWeight.Visible = True
     End Sub
     Private Sub txtAddWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAddWeight.KeyPress
-        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") Or ((e.KeyChar = "+") = -1)))
+        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") Or ((e.KeyChar = "+") = -1) Or ((e.KeyChar = "-") = -1)))
     End Sub
     Private Sub txtAddWeight_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAddWeight.KeyDown
         If e.KeyCode = Keys.Enter Then
             If txtAddWeight.Text = "" Then pnlAddWeight.Visible = False : txtKg.Focus() : Exit Sub
-            Dim code As String = ""
-            Dim a() As String = Split(txtAddWeight.Text, "+")
-            If a.Length >= 1 Then
-                For i = 0 To a.Length - 1
-                    code = Val(code) + Val(a(i).ToString)
-                Next
-            End If
+            Dim code As Double = 0
+            Dim part As String = ""
+            Dim sign As Double = 1
+            For i = 1 To Len(txtAddWeight.Text)
+                Dim ch As Char = Mid(txtAddWeight.Text, i, 1)
+                If ch = "+" Or ch = "-" Then
+                    code += sign * Val(part)
+                    part = ""
+                    sign = If(ch = "-", -1, 1)
+                Else
+                    part &= ch
+                End If
+            Next
+
+            code += sign * Val(part) 'last number add karo
+
             txtKg.Text = code
             txtKg.Focus()
             pnlAddWeight.Visible = False
@@ -874,7 +884,7 @@
                         & "" & Val(txtTare.Text) & ", " & Val(txtTareAmt.Text) & "," & Val(txtLabour.Text) & ", " & Val(txtLaboutAmt.Text) & "," _
                         & "" & Val(lblTotCharges.Text) & ", '" & lblCrate.Text & "', '" & cbCrateMarka.Text & "'," & Val(txtCrateQty.Text) & ", " _
                         & "" & If(cbCrateMarka.Text <> "Y", Val(0), Val(cbCrateMarka.SelectedValue)) & ",'" & txtSlipNo.Text & "', " _
-                        & "" & Val(txtid.Text) & "," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "'," & Val(lblRoundOff.Text) & "," & Val(txtGrossWt.Text) & ",'" & txtAddWeight.Text & "'," & Val(txtGrossWt.Text) & ""
+                        & "" & Val(txtid.Text) & "," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "'," & Val(lblRoundOff.Text) & "," & Val(txtCut.Text) & ",'" & txtAddWeight.Text & "'," & Val(txtGrossWt.Text) & ""
         Try
             If clsFun.ExecNonQuery(sql, True) > 0 Then
                 ' el.WriteToErrorLog(sql, "", "Speed Record")
@@ -1543,7 +1553,7 @@
     Private Sub txtAccount_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAccount.KeyUp
         '  AccountRowColumns()
         If txtAccount.Text.Trim() <> "" Then
-            retriveAccounts(" And upper(accountname) Like upper('" & txtAccount.Text.Trim() & "%')")
+            retriveAccounts(" And upper(accountname) Like upper('" & txtAccount.Text.Trim() & "%') or upper(LfNo) Like upper('" & txtAccount.Text.Trim() & "%') ")
         Else
             retriveAccounts()
         End If
@@ -1883,9 +1893,19 @@
     Private Sub txtGrossWt_KeyUp(sender As Object, e As KeyEventArgs) Handles txtGrossWt.KeyUp
         If Val(txtGrossWt.Text) = 0 Then Exit Sub
         txtKg.Text = Format(Val(txtGrossWt.Text) - (Val(CUT) * Val(txtNug.Text)), "0.00")
+        txtCut.Text = (Val(txtKg.Text) - Val(txtGrossWt.Text))
+        txtCut.Text = If(Val(txtCut.Text) = 0, "", Format(Val(txtCut.Text), "0.00"))
     End Sub
 
     Private Sub txtTotal_TextChanged(sender As Object, e As EventArgs) Handles txtTotal.TextChanged
+
+    End Sub
+
+    Private Sub txtGrossWt_TextChanged(sender As Object, e As EventArgs) Handles txtGrossWt.TextChanged
+
+    End Sub
+
+    Private Sub txtAddWeight_TextChanged(sender As Object, e As EventArgs) Handles txtAddWeight.TextChanged
 
     End Sub
 End Class

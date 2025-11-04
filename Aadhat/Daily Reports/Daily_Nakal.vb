@@ -56,22 +56,68 @@
         dg1.Columns(3).Name = "Account Name" : dg1.Columns(3).Width = 400 : dg1.Columns(3).SortMode = DataGridViewColumnSortMode.NotSortable : dg1.Columns(3).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft
         dg1.Columns(4).Name = "Total" : dg1.Columns(4).Width = 180 : dg1.Columns(4).SortMode = DataGridViewColumnSortMode.NotSortable : dg1.Columns(4).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight
     End Sub
+    'Private Sub retrive()
+    '    dg1.Rows.Clear()
+    '    ' Get Expense Data
+    '    Dim dtExp As New DataTable
+    '    dtExp = clsFun.ExecDataTable("Select sum(CommAmt) as Commission, sum(MAmt) as MandiTax, sum(RdfAmt) as RDF, sum(TareAmt) as Bardana, sum(LabourAmt) as Labour, sum(Charges) as Charges  from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
+
+    '    ' Get Account Data
+    '    Dim dtAcc As New DataTable
+    '    dtAcc = clsFun.ExecDataTable("Select AccountName, sum(TotalAmount) as TotalAmount from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & " Group By AccountName order by AccountName")
+    '    Try
+    '        Dim maxRows As Integer = Math.Max(dtExp.Rows.Count, dtAcc.Rows.Count) ' Find maximum rows to iterate
+
+    '        For i As Integer = 0 To maxRows - 1
+    '            dg1.Rows.Add()
+    '            ' Add Expense Data in Column 1 and 2
+    '            If i = 0 Then dg1.Rows(i).Cells(1).Value = "Customers Expenses ----------------" : dg1.Rows(i).Cells(2).Value = "----------------"
+    '            If dtExp.Rows.Count > 0 Then
+    '                Select Case i
+    '                    Case 1 : dg1.Rows(i).Cells(1).Value = "Commission" : dg1.Rows(i).Cells(2).Value = Format(Val(dtExp.Rows(0)("Commission").ToString()), "0.00")
+    '                    Case 2 : dg1.Rows(i).Cells(1).Value = "Mandi Tax" : dg1.Rows(i).Cells(2).Value = Format(Val(dtExp.Rows(0)("MandiTax").ToString()), "0.00")
+    '                    Case 3 : dg1.Rows(i).Cells(1).Value = "RDF" : dg1.Rows(i).Cells(2).Value = Format(Val(dtExp.Rows(0)("RDF").ToString()), "0.00")
+    '                    Case 4 : dg1.Rows(i).Cells(1).Value = "Bardana" : dg1.Rows(i).Cells(2).Value = Format(Val(dtExp.Rows(0)("Bardana").ToString()), "0.00")
+    '                    Case 5 : dg1.Rows(i).Cells(1).Value = "Labour" : dg1.Rows(i).Cells(2).Value = Format(Val(dtExp.Rows(0)("Labour").ToString()), "0.00")
+    '                    Case 6 : dg1.Rows(i).Cells(1).Value = "========================" : dg1.Rows(i).Cells(2).Value = "===================="
+    '                    Case 7 : dg1.Rows(i).Cells(1).Value = "Total Expenses" : dg1.Rows(i).Cells(2).Value = Format(Val(dtExp.Rows(0)("Charges").ToString()), "0.00")
+    '                    Case 8 : dg1.Rows(i).Cells(1).Value = "========================" : dg1.Rows(i).Cells(2).Value = "===================="
+    '                End Select
+    '            End If
+
+    '            ' Add Account Data in Column 3 and 4
+    '            If dtAcc.Rows.Count > i Then
+    '                dg1.Rows(i).Cells(3).Value = dtAcc.Rows(i)("AccountName").ToString()
+    '                dg1.Rows(i).Cells(4).Value = Format(Val(dtAcc.Rows(i)("TotalAmount").ToString()), "0.00")
+    '            End If
+    '        Next
+
+    '        ' Clear Unnecessary Selections
+    '        dg1.ClearSelection()
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
+    '    End Try
+    'End Sub
+
     Private Sub retrive()
         dg1.Rows.Clear()
+
         ' Get Expense Data
         Dim dtExp As New DataTable
-        dtExp = clsFun.ExecDataTable("Select sum(CommAmt) as Commission, sum(MAmt) as MandiTax, sum(RdfAmt) as RDF, sum(TareAmt) as Bardana, sum(LabourAmt) as Labour, sum(Charges) as Charges  from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
+        dtExp = clsFun.ExecDataTable("Select sum(CommAmt) as Commission, sum(MAmt) as MandiTax, sum(RdfAmt) as RDF, sum(TareAmt) as Bardana, sum(LabourAmt) as Labour, sum(Charges) as Charges from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
 
         ' Get Account Data
         Dim dtAcc As New DataTable
         dtAcc = clsFun.ExecDataTable("Select AccountName, sum(TotalAmount) as TotalAmount from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & " Group By AccountName order by AccountName")
 
         Try
-            Dim maxRows As Integer = Math.Max(dtExp.Rows.Count, dtAcc.Rows.Count) ' Find maximum rows to iterate
+            Dim maxRows As Integer = Math.Max(dtExp.Rows.Count, dtAcc.Rows.Count)
+            Dim totalAccountAmt As Double = 0 ' Account column total store karne ke liye
 
             For i As Integer = 0 To maxRows - 1
                 dg1.Rows.Add()
-                ' Add Expense Data in Column 1 and 2
+
+                ' Add Expense Data
                 If i = 0 Then dg1.Rows(i).Cells(1).Value = "Customers Expenses ----------------" : dg1.Rows(i).Cells(2).Value = "----------------"
                 If dtExp.Rows.Count > 0 Then
                     Select Case i
@@ -86,21 +132,39 @@
                     End Select
                 End If
 
-                ' Add Account Data in Column 3 and 4
+                ' Add Account Data
                 If dtAcc.Rows.Count > i Then
                     dg1.Rows(i).Cells(3).Value = dtAcc.Rows(i)("AccountName").ToString()
                     dg1.Rows(i).Cells(4).Value = Format(Val(dtAcc.Rows(i)("TotalAmount").ToString()), "0.00")
+
+                    ' Total calculation
+                    totalAccountAmt += Val(dtAcc.Rows(i)("TotalAmount").ToString())
                 End If
             Next
 
-            ' Clear Unnecessary Selections
+            ' Add empty separator row
+            dg1.Rows.Add()
+            dg1.Rows(dg1.Rows.Count - 1).Cells(3).Value = "---------------------------"
+            dg1.Rows(dg1.Rows.Count - 1).Cells(4).Value = "--------------------"
+
+            ' Add Total row for column 4
+            dg1.Rows.Add()
+            dg1.Rows(dg1.Rows.Count - 1).Cells(3).Value = "Total of Accounts"
+            dg1.Rows(dg1.Rows.Count - 1).Cells(4).Value = Format(totalAccountAmt, "0.00")
+
+            ' Bold and highlight total row (optional)
+            Dim totalRowIndex As Integer = dg1.Rows.Count - 1
+            dg1.Rows(totalRowIndex).DefaultCellStyle.Font = New Font(dg1.Font, FontStyle.Bold)
+            dg1.Rows(totalRowIndex).DefaultCellStyle.BackColor = Color.LightYellow
+
+            ' Clear selection
             dg1.ClearSelection()
+
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
         End Try
     End Sub
 
-   
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
         retrive()
     End Sub

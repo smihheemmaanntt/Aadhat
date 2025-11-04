@@ -1252,7 +1252,7 @@ Public Class Super_Sale
         End If
         Dim isDiff As String = clsFun.ExecScalarStr("Select sendDiff From Controls")
         If isDiff = "Yes" Then
-            Dim diff As Decimal = Val(txtSallerBasicTotal.Text) - Val(txtbasicTotal.Text)
+            Dim diff As Decimal = Val(txtsallerTotal.Text) - Val(txtTotalNetAmount.Text)
             If diff = 0 Then Exit Sub
             If Val(diff) < 0 Then
                 FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & 56 & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=56") & "'," & Math.Abs(Val(diff)) & ",'D' ,'" & "Voucher No.:" & txtVoucherNo.Text & " : Sellout Mannual Value : " & diff & "','" & txtAccount.Text & "','" & RemarkHindi & "' "
@@ -2389,7 +2389,7 @@ Public Class Super_Sale
         Dim count As Integer = 0
         Dim cmd As New SQLite.SQLiteCommand
         Dim sql As String = String.Empty
-        Dim lastPayment = clsFun.ExecScalarStr("Select  BasicAmount FROM Vouchers where TransType='Payment' and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  and Accountid=" & Val(txtAccountID.Text) & " ORDER BY Vouchers.Entrydate DESC limit 1 ;")
+        Dim lastPayment = clsFun.ExecScalarStr("Select  BasicAmount FROM Vouchers where TransType='Payment' and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  and Accountid=" & Val(txtAccountID.Text) & " and PaymentID= " & Val(txtid.Text) & " ORDER BY Vouchers.Entrydate DESC limit 1 ;")
 
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         ' clsFun.ExecNonQuery(sql)
@@ -2576,7 +2576,7 @@ Public Class Super_Sale
     Private Sub txtAccount_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAccount.KeyUp
         If DgAccountSearch.RowCount = 0 Then Exit Sub
         If txtAccount.Text.Trim() <> "" Then
-            retriveAccounts(" And upper(accountname) Like upper('" & txtAccount.Text.Trim() & "%')")
+            retriveAccounts(" And upper(accountname) Like upper('" & txtAccount.Text.Trim() & "%') or upper(LfNo) Like upper('%" & txtAccount.Text.Trim() & "%')")
         Else
             retriveAccounts()
         End If
@@ -2806,7 +2806,7 @@ Public Class Super_Sale
     Private Sub txtCustomer_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCustomer.KeyUp
         If txtCustomer.Text.Trim() <> "" Then
             If dgCustomer.ColumnCount = 0 Then CustoemerRowColums()
-            RetriveCustomer(" And upper(accountname) Like upper('" & txtCustomer.Text.Trim() & "%')")
+            RetriveCustomer(" And upper(accountname) Like upper('" & txtCustomer.Text.Trim() & "%') or upper(LfNo) Like upper('" & txtCustomer.Text.Trim() & "%')")
         End If
     End Sub
     Private Sub dgCharges_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgCharges.CellClick

@@ -101,7 +101,7 @@
         txtKg.Text = Format(Val(dgLot.SelectedRows(0).Cells(6).Value), "0.00")
         txtOnSaleID.Text = Val(dgLot.SelectedRows(0).Cells(7).Value)
         dgLot.Visible = False
-        LotBalance()
+        'LotBalance()
     End Sub
     Private Sub txtNug_TextChanged(sender As Object, e As EventArgs) Handles txtNug.Leave, Cbper.Leave,
     txtKg.Leave, txtRate.Leave, txtTotbasic.Leave
@@ -199,10 +199,10 @@
 
     Private Sub txtNug_Leave(sender As Object, e As EventArgs) Handles txtNug.Leave
         If txtNug.Text = "" Then txtNug.Text = Val(0)
-        If txtNug.Text > Val(LotBal) Then
-            MsgBox("Not Enough Nugs. Please Choose Another Item / Lot ", MsgBoxStyle.Critical, "Zero")
-            txtNug.Text = 0 : txtLot.Focus() : Exit Sub
-        End If
+        'If txtNug.Text > Val(LotBal) Then
+        '    MsgBox("Not Enough Nugs. Please Choose Another Item / Lot ", MsgBoxStyle.Critical, "Zero")
+        '    txtNug.Text = 0 : txtLot.Focus() : Exit Sub
+        'End If
     End Sub
 
 

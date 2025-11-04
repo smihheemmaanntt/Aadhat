@@ -72,6 +72,7 @@
         dg1.Columns(5).Name = "AcId"
         dg1.Columns(5).Visible = False
     End Sub
+
     Private Sub JournalEntry_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         'rs.ResizeAllControls(Me)
     End Sub
