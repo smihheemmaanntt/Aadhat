@@ -1647,4 +1647,10 @@ Public Class MainScreenForm
         Selected_Outsanting.Show()
         Selected_Outsanting.BringToFront()
     End Sub
+
+    Private Sub CashBookCumBankBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CashBookCumBankBookToolStripMenuItem.Click
+        CashBookCumBankBook.MdiParent = Me
+        CashBookCumBankBook.Show()
+        CashBookCumBankBook.BringToFront()
+    End Sub
 End Class

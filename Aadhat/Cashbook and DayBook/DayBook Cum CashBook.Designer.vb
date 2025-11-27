@@ -22,11 +22,11 @@ Partial Class DayBook_Cum_CashBook
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DayBook_Cum_CashBook))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DayBook_Cum_CashBook))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
@@ -34,9 +34,6 @@ Partial Class DayBook_Cum_CashBook
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.cbAccountName = New System.Windows.Forms.ComboBox()
-        Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.Dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.pnlWait = New System.Windows.Forms.Panel()
@@ -44,9 +41,10 @@ Partial Class DayBook_Cum_CashBook
         Me.Label4 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.btnClose = New System.Windows.Forms.Button()
-        CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.pnlWait.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -136,77 +134,6 @@ Partial Class DayBook_Cum_CashBook
         Me.Label3.Text = "From Date :"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label42
-        '
-        Me.Label42.BackColor = System.Drawing.Color.CadetBlue
-        Me.Label42.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.Label42.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label42.Location = New System.Drawing.Point(12, 106)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(136, 29)
-        Me.Label42.TabIndex = 40038
-        Me.Label42.Text = "Account Name"
-        Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'cbAccountName
-        '
-        Me.cbAccountName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbAccountName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbAccountName.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.cbAccountName.FormattingEnabled = True
-        Me.cbAccountName.Location = New System.Drawing.Point(148, 106)
-        Me.cbAccountName.Name = "cbAccountName"
-        Me.cbAccountName.Size = New System.Drawing.Size(319, 27)
-        Me.cbAccountName.TabIndex = 1
-        '
-        'dg1
-        '
-        Me.dg1.AllowUserToAddRows = False
-        Me.dg1.AllowUserToDeleteRows = False
-        Me.dg1.AllowUserToResizeRows = False
-        Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
-        Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dg1.ColumnHeadersHeight = 28
-        Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CadetBlue
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dg1.EnableHeadersVisualStyles = False
-        Me.dg1.GridColor = System.Drawing.Color.Gray
-        Me.dg1.Location = New System.Drawing.Point(12, 132)
-        Me.dg1.MultiSelect = False
-        Me.dg1.Name = "dg1"
-        Me.dg1.ReadOnly = True
-        Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dg1.RowHeadersVisible = False
-        Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1170, 507)
-        Me.dg1.TabIndex = 91214
-        '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 13.0!)
@@ -273,6 +200,54 @@ Partial Class DayBook_Cum_CashBook
         Me.btnClose.TabIndex = 91216
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'dg1
+        '
+        Me.dg1.AllowUserToAddRows = False
+        Me.dg1.AllowUserToDeleteRows = False
+        Me.dg1.AllowUserToResizeRows = False
+        Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
+        Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dg1.ColumnHeadersHeight = 28
+        Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CadetBlue
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dg1.EnableHeadersVisualStyles = False
+        Me.dg1.GridColor = System.Drawing.Color.Gray
+        Me.dg1.Location = New System.Drawing.Point(12, 132)
+        Me.dg1.MultiSelect = False
+        Me.dg1.Name = "dg1"
+        Me.dg1.ReadOnly = True
+        Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.dg1.RowHeadersVisible = False
+        Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dg1.Size = New System.Drawing.Size(1170, 472)
+        Me.dg1.TabIndex = 91214
+        '
         'DayBook_Cum_CashBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -286,21 +261,19 @@ Partial Class DayBook_Cum_CashBook
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dg1)
-        Me.Controls.Add(Me.cbAccountName)
         Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.dtp1)
         Me.KeyPreview = True
         Me.Name = "DayBook_Cum_CashBook"
         Me.Text = "Cash_Bank_Book"
-        CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlWait.ResumeLayout(False)
         Me.pnlWait.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -312,9 +285,6 @@ Partial Class DayBook_Cum_CashBook
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label42 As System.Windows.Forms.Label
-    Friend WithEvents cbAccountName As System.Windows.Forms.ComboBox
-    Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
@@ -322,4 +292,5 @@ Partial Class DayBook_Cum_CashBook
     Friend WithEvents pnlWait As System.Windows.Forms.Panel
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents dg1 As System.Windows.Forms.DataGridView
 End Class

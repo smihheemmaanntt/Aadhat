@@ -69,6 +69,171 @@
         dg1.Columns(4).Name = "Debit" : dg1.Columns(3).Width = 150
         dg1.Columns(5).Name = "Credit" : dg1.Columns(4).Width = 150
         dg1.Columns(6).Name = "Balance" : dg1.Columns(5).Width = 200
+        dg1.Columns(6).Name = "OtherName" : dg1.Columns(5).Width = 200
+    End Sub
+    Private Sub RetriveGroupLedger()
+
+        dg1.Rows.Clear()
+        txtOpBal.Text = ""
+        txtBalAmt.Text = ""
+        txtDramt.Text = "0.00"
+        txtcrAmt.Text = "0.00"
+
+        Dim fromDate As Date = CDate(mskFromDate.Text)
+        Dim toDate As Date = CDate(MsktoDate.Text)
+
+        '*** Debtors O/S की तरह – सिर्फ वही party जिनका RestBal <> 0 है
+        ' अगर किसी खास Group (Debtors) के लिए चाहिए तो यहां GroupID की condition जोड़ लेना
+        ' जैसे: "Where RestBal <> 0 And GroupID = 1"
+        Dim accSql As String = "Select ID, AccountName, DC, ifnull(OtherName,'') as OtherName " &
+                               "From Accounts Order By upper(AccountName)"
+
+        Dim dtAcc As DataTable = clsFun.ExecDataTable(accSql)
+
+        Dim grandDr As Decimal = 0D
+        Dim grandCr As Decimal = 0D
+
+        For Each accRow As DataRow In dtAcc.Rows
+
+            Dim accId As Integer = CInt(accRow("ID"))
+            Dim accName As String = accRow("AccountName").ToString()
+            Dim drcr As String = accRow("DC").ToString()
+            Dim otherName As String = accRow("OtherName").ToString()
+
+            '************ Opening Balance (आपके पुराने formula जैसा ही) ************
+            Dim opbalSql As String =
+                "Select Round((Case When DC='Dr' then " &
+                " (ifnull(opbal,0) + (Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
+                "   Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate < '" & fromDate.ToString("yyyy-MM-dd") & "')" &
+                " - (Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
+                "   Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate < '" & fromDate.ToString("yyyy-MM-dd") & "')" &
+                " ) else " &
+                " (ifnull(-(opbal),0) + -(Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
+                "   Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate < '" & fromDate.ToString("yyyy-MM-dd") & "')" &
+                " + (Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
+                "   Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate < '" & fromDate.ToString("yyyy-MM-dd") & "')" &
+                " ) end),2) as Restbal " &
+                "From Accounts Where ID=" & accId
+
+            Dim opBal As Decimal = Val(clsFun.ExecScalarStr(opbalSql))
+
+            '************ उस party के ledger transactions ************
+            Dim tranSql As String =
+                "Select VourchersID, Entrydate, TransType, AccountName, Remark, RemarkHindi, " &
+                " round(Case When DC='D' then Amount else 0 end,2) as Dr, " &
+                " round(Case When DC='C' then Amount else 0 end,2) as Cr " &
+                "From Ledger " &
+                "Where AccountID=" & accId &
+                "  And EntryDate Between '" & fromDate.ToString("yyyy-MM-dd") &
+                "' And '" & toDate.ToString("yyyy-MM-dd") & "'" &
+                "Order By EntryDate, VourchersID"
+
+            Dim dtLed As DataTable = clsFun.ExecDataTable(tranSql)
+
+            ' अगर ना opening है, ना ही period में कोई transaction, तो skip
+            If opBal = 0D AndAlso dtLed.Rows.Count = 0 Then
+                Continue For
+            End If
+
+            Dim partyDr As Decimal = 0D
+            Dim partyCr As Decimal = 0D
+            Dim bal As Decimal = opBal
+
+            '************ Party Header row  (जैसे PDF में "Party : XYZ") ************
+            Dim rIndex As Integer = dg1.Rows.Add()
+            With dg1.Rows(rIndex)
+                .Cells(1).Value = "Party : " & accName
+                .Cells(3).Value = accName
+                '.Cells(8).Value = otherName
+                .DefaultCellStyle.Font = New Font(dg1.Font, FontStyle.Bold)
+            End With
+
+            '************ Opening Balance row (01/04/25 Op.Bal. जैसा) ************
+            If opBal <> 0D Then
+                rIndex = dg1.Rows.Add()
+                With dg1.Rows(rIndex)
+                    .Cells(1).Value = fromDate.ToString("dd-MM-yyyy")
+                    .Cells(2).Value = "Op.Bal."
+                    If opBal >= 0D Then
+                        .Cells(5).Value = Format(Math.Abs(opBal), "0.00")  'Dr
+                        .Cells(6).Value = ""                               'Cr
+                    Else
+                        .Cells(5).Value = ""
+                        .Cells(6).Value = Format(Math.Abs(opBal), "0.00")  'Cr
+                    End If
+                    .Cells(7).Value = If(bal >= 0D,
+                                         Format(Math.Abs(bal), "0.00") & " Dr",
+                                         Format(Math.Abs(bal), "0.00") & " Cr")
+                End With
+
+                If opBal >= 0D Then
+                    partyDr += Math.Abs(opBal)
+                Else
+                    partyCr += Math.Abs(opBal)
+                End If
+            End If
+
+            '************ Ledger की सारी entries ************
+            For Each tRow As DataRow In dtLed.Rows
+
+                Dim drAmt As Decimal = Val(tRow("Dr").ToString())
+                Dim crAmt As Decimal = Val(tRow("Cr").ToString())
+
+                ' Running balance
+                bal += drAmt
+                bal -= crAmt
+
+                partyDr += drAmt
+                partyCr += crAmt
+
+                rIndex = dg1.Rows.Add()
+                With dg1.Rows(rIndex)
+                    .Cells(0).Value = tRow("VourchersID").ToString()
+                    .Cells(1).Value = CDate(tRow("EntryDate")).ToString("dd-MM-yyyy")
+                    .Cells(2).Value = tRow("TransType").ToString()
+                    .Cells(3).Value = accName
+                    .Cells(4).Value = tRow("Remark").ToString()
+                    .Cells(5).Value = If(drAmt = 0D, "", Format(drAmt, "0.00"))
+                    .Cells(6).Value = If(crAmt = 0D, "", Format(crAmt, "0.00"))
+                    .Cells(7).Value = If(bal >= 0D,
+                                         Format(Math.Abs(bal), "0.00") & " Dr",
+                                         Format(Math.Abs(bal), "0.00") & " Cr")
+                    .Cells(8).Value = otherName
+                    .Cells(9).Value = tRow("RemarkHindi").ToString()
+                End With
+
+            Next
+
+            '************ Party Total row (जैसे PDF में "Party Total") ************
+            rIndex = dg1.Rows.Add()
+            With dg1.Rows(rIndex)
+                .Cells(3).Value = "Party Total"
+                .Cells(5).Value = If(partyDr = 0D, "", Format(partyDr, "0.00"))
+                .Cells(6).Value = If(partyCr = 0D, "", Format(partyCr, "0.00"))
+                .DefaultCellStyle.Font = New Font(dg1.Font, FontStyle.Bold)
+            End With
+
+            '************ Party Balance row (जैसे PDF में "Party Balance") ************
+            rIndex = dg1.Rows.Add()
+            With dg1.Rows(rIndex)
+                .Cells(3).Value = "Party Balance"
+                .Cells(7).Value = If(bal >= 0D,
+                                     Format(Math.Abs(bal), "0.00") & " Dr",
+                                     Format(Math.Abs(bal), "0.00") & " Cr")
+                .DefaultCellStyle.Font = New Font(dg1.Font, FontStyle.Bold)
+            End With
+
+            grandDr += partyDr
+            grandCr += partyCr
+
+        Next
+
+        '***** Grand Total Dr / Cr textboxes में *****
+        txtDramt.Text = Format(grandDr, "0.00")
+        txtcrAmt.Text = Format(grandCr, "0.00")
+
+        dg1.ClearSelection()
+
     End Sub
 
     Public Sub retrive(Optional ByVal condtion As String = "")
@@ -124,6 +289,7 @@
 
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
         retrive()
+        'RetriveGroupLedger()
     End Sub
     Private Sub rowColumsTemp()
         tmpgrid.ColumnCount = 15

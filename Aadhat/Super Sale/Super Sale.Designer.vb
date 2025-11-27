@@ -215,6 +215,16 @@ Partial Class Super_Sale
         Me.BtnDelete = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.lblcount = New System.Windows.Forms.Label()
+        Me.lblTotLabour = New System.Windows.Forms.Label()
+        Me.lblTotBardana = New System.Windows.Forms.Label()
+        Me.lblTotRdf = New System.Windows.Forms.Label()
+        Me.lblTotMandi = New System.Windows.Forms.Label()
+        Me.lbltotCom = New System.Windows.Forms.Label()
+        Me.Label72 = New System.Windows.Forms.Label()
+        Me.Label51 = New System.Windows.Forms.Label()
+        Me.Label52 = New System.Windows.Forms.Label()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.Label54 = New System.Windows.Forms.Label()
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1378,7 +1388,7 @@ Partial Class Super_Sale
         '
         Me.lblInword.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInword.ForeColor = System.Drawing.Color.Blue
-        Me.lblInword.Location = New System.Drawing.Point(734, 605)
+        Me.lblInword.Location = New System.Drawing.Point(732, 629)
         Me.lblInword.Name = "lblInword"
         Me.lblInword.Size = New System.Drawing.Size(49, 20)
         Me.lblInword.TabIndex = 40119
@@ -1566,7 +1576,7 @@ Partial Class Super_Sale
         Me.txtPaymentID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPaymentID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPaymentID.ForeColor = System.Drawing.Color.Teal
-        Me.txtPaymentID.Location = New System.Drawing.Point(818, 572)
+        Me.txtPaymentID.Location = New System.Drawing.Point(816, 596)
         Me.txtPaymentID.Name = "txtPaymentID"
         Me.txtPaymentID.Size = New System.Drawing.Size(56, 26)
         Me.txtPaymentID.TabIndex = 91121
@@ -1603,7 +1613,7 @@ Partial Class Super_Sale
         Me.lblPayment.AutoSize = True
         Me.lblPayment.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPayment.ForeColor = System.Drawing.Color.Maroon
-        Me.lblPayment.Location = New System.Drawing.Point(735, 578)
+        Me.lblPayment.Location = New System.Drawing.Point(733, 602)
         Me.lblPayment.Name = "lblPayment"
         Me.lblPayment.Size = New System.Drawing.Size(77, 19)
         Me.lblPayment.TabIndex = 29
@@ -2578,12 +2588,132 @@ Partial Class Super_Sale
         Me.lblcount.TabIndex = 91261
         Me.lblcount.Text = "#"
         '
+        'lblTotLabour
+        '
+        Me.lblTotLabour.AutoSize = True
+        Me.lblTotLabour.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotLabour.ForeColor = System.Drawing.Color.Navy
+        Me.lblTotLabour.Location = New System.Drawing.Point(832, 566)
+        Me.lblTotLabour.Name = "lblTotLabour"
+        Me.lblTotLabour.Size = New System.Drawing.Size(37, 19)
+        Me.lblTotLabour.TabIndex = 91280
+        Me.lblTotLabour.Text = "0.00"
+        '
+        'lblTotBardana
+        '
+        Me.lblTotBardana.AutoSize = True
+        Me.lblTotBardana.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotBardana.ForeColor = System.Drawing.Color.Navy
+        Me.lblTotBardana.Location = New System.Drawing.Point(832, 547)
+        Me.lblTotBardana.Name = "lblTotBardana"
+        Me.lblTotBardana.Size = New System.Drawing.Size(37, 19)
+        Me.lblTotBardana.TabIndex = 91279
+        Me.lblTotBardana.Text = "0.00"
+        '
+        'lblTotRdf
+        '
+        Me.lblTotRdf.AutoSize = True
+        Me.lblTotRdf.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotRdf.ForeColor = System.Drawing.Color.Navy
+        Me.lblTotRdf.Location = New System.Drawing.Point(832, 528)
+        Me.lblTotRdf.Name = "lblTotRdf"
+        Me.lblTotRdf.Size = New System.Drawing.Size(37, 19)
+        Me.lblTotRdf.TabIndex = 91278
+        Me.lblTotRdf.Text = "0.00"
+        '
+        'lblTotMandi
+        '
+        Me.lblTotMandi.AutoSize = True
+        Me.lblTotMandi.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotMandi.ForeColor = System.Drawing.Color.Navy
+        Me.lblTotMandi.Location = New System.Drawing.Point(832, 509)
+        Me.lblTotMandi.Name = "lblTotMandi"
+        Me.lblTotMandi.Size = New System.Drawing.Size(37, 19)
+        Me.lblTotMandi.TabIndex = 91277
+        Me.lblTotMandi.Text = "0.00"
+        '
+        'lbltotCom
+        '
+        Me.lbltotCom.AutoSize = True
+        Me.lbltotCom.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltotCom.ForeColor = System.Drawing.Color.Navy
+        Me.lbltotCom.Location = New System.Drawing.Point(832, 491)
+        Me.lbltotCom.Name = "lbltotCom"
+        Me.lbltotCom.Size = New System.Drawing.Size(37, 19)
+        Me.lbltotCom.TabIndex = 91276
+        Me.lbltotCom.Text = "0.00"
+        '
+        'Label72
+        '
+        Me.Label72.AutoSize = True
+        Me.Label72.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label72.ForeColor = System.Drawing.Color.Black
+        Me.Label72.Location = New System.Drawing.Point(764, 565)
+        Me.Label72.Name = "Label72"
+        Me.Label72.Size = New System.Drawing.Size(66, 19)
+        Me.Label72.TabIndex = 91275
+        Me.Label72.Text = "Labour :"
+        '
+        'Label51
+        '
+        Me.Label51.AutoSize = True
+        Me.Label51.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label51.ForeColor = System.Drawing.Color.Black
+        Me.Label51.Location = New System.Drawing.Point(755, 546)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(75, 19)
+        Me.Label51.TabIndex = 91274
+        Me.Label51.Text = "Bardana :"
+        '
+        'Label52
+        '
+        Me.Label52.AutoSize = True
+        Me.Label52.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label52.ForeColor = System.Drawing.Color.Black
+        Me.Label52.Location = New System.Drawing.Point(780, 527)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(50, 19)
+        Me.Label52.TabIndex = 91273
+        Me.Label52.Text = "RDF :"
+        '
+        'Label53
+        '
+        Me.Label53.AutoSize = True
+        Me.Label53.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label53.ForeColor = System.Drawing.Color.Black
+        Me.Label53.Location = New System.Drawing.Point(739, 508)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(91, 19)
+        Me.Label53.TabIndex = 91272
+        Me.Label53.Text = "Mandi Tax :"
+        '
+        'Label54
+        '
+        Me.Label54.AutoSize = True
+        Me.Label54.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label54.ForeColor = System.Drawing.Color.Black
+        Me.Label54.Location = New System.Drawing.Point(731, 490)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(99, 19)
+        Me.Label54.TabIndex = 91271
+        Me.Label54.Text = "Commission :"
+        '
         'Super_Sale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.lblTotLabour)
+        Me.Controls.Add(Me.lblTotBardana)
+        Me.Controls.Add(Me.lblTotRdf)
+        Me.Controls.Add(Me.lblTotMandi)
+        Me.Controls.Add(Me.lbltotCom)
+        Me.Controls.Add(Me.Label72)
+        Me.Controls.Add(Me.Label51)
+        Me.Controls.Add(Me.Label52)
+        Me.Controls.Add(Me.Label53)
+        Me.Controls.Add(Me.Label54)
         Me.Controls.Add(Me.lblcount)
         Me.Controls.Add(Me.pnlWhatsapp)
         Me.Controls.Add(Me.pnlMarka)
@@ -2911,4 +3041,14 @@ Partial Class Super_Sale
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents lblcount As System.Windows.Forms.Label
+    Friend WithEvents lblTotLabour As System.Windows.Forms.Label
+    Friend WithEvents lblTotBardana As System.Windows.Forms.Label
+    Friend WithEvents lblTotRdf As System.Windows.Forms.Label
+    Friend WithEvents lblTotMandi As System.Windows.Forms.Label
+    Friend WithEvents lbltotCom As System.Windows.Forms.Label
+    Friend WithEvents Label72 As System.Windows.Forms.Label
+    Friend WithEvents Label51 As System.Windows.Forms.Label
+    Friend WithEvents Label52 As System.Windows.Forms.Label
+    Friend WithEvents Label53 As System.Windows.Forms.Label
+    Friend WithEvents Label54 As System.Windows.Forms.Label
 End Class

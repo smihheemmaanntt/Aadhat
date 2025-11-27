@@ -309,6 +309,12 @@
     <Compile Include="Bank Entry\bank Register.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Cashbook and DayBook\CashBookCumBankBook.Designer.vb">
+      <DependentUpon>CashBookCumBankBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Cashbook and DayBook\CashBookCumBankBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Cashbook and DayBook\CashBookPayment.Designer.vb">
       <DependentUpon>CashBookPayment.vb</DependentUpon>
     </Compile>
@@ -1381,6 +1387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bank Entry\bank Register.resx">
       <DependentUpon>bank Register.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashbook and DayBook\CashBookCumBankBook.resx">
+      <DependentUpon>CashBookCumBankBook.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashbook and DayBook\CashBookPayment.resx">
       <DependentUpon>CashBookPayment.vb</DependentUpon>

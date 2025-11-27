@@ -175,6 +175,7 @@ Public Class Ledger
     End Sub
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
         ButtonControl()
+        'RetriveGroupLedger()
         If ckMerge.Checked = True Then
             RetriveMerge() : CrateMarka()
         ElseIf ckWithoutCrate.Checked = True Then
@@ -325,7 +326,7 @@ Public Class Ledger
         End Try
         dg1.ClearSelection()
     End Sub
- 
+
     Private Sub Retrive()
         dg1.Rows.Clear() : txtOpBal.Text = ""
         Dim ssql As String = String.Empty

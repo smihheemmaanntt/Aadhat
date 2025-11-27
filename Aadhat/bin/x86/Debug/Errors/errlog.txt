@@ -1828,3 +1828,368 @@ Message: Login Successfuly...BTC
 StackTrace: BHAGWATI TRADING COMPANY
 Date/Time: 04-Nov-25 6:20:51 PM
 ===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 08-Nov-25 12:37:50 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 08-Nov-25 3:38:59 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-08-28',   SallerID=1002, SallerName='BS-65', Nug='10.00', kg='120.00', BasicAmount='12000.00', TotalAmount='11280.00', RoundOFF='0.00',TotalCharges='-720.00', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-11-08 15:39:16',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =1
+StackTrace: PDC KHAIRTHAL
+Date/Time: 08-Nov-25 3:39:16 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 08-Nov-25 3:41:51 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 08-Nov-25 3:45:03 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 08-Nov-25 3:50:00 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:03:07 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:08:03 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:15:15 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:24:51 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:27:50 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:33:48 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 08-Nov-25 4:36:15 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 12-Nov-25 10:49:08 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:01:17 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='111171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-13 11:06:05',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:06:05 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='105171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-13 11:11:28',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:11:28 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='117171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-13 11:12:22',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:12:22 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='111171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-13 11:13:24',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:13:24 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:15:01 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='111171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-13 11:15:54',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:15:54 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 11:48:47 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='163647',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-13 12:12:05',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 12:12:05 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 13-Nov-25 12:59:08 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PUNJAB DATA
+Date/Time: 15-Nov-25 4:04:26 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 4:12:16 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='163647',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-15 16:12:53',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 4:12:54 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 4:31:17 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.00',TotalCharges='-26600.00', N1='0',N2='111171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-15 16:31:30',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 4:31:30 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 4:38:42 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 4:41:21 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 6:25:05 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 15-Nov-25 6:27:46 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 16-Nov-25 4:42:17 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 17-Nov-25 10:07:29 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 17-Nov-25 10:08:15 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 17-Nov-25 10:09:25 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 17-Nov-25 4:17:34 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 10:42:44 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 10:59:49 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 11:14:57 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 11:21:09 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 2:28:33 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='360.00', kg='20643.00', BasicAmount='1151935.50', TotalAmount='1151936.00', RoundOFF='0.50',TotalCharges='0.00', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-11-18 14:51:17',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =2
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 2:51:17 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='111171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-18 14:51:44',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 2:51:44 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='1' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='360.00', kg='20643.00', BasicAmount='1151935.50', TotalAmount='1151936.00', RoundOFF='0.50',TotalCharges='0.00', N1='0',N2='0',InvoiceID='1',ModifiedByID='1', ModifiedTime='2025-11-18 16:28:14',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =2
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 4:28:14 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='111171',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-18 16:29:33',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 18-Nov-25 4:29:33 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: SHREE KRISHNA AND COMPANY
+Date/Time: 18-Nov-25 8:25:33 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PDC KHAIRTHAL
+Date/Time: 19-Nov-25 4:28:43 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 4:30:32 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 5:42:36 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 5:43:08 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 5:50:33 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 5:55:58 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 6:09:24 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 6:41:42 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PURUSHOTTAM DAS DHARM DAS AND COMPANY
+Date/Time: 19-Nov-25 6:50:03 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: RITIK TRADING COMPANY
+Date/Time: 21-Nov-25 11:06:53 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 22-Nov-25 2:10:38 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 22-Nov-25 2:13:39 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 23-Nov-25 8:59:05 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 25-Nov-25 10:18:34 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 25-Nov-25 11:28:00 AM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='2' ,VehicleNo='', Entrydate='2025-10-26',   SallerID=1397, SallerName='VIKRAM JI SHIVPURI 1', Nug='312.00', kg='5762.50', BasicAmount='298357.50', TotalAmount='271758.00', RoundOFF='0.50',TotalCharges='-26600.00', N1='0',N2='0',InvoiceID='2',ModifiedByID='1', ModifiedTime='2025-11-25 11:50:28',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =3
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 25-Nov-25 11:50:28 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: JHABAR MAL KHEMCHAND SAINI AND SONS
+Date/Time: 25-Nov-25 1:14:49 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 27-Nov-25 11:44:03 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 27-Nov-25 11:49:42 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...ss
+StackTrace: SHIV SHAKTI SABJI AND FRUIT BHANDAR
+Date/Time: 27-Nov-25 11:57:15 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 27-Nov-25 11:58:18 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 27-Nov-25 12:00:10 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SAWRUP SABJI BHANDAR (PC)- 02
+Date/Time: 27-Nov-25 12:08:22 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 27-Nov-25 12:13:13 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 27-Nov-25 12:14:06 PM
+===========================================================================================

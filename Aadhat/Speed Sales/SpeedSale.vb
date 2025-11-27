@@ -6,15 +6,18 @@
     Dim Octroi As String : Dim ApplyCommWeight As String
     Dim crateRate As String : Dim RoundOff As String
     Dim CalculationMethod As String : Dim CUT As Decimal = 0.0
-    Dim ItemPer As String
+    Dim ItemPer As String = String.Empty
+
     Public Sub New()
         InitializeComponent()
         clsFun.DoubleBuffered(dg1, True)
     End Sub
+
     Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
         mskEntryDate.BackColor = Color.LightGray
         mskEntryDate.SelectAll()
     End Sub
+
     Private Sub mskEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
         mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text) : mskEntryDate.TabStop = False : mskEntryDate.Enabled = False
         Dim BackDateEntry As String = clsFun.ExecScalarStr("SELECT DontAllowBack FROM UserRights AS UR INNER JOIN Users AS U ON UR.UserTypeID = U.UserTypeID Where UserName='" & MainScreenPicture.lblUser.Text & "' and EntryType='Other'")

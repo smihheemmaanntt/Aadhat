@@ -3244,4 +3244,8 @@ Public Class Standard_Sale
             End If
         End If
     End Sub
+
+    Private Sub lbltotCom_Click(sender As Object, e As EventArgs) Handles lbltotCom.Click
+
+    End Sub
 End Class

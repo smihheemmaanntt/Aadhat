@@ -472,6 +472,9 @@ Public Class Super_Sale
         txtTotalNug.Text = Format(0, "0.00") : txttotalWeight.Text = Format(0, "0.00")
         txtbasicTotal.Text = Format(0, "0.00") : txttotalCharges.Text = Format(0, "0.00")
         txtTotalNetAmount.Text = Format(0, "0.00") : txtSallerBasicTotal.Text = Format(0, "0.00")
+        lbltotCom.Text = Format(0, "0.00") : lblTotMandi.Text = Format(0, "0.00")
+        lblTotRdf.Text = Format(0, "0.00") : lblTotLabour.Text = Format(0, "0.00")
+        lblTotBardana.Text = Format(0, "0.00")
         If dg1.Rows.Count > 9 Then dg1.Columns(10).Width = 109 Else dg1.Columns(10).Width = 129
         Dim i As Integer
         For i = 0 To dg1.Rows.Count - 1
@@ -481,6 +484,11 @@ Public Class Super_Sale
             txttotalCharges.Text = Format(Val(txttotalCharges.Text) + Val(dg1.Rows(i).Cells(11).Value), "0.00")
             txtTotalNetAmount.Text = Format(Val(txtTotalNetAmount.Text) + Val(dg1.Rows(i).Cells(10).Value), "0.00")
             txtSallerBasicTotal.Text = Format(Val(txtSallerBasicTotal.Text) + Val(dg1.Rows(i).Cells(12).Value), "0.00")
+            lbltotCom.Text = Format(Val(lbltotCom.Text) + Val(dg1.Rows(i).Cells(14).Value), "0.00")
+            lblTotMandi.Text = Format(Val(lblTotMandi.Text) + Val(dg1.Rows(i).Cells(16).Value), "0.00")
+            lblTotRdf.Text = Format(Val(lblTotRdf.Text) + Val(dg1.Rows(i).Cells(18).Value), "0.00")
+            lblTotBardana.Text = Format(Val(lblTotBardana.Text) + Val(dg1.Rows(i).Cells(20).Value), "0.00")
+            lblTotLabour.Text = Format(Val(lblTotLabour.Text) + Val(dg1.Rows(i).Cells(22).Value), "0.00")
         Next
         txtSallerCharges.Text = Format(0, "0.00")
         For i = 0 To Dg2.Rows.Count - 1
@@ -1025,6 +1033,9 @@ Public Class Super_Sale
         txtAdvancePay.Text = "" : MainScreenPicture.retrive()
         txtSallerAmout.Clear() : txtSallerCharges.Clear()
         txtsallerTotal.Clear() : txtRoff.Clear()
+        lbltotCom.Text = "0.00" : lblTotLabour.Text = "0.00"
+        lblTotRdf.Text = "0.00" : lblTotBardana.Text = "0.00"
+        lblTotMandi.Text = "0.00"
         BtnSave.Text = "&Save" : BtnDelete.Text = "&Delete"
     End Sub
     Private Sub cleartxtCharges()
@@ -2107,7 +2118,7 @@ Public Class Super_Sale
             End With
         End If
         dg1.ClearSelection() : Dg2.ClearSelection()
-        AcBal() : ClosingBal()
+        AcBal() : ClosingBal() : calc()
     End Sub
 
     Private Sub dg1_KeyDown(sender As Object, e As KeyEventArgs) Handles dg1.KeyDown
@@ -2390,7 +2401,6 @@ Public Class Super_Sale
         Dim cmd As New SQLite.SQLiteCommand
         Dim sql As String = String.Empty
         Dim lastPayment = clsFun.ExecScalarStr("Select  BasicAmount FROM Vouchers where TransType='Payment' and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  and Accountid=" & Val(txtAccountID.Text) & " and PaymentID= " & Val(txtid.Text) & " ORDER BY Vouchers.Entrydate DESC limit 1 ;")
-
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         ' clsFun.ExecNonQuery(sql)
         For Each row As DataGridViewRow In tmpgrid.Rows

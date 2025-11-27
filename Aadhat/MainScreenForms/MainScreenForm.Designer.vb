@@ -270,6 +270,7 @@ Partial Class MainScreenForm
         Me.btnItem = New System.Windows.Forms.Button()
         Me.lblARC = New System.Windows.Forms.Label()
         Me.blinkTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.CashBookCumBankBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1074,7 +1075,7 @@ Partial Class MainScreenForm
         'CashBookReportToolStripMenuItem
         '
         Me.CashBookReportToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
-        Me.CashBookReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CashBankBookToolStripMenuItem, Me.CashBankBookGroupedToolStripMenuItem, Me.CashBankBookPaymentDetailedToolStripMenuItem, Me.CashBookBankBookToolStripMenuItem, Me.DayBookCumCashBookToolStripMenuItem})
+        Me.CashBookReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CashBankBookToolStripMenuItem, Me.CashBankBookGroupedToolStripMenuItem, Me.CashBankBookPaymentDetailedToolStripMenuItem, Me.CashBookBankBookToolStripMenuItem, Me.DayBookCumCashBookToolStripMenuItem, Me.CashBookCumBankBookToolStripMenuItem})
         Me.CashBookReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.CashBookReportToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CashBookReportToolStripMenuItem.Name = "CashBookReportToolStripMenuItem"
@@ -2294,6 +2295,12 @@ Partial Class MainScreenForm
         'blinkTimer
         '
         '
+        'CashBookCumBankBookToolStripMenuItem
+        '
+        Me.CashBookCumBankBookToolStripMenuItem.Name = "CashBookCumBankBookToolStripMenuItem"
+        Me.CashBookCumBankBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBookCumBankBookToolStripMenuItem.Text = "Cash Book Cum Bank Book"
+        '
         'MainScreenForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2590,4 +2597,5 @@ Partial Class MainScreenForm
     Friend WithEvents GroupLedgwerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutstandingAmountToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutstandingSelectedAccountingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CashBookCumBankBookToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
