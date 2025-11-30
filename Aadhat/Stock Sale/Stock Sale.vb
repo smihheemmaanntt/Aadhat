@@ -3201,6 +3201,15 @@
         txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
         lbltotCharges.Text = Format(Val(Val(txtComAmt.Text)) + Val(Val(txtMAmt.Text)) + Val(Val(txtRdfAmt.Text)) + Val(Val(txtTareAmt.Text)) + Val(Val(txtLaboutAmt.Text)), "0.00")
         txtTotalAmt.Text = Format(Val(Val(lbltotCharges.Text)) + Val(Val(txtbasicAmt.Text)), 0)
+        If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
+            Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
+            txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
+            lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
+            txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
+        End If
     End Sub
 
     Private Sub txtTotalAmt_TextChanged(sender As Object, e As EventArgs) Handles txtTotalAmt.TextChanged
@@ -3208,6 +3217,10 @@
     End Sub
 
     Private Sub txtGrossWt_TextChanged(sender As Object, e As EventArgs) Handles txtGrossWt.TextChanged
+
+    End Sub
+
+    Private Sub txtbasicAmt_TextChanged(sender As Object, e As EventArgs) Handles txtbasicAmt.TextChanged
 
     End Sub
 End Class

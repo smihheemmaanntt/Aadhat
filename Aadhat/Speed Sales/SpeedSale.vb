@@ -1863,7 +1863,8 @@
         txtTotal.Text = Format(Val(lblTotCharges.Text) + Val(txtNet.Text), "0.00")
         If RoundOff = "No" Then
             Dim tmpCustAmount As Double = Val(txtTotal.Text)
-            txtTotal.Text = Math.Round(Val(tmpCustAmount), 0)
+            txtTotal.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotal.Text = Math.Round(Val(tmpCustAmount), 0)
             lblRoundOff.Text = Math.Round(Val(txtTotal.Text) - Val(tmpCustAmount), 2)
             txtTotal.Text = Format(Val(txtTotal.Text), "0.00")
         End If
@@ -1909,6 +1910,10 @@
     End Sub
 
     Private Sub txtAddWeight_TextChanged(sender As Object, e As EventArgs) Handles txtAddWeight.TextChanged
+
+    End Sub
+
+    Private Sub txtNet_TextChanged(sender As Object, e As EventArgs) Handles txtNet.TextChanged
 
     End Sub
 End Class

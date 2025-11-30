@@ -292,7 +292,7 @@
         'RetriveGroupLedger()
     End Sub
     Private Sub rowColumsTemp()
-        tmpgrid.ColumnCount = 15
+        tmpgrid.ColumnCount = 16
         tmpgrid.Columns(0).Name = "ID" : tmpgrid.Columns(0).Visible = False
         tmpgrid.Columns(1).Name = "Date" : tmpgrid.Columns(1).Width = 130
         tmpgrid.Columns(2).Name = "Type" : tmpgrid.Columns(2).Width = 150
@@ -308,23 +308,24 @@
         tmpgrid.Columns(12).Name = "OpBalTotal" : tmpgrid.Columns(12).Width = 100
         tmpgrid.Columns(13).Name = "CalbalTotal" : tmpgrid.Columns(13).Width = 100
         tmpgrid.Columns(14).Name = "RowCount" : tmpgrid.Columns(14).Width = 100
+        tmpgrid.Columns(15).Name = "DayCount" : tmpgrid.Columns(15).Width = 100
     End Sub
-
     Private Sub RetriveLedger()
+
         Dim i As Integer = 0
         tmpgrid.Rows.Clear()
+
         Dim sql As String = String.Empty
         Dim dt As DataTable
-        ' Set ProgressBar initial settings
+
+        ' ProgressBar Settings
         pb1.Visible = True
         pb1.Minimum = 0
         pb1.Maximum = dg1.Rows.Count
         pb1.Value = 0
 
-        ' Step 1: Temporary list to store last balance row index
-        Dim lastRowIndexList As New List(Of Integer)
-
         For i = 0 To dg1.Rows.Count - 1
+
             Dim runningBalance As Decimal = 0
             Dim Drtotal As Decimal = 0
             Dim CrTotal As Decimal = 0
@@ -332,64 +333,197 @@
             Dim lastRunningBalance As Decimal = 0
             Dim accountId As Integer = Val(dg1.Rows(i).Cells(0).Value)
             Dim RowCount As Integer = 0
-            sql = "SELECT  A.AccountName,A.OtherName,  " & _
-                  "ROUND(CASE WHEN A.DC = 'Dr' THEN IFNULL(A.Opbal,0) + " & _
-                  "(SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'D' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') - " & _
-                  "(SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'C' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') " & _
-                  "ELSE -IFNULL(A.Opbal,0) - (SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'C' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') " & _
-                  "+ (SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'D' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') END, 2) AS OpeningBalance, " & _
-                  "L.EntryDate, L.VourchersID, L.TransType, L.Remark,L.RemarkHindi, L.Narration, " & _
-                  "CASE WHEN L.DC = 'D' THEN ROUND(L.Amount, 2) ELSE 0 END AS Dr, " & _
-                  "CASE WHEN L.DC = 'C' THEN ROUND(L.Amount, 2) ELSE 0 END AS Cr " & _
-                  "FROM Account_AcGrp A LEFT JOIN Ledger L ON L.AccountID = A.ID " & _
-                  "WHERE A.ID = " & accountId & "  AND L.EntryDate BETWEEN '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & _
+
+            '---------------------------------------------------
+            '      SQL QUERY – SAME AS YOUR OLD QUERY
+            '---------------------------------------------------
+            sql = "SELECT A.AccountName,A.OtherName, " &
+                  "ROUND(CASE WHEN A.DC = 'Dr' THEN IFNULL(A.Opbal,0) + " &
+                  "(SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'D' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') - " &
+                  "(SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'C' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') " &
+                  "ELSE -IFNULL(A.Opbal,0) - (SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'C' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') + " &
+                  "(SELECT IFNULL(SUM(Amount), 0) FROM Ledger L1 WHERE L1.AccountID = A.ID AND L1.DC = 'D' AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') END, 2) AS OpeningBalance, " &
+                  "L.EntryDate AS EntryDate, L.VourchersID, L.TransType, L.Remark, L.RemarkHindi, L.Narration, " &
+                  "CASE WHEN L.DC = 'D' THEN ROUND(L.Amount, 2) ELSE 0 END AS Dr, " &
+                  "CASE WHEN L.DC = 'C' THEN ROUND(L.Amount, 2) ELSE 0 END AS Cr " &
+                  "FROM Account_AcGrp A LEFT JOIN Ledger L ON L.AccountID = A.ID " &
+                  "WHERE A.ID = " & accountId &
+                  " AND L.EntryDate BETWEEN '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") &
+                  "' AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " &
                   "ORDER BY L.VourchersID, L.EntryDate"
+
             dt = clsFun.ExecDataTable(sql)
+
+
+            '---------------------------------------------------
+            '        MAIN LOOP (Row by Row Processing)
+            '---------------------------------------------------
             For Each row As DataRow In dt.Rows
+
                 Dim dr As Decimal = Val(row("Dr"))
                 Dim cr As Decimal = Val(row("Cr"))
                 Dim openingBalance As Decimal = Val(row("OpeningBalance"))
+
                 If isFirstRow Then
                     runningBalance = openingBalance
                     isFirstRow = False
                 End If
+
                 runningBalance += dr
                 runningBalance -= cr
+
                 Drtotal += dr
                 CrTotal += cr
                 RowCount += 1
-                ' Add row to grid
-                tmpgrid.Rows.Add(row("L.VourchersID"),
-                  CDate(row("L.EntryDate")).ToString("dd-MM-yyyy"),
-                  row("L.TransType"),
-                  row("A.AccountName"),
-                  row("L.Remark"),
-                  Format(dr, "0.00"),
-                  Format(cr, "0.00"),
-                  IIf(runningBalance > 0, Format(Math.Abs(runningBalance), "0.00") & " Dr", Format(Math.Abs(runningBalance), "0.00") & " Cr"),
-                  row("A.OtherName"),
-                  row("L.RemarkHindi"), Drtotal, CrTotal,
-                  IIf(openingBalance > 0, Format(Math.Abs(openingBalance), "0.00") & " Dr", Format(Math.Abs(openingBalance), "0.00") & " Cr"),
-                  "", RowCount)
+
+
+                '---------------------------------------------------
+                '       ⭐ NEW : Calculate DAYS
+                '---------------------------------------------------
+                Dim entryDate As Date = CDate(row("EntryDate"))
+                Dim daysDiff As Integer = DateDiff(DateInterval.Day, CDate(mskFromDate.Text), entryDate)
+                ' If daysDiff < 0 Then daysDiff = 0 'No negative days
+
+                '---------------------------------------------------
+                '      ADD ROW TO TMPGRID
+                '---------------------------------------------------
+                tmpgrid.Rows.Add(
+                    row("L.VourchersID"),
+                    CDate(row("EntryDate")).ToString("dd-MM-yyyy"),
+                    row("L.TransType"),
+                    row("A.AccountName"),
+                    row("L.Remark"),
+                    Format(dr, "0.00"),
+                    Format(cr, "0.00"),
+                    IIf(runningBalance > 0,
+                        Format(Math.Abs(runningBalance), "0.00") & " Dr",
+                        Format(Math.Abs(runningBalance), "0.00") & " Cr"),
+                    row("A.OtherName"),
+                    row("L.RemarkHindi"),
+                    Drtotal,
+                    CrTotal,
+                    IIf(openingBalance > 0,
+                        Format(Math.Abs(openingBalance), "0.00") & " Dr",
+                        Format(Math.Abs(openingBalance), "0.00") & " Cr"),
+                    "",
+                    RowCount,
+                    daysDiff)
+
                 lastRunningBalance = runningBalance
+
             Next
 
-            ' ---- Set Final Balance in Each Row of this Account Block ----
-            Dim lastRowCount As Integer = dt.Rows.Count + 1 ' +1 for opening row
+
+
+            '---------------------------------------------------
+            '       SET FINAL BALANCE FOR ALL ROWS OF THIS ACCOUNT
+            '---------------------------------------------------
+            Dim lastRowCount As Integer = dt.Rows.Count + 1
             If lastRowCount > 0 Then
                 For j As Integer = tmpgrid.Rows.Count - lastRowCount To tmpgrid.Rows.Count - 1
-                    tmpgrid.Rows(j).Cells("CalbalTotal").Value = IIf(lastRunningBalance > 0, Format(lastRunningBalance, "0.00") & " Dr", Format(Math.Abs(lastRunningBalance), "0.00") & " Cr")
+
+                    tmpgrid.Rows(j).Cells("CalbalTotal").Value =
+                        IIf(lastRunningBalance > 0,
+                            Format(lastRunningBalance, "0.00") & " Dr",
+                            Format(Math.Abs(lastRunningBalance), "0.00") & " Cr")
+
                 Next
             End If
 
-            ' Update ProgressBar
+
+            ' ProgressBar
             pb1.Value = i + 1
             Application.DoEvents()
+
         Next
-        ' Hide ProgressBar after completion
+
         pb1.Value = 0
         pb1.Visible = False
+
     End Sub
+
+
+    'private sub retriveledger()
+    '    dim i as integer = 0
+    '    tmpgrid.rows.clear()
+    '    dim sql as string = string.empty
+    '    dim dt as datatable
+    '    ' set progressbar initial settings
+    '    pb1.visible = true
+    '    pb1.minimum = 0
+    '    pb1.maximum = dg1.rows.count
+    '    pb1.value = 0
+
+    '    ' step 1: temporary list to store last balance row index
+    '    dim lastrowindexlist as new list(of integer)
+
+    '    for i = 0 to dg1.rows.count - 1
+    '        dim runningbalance as decimal = 0
+    '        dim drtotal as decimal = 0
+    '        dim crtotal as decimal = 0
+    '        dim isfirstrow as boolean = true
+    '        dim lastrunningbalance as decimal = 0
+    '        dim accountid as integer = val(dg1.rows(i).cells(0).value)
+    '        dim rowcount as integer = 0
+    '        sql = "select  a.accountname,a.othername,  " & _
+    '              "round(case when a.dc = 'dr' then ifnull(a.opbal,0) + " & _
+    '              "(select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'd' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') - " & _
+    '              "(select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'c' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') " & _
+    '              "else -ifnull(a.opbal,0) - (select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'c' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') " & _
+    '              "+ (select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'd' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') end, 2) as openingbalance, " & _
+    '              "l.entrydate, l.vourchersid, l.transtype, l.remark,l.remarkhindi, l.narration, " & _
+    '              "case when l.dc = 'd' then round(l.amount, 2) else 0 end as dr, " & _
+    '              "case when l.dc = 'c' then round(l.amount, 2) else 0 end as cr " & _
+    '              "from account_acgrp a left join ledger l on l.accountid = a.id " & _
+    '              "where a.id = " & accountid & "  and l.entrydate between '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "' and '" & cdate(msktodate.text).tostring("yyyy-mm-dd") & "' " & _
+    '              "order by l.vourchersid, l.entrydate"
+    '        dt = clsfun.execdatatable(sql)
+    '        for each row as datarow in dt.rows
+    '            dim dr as decimal = val(row("dr"))
+    '            dim cr as decimal = val(row("cr"))
+    '            dim openingbalance as decimal = val(row("openingbalance"))
+    '            if isfirstrow then
+    '                runningbalance = openingbalance
+    '                isfirstrow = false
+    '            end if
+    '            runningbalance += dr
+    '            runningbalance -= cr
+    '            drtotal += dr
+    '            crtotal += cr
+    '            rowcount += 1
+    '            ' add row to grid
+    '            tmpgrid.rows.add(row("l.vourchersid"),
+    '              cdate(row("l.entrydate")).tostring("dd-mm-yyyy"),
+    '              row("l.transtype"),
+    '              row("a.accountname"),
+    '              row("l.remark"),
+    '              format(dr, "0.00"),
+    '              format(cr, "0.00"),
+    '              iif(runningbalance > 0, format(math.abs(runningbalance), "0.00") & " dr", format(math.abs(runningbalance), "0.00") & " cr"),
+    '              row("a.othername"),
+    '              row("l.remarkhindi"), drtotal, crtotal,
+    '              iif(openingbalance > 0, format(math.abs(openingbalance), "0.00") & " dr", format(math.abs(openingbalance), "0.00") & " cr"),
+    '              "", rowcount)
+    '            lastrunningbalance = runningbalance
+
+    '        next
+
+    '        ' ---- set final balance in each row of this account block ----
+    '        dim lastrowcount as integer = dt.rows.count + 1 ' +1 for opening row
+    '        if lastrowcount > 0 then
+    '            for j as integer = tmpgrid.rows.count - lastrowcount to tmpgrid.rows.count - 1
+    '                tmpgrid.rows(j).cells("calbaltotal").value = iif(lastrunningbalance > 0, format(lastrunningbalance, "0.00") & " dr", format(math.abs(lastrunningbalance), "0.00") & " cr")
+    '            next
+    '        end if
+
+    '        ' update progressbar
+    '        pb1.value = i + 1
+    '        application.doevents()
+    '    next
+    '    ' hide progressbar after completion
+    '    pb1.value = 0
+    '    pb1.visible = false
+    'end sub
     Private Sub PrintRecord()
         Dim AllRecord As Integer = Val(tmpgrid.Rows.Count)
         Dim maxRowCount As Decimal = Math.Ceiling(AllRecord / 100)
@@ -409,14 +543,14 @@
                         FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDate.Text & "'," &
                             "'" & MsktoDate.Text & "','" & .Cells("Account Name").Value & "','" & .Cells("OpBalTotal").Value & "','" & .Cells("DrTotal").Value & "','" & .Cells("CrTotal").Value & "'," &
                             "'" & .Cells("CalbalTotal").Value & "','" & .Cells("Date").Value & "','" & .Cells("Type").Value & "','" & .Cells("Account Name").Value & "','" & IIf(ckPrintHindi.Checked = True, .Cells("HindiItem").Value, .Cells("Description").Value) & "'," &
-                            "'" & .Cells("Debit").Value & "','" & .Cells("Credit").Value & "','" & .Cells("Balance").Value & "','" & .Cells("HindiName").Value & "','',''," & Val(.Cells("RowCount").Value) & ""
+                            "'" & .Cells("Debit").Value & "','" & .Cells("Credit").Value & "','" & .Cells("Balance").Value & "','" & .Cells("HindiName").Value & "','',''," & Val(.Cells("RowCount").Value) & ",'" & .Cells("DayCount").Value & "'"
                     End With
                     LastRecord = Val(LastRecord + 1)
                 Next
                 ' LastRecord = LastCount
                 Try
                     If FastQuery = String.Empty Then Exit Sub
-                    sQL = "insert into Printing(D1,D2,M1,M2, M3, M4, M5, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,P11) " & FastQuery & ""
+                    sQL = "insert into Printing(D1,D2,M1,M2, M3, M4, M5, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,P11,P12) " & FastQuery & ""
                     ClsFunPrimary.ExecNonQuery(sQL)
                 Catch ex As Exception
                     MsgBox(ex.Message)

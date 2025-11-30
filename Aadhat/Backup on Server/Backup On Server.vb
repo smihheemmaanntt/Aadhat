@@ -38,16 +38,37 @@ Public Class Backup_On_Server
         OringinalPath = GlobalData.ConnectionPath
         lblOriginalPath.Text = "Data Path : " & OringinalPath
         'If ClsCommon.IsInternetConnect() Then pb1.Image = New System.Drawing.Bitmap(New IO.MemoryStream(New System.Net.WebClient().DownloadData("http://softmanagementindia.in/images/AadhatKit.png")))
-        LoadBanner()
+        LoadBanner() : CheckForUpdate()
     End Sub
+    Private Sub CheckForUpdate()
+        If CheckInternetConnection() = False Then Exit Sub
+        Try
+            Dim wc As New WebClient()
+            ' Server version (AssemblyVersion format)
+            Dim serverVersionString As String =
+                wc.DownloadString("http://softmanagementindia.in/updates/aadhat-update.info.txt").Trim()
+            ' Local version (Auto incremented AssemblyVersion)
+            Dim localVersion As New Version(GetAssemblyVersion())
+            Dim serverVersion As New Version(serverVersionString)
+            If serverVersion > localVersion Then
+                btnUpdate.Visible = True
+                btnUpdate.Text = "Update Aadhat (" & serverVersion.ToString() & ")"
+            Else
+                btnUpdate.Visible = False
+            End If
 
-
+        Catch ex As Exception
+            btnUpdate.Visible = False
+        End Try
+    End Sub
+    Private Function GetAssemblyVersion() As String
+        Return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
+    End Function
     Private Sub LoadBanner()
         Try
             Dim folderPath As String = Path.Combine(Application.StartupPath, "Banners")
             Dim localFilePath As String = Path.Combine(folderPath, "Banner.jpg")
             Dim bannerUrl As String = "http://softmanagementindia.in/banners/banner.jpg"
-
             ' Ensure folder exists
             If Not Directory.Exists(folderPath) Then
                 Directory.CreateDirectory(folderPath)
@@ -110,10 +131,27 @@ Public Class Backup_On_Server
         End Using
     End Function
 
-    Private Sub btnStartUpload_Click(sender As Object, e As EventArgs) Handles btnStartUpload.Click
-        MsgBox("Online Backup Option Removed. Due to Server Load.", MsgBoxStyle.Critical, "Access Denied") : MainScreenForm.OfflineBackup() : Application.Exit()
-        lastModifled() : backupOnCloud() : lastModifled() : Application.Exit()
+    Private Sub btnStartUpload_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        Try
+            Dim updaterPath As String = Application.StartupPath & "\AadhatSmartUpdater.exe"
+
+            If IO.File.Exists(updaterPath) = False Then
+                MsgBox("AadhatSmartUpdater.exe नहीं मिला!", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+
+            ' AadhatSmartUpdater.exe को बिना किसी parameter के चलाएँ
+            Process.Start(updaterPath)
+            ' अब main application बंद हो जाए
+            Application.Exit()
+        Catch ex As Exception
+            MsgBox("Updater start error: " & ex.Message)
+        End Try
+        'MsgBox("Online Backup Option Removed. Due to Server Load.", MsgBoxStyle.Critical, "Access Denied") : MainScreenForm.OfflineBackup() : Application.Exit()
+        'lastModifled() : backupOnCloud() : lastModifled() : Application.Exit()
     End Sub
+
+
 
     Private Sub lastModifled()
         Dim cloudFileName As String = String.Empty

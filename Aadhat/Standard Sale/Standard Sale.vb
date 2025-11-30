@@ -2070,7 +2070,7 @@ Public Class Standard_Sale
         lblTotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
         txtTotal.Text = Val(lblTotCharges.Text) + Val(txtBasicAmount.Text)
         Dim tmpCustAmount As Double = Val(txtTotal.Text)
-        txtTotal.Text = Math.Round(Val(tmpCustAmount), 0)
+        txtTotal.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
         lblRoundOff.Text = Math.Round(Val(txtTotal.Text) - Val(tmpCustAmount), 2)
         txtTotal.Text = Format(Val(txtTotal.Text), "0.00")
     End Sub

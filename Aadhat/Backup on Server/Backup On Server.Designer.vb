@@ -25,7 +25,7 @@ Partial Class Backup_On_Server
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Backup_On_Server))
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.btnStartUpload = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.pb1 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -57,23 +57,22 @@ Partial Class Backup_On_Server
         Me.ProgressBar1.TabIndex = 5
         Me.ProgressBar1.Visible = False
         '
-        'btnStartUpload
+        'btnUpdate
         '
-        Me.btnStartUpload.BackColor = System.Drawing.Color.DarkSlateGray
-        Me.btnStartUpload.FlatAppearance.BorderSize = 0
-        Me.btnStartUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStartUpload.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnStartUpload.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnStartUpload.Image = CType(resources.GetObject("btnStartUpload.Image"), System.Drawing.Image)
-        Me.btnStartUpload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStartUpload.Location = New System.Drawing.Point(740, 443)
-        Me.btnStartUpload.Name = "btnStartUpload"
-        Me.btnStartUpload.Size = New System.Drawing.Size(137, 48)
-        Me.btnStartUpload.TabIndex = 10
-        Me.btnStartUpload.Text = "&Backup" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Extrnal"
-        Me.btnStartUpload.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnStartUpload.UseVisualStyleBackColor = False
-        Me.btnStartUpload.Visible = False
+        Me.btnUpdate.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnUpdate.FlatAppearance.BorderSize = 0
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpdate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btnUpdate.ForeColor = System.Drawing.Color.GhostWhite
+        Me.btnUpdate.Image = CType(resources.GetObject("btnUpdate.Image"), System.Drawing.Image)
+        Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUpdate.Location = New System.Drawing.Point(740, 443)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(137, 48)
+        Me.btnUpdate.TabIndex = 10
+        Me.btnUpdate.Text = "&Update " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Software"
+        Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'Button3
         '
@@ -169,9 +168,9 @@ Partial Class Backup_On_Server
         'PictureBox3
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(756, 2)
+        Me.PictureBox3.Location = New System.Drawing.Point(628, 2)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(212, 86)
+        Me.PictureBox3.Size = New System.Drawing.Size(340, 86)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 57
         Me.PictureBox3.TabStop = False
@@ -297,7 +296,7 @@ Partial Class Backup_On_Server
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.pb1)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.btnStartUpload)
+        Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -312,7 +311,7 @@ Partial Class Backup_On_Server
 
     End Sub
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
-    Friend WithEvents btnStartUpload As System.Windows.Forms.Button
+    Friend WithEvents btnUpdate As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents pb1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label3 As System.Windows.Forms.Label

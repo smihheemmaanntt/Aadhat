@@ -69,192 +69,74 @@
 
     Private Sub RetriveOld()
 
+        Dim ssql As String = ""
         Dim dtDates As New DataTable
         Dim dt As New DataTable
         Dim dtOp As New DataTable
+        Dim dtAcc As New DataTable
+        Dim tmpDt As New DataTable
 
-        Dim last As Integer = 0
+        Dim lastval As Integer = 0
 
         Dim fromDate As String = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
         Dim toDate As String = CDate(MsktoDate.Text).ToString("yyyy-MM-dd")
 
-        Dim OPEN_DR As Double = 0
-        Dim OPEN_CR As Double = 0
-        Dim OPEN_BAL As Double = 0
-        Dim OPEN_TYPE As String = "Dr"
+        Dim opDr As Double = 0
+        Dim opCr As Double = 0
+        Dim opBal As Double = 0
+        Dim opDC As String = "Dr"
+
+        Dim DAY_DR As Double = 0
+        Dim DAY_CR As Double = 0
 
         dg1.Rows.Clear()
 
-        '------------------ 1. OPENING BALANCE (CASH GROUP 11) ------------------
-        Dim s_op As String = ""
-        s_op &= "SELECT "
-        s_op &= " SUM(CASE WHEN L.DC='D' THEN L.Amount ELSE 0 END) AS DrAmt, "
-        s_op &= " SUM(CASE WHEN L.DC='C' THEN L.Amount ELSE 0 END) AS CrAmt "
-        s_op &= "FROM Ledger L "
-        s_op &= "JOIN Accounts A ON A.ID=L.AccountID "
-        s_op &= "WHERE A.GroupID=11 AND EntryDate < '" & fromDate & "'"
-
-        dtOp = clsFun.ExecDataTable(s_op)
-
-        If dtOp.Rows.Count > 0 Then
-            If Not IsDBNull(dtOp.Rows(0)("DrAmt")) Then OPEN_DR = Val(dtOp.Rows(0)("DrAmt"))
-            If Not IsDBNull(dtOp.Rows(0)("CrAmt")) Then OPEN_CR = Val(dtOp.Rows(0)("CrAmt"))
-        End If
-
-        OPEN_BAL = Math.Abs(OPEN_DR - OPEN_CR)
-        If OPEN_DR >= OPEN_CR Then
-            OPEN_TYPE = "Dr"
-        Else
-            OPEN_TYPE = "Cr"
-        End If
-
-        '------------------ 2. DATE LIST ------------------
-        Dim sqlDates As String = ""
-        sqlDates &= "SELECT DISTINCT EntryDate FROM Ledger "
-        sqlDates &= "WHERE EntryDate BETWEEN '" & fromDate & "' AND '" & toDate & "' "
-        sqlDates &= "ORDER BY EntryDate"
-
-        dtDates = clsFun.ExecDataTable(sqlDates)
-
-        If dtDates.Rows.Count = 0 Then Exit Sub
-
-
-        '------------------ 3. LOOP DATEWISE ------------------
-        Dim i As Integer
-
-        For i = 0 To dtDates.Rows.Count - 1
-
-            Dim selDate As String = CDate(dtDates.Rows(i)("EntryDate")).ToString("yyyy-MM-dd")
-
+        'ssql = "Select Entrydate, TransType,AccountName,Remark,Amount as Dr,'0' as Cr,Narration from Ledger where DC ='D'  and EntryDate = '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'   union all" &
+        '      " Select Entrydate,  TransType,AccountName,Remark,'0' as Dr,Amount as Cr ,Narration from Ledger where Dc='C'  and EntryDate = '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'   "
+        ssql = "SELECT EntryDate,TransType,AccountName,SUM(Cr) AS Cr,SUM(Cr) AS Cr,GroupID FROM (" &
+       "SELECT L.EntryDate,L.TransType,A.AccountName,L.Amount AS Dr,0 AS Cr,A.GroupID FROM Ledger L INNER JOIN Accounts A ON A.ID=L.AccountID WHERE L.DC='D' AND L.EntryDate='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' UNION ALL SELECT L.EntryDate,L.TransType,A.AccountName,0 AS Dr,L.Amount AS Cr,A.GroupID FROM Ledger L INNER JOIN Accounts A ON A.ID=L.AccountID WHERE L.DC='C' AND L.EntryDate='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') X GROUP BY EntryDate,TransType,AccountName,GroupID ORDER BY EntryDate,TransType,AccountName,GroupID"
+        tmpDt = clsFun.ExecDataTable(ssql)
+        If lastval > 20 Then dg1.Columns(4).Width = 30 Else dg1.Columns(4).Width = 50
+        For j = 0 To tmpDt.Rows.Count - 1
             dg1.Rows.Add()
-            dg1.Rows(last).Cells(1).Value = "Date : " & CDate(selDate).ToString("dd-MM-yyyy")
-            dg1.Rows(last).Cells(5).Value = "Date : " & CDate(selDate).ToString("dd-MM-yyyy")
-            dg1.Rows(last).Cells(4).Value = "|"
-            last += 1
-
-            '------------------Opening Balance------------------
-            dg1.Rows.Add()
-
-            If OPEN_TYPE = "Dr" Then
-                dg1.Rows(last).Cells(1).Style.ForeColor = Color.Blue
-                dg1.Rows(last).Cells(1).Value = "Opening Balance"
-                dg1.Rows(last).Cells(3).Value = Format(OPEN_BAL, "0.00")
-            Else
-                dg1.Rows(last).Cells(5).Style.ForeColor = Color.Blue
-                dg1.Rows(last).Cells(5).Value = "Opening Balance"
-                dg1.Rows(last).Cells(7).Value = Format(OPEN_BAL, "0.00")
-            End If
-
-            dg1.Rows(last).Cells(4).Value = "|"
-            last += 1
-
-            Dim DAY_DR As Double = 0
-            Dim DAY_CR As Double = 0
-
-            '------------------ Fetch Daily Ledger ------------------
-            Dim sql As String = ""
-            sql &= "SELECT L.*, A.GroupID FROM Ledger L "
-            sql &= "JOIN Accounts A ON A.ID=L.AccountID "
-            sql &= "WHERE L.EntryDate='" & selDate & "' "
-            sql &= "ORDER BY L.DC, L.TransType, L.AccountID"
-
-            dt = clsFun.ExecDataTable(sql)
-
-            Dim r As Integer
-
-            For r = 0 To dt.Rows.Count - 1
-
-                Dim AC As String = dt.Rows(r)("AccountName").ToString()
-                Dim rm As String = ""
-                If Not IsDBNull(dt.Rows(r)("Narration")) Then REM = dt.Rows(r)("Narration").ToString()
-                    Dim TR As String = dt.Rows(r)("TransType").ToString()
-                    Dim DC As String = dt.Rows(r)("DC").ToString()
-                    Dim AMT As Double = Val(dt.Rows(r)("Amount"))
-                    Dim GRP As Integer = Val(dt.Rows(r)("GroupID"))
-                    dg1.Rows.Add()
-                    '------------------ CASHBOOK (GROUP 11) ------------------
-                    If GRP = 11 Then
-
-                        If DC = "D" Then
-                            dg1.Rows(last).Cells(1).Value = AC & " - " & rm
-                            dg1.Rows(last).Cells(2).Value = TR
-                            dg1.Rows(last).Cells(3).Value = Format(AMT, "0.00")
-                            DAY_DR = DAY_DR + AMT
-                        Else
-                            dg1.Rows(last).Cells(5).Value = AC & " - " & rm
-                            dg1.Rows(last).Cells(6).Value = TR
-                            dg1.Rows(last).Cells(7).Value = Format(AMT, "0.00")
-                            DAY_CR = DAY_CR + AMT
-                        End If
-
-                    Else
-
-                        '------------------ DAYBOOK (UDHAR/JOURNAL) ------------------
-                        If DC = "D" Then
-                            dg1.Rows(last).Cells(1).Value = AC & " - " & rm
-                            dg1.Rows(last).Cells(3).Value = Format(AMT, "0.00")
-                        Else
-                            dg1.Rows(last).Cells(5).Value = AC & " - " & rm
-                            dg1.Rows(last).Cells(7).Value = Format(AMT, "0.00")
-                        End If
-
+            With dg1.Rows(lastval)
+                If tmpDt.Rows(j)("Dr").ToString() <> "0" Then
+                    dg1.Rows(lastval).Cells(1).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+                    .Cells(1).Value = tmpDt.Rows(j)("AccountName").ToString()
+                    dg1.Rows(lastval).Cells(2).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+                    .Cells(2).Value = tmpDt.Rows(j)("TransType").ToString()
+                    .Cells(3).Value = Format(Val(tmpDt.Rows(j)("Dr").ToString()), "0.00")
+                    dg1.Rows(lastval).Cells(3).Style.Alignment = DataGridViewContentAlignment.MiddleRight
+                    drtotal = Format(Val(Val(drtotal) + Val(.Cells(3).Value)), "0.00")
+                    If i = 0 And tmpopbaladd = False Then
+                        drtotal = Format(Val(Val(drtotal) + Val(Val(drtotal1))), "0.00")
+                        tmpopbaladd = True
                     End If
+                ElseIf tmpDt.Rows(j)("Cr").ToString() <> "0" Then
 
-                    dg1.Rows(last).Cells(4).Value = "|"
-                    last += 1
+                    dg1.Rows(lastval).Cells(5).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+                    .Cells(5).Value = tmpDt.Rows(j)("AccountName").ToString()
+                    dg1.Rows(lastval).Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+                    .Cells(6).Value = tmpDt.Rows(j)("TransType").ToString()
+                    dg1.Rows(lastval).Cells(7).Style.Alignment = DataGridViewContentAlignment.MiddleRight
+                    .Cells(7).Value = Format(Val(tmpDt.Rows(j)("Cr").ToString()), "0.00")
+                    crtotal = Format(Val(Val(crtotal) + Val(.Cells(7).Value)), "0.00")
+                    If i = 0 And tmpopbaladd = False Then
+                        crtotal = Format(Val(Val(crtotal) + Val(Val(crtotal1))), "0.00")
+                        tmpopbaladd = True
+                    End If
                 End If
+                .Cells(4).Value = "|"
+                lastval = lastval + 1
+            End With
+            'If clsFun.ExecScalarInt("Select count(*) from Ledger where Dc='C'  and EntryDate = '" & CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'") = 0 Then
+            '    crtotal = Val(crtotal1)
+            'End If
+            'If clsFun.ExecScalarInt("Select count(*) from Ledger where Dc='D'  and EntryDate = '" & CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'") = 0 Then
+            '    drtotal = Val(drtotal1)
 
-            Next r
-
-            '------------------ TOTAL ROW ------------------
-            dg1.Rows.Add()
-            dg1.Rows(last).Cells(2).Value = "Total"
-            dg1.Rows(last).Cells(3).Value = Format(DAY_DR, "0.00")
-            dg1.Rows(last).Cells(6).Value = "Total"
-            dg1.Rows(last).Cells(7).Value = Format(DAY_CR, "0.00")
-            dg1.Rows(last).Cells(4).Value = "|"
-            last += 1
-
-            '------------------ CLOSING BALANCE ------------------
-            Dim CLOS As Double = 0
-            Dim BalType As String = "Dr"
-
-            If (OPEN_BAL + DAY_DR) > DAY_CR Then
-                CLOS = (OPEN_BAL + DAY_DR) - DAY_CR
-                BalType = "Dr"
-            Else
-                CLOS = DAY_CR - (OPEN_BAL + DAY_DR)
-                BalType = "Cr"
-            End If
-
-            dg1.Rows.Add()
-
-            If BalType = "Dr" Then
-                dg1.Rows(last).Cells(1).Value = "Closing Balance"
-                dg1.Rows(last).Cells(3).Value = Format(CLOS, "0.00")
-            Else
-                dg1.Rows(last).Cells(5).Value = "Closing Balance"
-                dg1.Rows(last).Cells(7).Value = Format(CLOS, "0.00")
-            End If
-
-            dg1.Rows(last).Cells(4).Value = "|"
-            last += 1
-
-            'Next day opening
-            OPEN_BAL = CLOS
-            OPEN_TYPE = BalType
-
-            '------------------ SEPARATOR ------------------
-            dg1.Rows.Add()
-            dg1.Rows(last).Cells(3).Value = "-----------"
-            dg1.Rows(last).Cells(7).Value = "-----------"
-            dg1.Rows(last).Cells(4).Value = "|"
-            last += 1
-
-        Next i
-
-        dg1.ClearSelection()
-
+            'End If
+        Next
     End Sub
 
 

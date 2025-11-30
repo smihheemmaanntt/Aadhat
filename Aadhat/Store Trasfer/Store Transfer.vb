@@ -146,8 +146,27 @@ Public Class Store_Transfer
         lblItemBalance.Text = "Bal. : " & Val(bal)
     End Sub
     Private Sub CbLot_GotFocus(sender As Object, e As EventArgs) Handles CbLot.GotFocus
-        clsFun.FillDropDownList(CbLot, "Select VoucherID,LotNo,(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID='" & Val(cbAccountName.SelectedValue) & "'  and ItemID = '" & Val(cbitemName.SelectedValue) & "' and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=" & Val(CbStoreFrom.SelectedValue) & " and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' )) as RestNug" &
-                                   " from Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(CbStoreFrom.SelectedValue) & " and StockHolderID=" & Val(cbAccountName.SelectedValue) & " and ItemID=" & Val(cbitemName.SelectedValue) & " Group By VoucherID having RestNug>0  order by LotNo ", "LotNo", "VoucherID", "")
+        clsFun.FillDropDownList(CbLot,
+       "SELECT P.VoucherID, P.LotNo, " & _
+       "(IFNULL(SUM(P.Nug),0) - " & _
+       " IFNULL((SELECT SUM(T.Nug) FROM Transaction2 T " & _
+       "         WHERE T.SallerID='" & Val(cbAccountName.SelectedValue) & "' " & _
+       "           AND T.ItemID=" & Val(cbitemName.SelectedValue) & " " & _
+       "           AND T.TransType IN ('Stock Sale','On Sale','Standard Sale','Store Out') " & _
+       "           AND T.StorageID=" & Val(CbStoreFrom.SelectedValue) & " " & _
+       "           AND T.EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' " & _
+       "           AND T.Lot=P.LotNo),0)) AS RestNug " & _
+       "FROM Purchase P " & _
+       "WHERE P.EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' " & _
+       "  AND P.StorageID=" & Val(CbStoreFrom.SelectedValue) & " " & _
+       "  AND P.StockHolderID=" & Val(cbAccountName.SelectedValue) & " " & _
+       "  AND P.ItemID=" & Val(cbitemName.SelectedValue) & " " & _
+       "GROUP BY P.VoucherID, P.LotNo " & _
+       "HAVING RestNug>0 " & _
+       "ORDER BY P.LotNo",
+       "LotNo", "VoucherID", "")
+
+
         If cbitemName.SelectedValue = 0 Then CbStoreto.Focus() : Exit Sub
         LotBalance()
     End Sub
@@ -496,6 +515,10 @@ Public Class Store_Transfer
     End Sub
 
     Private Sub txtNug_TextChanged(sender As Object, e As EventArgs) Handles txtNug.TextChanged
+
+    End Sub
+
+    Private Sub CbLot_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbLot.SelectedIndexChanged
 
     End Sub
 End Class

@@ -3243,6 +3243,7 @@ Public Class Super_Sale
         txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
         lbltotCharges.Text = Format(Val(Val(txtComAmt.Text)) + Val(Val(txtMAmt.Text)) + Val(Val(txtRdfAmt.Text)) + Val(Val(txtTareAmt.Text)) + Val(Val(txtLaboutAmt.Text)), "0.00")
         txtTotAmount.Text = Format(Val(Val(lbltotCharges.Text)) + Val(Val(txtBasicCustomer.Text)), 0)
+        txtTotAmount.Text = Math.Round(Val(txtTotAmount.Text), 0, MidpointRounding.AwayFromZero)
     End Sub
 
     Private Sub txtBasicCustomer_Leave(sender As Object, e As EventArgs) Handles txtBasicCustomer.Leave
