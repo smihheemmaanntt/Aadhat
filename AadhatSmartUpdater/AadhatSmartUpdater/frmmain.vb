@@ -4,15 +4,15 @@ Imports System.IO
 Public Class frmUpdater
 
     Private WithEvents wc As New WebClient()
-    Private DownloadUrl As String = "http://softmanagementindia.in/updates/Aadhat.exe"
+    Private DownloadUrl As String = "https://softmanagementindia.in/updates/Aadhat.exe"
     Private SaveFile As String   ' patch folder file
 
     Private Sub frmUpdater_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
         Me.Text = "Downloading..."
         prgDownload.Value = 0
         lblPercent.Text = "0%"
-        lblStatus.Text = "Starting download..."
+        lblstatus.Text = "Starting download..."
 
         ' Base folder = updater EXE folder
         Dim basePath As String = Application.StartupPath
@@ -50,9 +50,9 @@ Public Class frmUpdater
     End Sub
 
 
-    Private Sub wc_DownloadFileCompleted(sender As Object,
-                                         e As System.ComponentModel.AsyncCompletedEventArgs) _
-                                         Handles wc.DownloadFileCompleted
+      Private Sub wc_DownloadFileCompleted(sender As Object,
+                                       e As System.ComponentModel.AsyncCompletedEventArgs) _
+                                       Handles wc.DownloadFileCompleted
 
         If e.Error IsNot Nothing Then
             MsgBox("Download failed: " & e.Error.Message, MsgBoxStyle.Critical)
@@ -62,43 +62,40 @@ Public Class frmUpdater
 
         lblStatus.Text = "Applying Update..."
 
-        ' ---------------------------
-        '   UPDATE APPLY LOGIC
-        ' ---------------------------
-
         Try
             Dim basePath As String = Application.StartupPath
 
-            ' OLD Aadhat.exe location (main software folder)
             Dim oldExe As String = Path.Combine(basePath, "Aadhat.exe")
-
-            ' BACKUP file name
             Dim backupExe As String = Path.Combine(basePath, "Aadhat.bak.exe")
+            Dim newExe As String = SaveFile
 
-            ' PATCH folder new EXE (already downloaded)
-            Dim newExe As String = SaveFile   ' Patch\Aadhat.exe
-
-            ' 1. अगर पुराना Aadhat.exe मिलता है तो उसे backup कर दो
             If File.Exists(oldExe) Then
                 If File.Exists(backupExe) Then File.Delete(backupExe)
                 File.Move(oldExe, backupExe)
             End If
 
-            ' 2. Now new EXE replace to main folder
             File.Copy(newExe, oldExe, True)
 
-            lblStatus.Text = "Update applied. Starting Aadhat..."
+            lblStatus.Text = "Update completed."
 
-            ' 3. RUN the new updated exe
+            ' ============================
+            '   FINAL USER CONFIRMATION
+            ' ============================
+            'Dim result As DialogResult = MsgBox(
+            '    "The application has been downloaded and updated successfully." & vbCrLf &
+            '    "Do you want to start the application now?",
+            '    MsgBoxStyle.Question Or MsgBoxStyle.YesNo,
+            '    "Update Completed"
+            ')
+
+            'If result = DialogResult.Yes Then
+            '    Process.Start(oldExe)
+            'End If
             Process.Start(oldExe)
-            'MsgBox("Update successfully applied!", MsgBoxStyle.Information)
             Me.Close()
-
         Catch ex As Exception
             MsgBox("Error applying update: " & ex.Message, MsgBoxStyle.Critical)
             Me.Close()
         End Try
-
     End Sub
-
 End Class

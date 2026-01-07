@@ -1219,6 +1219,7 @@
                 txtbasicAmt.Text = Format(Val(txtNug.Text) * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtNug.Text) * Val(txtSallerRate.Text), "0.00")
             End If
+            lblAvgWeight.Text = Format(Val(Val(txtKg.Text) / Val(txtNug.Text)), "0.00")
             If clsFun.ExecScalarStr("Select Octroi From Controls") = "Yes" Then
                 txtComAmt.Text = Format(Val(txtComPer.Text) * Val(Val(txtbasicAmt.Text) + Val(txtLaboutAmt.Text)) / 100, "0.00")
             Else
@@ -1293,6 +1294,7 @@
                 txtbasicAmt.Text = Format(Val(txtNug.Text) * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtNug.Text) * Val(txtSallerRate.Text), "0.00")
             End If
+            lblAvgWeight.Text = Format(Val(Val(txtKg.Text) / Val(txtNug.Text)), "0.00")
             If clsFun.ExecScalarStr("Select Octroi From Controls") = "Yes" Then
                 txtComAmt.Text = Format(Val(txtComPer.Text) * Val(Val(txtbasicAmt.Text) + Val(txtLaboutAmt.Text)) / 100, "0.00")
             Else
@@ -3221,6 +3223,10 @@
     End Sub
 
     Private Sub txtbasicAmt_TextChanged(sender As Object, e As EventArgs) Handles txtbasicAmt.TextChanged
+
+    End Sub
+
+    Private Sub txtKg_TextChanged(sender As Object, e As EventArgs) Handles txtKg.TextChanged
 
     End Sub
 End Class

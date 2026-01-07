@@ -234,7 +234,7 @@ Public Class MainScreenForm
             Dim AccName As String = ssql & " "
             Me.Text = "[Aadhat 26.0.0 #" & CDate(fecha).ToString("yyMMddhhmm") & "] [#" & AccName & "]" & " [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
         Next
-        If Not File.Exists(fileName) Then RegistrationToolStripMenuItem.Visible = True
+        'If Not File.Exists(fileName) Then RegistrationToolStripMenuItem.Visible = True
         Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
         lblBuildVersion.Text = version.ToString()
     End Sub
@@ -912,7 +912,7 @@ Public Class MainScreenForm
 
     End Sub
 
-    Private Sub RegistrationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrationToolStripMenuItem.Click
+    Private Sub RegistrationToolStripMenuItem_Click(sender As Object, e As EventArgs)
         ApplyLicenseKey.MdiParent = Me
         ApplyLicenseKey.Show()
         ApplyLicenseKey.StartPosition = FormStartPosition.CenterParent
@@ -1652,5 +1652,18 @@ Public Class MainScreenForm
         CashBookCumBankBook.MdiParent = Me
         CashBookCumBankBook.Show()
         CashBookCumBankBook.BringToFront()
+    End Sub
+
+    Private Sub RegistrationRevokeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrationRevokeToolStripMenuItem.Click
+        ApplyLicenseKey.MdiParent = Me
+        ApplyLicenseKey.Show()
+        ApplyLicenseKey.StartPosition = FormStartPosition.CenterParent
+        If Not ApplyLicenseKey Is Nothing Then ApplyLicenseKey.BringToFront()
+    End Sub
+
+    Private Sub UpdateEasyWhatsappToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateEasyWhatsappToolStripMenuItem.Click
+        frmUpdater.MdiParent = Me
+        frmUpdater.Show()
+        frmUpdater.BringToFront()
     End Sub
 End Class

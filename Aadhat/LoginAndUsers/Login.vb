@@ -13,6 +13,7 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
         '  rs.FindAllControls(Me)
         CompanyList.Enabled = False
         Me.Top = 130 : Me.Left = 84
@@ -41,64 +42,64 @@ Public Class Login
 
         End Try
     End Sub
+    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
 
-
-    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
         UpdateDatabase()
-        Dim dt As New DataTable
-        dt = clsFun.ExecDataTable("Select COUNT(*) from Users  where  username='" & CbUserName.Text & "' and Password='" & txtPassword.Text & "'")
-        Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "accent.dll"
-        If dt.Rows(0)(0) > 0 Then
-            'Application.DoEvents()
-            If clsFun.CheckLicence = False Then
-                lblMsg.Visible = True
-                lblMsg.Text = "Login Successfuly..."
-                If File.Exists(fileName) = True Then MainScreenForm.lblARC.Text = "ARC Extended"
-                MainScreenPicture.lblUser.Text = CbUserName.Text
-                MainScreenForm.Show() ' : OpenWhatsapp()
-                Dim OperatorType As String = clsFun.ExecScalarStr("Select Usertype From Users Where ID='" & Val(CbUserName.SelectedValue) & "'")
-                If OperatorType = "Operator" Then MainScreenForm.UsersToolStripMenuItem1.Visible = False
-                Me.Dispose() : ShowCompanies.Dispose()
-                el.WriteToErrorLog("Login Successfuly..." & CbUserName.Text, Constants.compname, "Login Successfuly...")
-                lblMsg.Visible = False ': OpenWhatsapp()
-            Else
-                If clsFun.CheckLicence = True Then
-                    If Not File.Exists(fileName) Then
-                        ApplyLicenseKey.MdiParent = ShowCompanies
-                        ApplyLicenseKey.Show()
-                        If Not ApplyLicenseKey Is Nothing Then
-                            ApplyLicenseKey.BringToFront()
-                        End If
-                    Else
-                        Dim LicCheck As Boolean = ClsCommon.LicenseCheck(fileName)
-                        If LicCheck = True Then
-                            If ClsCommon.IsLicenseBlocked() Then
-                                MsgBox("License is Blocked !!! Please Contact to Software Vendor ", vbOKOnly, "Blocked") : Exit Sub
-                                el.WriteToErrorLog("License is Blocked !!!" & CbUserName.Text, Constants.compname, "License is Blocked !!!")
-                                ' clsFun.ChangePath(Data)
-                                Exit Sub
-                            Else
-                                Data = CompanyList.dg1.SelectedRows(0).Cells(7).Value
-                                MainScreenPicture.lblUser.Text = CbUserName.Text
-                                MainScreenForm.Show()
-                                Dim OperatorType As String = clsFun.ExecScalarStr("Select Usertype From Users Where ID='" & Val(CbUserName.SelectedValue) & "'")
-                                If OperatorType = "Operator" Then MainScreenForm.UsersToolStripMenuItem1.Visible = False
-                                lblMsg.Visible = True
-                                lblMsg.Text = "Login Successfuly..."
-                                el.WriteToErrorLog("Login Successfuly..." & CbUserName.Text, Constants.compname, "Login Successfuly...")
-                                Me.Dispose() : ShowCompanies.Dispose() ': OpenWhatsapp()
-                                lblMsg.Visible = False
-                            End If
-                        End If
-                    End If
-                End If
-            End If
-        Else
-            MsgBox("Incorrect Password !!! Try Again... ", vbOKOnly, "invalid Password")
-            el.WriteToErrorLog("Incorrect Password !!!" & CbUserName.Text, Constants.compname, "Login Successfuly...")
+
+        ' ---------------- USER AUTH ----------------
+        Dim dt = clsFun.ExecDataTable(
+            "SELECT COUNT(*) FROM Users WHERE username='" & CbUserName.Text &
+            "' AND Password='" & txtPassword.Text & "'")
+
+        If dt.Rows(0)(0) = 0 Then
+            MsgBox("Incorrect Password !!! Try Again...", vbCritical)
             txtPassword.Focus()
+            Exit Sub
         End If
+
+        ' ---------------- LICENSE FILE ----------------
+        Dim licPath = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        If Not File.Exists(licPath) Then
+            ShowApplyLicense()
+            Exit Sub
+        End If
+
+        ' ---------------- LICENSE VALIDATION ----------------
+        If Not AccentStorageHelper.IsLicenseUsable() Then
+            ShowApplyLicense()
+            Exit Sub
+        End If
+
+        ' ---------------- LOGIN SUCCESS ----------------
+        lblMsg.Visible = True
+        lblMsg.Text = "Login Successfully..."
+
+        Dim daysLeft = AccentStorageHelper.GetRemainingDays()
+        MainScreenForm.lblARC.Text =
+            If(daysLeft > 0, "ARC Expire In Next " & daysLeft & " Days", "")
+
+        MainScreenPicture.lblUser.Text = CbUserName.Text
+        MainScreenForm.Show()
+
+        If clsFun.ExecScalarStr(
+            "SELECT Usertype FROM Users WHERE ID='" & Val(CbUserName.SelectedValue) & "'") = "Operator" Then
+            MainScreenForm.UsersToolStripMenuItem1.Visible = False
+        End If
+
+        Me.Dispose()
+        ShowCompanies.Dispose()
+        lblMsg.Visible = False
     End Sub
+
+
+    Private Sub ShowApplyLicense()
+        ApplyLicenseKey.MdiParent = ShowCompanies
+        ApplyLicenseKey.Show()
+        ApplyLicenseKey.BringToFront()
+    End Sub
+
+
+
     Private Sub UpdateDatabase()
         clsFun.ExecNonQuery("Update UnderGroup set DC='Cr' Where ID=10 and DC='Dr'")
         'clsFun.ExecNonQuery("ALTER TABLE Transaction2  ADD PurchaseID INTEGER;")

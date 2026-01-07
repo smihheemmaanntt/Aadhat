@@ -53,23 +53,30 @@
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        clsFun.FillDropDownList(cbAccountName, "Select GroupID,GroupName from Account_AcGrp Group by GroupID ", "GroupName", "GroupID", "--All--")
-        Dim mindate = String.Empty : Dim maxdate As String = String.Empty
-        mskFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyy"))
-        MsktoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyy"))
+        clsFun.FillDropDownList(cbAccountName, "Select GroupID,GroupName from Account_AcGrp Group by GroupID ", "GroupName", "GroupID", "")
+        cbAccountName.SelectedValue = 32
+        Dim mindate As Date = FinYearStart
+        Dim maxdate As String = String.Empty
+        mskFromDate.Text = If(mindate <> Date.MinValue,
+                              mindate.ToString("dd-MM-yyyy"),
+                             Date.Today.ToString("dd-MM-yyyy"))
+        MsktoDate.Text = If(maxdate <> "",
+                            CDate(maxdate).ToString("dd-MM-yyyy"),
+                            Date.Today.ToString("dd-MM-yyyy"))
+
         rowColums()
     End Sub
 
     Private Sub rowColums()
-        dg1.ColumnCount = 7
+        dg1.ColumnCount = 8
         dg1.Columns(0).Name = "ID" : dg1.Columns(0).Visible = False
         dg1.Columns(1).Name = "Account Name" : dg1.Columns(1).Width = 400
         dg1.Columns(2).Name = "Group Name" : dg1.Columns(2).Width = 200
         dg1.Columns(3).Name = "Op Bal" : dg1.Columns(2).Width = 200
         dg1.Columns(4).Name = "Debit" : dg1.Columns(3).Width = 150
         dg1.Columns(5).Name = "Credit" : dg1.Columns(4).Width = 150
-        dg1.Columns(6).Name = "Balance" : dg1.Columns(5).Width = 200
-        dg1.Columns(6).Name = "OtherName" : dg1.Columns(5).Width = 200
+        dg1.Columns(6).Name = "Balance" : dg1.Columns(6).Width = 200
+        dg1.Columns(7).Name = "OtherName" : dg1.Columns(7).Width = 200
     End Sub
     Private Sub RetriveGroupLedger()
 
@@ -265,18 +272,18 @@
                 .Cells(0).Value = dt.Rows(i)("ID").ToString()
                 .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
                 .Cells(2).Value = dt.Rows(i)("GroupName").ToString()
-                .Cells(3).Value = IIf(Val(dt.Rows(i)("TotalOpbal").ToString()) > 0, Format(Math.Abs(Val(dt.Rows(i)("TotalOpbal").ToString())), "0.00") & " " & "Dr", Format(Math.Abs(Val(dt.Rows(i)("TotalOpbal").ToString())), "0.00") & " " & "Cr")
+                .Cells(3).Value = IIf(Val(dt.Rows(i)("TotalOpbal").ToString()) > 0, Format(Math.Abs(Val(dt.Rows(i)("TotalOpbal").ToString())), "0.00") & " " & " Dr", Format(Math.Abs(Val(dt.Rows(i)("TotalOpbal").ToString())), "0.00") & " " & " Cr")
                 .Cells(4).Value = Format(Val(dt.Rows(i)("TotalDr").ToString()), "0.00")
                 .Cells(5).Value = Format(Val(dt.Rows(i)("TotalCr").ToString()), "0.00")
-                .Cells(6).Value = IIf(Val(dt.Rows(i)("TotalRestbal").ToString()) > 0, Format(Math.Abs(Val(dt.Rows(i)("TotalRestbal").ToString())), "0.00") & "Dr", Format(Math.Abs(Val(dt.Rows(i)("TotalRestbal").ToString())), "0.00") & "Cr")
+                .Cells(6).Value = IIf(Val(dt.Rows(i)("TotalRestbal").ToString()) > 0, Format(Math.Abs(Val(dt.Rows(i)("TotalRestbal").ToString())), "0.00") & " Dr", Format(Math.Abs(Val(dt.Rows(i)("TotalRestbal").ToString())), "0.00") & " Cr")
                 OpTotal += Val(dt.Rows(i)("TotalOpbal").ToString())
                 Drtotal += Val(dt.Rows(i)("TotalDr").ToString())
                 CrTotal += Val(dt.Rows(i)("TotalCr").ToString())
                 CloseTotal += Val(dt.Rows(i)("TotalRestbal").ToString())
             End With
         Next
-        txtOpbal.Text = IIf(Val(CloseTotal) > 0, Format(Math.Abs(Val(OpTotal)), "0.00") & " " & "Dr", Format(Math.Abs(Val(OpTotal)), "0.00") & " " & "Cr")
-        txtBalAmt.Text = IIf(Val(CloseTotal) > 0, Format(Math.Abs(Val(CloseTotal)), "0.00") & " " & "Dr", Format(Math.Abs(Val(CloseTotal)), "0.00") & " " & "Cr")
+        txtOpbal.Text = IIf(Val(CloseTotal) > 0, Format(Math.Abs(Val(OpTotal)), "0.00") & " " & " Dr", Format(Math.Abs(Val(OpTotal)), "0.00") & " " & " Cr")
+        txtBalAmt.Text = IIf(Val(CloseTotal) > 0, Format(Math.Abs(Val(CloseTotal)), "0.00") & " " & " Dr", Format(Math.Abs(Val(CloseTotal)), "0.00") & " " & " Cr")
         txtDramt.Text = Format(Math.Abs(Val(Drtotal)), "0.00")
         txtcrAmt.Text = Format(Math.Abs(Val(CrTotal)), "0.00")
         dg1.ClearSelection()
@@ -311,7 +318,6 @@
         tmpgrid.Columns(15).Name = "DayCount" : tmpgrid.Columns(15).Width = 100
     End Sub
     Private Sub RetriveLedger()
-
         Dim i As Integer = 0
         tmpgrid.Rows.Clear()
 
@@ -442,6 +448,143 @@
 
     End Sub
 
+    Private Sub RetriveLedgerMerged()
+        tmpgrid.Rows.Clear()
+        Dim sql As String = ""
+        Dim dt As DataTable
+
+        pb1.Visible = True
+        pb1.Minimum = 0
+        pb1.Maximum = dg1.Rows.Count
+        pb1.Value = 0
+
+        For i As Integer = 0 To dg1.Rows.Count - 1
+
+            Dim accountId As Integer = Val(dg1.Rows(i).Cells(0).Value)
+
+            '=========================================
+            '        SQL GROUP BY QUERY
+            '=========================================
+            sql = "SELECT L.EntryDate AS EntryDate, L.TransType AS TransType, " &
+                  "A.AccountName AS AccountName, A.OtherName AS OtherName, " &
+                  "ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0) + " &
+                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='D' " &
+                  " AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') - " &
+                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='C' " &
+                  " AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')" &
+                  " ELSE -IFNULL(A.Opbal,0) - " &
+                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='C' " &
+                  " AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') + " &
+                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='D' " &
+                  " AND L1.EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS OpeningBalance, " &
+                  "SUM(CASE WHEN L.DC='D' THEN L.Amount ELSE 0 END) AS Dr, " &
+                  "SUM(CASE WHEN L.DC='C' THEN L.Amount ELSE 0 END) AS Cr " &
+                  "FROM Account_AcGrp A LEFT JOIN Ledger L ON L.AccountID=A.ID " &
+                  "WHERE A.ID=" & accountId &
+                  " AND L.EntryDate BETWEEN '" &
+                  CDate(mskFromDate.Text).ToString("yyyy-MM-dd") &
+                  "' AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " &
+                  "GROUP BY L.EntryDate, L.TransType " &
+                  "ORDER BY L.EntryDate"
+
+            dt = clsFun.ExecDataTable(sql)
+
+            '=========================================
+            '        MERGED TABLE (in VB.NET)
+            '=========================================
+            Dim Merged As New DataTable
+            Merged.Columns.Add("EntryDate", GetType(Date))
+            Merged.Columns.Add("TransType", GetType(String))
+            Merged.Columns.Add("Dr", GetType(Decimal))
+            Merged.Columns.Add("Cr", GetType(Decimal))
+            Merged.Columns.Add("OpeningBalance", GetType(Decimal))
+            Merged.Columns.Add("AccountName", GetType(String))
+            Merged.Columns.Add("OtherName", GetType(String))
+
+            ' MERGE rows
+            For Each r As DataRow In dt.Rows
+                Dim EDate As Date = CDate(r("EntryDate"))
+                Dim TType As String = r("TransType").ToString()
+
+                Dim found() As DataRow = Merged.Select("EntryDate='" &
+                                EDate.ToString("yyyy-MM-dd") & "' AND TransType='" & TType & "'")
+
+                If found.Length = 0 Then
+                    Merged.Rows.Add(EDate, TType,
+                        Val(r("Dr")), Val(r("Cr")),
+                        Val(r("OpeningBalance")),
+                        r("AccountName"), r("OtherName"))
+                Else
+                    found(0)("Dr") = Val(found(0)("Dr")) + Val(r("Dr"))
+                    found(0)("Cr") = Val(found(0)("Cr")) + Val(r("Cr"))
+                End If
+            Next
+
+            '=========================================
+            '        RUNNING BALANCE APPLY
+            '=========================================
+            Dim runningBalance As Decimal = 0
+            Dim isFirst As Boolean = True
+            Dim totalDr As Decimal = 0
+            Dim totalCr As Decimal = 0
+
+            For Each r As DataRow In Merged.Rows
+                Dim openBal As Decimal = Val(r("OpeningBalance"))
+                Dim dr As Decimal = Val(r("Dr"))
+                Dim cr As Decimal = Val(r("Cr"))
+                If isFirst Then
+                    runningBalance = openBal
+                    isFirst = False
+                End If
+                runningBalance += dr
+                runningBalance -= cr
+                totalDr += dr
+                totalCr += cr
+                Dim daysDiff As Integer =
+                    DateDiff(DateInterval.Day, CDate(MsktoDate.Text), CDate(r("EntryDate")))
+                tmpgrid.Rows.Add(
+       "",
+       CDate(r("EntryDate")).ToString("dd-MM-yyyy"),
+       r("TransType"),
+       r("AccountName"),
+       "",
+       If(dr = 0D, "", Format(dr, "0.00")),
+       If(cr = 0D, "", Format(cr, "0.00")),
+       If(runningBalance >= 0,
+           Format(runningBalance, "0.00") & " Dr",
+           Format(Math.Abs(runningBalance), "0.00") & " Cr"),
+       r("OtherName"),
+       "",
+       If(totalDr = 0, "", totalDr),
+       If(totalCr = 0, "", totalCr),
+       If(openBal >= 0,
+           Format(Math.Abs(openBal), "0.00") & " Dr",
+           Format(Math.Abs(openBal), "0.00") & " Cr"),
+                   dg1.Rows(i).Cells(6).Value,
+                   "",
+                   Math.Abs(daysDiff)
+   )
+            Next
+
+            '=========================================
+            '     FINAL BALANCE (ACCOUNT WISE)
+            '=========================================
+            'Dim AccountFinalBalance As Decimal = runningBalance
+            'For rIndex As Integer = tmpgrid.Rows.Count - Merged.Rows.Count To tmpgrid.Rows.Count - 1
+            '    tmpgrid.Rows(rIndex).Cells(13).Value =
+            '        IIf(AccountFinalBalance > 0,
+            '            Format(Math.Abs(AccountFinalBalance), "0.00") & " Dr",
+            '            Format(Math.Abs(AccountFinalBalance), "0.00") & " Cr")
+            'Next
+
+            pb1.Value = i + 1
+            Application.DoEvents()
+
+        Next
+
+        pb1.Visible = False
+    End Sub
+
 
     'private sub retriveledger()
     '    dim i as integer = 0
@@ -543,7 +686,7 @@
                         FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDate.Text & "'," &
                             "'" & MsktoDate.Text & "','" & .Cells("Account Name").Value & "','" & .Cells("OpBalTotal").Value & "','" & .Cells("DrTotal").Value & "','" & .Cells("CrTotal").Value & "'," &
                             "'" & .Cells("CalbalTotal").Value & "','" & .Cells("Date").Value & "','" & .Cells("Type").Value & "','" & .Cells("Account Name").Value & "','" & IIf(ckPrintHindi.Checked = True, .Cells("HindiItem").Value, .Cells("Description").Value) & "'," &
-                            "'" & .Cells("Debit").Value & "','" & .Cells("Credit").Value & "','" & .Cells("Balance").Value & "','" & .Cells("HindiName").Value & "','',''," & Val(.Cells("RowCount").Value) & ",'" & .Cells("DayCount").Value & "'"
+                            "'" & .Cells("Debit").Value & "','" & .Cells("Credit").Value & "','" & .Cells("Balance").Value & "','" & .Cells("HindiName").Value & "','" & .Cells("CalbalTotal").Value & "',''," & Val(.Cells("RowCount").Value) & ",'" & .Cells("DayCount").Value & "'"
                     End With
                     LastRecord = Val(LastRecord + 1)
                 Next
@@ -684,5 +827,26 @@
 
     Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
         MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    End Sub
+
+    Private Sub btnLedgerMerged_Click(sender As Object, e As EventArgs) Handles btnLedgerMerged.Click
+        pnlWait.Visible = True : pnlPrint.Visible = False : rowColumsTemp() : RetriveLedgerMerged() : PrintRecord()
+        'If ckJoin.Checked = True Then
+        '    WithoutDiscriptionPrint()
+        'Else
+        '    PrintRecord()
+        'End If
+        If ckPrintHindi.Checked = True Then
+            Report_Viewer.printReport("\Reports\GroupLedger2.rpt")
+            Report_Viewer.MdiParent = MainScreenForm
+            Report_Viewer.Show()
+            Report_Viewer.BringToFront()
+        Else
+            Report_Viewer.printReport("\Reports\GroupLedger.rpt")
+            Report_Viewer.MdiParent = MainScreenForm
+            Report_Viewer.Show()
+            Report_Viewer.BringToFront()
+        End If
+        pnlWait.Visible = False
     End Sub
 End Class

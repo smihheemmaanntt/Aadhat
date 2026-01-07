@@ -6,7 +6,7 @@ Imports Aadhat.HttpService
 
 Public Class Mobile_App
     Dim ClsCommon As CommonClass = New CommonClass()
-    Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "accent.dll"
+    Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "coreaccess.smx"
     Private Sub BtnIDGenrate_Click(sender As Object, e As EventArgs) Handles BtnIDGenrate.Click
         If My.Computer.Network.IsAvailable = False Then MsgBox("Please Check Your Internet Connection", MsgBoxStyle.Critical, "No Internet Access") : Exit Sub
         '  If Not File.Exists(fileName) Then MsgBox("In DEMO MODE Mobile App Feature Not Activated..." & vbNewLine & "If Do you want to See Mobile App Feature " & vbNewLine & " Please Use OrganizationID=123456 and Password Is 123456 In Mobile App", MsgBoxStyle.Exclamation, "Thank You...") : Exit Sub

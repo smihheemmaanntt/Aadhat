@@ -38,6 +38,7 @@ Partial Class ShowCompanies
         Me.RunSqliteQueryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoteSupportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,7 +69,7 @@ Partial Class ShowCompanies
         '
         'FinacleToolStripMenuItem
         '
-        Me.FinacleToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateCompanyToolStripMenuItem, Me.ModifyCompanyToolStripMenuItem, Me.ChangeFinacialYearToolStripMenuItem, Me.DeleteCompanyToolStripMenuItem, Me.BackupToolStripMenuItem, Me.RestoreToolStripMenuItem, Me.SystemInfoToolStripMenuItem, Me.SystemInfoToolStripMenuItem1, Me.RunSqliteQueryToolStripMenuItem, Me.RemoteSupportToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FinacleToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateCompanyToolStripMenuItem, Me.ModifyCompanyToolStripMenuItem, Me.ChangeFinacialYearToolStripMenuItem, Me.DeleteCompanyToolStripMenuItem, Me.BackupToolStripMenuItem, Me.RestoreToolStripMenuItem, Me.SystemInfoToolStripMenuItem, Me.SystemInfoToolStripMenuItem1, Me.RunSqliteQueryToolStripMenuItem, Me.RemoteSupportToolStripMenuItem, Me.UpdaToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FinacleToolStripMenuItem.Name = "FinacleToolStripMenuItem"
         Me.FinacleToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
         Me.FinacleToolStripMenuItem.Text = "&Company"
@@ -143,6 +144,12 @@ Partial Class ShowCompanies
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
+        'UpdaToolStripMenuItem
+        '
+        Me.UpdaToolStripMenuItem.Name = "UpdaToolStripMenuItem"
+        Me.UpdaToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.UpdaToolStripMenuItem.Text = "Update Easy Whatsapp"
+        '
         'ShowCompanies
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -181,5 +188,6 @@ Partial Class ShowCompanies
     Friend WithEvents SystemInfoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SystemInfoToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RunSqliteQueryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UpdaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

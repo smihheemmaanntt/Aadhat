@@ -196,6 +196,7 @@ Partial Class Stock_Sale
         Me.pnlGrossWeight = New System.Windows.Forms.Panel()
         Me.Label47 = New System.Windows.Forms.Label()
         Me.txtGrossWt = New System.Windows.Forms.TextBox()
+        Me.lblAvgWeight = New System.Windows.Forms.Label()
         Me.pnlMarka.SuspendLayout()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgStore, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2215,11 +2216,23 @@ Partial Class Stock_Sale
         Me.txtGrossWt.TabIndex = 0
         Me.txtGrossWt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'lblAvgWeight
+        '
+        Me.lblAvgWeight.AutoSize = True
+        Me.lblAvgWeight.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblAvgWeight.ForeColor = System.Drawing.Color.Blue
+        Me.lblAvgWeight.Location = New System.Drawing.Point(648, 192)
+        Me.lblAvgWeight.Name = "lblAvgWeight"
+        Me.lblAvgWeight.Size = New System.Drawing.Size(56, 19)
+        Me.lblAvgWeight.TabIndex = 91263
+        Me.lblAvgWeight.Text = "Avg Wt"
+        '
         'Stock_Sale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.lblAvgWeight)
         Me.Controls.Add(Me.pnlGrossWeight)
         Me.Controls.Add(Me.pnlMarka)
         Me.Controls.Add(Me.Label16)
@@ -2521,4 +2534,5 @@ Partial Class Stock_Sale
     Friend WithEvents pnlGrossWeight As System.Windows.Forms.Panel
     Friend WithEvents Label47 As System.Windows.Forms.Label
     Friend WithEvents txtGrossWt As System.Windows.Forms.TextBox
+    Friend WithEvents lblAvgWeight As System.Windows.Forms.Label
 End Class

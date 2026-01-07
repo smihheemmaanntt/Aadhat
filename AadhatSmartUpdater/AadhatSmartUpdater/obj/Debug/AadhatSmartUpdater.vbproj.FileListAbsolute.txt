@@ -16,3 +16,12 @@ D:\1\AadhatSmartUpdater\AadhatSmartUpdater\bin\Debug\AadhatSmartUpdater.xml
 D:\1\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.frmUpdater.resources
 D:\1\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.Resources.resources
 D:\1\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.vbproj.GenerateResource.Cache
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.exe
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.xml
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.pdb
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\bin\Debug\AadhatSmartUpdater.exe
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\bin\Debug\AadhatSmartUpdater.pdb
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\bin\Debug\AadhatSmartUpdater.xml
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.frmUpdater.resources
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.Resources.resources
+D:\1\Aadhat\AadhatSmartUpdater\AadhatSmartUpdater\obj\Debug\AadhatSmartUpdater.vbproj.GenerateResource.Cache

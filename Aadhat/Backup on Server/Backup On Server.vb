@@ -33,6 +33,7 @@ Public Class Backup_On_Server
     End Sub
 
     Private Sub Backup_On_Server_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         OringinalPath = GlobalData.ConnectionPath
@@ -64,6 +65,22 @@ Public Class Backup_On_Server
     Private Function GetAssemblyVersion() As String
         Return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
     End Function
+    'Private Sub LoadBanner()
+    '    Try
+    '        Dim bannerUrl As String = "http://softmanagementindia.in/banners/banner.jpg"
+    '        Using wc As New WebClient()
+    '            Dim data As Byte() = wc.DownloadData(bannerUrl)
+    '            Application.DoEvents()
+    '            Using ms As New IO.MemoryStream(data)
+    '                If pb1.Image IsNot Nothing Then pb1.Image.Dispose()
+    '                pb1.Image = Image.FromStream(ms)
+    '            End Using
+    '        End Using
+    '    Catch ex As Exception
+    '        MessageBox.Show("Banner load error: " & ex.Message)
+    '    End Try
+    'End Sub
+
     Private Sub LoadBanner()
         Try
             Dim folderPath As String = Path.Combine(Application.StartupPath, "Banners")
@@ -75,14 +92,13 @@ Public Class Backup_On_Server
             End If
 
             If CheckInternetConnection() Then
+                Application.DoEvents()
                 Dim needDownload As Boolean = True
-
                 ' Get server file last-modified time
                 Dim request As Net.HttpWebRequest = CType(Net.WebRequest.Create(bannerUrl), Net.HttpWebRequest)
                 request.Method = "HEAD"
                 Using response As Net.HttpWebResponse = CType(request.GetResponse(), Net.HttpWebResponse)
                     Dim serverModified As DateTime = response.LastModified
-
                     If File.Exists(localFilePath) Then
                         Dim localModified As DateTime = File.GetLastWriteTime(localFilePath)
 

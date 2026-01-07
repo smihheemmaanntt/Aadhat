@@ -227,6 +227,7 @@
     <Reference Include="System.Management">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms">
       <Private>True</Private>
@@ -291,6 +292,12 @@
     <Compile Include="Backup on Server\Backup On Server.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Backup on Server\EwUpdater.Designer.vb">
+      <DependentUpon>EwUpdater.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Backup on Server\EwUpdater.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Balance Editor\Account Balance Editor.Designer.vb">
       <DependentUpon>Account Balance Editor.vb</DependentUpon>
     </Compile>
@@ -339,12 +346,15 @@
     <Compile Include="Change Financial Year\CarryForword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Class\AccentStorageHelper.vb" />
     <Compile Include="Class\BalanceSheet.vb" />
     <Compile Include="Class\ClsFunWhatsapp.vb" />
     <Compile Include="Class\ClsImportCrates.vb" />
     <Compile Include="Class\ClsFunserver.vb" />
     <Compile Include="Class\ClsImportBalances.vb" />
     <Compile Include="Class\DetectDebugger.vb" />
+    <Compile Include="Class\GlobalApi.vb" />
+    <Compile Include="Class\LicenseModule.vb" />
     <Compile Include="Class\LoginResponse.vb" />
     <Compile Include="Class\Translation.vb" />
     <Compile Include="Class\WABA.vb" />
@@ -1378,6 +1388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Backup on Server\Backup On Server.resx">
       <DependentUpon>Backup On Server.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Backup on Server\EwUpdater.resx">
+      <DependentUpon>EwUpdater.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Balance Editor\Account Balance Editor.resx">
       <DependentUpon>Account Balance Editor.vb</DependentUpon>

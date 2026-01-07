@@ -168,4 +168,10 @@ Friend Class ShowCompanies
         Query_Maker.Show()
         Query_Maker.BringToFront()
     End Sub
+
+    Private Sub UpdaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdaToolStripMenuItem.Click
+        frmUpdater.MdiParent = Me
+        frmUpdater.Show()
+        frmUpdater.BringToFront()
+    End Sub
 End Class

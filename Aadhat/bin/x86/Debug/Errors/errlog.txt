@@ -2313,3 +2313,178 @@ Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,Entry
 StackTrace: PAPPU LAL NATHU LAL SAINI
 Date/Time: 30-Nov-25 11:02:00 PM
 ===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PUNJAB DATA
+Date/Time: 01-Dec-25 1:36:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 01-Dec-25 1:37:45 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 01-Dec-25 1:39:12 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: SADA SHIV TRADING COMPANY
+Date/Time: 01-Dec-25 1:39:56 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 01-Dec-25 1:40:27 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 01-Dec-25 1:41:08 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 01-Dec-25 1:43:00 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 01-Dec-25 1:43:17 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: ANKIT ENTERPRISES
+Date/Time: 01-Dec-25 1:47:54 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: A
+Date/Time: 04-Dec-25 12:19:13 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: A
+Date/Time: 04-Dec-25 12:21:21 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 04-Dec-25 12:23:06 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 04-Dec-25 12:23:13 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...
+StackTrace: GURMEET SINGH BATRA & COMPANY
+Date/Time: 04-Dec-25 12:25:44 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 05-Dec-25 6:00:46 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: KALU RAM BHANU LAL
+Date/Time: 05-Dec-25 6:03:36 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 05-Dec-25 6:05:59 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 05-Dec-25 8:53:47 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 05-Dec-25 9:02:08 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 05-Dec-25 9:09:15 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Incorrect Password !!!admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 06-Dec-25 11:53:06 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 11:53:13 AM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 12:05:32 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 12:08:14 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 12:09:36 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 12:22:24 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 2:27:10 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 2:35:10 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 2:37:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...admin
+StackTrace: PAPPU LAL NATHU LAL SAINI
+Date/Time: 06-Dec-25 3:47:40 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 5:59:19 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 6:00:59 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 6:03:57 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 6:05:51 PM
+===========================================================================================
+Title: Login Successfuly...
+Message: Login Successfuly...BTC
+StackTrace: BHAGWATI TRADING COMPANY
+Date/Time: 06-Dec-25 6:08:14 PM
+===========================================================================================

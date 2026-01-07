@@ -125,7 +125,7 @@ Public Class Create_Company
         End If
     End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "accent.dll"
+        Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "coreaccess.smx"
         If Not File.Exists(fileName) Then
             If BtnSave.Text = "&Save" Then
                 If CompanyList.dg1.RowCount >= 1 Then

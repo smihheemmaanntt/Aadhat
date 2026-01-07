@@ -141,6 +141,7 @@ Partial Class MainScreenForm
         Me.CashBankBookPaymentDetailedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CashBookBankBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DayBookCumCashBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CashBookCumBankBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.UgrahiRegisterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CollectionRegisterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -231,10 +232,11 @@ Partial Class MainScreenForm
         Me.AnyDeskToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AmmyAdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CalculatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RegistrationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegistrationRevokeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestBalanceSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SystemInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LicenceInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateEasyWhatsappToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MobileAppToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportFromServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhatsNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -270,7 +272,6 @@ Partial Class MainScreenForm
         Me.btnItem = New System.Windows.Forms.Button()
         Me.lblARC = New System.Windows.Forms.Label()
         Me.blinkTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.CashBookCumBankBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1112,6 +1113,12 @@ Partial Class MainScreenForm
         Me.DayBookCumCashBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
         Me.DayBookCumCashBookToolStripMenuItem.Text = "Day Book cum Cash Book"
         '
+        'CashBookCumBankBookToolStripMenuItem
+        '
+        Me.CashBookCumBankBookToolStripMenuItem.Name = "CashBookCumBankBookToolStripMenuItem"
+        Me.CashBookCumBankBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBookCumBankBookToolStripMenuItem.Text = "Cash Book Cum Bank Book"
+        '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
@@ -1672,7 +1679,7 @@ Partial Class MainScreenForm
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoteSupportToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.RegistrationToolStripMenuItem, Me.TestBalanceSheetToolStripMenuItem, Me.SystemInfoToolStripMenuItem, Me.LicenceInfoToolStripMenuItem})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoteSupportToolStripMenuItem, Me.CalculatorToolStripMenuItem, Me.RegistrationRevokeToolStripMenuItem, Me.TestBalanceSheetToolStripMenuItem, Me.SystemInfoToolStripMenuItem, Me.LicenceInfoToolStripMenuItem, Me.UpdateEasyWhatsappToolStripMenuItem})
         Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HelpToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
@@ -1685,7 +1692,7 @@ Partial Class MainScreenForm
         Me.RemoteSupportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TeamViewerQSToolStripMenuItem, Me.AnyDeskToolStripMenuItem, Me.AmmyAdminToolStripMenuItem})
         Me.RemoteSupportToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.RemoteSupportToolStripMenuItem.Name = "RemoteSupportToolStripMenuItem"
-        Me.RemoteSupportToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.RemoteSupportToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
         Me.RemoteSupportToolStripMenuItem.Text = "&Remote Support"
         '
         'TeamViewerQSToolStripMenuItem
@@ -1713,33 +1720,38 @@ Partial Class MainScreenForm
         Me.CalculatorToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CalculatorToolStripMenuItem.Name = "CalculatorToolStripMenuItem"
         Me.CalculatorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12
-        Me.CalculatorToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.CalculatorToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
         Me.CalculatorToolStripMenuItem.Text = "Calculator"
         '
-        'RegistrationToolStripMenuItem
+        'RegistrationRevokeToolStripMenuItem
         '
-        Me.RegistrationToolStripMenuItem.Name = "RegistrationToolStripMenuItem"
-        Me.RegistrationToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
-        Me.RegistrationToolStripMenuItem.Text = "Registration"
-        Me.RegistrationToolStripMenuItem.Visible = False
+        Me.RegistrationRevokeToolStripMenuItem.Name = "RegistrationRevokeToolStripMenuItem"
+        Me.RegistrationRevokeToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.RegistrationRevokeToolStripMenuItem.Text = "Registration / Revoke"
         '
         'TestBalanceSheetToolStripMenuItem
         '
         Me.TestBalanceSheetToolStripMenuItem.Name = "TestBalanceSheetToolStripMenuItem"
-        Me.TestBalanceSheetToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.TestBalanceSheetToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
         Me.TestBalanceSheetToolStripMenuItem.Text = "Test Balance Sheet"
         '
         'SystemInfoToolStripMenuItem
         '
         Me.SystemInfoToolStripMenuItem.Name = "SystemInfoToolStripMenuItem"
-        Me.SystemInfoToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.SystemInfoToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
         Me.SystemInfoToolStripMenuItem.Text = "System Info"
         '
         'LicenceInfoToolStripMenuItem
         '
         Me.LicenceInfoToolStripMenuItem.Name = "LicenceInfoToolStripMenuItem"
-        Me.LicenceInfoToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.LicenceInfoToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
         Me.LicenceInfoToolStripMenuItem.Text = "Licence Info"
+        '
+        'UpdateEasyWhatsappToolStripMenuItem
+        '
+        Me.UpdateEasyWhatsappToolStripMenuItem.Name = "UpdateEasyWhatsappToolStripMenuItem"
+        Me.UpdateEasyWhatsappToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.UpdateEasyWhatsappToolStripMenuItem.Text = "Update Easy Whatsapp"
         '
         'MobileAppToolStripMenuItem
         '
@@ -1793,7 +1805,7 @@ Partial Class MainScreenForm
         Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.Label1.Font = New System.Drawing.Font("BlackChancery", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(1190, -1)
+        Me.Label1.Location = New System.Drawing.Point(1172, -1)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(133, 47)
         Me.Label1.TabIndex = 87
@@ -1805,7 +1817,7 @@ Partial Class MainScreenForm
         Me.lblBuildVersion.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.lblBuildVersion.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblBuildVersion.ForeColor = System.Drawing.Color.White
-        Me.lblBuildVersion.Location = New System.Drawing.Point(1313, 0)
+        Me.lblBuildVersion.Location = New System.Drawing.Point(1295, 0)
         Me.lblBuildVersion.Name = "lblBuildVersion"
         Me.lblBuildVersion.Size = New System.Drawing.Size(37, 14)
         Me.lblBuildVersion.TabIndex = 88
@@ -1834,7 +1846,7 @@ Partial Class MainScreenForm
         Me.Label21.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.Label21.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(1295, 31)
+        Me.Label21.Location = New System.Drawing.Point(1277, 31)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(66, 15)
         Me.Label21.TabIndex = 89
@@ -2286,7 +2298,7 @@ Partial Class MainScreenForm
         Me.lblARC.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.lblARC.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblARC.ForeColor = System.Drawing.Color.White
-        Me.lblARC.Location = New System.Drawing.Point(993, 26)
+        Me.lblARC.Location = New System.Drawing.Point(936, 26)
         Me.lblARC.Name = "lblARC"
         Me.lblARC.Size = New System.Drawing.Size(120, 19)
         Me.lblARC.TabIndex = 94
@@ -2294,12 +2306,6 @@ Partial Class MainScreenForm
         '
         'blinkTimer
         '
-        '
-        'CashBookCumBankBookToolStripMenuItem
-        '
-        Me.CashBookCumBankBookToolStripMenuItem.Name = "CashBookCumBankBookToolStripMenuItem"
-        Me.CashBookCumBankBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
-        Me.CashBookCumBankBookToolStripMenuItem.Text = "Cash Book Cum Bank Book"
         '
         'MainScreenForm
         '
@@ -2464,7 +2470,6 @@ Partial Class MainScreenForm
     Friend WithEvents AnyDeskToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AmmyAdminToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CalculatorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RegistrationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UsersToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NewUserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UserRegisterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -2598,4 +2603,6 @@ Partial Class MainScreenForm
     Friend WithEvents OutstandingAmountToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutstandingSelectedAccountingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CashBookCumBankBookToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RegistrationRevokeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UpdateEasyWhatsappToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
