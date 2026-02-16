@@ -132,7 +132,7 @@ Public Class ApplyLicenseKey
             Dim data As New LicenseData With {
                 .license_key = inputKey,
                 .product_id = 1,
-                .board_id = "testboard",
+                .board_id = AccentStorageHelper.GetMotherboardID(),
                 .pc_name = Environment.MachineName,
                 .firm_name = txtFrimName.Text,
                 .address = txtfullAddress.Text,
@@ -140,7 +140,7 @@ Public Class ApplyLicenseKey
                 .state = txtState.Text,
                 .mobile1 = txtMobile1.Text,
                 .mobile2 = txtMobile2.Text,
-                .email = txtEmail.Text
+            .email = txtEmail.Text
             }
 
             Dim response = AccentStorageHelper.SaveLicense(data)

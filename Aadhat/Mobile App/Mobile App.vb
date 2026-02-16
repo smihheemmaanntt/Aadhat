@@ -248,7 +248,7 @@ Public Class Mobile_App
             Dim ledgerCount As Integer = clsFun.ExecScalarInt(sql)
             Dim progesssCount As Integer = 0
             Dim maxRowCount1 As Decimal = 0
-            maxRowCount1 = Math.Ceiling(ledgerCount / 2000)
+            maxRowCount1 = Math.Ceiling(ledgerCount / 1000)
             dataProgress.Minimum = progesssCount
             dataProgress.Maximum = maxRowCount1
             dataProgress.Visible = True
@@ -258,7 +258,7 @@ Public Class Mobile_App
             For i As Integer = 0 To maxRowCount1 - 1
                 Application.DoEvents()
                 Dim ledSql As String = "Select VourchersID,EntryDate,TransType,AccountID,AccountName,Amount,DC,Remark,Narration,RemarkHindi" +
-                                    " FROM Ledger LIMIT 2000 OFFSET " + legCount.ToString()
+                                    " FROM Ledger LIMIT 1000 OFFSET " + legCount.ToString()
                 '  If Val(legCount) = 28700 Then MsgBox("a")
                 Dim ledDt As DataTable = New DataTable()
                 ledDt = clsFun.ExecDataTable(ledSql)
@@ -310,7 +310,7 @@ Public Class Mobile_App
             Dim CrateCount As Integer = clsFun.ExecScalarInt(Ssql)
             Dim CrateprogesssCount As Integer = 0
             Dim CratemaxRowCount As Decimal = 0
-            CratemaxRowCount = Math.Ceiling(CrateCount / 2000)
+            CratemaxRowCount = Math.Ceiling(CrateCount / 1000)
             dataProgress.Minimum = CrateprogesssCount
             dataProgress.Maximum = CratemaxRowCount
             dataProgress.Visible = True
@@ -319,7 +319,7 @@ Public Class Mobile_App
             For i As Integer = 0 To CratemaxRowCount - 1
 
                 Dim CrateVSql As String = "Select * " +
-                                    " FROM CrateVoucher LIMIT 2000 OFFSET " + CrateVCount.ToString()
+                                    " FROM CrateVoucher LIMIT 1000 OFFSET " + CrateVCount.ToString()
                 Dim CrateVDt As DataTable = New DataTable()
                 CrateVDt = clsFun.ExecDataTable(CrateVSql)
                 'dataProgress.Maximum = maxRowCount 'Set Max Lenght

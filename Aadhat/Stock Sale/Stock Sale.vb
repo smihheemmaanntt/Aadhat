@@ -470,6 +470,72 @@
         End If
 
     End Sub
+    Private Sub txtComAmt_Leave(sender As Object, e As EventArgs) Handles txtComAmt.Leave
+        If txtComPer.Text = "" Then txtComPer.Text = "0.00"
+        lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
+        txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
+        If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
+            Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
+            txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
+            lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
+            txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
+        End If
+        'StockCalculation()
+    End Sub
+    Private Sub txtMAmt_Leave(sender As Object, e As EventArgs) Handles txtMAmt.Leave
+        If txtMPer.Text = "" Then txtMPer.Text = "0.00"
+        lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
+        txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
+        If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
+            Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
+            txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
+            lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
+            txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
+        End If
+    End Sub
+    Private Sub txtRdfAmt_Leave(sender As Object, e As EventArgs) Handles txtRdfAmt.Leave
+        If txtRdfPer.Text = "" Then txtRdfPer.Text = "0.00"
+        lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
+        txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
+        If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
+            Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
+            txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
+            lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
+            txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
+        End If
+
+    End Sub
+    Private Sub txtTareAmt_Leave(sender As Object, e As EventArgs) Handles txtTareAmt.Leave
+        If txtTare.Text = "" Then txtTare.Text = "0.00"
+        lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
+        txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
+        If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
+            Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
+            txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
+            lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
+            txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
+        End If
+
+
+    End Sub
+    Private Sub txtLabour_Leave(sender As Object, e As EventArgs) Handles txtLabour.Leave, txtLaboutAmt.Leave
+        If txtLabour.Text = "" Then txtLabour.Text = "0.00"
+        lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
+        txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
+    End Sub
+
     Private Sub txtPurchaseType_GotFocus(sender As Object, e As EventArgs) Handles txtPurchaseType.GotFocus, txtLot.GotFocus,
      txtCut.GotFocus, txtNug.GotFocus, txtKg.GotFocus, txtCustomerRate.GotFocus, txtStorage.GotFocus, txtItem.GotFocus, txtAccount.GotFocus,
     txtSallerRate.GotFocus, txtCrateQty.GotFocus, txtbasicAmt.GotFocus, txtVoucherNo.GotFocus, txtComPer.GotFocus,
@@ -700,7 +766,7 @@
             lblCrate.Text = row("MaintainCrate").ToString()
             CUT = row("CutPerNug").ToString()
             txtCut.Text = Val(row("CutPerNug").ToString())
-            If ItemPer = "ItemWise" Then CbPer.Text = row("RateAs").ToString()
+            If ItemPer = "ItemWise" Then Cbper.Text = row("RateAs").ToString()
             trackStock = row("TrackStock").ToString()
         End If
         'AccountComm()
@@ -711,7 +777,7 @@
         txtCut.Text = (Val(txtKg.Text) - Val(txtGrossWt.Text))
         txtCut.Text = If(Val(txtCut.Text) = 0, "", Format(Val(txtCut.Text), "0.00"))
     End Sub
-   
+
     Public Sub FillControls(ByVal id As Integer)
         Dim sSql As String = String.Empty
         Dim Crate As String = String.Empty
@@ -1089,7 +1155,7 @@
                 txtNug.Text = 0 : txtLot.Focus() : Exit Sub
             End If
         End If
-    
+
 
     End Sub
 
@@ -1111,9 +1177,9 @@
     End Sub
 
     Private Sub txtrate_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCustomerRate.KeyUp, txtSallerRate.KeyUp, txtNug.KeyUp,
-         txtKg.KeyUp, txtComPer.KeyUp, txtComAmt.KeyUp, txtMPer.KeyUp, txtMAmt.KeyUp,
-        txtLabour.KeyUp, txtLaboutAmt.KeyUp, Cbper.KeyUp, txtTare.KeyUp, txtNetRate.KeyUp, txtRdfPer.KeyUp,
-        txtRdfAmt.KeyUp, txtCrateQty.KeyUp
+         txtKg.KeyUp, txtComPer.KeyUp, txtMPer.KeyUp,
+        txtLabour.KeyUp, Cbper.KeyUp, txtTare.KeyUp, txtNetRate.KeyUp, txtRdfPer.KeyUp,
+         txtCrateQty.KeyUp
         StockCalculation()
     End Sub
     Private Sub CbPer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cbper.SelectedIndexChanged
@@ -1310,6 +1376,7 @@
             If clsFun.ExecScalarStr("Select ApplyCommWeight From Controls") = "Yes" Then
                 txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtKg.Text), "0.00")
             Else
+                ' If crateRate = "Yes" And lblCrate.Text = "Y" Then txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtCrateQty.Text), "0.00") Else txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtNug.Text), "0.00")
                 If crateRate = "Yes" AndAlso lblCrate.Text = "Y" Then txtTareAmt.Text = Format(Val(txtCrateQty.Text) * Val(txtTare.Text), "0.00") Else txtTareAmt.Text = Format(Val(txtNug.Text) * Val(txtTare.Text), "0.00")
             End If
             txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
@@ -1719,7 +1786,7 @@
                                     FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(.Cells(33).Value) & ", '" & .Cells(34).Value & "','" & Val(.Cells(20).Value) & "', 'D','" & Remark2 & "', '" & .Cells(3).Value & "','" & RemarkHindi & "'"
                                 ElseIf Val(.Cells(22).Value) > 0 Then
                                     FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(.Cells(33).Value) & ", '" & .Cells(34).Value & "','" & Val(.Cells(22).Value) & "', 'D','" & Remark2 & "', '" & .Cells(3).Value & "','" & RemarkHindi & "'"
-                                End If         
+                                End If
                             End If
                         Else
                             FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(.Cells(2).Value) & ", '" & .Cells(3).Value & "','" & .Cells(12).Value & "', 'D','" & Remark2 & "', '" & .Cells(3).Value & "','" & RemarkHindi & "'"
@@ -2133,7 +2200,7 @@
         End If
     End Sub
 
-  
+
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         Delete()
     End Sub
@@ -2812,7 +2879,7 @@
         End If
         If e.KeyCode = Keys.Back Then txtAccount.Focus()
     End Sub
-    
+
     Private Sub txtAccount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAccount.KeyPress, txtItem.KeyPress
         If txtAccount.Focused = True Then DgAccountSearch.BringToFront() : DgAccountSearch.Visible = True
         If txtItem.Focused = True Then dgItemSearch.Visible = True
@@ -2874,7 +2941,7 @@
         dgLot.Visible = True
     End Sub
 
-  
+
 
 
     Private Sub RetriveLot(Optional ByVal condtion As String = "")
@@ -2942,7 +3009,7 @@
         End Try
     End Sub
 
- 
+
     Private Sub txtLot_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLot.KeyPress
         dgLot.BringToFront() : dgLot.Visible = True
     End Sub

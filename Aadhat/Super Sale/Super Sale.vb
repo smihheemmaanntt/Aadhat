@@ -587,7 +587,7 @@ Public Class Super_Sale
      txtCustomerRate.GotFocus, txtSallerRate.GotFocus, txtComPer.GotFocus, txtMPer.GotFocus, txtRdfPer.GotFocus, txtTare.GotFocus,
      txtLabour.GotFocus, txtComAmt.GotFocus, txtMAmt.GotFocus, txtRdfAmt.GotFocus, txtTareAmt.GotFocus, txtLaboutAmt.GotFocus,
      txtNetRate.GotFocus, txtBasicCustomer.GotFocus, txtTotAmount.GotFocus, txtCrateQty.GotFocus
-        If txtCut.Focused Then itemfill()
+        If txtCut.Focused Then ItemFill()
         Dim tb As TextBox = CType(sender, TextBox)
         tb.BackColor = Color.LightGray
         tb.SelectAll()
@@ -3259,6 +3259,10 @@ Public Class Super_Sale
     End Sub
 
     Private Sub txtSallerRate_TextChanged(sender As Object, e As EventArgs) Handles txtSallerRate.TextChanged
+
+    End Sub
+
+    Private Sub txtRdfAmt_TextChanged(sender As Object, e As EventArgs) Handles txtRdfAmt.TextChanged
 
     End Sub
 End Class

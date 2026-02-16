@@ -58,16 +58,22 @@ Public Class Login
         End If
 
         ' ---------------- LICENSE FILE ----------------
+        Dim isExpired As Boolean = AccentStorageHelper.CheckLicence()
         Dim licPath = Path.Combine(Application.StartupPath, "coreaccess.smx")
         If Not File.Exists(licPath) Then
-            ShowApplyLicense()
-            Exit Sub
+            If isExpired = True Then
+                ShowApplyLicense()
+                Exit Sub
+
+            End If
         End If
 
         ' ---------------- LICENSE VALIDATION ----------------
         If Not AccentStorageHelper.IsLicenseUsable() Then
-            ShowApplyLicense()
-            Exit Sub
+            If isExpired = True Then
+                ShowApplyLicense()
+                Exit Sub
+            End If
         End If
 
         ' ---------------- LOGIN SUCCESS ----------------

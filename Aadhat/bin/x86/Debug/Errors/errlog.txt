@@ -2488,3 +2488,8 @@ Message: Login Successfuly...BTC
 StackTrace: BHAGWATI TRADING COMPANY
 Date/Time: 06-Dec-25 6:08:14 PM
 ===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2026-02-10','Stock Sale','Stock in',65,1782,'A SAKIR', '3','Shop','1','ONION','0', '500','1','50', '40 Kg',0
+StackTrace: HEMANT SAINI
+Date/Time: 10-Feb-26 2:23:11 PM
+===========================================================================================

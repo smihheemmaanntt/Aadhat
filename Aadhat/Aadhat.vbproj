@@ -356,6 +356,7 @@
     <Compile Include="Class\GlobalApi.vb" />
     <Compile Include="Class\LicenseModule.vb" />
     <Compile Include="Class\LoginResponse.vb" />
+    <Compile Include="Class\PhoneMSg.vb" />
     <Compile Include="Class\Translation.vb" />
     <Compile Include="Class\WABA.vb" />
     <Compile Include="Class\WhatsAppSender.vb" />

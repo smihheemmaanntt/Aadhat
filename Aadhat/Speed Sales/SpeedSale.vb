@@ -1916,4 +1916,8 @@
     Private Sub txtNet_TextChanged(sender As Object, e As EventArgs) Handles txtNet.TextChanged
 
     End Sub
+
+    Private Sub txtTareAmt_TextChanged(sender As Object, e As EventArgs) Handles txtTareAmt.TextChanged
+
+    End Sub
 End Class

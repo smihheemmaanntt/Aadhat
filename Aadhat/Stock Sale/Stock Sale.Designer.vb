@@ -1273,7 +1273,6 @@ Partial Class Stock_Sale
         Me.txtLaboutAmt.ForeColor = System.Drawing.Color.Red
         Me.txtLaboutAmt.Location = New System.Drawing.Point(1127, 153)
         Me.txtLaboutAmt.Name = "txtLaboutAmt"
-        Me.txtLaboutAmt.ReadOnly = True
         Me.txtLaboutAmt.Size = New System.Drawing.Size(55, 16)
         Me.txtLaboutAmt.TabIndex = 25
         Me.txtLaboutAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1287,7 +1286,6 @@ Partial Class Stock_Sale
         Me.txtRdfAmt.ForeColor = System.Drawing.Color.Red
         Me.txtRdfAmt.Location = New System.Drawing.Point(809, 152)
         Me.txtRdfAmt.Name = "txtRdfAmt"
-        Me.txtRdfAmt.ReadOnly = True
         Me.txtRdfAmt.Size = New System.Drawing.Size(55, 16)
         Me.txtRdfAmt.TabIndex = 21
         Me.txtRdfAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1325,7 +1323,6 @@ Partial Class Stock_Sale
         Me.txtTareAmt.ForeColor = System.Drawing.Color.Red
         Me.txtTareAmt.Location = New System.Drawing.Point(968, 153)
         Me.txtTareAmt.Name = "txtTareAmt"
-        Me.txtTareAmt.ReadOnly = True
         Me.txtTareAmt.Size = New System.Drawing.Size(55, 16)
         Me.txtTareAmt.TabIndex = 23
         Me.txtTareAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1339,7 +1336,6 @@ Partial Class Stock_Sale
         Me.txtComAmt.ForeColor = System.Drawing.Color.Red
         Me.txtComAmt.Location = New System.Drawing.Point(491, 154)
         Me.txtComAmt.Name = "txtComAmt"
-        Me.txtComAmt.ReadOnly = True
         Me.txtComAmt.Size = New System.Drawing.Size(55, 16)
         Me.txtComAmt.TabIndex = 17
         Me.txtComAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1377,7 +1373,6 @@ Partial Class Stock_Sale
         Me.txtMAmt.ForeColor = System.Drawing.Color.Red
         Me.txtMAmt.Location = New System.Drawing.Point(650, 154)
         Me.txtMAmt.Name = "txtMAmt"
-        Me.txtMAmt.ReadOnly = True
         Me.txtMAmt.Size = New System.Drawing.Size(55, 16)
         Me.txtMAmt.TabIndex = 19
         Me.txtMAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right

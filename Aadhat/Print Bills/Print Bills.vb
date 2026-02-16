@@ -2006,26 +2006,34 @@ Public Class Print_Bills
     End Sub
 
     Private Sub btnSms_Click(sender As Object, e As EventArgs) Handles btnSms.Click
-        Dim Acid As String = String.Empty
-        Dim MobieNo As String = String.Empty
-        For i As Integer = 0 To dg1.Rows.Count - 1
-            If Val(dg1.Rows(i).Cells(0).Value.ToString()) > 0 Then
-                Acid = Acid & Val(dg1.Rows(i).Cells(23).Value.ToString()) & ","
-            End If
-        Next
-        Acid = Acid.Remove(Acid.LastIndexOf(","))
-        Dim tempdt As DataTable = clsFun.ExecDataTable("Select Mobile1 from Accounts where id in(" & Acid & ")")
-        For i As Integer = 0 To tempdt.Rows.Count - 1
-            If Len(tempdt.Rows(i)("Mobile1").ToString()) = 10 Then
-                MobieNo = MobieNo & tempdt.Rows(i)("Mobile1").ToString() & ","
-            End If
-        Next
-
-        MobieNo = MobieNo.Remove(MobieNo.LastIndexOf(","))
-        Dim resp As String = Sms.SendSms(MobieNo)
-        If resp = "Message Submitted" Then
-            MsgBox("Message send")
+        If CDate(mskFromDate.Text).ToString("dd-MM-yyyy") <> CDate(MsktoDate.Text).ToString("dd-MM-yyyy") Then
+            MessageBox.Show("You can WhatsApp by one date only.", "Date Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            mskFromDate.Focus()
+            Exit Sub
         End If
+        FillControl()
+        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+            If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp() : ShowWhatsappContacts()
+            pnlWhatsapp.Visible = True
+            Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
+            If System.IO.File.Exists(WhatsappFile) = False Then
+                MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
+                Exit Sub
+            End If
+            Dim p() As Process
+            p = Process.GetProcessesByName("Easy Whatsapp")
+            If p.Count = 0 Then
+                Dim StartWhatsapp As New System.Diagnostics.Process
+                StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
+                StartWhatsapp.Start()
+            End If
+            cbType.SelectedIndex = 0 : Exit Sub
+        ElseIf ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "WahSoft" Then
+            cbType.SelectedIndex = 1
+        End If
+        pnlWhatsapp.Visible = True
+        If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
+        ShowWhatsappContacts()
     End Sub
     Private Sub DgWhatsapp_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 1 Then

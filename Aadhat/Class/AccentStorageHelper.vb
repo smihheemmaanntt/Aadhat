@@ -108,16 +108,21 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function IsInternetAvailable() As Boolean
         Try
-            Dim req = CType(WebRequest.Create("https://crm.softmanagementindia.in/"), HttpWebRequest)
-            req.Method = "HEAD"
-            req.Timeout = 3000
+            Dim req = CType(WebRequest.Create("https://crm.softmanagementindia.in/ping.txt"), HttpWebRequest)
+            req.Method = "GET"
+            req.Timeout = 4000
+            req.ReadWriteTimeout = 4000
+            req.UserAgent = "AccoBook"
+
             Using resp = CType(req.GetResponse(), HttpWebResponse)
-                Return True
+                Return (resp.StatusCode = HttpStatusCode.OK)
             End Using
+
         Catch
             Return False
         End Try
     End Function
+
 
     '=====================================================
     ' SERVER BLOCK STATUS
@@ -191,6 +196,52 @@ Public Class AccentStorageHelper
     Public Shared Sub SaveStore(store As FinalStore)
         File.WriteAllText(storePath, Encrypt(JsonConvert.SerializeObject(store, Formatting.Indented)))
     End Sub
+
+
+    Public Shared Event LicenceStatusChanged(ByVal IsExpired As Boolean)
+
+    Public Shared Function CheckLicence() As Boolean
+        Dim IsExpired As Boolean = False
+
+        Dim count As Integer = clsFun.ExecScalarInt("Select OpenTime from Licence")
+
+        If count > 30 Then
+            IsExpired = True
+
+        Else
+            If count = 0 Then
+                clsFun.ExecNonQuery("Insert into Licence(OpenTime,InstallDate) values(" & count + 1 & ",'" & clsFun.GetServerDate & "')")
+                IsExpired = False
+
+            Else
+                Dim instDate As Date = clsFun.ExecScalarStr("Select InstallDate from Licence")
+
+                If clsFun.ExecScalarInt("Select count(*) from ledger") > 30 Then
+                    Dim Expdate As Date = clsFun.ExecScalarStr("Select Max(entrydate) from ledger limit 1")
+                    Dim difference As TimeSpan = Expdate.Subtract(instDate)
+
+                    If difference.TotalDays > 7 Then
+                        IsExpired = True
+                    End If
+
+                Else
+                    Dim compdate As Date = clsFun.GetServerDate
+                    Dim dif As TimeSpan = compdate.Subtract(instDate)
+
+                    If dif.TotalDays > 7 Then
+                        IsExpired = True
+                    End If
+                End If
+
+                clsFun.ExecNonQuery("Update Licence set OpenTime = OpenTime + 1")
+            End If
+        End If
+
+        ' ✅ Event fire karo
+        RaiseEvent LicenceStatusChanged(IsExpired)
+
+        Return IsExpired
+    End Function
 
     '=====================================================
     ' POST JSON
@@ -306,9 +357,10 @@ Public Class AccentStorageHelper
     Public Shared Function RetrieveLicense(customerCode As String) As Boolean
         Try
             If Not IsInternetAvailable() Then Return False
-            Dim url = RetrieveLicenseUrl &
-                "?customer_code=" & Uri.EscapeDataString(customerCode) &
-                "&board_id=xyz13&pc_name=" & Uri.EscapeDataString(Environment.MachineName)
+            Dim url As String = RetrieveLicenseUrl & _
+                "?customer_code=" & Uri.EscapeDataString(customerCode) & _
+                "&board_id=" & Uri.EscapeDataString(AccentStorageHelper.GetMotherboardID()) & _
+                "&pc_name=" & Uri.EscapeDataString(Environment.MachineName)
 
             Using wc As New WebClient()
                 wc.Headers(HttpRequestHeader.ContentType) = "application/octet-stream"

@@ -182,6 +182,11 @@ Public Class CompanyList
                 "GAP1 INTEGER,GAP2 INTEGER);INSERT INTO API(InstanceID,SendingMethod,LanguageType,SendingType)SELECT InstanceID,SendingMethod,LanguageType,SendingType FROM TempAPI; DROP TABLE TempAPI;PRAGMA foreign_keys = 1;"
             ClsFunPrimary.ExecNonQuery(sql)
         End If
+        If ClsFunPrimary.CheckIfColumnExists("API", "AccessToken") = False Then
+            Dim sql As String = String.Empty
+            sql = "ALTER TABLE API ADD COLUMN AccessToken TEXT;"
+            ClsFunPrimary.ExecNonQuery(sql)
+        End If
     End Sub
     Private Sub UpdateLedgerTable()
 
