@@ -6,18 +6,10 @@ Public Class Crate_Balance_Editor
     ' Public Shared filepath As String = String.Empty
     Public newconnection As String = ""
     Private Sub Account_Balance_Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.F2 Then
-            If btnApply.Visible = False Then btnApply.Visible = True : dg2.Focus() : Exit Sub Else btnApply.Visible = False
-        End If
         If e.KeyCode = Keys.Escape Then
-            If pnlCompanyList.Visible = True Then pnlCompanyList.Visible = False : Exit Sub Else Me.Close()
+            If Pnlconfirmation.Visible = True Then Pnlconfirmation.Visible = False : Exit Sub
+            Me.Close()
         End If
-    End Sub
-
-    Private Sub dg1_SelectionChanged(sender As Object, e As EventArgs) Handles dg2.SelectionChanged, dg2.GotFocus
-        If dg2.RowCount = 0 Or dg2.SelectedRows.Count = 0 Then Exit Sub
-        txtPath.Text = dg2.SelectedRows(0).Cells(7).Value
-        ' GlobalData.ConnectionPath = txtPath.Text
     End Sub
 
     Private Sub Account_Balance_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -25,8 +17,15 @@ Public Class Crate_Balance_Editor
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True
-        txtMainPath.Text = ClsFunPrimary.ExecScalarStr("Select DefaultPath From Path")
-        'clsFun.FillDropDownList(cmbSearch, "Select * From Accounts", "AccountName", "Id", "")
+        txtPath.Text = clsFun.ExecScalarStr("Select LinkedDb From Company")
+        If txtPath.Text = String.Empty Then
+            btnApply.Visible = False
+        Else
+            lblLinkedName.Text = ClsImportCrates.ExecScalarStr("Select CompanyName From Company")
+            lbllinkedfy.Text = ClsImportCrates.ExecScalarStr("SELECT strftime('%d-%m-%Y', YearStart) || ' - ' || strftime('%d-%m-%Y', YearEnd) AS FinYear FROM Company")
+            btnApply.Visible = True
+        End If
+        rowColums() : txtSearch.Focus()
         rowColums()
     End Sub
 
@@ -195,75 +194,12 @@ Public Class Crate_Balance_Editor
         End If
     End Sub
 
-    Private Sub dg1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 
-    End Sub
-    Public Sub rowColums1()
-        dg2.ColumnCount = 8
-        dg2.Columns(0).Name = "ID" : dg2.Columns(0).Visible = False
-        dg2.Columns(1).Name = "Company Name" : dg2.Columns(1).Width = 300
-        dg2.Columns(2).Name = "Address" : dg2.Columns(2).Width = 280
-        dg2.Columns(3).Name = "City" : dg2.Columns(3).Width = 100
-        dg2.Columns(4).Name = "Finacial Year Start" : dg2.Columns(4).Width = 100
-        dg2.Columns(5).Name = "Finacial Year End" : dg2.Columns(5).Width = 100
-        dg2.Columns(6).Name = "FYID" : dg2.Columns(6).Visible = False
-        dg2.Columns(7).Name = "DbPath" : dg2.Columns(7).Visible = False
-        ' retrive()
-    End Sub
-    Private Sub getCompanies()
-        Dim Connectionstring As String = String.Empty
-        dg2.Rows.Clear()
-        Dim i As Integer = 1 ' NewCompanies
-        If txtMainPath.Text.ToUpper = ("Data").ToUpper Or txtMainPath.Text.ToUpper = "" Then
-            root = root
-        Else
-            root = txtMainPath.Text
-        End If
-
-        For Each sDir In Directory.GetDirectories(root, "Data", SearchOption.AllDirectories)
-            For Each FilePath In Directory.GetFiles(sDir, "*data*.db", SearchOption.AllDirectories)
-                Application.DoEvents()
-                Dim detailedfile As New IO.FileInfo(FilePath)
-                Dim dt As New DataTable
-                Dim cmdText As String = "Select * from Company"
-                If txtMainPath.Text.ToUpper = ("Data").ToUpper Then
-                    Connectionstring = "Data Source=|DataDirectory|" & FilePath.ToString & ";Version=3;New=True;Compress=True;synchronous=ON;"
-                Else
-                    Connectionstring = "Data Source=" & FilePath.ToString & ";Version=3;New=True;Compress=True;synchronous=ON;"
-                End If
-
-                Dim con As New SQLite.SQLiteConnection(Connectionstring)
-                Dim ad As New SQLiteDataAdapter(cmdText, con)
-                ad.Fill(dt)
-                If dt.Rows.Count > 0 Then
-                    dg2.Rows.Add()
-                    With dg2.Rows(i - 1)
-                        .Cells(0).Value = dt.Rows(0)("id").ToString()
-                        .Cells(1).Value = dt.Rows(0)("CompanyName").ToString()
-                        .Cells(2).Value = dt.Rows(0)("Address").ToString()
-                        .Cells(3).Value = dt.Rows(0)("City").ToString()
-                        .Cells(6).Value = dt.Rows(0)("id").ToString()
-                        .Cells(4).Value = CDate(dt.Rows(0)("YearStart")).ToString("dd-MM-yyyy")
-                        .Cells(5).Value = CDate(dt.Rows(0)("YearEnd")).ToString("dd-MM-yyyy")
-                        .Cells(7).Value = FilePath.ToString
-                    End With
-                    i = i + 1
-                End If
-                '  dg1.Rows.Add("", detailedfile.Name, FilePath)
-            Next
-        Next
-    End Sub
-    Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
-        pnlCompanyList.Visible = True
-        rowColums1() : getCompanies()
-        dg2.Focus()
-    End Sub
-
-    Private Sub dg1_CellContentClick_2(sender As Object, e As DataGridViewCellEventArgs) Handles dg2.CellContentClick
+    Private Sub dg1_CellContentClick_2(sender As Object, e As DataGridViewCellEventArgs)
 
     End Sub
 
-    Private Sub dg1_KeyDown(sender As Object, e As KeyEventArgs) Handles dg2.KeyDown
+    Private Sub dg1_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             BringBalances()
         End If
@@ -320,16 +256,23 @@ Public Class Crate_Balance_Editor
                         End If
                     End If
                 Next
-
             End If
         Catch ex As Exception
-
         End Try
         lblCrateBalance.Visible = True
         lblCrateBalance.Text = "Crates Updated..."
-
     End Sub
-    Private Sub dg2_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dg2.MouseDoubleClick
-        If dg2.SelectedRows.Count <> 0 Then BringBalances()
+
+    Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
+        Pnlconfirmation.Visible = True
+        Pnlconfirmation.BringToFront()
+        txtUpdate.Focus()
+    End Sub
+
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If txtUpdate.Text <> "SURE" Then MsgBox("captcha Mis Match, Unable to Update Balances", MsgBoxStyle.Critical, "Access Denied") : Exit Sub
+        If MessageBox.Show(" Are you Sure Want to Update Balnaces From Other Database ??", "Update Balance", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.Yes Then
+            BringBalances() : Pnlconfirmation.Visible = False
+        End If
     End Sub
 End Class

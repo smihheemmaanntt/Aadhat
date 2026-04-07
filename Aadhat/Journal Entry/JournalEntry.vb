@@ -132,15 +132,15 @@
                     calc()
                 End If
             Else 'mid
-                If dg1.Rows.Count > 0 Then
-                    For i = 0 To dg1.RowCount - 1
-                        If dg1.Rows(i).Cells(1).Value = CbAccountName.Text Then
-                            MsgBox("Same Account can't be Debited & Credited in a single Voucher")
-                            CbAccountName.Focus()
-                            Exit Sub
-                        End If
-                    Next
-                End If
+                'If dg1.Rows.Count > 0 Then
+                '    For i = 0 To dg1.RowCount - 1
+                '        If dg1.Rows(i).Cells(1).Value = CbAccountName.Text Then
+                '            MsgBox("Same Account can't be Debited & Credited in a single Voucher")
+                '            CbAccountName.Focus()
+                '            Exit Sub
+                '        End If
+                '    Next
+                'End If
                 If CbDrCr.Text = "D" Then
                     dg1.Rows.Add(CbDrCr.Text, CbAccountName.Text, txtAmount.Text, 0, txtRemark.Text, CbAccountName.SelectedValue)
                     calc()

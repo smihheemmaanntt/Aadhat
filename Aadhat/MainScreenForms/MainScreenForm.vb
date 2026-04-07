@@ -219,26 +219,38 @@ Public Class MainScreenForm
 
     Private Sub MainScreenForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim fecha As Date = IO.File.GetCreationTime(Assembly.GetExecutingAssembly().Location)
-        'rs.FindAllControls(Me)
+        Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
+        Dim storePath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        Dim customerCode As String = ""
+        ' 👉 Load Store
+        If IO.File.Exists(storePath) Then
+            Dim store = AccentStorageHelper.LoadStore()
+            If store IsNot Nothing AndAlso store.response_data IsNot Nothing Then
+                customerCode = Safe(store.response_data.customer_code)
+            Else
+                customerCode = " Trail "
+            End If
+        Else
+            customerCode = " Trail "
+        End If
         MainScreenPicture.MdiParent = Me
         MainScreenPicture.Show()
         Dim q As New SelectQuery("Win32_bios")
         Dim search As New ManagementObjectSearcher(q)
         Dim info As New ManagementObject
         For Each info In search.Get
-            Dim ssql As String
-            ssql = clsFun.ExecScalarStr("Select CompanyName from Company")
-            ssql = ssql.Replace("_", "&")
             FinYearStart = clsFun.ExecScalarStr("Select YearStart from Company")
             FinYearEnd = clsFun.ExecScalarStr("Select Yearend from Company")
-            Dim AccName As String = ssql & " "
-            Me.Text = "[Aadhat 26.0.0 #" & CDate(fecha).ToString("yyMMddhhmm") & "] [#" & AccName & "]" & " [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
+            'Me.Text = "[Aadhat 26.0.0 # " & customerCode & " " & version &" & CDate(fecha).ToString("yyMMdd") & "] [#" & AccName & "]" & " [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
+            Me.Text = "[Aadhat #" & customerCode.Trim & "] [#" & compname.Trim & "] [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
         Next
         'If Not File.Exists(fileName) Then RegistrationToolStripMenuItem.Visible = True
-        Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
         lblBuildVersion.Text = version.ToString()
     End Sub
-
+    Private Function Safe(s As String) As String
+        If s Is Nothing Then Return ""
+        Return s.Trim()
+    End Function
     Private Sub BtnPayment_Click(sender As Object, e As EventArgs) Handles BtnPayment.Click
         PayMentform.MdiParent = Me
         PayMentform.Show()
@@ -1021,55 +1033,163 @@ Public Class MainScreenForm
         TempChallanRegister.BringToFront()
     End Sub
 
+    '  Private Sub CreateIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateIndexToolStripMenuItem.Click
+    '      Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
+    '"Drop Index if exists AccountsIDX;" &
+    '"Drop Index if exists ChargesIDX;" &
+    '"Drop Index if exists ItemsIDX;" &
+    '"Drop Index if exists CrateMarkaIDX;" &
+    '"Drop Index if exists CrateVoucherIDX;" &
+    '"Drop Index if exists ItemsIDX;" &
+    '"Drop Index if exists LedgerIDX;" &
+    '"Drop Index if exists PurchaseIDX;" &
+    '"Drop Index if exists StorageIDX;" &
+    '"Drop Index if exists Trans1Idx;" &
+    '"Drop Index if exists Trans2IDX;" &
+    '"Drop Index if exists UnderGroupIDX;" &
+    '"Drop Index if exists VoucherIDX;" &
+    '"Drop Index if exists UsersIDX;"
+    '      clsFun.ExecScalarStr(sql)
+
+    '      sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
+    '    "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
+    '    "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
+    '    "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
+    '    "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
+    '    "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
+    '    "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
+    '    "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
+    '    "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
+    '    "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
+    '    "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
+    '      ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
+    '      clsFun.ExecScalarStr(sql)
+    '      sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
+    '         "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
+    '          "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
+    '          "Drop Index if exists CrateAccountID;"
+    '      sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
+    '                  "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
+    '                  "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
+    '                  "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
+
+    '      ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
+    '      If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
+
+    '      End If
+    '      clsFun.ExecScalarStr("Vacuum;") : ClsFunserver.ExecScalarStr("Vacuum;")
+    '      MsgBox("Boost Up Completed Successfully...", vbInformation, "Sucessful")
+    '  End Sub
+
     Private Sub CreateIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateIndexToolStripMenuItem.Click
-        Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
-  "Drop Index if exists AccountsIDX;" &
-  "Drop Index if exists ChargesIDX;" &
-  "Drop Index if exists ItemsIDX;" &
-  "Drop Index if exists CrateMarkaIDX;" &
-  "Drop Index if exists CrateVoucherIDX;" &
-  "Drop Index if exists ItemsIDX;" &
-  "Drop Index if exists LedgerIDX;" &
-  "Drop Index if exists PurchaseIDX;" &
-  "Drop Index if exists StorageIDX;" &
-  "Drop Index if exists Trans1Idx;" &
-  "Drop Index if exists Trans2IDX;" &
-  "Drop Index if exists UnderGroupIDX;" &
-  "Drop Index if exists VoucherIDX;" &
-  "Drop Index if exists UsersIDX;"
-        clsFun.ExecScalarStr(sql)
 
-        sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
-      "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
-      "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
-      "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
-      "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
-      "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
-      "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
-      "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
-      "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
-      "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
-      "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
-        ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
-        clsFun.ExecScalarStr(sql)
-        sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
-           "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
-            "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
-            "Drop Index if exists CrateAccountID;"
-        sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
-                    "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
-                    "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
-                    "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
+        Try
 
-        ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
-        If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
+            ' =========================
+            ' EXISTING DROP INDEXES (UNCHANGED)
+            ' =========================
+            Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
+          "Drop Index if exists AccountsIDX;" &
+          "Drop Index if exists ChargesIDX;" &
+          "Drop Index if exists ItemsIDX;" &
+          "Drop Index if exists CrateMarkaIDX;" &
+          "Drop Index if exists CrateVoucherIDX;" &
+          "Drop Index if exists ItemsIDX;" &
+          "Drop Index if exists LedgerIDX;" &
+          "Drop Index if exists PurchaseIDX;" &
+          "Drop Index if exists StorageIDX;" &
+          "Drop Index if exists Trans1Idx;" &
+          "Drop Index if exists Trans2IDX;" &
+          "Drop Index if exists UnderGroupIDX;" &
+          "Drop Index if exists VoucherIDX;" &
+          "Drop Index if exists UsersIDX;"
 
-        End If
-        clsFun.ExecScalarStr("Vacuum;") : ClsFunserver.ExecScalarStr("Vacuum;")
-        MsgBox("Boost Up Completed Successfully...", vbInformation, "Sucessful")
+            clsFun.ExecScalarStr(sql)
+
+            ' =========================
+            ' EXISTING CREATE INDEXES (UNCHANGED)
+            ' =========================
+            sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
+          "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
+          "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
+          "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
+          "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
+          "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
+          "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
+          "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
+          "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
+          "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
+          "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
+
+            clsFun.ExecScalarStr(sql)
+
+            ' =========================
+            ' EXISTING FINAL INDEXES (UNCHANGED)
+            ' =========================
+            sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
+               "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
+                "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
+                "Drop Index if exists CrateAccountID;"
+
+            sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
+                        "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
+                        "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
+                        "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
+
+            If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
+            End If
+
+            ' ============================================================
+            ' 🔥 NEW OPTIMIZATION LAYER (SAFE - DOES NOT AFFECT EXISTING)
+            ' ============================================================
+
+            Dim optSql As String = ""
+
+            ' ---- Transaction2 Advanced Index ----
+            optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Main ON Transaction2(AccountID, ItemID, TransType, EntryDate);"
+
+            optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_EntryDate ON Transaction2(EntryDate DESC);"
+
+            'optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Filtered ON Transaction2(AccountID, ItemID, EntryDate) " &
+            '          "WHERE TransType NOT IN ('Standard Sale','On Sale','Store Out','Store Transfer');"
+            optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Filtered ON Transaction2(AccountID, ItemID, EntryDate); "
+            ' ---- Accounts ORDER BY Optimization ----
+            optSql &= "CREATE INDEX IF NOT EXISTS idx_Accounts_Name_ID ON Accounts(AccountName, ID);"
+
+            '' ---- BillPrints MAX(Date) Optimization ----
+            'optSql &= "CREATE INDEX IF NOT EXISTS idx_BillPrints_Date ON BillPrints(EntryDate DESC);"
+
+            clsFun.ExecScalarStr(optSql)
+
+            ' =========================
+            ' SQLITE ENGINE TUNING
+            ' =========================
+            Dim pragma As String = ""
+            pragma &= "PRAGMA journal_mode = WAL;"
+            pragma &= "PRAGMA synchronous = NORMAL;"
+            pragma &= "PRAGMA temp_store = MEMORY;"
+            pragma &= "PRAGMA cache_size = -20000;"
+
+            clsFun.ExecScalarStr(pragma)
+
+            ' =========================
+            ' ANALYZE (VERY IMPORTANT)
+            ' =========================
+            clsFun.ExecScalarStr("ANALYZE;")
+
+            ' =========================
+            ' VACUUM (AS YOU ALREADY HAD)
+            ' =========================
+            clsFun.ExecScalarStr("Vacuum;")
+            ClsFunserver.ExecScalarStr("Vacuum;")
+
+            MsgBox("🚀 Boost Up Completed Successfully (Advanced Optimization Applied)", vbInformation, "Successful")
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message)
+        End Try
+
     End Sub
-
-
     Private Sub OnSaleTransferRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnSaleTransferRegisterToolStripMenuItem.Click
         On_Sale_Register.MdiParent = Me
         On_Sale_Register.Show()

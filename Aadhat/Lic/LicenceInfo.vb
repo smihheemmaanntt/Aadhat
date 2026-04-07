@@ -4,16 +4,15 @@ Imports System.Collections
 Public Class LicenceInfo
 
     Private Sub LicenceInfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Dim storePath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        If Not IO.File.Exists(storePath) Then Exit Sub
         Dim store = AccentStorageHelper.LoadStore()
         If store Is Nothing OrElse store.license_data Is Nothing OrElse store.response_data Is Nothing Then
             MsgBox("Invalid License File!", MsgBoxStyle.Critical)
             Exit Sub
         End If
-
         Dim L = store.license_data
         Dim R = store.response_data
-
         '================================================
         ' BASIC DETAILS
         '================================================

@@ -621,4 +621,8 @@
     Private Sub txtThirdSearch_TextChanged(sender As Object, e As EventArgs) Handles txtThirdSearch.TextChanged
 
     End Sub
+
+    Private Sub txtDelete_TextChanged(sender As Object, e As EventArgs) Handles txtDelete.TextChanged
+
+    End Sub
 End Class

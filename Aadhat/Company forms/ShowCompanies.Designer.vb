@@ -37,8 +37,8 @@ Partial Class ShowCompanies
         Me.SystemInfoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunSqliteQueryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoteSupportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -138,17 +138,17 @@ Partial Class ShowCompanies
         Me.RemoteSupportToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
         Me.RemoteSupportToolStripMenuItem.Text = "Remote Support"
         '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
-        Me.ExitToolStripMenuItem.Text = "E&xit"
-        '
         'UpdaToolStripMenuItem
         '
         Me.UpdaToolStripMenuItem.Name = "UpdaToolStripMenuItem"
         Me.UpdaToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
         Me.UpdaToolStripMenuItem.Text = "Update Easy Whatsapp"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ShowCompanies
         '

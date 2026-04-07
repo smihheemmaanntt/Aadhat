@@ -57,6 +57,7 @@
         cbMargin.SelectedIndex = 0 : cbLanguage.SelectedIndex = 0
         cbPer.SelectedIndex = 0 : cbFarmer.SelectedIndex = 0
         cbSelloutRemark.SelectedIndex = 0
+        cbSlipMethod.SelectedIndex = 0
 
     End Sub
     Public Sub FillDefault()
@@ -135,6 +136,7 @@
             cbPer.Text = dt.Rows(0)("Per").ToString().Trim()
             cbFarmer.Text = dt.Rows(0)("AskFarmer").ToString().Trim()
             cbSelloutRemark.Text = dt.Rows(0)("SelloutRemark").ToString().Trim()
+            cbSlipMethod.Text = dt.Rows(0)("SlipMethod").ToString().Trim()
         End If
     End Sub
     Private Sub Save()
@@ -144,7 +146,7 @@
                             & "SpeedCommission,SpeedMandiTax,SpeedRDF,SpeedTare,SpeedLabour,SpeedTaxPaid,SpeedKaat,SuperCommission,SuperMandiTax,SuperRDF,SuperTare, " _
                             & "SuperLabour,SuperTaxPaid,SuperKaat,STDCommission,STDMandiTax,STDRDF,STDTare,STDLabour,StdTaxPaid,StdKaat,StockCommission,StockMandiTax," _
                             & "StockRDF,StockTare,StockLabour,StockTaxPaid,StockKaat,RcptDate,RcptSlip,RcptDisc,RcptTotal,RcptRemark,PymtDate,PymtSlip,PymtDisc,PymtTotal, " _
-                            & "PymtRemark,SuperVehicleNo,StopBasic,AutoSwitch,OnSaleNet,Margin,Language,Per,STDMark,STDNoLot,SuperBasic,AskFarmer,SelloutRemark)" _
+                            & "PymtRemark,SuperVehicleNo,StopBasic,AutoSwitch,OnSaleNet,Margin,Language,Per,STDMark,STDNoLot,SuperBasic,AskFarmer,SelloutRemark,SlipMethod)" _
                             & "Select '" & cbDecimal.Text & "','" & CbRecipet.Text & "','" & cbPayment.Text & "','" & cbMannual.Text & "','" & cbAuto.Text & "', " _
                             & "'" & cbAnotherAc.Text & "','" & cbCrateBardana.Text & "','" & cbChargesEffect.Text & "','" & cbSameAc.Text & "','" & cbDateRange.Text & "', " _
                             & "'" & cbROPurchase.Text & "','" & cbROSale.Text & "','" & CbEachItems.Text & "','" & CBLimit.Text & "','" & CbCommOnWeight.Text & "','" & cbOctroi.Text & "', " _
@@ -156,7 +158,7 @@
                             & "'" & cbStockLabour.Text & "','" & cbStockNetRate.Text & "','" & cbStockKaat.Text & "','" & cbRcptDate.Text & "','" & cbRcptSlip.Text & "','" & CbRcptDisc.Text & "', " _
                             & "'" & cbRcptTotal.Text & "','" & cbRcptRemark.Text & "','" & cbPymtDate.Text & "','" & CbPymtSlip.Text & "','" & CbPymtDisc.Text & "','" & CbPymtTotal.Text & "', " _
                             & "'" & CbPymtRemark.Text & "','" & CbSuperVehicle.Text & "','" & CbStopOnBasic.Text & "','" & cbAutoSwitch.Text & "','" & CbNetOnSaleRec.Text & "','" & cbMargin.Text & "', " _
-                            & "'" & cbLanguage.Text & "','" & cbPer.Text & "','" & cbMarking.Text & "','" & cbNoLot.Text & "','" & cbSuperBasic.Text & "','" & cbFarmer.Text & "','" & cbSelloutRemark.Text & "'"
+                            & "'" & cbLanguage.Text & "','" & cbPer.Text & "','" & cbMarking.Text & "','" & cbNoLot.Text & "','" & cbSuperBasic.Text & "','" & cbFarmer.Text & "','" & cbSelloutRemark.Text & "', '" & cbSlipMethod.Text & "'"
         Try
             If clsFun.ExecNonQuery(sql) > 0 Then
                 MsgBox("Setting Updated Successfully...", vbInformation + vbOKOnly, "Options Updated")
@@ -183,6 +185,10 @@
     End Sub
 
     Private Sub xcbMargin_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMargin.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Panel8_Paint(sender As Object, e As PaintEventArgs) Handles Panel8.Paint
 
     End Sub
 End Class

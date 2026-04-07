@@ -34,10 +34,6 @@ Partial Class Print_Bills
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
@@ -68,7 +64,6 @@ Partial Class Print_Bills
         Me.Label24 = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.btnSms = New System.Windows.Forms.Button()
         Me.ckJoin = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.ckCashBankBills = New System.Windows.Forms.CheckBox()
@@ -84,9 +79,7 @@ Partial Class Print_Bills
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.BtnSendWhatsapp = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
-        Me.btnStop = New System.Windows.Forms.Button()
-        Me.btnResume = New System.Windows.Forms.Button()
-        Me.btnPause = New System.Windows.Forms.Button()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -105,20 +98,6 @@ Partial Class Print_Bills
         Me.btnClose = New System.Windows.Forms.Button()
         Me.lblvoucherCount = New System.Windows.Forms.Label()
         Me.lblbillCount = New System.Windows.Forms.Label()
-        Me.Pnlmsg = New System.Windows.Forms.Panel()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.cbSendingType = New System.Windows.Forms.ComboBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-        Me.btnStartText = New System.Windows.Forms.Button()
-        Me.ProgressBar2 = New System.Windows.Forms.ProgressBar()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSearch.SuspendLayout()
@@ -128,8 +107,6 @@ Partial Class Print_Bills
         Me.Panel1.SuspendLayout()
         CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Pnlmsg.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -242,9 +219,9 @@ Partial Class Print_Bills
         'tmpgrid
         '
         Me.tmpgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tmpgrid.Location = New System.Drawing.Point(1024, 12)
+        Me.tmpgrid.Location = New System.Drawing.Point(995, 8)
         Me.tmpgrid.Name = "tmpgrid"
-        Me.tmpgrid.Size = New System.Drawing.Size(88, 37)
+        Me.tmpgrid.Size = New System.Drawing.Size(96, 48)
         Me.tmpgrid.TabIndex = 10
         Me.tmpgrid.Visible = False
         '
@@ -567,23 +544,6 @@ Partial Class Print_Bills
         '
         Me.Timer1.Enabled = True
         '
-        'btnSms
-        '
-        Me.btnSms.BackColor = System.Drawing.Color.DarkSlateGray
-        Me.btnSms.FlatAppearance.BorderSize = 0
-        Me.btnSms.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSms.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.btnSms.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnSms.Image = CType(resources.GetObject("btnSms.Image"), System.Drawing.Image)
-        Me.btnSms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSms.Location = New System.Drawing.Point(843, 602)
-        Me.btnSms.Name = "btnSms"
-        Me.btnSms.Size = New System.Drawing.Size(127, 30)
-        Me.btnSms.TabIndex = 40055
-        Me.btnSms.Text = "Send SMS"
-        Me.btnSms.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSms.UseVisualStyleBackColor = False
-        '
         'ckJoin
         '
         Me.ckJoin.AutoSize = True
@@ -747,20 +707,18 @@ Partial Class Print_Bills
         Me.BtnSendWhatsapp.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnSendWhatsapp.Image = CType(resources.GetObject("BtnSendWhatsapp.Image"), System.Drawing.Image)
         Me.BtnSendWhatsapp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnSendWhatsapp.Location = New System.Drawing.Point(678, 602)
+        Me.BtnSendWhatsapp.Location = New System.Drawing.Point(748, 602)
         Me.BtnSendWhatsapp.Name = "BtnSendWhatsapp"
-        Me.BtnSendWhatsapp.Size = New System.Drawing.Size(165, 30)
+        Me.BtnSendWhatsapp.Size = New System.Drawing.Size(222, 30)
         Me.BtnSendWhatsapp.TabIndex = 91217
-        Me.BtnSendWhatsapp.Text = "Send Whatsapp"
+        Me.BtnSendWhatsapp.Text = "Send Whatsapp / SMS"
         Me.BtnSendWhatsapp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnSendWhatsapp.UseVisualStyleBackColor = False
         '
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.pnlWhatsapp.Controls.Add(Me.btnStop)
-        Me.pnlWhatsapp.Controls.Add(Me.btnResume)
-        Me.pnlWhatsapp.Controls.Add(Me.btnPause)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label13)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
         Me.pnlWhatsapp.Controls.Add(Me.Label11)
@@ -780,56 +738,22 @@ Partial Class Print_Bills
         Me.pnlWhatsapp.TabIndex = 91218
         Me.pnlWhatsapp.Visible = False
         '
-        'btnStop
+        'cbSim
         '
-        Me.btnStop.BackColor = System.Drawing.Color.Gray
-        Me.btnStop.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStop.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnStop.ForeColor = System.Drawing.Color.Gray
-        Me.btnStop.Image = CType(resources.GetObject("btnStop.Image"), System.Drawing.Image)
-        Me.btnStop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStop.Location = New System.Drawing.Point(674, 317)
-        Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(38, 30)
-        Me.btnStop.TabIndex = 91235
-        Me.btnStop.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnStop.UseVisualStyleBackColor = False
-        Me.btnStop.Visible = False
-        '
-        'btnResume
-        '
-        Me.btnResume.BackColor = System.Drawing.Color.Gray
-        Me.btnResume.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.btnResume.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnResume.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnResume.ForeColor = System.Drawing.Color.Gray
-        Me.btnResume.Image = CType(resources.GetObject("btnResume.Image"), System.Drawing.Image)
-        Me.btnResume.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnResume.Location = New System.Drawing.Point(714, 317)
-        Me.btnResume.Name = "btnResume"
-        Me.btnResume.Size = New System.Drawing.Size(38, 30)
-        Me.btnResume.TabIndex = 91234
-        Me.btnResume.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnResume.UseVisualStyleBackColor = False
-        Me.btnResume.Visible = False
-        '
-        'btnPause
-        '
-        Me.btnPause.BackColor = System.Drawing.Color.Gray
-        Me.btnPause.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPause.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnPause.ForeColor = System.Drawing.Color.Gray
-        Me.btnPause.Image = CType(resources.GetObject("btnPause.Image"), System.Drawing.Image)
-        Me.btnPause.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPause.Location = New System.Drawing.Point(714, 317)
-        Me.btnPause.Name = "btnPause"
-        Me.btnPause.Size = New System.Drawing.Size(38, 30)
-        Me.btnPause.TabIndex = 91233
-        Me.btnPause.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPause.UseVisualStyleBackColor = False
-        Me.btnPause.Visible = False
+        Me.cbSim.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbSim.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Items.AddRange(New Object() {"SIM 1", "SIM 2"})
+        Me.cbSim.Location = New System.Drawing.Point(665, 321)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(86, 23)
+        Me.cbSim.TabIndex = 91236
+        Me.cbSim.Visible = False
         '
         'Label13
         '
@@ -876,10 +800,10 @@ Partial Class Print_Bills
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(332, 17)
         Me.cbType.Name = "cbType"
-        Me.cbType.Size = New System.Drawing.Size(146, 23)
+        Me.cbType.Size = New System.Drawing.Size(163, 23)
         Me.cbType.TabIndex = 91229
         '
         'Label10
@@ -888,11 +812,11 @@ Partial Class Print_Bills
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 14.25!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
                 Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Green
-        Me.Label10.Location = New System.Drawing.Point(501, 17)
+        Me.Label10.Location = New System.Drawing.Point(525, 17)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(207, 22)
+        Me.Label10.Size = New System.Drawing.Size(160, 22)
         Me.Label10.TabIndex = 91228
-        Me.Label10.Text = "Send Bills On Whatsapp"
+        Me.Label10.Text = "Whatsapp / Mobile"
         '
         'btnPnlVisHide
         '
@@ -1093,251 +1017,13 @@ Partial Class Print_Bills
         Me.lblbillCount.Text = "0"
         Me.lblbillCount.Visible = False
         '
-        'Pnlmsg
-        '
-        Me.Pnlmsg.BackColor = System.Drawing.Color.DarkKhaki
-        Me.Pnlmsg.Controls.Add(Me.Label14)
-        Me.Pnlmsg.Controls.Add(Me.ComboBox1)
-        Me.Pnlmsg.Controls.Add(Me.Button5)
-        Me.Pnlmsg.Controls.Add(Me.Button6)
-        Me.Pnlmsg.Controls.Add(Me.Button7)
-        Me.Pnlmsg.Controls.Add(Me.Label16)
-        Me.Pnlmsg.Controls.Add(Me.cbSendingType)
-        Me.Pnlmsg.Controls.Add(Me.Label17)
-        Me.Pnlmsg.Controls.Add(Me.Button8)
-        Me.Pnlmsg.Controls.Add(Me.DataGridView1)
-        Me.Pnlmsg.Controls.Add(Me.RadioButton4)
-        Me.Pnlmsg.Controls.Add(Me.btnStartText)
-        Me.Pnlmsg.Controls.Add(Me.ProgressBar2)
-        Me.Pnlmsg.Location = New System.Drawing.Point(186, 195)
-        Me.Pnlmsg.Name = "Pnlmsg"
-        Me.Pnlmsg.Size = New System.Drawing.Size(770, 353)
-        Me.Pnlmsg.TabIndex = 91236
-        Me.Pnlmsg.Visible = False
-        '
-        'Button5
-        '
-        Me.Button5.BackColor = System.Drawing.Color.Gray
-        Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.Gray
-        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
-        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(674, 317)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(38, 30)
-        Me.Button5.TabIndex = 91235
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button5.UseVisualStyleBackColor = False
-        Me.Button5.Visible = False
-        '
-        'Button6
-        '
-        Me.Button6.BackColor = System.Drawing.Color.Gray
-        Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.Gray
-        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(714, 317)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(38, 30)
-        Me.Button6.TabIndex = 91234
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.UseVisualStyleBackColor = False
-        Me.Button6.Visible = False
-        '
-        'Button7
-        '
-        Me.Button7.BackColor = System.Drawing.Color.Gray
-        Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Button7.ForeColor = System.Drawing.Color.Gray
-        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(714, 317)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(38, 30)
-        Me.Button7.TabIndex = 91233
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button7.UseVisualStyleBackColor = False
-        Me.Button7.Visible = False
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.Red
-        Me.Label16.Location = New System.Drawing.Point(10, 19)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(100, 21)
-        Me.Label16.TabIndex = 91230
-        Me.Label16.Text = "Send Type :"
-        '
-        'cbSendingType
-        '
-        Me.cbSendingType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbSendingType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbSendingType.BackColor = System.Drawing.Color.GhostWhite
-        Me.cbSendingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSendingType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbSendingType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.cbSendingType.ForeColor = System.Drawing.Color.Black
-        Me.cbSendingType.FormattingEnabled = True
-        Me.cbSendingType.Items.AddRange(New Object() {"Daily 100", "Bulk SMS"})
-        Me.cbSendingType.Location = New System.Drawing.Point(122, 19)
-        Me.cbSendingType.Name = "cbSendingType"
-        Me.cbSendingType.Size = New System.Drawing.Size(146, 23)
-        Me.cbSendingType.TabIndex = 91229
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Times New Roman", 14.25!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Green
-        Me.Label17.Location = New System.Drawing.Point(548, 14)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(160, 22)
-        Me.Label17.TabIndex = 91228
-        Me.Label17.Text = "Send Text Message"
-        '
-        'Button8
-        '
-        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
-        Me.Button8.Location = New System.Drawing.Point(714, 4)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(38, 36)
-        Me.Button8.TabIndex = 91226
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToOrderColumns = True
-        Me.DataGridView1.AllowUserToResizeColumns = False
-        Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.GhostWhite
-        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle12
-        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
-        Me.DataGridView1.EnableHeadersVisualStyles = False
-        Me.DataGridView1.GridColor = System.Drawing.Color.Crimson
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 47)
-        Me.DataGridView1.MultiSelect = False
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.GhostWhite
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowHeadersWidth = 45
-        Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Maroon
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle14
-        Me.DataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(740, 232)
-        Me.DataGridView1.TabIndex = 91219
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.BackColor = System.Drawing.Color.Goldenrod
-        Me.RadioButton4.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.RadioButton4.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioButton4.Location = New System.Drawing.Point(488, 285)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(128, 30)
-        Me.RadioButton4.TabIndex = 91223
-        Me.RadioButton4.TabStop = True
-        Me.RadioButton4.Text = "PDF + Message"
-        Me.RadioButton4.UseVisualStyleBackColor = False
-        '
-        'btnStartText
-        '
-        Me.btnStartText.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(165, Byte), Integer))
-        Me.btnStartText.FlatAppearance.BorderSize = 0
-        Me.btnStartText.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStartText.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnStartText.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnStartText.Image = CType(resources.GetObject("btnStartText.Image"), System.Drawing.Image)
-        Me.btnStartText.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStartText.Location = New System.Drawing.Point(616, 285)
-        Me.btnStartText.Name = "btnStartText"
-        Me.btnStartText.Size = New System.Drawing.Size(136, 30)
-        Me.btnStartText.TabIndex = 91219
-        Me.btnStartText.Text = "Start Sending"
-        Me.btnStartText.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnStartText.UseVisualStyleBackColor = False
-        '
-        'ProgressBar2
-        '
-        Me.ProgressBar2.Location = New System.Drawing.Point(12, 290)
-        Me.ProgressBar2.Name = "ProgressBar2"
-        Me.ProgressBar2.Size = New System.Drawing.Size(256, 23)
-        Me.ProgressBar2.TabIndex = 40054
-        Me.ProgressBar2.Visible = False
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.Red
-        Me.Label14.Location = New System.Drawing.Point(277, 19)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(102, 21)
-        Me.Label14.TabIndex = 91237
-        Me.Label14.Text = "Select SIM :"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.ComboBox1.BackColor = System.Drawing.Color.GhostWhite
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.ComboBox1.ForeColor = System.Drawing.Color.Black
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"SIM 1", "SIM 2"})
-        Me.ComboBox1.Location = New System.Drawing.Point(386, 19)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(146, 23)
-        Me.ComboBox1.TabIndex = 91236
-        '
         'Print_Bills
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.Controls.Add(Me.Pnlmsg)
         Me.Controls.Add(Me.lblvoucherCount)
-        Me.Controls.Add(Me.btnSms)
         Me.Controls.Add(Me.BtnSendWhatsapp)
         Me.Controls.Add(Me.lblbillCount)
         Me.Controls.Add(Me.Button4)
@@ -1390,9 +1076,6 @@ Partial Class Print_Bills
         Me.Panel1.ResumeLayout(False)
         CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Pnlmsg.ResumeLayout(False)
-        Me.Pnlmsg.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1426,7 +1109,6 @@ Partial Class Print_Bills
     Friend WithEvents btnok As System.Windows.Forms.Button
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
-    Friend WithEvents btnSms As System.Windows.Forms.Button
     Friend WithEvents ckJoin As System.Windows.Forms.CheckBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents ckCashBankBills As System.Windows.Forms.CheckBox
@@ -1459,23 +1141,7 @@ Partial Class Print_Bills
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents btnStop As System.Windows.Forms.Button
-    Friend WithEvents btnResume As System.Windows.Forms.Button
-    Friend WithEvents btnPause As System.Windows.Forms.Button
     Friend WithEvents lblvoucherCount As System.Windows.Forms.Label
     Friend WithEvents lblbillCount As System.Windows.Forms.Label
-    Friend WithEvents Pnlmsg As System.Windows.Forms.Panel
-    Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents cbSendingType As System.Windows.Forms.ComboBox
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents Button8 As System.Windows.Forms.Button
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
-    Friend WithEvents btnStartText As System.Windows.Forms.Button
-    Friend WithEvents ProgressBar2 As System.Windows.Forms.ProgressBar
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
 End Class

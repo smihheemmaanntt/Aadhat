@@ -23,10 +23,10 @@ Partial Class Account_Balance_Editor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Account_Balance_Editor))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtcrAmt = New System.Windows.Forms.TextBox()
@@ -48,7 +48,14 @@ Partial Class Account_Balance_Editor
         Me.lblLinkedName = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lbllinkedfy = New System.Windows.Forms.Label()
+        Me.Pnlconfirmation = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.txtUpdate = New System.Windows.Forms.TextBox()
+        Me.btnUpdate = New System.Windows.Forms.Button()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Pnlconfirmation.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnClose
@@ -123,38 +130,38 @@ Partial Class Account_Balance_Editor
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle14
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
         Me.dg1.Location = New System.Drawing.Point(20, 127)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.dg1.RowHeadersVisible = False
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dg1.Size = New System.Drawing.Size(1153, 465)
@@ -223,7 +230,7 @@ Partial Class Account_Balance_Editor
         Me.Label41.AutoSize = True
         Me.Label41.Font = New System.Drawing.Font("Bodoni Bk BT", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label41.ForeColor = System.Drawing.Color.Black
-        Me.Label41.Location = New System.Drawing.Point(323, 9)
+        Me.Label41.Location = New System.Drawing.Point(16, 36)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(510, 48)
         Me.Label41.TabIndex = 91118
@@ -252,10 +259,10 @@ Partial Class Account_Balance_Editor
         Me.txtPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPath.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPath.ForeColor = System.Drawing.Color.Teal
-        Me.txtPath.Location = New System.Drawing.Point(358, 591)
+        Me.txtPath.Location = New System.Drawing.Point(296, 591)
         Me.txtPath.Name = "txtPath"
         Me.txtPath.ReadOnly = True
-        Me.txtPath.Size = New System.Drawing.Size(388, 26)
+        Me.txtPath.Size = New System.Drawing.Size(450, 26)
         Me.txtPath.TabIndex = 174
         '
         'LblTotal
@@ -272,10 +279,11 @@ Partial Class Account_Balance_Editor
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(358, 591)
+        Me.ProgressBar1.Location = New System.Drawing.Point(358, 592)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(388, 26)
         Me.ProgressBar1.TabIndex = 91122
+        Me.ProgressBar1.Visible = False
         '
         'lblStatus
         '
@@ -333,17 +341,81 @@ Partial Class Account_Balance_Editor
         Me.lbllinkedfy.TabIndex = 91127
         Me.lbllinkedfy.Text = "___________"
         '
+        'Pnlconfirmation
+        '
+        Me.Pnlconfirmation.BackColor = System.Drawing.Color.Silver
+        Me.Pnlconfirmation.Controls.Add(Me.Label4)
+        Me.Pnlconfirmation.Controls.Add(Me.PictureBox4)
+        Me.Pnlconfirmation.Controls.Add(Me.txtUpdate)
+        Me.Pnlconfirmation.Controls.Add(Me.btnUpdate)
+        Me.Pnlconfirmation.Location = New System.Drawing.Point(370, 221)
+        Me.Pnlconfirmation.Name = "Pnlconfirmation"
+        Me.Pnlconfirmation.Size = New System.Drawing.Size(457, 210)
+        Me.Pnlconfirmation.TabIndex = 91145
+        Me.Pnlconfirmation.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AllowDrop = True
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(17, 35)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(417, 19)
+        Me.Label4.TabIndex = 91374
+        Me.Label4.Text = "Type [SURE] For Update Balances From Another Company ?"
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Image = Global.Aadhat.My.Resources.Resources.Rupee
+        Me.PictureBox4.Location = New System.Drawing.Point(14, 92)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(86, 86)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 91373
+        Me.PictureBox4.TabStop = False
+        '
+        'txtUpdate
+        '
+        Me.txtUpdate.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(241, Byte), Integer))
+        Me.txtUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtUpdate.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtUpdate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.txtUpdate.ForeColor = System.Drawing.Color.Black
+        Me.txtUpdate.Location = New System.Drawing.Point(150, 92)
+        Me.txtUpdate.Name = "txtUpdate"
+        Me.txtUpdate.Size = New System.Drawing.Size(278, 26)
+        Me.txtUpdate.TabIndex = 91372
+        Me.txtUpdate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnUpdate.FlatAppearance.BorderSize = 0
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpdate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btnUpdate.ForeColor = System.Drawing.Color.White
+        Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUpdate.Location = New System.Drawing.Point(150, 125)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(278, 51)
+        Me.btnUpdate.TabIndex = 91269
+        Me.btnUpdate.TabStop = False
+        Me.btnUpdate.Text = "&Update All Account Balances"
+        Me.btnUpdate.UseVisualStyleBackColor = False
+        '
         'Account_Balance_Editor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.Pnlconfirmation)
         Me.Controls.Add(Me.lbllinkedfy)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblLinkedName)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblStatus)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.LblTotal)
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.Label41)
@@ -359,9 +431,13 @@ Partial Class Account_Balance_Editor
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Name = "Account_Balance_Editor"
         Me.Text = "Account_Balance_Editor"
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Pnlconfirmation.ResumeLayout(False)
+        Me.Pnlconfirmation.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -387,4 +463,9 @@ Partial Class Account_Balance_Editor
     Friend WithEvents lblLinkedName As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lbllinkedfy As System.Windows.Forms.Label
+    Friend WithEvents Pnlconfirmation As System.Windows.Forms.Panel
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtUpdate As System.Windows.Forms.TextBox
+    Friend WithEvents btnUpdate As System.Windows.Forms.Button
 End Class

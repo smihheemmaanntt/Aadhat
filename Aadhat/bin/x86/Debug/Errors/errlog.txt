@@ -2493,3 +2493,138 @@ Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SE
 StackTrace: HEMANT SAINI
 Date/Time: 10-Feb-26 2:23:11 PM
 ===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: HEMANT SAINI
+Date/Time: 20-Feb-26 7:13:22 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: HEMANT SAINI
+Date/Time: 20-Feb-26 7:13:27 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: HEMANT SAINI
+Date/Time: 20-Feb-26 7:13:35 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: BHARAT FRUIT COMPANY
+Date/Time: 22-Mar-26 11:49:00 AM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-03-22',InvoiceID='1',  billNo='1',ModifiedByID='1',ModifiedTime='2026-03-22 11:50:37'  where ID =33778
+StackTrace: BHARAT FRUIT COMPANY
+Date/Time: 22-Mar-26 11:50:37 AM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: BHARAT FRUIT COMPANY
+Date/Time: 22-Mar-26 12:08:00 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: BHARAT FRUIT COMPANY
+Date/Time: 22-Mar-26 12:10:42 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='4348' ,VehicleNo='', Entrydate='2026-03-22',   SallerID=1002, SallerName='GANGA FRUIT COMPANY (G.J.)', Nug='230.00', kg='3795.40', BasicAmount='55718.50', TotalAmount='55719.00', RoundOFF='0.50',TotalCharges='0.00', N1='0',N2='0',InvoiceID='4348',ModifiedByID='1', ModifiedTime='2026-03-24 17:56:23',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =46848
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:56:23 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='4349' ,VehicleNo='', Entrydate='2026-03-22',   SallerID=1090, SallerName='G.F.C.SIKAR', Nug='185.00', kg='2437.00', BasicAmount='65830.30', TotalAmount='65830.00', RoundOFF='-0.30',TotalCharges='0.00', N1='0',N2='0',InvoiceID='4349',ModifiedByID='1', ModifiedTime='2026-03-24 17:56:35',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =46849
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:56:35 PM
+===========================================================================================
+Title: Updated
+Message: Update Vouchers Set TransType='Super Sale',BillNo='4351' ,VehicleNo='', Entrydate='2026-03-22',   SallerID=1088, SallerName='KISAN', Nug='25.00', kg='155.60', BasicAmount='3600.50', TotalAmount='3601.00', RoundOFF='0.50',TotalCharges='0.00', N1='0',N2='0',InvoiceID='4351',ModifiedByID='1', ModifiedTime='2026-03-24 17:56:44',T1= '',T2= '',T3= '',T4= '', T5= '',T6= '',T7= '',T8= '',T9= '',T10= '' where ID =46851
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:56:44 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:56:56 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:57:03 PM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=46988;DELETE from Vouchers WHERE ID=46988; DELETE from Transaction2 WHERE VoucherID=46988;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=46988
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:57:08 PM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=46987;DELETE from Vouchers WHERE ID=46987; DELETE from Transaction2 WHERE VoucherID=46987;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=46987
+StackTrace: PT.INDERMAL HANUMAN DUTT
+Date/Time: 24-Mar-26 5:57:10 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: ABCD
+Date/Time: 28-Mar-26 2:28:58 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2026-04-02','Stock Sale','Stock in',17,1408,'JAIPUR', '3','Shop','189','NIMBU','0', '5','1','6.75', 'Kg',227
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 1:58:51 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2026-04-02','Stock Sale','Stock in',17,1408,'JAIPUR', '3','Shop','189','NIMBU','0', '5','1','6.75', 'Kg',227
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:01:11 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '22','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','2','18.5', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:07:37 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '23','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','2','20.25', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:07:41 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '24','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','3','21.5', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:07:46 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '25','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','3','26', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:07:51 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '26','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','1','9', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:07:56 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '27','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','2','18', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:08:01 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '28','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','3','29.5', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:08:05 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '29','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','1','10', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:08:11 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '30','2026-04-02','Stock Sale','Stock in',73,1409,'KISHAN', '3','Shop','227','MIRCHI','0', '8','1','10.5', 'Kg',252
+StackTrace: BHIKHA GULAB SABJI FAROSH
+Date/Time: 02-Apr-26 2:08:17 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: ARVINDA JABARSINGH SOLANKI
+Date/Time: 04-Apr-26 12:15:47 AM
+===========================================================================================

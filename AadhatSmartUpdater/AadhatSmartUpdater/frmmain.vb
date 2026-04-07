@@ -1,12 +1,12 @@
 ﻿Imports System.Net
 Imports System.IO
-
+Imports Microsoft.Win32
 Public Class frmUpdater
 
     Private WithEvents wc As New WebClient()
     Private DownloadUrl As String = "https://softmanagementindia.in/updates/Aadhat.exe"
+    'Private DownloadUrl As String = "http://softmanagementindia.in/updates/aadhatsmartupdater.php"
     Private SaveFile As String   ' patch folder file
-
     Private Sub frmUpdater_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
         Me.Text = "Downloading..."
@@ -36,14 +36,13 @@ Public Class frmUpdater
 
     End Sub
 
-
     Private Sub wc_DownloadProgressChanged(sender As Object,
                                            e As DownloadProgressChangedEventArgs) _
                                            Handles wc.DownloadProgressChanged
 
         prgDownload.Value = e.ProgressPercentage
         lblPercent.Text = e.ProgressPercentage.ToString() & "%"
-        lblStatus.Text = "Downloading... " &
+        lblstatus.Text = "Downloading... " &
                          (e.BytesReceived \ 1024) & " KB / " &
                          (e.TotalBytesToReceive \ 1024) & " KB"
 

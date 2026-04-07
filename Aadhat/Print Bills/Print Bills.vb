@@ -5,6 +5,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.Text
 Imports System.Threading
+Imports System.Text.RegularExpressions
 
 Public Class Print_Bills
     Dim id As String
@@ -65,11 +66,11 @@ Public Class Print_Bills
 
     Private Sub Print_Bills_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'CheckForIllegalCrossThreadCalls = False
-        Me.Top = 0 : Me.Left = 0
-        pnlSearch.Visible = False
+        Me.Top = 0 : Me.Left = 0 : cbSim.SelectedIndex = 0
+        pnlSearch.Visible = False : cbSim.Visible = False
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        mindate = clsFun.ExecScalarStr("Select max(entrydate) from BillPrints ")
+        mindate = clsFun.ExecScalarStr("Select max(entrydate) from Transaction2 WHERE TransType NOT IN ('Standard Sale','On Sale','Store Out','Store Transfer') ")
         maxdate = mindate
         If mindate <> "" Then mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy") Else mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         If maxdate <> "" Then MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy") Else MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
@@ -164,14 +165,27 @@ Public Class Print_Bills
                 id = id & row.Cells(1).Value & ","
             End If
         Next
+        Dim SlipType As String = clsFun.ExecScalarStr( _
+        "SELECT IFNULL(SlipMethod,'Group Wise') FROM Controls LIMIT 1")
         If id = "" Then
             'If ckJoin.Checked = True Then SlipsRecord2(id) Else
-            SlipsRecord(id)
-            Exit Sub
+            If SlipType = "Group Wise" Then
+                SlipsRecord_GroupWise(id)
+                Exit Sub
+            Else   ' Default = Group Wise
+                SlipsRecord_RowWise(id)
+                Exit Sub
+            End If
         Else
             id = id.Remove(id.LastIndexOf(","))
             'If ckJoin.Checked = True Then SlipsRecord2(id) Else 
-            SlipsRecord(id)
+            If SlipType = "Group Wise" Then
+                SlipsRecord_GroupWise(id)
+                Exit Sub
+            Else   ' Default = Group Wise
+                SlipsRecord_RowWise(id)
+                Exit Sub
+            End If
         End If
     End Sub
 
@@ -326,187 +340,340 @@ Public Class Print_Bills
     End Sub
     Private Sub ShowWhatsappContacts(Optional ByVal condtion As String = "")
         DgWhatsapp.Rows.Clear()
-        Dim dt As New DataTable
-        Dim i As Integer
-        Dim count As Integer = 0
-        Dim Language As String = clsFun.ExecScalarStr("Select Language From Controls")
-        If Language = "Gujrati" Then
-            ssql = "Select AccountID, (Select AccountName From Accounts Where ID=Transaction2.AccountID) as AccountName, ' નગ : '||sum(nug)||', વજન : '|| sum(weight) ||', મૂળ : '|| " &
-                "sum(amount)  ||',ચાર્જીસ : '|| sum(Charges) ||', કુલ : '|| sum(TotalAmount) as Msg, " &
-                "' નગ : '||sum(nug)||', વજન  : '|| sum(weight) ||'વેચન રકમ : '|| sum(amount)  ||' ખર્ચો : '|| sum(Charges) ||' કુલ રકમ : '|| sum(TotalAmount) as Msg2, " &
-                "(Select OtherName From Accounts Where ID=Transaction2.AccountID) as OtherName from Transaction2 " &
-                " where AccountID<>7 and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by AccountID order by accountName "
-        ElseIf Language = "Punjabi" Then
-            ssql = "SELECT AccountID, (SELECT AccountName FROM Accounts WHERE ID = Transaction2.AccountID) AS AccountName, ' Nug : ' || SUM(nug) || ', Weight : ' || SUM(weight) || ', Basic : ' || " &
-        "SUM(amount) || ' Charges : ' || SUM(Charges) || ' Total : ' || SUM(TotalAmount) AS Msg, " &
-        "' ਨਗ : ' || SUM(nug) || ', ਵਜਨ : ' || SUM(weight) || ',ਬਿਕਰੀ ਰਕਮ : ' || SUM(amount) || ', ਖਰਚੇ : ' || SUM(Charges) || ', ਕੁੱਲ ਰਕਮ : ' || SUM(TotalAmount) AS Msg2, " &
-        "(SELECT OtherName FROM Accounts WHERE ID = Transaction2.AccountID) AS OtherName FROM Transaction2 " &
-        "WHERE AccountID <> 7 AND EntryDate BETWEEN '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " GROUP BY AccountID ORDER BY AccountName"
+        Dim Lang = clsFun.ExecScalarStr("Select Language From Controls")
+        Dim FDate = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
+        Dim TDate = CDate(MsktoDate.Text).ToString("yyyy-MM-dd")
+        Dim Msg1 As String, Msg2 As String
+        If Lang = "Gujrati" Then
+            Msg1 = "' નગ : '||sum(nug)||', વજન : '||sum(weight)||', મૂળ : '||sum(amount)||',ચાર્જીસ : '||sum(Charges)||', કુલ : '||sum(TotalAmount)"
+            Msg2 = "' નગ : '||sum(nug)||', વજન : '||sum(weight)||', વેચન રકમ : '||sum(amount)||', ખર્ચો : '||sum(Charges)||', કુલ રકમ : '||sum(TotalAmount)"
+        ElseIf Lang = "Punjabi" Then
+            Msg1 = "' Nug : '||sum(nug)||', Weight : '||sum(weight)||', Basic : '||sum(amount)||', Charges : '||sum(Charges)||', Total : '||sum(TotalAmount)"
+            Msg2 = "' ਨਗ : '||sum(nug)||', ਵਜਨ : '||sum(weight)||',ਬਿਕਰੀ ਰਕਮ : '||sum(amount)||', ਖਰਚੇ : '||sum(Charges)||', ਕੁੱਲ ਰਕਮ : '||sum(TotalAmount)"
         Else
-            ssql = "Select AccountID, (Select AccountName From Accounts Where ID=Transaction2.AccountID) as AccountName, ' Nug : '||sum(nug)||', Weight : '|| sum(weight) ||', Basic : '|| " &
-          "sum(amount)  ||' Charges : '|| sum(Charges) ||' Total : '|| sum(TotalAmount) as Msg, " &
-          "' नग : '||sum(nug)||', वज़न : '|| sum(weight) ||',बिक्री रकम : '|| sum(amount)  ||', ख़र्चे : '|| sum(Charges) ||',कुल रकम : '|| sum(TotalAmount) as Msg2, " &
-          "(Select OtherName From Accounts Where ID=Transaction2.AccountID) as OtherName from Transaction2 " &
-          " where AccountID<>7 and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by AccountID order by accountName "
+            Msg1 = "' Nug : '||sum(nug)||', Weight : '||sum(weight)||', Basic : '||sum(amount)||', Charges : '||sum(Charges)||', Total : '||sum(TotalAmount)"
+            Msg2 = "' नग : '||sum(nug)||', वज़न : '||sum(weight)||', बिक्री रकम : '||sum(amount)||', ख़र्चे : '||sum(Charges)||', कुल रकम : '||sum(TotalAmount)"
         End If
-
-        dt = clsFun.ExecDataTable(ssql)
-        If dt.Rows.Count > 0 Then
-            For i = 0 To dt.Rows.Count - 1
-                DgWhatsapp.Rows.Add()
-                With DgWhatsapp.Rows(i)
-                    .Cells(1).Value = dt.Rows(i)("AccountID").ToString()
-                    .Cells(2).Value = dt.Rows(i)("AccountName").ToString()
-                    .Cells(3).Value = clsFun.ExecScalarStr("Select MObile1 From Accounts Where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "'")
-                    .Cells(4).Value = "Dear " & dt.Rows(i)("AccountName").ToString() & "," & vbNewLine & " Todays Sale :" & dt.Rows(i)("Msg").ToString()
-                    .Cells(5).Value = dt.Rows(i)("OtherName").ToString()
-                    .Cells(6).Value = dt.Rows(i)("OtherName").ToString() & "," & vbNewLine & dt.Rows(i)("Msg2").ToString()
-                    .Cells(1).ReadOnly = True : .Cells(2).ReadOnly = True
-                    .Cells(0).Value = True
-                End With
-            Next i
-        End If
+        Dim ssql = "Select AccountID,  (Select AccountName From Accounts Where ID=T.AccountID) AccountName, " & Msg1 & " Msg," & Msg2 & " Msg2," & _
+     " (Select OtherName From Accounts Where ID=T.AccountID) OtherName      From Transaction2 T     Where AccountID <> 7  And EntryDate Between '" & FDate & "' And '" & TDate & "'" & _
+     " " & condtion & "    Group by AccountID      Order by AccountName"
+        Dim dt = clsFun.ExecDataTable(ssql)
+        For Each dr As DataRow In dt.Rows
+            Dim i = DgWhatsapp.Rows.Add()
+            With DgWhatsapp.Rows(i)
+                .Cells(0).Value = True
+                .Cells(1).Value = dr("AccountID")
+                .Cells(2).Value = dr("AccountName")
+                .Cells(3).Value =
+                    clsFun.ExecScalarStr(
+                    "Select Mobile1 From Accounts Where ID=" &
+                    Val(dr("AccountID"))
+                    )
+                .Cells(4).Value =
+                    "Dear, " & dr("AccountName") &
+                    "," & vbNewLine &
+                    "Todays Sale : " & dr("Msg")
+                .Cells(5).Value = dr("OtherName")
+                .Cells(6).Value =
+                    dr("OtherName") & "," &
+                    vbNewLine & dr("Msg2")
+                .Cells(1).ReadOnly = True
+                .Cells(2).ReadOnly = True
+            End With
+        Next
         DgWhatsapp.ClearSelection()
     End Sub
- 
-    Private Sub SendWhatsApp()
-        Dim directoryName As String = Application.StartupPath & "\Pdfs"
-        If Not Directory.Exists(directoryName) Then
-            Directory.CreateDirectory(directoryName)
-        Else
-            Directory.Delete(directoryName, True)
-            Directory.CreateDirectory(directoryName) ' Recreate the directory
+    Private Function NormalizeIndianMobile(ByVal Mobile As String) As String
+
+        If Mobile Is Nothing Then Return ""
+
+        'Remove spaces, +, -, etc
+        Mobile = Mobile.Replace(" ", "") _
+                       .Replace("+", "") _
+                       .Replace("-", "") _
+                       .Trim
+
+        'Remove leading 0
+        If Mobile.StartsWith("0") Then
+            Mobile = Mobile.Substring(1)
         End If
+
+        'If starts with 91 and length > 10
+        If Mobile.StartsWith("91") AndAlso Mobile.Length > 10 Then
+            Mobile = Mobile.Substring(2)
+        End If
+
+        'Now must be 10 digit
+        If Mobile.Length <> 10 Then Return ""
+
+        'Check Indian series (6–9)
+        If Not "6789".Contains(Mobile.Substring(0, 1)) Then
+            Return ""
+        End If
+
+        'Return with country code
+        Return "91" & Mobile
+
+    End Function
+    Private Sub SendWhatsApp()
+        ' ================= PDF FOLDER =================
+        Dim pdfDir = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(pdfDir) Then Directory.Delete(pdfDir, True)
+        Directory.CreateDirectory(pdfDir)
         rowColums1()
         UpdateProgressBarVisibility(True)
+        Dim mode = cbType.SelectedIndex
+        Dim fastQuery As String = ""
         Dim count As Integer = 0
-        Dim cmd As New SQLite.SQLiteCommand
-        Dim fastQuery As String = String.Empty
-        Dim Sql As String = String.Empty
-        If cbType.InvokeRequired Then
-            cbType.Invoke(Sub() selectedIndex = cbType.SelectedIndex)
-        Else
-            selectedIndex = cbType.SelectedIndex
+        Dim SlipType As String = clsFun.ExecScalarStr( _
+    "SELECT IFNULL(SlipMethod,'Group Wise') FROM Controls LIMIT 1")
+        ' ================= CLEAR OLD QUEUE =================
+        If mode = 0 Then
+            ClsFunWhatsapp.ExecNonQuery("Delete From SendingData")
+        ElseIf mode = 1 Then
+            WABA.ExecNonQuery("Delete From SendingData")
         End If
-        If selectedIndex = 0 Then
-            ClsFunWhatsapp.ExecNonQuery("Delete from SendingData")
-        Else
-            WABA.ExecNonQuery("Delete from SendingData")
-        End If
-        ' Filter the rows to check both checkbox and non-empty Cell(3)
 
-        Dim filteredRows As List(Of DataGridViewRow) = DgWhatsapp.Rows.Cast(Of DataGridViewRow)().
-            Where(Function(row) row.Cells(0).Value = True AndAlso Not String.IsNullOrEmpty(row.Cells(3).Value.ToString())).ToList()
-        If ProgressBar1.InvokeRequired Then
-            ProgressBar1.Invoke(Sub() ProgressBar1.Maximum = filteredRows.Count)
-        Else
-            ProgressBar1.Maximum = filteredRows.Count
-        End If
-        For Each row As DataGridViewRow In filteredRows
-            With row
-                UpdateProgressBar(count)
-                If selectedindex = 0 Then
-                    If btnRadioEnglish.Checked = True AndAlso RadioPDFMsg.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\English.rpt")
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
-                        "'" & .Cells(4).Value & "', '" & GlobalData.PdfPath & "'"
-                    ElseIf btnRadioEnglish.Checked = True AndAlso RadioPdfOnly.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\English.rpt")
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
-                                       "'', '" & GlobalData.PdfPath & "'"
-                    ElseIf btnRadioEnglish.Checked = True AndAlso RadioMsgOnly.Checked = True Then
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
-                         "'" & .Cells(4).Value & "', ''"
-                    ElseIf RadioRegional.Checked = True AndAlso RadioPDFMsg.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
-                       "'" & .Cells(6).Value & "', '" & GlobalData.PdfPath & "'"
-                    ElseIf RadioRegional.Checked = True AndAlso RadioPdfOnly.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
-                                       "'', '" & GlobalData.PdfPath & "'"
-                    ElseIf RadioRegional.Checked = True AndAlso RadioMsgOnly.Checked = True Then
-                        If .Cells(3).Value <> "" Then
-                            fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
-                                       "'" & .Cells(6).Value & "', ''"
-                        End If
-                    End If
-                Else
-                    If btnRadioEnglish.Checked = True AndAlso RadioPDFMsg.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\English.rpt")
-                        whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
-                        "'" & .Cells(4).Value & "', '" & whatsappSender.FilePath & "'"
-                    ElseIf btnRadioEnglish.Checked = True AndAlso RadioPdfOnly.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\English.rpt")
-                        whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
-                                       "'', '" & whatsappSender.FilePath & "'"
-                    ElseIf btnRadioEnglish.Checked = True AndAlso RadioMsgOnly.Checked = True Then
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
-                         "'" & .Cells(4).Value & "', ''"
-                    ElseIf RadioRegional.Checked = True AndAlso RadioPDFMsg.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
-                        whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
-                       "'" & .Cells(6).Value & "', '" & whatsappSender.FilePath & "'"
-                    ElseIf RadioRegional.Checked = True AndAlso RadioPdfOnly.Checked = True Then
-                        SlipsRecord(.Cells(1).Value)
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
-                        PrintSlips()
-                        Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
-                        whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
-                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
-                                       "'', '" & whatsappSender.FilePath & "'"
-                    ElseIf RadioRegional.Checked = True AndAlso RadioMsgOnly.Checked = True Then
-                        If .Cells(3).Value <> "" Then
-                            fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
-                                       "'" & .Cells(6).Value & "', ''"
-                        End If
-                    End If
+        ' ================= FILTER ROWS =================
+        Dim rows = DgWhatsapp.Rows.Cast(Of DataGridViewRow).
+      Where(Function(row) row.Cells(0).Value = True _
+      AndAlso row.Cells(3).Value <> "").ToList()
+        ProgressBar1.Maximum = rows.Count
+        ' ================= LOOP =================
+        For Each r In rows
+            UpdateProgressBar(count)
+            Dim AccID As String = Val(r.Cells(1).Value)
+            Dim Name = If(RadioRegional.Checked, r.Cells(5).Value, r.Cells(2).Value)
+            Dim Mobile = r.Cells(3).Value.ToString.Trim
+            Dim MsgTxt = If(RadioRegional.Checked, r.Cells(6).Value, r.Cells(4).Value)
+            Dim ID As String = Val(r.Cells(1).Value)
+            ' ===== AUTO 91 ONLY MODE 2 =====
+            If mode = 2 Then
+                NormalizeIndianMobile(Mobile.trim)
+            End If
+            Dim FileURL As String = ""
+            ' ================= PDF GENERATE =================
+            If RadioPDFMsg.Checked Or RadioPdfOnly.Checked Then
+                If SlipType = "Group Wise" Then
+                    SlipsRecord_GroupWise(id)
+                Else   ' Default = Group Wise
+                    SlipsRecord_RowWise(id)
                 End If
-
-            End With
+                GlobalData.PdfName =
+                    Regex.Replace(r.Cells(2).Value, "[\\\/:*?""<>|]", "") &
+                    "-" & mskFromDate.Text & ".pdf"
+                PrintSlips()
+                Pdf_Genrate.ExportReport(
+                    If(btnRadioEnglish.Checked,
+                       "\Formats\English.rpt",
+                       "\Formats\Regional.rpt"))
+                Dim fullPath = pdfDir & "\" & GlobalData.PdfName
+                If mode = 0 Then
+                    FileURL = GlobalData.PdfPath
+                ElseIf mode = 1 Then
+                    FileURL = whatsappSender.UploadFile(fullPath)
+                ElseIf mode = 2 Then
+                    FileURL = PhoneMSg.UploadPDF_Local(fullPath)
+                End If
+            End If
+            ' ================= BODY BUILD =================
+            Dim body As String = ""
+            If RadioMsgOnly.Checked Then
+                ' ✅ Sirf Message
+                body = MsgTxt
+            ElseIf RadioPdfOnly.Checked Then
+                ' ✅ Sirf PDF (message blank)
+                body = ""
+            ElseIf RadioPDFMsg.Checked Then
+                ' ✅ Message + PDF (but NO path in text)
+                body = MsgTxt
+            End If
+            ' ===== IMPORTANT: ONLY MODE 2 me URL add hoga =====
+            If mode = 2 AndAlso FileURL <> "" Then
+                If body <> "" Then
+                    body &= vbCrLf
+                End If
+                body &= FileURL
+            End If
+            ' ================= MODE 2 → API SEND =================
+            If mode = 2 Then
+                Dim apiResult As String =
+                    PhoneMSg.SendPhoneMsg(Mobile, Val(cbSim.SelectedIndex + 1), body)
+                ' ===== STATUS SHOW IN GRID COLUMN(7) =====
+                If apiResult = "SUCCESS" Then
+                    r.Cells(7).Value = "Sent on msgz.in server"
+                    r.Cells(7).Style.ForeColor = Color.Green
+                Else
+                    r.Cells(7).Value = "Failed"
+                    r.Cells(7).Style.ForeColor = Color.Red
+                End If
+                r.Cells(7).ToolTipText = apiResult
+                Application.DoEvents()
+            Else
+                ' ================= DB QUEUE =================
+                fastQuery &= If(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") &
+                             AccID & ",'" & Name & "','" & Mobile & "','" &
+                             body & "','" & FileURL & "'"
+            End If
             count += 1
         Next
-        Try
-            If selectedIndex = 0 Then
-                Sql = "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " & fastQuery & ";Update Settings Set MinState='N'"
+
+        ' ================= INSERT DB =================
+        If mode <> 2 Then
+            Dim Sql =
+            "Insert Into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " &
+            fastQuery & ";Update Settings Set MinState='N'"
+            If mode = 0 Then
                 ClsFunWhatsapp.ExecNonQuery(Sql)
-                MsgBox("Data Send to Easy Whatsapp Successfully...", vbInformation, "Sended On Easy Whatsapp")
+                MsgBox("Data Sent to Easy Whatsapp Successfully")
             Else
-                Sql = "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " & fastQuery & ";Update Settings Set MinState='N'"
-                WABA.ExecNonQuery(Sql)
-                MsgBox("Bills Sended to WahSoft", vbInformation, "Sended to WahSoft")
+                ClsFunWhatsapp.ExecNonQuery(Sql)
+                MsgBox("Bills Sent to Official API")
             End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            UpdateProgressBarVisibility(False)
-            ClsFunWhatsapp.CloseConnection()
-        End Try
+        Else
+            MsgBox("Messages Sent via PhoneMsg API")
+        End If
         UpdateProgressBarVisibility(False)
     End Sub
+
+    'Private Sub SendWhatsApp()
+    '    Dim directoryName As String = Application.StartupPath & "\Pdfs"
+    '    If Not Directory.Exists(directoryName) Then
+    '        Directory.CreateDirectory(directoryName)
+    '    Else
+    '        Directory.Delete(directoryName, True)
+    '        Directory.CreateDirectory(directoryName) ' Recreate the directory
+    '    End If
+    '    rowColums1()
+    '    UpdateProgressBarVisibility(True)
+    '    Dim count As Integer = 0
+    '    Dim cmd As New SQLite.SQLiteCommand
+    '    Dim fastQuery As String = String.Empty
+    '    Dim Sql As String = String.Empty
+    '    If cbType.InvokeRequired Then
+    '        cbType.Invoke(Sub() selectedIndex = cbType.SelectedIndex)
+    '    Else
+    '        selectedIndex = cbType.SelectedIndex
+    '    End If
+    '    If selectedIndex = 0 Then
+    '        ClsFunWhatsapp.ExecNonQuery("Delete from SendingData")
+    '    Else
+    '        WABA.ExecNonQuery("Delete from SendingData")
+    '    End If
+    '    ' Filter the rows to check both checkbox and non-empty Cell(3)
+
+    '    Dim filteredRows As List(Of DataGridViewRow) = DgWhatsapp.Rows.Cast(Of DataGridViewRow)().
+    '        Where(Function(row) row.Cells(0).Value = True AndAlso Not String.IsNullOrEmpty(row.Cells(3).Value.ToString())).ToList()
+    '    If ProgressBar1.InvokeRequired Then
+    '        ProgressBar1.Invoke(Sub() ProgressBar1.Maximum = filteredRows.Count)
+    '    Else
+    '        ProgressBar1.Maximum = filteredRows.Count
+    '    End If
+    '    For Each row As DataGridViewRow In filteredRows
+    '        With row
+    '            UpdateProgressBar(count)
+    '            If selectedindex = 0 Then
+    '                If btnRadioEnglish.Checked = True AndAlso RadioPDFMsg.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\English.rpt")
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
+    '                    "'" & .Cells(4).Value & "', '" & GlobalData.PdfPath & "'"
+    '                ElseIf btnRadioEnglish.Checked = True AndAlso RadioPdfOnly.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\English.rpt")
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
+    '                                   "'', '" & GlobalData.PdfPath & "'"
+    '                ElseIf btnRadioEnglish.Checked = True AndAlso RadioMsgOnly.Checked = True Then
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
+    '                     "'" & .Cells(4).Value & "', ''"
+    '                ElseIf RadioRegional.Checked = True AndAlso RadioPDFMsg.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
+    '                   "'" & .Cells(6).Value & "', '" & GlobalData.PdfPath & "'"
+    '                ElseIf RadioRegional.Checked = True AndAlso RadioPdfOnly.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
+    '                                   "'', '" & GlobalData.PdfPath & "'"
+    '                ElseIf RadioRegional.Checked = True AndAlso RadioMsgOnly.Checked = True Then
+    '                    If .Cells(3).Value <> "" Then
+    '                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
+    '                                   "'" & .Cells(6).Value & "', ''"
+    '                    End If
+    '                End If
+    '            Else
+    '                If btnRadioEnglish.Checked = True AndAlso RadioPDFMsg.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\English.rpt")
+    '                    whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
+    '                    "'" & .Cells(4).Value & "', '" & whatsappSender.FilePath & "'"
+    '                ElseIf btnRadioEnglish.Checked = True AndAlso RadioPdfOnly.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\English.rpt")
+    '                    whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
+    '                                   "'', '" & whatsappSender.FilePath & "'"
+    '                ElseIf btnRadioEnglish.Checked = True AndAlso RadioMsgOnly.Checked = True Then
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
+    '                     "'" & .Cells(4).Value & "', ''"
+    '                ElseIf RadioRegional.Checked = True AndAlso RadioPDFMsg.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
+    '                    whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
+    '                   "'" & .Cells(6).Value & "', '" & whatsappSender.FilePath & "'"
+    '                ElseIf RadioRegional.Checked = True AndAlso RadioPdfOnly.Checked = True Then
+    '                    SlipsRecord(.Cells(1).Value)
+    '                    GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(2).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & mskFromDate.Text & ".pdf"
+    '                    PrintSlips()
+    '                    Pdf_Genrate.ExportReport("\Formats\Regional.rpt")
+    '                    whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    '                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
+    '                                   "'', '" & whatsappSender.FilePath & "'"
+    '                ElseIf RadioRegional.Checked = True AndAlso RadioMsgOnly.Checked = True Then
+    '                    If .Cells(3).Value <> "" Then
+    '                        fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(5).Value & "','" & .Cells(3).Value & "', " &
+    '                                   "'" & .Cells(6).Value & "', ''"
+    '                    End If
+    '                End If
+    '            End If
+
+    '        End With
+    '        count += 1
+    '    Next
+    '    Try
+    '        If selectedIndex = 0 Then
+    '            Sql = "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " & fastQuery & ";Update Settings Set MinState='N'"
+    '            ClsFunWhatsapp.ExecNonQuery(Sql)
+    '            MsgBox("Data Send to Easy Whatsapp Successfully...", vbInformation, "Sended On Easy Whatsapp")
+    '        Else
+    '            Sql = "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " & fastQuery & ";Update Settings Set MinState='N'"
+    '            WABA.ExecNonQuery(Sql)
+    '            MsgBox("Bills Sended to WahSoft", vbInformation, "Sended to WahSoft")
+    '        End If
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '        UpdateProgressBarVisibility(False)
+    '        ClsFunWhatsapp.CloseConnection()
+    '    End Try
+    '    UpdateProgressBarVisibility(False)
+    'End Sub
     Private Sub PrintSlips()
         Dim AllRecord As Integer = Val(tmpgrid.Rows.Count)
         Dim maxRowCount As Decimal = Math.Ceiling(AllRecord / 100)
@@ -1314,7 +1481,7 @@ Public Class Print_Bills
 
                         Next
                         dt2.Dispose()
-                        
+
                         '''''''''''''''''''''''''''''''''''''''''''''''''''
 
                         For j = 0 To dt1.Rows.Count - 1
@@ -1574,7 +1741,219 @@ Public Class Print_Bills
             End If
         End If
     End Sub
-    Sub SlipsRecord(id)
+
+    Private Function NVal(ByVal v As Object) As Decimal
+        If IsDBNull(v) OrElse v Is Nothing Then
+            Return 0
+        ElseIf v.ToString() = "" Then
+            Return 0
+        Else
+            Return Val(v)
+        End If
+    End Function
+
+    Sub SlipsRecord_RowWise(ByVal id)
+        tmpgrid.Rows.Clear()
+        tmpgrid.DataSource = Nothing
+        Dim dtAcc As New DataTable
+        Dim dt1 As New DataTable
+        Dim dt2 As New DataTable
+        Dim dt3 As New DataTable
+        Dim dtcrate As New DataTable
+        Dim FromDt As String = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
+        Dim ToDt As String = CDate(MsktoDate.Text).ToString("yyyy-MM-dd")
+        If id <> "" Then id = " and Accountid in (" & id & ")"
+        Dim Tbl As String = If(ckJoin.Checked, "BillPrints2", "BillPrints")
+        Dim CashFilter As String = If(ckCashBankBills.Checked, "", " and Accountid not in(7) ")
+
+        '================ CUSTOMER =================
+        dtAcc = clsFun.ExecDataTable( _
+            "Select AccountName,Accountid FROM " & Tbl & _
+            " WHERE EntryDate Between '" & FromDt & "' And '" & ToDt & "' " & _
+            CashFilter & id & _
+            " group by AccountName,Accountid order by AccountName")
+
+        For i As Integer = 0 To dtAcc.Rows.Count - 1
+            pb1.Maximum = dtAcc.Rows.Count
+            Application.DoEvents()
+            Dim AcID As Integer = Val(dtAcc.Rows(i)("AccountID"))
+            '================ DETAILS =================
+            dt1 = clsFun.ExecDataTable( _
+                "Select * FROM " & Tbl & _
+                " WHERE EntryDate Between '" & FromDt & "' And '" & ToDt & "'" & _
+                " and AccountID=" & AcID & _
+                " order by EntryDate")
+
+            If dt1.Rows.Count = 0 Then Continue For
+
+            '================ TOTALS =================
+            Dim TotNug = dt1.Compute("Sum(Nug)", "")
+            Dim TotWt = dt1.Compute("Sum(Weight)", "")
+            Dim TotComm = dt1.Compute("Sum(CommAmt)", "")
+            Dim TotMAmt = dt1.Compute("Sum(MAmt)", "")
+            Dim TotRdf = dt1.Compute("Sum(RdfAmt)", "")
+            Dim TotTare = dt1.Compute("Sum(TareAmt)", "")
+            Dim TotLab = dt1.Compute("Sum(LabourAmt)", "")
+            Dim TotChg = dt1.Compute("Sum(Charges)", "")
+            Dim TotAmt = dt1.Compute("Sum(Amount)", "")
+            Dim TotNet = dt1.Compute("Sum(TotalAmount)", "")
+
+            '================ BALANCE =================
+            'Dim opbal As Decimal = Val(clsFun.ExecScalarStr("Select ifnull(OpBal,0) from Accounts where ID=" & AcID))
+            opbal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & FromDt & "')" &
+                                     "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & FromDt & "')) " &
+                                     " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & FromDt & "')" &
+                                     " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & FromDt & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(AcID) & " Order by upper(AccountName) ;"))
+            Dim ClBal As Decimal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & FromDt & "')" &
+                                     "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & FromDt & "')) " &
+                                     " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & FromDt & "')" &
+                                     " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & FromDt & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(AcID) & " Order by upper(AccountName) ;"))
+
+            '================ CRATE SUMMARY =================
+            Dim CrateQty As String = String.Empty
+            Dim SingleCrate As String = String.Empty
+            dtcrate = clsFun.ExecDataTable("Select CrateName,CrateName ||':'||" &
+            " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') -" &
+            " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable," &
+                        " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') -" &
+            " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) as DueCrates " &
+            " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & ToDt & "' and AccountID='" & Val(AcID) & "' Group by AccountID,CrateID Having DueCrates<>0 order by upper(ACG.AccountName);")
+            Try
+                If dtcrate.Rows.Count > 0 Then
+                    For U = 0 To dtcrate.Rows.Count - 1
+                        If Application.OpenForms().OfType(Of Print_Bills)().Any(Function(f) f.Visible = False) Then Exit Sub
+                        cratebal = dtcrate.Rows(U)("Reciveable").ToString()
+                        CrateQty = CrateQty & ", " & cratebal
+                        CrateName = CrateName & dtcrate.Rows(U)("CrateName").ToString() & vbCrLf
+                        CQty = CQty & dtcrate.Rows(U)("DueCrates").ToString() & vbCrLf
+                        SingleCrate = Val(SingleCrate) + Val(dtcrate.Rows(U)("DueCrates").ToString())
+                    Next
+                    CrateQty = CrateQty.Trim().TrimStart(",")
+
+                End If
+            Catch ex As Exception
+
+            End Try
+
+            '================ LAST RECEIPT =================
+            dt2 = clsFun.ExecDataTable( _
+                "Select ('Last Receipt Rs. : '|| BasicAmount || ' On : '|| " & _
+                "strftime('%d-%m-%Y', Entrydate)) as lastReceipt " & _
+                "FROM Vouchers where TransType='Receipt' and Accountid=" & AcID & _
+                " ORDER BY Entrydate DESC limit 1")
+
+            Dim LastReceipt As String = ""
+            If dt2.Rows.Count > 0 Then LastReceipt = dt2.Rows(0)("lastReceipt")
+
+            '================ LAST PAYMENT =================
+            dt3 = clsFun.ExecDataTable( _
+                "Select ('Last Amount Rs. : '|| BasicAmount || ' On : '|| " & _
+                "strftime('%d-%m-%Y', Entrydate)) as lastPayment " & _
+                "FROM Vouchers where TransType='Payment' and Accountid=" & AcID & _
+                " ORDER BY Entrydate DESC limit 5")
+
+            Dim LastPayment As String = ""
+            For k As Integer = 0 To dt3.Rows.Count - 1
+                LastPayment &= dt3.Rows(k)("lastPayment") & vbCrLf
+            Next
+
+            '================ RECORD LOOP =================
+            For j As Integer = 0 To dt1.Rows.Count - 1
+
+                Dim rowIndex As Integer = tmpgrid.Rows.Add()
+                Dim r As DataGridViewRow = tmpgrid.Rows(rowIndex)
+
+                '===== 1–20 DETAILS =====
+                r.Cells(1).Value = Format(dt1.Rows(j)("EntryDate"), "dd-MM-yyyy")
+                r.Cells(2).Value = dt1.Rows(j)("Itemname")
+                r.Cells(3).Value = dt1.Rows(j)("AccountName")
+                r.Cells(4).Value = NVal(dt1.Rows(j)("Nug"))
+                r.Cells(5).Value = NVal(dt1.Rows(j)("Weight"))
+                r.Cells(6).Value = NVal(dt1.Rows(j)("Rate"))
+                r.Cells(7).Value = dt1.Rows(j)("Per")
+                r.Cells(8).Value = NVal(dt1.Rows(j)("Amount"))
+                r.Cells(9).Value = NVal(dt1.Rows(j)("Charges"))
+                r.Cells(10).Value = NVal(dt1.Rows(j)("TotalAmount"))
+                r.Cells(11).Value = NVal(dt1.Rows(j)("CommPer"))
+                r.Cells(12).Value = NVal(dt1.Rows(j)("CommAmt"))
+                r.Cells(13).Value = NVal(dt1.Rows(j)("MPer"))
+                r.Cells(14).Value = NVal(dt1.Rows(j)("MAmt"))
+                r.Cells(15).Value = NVal(dt1.Rows(j)("RdfPer"))
+                r.Cells(16).Value = NVal(dt1.Rows(j)("RdfAmt"))
+                r.Cells(17).Value = NVal(dt1.Rows(j)("Tare"))
+                r.Cells(18).Value = NVal(dt1.Rows(j)("TareAmt"))
+                r.Cells(19).Value = NVal(dt1.Rows(j)("Labour"))
+                r.Cells(20).Value = NVal(dt1.Rows(j)("LabourAmt"))
+
+                '===== 21–22 CRATE =====
+                r.Cells(21).Value = dt1.Rows(j)("CrateMarka")
+                r.Cells(22).Value = NVal(dt1.Rows(j)("CrateQty"))
+
+                '===== 23–32 TOTALS =====
+                r.Cells(23).Value = TotNug
+                r.Cells(24).Value = TotWt
+                r.Cells(25).Value = TotComm
+                r.Cells(26).Value = TotMAmt
+                r.Cells(27).Value = TotRdf
+                r.Cells(28).Value = TotTare
+                r.Cells(29).Value = TotLab
+                r.Cells(30).Value = TotChg
+                r.Cells(31).Value = TotAmt
+                r.Cells(32).Value = TotNet
+
+                '===== 34–35 =====
+                r.Cells(34).Value = dt1.Rows(j)("OtherName")
+                r.Cells(35).Value = dt1.Rows(j)("AccountNameOther")
+
+                '===== 36–40 =====
+                r.Cells(36).Value = LastReceipt
+                r.Cells(37).Value = opbal
+                r.Cells(38).Value = ClBal
+                r.Cells(39).Value = 0
+                r.Cells(40).Value = SingleCrate
+
+                '===== 43–45 =====
+                r.Cells(43).Value = CrateName
+                r.Cells(44).Value = CrateQty
+                r.Cells(45).Value = SingleCrate
+
+                '===== 46 =====
+                r.Cells(46).Value = LastPayment
+
+                '===== 47 (COMMA CRATE) =====
+                r.Cells(47).Value = CrateQty
+                '===== 48 =====
+                r.Cells(48).Value = clsFun.ExecScalarInt( _
+                    "Select RowID From Transaction2 Where AccountID=" & AcID & " limit 1")
+
+                '===== 76–81 =====
+                Dim gwt As Decimal = NVal(dt1.Rows(j)("GrossWeight"))
+                Dim wt As Decimal = NVal(dt1.Rows(j)("Weight"))
+                r.Cells(76).Value = If(gwt = 0, wt, gwt)
+                r.Cells(77).Value = If(NVal(dt1.Rows(j)("Cut").ToString()) = 0, "", NVal(dt1.Rows(j)("Cut").ToString())) & vbCrLf 'NVal(dt1.Rows(j)("Cut"))
+                r.Cells(79).Value = NVal(dt1.Rows(j)("Amount")) + NVal(dt1.Rows(j)("LabourAmt"))
+                r.Cells(80).Value = r.Cells(79).Value
+                r.Cells(81).Value = NVal(dt1.Rows(j)("Charges")) - NVal(dt1.Rows(j)("LabourAmt"))
+
+                '===== 88 / 93 =====
+                r.Cells(88).Value = NVal(dt1.Rows(j)("OnWeight"))
+                r.Cells(93).Value = NVal(dt1.Rows(j)("Lot"))
+
+                '===== 95–99 =====
+                r.Cells(95).Value = dt1.Rows(j)("MobileNo1")
+                r.Cells(96).Value = dt1.Rows(j)("MobileNo2")
+                r.Cells(97).Value = dt1.Rows(j)("Area")
+                r.Cells(98).Value = dt1.Rows(j)("City")
+                r.Cells(99).Value = dt1.Rows(j)("LFNo")
+            Next
+            pb1.Value = i + 1
+        Next
+
+    End Sub
+
+
+
+    Sub SlipsRecord_GroupWise(id)
         tmpgrid.Rows.Clear()
         Dim i, j As Integer
         Dim dt As New DataTable
@@ -1599,7 +1978,7 @@ Public Class Print_Bills
                 dt = clsFun.ExecDataTable("Select AccountName,Accountid FROM BillPrints2 WHERE  Accountid not in(7)  and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & id & " group by AccountName,Accountid order by AccountName")
             End If
         End If
-    
+
         pb1.Minimum = 0
         Application.DoEvents()
         ' If dt.Rows.Count = 0 Then Exit Sub
@@ -1687,7 +2066,7 @@ Public Class Print_Bills
                 cnt = cnt + 1
                 With tmpgrid.Rows(cnt)
                     Application.DoEvents()
-                    .Cells(23).Value = Format(dt1.Compute("Sum(Nug)", ""), "0.")
+                    .Cells(23).Value = dt1.Compute("Sum(Nug)", "")
                     .Cells(24).Value = Format(dt1.Compute("Sum(Weight)", ""), "0.00")
                     .Cells(25).Value = Format(dt1.Compute("Sum(CommAmt)", ""), "0.00")
                     .Cells(26).Value = Format(dt1.Compute("Sum(MAmt)", ""), "0.00")
@@ -1724,7 +2103,7 @@ Public Class Print_Bills
                         .Cells(1).Value = Format(dt1.Rows(j)("EntryDate"), "dd-MM-yyyy")
                         .Cells(2).Value = .Cells(2).Value & dt1.Rows(j)("Itemname").ToString() & vbCrLf
                         .Cells(3).Value = dt1.Rows(j)("AccountName").ToString()
-                        .Cells(4).Value = .Cells(4).Value & Format(Val(dt1.Rows(j)("nug").ToString()), "0.00") & vbCrLf
+                        .Cells(4).Value = .Cells(4).Value & Val(dt1.Rows(j)("nug").ToString()) & vbCrLf
                         .Cells(5).Value = .Cells(5).Value & Format(Val(dt1.Rows(j)("Weight").ToString()), "0.00") & vbCrLf
                         .Cells(6).Value = .Cells(6).Value & Format(Val(dt1.Rows(j)("Rate").ToString()), "0.00") & vbCrLf
                         .Cells(7).Value = .Cells(7).Value & dt1.Rows(j)("Per").ToString() & vbCrLf
@@ -1769,7 +2148,7 @@ Public Class Print_Bills
         Next i
         dt.Clear() : dt1.Clear() : dt2.Clear()
     End Sub
-    
+
     Sub Day2Day(id)
         If tmpgrid.Rows.Count = 0 Then rowColums1()
         tmpgrid.Rows.Clear()
@@ -1798,7 +2177,7 @@ Public Class Print_Bills
             Dim opbal As String = ""
             Dim Dayopamount As Decimal = 0.0
             Dim ClBal As String = ""
-        
+
             ''''''''''''''''''''' Opening Balance'''''''''''''''''''''''''''''''''''
             opbal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')" &
                                      "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')) " &
@@ -2005,32 +2384,18 @@ Public Class Print_Bills
         ProgressBar1.Value = e.ProgressPercentage
     End Sub
 
-    Private Sub btnSms_Click(sender As Object, e As EventArgs) Handles btnSms.Click
+    Private Sub btnSms_Click(sender As Object, e As EventArgs)
         If CDate(mskFromDate.Text).ToString("dd-MM-yyyy") <> CDate(MsktoDate.Text).ToString("dd-MM-yyyy") Then
             MessageBox.Show("You can WhatsApp by one date only.", "Date Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error)
             mskFromDate.Focus()
             Exit Sub
         End If
         FillControl()
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
-            If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp() : ShowWhatsappContacts()
-            pnlWhatsapp.Visible = True
-            Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
-            If System.IO.File.Exists(WhatsappFile) = False Then
-                MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
-                Exit Sub
-            End If
-            Dim p() As Process
-            p = Process.GetProcessesByName("Easy Whatsapp")
-            If p.Count = 0 Then
-                Dim StartWhatsapp As New System.Diagnostics.Process
-                StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
-                StartWhatsapp.Start()
-            End If
-            cbType.SelectedIndex = 0 : Exit Sub
-        ElseIf ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "WahSoft" Then
-            cbType.SelectedIndex = 1
+        If ProgressBar1.Value > 0 Then
+            MsgBox("Still Working...") : Exit Sub
         End If
+        cbType.SelectedIndex = 2
+        cbSim.Visible = True : cbSim.SelectedIndex = 0
         pnlWhatsapp.Visible = True
         If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
         ShowWhatsappContacts()
@@ -2500,7 +2865,7 @@ Public Class Print_Bills
         End If
         pnlWait.Visible = False
     End Sub
- 
+
 
     Private Sub ckCashBankBills_CheckedChanged(sender As Object, e As EventArgs) Handles ckCashBankBills.CheckedChanged
 
@@ -2550,7 +2915,7 @@ Public Class Print_Bills
         End If
     End Sub
 
-  
+
     Private Sub PrintDay2Day()
         Dim count As Integer = 0
         Dim cmd As New SQLite.SQLiteCommand
@@ -2707,37 +3072,110 @@ Public Class Print_Bills
         End Try
         'clsFun.CloseConnection()
     End Sub
+    Private Sub BtnSendWhatsapp_Click(sender As Object, e As EventArgs) _
+        Handles BtnSendWhatsapp.Click
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles BtnSendWhatsapp.Click
-        If CDate(mskFromDate.Text).ToString("dd-MM-yyyy") <> CDate(MsktoDate.Text).ToString("dd-MM-yyyy") Then
-            MessageBox.Show("You can WhatsApp by one date only.", "Date Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '---------------- Date Check ----------------
+        If CDate(mskFromDate.Text).ToString("dd-MM-yyyy") <>
+           CDate(MsktoDate.Text).ToString("dd-MM-yyyy") Then
+
+            MessageBox.Show("You can WhatsApp by one date only.",
+                            "Date Mismatch",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+
             mskFromDate.Focus()
             Exit Sub
         End If
+
         FillControl()
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
-            If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp() : ShowWhatsappContacts()
-            pnlWhatsapp.Visible = True
-            Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
-            If System.IO.File.Exists(WhatsappFile) = False Then
-                MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
-                Exit Sub
-            End If
-            Dim p() As Process
-            p = Process.GetProcessesByName("Easy Whatsapp")
-            If p.Count = 0 Then
-                Dim StartWhatsapp As New System.Diagnostics.Process
-                StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
-                StartWhatsapp.Start()
-            End If
-            cbType.SelectedIndex = 0 : Exit Sub
-        ElseIf ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "WahSoft" Then
-            cbType.SelectedIndex = 1
-        End If
+
+        '---------------- Get Sending Method ----------------
+        Dim SendMode As String =
+            ClsFunPrimary.ExecScalarStr(
+                "Select SendingMethod From API").Trim
+
         pnlWhatsapp.Visible = True
+
         If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
         ShowWhatsappContacts()
+
+        '---------------- Mode Handling ----------------
+        Select Case SendMode
+
+            '----------------------------------
+            ' Easy WhatsApp
+            '----------------------------------
+            Case "Easy WhatsApp"
+
+                cbType.SelectedIndex = 0
+                cbSim.Visible = False
+
+                Dim WhatsappFile As String =
+                    Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
+
+                If Not IO.File.Exists(WhatsappFile) Then
+                    MsgBox("Please Contact to Support Officer...",
+                           MsgBoxStyle.Critical,
+                           "Access Denied")
+                    Exit Sub
+                End If
+
+                If Process.GetProcessesByName("Easy Whatsapp").Length = 0 Then
+                    Process.Start(WhatsappFile)
+                End If
+                '----------------------------------
+                ' WhatsApp Official API
+                '----------------------------------
+            Case "WhatsApp Official API"
+                cbType.SelectedIndex = 1
+                cbSim.Visible = False
+
+                '----------------------------------
+                ' From Mobile
+                '----------------------------------
+            Case "From Mobile"
+                cbType.SelectedIndex = 2
+                cbSim.Visible = True
+                Dim DefaultSim As Integer =
+                    Val(ClsFunPrimary.ExecScalarStr(
+                        "Select DefaultSim From API"))
+                If DefaultSim > 0 Then
+                    cbSim.SelectedIndex = DefaultSim - 1
+                End If
+        End Select
     End Sub
+    'Private Sub Button5_Click(sender As Object, e As EventArgs) Handles BtnSendWhatsapp.Click
+    '    If CDate(mskFromDate.Text).ToString("dd-MM-yyyy") <> CDate(MsktoDate.Text).ToString("dd-MM-yyyy") Then
+    '        MessageBox.Show("You can WhatsApp by one date only.", "Date Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        mskFromDate.Focus()
+    '        Exit Sub
+    '    End If
+    '    FillControl()
+    '    If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+    '        If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp() : ShowWhatsappContacts()
+    '        pnlWhatsapp.Visible = True
+    '        Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
+    '        If System.IO.File.Exists(WhatsappFile) = False Then
+    '            MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
+    '            Exit Sub
+    '        End If
+    '        Dim p() As Process
+    '        p = Process.GetProcessesByName("Easy Whatsapp")
+    '        If p.Count = 0 Then
+    '            Dim StartWhatsapp As New System.Diagnostics.Process
+    '            StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
+    '            StartWhatsapp.Start()
+    '        End If
+    '        cbType.SelectedIndex = 0 : Exit Sub
+    '    ElseIf ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "WahSoft" Then
+    '        cbType.SelectedIndex = 1
+    '    End If
+    '    pnlWhatsapp.Visible = True : cbSim.Visible = False
+    '    If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
+    '    cbSim.SelectedIndex = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API") - 1
+    '    ShowWhatsappContacts()
+    'End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnSending.Click
         If cbType.SelectedIndex = 0 Then
@@ -2753,8 +3191,9 @@ Public Class Print_Bills
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
-            SendWhatsApp()
+
         End If
+        SendWhatsApp()
     End Sub
 
     Private Sub StartBackgroundTask(action As Action)
@@ -2814,4 +3253,7 @@ Public Class Print_Bills
     End Sub
 
 
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        If cbType.SelectedIndex = 2 Then cbSim.Visible = True Else cbSim.Visible = False
+    End Sub
 End Class

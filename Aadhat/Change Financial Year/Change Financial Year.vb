@@ -279,10 +279,15 @@ Public Class Change_Financial_Year
         '''''Account Balance Transfer---------
         Dim sql As String = String.Empty
         sql = "Select ID,Accountname,DC, Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
-    " Where AccountID=Account_AcGrp.ID and DC='D')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " &
-    " and DC='C' ))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
-    "  Where AccountID=Account_AcGrp.ID and DC='C') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
-    " Where AccountID=Account_AcGrp.ID and DC='D'))  end),2) as  Restbal from Account_AcGrp Where ParentID Not In(22,23,24,25,26,27);"
+        " Where AccountID=Account_AcGrp.ID and DC='D')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " &
+        " and DC='C' ))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
+        " Where AccountID=Account_AcGrp.ID and DC='C') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " &
+        " Where AccountID=Account_AcGrp.ID and DC='D'))  end),2) as  Restbal from Account_AcGrp Where ParentID Not In(22,23,24,25,26,27);"
+        'sql = "Select ID,Accountname,Area,Opbal,DC,OtherName,Mobile1, " & _
+        '"(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
+        '"-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+        '"else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
+        '"+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Accounts Where RestBal<>0 " & condtion & " Order by AccountName ;"
         dt = clsFun.ExecDataTable(sql)
         For i = 0 To dt.Rows.Count - 1
             Application.DoEvents()
@@ -377,98 +382,188 @@ Public Class Change_Financial_Year
         lblCrateBalance.Visible = True
         lblCrateBalance.Text = "Crates Updated..."
 
-        ' ''''''        Update(Stock)
-        ''Dim dt As New DataTable
-        sql = String.Empty
-        'sql = "Select AccountID,AccountName, StockHolderID,StockHolderName,StorageID,StorageName,ItemID, ItemName,Sum(Nug) as PurchaseNug, " & _
-        '      " (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale') and ItemID=TempPurchase.ItemID) as soldNug,(Sum(Nug) - " & _
-        '      " (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale')   and ItemID=TempPurchase.ItemID)) as RestNug " & _
-        '      " From TempPurchase Group by ItemID   Having RestNug > 0  order by StockHolderName,ItemID,ItemName"
-        sql = "Select AccountID,AccountName,StockHolderID,StockHolderName From TempPurchase Group By AccountID,StockHolderID"
-        dt = clsFun.ExecDataTable(sql)
+        '' ''''''        Update(Stock)
+        ' ''Dim dt As New DataTable
+        'sql = String.Empty
+        'sql = "Select AccountID,AccountName,StockHolderID,StockHolderName From TempPurchase Group By AccountID,StockHolderID"
+        'dt = clsFun.ExecDataTable(sql)
+        'Try
+        '    If dt.Rows.Count > 0 Then
+        '        For i = 0 To dt.Rows.Count - 1
+        '            Application.DoEvents()
+        '            ProgressBar1.Maximum = dt.Rows.Count
+        '            lblStatus.Text = Format(Val(i + 1) * 100 / dt.Rows.Count, "0.00") & " %"
+        '            ProgressBar1.Value = i
+        '            If lblStockBalance.Visible = True Then lblStockBalance.Visible = False Else lblStockBalance.Visible = True
+        '            Dim totQty As Integer = 0
+        '            Dim accID As Integer = 0
+        '            Dim accName As String = String.Empty
+        '            Dim stockHolderID As Integer = 0
+        '            Dim stockHolderName As String = String.Empty
+        '            Dim StorageID As String = String.Empty
+        '            Dim StorageName As String = String.Empty
+        '            Dim ItemID As Integer = 0
+        '            Dim ItemName As String = String.Empty
+        '            Dim Nugs As Integer = 0
+        '            Dim Weights As String = String.Empty
+        '            Dim VehicleNo As String = String.Empty
+        '            Dim Rate As String = String.Empty
+        '            Dim PurcahseTypeName As String = String.Empty
+        '            Dim VChID As Integer
+        '            '  Dim VchId As Integer = 1
+        '            sql = " Select VoucherID, AccountID,AccountName, StockHolderID,StockHolderName,VehicleNo,Weight,PurchaseTypeName,StorageID,StorageName,ItemID, ItemName,LotNo,Sum(Nug) as PurchaseNug,Rate,Per,MaintainCrate,CrateID,CrateName,CrateQty, " &
+        '                   " (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')  and Lot = TempPurchase.LotNo and ItemID=TempPurchase.ItemID " &
+        '                   " and PurchaseID=TempPurchase.VoucherID )as soldNug,(Sum(Nug) - " &
+        '                   " (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')  and Lot=TempPurchase.LotNo and ItemID=TempPurchase.ItemID" &
+        '                   " and PurchaseID=TempPurchase.VoucherID)) as RestNug From TempPurchase Where AccountID='" & Val(dt.Rows(i)("AccountID").ToString()) & "' and StockHolderID='" & Val(dt.Rows(i)("StockHolderID").ToString()) & "'  Group by ItemID,LotNo,VoucherID Having RestNug <> 0  " &
+        '                   " order by AccountName,ItemID,ItemName,LotNo"
+        '            dt1 = clsFun.ExecDataTable(sql)
+        '            If dt1.Rows.Count > 0 Then
+        '                sqll = "Insert Into Vouchers(Transtype, EntryDate,BillNo,SallerID, SallerName,VehicleNo,Nug,Kg,BasicAmount,DiscountAmount,TotalAmount,PurchaseType, " _
+        '                     & "StorageID,StorageName,InvoiceID) Values ('Purchase','" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "','" & VChID & "','" & Val(dt.Rows(i)("AccountID").ToString()) & "', " &
+        '                       " '" & dt.Rows(i)("AccountName").ToString() & "'," & Val(totQty) & ",0,0,0,0,0,'" & PurcahseTypeName & "','" & Val(StorageID) & "','" & StorageName & "'," & Val(VChID) & ")"
+        '                If clsFun.ExecNonQuery(sqll) Then
+        '                    VChID = Val(clsFun.ExecScalarInt("Select Max(ID) from Vouchers"))
+        '                    sql = String.Empty
+        '                    For j = 0 To dt1.Rows.Count - 1
+        '                        totQty = Val(dt1.Rows(j)("RestNug").ToString())
+        '                        Weights = Val(dt1.Rows(j)("Weight").ToString())
+        '                        sql = sql & "insert into Purchase(EntryDate,TransType,VoucherID,BillNo,VehicleNo,PurchaseTypeName,AccountID,AccountName,StorageID,StorageName, " _
+        '                        & "ItemID,ItemName,LotNo, Nug, Weight,Rate,Per, Amount, MaintainCrate, CrateID, CrateName, CrateQty,StockHolderID,StockHolderName) values " _
+        '                        & "('" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "','Purchase'," & Val(VChID) & ", " &
+        '                        "'" & Val(i + 1) & "','" & Val(VChID) & "','Purchase'," &
+        '                        "" & Val(dt1.Rows(j)("AccountID").ToString()) & ",'" & dt1.Rows(j)("AccountName").ToString() & "'," & Val(dt1.Rows(j)("StorageID").ToString()) & ", " &
+        '                        "'" & dt1.Rows(j)("StorageName").ToString() & "'," &
+        '                        "" & Val(dt1.Rows(j)("ItemID").ToString()) & ",'" & dt1.Rows(j)("ItemName").ToString() & "','" & dt1.Rows(j)("LotNo").ToString() & "', " &
+        '                        "" & Val(dt1.Rows(j)("RestNug").ToString()) & "," & Val(0) & "," & Val(dt1.Rows(j)("Rate").ToString()) & ",'" & dt1.Rows(j)("Per").ToString() & "'," &
+        '                        "" & Val(0) & ",'" & dt1.Rows(j)("MaintainCrate").ToString() & "'," & Val(dt1.Rows(j)("CrateID").ToString()) & ",'" & dt1.Rows(j)("CrateName").ToString() & "', " &
+        '                        "" & Val(dt1.Rows(j)("CrateQty").ToString()) & "," & IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, (Val(28)), Val(dt1.Rows(j)("AccountID").ToString())) & ", " &
+        '                        "'" & IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, "Mall Khata Purchase A/c", dt1.Rows(j)("AccountName").ToString()) & "');"
+        '                        stockHolderID = IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, (Val(28)), Val(dt1.Rows(j)("AccountID").ToString()))
+        '                        stockHolderName = IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, "Mall Khata Purchase A/c", dt1.Rows(j)("AccountName").ToString())
+        '                        PurcahseTypeName = dt1.Rows(j)("PurchaseTypeName").ToString()
+        '                        StorageID = dt1.Rows(j)("StorageID").ToString()
+        '                        StorageName = dt1.Rows(j)("StorageName").ToString()
+        '                        VehicleNo = dt1.Rows(j)("VehicleNo").ToString()
+        '                        sqll = ""
+        '                        sqll = "Update Vouchers Set TransType='Purchase', EntryDate='" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & Val(VChID) & "'," _
+        '                            & "SallerID='" & Val(dt.Rows(i)("AccountID").ToString()) & "', SallerName='" & dt.Rows(i)("AccountName").ToString() & "',VehicleNo='" & VehicleNo & "'," _
+        '                            & "Nug='" & Val(totQty) & "',Kg='" & Val(Weights) & "',BasicAmount='" & Val(0) & "'," _
+        '                            & " DiscountAmount= '" & Val(0) & "',TotalAmount='" & Val(0) & "'," _
+        '                            & " PurchaseType='" & PurcahseTypeName & "',StorageID='" & Val(StorageID) & "',StorageName='" & StorageName & "', " _
+        '                            & "InvoiceID='" & Val(VChID) & "' Where ID=" & Val(VChID) & ""
+        '                        If clsFun.ExecNonQuery(sqll) Then
+        '                            clsFun.ExecNonQuery(sql)
+        '                        End If
+        '                    Next
+
+        '                End If
+
+        '            End If
+        '        Next
+        '    End If
+
+        'Catch ex As Exception
+
+        'End Try
+
+        '" " & _
         Try
+
+            Dim dt1 As New DataTable
+
+            sql = "Select VoucherID from TempPurchase Group By VoucherID Order By VoucherID"
+            dt = clsFun.ExecDataTable(sql)
+
             If dt.Rows.Count > 0 Then
-                For i = 0 To dt.Rows.Count - 1
+
+                ProgressBar1.Maximum = dt.Rows.Count
+                ProgressBar1.Value = 0
+
+                For v As Integer = 0 To dt.Rows.Count - 1
+
                     Application.DoEvents()
-                    ProgressBar1.Maximum = dt.Rows.Count
-                    lblStatus.Text = Format(Val(i + 1) * 100 / dt.Rows.Count, "0.00") & " %"
-                    ProgressBar1.Value = i
-                    If lblStockBalance.Visible = True Then lblStockBalance.Visible = False Else lblStockBalance.Visible = True
-                    Dim totQty As Integer = 0
-                    Dim accID As Integer = 0
-                    Dim accName As String = String.Empty
-                    Dim stockHolderID As Integer = 0
-                    Dim stockHolderName As String = String.Empty
-                    Dim StorageID As String = String.Empty
-                    Dim StorageName As String = String.Empty
-                    Dim ItemID As Integer = 0
-                    Dim ItemName As String = String.Empty
-                    Dim Nugs As Integer = 0
-                    Dim Weights As String = String.Empty
-                    Dim VehicleNo As String = String.Empty
-                    Dim Rate As String = String.Empty
-                    Dim PurcahseTypeName As String = String.Empty
-                    Dim VChID As Integer
-                    '  Dim VchId As Integer = 1
-                    sql = " Select VoucherID, AccountID,AccountName, StockHolderID,StockHolderName,VehicleNo,Weight,PurchaseTypeName,StorageID,StorageName,ItemID, ItemName,LotNo,Sum(Nug) as PurchaseNug,Rate,Per,MaintainCrate,CrateID,CrateName,CrateQty, " &
-                           " (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')  and Lot = TempPurchase.LotNo and ItemID=TempPurchase.ItemID " &
-                           " and PurchaseID=TempPurchase.VoucherID )as soldNug,(Sum(Nug) - " &
-                           " (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')  and Lot=TempPurchase.LotNo and ItemID=TempPurchase.ItemID" &
-                           " and PurchaseID=TempPurchase.VoucherID)) as RestNug From TempPurchase Where AccountID='" & Val(dt.Rows(i)("AccountID").ToString()) & "' and StockHolderID='" & Val(dt.Rows(i)("StockHolderID").ToString()) & "'  Group by ItemID,LotNo,VoucherID Having RestNug <> 0  " &
-                           " order by AccountName,ItemID,ItemName,LotNo"
+
+                    ProgressBar1.Value = v + 1
+                    lblStatus.Text = Format((v + 1) * 100 / dt.Rows.Count, "0.00") & " %"
+
+                    Dim VoucherID As Integer = Val(dt.Rows(v)("VoucherID"))
+
+                    sql = "Select VoucherID,PurchaseTypeName,StorageID,StorageName,AccountID,AccountName,StockHolderID,StockHolderName,VehicleNo,Weight," _
+                    & "PurchaseTypeName,StorageID,StorageName,ItemID,ItemName,LotNo,Rate,Per," _
+                    & "Sum(Nug) as PurchaseNug," _
+                    & "(Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')" _
+                    & " and Lot=TempPurchase.LotNo and ItemID=TempPurchase.ItemID and PurchaseID=TempPurchase.VoucherID) as SoldNug," _
+                    & "(Sum(Nug) - (Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')" _
+                    & " and Lot=TempPurchase.LotNo and ItemID=TempPurchase.ItemID and PurchaseID=TempPurchase.VoucherID)) as RestNug " _
+                    & "From TempPurchase Where VoucherID=" & VoucherID & " " _
+                    & "Group by ItemID,LotNo,VoucherID Having RestNug<>0"
+
                     dt1 = clsFun.ExecDataTable(sql)
 
                     If dt1.Rows.Count > 0 Then
-                        sqll = "Insert Into Vouchers(Transtype, EntryDate,BillNo,SallerID, SallerName,VehicleNo,Nug,Kg,BasicAmount,DiscountAmount,TotalAmount,PurchaseType, " _
-                             & "StorageID,StorageName,InvoiceID) Values ('Purchase','" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "','" & VChID & "','" & Val(dt.Rows(i)("AccountID").ToString()) & "', " &
-                               " '" & dt.Rows(i)("AccountName").ToString() & "'," & Val(totQty) & ",0,0,0,0,0,'" & PurcahseTypeName & "','" & Val(StorageID) & "','" & StorageName & "'," & Val(VChID) & ")"
-                        If clsFun.ExecNonQuery(sqll) Then
-                            VChID = Val(clsFun.ExecScalarInt("Select Max(ID) from Vouchers"))
-                            sql = String.Empty
-                            For j = 0 To dt1.Rows.Count - 1
-                                totQty = totQty + Val(dt1.Rows(j)("RestNug").ToString())
-                                Weights = Val(Weights) + Val(dt1.Rows(j)("Weight").ToString())
-                                sql = sql & "insert into Purchase(EntryDate,TransType,VoucherID,BillNo,VehicleNo,PurchaseTypeName,AccountID,AccountName,StorageID,StorageName, " _
-                                & "ItemID,ItemName,LotNo, Nug, Weight,Rate,Per, Amount, MaintainCrate, CrateID, CrateName, CrateQty,StockHolderID,StockHolderName) values " _
-                                & "('" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "','Purchase'," & Val(VChID) & ", " &
-                                "'" & Val(i + 1) & "','" & Val(VChID) & "','Purchase'," &
-                                "" & Val(dt1.Rows(j)("AccountID").ToString()) & ",'" & dt1.Rows(j)("AccountName").ToString() & "'," & Val(dt1.Rows(j)("StorageID").ToString()) & ", " &
-                                "'" & dt1.Rows(j)("StorageName").ToString() & "'," &
-                                "" & Val(dt1.Rows(j)("ItemID").ToString()) & ",'" & dt1.Rows(j)("ItemName").ToString() & "','" & dt1.Rows(j)("LotNo").ToString() & "', " &
-                                "" & Val(dt1.Rows(j)("RestNug").ToString()) & "," & Val(0) & "," & Val(dt1.Rows(j)("Rate").ToString()) & ",'" & dt1.Rows(j)("Per").ToString() & "'," &
-                                "" & Val(0) & ",'" & dt1.Rows(j)("MaintainCrate").ToString() & "'," & Val(dt1.Rows(j)("CrateID").ToString()) & ",'" & dt1.Rows(j)("CrateName").ToString() & "', " &
-                                "" & Val(dt1.Rows(j)("CrateQty").ToString()) & "," & IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, (Val(28)), Val(dt1.Rows(j)("AccountID").ToString())) & ", " &
-                                "'" & IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, "Mall Khata Purchase A/c", dt1.Rows(j)("AccountName").ToString()) & "');"
-                                stockHolderID = IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, (Val(28)), Val(dt1.Rows(j)("AccountID").ToString()))
-                                stockHolderName = IIf(Val(dt1.Rows(j)("StockHolderID").ToString()) = 28, "Mall Khata Purchase A/c", dt1.Rows(j)("AccountName").ToString())
-                                PurcahseTypeName = dt1.Rows(j)("PurchaseTypeName").ToString()
-                                StorageID = dt1.Rows(j)("StorageID").ToString()
-                                StorageName = dt1.Rows(j)("StorageName").ToString()
-                                VehicleNo = dt1.Rows(j)("VehicleNo").ToString()
-                            Next
-                            sqll = ""
-                            sqll = "Update Vouchers Set TransType='Purchase', EntryDate='" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & Val(VChID) & "'," _
-                                & "SallerID='" & Val(dt.Rows(i)("AccountID").ToString()) & "', SallerName='" & dt.Rows(i)("AccountName").ToString() & "',VehicleNo='" & VehicleNo & "'," _
-                                & "Nug='" & Val(totQty) & "',Kg='" & Val(Weights) & "',BasicAmount='" & Val(0) & "'," _
-                                & " DiscountAmount= '" & Val(0) & "',TotalAmount='" & Val(0) & "'," _
-                                & " PurchaseType='" & PurcahseTypeName & "',StorageID='" & Val(StorageID) & "',StorageName='" & StorageName & "', " _
-                                & "InvoiceID='" & Val(VChID) & "' Where ID=" & Val(VChID) & ""
-                            If clsFun.ExecNonQuery(sqll) Then
-                                clsFun.ExecNonQuery(sql)
-                            End If
 
-                        End If
+                        Dim TotalNug As Integer = 0
+                        Dim TotalWeight As Double = 0
+
+                        For d As Integer = 0 To dt1.Rows.Count - 1
+
+                            TotalNug += Val(dt1.Rows(d)("RestNug"))
+                            TotalWeight += Val(dt1.Rows(d)("Weight"))
+
+                        Next
+
+                        Dim VChID As Integer
+                        Dim BillNo As Integer
+                        BillNo = clsFun.ExecScalarInt("Select ifnull(Max(BillNo),0)+1 from Vouchers")
+                        sql = "Insert Into Vouchers(Transtype,EntryDate,BillNo,SallerID,SallerName,VehicleNo,Nug,Kg,PurchaseType,Storageid,StorageName) Values(" _
+                        & "'Purchase','" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "'," _
+                        & BillNo & "," _
+                        & Val(dt1.Rows(0)("AccountID")) & ",'" _
+                        & dt1.Rows(0)("AccountName").ToString & "','" _
+                        & dt1.Rows(0)("VehicleNo").ToString & "'," _
+                        & TotalNug & "," & TotalWeight & ",'" _
+                        & dt1.Rows(0)("PurchaseTypeName").ToString & "'," _
+                                     & Val(dt1.Rows(0)("StorageID")) & ",'" _
+                        & dt1.Rows(0)("StorageName").ToString & "')"
+
+                        clsFun.ExecNonQuery(sql)
+
+                        VChID = clsFun.ExecScalarInt("Select Max(ID) from Vouchers")
+
+                        For d As Integer = 0 To dt1.Rows.Count - 1
+
+                            sql = "Insert into Purchase(EntryDate,TransType,VoucherID,ItemID,ItemName,LotNo,Nug,Weight,Rate,Per,PurchaseTypeName,StockHolderID,StockHolderName,Storageid,StorageName,AccountID,AccountName) Values(" _
+                            & "'" & CDate(mskNewFromDate.Text).ToString("yyyy-MM-dd") & "'," _
+                            & "'Purchase'," & VChID & "," _
+                            & Val(dt1.Rows(d)("ItemID")) & ",'" _
+                            & dt1.Rows(d)("ItemName").ToString & "','" _
+                            & dt1.Rows(d)("LotNo").ToString & "'," _
+                            & Val(dt1.Rows(d)("RestNug")) & "," _
+                            & Val(dt1.Rows(d)("Weight")) & "," _
+                            & Val(dt1.Rows(d)("Rate")) & ",'" _
+                            & dt1.Rows(d)("Per").ToString & "','" _
+                            & dt1.Rows(d)("PurchaseTypeName").ToString & "'," _
+                            & Val(dt1.Rows(d)("StockHolderID")) & ",'" _
+                            & dt1.Rows(d)("StockHolderName").ToString & "', " _
+                            & Val(dt1.Rows(d)("StorageID")) & ",'" _
+                            & dt1.Rows(d)("StorageName").ToString & "', " _
+                            & Val(dt1.Rows(d)("AccountID")) & ",'" _
+                            & dt1.Rows(d)("AccountName").ToString & "')"
+                            clsFun.ExecNonQuery(sql)
+
+                        Next
 
                     End If
+
                 Next
+
             End If
 
         Catch ex As Exception
+            MessageBox.Show(ex.Message)
 
         End Try
-
-        '" " & _
-
         ssql = "Delete from Transaction2; Delete from sqlite_sequence where name='Transaction2'; drop table if  exists TempCrateVoucher;drop table if  exists TempPurchase;"
         a1 = clsFun.ExecNonQuery(ssql, True)
         lblStockBalance.Visible = True

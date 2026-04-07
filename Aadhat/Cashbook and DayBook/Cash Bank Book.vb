@@ -86,6 +86,209 @@
         pnlWait.Visible = False
         ' Retrive()
     End Sub
+    'Private Sub RetriveOld()
+
+    '    Dim ssql As String = String.Empty
+    '    Dim dt As New DataTable
+    '    Dim drtotal As Double = 0
+    '    Dim crtotal As Double = 0
+    '    Dim closingBal As Double = 0
+    '    Dim grndTotal As Double = 0
+    '    Dim j As Integer
+    '    Dim lastval As Integer = 0
+    '    Dim tmpDt As New DataTable
+    '    Dim accFilter As String = ""
+    '    Dim prevClosing As Double = 0
+
+    '    Try
+
+    '        'Account filter
+    '        If chkAllCashBank.Checked = True Then
+    '            accFilter = " and AccountID in (Select ID from Accounts where GroupID in (11,12)) "
+    '        Else
+    '            accFilter = " and AccountID=" & Val(cbAccountName.SelectedValue)
+    '        End If
+
+
+    '        'Date list
+    '        ssql = "Select Entrydate from Ledger where DC ='D' " & accFilter &
+    '               " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") &
+    '               "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' union " &
+    '               " Select Entrydate from Ledger where Dc='C' " & accFilter &
+    '               " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") &
+    '               "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") &
+    '               "' order by Entrydate "
+
+    '        opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID=" & cbAccountName.SelectedValue)
+    '        Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID=" & cbAccountName.SelectedValue)
+
+    '        dt = clsFun.ExecDataTable(ssql)
+
+    '        dg1.Rows.Clear()
+
+    '        If dt.Rows.Count > 0 Then
+
+    '            For i As Integer = 0 To dt.Rows.Count - 1
+
+    '                drtotal = 0
+    '                crtotal = 0
+
+    '                dg1.Rows.Add()
+    '                dg1.Rows(lastval).Cells(1).Value = "Date : " & CDate(dt.Rows(i)("Entrydate")).ToString("dd-MM-yyyy")
+    '                dg1.Rows(lastval).Cells(5).Value = "Date : " & CDate(dt.Rows(i)("Entrydate")).ToString("dd-MM-yyyy")
+    '                dg1.Rows(lastval).Cells(4).Value = "|"
+    '                lastval += 1
+
+    '                dg1.Rows.Add()
+
+    '                'FIRST DATE opening calculation (original logic)
+    '                If i = 0 Then
+
+    '                    Dim tmpamtdr As Double = Val(clsFun.ExecScalarStr("Select sum(Amount) from Ledger where Dc='D' and accountID=" &
+    '                    Val(cbAccountName.SelectedValue) & " and EntryDate < '" &
+    '                    CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'"))
+
+    '                    Dim tmpamtcr As Double = Val(clsFun.ExecScalarStr("Select sum(Amount) from Ledger where Dc='C' and accountID=" &
+    '                    Val(cbAccountName.SelectedValue) & " and EntryDate < '" &
+    '                    CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'"))
+
+    '                    If drcr = "Dr" Then
+    '                        tmpamtdr = opbal + tmpamtdr
+    '                    Else
+    '                        tmpamtcr = opbal + tmpamtcr
+    '                    End If
+
+    '                    opbal = Math.Abs(tmpamtdr - tmpamtcr)
+
+    '                Else
+    '                    'Next dates opening = previous closing
+    '                    opbal = prevClosing
+    '                End If
+
+
+    '                If drcr = "Dr" Then
+    '                    dg1.Rows(lastval).Cells(1).Value = "Opening Balance"
+    '                    dg1.Rows(lastval).Cells(3).Value = Format(opbal, "0.00")
+    '                    drtotal += opbal
+    '                Else
+    '                    dg1.Rows(lastval).Cells(5).Value = "Opening Balance"
+    '                    dg1.Rows(lastval).Cells(7).Value = Format(opbal, "0.00")
+    '                    crtotal += opbal
+    '                End If
+
+    '                dg1.Rows(lastval).Cells(4).Value = "|"
+    '                lastval += 1
+
+
+    '                'Entries
+    '                ssql = "Select Entrydate,TransType,AccountName,Remark,Amount as Dr,'0' as Cr,Narration from Ledger where DC='D' " &
+    '                       accFilter & " and EntryDate='" & CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "' union all " &
+    '                       "Select Entrydate,TransType,AccountName,Remark,'0' as Dr,Amount as Cr,Narration from Ledger where DC='C' " &
+    '                       accFilter & " and EntryDate='" & CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'"
+
+    '                tmpDt = clsFun.ExecDataTable(ssql)
+
+    '                For j = 0 To tmpDt.Rows.Count - 1
+
+    '                    dg1.Rows.Add()
+
+    '                    With dg1.Rows(lastval)
+
+    '                        If tmpDt.Rows(j)("Dr").ToString() <> "0" Then
+
+    '                            .Cells(1).Value = tmpDt.Rows(j)("Narration").ToString() &
+    '                            " (" & tmpDt.Rows(j)("AccountName").ToString() & ")"
+
+    '                            .Cells(2).Value = tmpDt.Rows(j)("TransType").ToString()
+    '                            .Cells(3).Value = Format(Val(tmpDt.Rows(j)("Dr")), "0.00")
+
+    '                            drtotal += Val(.Cells(3).Value)
+
+    '                        Else
+
+    '                            .Cells(5).Value = tmpDt.Rows(j)("Narration").ToString() &
+    '                            " (" & tmpDt.Rows(j)("AccountName").ToString() & ")"
+
+    '                            .Cells(6).Value = tmpDt.Rows(j)("TransType").ToString()
+    '                            .Cells(7).Value = Format(Val(tmpDt.Rows(j)("Cr")), "0.00")
+
+    '                            crtotal += Val(.Cells(7).Value)
+
+    '                        End If
+
+    '                        .Cells(4).Value = "|"
+    '                        lastval += 1
+
+    '                    End With
+
+    '                Next
+
+
+    '                'Totals
+    '                dg1.Rows.Add()
+
+    '                dg1.Rows(lastval).Cells(2).Value = "Total"
+    '                dg1.Rows(lastval).Cells(3).Value = Format(drtotal, "0.00")
+
+    '                dg1.Rows(lastval).Cells(6).Value = "Total"
+    '                dg1.Rows(lastval).Cells(7).Value = Format(crtotal, "0.00")
+
+    '                dg1.Rows(lastval).Cells(4).Value = "|"
+    '                lastval += 1
+
+
+    '                'Closing balance
+    '                dg1.Rows.Add()
+
+    '                If drtotal > crtotal Then
+
+    '                    closingBal = drtotal - crtotal
+
+    '                    dg1.Rows(lastval).Cells(6).Value = "Closing Balance"
+    '                    dg1.Rows(lastval).Cells(7).Value = Format(closingBal, "0.00")
+
+    '                Else
+
+    '                    closingBal = crtotal - drtotal
+
+    '                    dg1.Rows(lastval).Cells(2).Value = "Closing Balance"
+    '                    dg1.Rows(lastval).Cells(3).Value = Format(closingBal, "0.00")
+
+    '                End If
+
+    '                dg1.Rows(lastval).Cells(4).Value = "|"
+    '                lastval += 1
+
+
+    '                'Grand total
+    '                dg1.Rows.Add()
+
+    '                grndTotal = Math.Max(drtotal, crtotal)
+
+    '                dg1.Rows(lastval).Cells(2).Value = "Grand Total"
+    '                dg1.Rows(lastval).Cells(3).Value = Format(grndTotal, "0.00")
+
+    '                dg1.Rows(lastval).Cells(6).Value = "Grand Total"
+    '                dg1.Rows(lastval).Cells(7).Value = Format(grndTotal, "0.00")
+
+    '                dg1.Rows(lastval).Cells(4).Value = "|"
+    '                lastval += 1
+
+
+    '                prevClosing = closingBal
+
+    '            Next
+
+    '        End If
+
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '    End Try
+
+    '    dg1.ClearSelection()
+
+
+    'End Sub
 
     Private Sub RetriveOld()
         Dim ssql As String = String.Empty

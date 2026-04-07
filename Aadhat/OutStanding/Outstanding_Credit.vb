@@ -171,30 +171,66 @@
         pnlWait.Visible = False
     End Sub
     Private Sub PrintRecord()
+        Dim AllRecord As Integer = Val(dg1.Rows.Count)
+        Dim maxRowCount As Decimal = Math.Ceiling(AllRecord / 100)
+        Dim FastQuery As String = String.Empty
+        Dim sQL As String = String.Empty
+        Dim LastCount As Integer = 0
         pnlWait.Visible = True
-        Dim count As Integer = 0
-        Dim cmd As New SQLite.SQLiteCommand
-        Dim sql As String = ""
+        Dim TotalRecord As Integer = 0
+        Dim LastRecord As Integer = 0
+        Dim marka As String = clsFun.ExecScalarStr("Select Marka From Company")
         ClsFunPrimary.ExecNonQuery("Delete from printing")
-        For Each row As DataGridViewRow In dg1.Rows
+        For i As Integer = 0 To maxRowCount - 1
             Application.DoEvents()
-            If Application.OpenForms().OfType(Of Outstanding_Credit).Any = False Then Exit Sub
-            pb1.Minimum = 0
-            pb1.Maximum = dg1.Rows.Count
-            With row
-                pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
-                sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9) values('" & mskEntryDate.Text & "'," & _
-                    "'" & .Cells("Account Name").Value & "','" & .Cells("Area").Value & "','" & .Cells("Mobile No.").Value & "','" & .Cells("Balance").Value & "','" & .Cells("OtherName").Value & "','" & .Cells("Op bal").Value & "','" & Format(Val(txtDebitBal.Text), "0.00") & "','" & Format(Val(txtCreditBal.Text), "0.00") & "','" & Format(Val(TxtGrandTotal.Text), "0.00") & "')"
-                Try
-                    ClsFunPrimary.ExecNonQuery(sql)
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                    ClsFunPrimary.CloseConnection()
-                End Try
-            End With
+            FastQuery = String.Empty : TotalRecord = (AllRecord - LastRecord)
+            For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
+                With dg1.Rows(LastRecord)
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskEntryDate.Text & "'," & _
+                      "'" & .Cells("Account Name").Value & "','" & .Cells("Area").Value & "','" & .Cells("Mobile No.").Value & "', " & _
+                      "'" & .Cells("Balance").Value & "','" & .Cells("OtherName").Value & "','" & .Cells("Op bal").Value & "', " & _
+                      "'" & Format(Val(txtDebitBal.Text), "0.00") & "','" & Format(Val(txtCreditBal.Text), "0.00") & "', " & _
+                      "'" & Format(Val(TxtGrandTotal.Text), "0.00") & "','" & marka & "'"
+                End With
+                LastRecord = Val(LastRecord + 1)
+            Next
+            ' LastRecord = LastCount
+            Try
+                If FastQuery = String.Empty Then Exit Sub
+                sQL = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9,M10) " & FastQuery & ""
+                ClsFunPrimary.ExecNonQuery(sQL)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                ClsFunPrimary.CloseConnection()
+            End Try
         Next
         pnlWait.Visible = False
     End Sub
+    'Private Sub PrintRecord()
+    '    pnlWait.Visible = True
+    '    Dim count As Integer = 0
+    '    Dim cmd As New SQLite.SQLiteCommand
+    '    Dim sql As String = ""
+    '    ClsFunPrimary.ExecNonQuery("Delete from printing")
+    '    For Each row As DataGridViewRow In dg1.Rows
+    '        Application.DoEvents()
+    '        If Application.OpenForms().OfType(Of Outstanding_Credit).Any = False Then Exit Sub
+    '        pb1.Minimum = 0
+    '        pb1.Maximum = dg1.Rows.Count
+    '        With row
+    '            pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
+    '            sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9) values('" & mskEntryDate.Text & "'," & _
+    '                "'" & .Cells("Account Name").Value & "','" & .Cells("Area").Value & "','" & .Cells("Mobile No.").Value & "','" & .Cells("Balance").Value & "','" & .Cells("OtherName").Value & "','" & .Cells("Op bal").Value & "','" & Format(Val(txtDebitBal.Text), "0.00") & "','" & Format(Val(txtCreditBal.Text), "0.00") & "','" & Format(Val(TxtGrandTotal.Text), "0.00") & "')"
+    '            Try
+    '                ClsFunPrimary.ExecNonQuery(sql)
+    '            Catch ex As Exception
+    '                MsgBox(ex.Message)
+    '                ClsFunPrimary.CloseConnection()
+    '            End Try
+    '        End With
+    '    Next
+    '    pnlWait.Visible = False
+    'End Sub
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
         If dg1.RowCount = 0 Then
             MsgBox("There is No record to Print...", vbOkOnly, "Empty")

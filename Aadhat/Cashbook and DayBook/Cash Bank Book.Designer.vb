@@ -45,6 +45,7 @@ Partial Class Cash_Bank_Book
         Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.chkAllCashBank = New System.Windows.Forms.CheckBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -292,12 +293,24 @@ Partial Class Cash_Bank_Book
         Me.cbType.Size = New System.Drawing.Size(231, 27)
         Me.cbType.TabIndex = 1
         '
+        'chkAllCashBank
+        '
+        Me.chkAllCashBank.AutoSize = True
+        Me.chkAllCashBank.Location = New System.Drawing.Point(1045, 83)
+        Me.chkAllCashBank.Name = "chkAllCashBank"
+        Me.chkAllCashBank.Size = New System.Drawing.Size(132, 17)
+        Me.chkAllCashBank.TabIndex = 91270
+        Me.chkAllCashBank.Text = "Cash /Bank All Entries"
+        Me.chkAllCashBank.UseVisualStyleBackColor = True
+        Me.chkAllCashBank.Visible = False
+        '
         'Cash_Bank_Book
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.chkAllCashBank)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.Dtp2)
@@ -343,4 +356,5 @@ Partial Class Cash_Bank_Book
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents chkAllCashBank As System.Windows.Forms.CheckBox
 End Class

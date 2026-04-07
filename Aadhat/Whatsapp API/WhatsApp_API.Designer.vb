@@ -30,22 +30,23 @@ Partial Class WhatsApp_API
         Me.btnReconnect = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.cbMethod = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cbmsgType = New System.Windows.Forms.ComboBox()
         Me.cbLanguage = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GbWhatsappAPI = New System.Windows.Forms.GroupBox()
         Me.txtAccessToken = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cbDefaultSim = New System.Windows.Forms.ComboBox()
+        Me.txtMsgAccess = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GbWhatsappAPI.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -122,21 +123,6 @@ Partial Class WhatsApp_API
         Me.GroupBox1.TabIndex = 91124
         Me.GroupBox1.TabStop = False
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.DarkTurquoise
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.Button1.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(450, 83)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(141, 30)
-        Me.Button1.TabIndex = 91229
-        Me.Button1.Text = "Save &Default"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -158,7 +144,7 @@ Partial Class WhatsApp_API
         Me.cbMethod.ForeColor = System.Drawing.Color.Black
         Me.cbMethod.FormattingEnabled = True
         Me.cbMethod.IntegralHeight = False
-        Me.cbMethod.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API"})
+        Me.cbMethod.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbMethod.Location = New System.Drawing.Point(28, 50)
         Me.cbMethod.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbMethod.Name = "cbMethod"
@@ -221,6 +207,21 @@ Partial Class WhatsApp_API
         Me.cbLanguage.Size = New System.Drawing.Size(166, 27)
         Me.cbLanguage.TabIndex = 91192
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.DarkTurquoise
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.Button1.ForeColor = System.Drawing.Color.GhostWhite
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(450, 93)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(141, 30)
+        Me.Button1.TabIndex = 91229
+        Me.Button1.Text = "Save &Default"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'btnClose
         '
         Me.btnClose.BackColor = System.Drawing.SystemColors.Control
@@ -251,10 +252,11 @@ Partial Class WhatsApp_API
         Me.GbWhatsappAPI.ForeColor = System.Drawing.Color.Green
         Me.GbWhatsappAPI.Location = New System.Drawing.Point(12, 271)
         Me.GbWhatsappAPI.Name = "GbWhatsappAPI"
-        Me.GbWhatsappAPI.Size = New System.Drawing.Size(601, 341)
+        Me.GbWhatsappAPI.Size = New System.Drawing.Size(601, 370)
         Me.GbWhatsappAPI.TabIndex = 91231
         Me.GbWhatsappAPI.TabStop = False
         Me.GbWhatsappAPI.Text = "WhatsApp API official (Paid) "
+        Me.GbWhatsappAPI.Visible = False
         '
         'txtAccessToken
         '
@@ -278,27 +280,55 @@ Partial Class WhatsApp_API
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.Label8)
+        Me.GroupBox2.Controls.Add(Me.cbDefaultSim)
+        Me.GroupBox2.Controls.Add(Me.txtMsgAccess)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.Button2)
         Me.GroupBox2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Green
         Me.GroupBox2.Location = New System.Drawing.Point(619, 129)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(565, 113)
+        Me.GroupBox2.Size = New System.Drawing.Size(565, 97)
         Me.GroupBox2.TabIndex = 91232
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Send From Mobile Messages"
         '
-        'TextBox1
+        'Label8
         '
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(135, 25)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(424, 29)
-        Me.TextBox1.TabIndex = 13
-        Me.TextBox1.TabStop = False
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.Label8.Location = New System.Drawing.Point(26, 67)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(106, 21)
+        Me.Label8.TabIndex = 91231
+        Me.Label8.Text = "Default Sim :"
+        '
+        'cbDefaultSim
+        '
+        Me.cbDefaultSim.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(241, Byte), Integer))
+        Me.cbDefaultSim.DropDownHeight = 100
+        Me.cbDefaultSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbDefaultSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbDefaultSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDefaultSim.ForeColor = System.Drawing.Color.Black
+        Me.cbDefaultSim.FormattingEnabled = True
+        Me.cbDefaultSim.IntegralHeight = False
+        Me.cbDefaultSim.Items.AddRange(New Object() {"SIM 1", "SIM 2"})
+        Me.cbDefaultSim.Location = New System.Drawing.Point(136, 63)
+        Me.cbDefaultSim.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cbDefaultSim.Name = "cbDefaultSim"
+        Me.cbDefaultSim.Size = New System.Drawing.Size(180, 27)
+        Me.cbDefaultSim.TabIndex = 91230
+        '
+        'txtMsgAccess
+        '
+        Me.txtMsgAccess.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtMsgAccess.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMsgAccess.Location = New System.Drawing.Point(135, 25)
+        Me.txtMsgAccess.Name = "txtMsgAccess"
+        Me.txtMsgAccess.Size = New System.Drawing.Size(424, 29)
+        Me.txtMsgAccess.TabIndex = 13
+        Me.txtMsgAccess.TabStop = False
         '
         'Label4
         '
@@ -309,20 +339,6 @@ Partial Class WhatsApp_API
         Me.Label4.Size = New System.Drawing.Size(126, 21)
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "Access Token :"
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(467, 60)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(92, 37)
-        Me.Button2.TabIndex = 12
-        Me.Button2.Text = "Save"
-        Me.Button2.UseVisualStyleBackColor = False
         '
         'WhatsApp_API
         '
@@ -369,7 +385,8 @@ Partial Class WhatsApp_API
     Friend WithEvents txtAccessToken As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMsgAccess As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents cbDefaultSim As System.Windows.Forms.ComboBox
 End Class

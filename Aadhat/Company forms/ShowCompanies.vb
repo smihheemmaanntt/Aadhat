@@ -2,6 +2,7 @@
 Option Explicit On
 Imports System.Reflection
 Imports System.Runtime.InteropServices
+Imports System.IO
 
 Friend Class ShowCompanies
     Inherits System.Windows.Forms.Form
@@ -76,30 +77,54 @@ Friend Class ShowCompanies
             End If
         End If
     End Sub
+    'Private Sub ShowCompanies_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '    Dim fecha As Date = IO.File.GetCreationTime(Assembly.GetExecutingAssembly().Location)
+    '    Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
+    '    AccentStorageHelper.LoadStore()
+    '    Me.Text = "Aadhat #" & version.ToString() & " " & CDate(fecha).ToString("yyMMdd")
+    '    rs.FindAllControls(Me)
+    '    CompanyList.MdiParent = Me
+    '    CompanyList.Show()
+    '    Me.Top = 50 : Me.Left = 50
+    '    ' Me.WindowState = FormWindowState.Maximized
+    '    Me.KeyPreview = True
+    '    Dim screenWidth As Integer = Screen.PrimaryScreen.WorkingArea.Width
+    '    Dim screenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height + 48
+    'End Sub
     Private Sub ShowCompanies_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim fecha As Date = IO.File.GetCreationTime(Assembly.GetExecutingAssembly().Location)
-        Me.Text = "Aadhat 26.0.0 #" & CDate(fecha).ToString("yyMMddhhmm")
+        Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
+        Dim storePath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        Dim customerCode As String = ""
+        ' 👉 Load Store
+        If IO.File.Exists(storePath) Then
+            Dim store = AccentStorageHelper.LoadStore()
+            If store IsNot Nothing AndAlso store.response_data IsNot Nothing Then
+                customerCode = Safe(store.response_data.customer_code)
+            Else
+                customerCode = " Trail "
+            End If
+        Else
+            customerCode = " Trail "
+        End If
+ 
+        ' 👉 Title me Customer Code [ ] me show
+        Me.Text = "[Aadhat #" & customerCode & "] " & version.ToString() & " [" & CDate(fecha).ToString("yyMMddhhmm") & "]"
         rs.FindAllControls(Me)
         CompanyList.MdiParent = Me
         CompanyList.Show()
-        Me.Top = 50 : Me.Left = 50
-        ' Me.WindowState = FormWindowState.Maximized
-        Me.KeyPreview = True
-        Dim screenWidth As Integer = Screen.PrimaryScreen.WorkingArea.Width
-        Dim screenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height + 48
-        'If screenWidth <> "1366" Then
-        '    Me.WindowState = FormWindowState.Normal
-        '    Me.MaximizeBox = False
-        '    Me.FormBorderStyle = FormBorderStyle.FixedSingle
-        '    Me.StartPosition = FormStartPosition.CenterScreen
-        'Else
-        '    Me.WindowState = FormWindowState.Maximized
-        '    Me.MaximizeBox = True
-        'End If
-        'Dim screenHeight As Integer = Me.Size.Height
-        'MessageBox.Show(My.Computer.Screen.WorkingArea.Size.ToString)
 
+        Me.Top = 50 : Me.Left = 50
+        Me.KeyPreview = True
+
+        'Dim screenWidth As Integer = Screen.PrimaryScreen.WorkingArea.Width
+        'Dim screenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height + 48
     End Sub
+    Private Function Safe(s As String) As String
+        If s Is Nothing Then Return ""
+        Return s.Trim()
+    End Function
+
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub

@@ -1241,12 +1241,14 @@ Partial Class MainScreenForm
         'OutstandingRecievableToolStripMenuItem
         '
         Me.OutstandingRecievableToolStripMenuItem.Name = "OutstandingRecievableToolStripMenuItem"
+        Me.OutstandingRecievableToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D1), System.Windows.Forms.Keys)
         Me.OutstandingRecievableToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.OutstandingRecievableToolStripMenuItem.Text = "Outstanding (Recievable)"
         '
         'OutstandingPayableToolStripMenuItem
         '
         Me.OutstandingPayableToolStripMenuItem.Name = "OutstandingPayableToolStripMenuItem"
+        Me.OutstandingPayableToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D2), System.Windows.Forms.Keys)
         Me.OutstandingPayableToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.OutstandingPayableToolStripMenuItem.Text = "Outstanding (Payable)"
         '

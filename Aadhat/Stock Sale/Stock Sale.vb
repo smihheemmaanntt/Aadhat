@@ -531,9 +531,19 @@
 
     End Sub
     Private Sub txtLabour_Leave(sender As Object, e As EventArgs) Handles txtLabour.Leave, txtLaboutAmt.Leave
+
         If txtLabour.Text = "" Then txtLabour.Text = "0.00"
         lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
         txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
+        If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
+            Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
+            txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
+            ' txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0)
+            lblRoundoff.Text = Format(Math.Round(Val(txtTotalAmt.Text) - Val(tmpCustAmount), 2), "0.00")
+            txtTotalAmt.Text = Format(Val(txtTotalAmt.Text), "0.00")
+        Else
+            lblRoundoff.Text = 0
+        End If
     End Sub
 
     Private Sub txtPurchaseType_GotFocus(sender As Object, e As EventArgs) Handles txtPurchaseType.GotFocus, txtLot.GotFocus,

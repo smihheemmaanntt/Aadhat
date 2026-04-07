@@ -1130,7 +1130,9 @@ Public Class Purchase
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
         End Try
-
+        lblRestNug.Text = Format(Val(txtTotalNug.Text) - Val(lblNugs.Text), "0.00")
+        LblRestWt.Text = Format(Val(txttotalWeight.Text) - Val(lblWeight.Text), "0.00")
+        lblRestAmt.Text = Format(Val(txtbasicTotal.Text) - Val(lblAmount.Text), "0.00")
     End Sub
 
     Private Sub rowColumsPurchase()
@@ -2388,6 +2390,7 @@ Public Class Purchase
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If dg3.ColumnCount = 0 Then SaleRowColums()
         cbBillingType.SelectedIndex = 0 : retriveSale()
+
         PnlCustomerBill.Visible = True : PnlCustomerBill.BringToFront()
     End Sub
 

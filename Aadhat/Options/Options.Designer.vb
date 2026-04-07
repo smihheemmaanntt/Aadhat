@@ -181,6 +181,8 @@ Partial Class Options
         Me.Label78 = New System.Windows.Forms.Label()
         Me.Label79 = New System.Windows.Forms.Label()
         Me.cbMargin = New System.Windows.Forms.ComboBox()
+        Me.Label82 = New System.Windows.Forms.Label()
+        Me.cbSlipMethod = New System.Windows.Forms.ComboBox()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -2296,6 +2298,8 @@ Partial Class Options
         '
         Me.Panel8.BackColor = System.Drawing.SystemColors.Control
         Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.Label82)
+        Me.Panel8.Controls.Add(Me.cbSlipMethod)
         Me.Panel8.Controls.Add(Me.Label81)
         Me.Panel8.Controls.Add(Me.cbSelloutRemark)
         Me.Panel8.Controls.Add(Me.Label80)
@@ -2462,6 +2466,34 @@ Partial Class Options
         Me.cbMargin.Name = "cbMargin"
         Me.cbMargin.Size = New System.Drawing.Size(37, 22)
         Me.cbMargin.TabIndex = 0
+        '
+        'Label82
+        '
+        Me.Label82.AutoSize = True
+        Me.Label82.Font = New System.Drawing.Font("Times New Roman", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label82.ForeColor = System.Drawing.Color.Black
+        Me.Label82.Location = New System.Drawing.Point(11, 21)
+        Me.Label82.Name = "Label82"
+        Me.Label82.Size = New System.Drawing.Size(107, 13)
+        Me.Label82.TabIndex = 91200
+        Me.Label82.Text = "Slip Print Method :"
+        '
+        'cbSlipMethod
+        '
+        Me.cbSlipMethod.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(241, Byte), Integer))
+        Me.cbSlipMethod.DropDownHeight = 100
+        Me.cbSlipMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSlipMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSlipMethod.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSlipMethod.ForeColor = System.Drawing.Color.Black
+        Me.cbSlipMethod.FormattingEnabled = True
+        Me.cbSlipMethod.IntegralHeight = False
+        Me.cbSlipMethod.Items.AddRange(New Object() {"Group Wise", "Row Wise"})
+        Me.cbSlipMethod.Location = New System.Drawing.Point(125, 18)
+        Me.cbSlipMethod.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cbSlipMethod.Name = "cbSlipMethod"
+        Me.cbSlipMethod.Size = New System.Drawing.Size(102, 22)
+        Me.cbSlipMethod.TabIndex = 91199
         '
         'Options
         '
@@ -2661,4 +2693,6 @@ Partial Class Options
     Friend WithEvents cbFarmer As System.Windows.Forms.ComboBox
     Friend WithEvents Label81 As System.Windows.Forms.Label
     Friend WithEvents cbSelloutRemark As System.Windows.Forms.ComboBox
+    Friend WithEvents Label82 As System.Windows.Forms.Label
+    Friend WithEvents cbSlipMethod As System.Windows.Forms.ComboBox
 End Class

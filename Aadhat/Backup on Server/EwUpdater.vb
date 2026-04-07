@@ -5,28 +5,20 @@ Public Class frmUpdater
 
     Private WithEvents wc As New WebClient()
 
+    ' 👉 Proxy URL use karo
     Private DownloadUrl As String = "http://softmanagementindia.in/updates/EWSmartUpdater.exe"
     Private SaveFile As String
-
     Private Sub frmUpdater_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
         Me.Text = "Downloading Update..."
         prgDownload.Value = 0
         lblPercent.Text = "0%"
         lblstatus.Text = "Starting download..."
-
-        ' ===== Base Path =====
         Dim basePath As String = Application.StartupPath
-
-        ' ===== Whatsapp Folder =====
         Dim whatsappFolder As String = Path.Combine(basePath, "Whatsapp")
         If Not Directory.Exists(whatsappFolder) Then
             Directory.CreateDirectory(whatsappFolder)
         End If
-
-        ' ===== Downloaded EXE Path =====
         SaveFile = Path.Combine(whatsappFolder, "EWSmartUpdater.exe")
-
         Try
             wc.DownloadFileAsync(New Uri(DownloadUrl), SaveFile)
         Catch ex As Exception
@@ -36,7 +28,6 @@ Public Class frmUpdater
 
     End Sub
 
-    ' ================= PROGRESS =================
     Private Sub wc_DownloadProgressChanged(
         sender As Object,
         e As DownloadProgressChangedEventArgs
@@ -51,7 +42,6 @@ Public Class frmUpdater
 
     End Sub
 
-    ' ================= COMPLETED =================
     Private Sub wc_DownloadFileCompleted(
         sender As Object,
         e As System.ComponentModel.AsyncCompletedEventArgs
@@ -63,22 +53,10 @@ Public Class frmUpdater
             Exit Sub
         End If
 
-        lblstatus.Text = "Preparing to run update..."
+        lblstatus.Text = "Starting Updater..."
 
         Try
-            ' ===== Backup if file already exists =====
-            Dim bakFile As String = SaveFile & ".bak"
-
-            If File.Exists(SaveFile) Then
-                If File.Exists(bakFile) Then File.Delete(bakFile)
-                File.Move(SaveFile, bakFile)
-            End If
-
-            ' ===== Download again fresh (overwrite logic safe) =====
-            wc.DownloadFile(New Uri(DownloadUrl), SaveFile)
-
-            lblstatus.Text = "Starting Updater..."
-            ' ===== RUN DOWNLOADED EXE =====
+            ' 👉 No re-download (IMPORTANT FIX)
             ClsFunPrimary.ExecScalarStr("Update API SET SendingMethod='Easy WhatsApp'")
             Process.Start(SaveFile)
             Me.Close()

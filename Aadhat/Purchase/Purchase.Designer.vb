@@ -132,6 +132,12 @@ Partial Class Purchase
         Me.btnPrevious = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PnlCustomerBill = New System.Windows.Forms.Panel()
+        Me.lblRestAmt = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.LblRestWt = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.lblRestNug = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbBillingType = New System.Windows.Forms.ComboBox()
         Me.lblAmount = New System.Windows.Forms.Label()
@@ -1458,7 +1464,13 @@ Partial Class Purchase
         '
         'PnlCustomerBill
         '
-        Me.PnlCustomerBill.BackColor = System.Drawing.Color.LightSeaGreen
+        Me.PnlCustomerBill.BackColor = System.Drawing.Color.DarkKhaki
+        Me.PnlCustomerBill.Controls.Add(Me.lblRestAmt)
+        Me.PnlCustomerBill.Controls.Add(Me.Label40)
+        Me.PnlCustomerBill.Controls.Add(Me.LblRestWt)
+        Me.PnlCustomerBill.Controls.Add(Me.Label35)
+        Me.PnlCustomerBill.Controls.Add(Me.lblRestNug)
+        Me.PnlCustomerBill.Controls.Add(Me.Label33)
         Me.PnlCustomerBill.Controls.Add(Me.Label9)
         Me.PnlCustomerBill.Controls.Add(Me.cbBillingType)
         Me.PnlCustomerBill.Controls.Add(Me.lblAmount)
@@ -1475,6 +1487,72 @@ Partial Class Purchase
         Me.PnlCustomerBill.Size = New System.Drawing.Size(1169, 313)
         Me.PnlCustomerBill.TabIndex = 91131
         Me.PnlCustomerBill.Visible = False
+        '
+        'lblRestAmt
+        '
+        Me.lblRestAmt.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.lblRestAmt.ForeColor = System.Drawing.Color.Red
+        Me.lblRestAmt.Location = New System.Drawing.Point(413, 291)
+        Me.lblRestAmt.Name = "lblRestAmt"
+        Me.lblRestAmt.Size = New System.Drawing.Size(96, 19)
+        Me.lblRestAmt.TabIndex = 91146
+        Me.lblRestAmt.Text = "0.00"
+        Me.lblRestAmt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.Label40.ForeColor = System.Drawing.Color.Red
+        Me.Label40.Location = New System.Drawing.Point(323, 292)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(88, 16)
+        Me.Label40.TabIndex = 91145
+        Me.Label40.Text = "Rest Amount :"
+        '
+        'LblRestWt
+        '
+        Me.LblRestWt.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.LblRestWt.ForeColor = System.Drawing.Color.Red
+        Me.LblRestWt.Location = New System.Drawing.Point(223, 291)
+        Me.LblRestWt.Name = "LblRestWt"
+        Me.LblRestWt.Size = New System.Drawing.Size(96, 19)
+        Me.LblRestWt.TabIndex = 91144
+        Me.LblRestWt.Text = "0.00"
+        Me.LblRestWt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.Label35.ForeColor = System.Drawing.Color.Red
+        Me.Label35.Location = New System.Drawing.Point(141, 293)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(83, 16)
+        Me.Label35.TabIndex = 91143
+        Me.Label35.Text = "Rest Weight :"
+        '
+        'lblRestNug
+        '
+        Me.lblRestNug.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.lblRestNug.ForeColor = System.Drawing.Color.Red
+        Me.lblRestNug.Location = New System.Drawing.Point(76, 292)
+        Me.lblRestNug.Name = "lblRestNug"
+        Me.lblRestNug.Size = New System.Drawing.Size(64, 19)
+        Me.lblRestNug.TabIndex = 91142
+        Me.lblRestNug.Text = "0.00"
+        Me.lblRestNug.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.Label33.ForeColor = System.Drawing.Color.Red
+        Me.Label33.Location = New System.Drawing.Point(9, 292)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(68, 16)
+        Me.Label33.TabIndex = 91141
+        Me.Label33.Text = "Rest Nug :"
         '
         'Label9
         '
@@ -1847,6 +1925,7 @@ Partial Class Purchase
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.PnlCustomerBill)
         Me.Controls.Add(Me.lblFarmer)
         Me.Controls.Add(Me.cbFarmer)
         Me.Controls.Add(Me.lblInword)
@@ -1931,7 +2010,6 @@ Partial Class Purchase
         Me.Controls.Add(Me.dgStore)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.dtp1)
-        Me.Controls.Add(Me.PnlCustomerBill)
         Me.Controls.Add(Me.pnlWhatsapp)
         Me.Name = "Purchase"
         Me.Text = "Purchase"
@@ -2071,4 +2149,10 @@ Partial Class Purchase
     Friend WithEvents txtWhatsappNo As System.Windows.Forms.TextBox
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents LblRestWt As System.Windows.Forms.Label
+    Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents lblRestNug As System.Windows.Forms.Label
+    Friend WithEvents Label33 As System.Windows.Forms.Label
+    Friend WithEvents lblRestAmt As System.Windows.Forms.Label
+    Friend WithEvents Label40 As System.Windows.Forms.Label
 End Class

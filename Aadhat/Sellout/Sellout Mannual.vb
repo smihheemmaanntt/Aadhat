@@ -43,7 +43,7 @@ Public Class Sellout_Mannual
 
     Private Sub TempRowColumn()
         With tmpgrid
-            .ColumnCount = 53
+            .ColumnCount = 54
             .Columns(0).Name = "ID" : .Columns(0).Visible = False
             .Columns(1).Name = "Date" : .Columns(1).Width = 95
             .Columns(2).Name = "VoucherNo" : .Columns(2).Width = 159
@@ -99,7 +99,7 @@ Public Class Sellout_Mannual
             .Columns(49).Name = "AddWeight" : .Columns(49).Width = 69
             .Columns(50).Name = "AddWeightGroup" : .Columns(50).Width = 69
             .Columns(51).Name = "PaidAmount" : .Columns(51).Width = 95
-
+            .Columns(52).Name = "PaidAmount" : .Columns(52).Width = 95
         End With
     End Sub
     Sub retrive2()
@@ -163,7 +163,7 @@ Public Class Sellout_Mannual
                             .Cells(41).Value = .Cells(41).Value & dt2.Rows(k)("Per").ToString() & vbCrLf
                             .Cells(42).Value = .Cells(42).Value & Format(Val(dt2.Rows(k)("Amount").ToString()), "0.00") & vbCrLf
                             .Cells(48).Value = .Cells(48).Value & dt2.Rows(k)("OtherName").ToString() & vbCrLf
-                            '.Cells(50).Value = .Cells(50).Value & dt2.Rows(k)("AddWeight").ToString() & vbCrLf
+                            .Cells(53).Value = .Cells(53).Value & dt2.Rows(k)("AddWeight").ToString() & vbCrLf
                         End If
                     Next
 
@@ -559,7 +559,7 @@ Public Class Sellout_Mannual
                                 "'" & .Cells(37).Value & "','" & .Cells(38).Value & "','" & .Cells(39).Value & "','" & .Cells(40).Value & "'," & _
                                 "'" & .Cells(41).Value & "','" & .Cells(42).Value & "','" & .Cells(43).Value & "','" & .Cells(44).Value & "'," & _
                                 "'" & .Cells(45).Value & "','" & .Cells(46).Value & "','" & .Cells(47).Value & "','" & .Cells(48).Value & "', " & _
-                                "'" & .Cells(49).Value & "','" & .Cells(50).Value & "','" & .Cells(51).Value & "','" & .Cells(52).Value & "'"
+                                "'" & .Cells(49).Value & "','" & .Cells(50).Value & "','" & .Cells(51).Value & "','" & .Cells(52).Value & "','" & .Cells(53).Value & "'"
                 End If
             End With
         Next
@@ -567,7 +567,7 @@ Public Class Sellout_Mannual
             If FastQuery = String.Empty Then Exit Sub
             sql = sql & "insert into Printing(D1, D2,M1, P1,P2, P3, P4, P5, P6,P7,P8,P9, " &
                        " P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20, P21,P22,P23,P24,P25,P26,P27,P28,P29, " &
-                       " P30,P31,P32,P33,P34,P35,P36,P37,P38,P39,P40,P41,P42,P43,P34,P45,P46,P47,P48,P49,P50,P51,P52,P53)" & FastQuery & ""
+                       " P30,P31,P32,P33,P34,P35,P36,P37,P38,P39,P40,P41,P42,P43,P34,P45,P46,P47,P48,P49,P50,P51,P52,P53,P54)" & FastQuery & ""
             ClsFunPrimary.ExecNonQuery(sql)
         Catch ex As Exception
             MsgBox(ex.Message)

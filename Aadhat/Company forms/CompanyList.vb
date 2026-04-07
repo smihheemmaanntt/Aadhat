@@ -182,9 +182,9 @@ Public Class CompanyList
                 "GAP1 INTEGER,GAP2 INTEGER);INSERT INTO API(InstanceID,SendingMethod,LanguageType,SendingType)SELECT InstanceID,SendingMethod,LanguageType,SendingType FROM TempAPI; DROP TABLE TempAPI;PRAGMA foreign_keys = 1;"
             ClsFunPrimary.ExecNonQuery(sql)
         End If
-        If ClsFunPrimary.CheckIfColumnExists("API", "AccessToken") = False Then
+        If ClsFunPrimary.CheckIfColumnExists("API", "DefaultSIM") = False Then
             Dim sql As String = String.Empty
-            sql = "ALTER TABLE API ADD COLUMN AccessToken TEXT;"
+            sql = "ALTER TABLE API ADD COLUMN AccessToken TEXT;ALTER TABLE API ADD COLUMN Msg_Access_Token TEXT;ALTER TABLE API ADD COLUMN DefaultSIM TEXT  DEFAULT '1';"
             ClsFunPrimary.ExecNonQuery(sql)
         End If
     End Sub
@@ -1006,6 +1006,9 @@ Public Class CompanyList
             clsFun.ExecScalarStr(Sql)
             Sql = "Update Controls Set SelloutRemark='Full'"
             clsFun.ExecScalarStr(Sql)
+        End If
+        If clsFun.CheckIfColumnExists("Controls", "SlipMethod") = False Then
+            clsFun.ExecNonQuery("ALTER TABLE Controls ADD COLUMN SlipMethod TEXT DEFAULT 'Group Wise';")
         End If
     End Sub
 

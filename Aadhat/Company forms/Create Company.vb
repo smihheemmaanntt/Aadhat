@@ -144,7 +144,7 @@ Public Class Create_Company
             Else
                 If ClsCommon.IsInternetConnect Then
                     SaveCompanyInfo()
-                    ClsCommon.UpdateCutomerInfo("ADD")
+                    'ClsCommon.UpdateCutomerInfo("ADD")
                 Else
                     MessageBox.Show("Sorry... Your System is not Connected to Internet. Please check internet connection...", "Internet Required...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation) : Exit Sub
                 End If
@@ -156,7 +156,7 @@ Public Class Create_Company
             Else
                 If ClsCommon.IsInternetConnect Then
                     UpdateRecord()
-                    ClsCommon.UpdateCutomerInfo("EDIT")
+                    'ClsCommon.UpdateCutomerInfo("EDIT")
                 Else
                     MessageBox.Show("Sorry... Your System is not Connected to Internet. Please check internet connection...", "Internet Required...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation) : Exit Sub
                 End If

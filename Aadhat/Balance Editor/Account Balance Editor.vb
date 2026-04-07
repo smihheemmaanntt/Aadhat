@@ -6,6 +6,13 @@ Public Class Account_Balance_Editor
     ' Public Shared filepath As String = String.Empty
     Public newconnection As String = ""
 
+    Private Sub Account_Balance_Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            If Pnlconfirmation.Visible = True Then Pnlconfirmation.Visible = False : Exit Sub
+            Me.Close()
+        End If
+    End Sub
+
 
 
     Private Sub Account_Balance_Editor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -13,15 +20,14 @@ Public Class Account_Balance_Editor
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True
+        txtPath.Text = String.Empty
         txtPath.Text = clsFun.ExecScalarStr("Select LinkedDb From Company")
         If txtPath.Text = String.Empty Then
             btnApply.Visible = False
         Else
-            lblLinkedName.Text = ClsImportBalances.ExecScalarStr("Select CompanyName From Company")
             lbllinkedfy.Text = ClsImportBalances.ExecScalarStr("SELECT strftime('%d-%m-%Y', YearStart) || ' - ' || strftime('%d-%m-%Y', YearEnd) AS FinYear FROM Company")
+            lblLinkedName.Text = ClsImportBalances.ExecScalarStr("Select CompanyName From Company")
         End If
-
-
         rowColums() : txtSearch.Focus()
     End Sub
     Private Sub rowColums()
@@ -226,9 +232,19 @@ Public Class Account_Balance_Editor
     End Sub
 
     Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
+        Pnlconfirmation.Visible = True
+        Pnlconfirmation.BringToFront()
+        txtUpdate.Focus()
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If txtUpdate.Text <> "SURE" Then MsgBox("captcha Mis Match, Unable to Update Balances", MsgBoxStyle.Critical, "Access Denied") : Exit Sub
         If MessageBox.Show(" Are you Sure Want to Update Balnaces From Other Database ??", "Update Balance", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.Yes Then
-            BringBalances()
+            BringBalances() : Pnlconfirmation.Visible = False
         End If
+    End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
 
     End Sub
 End Class

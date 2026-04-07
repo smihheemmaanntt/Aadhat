@@ -16,12 +16,12 @@ Public Class WhatsApp_API
     Private Sub WhatsApp_API_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 : Me.KeyPreview = True
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        cbLanguage.SelectedIndex = 0 : cbmsgType.SelectedIndex = 0 : cbMethod.SelectedIndex = 0
+        cbLanguage.SelectedIndex = 0 : cbmsgType.SelectedIndex = 0 : cbMethod.SelectedIndex = 0 : cbDefaultSim.SelectedIndex = 0
         FillControl()
         If ClsCommon.IsInternetConnect() = False Then Timer1.Stop() : Exit Sub
         ' If TxtInstanceID.Text.Trim <> "" Then ScanQRCode()
     End Sub
- 
+
     Private Function SendAPIRequest() As String
         If ClsCommon.IsInternetConnect() = False Then MsgBox("Check Internet Connection", MsgBoxStyle.Critical, "No Internet Connection") : Exit Function
         Dim apiUrl As String = "http://smicloud.in/api/create_instance?&access_token=" & access_token
@@ -32,7 +32,7 @@ Public Class WhatsApp_API
             Return reader.ReadToEnd()
         End Using
     End Function
-  
+
 
     Private Function InlineAssignHelper(Of T)(ByRef target As T, value As T) As T
         target = value
@@ -70,15 +70,15 @@ Public Class WhatsApp_API
         '  If btnReconnect.Text = "Re-Connect" Then
         ' End If
     End Sub
- 
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         SaveDefault()
     End Sub
     Private Sub SaveDefault()
         Dim Sql As String = String.Empty
-        Sql = "Delete From API;Insert Into API(InstanceID,AccessTken,SendingMethod,LanguageType,SendingType) SELECT " & _
-            "'" & TxtInstanceID.Text & "','" & cbMethod.Text & "','" & cbLanguage.Text & "','" & cbmsgType.Text & "'"
+        Sql = "Delete From API;Insert Into API(InstanceID,AccessToken,SendingMethod,LanguageType,SendingType,msg_Access_Token,defaultSim) SELECT " & _
+            "'" & TxtInstanceID.Text & "','" & txtAccessToken.Text & "','" & cbMethod.Text.Trim & "','" & cbLanguage.Text.Trim & "','" & cbmsgType.Text.Trim & "','" & txtMsgAccess.Text.Trim & "','" & Val(cbDefaultSim.SelectedIndex + 1) & "'"
         If ClsFunPrimary.ExecNonQuery(Sql) > 0 Then MsgBox("Sending Settings Updated For All Companies", MsgBoxStyle.Information, "Updated")
         FillControl()
     End Sub
@@ -90,10 +90,13 @@ Public Class WhatsApp_API
             If dt.Rows.Count > 0 Then
                 For i = 0 To dt.Rows.Count - 1
                     TxtInstanceID.Text = dt.Rows(i)("InstanceID").ToString()
-                    TxtInstanceID.Text = dt.Rows(i)("AccessToken").ToString()
+                    txtAccessToken.Text = dt.Rows(i)("AccessToken").ToString()
                     cbMethod.Text = dt.Rows(i)("SendingMethod").ToString()
                     cbLanguage.Text = dt.Rows(i)("LanguageType").ToString()
                     cbmsgType.Text = dt.Rows(i)("SendingType").ToString()
+                    txtMsgAccess.Text = dt.Rows(i)("msg_Access_Token").ToString()
+                    Dim Defaultsim As String = dt.Rows(i)("DefaultSim").ToString()
+                    If Defaultsim = 1 Then cbDefaultSim.SelectedIndex = 0 Else cbDefaultSim.SelectedIndex = 1
                 Next
             End If
             dt.Dispose()
@@ -104,7 +107,7 @@ Public Class WhatsApp_API
     End Sub
 
  
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        UploadPDF_Local("D:\1\Aadhat\Aadhat\bin\x86\Debug\Pdfs\SONU BHAI-24-10-2025.pdf")
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        SaveDefault()
     End Sub
 End Class

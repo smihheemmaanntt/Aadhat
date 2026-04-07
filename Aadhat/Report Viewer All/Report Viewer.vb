@@ -106,7 +106,7 @@ Public Class Report_Viewer
             End If
             Rpt.Dispose() : dialog1.Dispose()
             '  Rpt.PrintToPrinter(1, False, 0, 0)
-            CrTables.Dispose() : Rpt.Close() : Rpt.Dispose() : Me.Close()
+            CrTables.Dispose() : Rpt.Close() : Rpt.Dispose() ': Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

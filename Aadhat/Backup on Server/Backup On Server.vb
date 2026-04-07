@@ -57,7 +57,6 @@ Public Class Backup_On_Server
             Else
                 btnUpdate.Visible = False
             End If
-
         Catch ex As Exception
             btnUpdate.Visible = False
         End Try
@@ -150,12 +149,10 @@ Public Class Backup_On_Server
     Private Sub btnStartUpload_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Try
             Dim updaterPath As String = Application.StartupPath & "\AadhatSmartUpdater.exe"
-
             If IO.File.Exists(updaterPath) = False Then
                 MsgBox("AadhatSmartUpdater.exe नहीं मिला!", MsgBoxStyle.Critical)
                 Exit Sub
             End If
-
             ' AadhatSmartUpdater.exe को बिना किसी parameter के चलाएँ
             Process.Start(updaterPath)
             ' अब main application बंद हो जाए

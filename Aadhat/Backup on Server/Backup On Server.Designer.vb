@@ -73,6 +73,7 @@ Partial Class Backup_On_Server
         Me.btnUpdate.Text = "&Update " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Software"
         Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnUpdate.UseVisualStyleBackColor = False
+        Me.btnUpdate.Visible = False
         '
         'Button3
         '
