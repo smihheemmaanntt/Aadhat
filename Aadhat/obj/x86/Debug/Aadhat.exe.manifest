@@ -153,14 +153,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aadhat.exe" size="10549760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aadhat.exe" size="10550272">
       <assemblyIdentity name="Aadhat" version="26.1.4.3" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/t5th+dwLdSUwEy+5l6xXoNkb0g=</dsig:DigestValue>
+        <dsig:DigestValue>8fHlEnopWzPv4IXKQlbEAcbSa4o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

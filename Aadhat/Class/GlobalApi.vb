@@ -7,7 +7,7 @@ Module GlobalApi
     End Sub
     ' 🔥 ये Base URL सिर्फ एक बार बदलना है
     Public Const BASE_URL As String = "https://crm.softmanagementindia.in/api/"
-    'Public Const BASE_URL As String = "http://localhost/archive/api/"
+    'Public Const BASE_URL As String = "http://localhost/crm/api/"
     ' 🔥 अब हर API यहाँ से Auto बनेगी
     Public ReadOnly ValidateLicenseUrl As String = BASE_URL & "validate_license.php"
     Public ReadOnly ActivateAmcUrl As String = BASE_URL & "activate_amc.php"
