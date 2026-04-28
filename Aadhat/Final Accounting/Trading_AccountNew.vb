@@ -83,8 +83,8 @@
                 Ledger.Show()
                 Ledger.cbAccountName.SelectedValue = Val(dg1.CurrentRow.Cells(0).Value)
                 Ledger.BringToFront()
-                Ledger.mskFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
-                Ledger.MsktoDate.Text = mskEntryDate.Text
+                Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+                Ledger.txttoDate.Text = mskEntryDate.Text
                 Ledger.ckMerge.Checked = True
                 Ledger.btnShow.PerformClick()
 
@@ -96,8 +96,8 @@
                 Ledger.Show()
                 Ledger.cbAccountName.SelectedValue = Val(dg1.CurrentRow.Cells(4).Value)
                 Ledger.BringToFront()
-                Ledger.mskFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
-                Ledger.MsktoDate.Text = mskEntryDate.Text
+                Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+                Ledger.txttoDate.Text = mskEntryDate.Text
                 Ledger.ckMerge.Checked = True
                 Ledger.btnShow.PerformClick()
             End If

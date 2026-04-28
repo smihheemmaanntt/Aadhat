@@ -613,7 +613,7 @@
                 Ledger.Show()
                 Ledger.BringToFront()
                 Ledger.cbAccountName.SelectedValue = If(checkColumnIndex = 9, dg1.Rows(rowIndex).Cells(4).Value.ToString(), dg1.Rows(rowIndex).Cells(0).Value.ToString())
-                Ledger.mskFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+                Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
                 Ledger.btnShow.PerformClick()
             Case "N"
                 Dim tmpID As String = If(checkColumnIndex = 9, dg1.Rows(rowIndex).Cells(4).Value.ToString(), dg1.Rows(rowIndex).Cells(0).Value.ToString())

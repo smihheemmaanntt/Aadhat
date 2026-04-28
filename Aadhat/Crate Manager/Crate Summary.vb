@@ -1,6 +1,10 @@
 ﻿Imports System.Runtime.InteropServices
 
 Public Class Crate_Summary
+    Public Sub New()
+        InitializeComponent()
+        clsFun.DoubleBuffered(dg1, True)
+    End Sub
     Private Sub Speed_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
@@ -24,7 +28,7 @@ Public Class Crate_Summary
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        Dim mindate as String = String.Empty : Dim maxdate As String = String.Empty
+        Dim mindate As String = String.Empty : Dim maxdate As String = String.Empty
         mindate = clsFun.ExecScalarStr("Select max(EntryDate) as entrydate from CrateVoucher ")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from CrateVoucher ")
         If mindate <> "" Then
@@ -54,102 +58,217 @@ Public Class Crate_Summary
     Private Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As UInteger, ByVal wParam As Integer, ByVal lParam As Integer) As IntPtr
     End Function
     Private Sub retrive(Optional ByVal condtion As String = "")
+        Application.DoEvents()
         SendMessage(pb1.Handle, 1040, 3, 0)
         dg1.Rows.Clear()
+
         Dim oldbal As Integer = 0
         Dim totalOpInCrate As Integer = 0
         Dim totalOpOutCrate As Integer = 0
         Dim totalINCrate As Integer = 0
         Dim totalOutCrate As Integer = 0
         Dim lastval As Integer = 0
-        ' dt = clsFun.ExecDataTable("Select AccountID,AccountName,CrateID,CrateName FROM and AccontID in(860,863) CrateVoucher  " & condtion & " Group by CrateName,AccountID  order by AccountID ")
-        dt = clsFun.ExecDataTable("Select AccountID,AccountName,CrateID,CrateName FROM CrateVoucher  " & condtion & " Group by CrateName,AccountID  order by AccountID ")
+
+        Dim fromDate As String = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
+        Dim toDate As String = CDate(MsktoDate.Text).ToString("yyyy-MM-dd")
+
+        dt = clsFun.ExecDataTable("Select AccountID,AccountName,CrateID,CrateName FROM CrateVoucher " & condtion & " Group by CrateName,AccountID order by AccountID")
+
         Dim vchid As Integer = 0
+
         Try
             If dt.Rows.Count > 0 Then
-                dg1.Rows.Clear()
+
+                dg1.SuspendLayout()
+
+                pb1.Minimum = 0
+                pb1.Maximum = dt.Rows.Count - 1
+
                 For i = 0 To dt.Rows.Count - 1
-                    If Application.OpenForms().OfType(Of Crate_Summary).Any = False Then Exit Sub
-                    Application.DoEvents()
-                    pb1.Minimum = 0
-                    pb1.Maximum = dt.Rows.Count - 1
-                    pb1.Value = i
-                    Dim ssql As String = String.Empty
-                    Dim dr As Decimal = 0 : Dim cr As Decimal = 0 : Dim tot As Decimal = 0
-                    Dim opbal As String = "" : opbal = Val(0)
-                    ssql = "Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,CrateID,CrateName,Remark,Qty as QtyIn,'0' as QtyOut from CrateVoucher where CrateType ='Crate In' " & IIf(Val(dt.Rows(i)("AccountID").ToString()) > 0, "and AccountID=" & Val(dt.Rows(i)("AccountID").ToString()) & "", "") & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'    union all" & _
-                           " Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,CrateID,CrateName,Remark,'0' as QtyOut,Qty as QtyIn from CrateVoucher where CrateType ='Crate Out' " & IIf(Val(dt.Rows(i)("AccountID").ToString()) > 0, "and AccountID=" & Val(dt.Rows(i)("AccountID").ToString()) & "", "") & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'    "
-                    Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    Dim drcr As String = clsFun.ExecScalarStr(" Select CrateType FROM CrateVoucher WHERE AccountID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
-                    If drcr = "Crate In" Then
-                        tmpamtdr = Val(opbal) + Val(tmpamtdr)
-                    Else
-                        tmpamtcr = Val(opbal) + Val(tmpamtcr)
-                    End If
-                    Dim tmpamt As String = IIf(Val(tmpamtdr) > Val(tmpamtcr), Val(tmpamtdr) - Val(tmpamtcr), Val(tmpamtcr) - Val(tmpamtdr)) '- Val(opbal)
-                    If drcr = "Crate Out" Then
-                        opbal = -Val(opbal)
-                    End If
-                    opbal = tmpamt
-                    Dim cnt As Integer = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and  EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    If cnt = 0 Then
-                        opbal = Math.Abs(Val(opbal)) & " " & clsFun.ExecScalarStr(" Select CrateType   FROM CrateVoucher  WHERE ID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
 
-                        If Math.Abs(Val(opbal)) = 0 Then opbal = 0 & " Out"
-
-                    Else
-                        If Val(tmpamtcr) > Val(tmpamtdr) Then
-                            totalOpInCrate = totalOpInCrate + opbal
-                            oldbal = opbal
-                            opbal = Math.Abs(Val(opbal)) & " Out"
-                        Else
-                            oldbal = opbal
-                            totalOpInCrate = totalOpInCrate + opbal
-                            opbal = Math.Abs(Val(opbal)) & " In"
-                        End If
-                    End If
-                    If Application.OpenForms().OfType(Of Crate_Summary).Any = False Then Exit Sub
-                    dg1.Rows.Add()
-                    With dg1.Rows(i)
+                    If i Mod 50 = 0 Then
+                        pb1.Value = i
                         Application.DoEvents()
-                        .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
-                        If i = 0 Then
-                            .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
-                            .Cells(6).Value = clsFun.ExecScalarStr(" Select OtherName FROM Accounts WHERE ID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
-                        Else
-                            .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
-                            .Cells(6).Value = clsFun.ExecScalarStr(" Select OtherName FROM Accounts WHERE ID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
-                        End If
+                    End If
+
+                    Dim accId As Integer = Val(dt.Rows(i)("AccountID"))
+                    Dim crateId As Integer = Val(dt.Rows(i)("CrateID"))
+
+                    '========================
+                    ' 🔥 CACHE BASED QUERY
+                    '========================
+                    Dim tmpamtdr As Decimal = Val(clsFun.ExecScalarStr("Select sum(Qty) from CrateVoucher where CrateType='Crate In' and AccountID=" & accId & " and CrateID=" & crateId & " and EntryDate < '" & fromDate & "'"))
+                    Dim tmpamtcr As Decimal = Val(clsFun.ExecScalarStr("Select sum(Qty) from CrateVoucher where CrateType='Crate Out' and AccountID=" & accId & " and CrateID=" & crateId & " and EntryDate < '" & fromDate & "'"))
+
+                    Dim drcr As String = clsFun.ExecScalarStr("Select CrateType from CrateVoucher where AccountID=" & accId & " limit 1")
+
+                    Dim tmpamt As Decimal
+                    If tmpamtdr > tmpamtcr Then
+                        tmpamt = tmpamtdr - tmpamtcr
+                    Else
+                        tmpamt = tmpamtcr - tmpamtdr
+                    End If
+
+                    Dim opbal As String = ""
+
+                    If tmpamtcr > tmpamtdr Then
+                        totalOpInCrate += tmpamt
+                        oldbal = tmpamt
+                        opbal = tmpamt & " Out"
+                    Else
+                        totalOpInCrate += tmpamt
+                        oldbal = tmpamt
+                        opbal = tmpamt & " In"
+                    End If
+
+                    '========================
+                    ' 🔥 GRID ROW
+                    '========================
+                    dg1.Rows.Add()
+
+                    With dg1.Rows(i)
+                        .Cells(0).Value = accId
+                        .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
+                        .Cells(6).Value = clsFun.ExecScalarStr("Select OtherName from Accounts where ID=" & accId)
                         .Cells(2).Value = dt.Rows(i)("CrateName").ToString()
                         .Cells(3).Value = opbal
-                        drcr = opbal.Substring(opbal.Length - 3)
-                        .Cells(4).Value = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")
-                        totalOutCrate = Val(totalOutCrate) + Val(.Cells(4).Value)
-                        .Cells(5).Value = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")
-                        totalINCrate = Val(totalINCrate) + Val(.Cells(5).Value)
-                        .Cells(7).Value = Val(Val(oldbal) + Val(.Cells(4).Value)) - Val(.Cells(5).Value)
+                        ' Period Out
+                        Dim outQty As Decimal = Val(clsFun.ExecScalarStr("Select sum(Qty) from CrateVoucher where CrateType='Crate Out' and AccountID=" & accId & " and CrateID=" & crateId & " and EntryDate between '" & fromDate & "' and '" & toDate & "'"))
+                        .Cells(4).Value = outQty
+                        totalOutCrate += outQty
+                        ' Period In
+                        Dim inQty As Decimal = Val(clsFun.ExecScalarStr("Select sum(Qty) from CrateVoucher where CrateType='Crate In' and AccountID=" & accId & " and CrateID=" & crateId & " and EntryDate between '" & fromDate & "' and '" & toDate & "'"))
+                        .Cells(5).Value = inQty
+                        totalINCrate += inQty
+                        .Cells(7).Value = (Val(oldbal) + outQty) - inQty
+
                     End With
-                    vchid = dt.Rows(i)("AccountID").ToString()
+
+                    vchid = accId
                     lastval = i + 1
+
                 Next
+
+                dg1.ResumeLayout()
             End If
-            dt.Dispose()
-            '  lastval = lastval + 1
+
+            '========================
+            ' 🔥 TOTAL ROW
+            '========================
             dg1.Rows.Add()
+
             With dg1.Rows(lastval)
                 .Cells(1).Value = "Total Crates"
                 .Cells(2).Value = "All Marka"
-                .Cells(3).Value = Val(totalOpInCrate - totalOpOutCrate)
-                .Cells(4).Value = Val(totalOutCrate)
-                .Cells(5).Value = Val(totalINCrate)
+                .Cells(3).Value = totalOpInCrate - totalOpOutCrate
+                .Cells(4).Value = totalOutCrate
+                .Cells(5).Value = totalINCrate
             End With
+            dt.Dispose()
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
         End Try
+        pb1.Value = 0
         dg1.ClearSelection()
-        'calc()
+
     End Sub
+    ''Private Sub retrive(Optional ByVal condtion As String = "")
+    ''    SendMessage(pb1.Handle, 1040, 3, 0)
+    ''    dg1.Rows.Clear()
+    ''    Dim oldbal As Integer = 0
+    ''    Dim totalOpInCrate As Integer = 0
+    ''    Dim totalOpOutCrate As Integer = 0
+    ''    Dim totalINCrate As Integer = 0
+    ''    Dim totalOutCrate As Integer = 0
+    ''    Dim lastval As Integer = 0
+    ''    ' dt = clsFun.ExecDataTable("Select AccountID,AccountName,CrateID,CrateName FROM and AccontID in(860,863) CrateVoucher  " & condtion & " Group by CrateName,AccountID  order by AccountID ")
+    ''    dt = clsFun.ExecDataTable("Select AccountID,AccountName,CrateID,CrateName FROM CrateVoucher  " & condtion & " Group by CrateName,AccountID  order by AccountID ")
+    ''    Dim vchid As Integer = 0
+    ''    Try
+    ''        If dt.Rows.Count > 0 Then
+    ''            dg1.Rows.Clear()
+    ''            For i = 0 To dt.Rows.Count - 1
+    ''                If Application.OpenForms().OfType(Of Crate_Summary).Any = False Then Exit Sub
+    ''                Application.DoEvents()
+    ''                pb1.Minimum = 0
+    ''                pb1.Maximum = dt.Rows.Count - 1
+    ''                pb1.Value = i
+    ''                Dim ssql As String = String.Empty
+    ''                Dim dr As Decimal = 0 : Dim cr As Decimal = 0 : Dim tot As Decimal = 0
+    ''                Dim opbal As String = "" : opbal = Val(0)
+    ''                ssql = "Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,CrateID,CrateName,Remark,Qty as QtyIn,'0' as QtyOut from CrateVoucher where CrateType ='Crate In' " & IIf(Val(dt.Rows(i)("AccountID").ToString()) > 0, "and AccountID=" & Val(dt.Rows(i)("AccountID").ToString()) & "", "") & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'    union all" & _
+    ''                       " Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,CrateID,CrateName,Remark,'0' as QtyOut,Qty as QtyIn from CrateVoucher where CrateType ='Crate Out' " & IIf(Val(dt.Rows(i)("AccountID").ToString()) > 0, "and AccountID=" & Val(dt.Rows(i)("AccountID").ToString()) & "", "") & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'    "
+    ''                Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    ''                Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    ''                Dim drcr As String = clsFun.ExecScalarStr(" Select CrateType FROM CrateVoucher WHERE AccountID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
+    ''                If drcr = "Crate In" Then
+    ''                    tmpamtdr = Val(opbal) + Val(tmpamtdr)
+    ''                Else
+    ''                    tmpamtcr = Val(opbal) + Val(tmpamtcr)
+    ''                End If
+    ''                Dim tmpamt As String = IIf(Val(tmpamtdr) > Val(tmpamtcr), Val(tmpamtdr) - Val(tmpamtcr), Val(tmpamtcr) - Val(tmpamtdr)) '- Val(opbal)
+    ''                If drcr = "Crate Out" Then
+    ''                    opbal = -Val(opbal)
+    ''                End If
+    ''                opbal = tmpamt
+    ''                Dim cnt As Integer = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and  EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    ''                If cnt = 0 Then
+    ''                    opbal = Math.Abs(Val(opbal)) & " " & clsFun.ExecScalarStr(" Select CrateType   FROM CrateVoucher  WHERE ID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
+
+    ''                    If Math.Abs(Val(opbal)) = 0 Then opbal = 0 & " Out"
+
+    ''                Else
+    ''                    If Val(tmpamtcr) > Val(tmpamtdr) Then
+    ''                        totalOpInCrate = totalOpInCrate + opbal
+    ''                        oldbal = opbal
+    ''                        opbal = Math.Abs(Val(opbal)) & " Out"
+    ''                    Else
+    ''                        oldbal = opbal
+    ''                        totalOpInCrate = totalOpInCrate + opbal
+    ''                        opbal = Math.Abs(Val(opbal)) & " In"
+    ''                    End If
+    ''                End If
+    ''                If Application.OpenForms().OfType(Of Crate_Summary).Any = False Then Exit Sub
+    ''                dg1.Rows.Add()
+    ''                With dg1.Rows(i)
+    ''                    Application.DoEvents()
+    ''                    .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
+    ''                    If i = 0 Then
+    ''                        .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
+    ''                        .Cells(6).Value = clsFun.ExecScalarStr(" Select OtherName FROM Accounts WHERE ID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
+    ''                    Else
+    ''                        .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
+    ''                        .Cells(6).Value = clsFun.ExecScalarStr(" Select OtherName FROM Accounts WHERE ID= " & Val(dt.Rows(i)("AccountID").ToString()) & "")
+    ''                    End If
+    ''                    .Cells(2).Value = dt.Rows(i)("CrateName").ToString()
+    ''                    .Cells(3).Value = opbal
+    ''                    drcr = opbal.Substring(opbal.Length - 3)
+    ''                    .Cells(4).Value = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")
+    ''                    totalOutCrate = Val(totalOutCrate) + Val(.Cells(4).Value)
+    ''                    .Cells(5).Value = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")
+    ''                    totalINCrate = Val(totalINCrate) + Val(.Cells(5).Value)
+    ''                    .Cells(7).Value = Val(Val(oldbal) + Val(.Cells(4).Value)) - Val(.Cells(5).Value)
+    ''                End With
+    ''                vchid = dt.Rows(i)("AccountID").ToString()
+    ''                lastval = i + 1
+    ''            Next
+    ''        End If
+    ''        dt.Dispose()
+    ''        '  lastval = lastval + 1
+    ''        dg1.Rows.Add()
+    ''        With dg1.Rows(lastval)
+    ''            .Cells(1).Value = "Total Crates"
+    ''            .Cells(2).Value = "All Marka"
+    ''            .Cells(3).Value = Val(totalOpInCrate - totalOpOutCrate)
+    ''            .Cells(4).Value = Val(totalOutCrate)
+    ''            .Cells(5).Value = Val(totalINCrate)
+    ''        End With
+    ''    Catch ex As Exception
+    ''        MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
+    ''    End Try
+    ''    dg1.ClearSelection()
+    ''    'calc()
+    ''End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()

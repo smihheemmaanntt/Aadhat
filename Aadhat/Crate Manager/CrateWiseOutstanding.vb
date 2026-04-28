@@ -1,7 +1,10 @@
 ﻿Imports System.Runtime.InteropServices
 
 Public Class CrateWiseOutstanding
-
+    Public Sub New()
+        InitializeComponent()
+        clsFun.DoubleBuffered(dg1, True)
+    End Sub
     Private Sub Speed_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
@@ -50,148 +53,324 @@ Public Class CrateWiseOutstanding
     Private Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As UInteger, ByVal wParam As Integer, ByVal lParam As Integer) As IntPtr
     End Function
     Private Sub retrive(Optional ByVal condtion As String = "")
+
         SendMessage(pb1.Handle, 1040, 3, 0)
         dg1.Rows.Clear()
-        Dim lastval As Integer = 0
-        Dim lastval1 As Integer = 0
-        Dim ClosingCrate As Integer = 0
-        Dim totalOpOutCrate As Integer = 0
-        Dim totalOpInCrate As Integer = 0
-        Dim oldbal As Decimal = 0.00
-        'dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & " and AccountID in(859,860,863) Group by CrateName,AccountID   order by AccountID ")
-        dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  Group by CrateName,AccountID   order by Upper(AccountName) ")
-        Dim vchid As Integer = 0
-        Dim tmpamt1 As Integer = 0
-        Try
-            If dt.Rows.Count > 0 Then
-                dg1.Rows.Clear()
-                For i = 0 To dt.Rows.Count - 1
-                    ' If dt.Rows(i)("AccountID").ToString() = 1045 Then MsgBox("a")
-                    If Application.OpenForms().OfType(Of CrateWiseOutstanding).Any = False Then Exit Sub
-                    Application.DoEvents()
-                    pb1.Minimum = 0
-                    pb1.Maximum = dt.Rows.Count - 1
-                    pb1.Value = i
-                    Dim tmpamtdr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    Dim tmpamtcr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    tmpamt1 = Val(tmpamtdr1) - Val(tmpamtcr1) '- Val(opbal)
 
-                    Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-                    Dim tmpamt As Integer = IIf(Val(tmpamtdr) > Val(tmpamtcr), Val(tmpamtdr) - Val(tmpamtcr), Val(tmpamtcr) - Val(tmpamtdr)) '- Val(opbal)
-                    '  If i = 4 Then MsgBox("A")
-                    If Val(tmpamtcr) >= Val(tmpamtdr) Then
-                        If Val(vchid) <> Val(dt.Rows(i)("AccountID").ToString()) Then ClosingCrate = IIf(totalOpOutCrate = 0, ClosingCrate, totalOpOutCrate) : totalOpOutCrate = 0
-                        totalOpOutCrate = totalOpOutCrate + tmpamt
-                        oldbal = tmpamt
-                        opbal = Math.Abs(Val(tmpamt)) & " Out"
-                    Else
-                        If Val(vchid) <> Val(dt.Rows(i)("AccountID").ToString()) Then ClosingCrate = IIf(totalOpOutCrate = 0, ClosingCrate, totalOpOutCrate) : totalOpOutCrate = 0
-                        oldbal = tmpamt
-                        totalOpInCrate = totalOpInCrate + tmpamt
-                        opbal = Math.Abs(Val(tmpamt)) & " In"
-                    End If
-                    ' End If
-                    If oldbal <> 0 Then
-                        If Application.OpenForms().OfType(Of CrateWiseOutstanding).Any = False Then Exit Sub
-                        If vchid <> dt.Rows(i)("AccountID").ToString() And vchid > 0 Then
-                            dg1.Rows.Add()
-                            With dg1.Rows(lastval)
-                                .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
-                                dg1.Rows(lastval).Cells(1).Style.BackColor = Color.Green
-                                dg1.Rows(lastval).Cells(2).Style.BackColor = Color.Green
-                                dg1.Rows(lastval).Cells(3).Style.BackColor = Color.Green
-                                dg1.Rows(lastval).Cells(4).Style.BackColor = Color.Green
-                                dg1.Rows(lastval).Cells(5).Style.BackColor = Color.Green
-                                dg1.Rows(lastval).Cells(6).Style.BackColor = Color.Green
-                                dg1.Rows(lastval).Cells(1).Style.ForeColor = Color.GhostWhite
-                                dg1.Rows(lastval).Cells(5).Style.ForeColor = Color.GhostWhite
-                                dg1.Rows(lastval).Cells(6).Style.ForeColor = Color.GhostWhite
-                                .Cells(0).Value = vchid
-                                .Cells(1).Value = "Total Crates"
-                                .Cells(5).Value = "All Marka"
-                                '  .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
-                                If oldbal = 0 Then
-                                    .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
-                                Else
-                                    .Cells(6).Value = IIf(ClosingCrate > 0, ClosingCrate & " Out", Math.Abs(ClosingCrate) & " In")
-                                    'totalOpOutCrate = 0
-                                End If
-                                lastval = lastval + 1
-                            End With
-                        End If
-                        dg1.Rows.Add()
-                        With dg1.Rows(lastval)
-                            .Cells(1).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
-                            .Cells(2).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
-                            .Cells(3).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
-                            .Cells(4).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
-                            .Cells(5).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
-                            .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
-                            dg1.ClearSelection() : Application.DoEvents()
-                            .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
-                            If lastval = 0 Then
-                                .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
-                                .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
-                                .Cells(2).Value = dt.Rows(i)("OtherName").ToString()
-                                .Cells(3).Value = dt.Rows(i)("Area").ToString()
-                                .Cells(4).Value = dt.Rows(i)("MObile").ToString()
-                            ElseIf vchid = dt.Rows(i)("AccountID").ToString() Then
-                                .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
-                            Else
-                                .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
-                                .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
-                                .Cells(2).Value = dt.Rows(i)("OtherName").ToString()
-                                .Cells(3).Value = dt.Rows(i)("Area").ToString()
-                                .Cells(4).Value = dt.Rows(i)("MObile").ToString()
-                            End If
-                            .Cells(5).Value = dt.Rows(i)("CrateName").ToString()
-                            '.Cells(6).Value = opbal
-                            If oldbal = 0 Then
-                                .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
-                            Else
-                                .Cells(6).Value = opbal
-                            End If
-                            vchid = dt.Rows(i)("AccountID").ToString()
-                        End With
+        Dim fromDate As String = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
 
-                        vchid = dt.Rows(i)("AccountID").ToString()
-                        lastval = lastval + 1
-                    End If
+        '========================
+        ' 🔥 SINGLE FAST QUERY
+        '========================
+        Dim sql As String = ""
+        sql = "SELECT " & _
+              "CV.AccountID, CV.AccountName, " & _
+              "(Select OtherName From Accounts Where ID=CV.AccountID) as OtherName, " & _
+              "(Select Area From Accounts Where ID=CV.AccountID) as Area, " & _
+              "(Select Mobile1 From Accounts Where ID=CV.AccountID) as Mobile, " & _
+              "CV.CrateID, CV.CrateName, " & _
+              "SUM(CASE WHEN CV.CrateType='Crate In' THEN CV.Qty ELSE 0 END) as InQty, " & _
+              "SUM(CASE WHEN CV.CrateType='Crate Out' THEN CV.Qty ELSE 0 END) as OutQty " & _
+              "FROM CrateVoucher CV " & _
+              "WHERE CV.EntryDate <= '" & fromDate & "' " & condtion & " " & _
+              "GROUP BY CV.AccountID, CV.CrateID " & _
+              "ORDER BY     UPPER(CV.AccountName),     CASE WHEN CV.CrateName = 'All Marka' THEN 1 ELSE 0 END,  CV.CrateName"
 
-                Next
-                vchid1 = vchid
+        Dim dt As DataTable = clsFun.ExecDataTable(sql)
+
+        If dt.Rows.Count = 0 Then Exit Sub
+
+        '========================
+        ' 🔥 ACCOUNT TOTAL (Hashtable)
+        '========================
+        Dim accTotal As New Hashtable
+
+        ' 🔥 TOTAL IN / OUT
+        Dim totalIn As Decimal = 0
+        Dim totalOut As Decimal = 0
+
+        Dim i As Integer
+
+        For i = 0 To dt.Rows.Count - 1
+
+            Dim accId As Integer = Val(dt.Rows(i)("AccountID"))
+            Dim inQty As Decimal = Val(dt.Rows(i)("InQty"))
+            Dim outQty As Decimal = Val(dt.Rows(i)("OutQty"))
+
+            ' Account Total
+            If accTotal.ContainsKey(accId) = False Then
+                accTotal.Add(accId, 0)
             End If
-            dg1.Rows.Add()
-            With dg1.Rows(lastval)
-                .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
-                dg1.Rows(lastval).Cells(1).Style.BackColor = Color.Green
-                dg1.Rows(lastval).Cells(2).Style.BackColor = Color.Green
-                dg1.Rows(lastval).Cells(3).Style.BackColor = Color.Green
-                dg1.Rows(lastval).Cells(4).Style.BackColor = Color.Green
-                dg1.Rows(lastval).Cells(5).Style.BackColor = Color.Green
-                dg1.Rows(lastval).Cells(6).Style.BackColor = Color.Green
-                dg1.Rows(lastval).Cells(1).Style.ForeColor = Color.GhostWhite
-                dg1.Rows(lastval).Cells(5).Style.ForeColor = Color.GhostWhite
-                dg1.Rows(lastval).Cells(6).Style.ForeColor = Color.GhostWhite
-                .Cells(0).Value = vchid
-                .Cells(1).Value = "Total Crates"
-                .Cells(5).Value = "All Marka"
-                If oldbal = 0 Then
-                    .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
+            accTotal(accId) = Val(accTotal(accId)) + (inQty - outQty)
+
+            ' 🔥 TOTAL IN / OUT CALC
+            Dim diff As Decimal = inQty - outQty
+
+            If diff >= 0 Then
+                totalIn = totalIn + diff
+            Else
+                totalOut = totalOut + Math.Abs(diff)
+            End If
+
+        Next
+
+        '========================
+        ' 🔥 GRID FILL FAST
+        '========================
+        dg1.SuspendLayout()
+
+        Dim lastval As Integer = 0
+        Dim vchid As Integer = 0
+
+        pb1.Minimum = 0
+        pb1.Maximum = dt.Rows.Count - 1
+
+        For i = 0 To dt.Rows.Count - 1
+
+            If i Mod 50 = 0 Then
+                pb1.Value = i
+                Application.DoEvents()
+            End If
+
+            Dim accId As Integer = Val(dt.Rows(i)("AccountID"))
+            Dim inQty As Decimal = Val(dt.Rows(i)("InQty"))
+            Dim outQty As Decimal = Val(dt.Rows(i)("OutQty"))
+
+            Dim tmpamt As Decimal = Math.Abs(inQty - outQty)
+
+            If tmpamt = 0 Then Continue For
+
+            Dim opbal As String = ""
+            If outQty >= inQty Then
+                opbal = tmpamt & " Out"
+            Else
+                opbal = tmpamt & " In"
+            End If
+
+            '========================
+            ' 🔥 ACCOUNT TOTAL ROW
+            '========================
+            If vchid <> 0 And vchid <> accId Then
+
+                dg1.Rows.Add()
+                dg1.Rows(lastval).Cells(0).Value = vchid
+                dg1.Rows(lastval).Cells(1).Value = "Total Crates"
+                dg1.Rows(lastval).Cells(5).Value = "All Marka"
+
+                Dim totalAcc As Decimal = Val(accTotal(vchid))
+
+                If totalAcc >= 0 Then
+                    dg1.Rows(lastval).Cells(6).Value = Math.Abs(totalAcc) & " In"
                 Else
-                    .Cells(6).Value = IIf(totalOpOutCrate > 0, totalOpOutCrate & " Out", Math.Abs(totalOpOutCrate) & " In")
+                    dg1.Rows(lastval).Cells(6).Value = Math.Abs(totalAcc) & " Out"
                 End If
 
+                dg1.Rows(lastval).DefaultCellStyle.BackColor = Color.Beige
+                dg1.Rows(lastval).DefaultCellStyle.ForeColor = Color.Maroon
+
                 lastval = lastval + 1
-            End With
-            dt.Dispose()
-        Catch ex As Exception
-            MsgBox(ex.Message, vbOKOnly + vbInformation, "Aadhat")
-        End Try
+            End If
+
+            '========================
+            ' 🔥 DATA ROW
+            '========================
+            dg1.Rows.Add()
+
+            dg1.Rows(lastval).Cells(0).Value = accId
+
+            If vchid <> accId Then
+                dg1.Rows(lastval).Cells(1).Value = dt.Rows(i)("AccountName").ToString()
+                dg1.Rows(lastval).Cells(2).Value = dt.Rows(i)("OtherName").ToString()
+                dg1.Rows(lastval).Cells(3).Value = dt.Rows(i)("Area").ToString()
+                dg1.Rows(lastval).Cells(4).Value = dt.Rows(i)("Mobile").ToString()
+            End If
+
+            dg1.Rows(lastval).Cells(5).Value = dt.Rows(i)("CrateName").ToString()
+            dg1.Rows(lastval).Cells(6).Value = opbal
+
+            vchid = accId
+            lastval = lastval + 1
+
+        Next
+
+        '========================
+        ' 🔥 LAST ACCOUNT TOTAL
+        '========================
+        If vchid <> 0 Then
+
+            dg1.Rows.Add()
+            dg1.Rows(lastval).Cells(0).Value = vchid
+            dg1.Rows(lastval).Cells(1).Value = "Total Crates"
+            dg1.Rows(lastval).Cells(5).Value = "All Marka"
+
+            Dim totalAcc As Decimal = Val(accTotal(vchid))
+
+            If totalAcc >= 0 Then
+                dg1.Rows(lastval).Cells(6).Value = Math.Abs(totalAcc) & " In"
+            Else
+                dg1.Rows(lastval).Cells(6).Value = Math.Abs(totalAcc) & " Out"
+            End If
+
+            dg1.Rows(lastval).DefaultCellStyle.BackColor = Color.Beige
+            dg1.Rows(lastval).DefaultCellStyle.ForeColor = Color.Maroon
+            vchid = 0
+        End If
+
+        dg1.ResumeLayout()
+        pb1.Value = 0
+
         dg1.ClearSelection()
-        'calc()
+
+        '========================
+        ' 🔥 FINAL TOTAL IN / OUT (TEXTBOX)
+        '========================
+        txtTotalIn.Text = Format(totalIn, "0")
+        txtTotalOut.Text = Format(totalOut, "0")
+
     End Sub
+    'Private Sub retrive(Optional ByVal condtion As String = "")
+    '    SendMessage(pb1.Handle, 1040, 3, 0)
+    '    dg1.Rows.Clear()
+    '    Dim lastval As Integer = 0
+    '    Dim lastval1 As Integer = 0
+    '    Dim ClosingCrate As Integer = 0
+    '    Dim totalOpOutCrate As Integer = 0
+    '    Dim totalOpInCrate As Integer = 0
+    '    Dim oldbal As Decimal = 0.0
+    '    'dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & " and AccountID in(859,860,863) Group by CrateName,AccountID   order by AccountID ")
+    '    dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  Group by CrateName,AccountID   order by Upper(AccountName) ")
+    '    Dim vchid As Integer = 0
+    '    Dim tmpamt1 As Integer = 0
+    '    Try
+    '        If dt.Rows.Count > 0 Then
+    '            dg1.Rows.Clear()
+    '            For i = 0 To dt.Rows.Count - 1
+    '                ' If dt.Rows(i)("AccountID").ToString() = 1045 Then MsgBox("a")
+    '                If Application.OpenForms().OfType(Of CrateWiseOutstanding).Any = False Then Exit Sub
+    '                Application.DoEvents()
+    '                pb1.Minimum = 0
+    '                pb1.Maximum = dt.Rows.Count - 1
+    '                pb1.Value = i
+    '                Dim tmpamtdr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamtcr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                tmpamt1 = Val(tmpamtdr1) - Val(tmpamtcr1) '- Val(opbal)
+
+    '                Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamt As Integer = IIf(Val(tmpamtdr) > Val(tmpamtcr), Val(tmpamtdr) - Val(tmpamtcr), Val(tmpamtcr) - Val(tmpamtdr)) '- Val(opbal)
+    '                '  If i = 4 Then MsgBox("A")
+    '                If Val(tmpamtcr) >= Val(tmpamtdr) Then
+    '                    If Val(vchid) <> Val(dt.Rows(i)("AccountID").ToString()) Then ClosingCrate = IIf(totalOpOutCrate = 0, ClosingCrate, totalOpOutCrate) : totalOpOutCrate = 0
+    '                    totalOpOutCrate = totalOpOutCrate + tmpamt
+    '                    oldbal = tmpamt
+    '                    opbal = Math.Abs(Val(tmpamt)) & " Out"
+    '                Else
+    '                    If Val(vchid) <> Val(dt.Rows(i)("AccountID").ToString()) Then ClosingCrate = IIf(totalOpOutCrate = 0, ClosingCrate, totalOpOutCrate) : totalOpOutCrate = 0
+    '                    oldbal = tmpamt
+    '                    totalOpInCrate = totalOpInCrate + tmpamt
+    '                    opbal = Math.Abs(Val(tmpamt)) & " In"
+    '                End If
+    '                ' End If
+    '                If oldbal <> 0 Then
+    '                    If Application.OpenForms().OfType(Of CrateWiseOutstanding).Any = False Then Exit Sub
+    '                    If vchid <> dt.Rows(i)("AccountID").ToString() And vchid > 0 Then
+    '                        dg1.Rows.Add()
+    '                        With dg1.Rows(lastval)
+    '                            .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
+    '                            dg1.Rows(lastval).Cells(1).Style.BackColor = Color.Green
+    '                            dg1.Rows(lastval).Cells(2).Style.BackColor = Color.Green
+    '                            dg1.Rows(lastval).Cells(3).Style.BackColor = Color.Green
+    '                            dg1.Rows(lastval).Cells(4).Style.BackColor = Color.Green
+    '                            dg1.Rows(lastval).Cells(5).Style.BackColor = Color.Green
+    '                            dg1.Rows(lastval).Cells(6).Style.BackColor = Color.Green
+    '                            dg1.Rows(lastval).Cells(1).Style.ForeColor = Color.GhostWhite
+    '                            dg1.Rows(lastval).Cells(5).Style.ForeColor = Color.GhostWhite
+    '                            dg1.Rows(lastval).Cells(6).Style.ForeColor = Color.GhostWhite
+    '                            .Cells(0).Value = vchid
+    '                            .Cells(1).Value = "Total Crates"
+    '                            .Cells(5).Value = "All Marka"
+    '                            '  .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
+    '                            If oldbal = 0 Then
+    '                                .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
+    '                            Else
+    '                                .Cells(6).Value = IIf(ClosingCrate > 0, ClosingCrate & " Out", Math.Abs(ClosingCrate) & " In")
+    '                                'totalOpOutCrate = 0
+    '                            End If
+    '                            lastval = lastval + 1
+    '                        End With
+    '                    End If
+    '                    dg1.Rows.Add()
+    '                    With dg1.Rows(lastval)
+    '                        .Cells(1).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+    '                        .Cells(2).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+    '                        .Cells(3).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+    '                        .Cells(4).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+    '                        .Cells(5).Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+    '                        .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
+    '                        dg1.ClearSelection() : Application.DoEvents()
+    '                        .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
+    '                        If lastval = 0 Then
+    '                            .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
+    '                            .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
+    '                            .Cells(2).Value = dt.Rows(i)("OtherName").ToString()
+    '                            .Cells(3).Value = dt.Rows(i)("Area").ToString()
+    '                            .Cells(4).Value = dt.Rows(i)("MObile").ToString()
+    '                        ElseIf vchid = dt.Rows(i)("AccountID").ToString() Then
+    '                            .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
+    '                        Else
+    '                            .Cells(0).Value = dt.Rows(i)("AccountID").ToString()
+    '                            .Cells(1).Value = dt.Rows(i)("AccountName").ToString()
+    '                            .Cells(2).Value = dt.Rows(i)("OtherName").ToString()
+    '                            .Cells(3).Value = dt.Rows(i)("Area").ToString()
+    '                            .Cells(4).Value = dt.Rows(i)("MObile").ToString()
+    '                        End If
+    '                        .Cells(5).Value = dt.Rows(i)("CrateName").ToString()
+    '                        '.Cells(6).Value = opbal
+    '                        If oldbal = 0 Then
+    '                            .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
+    '                        Else
+    '                            .Cells(6).Value = opbal
+    '                        End If
+    '                        vchid = dt.Rows(i)("AccountID").ToString()
+    '                    End With
+
+    '                    vchid = dt.Rows(i)("AccountID").ToString()
+    '                    lastval = lastval + 1
+    '                End If
+
+    '            Next
+    '            vchid1 = vchid
+    '        End If
+    '        dg1.Rows.Add()
+    '        With dg1.Rows(lastval)
+    '            .Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
+    '            dg1.Rows(lastval).Cells(1).Style.BackColor = Color.Green
+    '            dg1.Rows(lastval).Cells(2).Style.BackColor = Color.Green
+    '            dg1.Rows(lastval).Cells(3).Style.BackColor = Color.Green
+    '            dg1.Rows(lastval).Cells(4).Style.BackColor = Color.Green
+    '            dg1.Rows(lastval).Cells(5).Style.BackColor = Color.Green
+    '            dg1.Rows(lastval).Cells(6).Style.BackColor = Color.Green
+    '            dg1.Rows(lastval).Cells(1).Style.ForeColor = Color.GhostWhite
+    '            dg1.Rows(lastval).Cells(5).Style.ForeColor = Color.GhostWhite
+    '            dg1.Rows(lastval).Cells(6).Style.ForeColor = Color.GhostWhite
+    '            .Cells(0).Value = vchid
+    '            .Cells(1).Value = "Total Crates"
+    '            .Cells(5).Value = "All Marka"
+    '            If oldbal = 0 Then
+    '                .Cells(6).Value = IIf(tmpamt1 > 0, tmpamt1 & " In", Math.Abs(tmpamt1) & " Out")
+    '            Else
+    '                .Cells(6).Value = IIf(totalOpOutCrate > 0, totalOpOutCrate & " Out", Math.Abs(totalOpOutCrate) & " In")
+    '            End If
+
+    '            lastval = lastval + 1
+    '        End With
+    '        dt.Dispose()
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message, vbOKOnly + vbInformation, "Aadhat")
+    '    End Try
+    '    dg1.ClearSelection()
+    '    'calc()
+    'End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
@@ -203,54 +382,72 @@ Public Class CrateWiseOutstanding
         pnlWait.Visible = False
     End Sub
     Private Sub PrintRecord()
+
         pnlWait.Visible = True
-        Dim count As Integer = 0
-        Dim cmd As New SQLite.SQLiteCommand
-        Dim sql As String = ""
-        ClsFunPrimary.ExecNonQuery("Delete from printing")
-        For Each row As DataGridViewRow In dg1.Rows
-            pb1.Minimum = 0
-            pb1.Maximum = dg1.RowCount
-            Application.DoEvents()
-            With row
-                pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
-                sql = "insert into Printing(M1,D1, P1, P2,P3, P4, P5,P6) values('" & .Cells(0).Value & "','" & mskFromDate.Text & "'," &
-                    "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & Format(Val(.Cells(4).Value), "0.00") & "'," &
-                    "'" & .Cells(5).Value & "','" & .Cells(6).Value & "')"
-                Try
-                    ClsFunPrimary.ExecNonQuery(sql)
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                    ClsFunPrimary.CloseConnection()
-                End Try
-            End With
-        Next
+
+        Dim FastQuery As String = ""
+        Dim sQL As String = ""
+        Dim LastRecord As Integer = 0
+        Dim TotalRecord As Integer = dg1.Rows.Count
+        Dim BatchSize As Integer = 100
+
+        ' Clear old data
+        ClsFunPrimary.ExecNonQuery("Delete from Printing")
+
+        pb1.Minimum = 0
+        pb1.Maximum = TotalRecord
+
+        While LastRecord < TotalRecord
+
+            FastQuery = ""
+
+            Dim Count As Integer = 0
+
+            While Count < BatchSize AndAlso LastRecord < TotalRecord
+
+                Dim row As DataGridViewRow = dg1.Rows(LastRecord)
+
+                pb1.Value = LastRecord
+                If LastRecord Mod 50 = 0 Then Application.DoEvents()
+
+                Dim OneRow As String = "SELECT " & _
+                    "'" & row.Cells(0).Value & "'," & _
+                    "'" & mskFromDate.Text & "'," & _
+                    "'" & row.Cells(1).Value & "'," & _
+                    "'" & row.Cells(2).Value & "'," & _
+                    "'" & row.Cells(3).Value & "'," & _
+                    "'" & Format(Val(row.Cells(4).Value), "0.00") & "'," & _
+                    "'" & row.Cells(5).Value & "'," & _
+                    "'" & row.Cells(6).Value & "'," & _
+                    "'" & txtTotalIn.Text & "'," & _
+                    "'" & txtTotalOut.Text & "'"
+
+                If FastQuery = "" Then
+                    FastQuery = OneRow
+                Else
+                    FastQuery = FastQuery & " UNION ALL " & OneRow
+                End If
+
+                LastRecord = LastRecord + 1
+                Count = Count + 1
+
+            End While
+
+            Try
+                If FastQuery <> "" Then
+                    sQL = "INSERT INTO Printing(M1,D1,P1,P2,P3,P4,P5,P6,P7,P8) " & FastQuery
+                    ClsFunPrimary.ExecNonQuery(sQL)
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                ClsFunPrimary.CloseConnection()
+            End Try
+
+        End While
+
+        pb1.Value = 0
         pnlWait.Visible = False
-    End Sub
-    Private Sub PrintRecord2()
-        pnlWait.Visible = True
-        Dim count As Integer = 0
-        Dim cmd As New SQLite.SQLiteCommand
-        Dim sql As String = ""
-        ClsFunPrimary.ExecNonQuery("Delete from printing")
-        For Each row As DataGridViewRow In dg1.Rows
-            pb1.Minimum = 0
-            pb1.Maximum = dg1.RowCount
-            Application.DoEvents()
-            With row
-                pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
-                sql = "insert into Printing(M1,D1, P1, P2,P3, P4, P5,P6) values('" & .Cells(0).Value & "','" & mskFromDate.Text & "'," &
-                    "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & Format(Val(.Cells(4).Value), "0.00") & "'," &
-                    "'" & .Cells(5).Value & "','" & .Cells(6).Value & "')"
-                Try
-                    ClsFunPrimary.ExecNonQuery(sql)
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                    ClsFunPrimary.CloseConnection()
-                End Try
-            End With
-        Next
-        pnlWait.Visible = False
+
     End Sub
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
         PrintRecord()
@@ -305,7 +502,6 @@ Public Class CrateWiseOutstanding
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
         PrintRecord()
         Report_Viewer.printReport("\Reports\CrateWiseOutstanding2.rpt")
         Report_Viewer.MdiParent = MainScreenForm
@@ -324,10 +520,6 @@ Public Class CrateWiseOutstanding
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
-        PrintRecord2()
     End Sub
 
     Private Sub ReportViewer1_Load(sender As Object, e As EventArgs)

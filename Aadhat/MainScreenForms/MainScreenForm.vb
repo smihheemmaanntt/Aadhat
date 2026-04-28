@@ -112,14 +112,14 @@ Public Class MainScreenForm
         SpeedSale.MdiParent = Me
         SpeedSale.Show()
         SpeedSale.BringToFront()
-        SpeedSale.mskEntryDate.Focus()
+        SpeedSale.txtEntryDate.Focus()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnReceipt.Click
         ReceiptForm.MdiParent = Me
         ReceiptForm.Show()
         ReceiptForm.BringToFront()
-        ReceiptForm.mskEntryDate.Focus()
+        ReceiptForm.txtEntryDate.Focus()
         ReceiptForm.Top = 0 : ReceiptForm.Left = 0
     End Sub
 
@@ -127,7 +127,7 @@ Public Class MainScreenForm
         Speed_Sale_Register.MdiParent = Me
         Speed_Sale_Register.Show()
         Speed_Sale_Register.BringToFront()
-        Speed_Sale_Register.mskFromDate.Focus()
+        Speed_Sale_Register.txtFromDate.Focus()
     End Sub
     Private Sub NewCaseRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Ledger.MdiParent = Me
@@ -139,7 +139,7 @@ Public Class MainScreenForm
         ReceiptForm.MdiParent = Me
         ReceiptForm.Show()
         ReceiptForm.BringToFront()
-        ReceiptForm.mskEntryDate.Focus()
+        ReceiptForm.txtEntryDate.Focus()
         ReceiptForm.Top = 0 : ReceiptForm.Left = 0
     End Sub
 
@@ -147,7 +147,7 @@ Public Class MainScreenForm
         Sellout_Mannual.MdiParent = Me
         Sellout_Mannual.Show()
         Sellout_Mannual.BringToFront()
-        Sellout_Mannual.mskEntryDate.Focus()
+        Sellout_Mannual.txtEntryDate.Focus()
         Sellout_Mannual.Top = 0 : Sellout_Mannual.Left = 0
     End Sub
     Public Sub OfflineBackup()
@@ -255,7 +255,7 @@ Public Class MainScreenForm
         PayMentform.MdiParent = Me
         PayMentform.Show()
         PayMentform.BringToFront()
-        PayMentform.mskEntryDate.Focus()
+        PayMentform.txtEntryDate.Focus()
         PayMentform.Top = 0 : PayMentform.Left = 0
     End Sub
 
@@ -269,13 +269,13 @@ Public Class MainScreenForm
         Bank_Entry.MdiParent = Me
         Bank_Entry.Show()
         Bank_Entry.BringToFront()
-        Bank_Entry.MskEntryDate.Focus()
+        Bank_Entry.txtEntryDate.Focus()
     End Sub
     Private Sub BankEntryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BankEntryToolStripMenuItem.Click
         Bank_Entry.MdiParent = Me
         Bank_Entry.Show()
         Bank_Entry.BringToFront()
-        Bank_Entry.MskEntryDate.Focus()
+        Bank_Entry.txtEntryDate.Focus()
     End Sub
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles btnSuperSale.Click
         Super_Sale.MdiParent = Me
@@ -294,30 +294,8 @@ Public Class MainScreenForm
         ChargesForm.BringToFront()
         ChargesForm.TxtChargeName.Focus()
     End Sub
-    Private Sub DayBookToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        Day_book.MdiParent = Me
-        Day_book.Show()
-        Day_book.BringToFront()
-        Day_book.mskFromDate.Focus()
-    End Sub
-    Private Sub btnCashBankBook_Click(sender As Object, e As EventArgs)
-        Standard_Sale.MdiParent = Me
-        Standard_Sale.Show()
-        Standard_Sale.BringToFront()
-        Standard_Sale.mskEntryDate.Focus()
-    End Sub
-    Private Sub CashBankBookToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
     Private Sub MainScreenForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         'rs.ResizeAllControls(Me)
-    End Sub
-    Private Sub RegisterToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        ApplyLicenseKey.MdiParent = Me
-        ApplyLicenseKey.Show()
-        If Not ApplyLicenseKey Is Nothing Then
-            ApplyLicenseKey.BringToFront()
-        End If
     End Sub
     Private Sub JournalEntryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JournalEntryToolStripMenuItem.Click
         JournalEntry.MdiParent = Me
@@ -329,7 +307,7 @@ Public Class MainScreenForm
         PayMentform.MdiParent = Me
         PayMentform.Show()
         PayMentform.BringToFront()
-        PayMentform.mskEntryDate.Focus()
+        PayMentform.txtEntryDate.Focus()
         PayMentform.Top = 0 : PayMentform.Left = 0
     End Sub
     Private Sub JournalEntryRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JournalEntryRegisterToolStripMenuItem.Click
@@ -342,13 +320,7 @@ Public Class MainScreenForm
         Payment_Register.MdiParent = Me
         Payment_Register.Show()
         Payment_Register.BringToFront()
-        Payment_Register.mskFromDate.Focus()
-    End Sub
-    Private Sub btnPaymentRegister_Click(sender As Object, e As EventArgs)
-        Payment_Register.MdiParent = Me
-        Payment_Register.Show()
-        Payment_Register.BringToFront()
-        Payment_Register.mskFromDate.Focus()
+        Payment_Register.txtFromDate.Focus()
     End Sub
     Private Sub ReceiptRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceiptRegisterToolStripMenuItem.Click
         RcptRegister.MdiParent = Me
@@ -369,18 +341,14 @@ Public Class MainScreenForm
         bank_Register.MdiParent = Me
         bank_Register.Show()
         bank_Register.BringToFront()
-        bank_Register.mskFromDate.Focus()
-    End Sub
-
-    Private Sub SpeedSaleRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SpeedSaleRegisterToolStripMenuItem.Click
-
+        bank_Register.txtFromDate.Focus()
     End Sub
 
     Private Sub BtnBillsPrint_Click(sender As Object, e As EventArgs) Handles BtnDayBook.Click
         Day_book.MdiParent = Me
         Day_book.Show()
         Day_book.BringToFront()
-        Day_book.mskFromDate.Focus()
+        Day_book.txtFromDate.Focus()
     End Sub
 
     Private Sub PrintBillsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintBillsToolStripMenuItem.Click
@@ -389,8 +357,8 @@ Public Class MainScreenForm
         Print_Bills.Top = 0 : Print_Bills.Left = 0
         Print_Bills.BringToFront()
         Print_Bills.mskFromDate.Focus()
-
     End Sub
+
     Private Sub CrateInToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Crate_IN_Register.MdiParent = Me
         Crate_IN_Register.Show()
@@ -425,7 +393,7 @@ Public Class MainScreenForm
         Sellout_Auto.Show()
         Sellout_Auto.BringToFront()
         Sellout_Auto.Top = 0 : Sellout_Auto.Left = 0
-        Sellout_Auto.mskEntryDate.Focus()
+        Sellout_Auto.txtEntryDate.Focus()
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles btnSuperRegister.Click
@@ -439,7 +407,7 @@ Public Class MainScreenForm
         Super_Sale.MdiParent = Me
         Super_Sale.Show()
         Super_Sale.BringToFront()
-        Super_Sale.mskEntryDate.Focus()
+        Super_Sale.txtEntryDate.Focus()
         '  Super_Sale.SuspendLayout()
     End Sub
     Private Sub btnStandardSale_Click(sender As Object, e As EventArgs) Handles btnStockSaleRegister.Click
@@ -452,7 +420,7 @@ Public Class MainScreenForm
         Standard_Sale.MdiParent = Me
         Standard_Sale.Show()
         Standard_Sale.BringToFront()
-        Standard_Sale.mskEntryDate.Focus()
+        Standard_Sale.txtEntryDate.Focus()
         Standard_Sale.Top = 0 : Standard_Sale.Left = 0
     End Sub
     Private Sub CalculatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CalculatorToolStripMenuItem.Click
@@ -491,13 +459,13 @@ Public Class MainScreenForm
         Purchase.MdiParent = Me
         Purchase.Show()
         Purchase.BringToFront()
-        Purchase.mskEntryDate.Focus()
+        Purchase.txtEntryDate.Focus()
     End Sub
     Private Sub PurchseStockInToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PurchseStockInToolStripMenuItem.Click
         Purchase.MdiParent = Me
         Purchase.Show()
         Purchase.BringToFront()
-        Purchase.mskEntryDate.Focus()
+        Purchase.txtEntryDate.Focus()
     End Sub
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles btnPurchaseRegister.Click
         Purchase_Register.MdiParent = Me
@@ -509,7 +477,7 @@ Public Class MainScreenForm
         Stock_Sale.MdiParent = Me
         Stock_Sale.Show()
         Stock_Sale.BringToFront()
-        Stock_Sale.mskEntryDate.Focus()
+        Stock_Sale.txtEntryDate.Focus()
     End Sub
     Private Sub StockSaleRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
@@ -562,7 +530,7 @@ Public Class MainScreenForm
         Stock_Sale.MdiParent = Me
         Stock_Sale.Show()
         Stock_Sale.BringToFront()
-        Stock_Sale.mskEntryDate.Focus()
+        Stock_Sale.txtEntryDate.Focus()
     End Sub
 
 
@@ -593,14 +561,14 @@ Public Class MainScreenForm
         Scrip_Register.MdiParent = Me
         Scrip_Register.Show()
         Scrip_Register.BringToFront()
-        Scrip_Register.mskFromDate.Focus()
+        Scrip_Register.txtFromDate.Focus()
     End Sub
 
     Private Sub AutoBeejakToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutoBeejakToolStripMenuItem.Click
         Auto_Scrip_Register.MdiParent = Me
         Auto_Scrip_Register.Show()
         Auto_Scrip_Register.BringToFront()
-        Auto_Scrip_Register.mskFromDate.Focus()
+        Auto_Scrip_Register.txtFromDate.Focus()
     End Sub
 
 
@@ -626,7 +594,7 @@ Public Class MainScreenForm
         Speed_Sale_Register.MdiParent = Me
         Speed_Sale_Register.Show()
         Speed_Sale_Register.BringToFront()
-        Speed_Sale_Register.MsktoDate.Focus()
+        Speed_Sale_Register.txttoDate.Focus()
     End Sub
 
     Private Sub SuperSaleRegisterToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SuperSaleRegisterToolStripMenuItem1.Click
@@ -1033,163 +1001,163 @@ Public Class MainScreenForm
         TempChallanRegister.BringToFront()
     End Sub
 
-    '  Private Sub CreateIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateIndexToolStripMenuItem.Click
-    '      Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
-    '"Drop Index if exists AccountsIDX;" &
-    '"Drop Index if exists ChargesIDX;" &
-    '"Drop Index if exists ItemsIDX;" &
-    '"Drop Index if exists CrateMarkaIDX;" &
-    '"Drop Index if exists CrateVoucherIDX;" &
-    '"Drop Index if exists ItemsIDX;" &
-    '"Drop Index if exists LedgerIDX;" &
-    '"Drop Index if exists PurchaseIDX;" &
-    '"Drop Index if exists StorageIDX;" &
-    '"Drop Index if exists Trans1Idx;" &
-    '"Drop Index if exists Trans2IDX;" &
-    '"Drop Index if exists UnderGroupIDX;" &
-    '"Drop Index if exists VoucherIDX;" &
-    '"Drop Index if exists UsersIDX;"
-    '      clsFun.ExecScalarStr(sql)
-
-    '      sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
-    '    "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
-    '    "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
-    '    "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
-    '    "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
-    '    "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
-    '    "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
-    '    "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
-    '    "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
-    '    "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
-    '    "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
-    '      ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
-    '      clsFun.ExecScalarStr(sql)
-    '      sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
-    '         "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
-    '          "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
-    '          "Drop Index if exists CrateAccountID;"
-    '      sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
-    '                  "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
-    '                  "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
-    '                  "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
-
-    '      ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
-    '      If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
-
-    '      End If
-    '      clsFun.ExecScalarStr("Vacuum;") : ClsFunserver.ExecScalarStr("Vacuum;")
-    '      MsgBox("Boost Up Completed Successfully...", vbInformation, "Sucessful")
-    '  End Sub
-
     Private Sub CreateIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateIndexToolStripMenuItem.Click
+        Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
+  "Drop Index if exists AccountsIDX;" &
+  "Drop Index if exists ChargesIDX;" &
+  "Drop Index if exists ItemsIDX;" &
+  "Drop Index if exists CrateMarkaIDX;" &
+  "Drop Index if exists CrateVoucherIDX;" &
+  "Drop Index if exists ItemsIDX;" &
+  "Drop Index if exists LedgerIDX;" &
+  "Drop Index if exists PurchaseIDX;" &
+  "Drop Index if exists StorageIDX;" &
+  "Drop Index if exists Trans1Idx;" &
+  "Drop Index if exists Trans2IDX;" &
+  "Drop Index if exists UnderGroupIDX;" &
+  "Drop Index if exists VoucherIDX;" &
+  "Drop Index if exists UsersIDX;"
+        clsFun.ExecScalarStr(sql)
 
-        Try
+        sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
+      "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
+      "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
+      "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
+      "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
+      "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
+      "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
+      "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
+      "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
+      "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
+      "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
+        ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
+        clsFun.ExecScalarStr(sql)
+        sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
+           "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
+            "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
+            "Drop Index if exists CrateAccountID;"
+        sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
+                    "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
+                    "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
+                    "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
 
-            ' =========================
-            ' EXISTING DROP INDEXES (UNCHANGED)
-            ' =========================
-            Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
-          "Drop Index if exists AccountsIDX;" &
-          "Drop Index if exists ChargesIDX;" &
-          "Drop Index if exists ItemsIDX;" &
-          "Drop Index if exists CrateMarkaIDX;" &
-          "Drop Index if exists CrateVoucherIDX;" &
-          "Drop Index if exists ItemsIDX;" &
-          "Drop Index if exists LedgerIDX;" &
-          "Drop Index if exists PurchaseIDX;" &
-          "Drop Index if exists StorageIDX;" &
-          "Drop Index if exists Trans1Idx;" &
-          "Drop Index if exists Trans2IDX;" &
-          "Drop Index if exists UnderGroupIDX;" &
-          "Drop Index if exists VoucherIDX;" &
-          "Drop Index if exists UsersIDX;"
+        ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
+        If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
 
-            clsFun.ExecScalarStr(sql)
-
-            ' =========================
-            ' EXISTING CREATE INDEXES (UNCHANGED)
-            ' =========================
-            sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
-          "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
-          "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
-          "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
-          "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
-          "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
-          "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
-          "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
-          "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
-          "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
-          "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
-
-            clsFun.ExecScalarStr(sql)
-
-            ' =========================
-            ' EXISTING FINAL INDEXES (UNCHANGED)
-            ' =========================
-            sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
-               "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
-                "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
-                "Drop Index if exists CrateAccountID;"
-
-            sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
-                        "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
-                        "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
-                        "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
-
-            If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
-            End If
-
-            ' ============================================================
-            ' 🔥 NEW OPTIMIZATION LAYER (SAFE - DOES NOT AFFECT EXISTING)
-            ' ============================================================
-
-            Dim optSql As String = ""
-
-            ' ---- Transaction2 Advanced Index ----
-            optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Main ON Transaction2(AccountID, ItemID, TransType, EntryDate);"
-
-            optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_EntryDate ON Transaction2(EntryDate DESC);"
-
-            'optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Filtered ON Transaction2(AccountID, ItemID, EntryDate) " &
-            '          "WHERE TransType NOT IN ('Standard Sale','On Sale','Store Out','Store Transfer');"
-            optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Filtered ON Transaction2(AccountID, ItemID, EntryDate); "
-            ' ---- Accounts ORDER BY Optimization ----
-            optSql &= "CREATE INDEX IF NOT EXISTS idx_Accounts_Name_ID ON Accounts(AccountName, ID);"
-
-            '' ---- BillPrints MAX(Date) Optimization ----
-            'optSql &= "CREATE INDEX IF NOT EXISTS idx_BillPrints_Date ON BillPrints(EntryDate DESC);"
-
-            clsFun.ExecScalarStr(optSql)
-
-            ' =========================
-            ' SQLITE ENGINE TUNING
-            ' =========================
-            Dim pragma As String = ""
-            pragma &= "PRAGMA journal_mode = WAL;"
-            pragma &= "PRAGMA synchronous = NORMAL;"
-            pragma &= "PRAGMA temp_store = MEMORY;"
-            pragma &= "PRAGMA cache_size = -20000;"
-
-            clsFun.ExecScalarStr(pragma)
-
-            ' =========================
-            ' ANALYZE (VERY IMPORTANT)
-            ' =========================
-            clsFun.ExecScalarStr("ANALYZE;")
-
-            ' =========================
-            ' VACUUM (AS YOU ALREADY HAD)
-            ' =========================
-            clsFun.ExecScalarStr("Vacuum;")
-            ClsFunserver.ExecScalarStr("Vacuum;")
-
-            MsgBox("🚀 Boost Up Completed Successfully (Advanced Optimization Applied)", vbInformation, "Successful")
-
-        Catch ex As Exception
-            MsgBox("Error: " & ex.Message)
-        End Try
-
+        End If
+        clsFun.ExecScalarStr("Vacuum;") : ClsFunserver.ExecScalarStr("Vacuum;")
+        MsgBox("Boost Up Completed Successfully...", vbInformation, "Sucessful")
     End Sub
+
+    'Private Sub CreateIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateIndexToolStripMenuItem.Click
+
+    '    Try
+
+    '        ' =========================
+    '        ' EXISTING DROP INDEXES (UNCHANGED)
+    '        ' =========================
+    '        Dim sql As String = "Drop Index if exists AccountGroupIDX;" &
+    '      "Drop Index if exists AccountsIDX;" &
+    '      "Drop Index if exists ChargesIDX;" &
+    '      "Drop Index if exists ItemsIDX;" &
+    '      "Drop Index if exists CrateMarkaIDX;" &
+    '      "Drop Index if exists CrateVoucherIDX;" &
+    '      "Drop Index if exists ItemsIDX;" &
+    '      "Drop Index if exists LedgerIDX;" &
+    '      "Drop Index if exists PurchaseIDX;" &
+    '      "Drop Index if exists StorageIDX;" &
+    '      "Drop Index if exists Trans1Idx;" &
+    '      "Drop Index if exists Trans2IDX;" &
+    '      "Drop Index if exists UnderGroupIDX;" &
+    '      "Drop Index if exists VoucherIDX;" &
+    '      "Drop Index if exists UsersIDX;"
+
+    '        clsFun.ExecScalarStr(sql)
+
+    '        ' =========================
+    '        ' EXISTING CREATE INDEXES (UNCHANGED)
+    '        ' =========================
+    '        sql = "Drop Index if exists AccountIDindex;Create Index AccountIDindex on Accounts(ID,AccountName,GroupID);" &
+    '      "Drop Index if exists AccountIndex;Create Index AccountIndex on Ledger(AccountID,AccountName);" &
+    '      "Drop Index if exists PurchaseIDIndex;Drop Index if exists PurchaseIDIdx;CREATE INDEX PurchaseIDIndex ON Purchase (VoucherID, AccountID, StockHolderID ASC);" &
+    '      "Drop Index if exists PurchaseLotIdx;Create index PurchaseLotIdx on Purchase(LotNo);" &
+    '      "Drop Index if exists StockHolderIndex;CREATE INDEX StockHolderIndex ON Purchase (StockHolderID,StockHolderName);" &
+    '      "Drop Index if exists SallerIndex;CREATE INDEX SallerIndex ON Transaction2 (SallerID);" &
+    '      "Drop Index if exists TransItemID ;CREATE INDEX TransItemID ON Transaction2 (ItemID);" &
+    '      "Drop Index if exists TransLotIdx;Create index TransLotIdx on Transaction2(Lot);" &
+    '      "Drop Index if exists VoucherIDIdx;Create index VoucherIDIdx on Transaction2(VoucherID);" &
+    '      "Drop Index if exists Trans1Idx;CREATE INDEX Trans1Idx ON Transaction1 (PurchaseID);" &
+    '      "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
+
+    '        clsFun.ExecScalarStr(sql)
+
+    '        ' =========================
+    '        ' EXISTING FINAL INDEXES (UNCHANGED)
+    '        ' =========================
+    '        sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
+    '           "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
+    '            "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
+    '            "Drop Index if exists CrateAccountID;"
+
+    '        sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
+    '                    "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
+    '                    "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
+    '                    "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
+
+    '        If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
+    '        End If
+
+    '        ' ============================================================
+    '        ' 🔥 NEW OPTIMIZATION LAYER (SAFE - DOES NOT AFFECT EXISTING)
+    '        ' ============================================================
+
+    '        Dim optSql As String = ""
+
+    '        ' ---- Transaction2 Advanced Index ----
+    '        optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Main ON Transaction2(AccountID, ItemID, TransType, EntryDate);"
+
+    '        optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_EntryDate ON Transaction2(EntryDate DESC);"
+
+    '        'optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Filtered ON Transaction2(AccountID, ItemID, EntryDate) " &
+    '        '          "WHERE TransType NOT IN ('Standard Sale','On Sale','Store Out','Store Transfer');"
+    '        optSql &= "CREATE INDEX IF NOT EXISTS idx_T2_Filtered ON Transaction2(AccountID, ItemID, EntryDate); "
+    '        ' ---- Accounts ORDER BY Optimization ----
+    '        optSql &= "CREATE INDEX IF NOT EXISTS idx_Accounts_Name_ID ON Accounts(AccountName, ID);"
+
+    '        '' ---- BillPrints MAX(Date) Optimization ----
+    '        'optSql &= "CREATE INDEX IF NOT EXISTS idx_BillPrints_Date ON BillPrints(EntryDate DESC);"
+
+    '        clsFun.ExecScalarStr(optSql)
+
+    '        ' =========================
+    '        ' SQLITE ENGINE TUNING
+    '        ' =========================
+    '        Dim pragma As String = ""
+    '        pragma &= "PRAGMA journal_mode = WAL;"
+    '        pragma &= "PRAGMA synchronous = NORMAL;"
+    '        pragma &= "PRAGMA temp_store = MEMORY;"
+    '        pragma &= "PRAGMA cache_size = -20000;"
+
+    '        clsFun.ExecScalarStr(pragma)
+
+    '        ' =========================
+    '        ' ANALYZE (VERY IMPORTANT)
+    '        ' =========================
+    '        clsFun.ExecScalarStr("ANALYZE;")
+
+    '        ' =========================
+    '        ' VACUUM (AS YOU ALREADY HAD)
+    '        ' =========================
+    '        clsFun.ExecScalarStr("Vacuum;")
+    '        ClsFunserver.ExecScalarStr("Vacuum;")
+
+    '        MsgBox("🚀 Boost Up Completed Successfully (Advanced Optimization Applied)", vbInformation, "Successful")
+
+    '    Catch ex As Exception
+    '        MsgBox("Error: " & ex.Message)
+    '    End Try
+
+    'End Sub
     Private Sub OnSaleTransferRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnSaleTransferRegisterToolStripMenuItem.Click
         On_Sale_Register.MdiParent = Me
         On_Sale_Register.Show()
@@ -1243,7 +1211,7 @@ Public Class MainScreenForm
         Standard_Sale.MdiParent = Me
         Standard_Sale.Show()
         Standard_Sale.BringToFront()
-        Standard_Sale.mskEntryDate.Focus()
+        Standard_Sale.txtEntryDate.Focus()
         Standard_Sale.Top = 0 : Standard_Sale.Left = 0
     End Sub
 
@@ -1265,7 +1233,7 @@ Public Class MainScreenForm
         Sellout_Auto.MdiParent = Me
         Sellout_Auto.Show()
         Sellout_Auto.BringToFront()
-        Sellout_Auto.mskEntryDate.Focus()
+        Sellout_Auto.txtEntryDate.Focus()
         Sellout_Auto.Top = 0 : Sellout_Auto.Left = 0
     End Sub
 

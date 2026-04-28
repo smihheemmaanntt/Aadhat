@@ -23,15 +23,13 @@ Partial Class Group_Ledger
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Group_Ledger))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cbAccountName = New System.Windows.Forms.ComboBox()
         Me.Label42 = New System.Windows.Forms.Label()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -49,6 +47,7 @@ Partial Class Group_Ledger
         Me.lblRecordCount = New System.Windows.Forms.Label()
         Me.tmpgrid = New System.Windows.Forms.DataGridView()
         Me.pnlPrint = New System.Windows.Forms.Panel()
+        Me.btnLedgerMerged = New System.Windows.Forms.Button()
         Me.btnPrintOutstanding = New System.Windows.Forms.Button()
         Me.btnPrintLedger = New System.Windows.Forms.Button()
         Me.pnlWait = New System.Windows.Forms.Panel()
@@ -59,7 +58,8 @@ Partial Class Group_Ledger
         Me.ckJoin = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtOpbal = New System.Windows.Forms.TextBox()
-        Me.btnLedgerMerged = New System.Windows.Forms.Button()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,7 +102,7 @@ Partial Class Group_Ledger
         Me.cbAccountName.Location = New System.Drawing.Point(132, 90)
         Me.cbAccountName.Name = "cbAccountName"
         Me.cbAccountName.Size = New System.Drawing.Size(470, 25)
-        Me.cbAccountName.TabIndex = 91140
+        Me.cbAccountName.TabIndex = 0
         '
         'Label42
         '
@@ -116,28 +116,6 @@ Partial Class Group_Ledger
         Me.Label42.Text = "Group Name :"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.ForeColor = System.Drawing.Color.Red
-        Me.MsktoDate.Location = New System.Drawing.Point(907, 90)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(88, 26)
-        Me.MsktoDate.TabIndex = 91224
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.ForeColor = System.Drawing.Color.Red
-        Me.mskFromDate.Location = New System.Drawing.Point(717, 90)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(94, 26)
-        Me.mskFromDate.TabIndex = 91223
-        '
         'BtnPrint
         '
         Me.BtnPrint.BackColor = System.Drawing.Color.DarkKhaki
@@ -150,7 +128,7 @@ Partial Class Group_Ledger
         Me.BtnPrint.Location = New System.Drawing.Point(1104, 90)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(79, 27)
-        Me.BtnPrint.TabIndex = 91226
+        Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -165,10 +143,10 @@ Partial Class Group_Ledger
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(1010, 90)
+        Me.btnShow.Location = New System.Drawing.Point(1016, 90)
         Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(94, 27)
-        Me.btnShow.TabIndex = 91225
+        Me.btnShow.Size = New System.Drawing.Size(88, 27)
+        Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -180,7 +158,7 @@ Partial Class Group_Ledger
         Me.Label2.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label2.Location = New System.Drawing.Point(827, 90)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(80, 27)
+        Me.Label2.Size = New System.Drawing.Size(82, 27)
         Me.Label2.TabIndex = 91228
         Me.Label2.Text = "To Date :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -208,7 +186,7 @@ Partial Class Group_Ledger
         'Dtp2
         '
         Me.Dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.Dtp2.Location = New System.Drawing.Point(907, 90)
+        Me.Dtp2.Location = New System.Drawing.Point(913, 90)
         Me.Dtp2.Name = "Dtp2"
         Me.Dtp2.Size = New System.Drawing.Size(103, 26)
         Me.Dtp2.TabIndex = 91230
@@ -220,33 +198,32 @@ Partial Class Group_Ledger
         Me.dg1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
         Me.dg1.Location = New System.Drawing.Point(12, 115)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
-        Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersVisible = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1171, 452)
@@ -374,8 +351,26 @@ Partial Class Group_Ledger
         Me.pnlPrint.Location = New System.Drawing.Point(983, 115)
         Me.pnlPrint.Name = "pnlPrint"
         Me.pnlPrint.Size = New System.Drawing.Size(200, 159)
-        Me.pnlPrint.TabIndex = 91242
+        Me.pnlPrint.TabIndex = 5
         Me.pnlPrint.Visible = False
+        '
+        'btnLedgerMerged
+        '
+        Me.btnLedgerMerged.BackColor = System.Drawing.Color.DarkGoldenrod
+        Me.btnLedgerMerged.FlatAppearance.BorderSize = 0
+        Me.btnLedgerMerged.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLedgerMerged.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.btnLedgerMerged.ForeColor = System.Drawing.Color.GhostWhite
+        Me.btnLedgerMerged.Image = Global.Aadhat.My.Resources.Resources.icons8_printer_24px
+        Me.btnLedgerMerged.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnLedgerMerged.Location = New System.Drawing.Point(13, 102)
+        Me.btnLedgerMerged.Name = "btnLedgerMerged"
+        Me.btnLedgerMerged.Size = New System.Drawing.Size(177, 39)
+        Me.btnLedgerMerged.TabIndex = 91245
+        Me.btnLedgerMerged.TabStop = False
+        Me.btnLedgerMerged.Text = "&Merged Ledger"
+        Me.btnLedgerMerged.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnLedgerMerged.UseVisualStyleBackColor = False
         '
         'btnPrintOutstanding
         '
@@ -506,29 +501,31 @@ Partial Class Group_Ledger
         Me.txtOpbal.TabStop = False
         Me.txtOpbal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'btnLedgerMerged
+        'txttoDate
         '
-        Me.btnLedgerMerged.BackColor = System.Drawing.Color.DarkGoldenrod
-        Me.btnLedgerMerged.FlatAppearance.BorderSize = 0
-        Me.btnLedgerMerged.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLedgerMerged.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.btnLedgerMerged.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnLedgerMerged.Image = Global.Aadhat.My.Resources.Resources.icons8_printer_24px
-        Me.btnLedgerMerged.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnLedgerMerged.Location = New System.Drawing.Point(13, 102)
-        Me.btnLedgerMerged.Name = "btnLedgerMerged"
-        Me.btnLedgerMerged.Size = New System.Drawing.Size(177, 39)
-        Me.btnLedgerMerged.TabIndex = 91245
-        Me.btnLedgerMerged.TabStop = False
-        Me.btnLedgerMerged.Text = "&Merged Ledger"
-        Me.btnLedgerMerged.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnLedgerMerged.UseVisualStyleBackColor = False
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(905, 90)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 2
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(712, 90)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 1
         '
         'Group_Ledger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtOpbal)
         Me.Controls.Add(Me.ckMerge)
@@ -546,8 +543,6 @@ Partial Class Group_Ledger
         Me.Controls.Add(Me.txtcrAmt)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtDramt)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
@@ -574,8 +569,6 @@ Partial Class Group_Ledger
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cbAccountName As System.Windows.Forms.ComboBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -604,4 +597,6 @@ Partial Class Group_Ledger
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtOpbal As System.Windows.Forms.TextBox
     Friend WithEvents btnLedgerMerged As System.Windows.Forms.Button
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

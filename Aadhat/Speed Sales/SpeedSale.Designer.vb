@@ -86,7 +86,6 @@ Partial Class SpeedSale
         Me.txtCrateQty = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.cbCrateMarka = New System.Windows.Forms.ComboBox()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.CbPer = New System.Windows.Forms.ComboBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.dgItemSearch = New System.Windows.Forms.DataGridView()
@@ -148,6 +147,7 @@ Partial Class SpeedSale
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtGrossWt = New System.Windows.Forms.TextBox()
         Me.txtCut = New System.Windows.Forms.TextBox()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMarka.SuspendLayout()
         CType(Me.dgItemSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -860,19 +860,6 @@ Partial Class SpeedSale
         Me.cbCrateMarka.Name = "cbCrateMarka"
         Me.cbCrateMarka.Size = New System.Drawing.Size(232, 23)
         Me.cbCrateMarka.TabIndex = 1
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(21, 164)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(98, 26)
-        Me.mskEntryDate.TabIndex = 0
-        Me.mskEntryDate.ValidatingType = GetType(Date)
         '
         'CbPer
         '
@@ -1644,12 +1631,22 @@ Partial Class SpeedSale
         Me.txtCut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtCut.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(22, 164)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'SpeedSale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.txtCut)
         Me.Controls.Add(Me.pnlGrossWeight)
         Me.Controls.Add(Me.lblAddWeight)
@@ -1666,7 +1663,6 @@ Partial Class SpeedSale
         Me.Controls.Add(Me.lblCommPer)
         Me.Controls.Add(Me.pnlNetRate)
         Me.Controls.Add(Me.ckTaxPaid)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.btnMultiUpdate)
         Me.Controls.Add(Me.BtnDelete)
@@ -1817,7 +1813,6 @@ Partial Class SpeedSale
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents cbCrateMarka As System.Windows.Forms.ComboBox
     Friend WithEvents BtnRefresh As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents CbPer As System.Windows.Forms.ComboBox
     Friend WithEvents txtid As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
@@ -1887,4 +1882,5 @@ Partial Class SpeedSale
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtGrossWt As System.Windows.Forms.TextBox
     Friend WithEvents txtCut As System.Windows.Forms.TextBox
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

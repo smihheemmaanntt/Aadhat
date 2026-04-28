@@ -43,7 +43,6 @@ Partial Class Super_Sale
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Super_Sale))
         Me.lblClcType = New System.Windows.Forms.Label()
         Me.Cbper = New System.Windows.Forms.ComboBox()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.txttotalWeight = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -225,6 +224,7 @@ Partial Class Super_Sale
         Me.Label52 = New System.Windows.Forms.Label()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.Label54 = New System.Windows.Forms.Label()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -269,18 +269,6 @@ Partial Class Super_Sale
         Me.Cbper.Name = "Cbper"
         Me.Cbper.Size = New System.Drawing.Size(91, 25)
         Me.Cbper.TabIndex = 13
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(13, 77)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(131, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Label22
         '
@@ -2698,12 +2686,22 @@ Partial Class Super_Sale
         Me.Label54.TabIndex = 91271
         Me.Label54.Text = "Commission :"
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(13, 77)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(131, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Super_Sale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.lblTotLabour)
         Me.Controls.Add(Me.lblTotBardana)
         Me.Controls.Add(Me.lblTotRdf)
@@ -2791,7 +2789,6 @@ Partial Class Super_Sale
         Me.Controls.Add(Me.txtSallerRate)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblClcType)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.BtnDelete)
         Me.Controls.Add(Me.BtnSave)
@@ -2869,7 +2866,6 @@ Partial Class Super_Sale
     End Sub
     Friend WithEvents lblClcType As System.Windows.Forms.Label
     Friend WithEvents Cbper As System.Windows.Forms.ComboBox
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnPrint As System.Windows.Forms.Button
     Friend WithEvents BtnDelete As System.Windows.Forms.Button
     Friend WithEvents BtnSave As System.Windows.Forms.Button
@@ -3051,4 +3047,5 @@ Partial Class Super_Sale
     Friend WithEvents Label52 As System.Windows.Forms.Label
     Friend WithEvents Label53 As System.Windows.Forms.Label
     Friend WithEvents Label54 As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

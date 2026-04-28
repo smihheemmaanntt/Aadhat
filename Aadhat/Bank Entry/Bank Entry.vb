@@ -12,9 +12,9 @@
         Me.BackColor = Color.FromArgb(247, 220, 111)
         ' clsFun.FillDropDownList(CBBankAccount, "Select * From Accounts where groupid in(12)", "AccountName", "Id", "")
         ' clsFun.FillDropDownList(CBAccount, "Select * From Accounts", "AccountName", "Id", "")
-        MskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
-        mskChequeDate.Text = Date.Today.ToString("dd-MM-yyyy")
-        mskChequeDate.Text = MskEntryDate.Text
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtChequeDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtChequeDate.Text = txtEntryDate.Text
         CbEntryType.SelectedIndex = 0
         rowColums() : VNumber()
     End Sub
@@ -225,7 +225,7 @@
         If ds.Tables("a").Rows.Count > 0 Then
             txtID.Text = ds.Tables("a").Rows(0)("ID").ToString()
             txtBillNo.Text = ds.Tables("a").Rows(0)("BillNo").ToString()
-            MskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtAccountID.Text = ds.Tables("a").Rows(0)("AccountID").ToString()
             txtAccount.Text = ds.Tables("a").Rows(0)("AccountName").ToString()
             txtModeID.Text = ds.Tables("a").Rows(0)("SallerID").ToString()
@@ -237,9 +237,9 @@
             txtRemark.Text = ds.Tables("a").Rows(0)("Remark").ToString()
             TxtChequeNo.Text = ds.Tables("a").Rows(0)("ChequeNo").ToString()
             If ds.Tables("a").Rows(0)("ChequeDate") = "  -  -" Then
-                mskChequeDate.Text = ""
+                txtChequeDate.Text = ""
             Else
-                mskChequeDate.Text = Format(CDate(ds.Tables("a").Rows(0)("ChequeDate")), "dd-MM-yyyy")
+                txtChequeDate.Text = Format(CDate(ds.Tables("a").Rows(0)("ChequeDate")), "dd-MM-yyyy")
             End If
             '   mskChequeDate.Text = IIf(ds.Tables("a").Rows(0)("ChequeDate").ToString() = "  -  -", "", Format(CDate(ds.Tables("a").Rows(0)("ChequeDate")), "dd-MM-yyyy"))
             If bankcharges = "Bank Charges" Then
@@ -261,7 +261,7 @@
         Dim SqliteEntryDate As String : Dim SqliteChequeDate As String
         If txtAmount.Text = "" Then MsgBox("Please Fill Amount... Amount is Empty...", MsgBoxStyle.Critical, "Amount Null") : txtAmount.Focus() : Exit Sub
         If txtTotal.Text = "" Then MsgBox("Total Amount Can not Be Empty...", MsgBoxStyle.Critical, "Total Amount Null") : txtTotal.Focus() : Exit Sub
-        SqliteEntryDate = CDate(Me.MskEntryDate.Text).ToString("yyyy-MM-dd") : SqliteChequeDate = CDate(Me.mskChequeDate.Text).ToString("yyyy-MM-dd")
+        SqliteEntryDate = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd") : SqliteChequeDate = CDate(Me.txtChequeDate.Text).ToString("yyyy-MM-dd")
         ' Dim BankCharges As String
         Dim cmd As SQLite.SQLiteCommand
         Dim sql As String = "insert into Vouchers(TransType, Entrydate, SallerID, SallerName,AccountID, AccountName, BasicAmount, TotalAmount, TotalCharges, chequeDate, ChequeNo, Remark, BankEntry,BillNo)values (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14)"
@@ -384,10 +384,10 @@
     End Sub
     Private Sub AcBankBal()
         Dim Sql As String = String.Empty
-        Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
-   "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " &
-   " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
-   " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(txtModeID.Text) & " Order by upper(AccountName) ;"
+        Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
+   "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " &
+   " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
+   " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(txtModeID.Text) & " Order by upper(AccountName) ;"
         Dim Bal As String = clsFun.ExecScalarStr(Sql)
         If Val(Bal) >= 0 Then
             lblCapAcBal.Visible = True
@@ -400,10 +400,10 @@
 
     Private Sub AcBal()
         Dim Sql As String = String.Empty
-        Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
-   "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " &
-   " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
-   " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(txtAccountID.Text) & " Order by upper(AccountName) ;"
+        Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
+   "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " &
+   " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
+   " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(txtAccountID.Text) & " Order by upper(AccountName) ;"
         Dim Bal As String = clsFun.ExecScalarStr(Sql)
         If Val(Bal) >= 0 Then
             lblAcBal.Visible = True
@@ -414,13 +414,13 @@
         End If
     End Sub
 
-    Private Sub MskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles MskEntryDate.GotFocus, MskEntryDate.Click
-        MskEntryDate.SelectAll()
+    Private Sub MskEntryDate_GotFocus(sender As Object, e As EventArgs)
+        txtEntryDate.SelectAll()
     End Sub
 
-    Private Sub txtMode_KeyDown(sender As Object, e As KeyEventArgs) Handles txtMode.KeyDown, txtAccount.KeyDown,
-        txtAmount.KeyDown, txtExpenses.KeyDown, txtTotal.KeyDown, TxtChequeNo.KeyDown, txtBillNo.KeyDown,
-        mskChequeDate.KeyDown, txtRemark.KeyDown, MskEntryDate.KeyDown
+    Private Sub txtMode_KeyDown(sender As Object, e As KeyEventArgs) Handles txtMode.KeyDown, txtAccount.KeyDown, CbEntryType.KeyDown,
+        txtAmount.KeyDown, txtExpenses.KeyDown, txtTotal.KeyDown, TxtChequeNo.KeyDown, txtBillNo.KeyDown, txtEntryDate.KeyDown,
+         txtRemark.KeyDown, txtChequeDate.KeyDown
         If txtMode.Focused Then
             If e.KeyCode = Keys.Down Then dgMode.Focus()
             If e.KeyCode = Keys.F3 Then
@@ -465,8 +465,7 @@
         End If
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
-        Else
-            Exit Sub
+            e.SuppressKeyPress = True
         End If
         Select Case e.KeyCode
             Case Keys.End
@@ -478,22 +477,13 @@
         BtnDelete.Visible = False
         btnSave.BackColor = Color.DarkSlateGray
         btnSave.Image = My.Resources.Save
-        MskEntryDate.Focus() : txtRemark.Text = ""
+        txtEntryDate.Focus() : txtRemark.Text = ""
         txtAmount.Text = "" : txtExpenses.Text = ""
         TxtChequeNo.Text = "" : txtTotal.Text = ""
         btnSave.Text = "&Save" : retrive()
-        dg1.ClearSelection() : MskEntryDate.Focus()
+        dg1.ClearSelection() : txtEntryDate.Focus()
     End Sub
-    Private Sub CBBankAccount_Leave(sender As Object, e As EventArgs)
-        If clsFun.ExecScalarInt("Select count(*)from Accounts") = 0 Then
-            Exit Sub
-        End If
-        If clsFun.ExecScalarInt("Select count(*)from Accounts where AccountName='" & txtMode.Text & "'") = 0 Then
-            MsgBox("Bank Not Found in Database...", vbOKOnly, "Access Denied")
-            txtMode.Focus()
-            Exit Sub
-        End If
-    End Sub
+
     Private Sub Calculation()
         If String.IsNullOrEmpty(txtAmount.Text) OrElse String.IsNullOrEmpty(txtExpenses.Text) Then Exit Sub
         txtTotal.Text = Format(Val(CDbl(txtAmount.Text)) - Val(CDbl(txtExpenses.Text)), "0.00")
@@ -519,21 +509,15 @@
         Calculation()
     End Sub
 
-    Private Sub CbEntryType_KeyDown(sender As Object, e As KeyEventArgs) Handles CbEntryType.KeyDown
-        If e.KeyCode = Keys.Enter Then txtAccount.Focus()
-    End Sub
-    Private Sub CbEntryType_Leave(sender As Object, e As EventArgs) Handles CbEntryType.Leave
-
-    End Sub
     Private Sub CbEntryType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbEntryType.SelectedIndexChanged
         If CbEntryType.SelectedIndex = 0 Then
             TxtChequeNo.Visible = False
-            mskChequeDate.Visible = False
+            txtChequeDate.Visible = False
             lblChequeDate.Visible = False
             lblChequeNo.Visible = False
         ElseIf CbEntryType.SelectedIndex = 3 Then
             TxtChequeNo.Visible = False
-            mskChequeDate.Visible = False
+            txtChequeDate.Visible = False
             lblChequeDate.Visible = False
             lblChequeNo.Visible = False
         ElseIf CbEntryType.SelectedIndex = 5 Then
@@ -542,12 +526,12 @@
             'lblChequeDate.Visible = False
             'lblChequeNo.Visible = False
             TxtChequeNo.Visible = True
-            mskChequeDate.Visible = True
+            txtChequeDate.Visible = True
             lblChequeDate.Visible = True
             lblChequeNo.Visible = True
         Else
             TxtChequeNo.Visible = True
-            mskChequeDate.Visible = True
+            txtChequeDate.Visible = True
             lblChequeDate.Visible = True
             lblChequeNo.Visible = True
         End If
@@ -564,7 +548,7 @@
         Dim SqliteEntryDate As String : Dim SqliteChequeDate As String
         If txtAmount.Text = "" Then MsgBox("Please Fill Amount... Amount is Empty...", MsgBoxStyle.Critical, "Amount Null") : txtAmount.Focus() : Exit Sub
         If txtTotal.Text = "" Then MsgBox("Total Amount Can not Be Empty...", MsgBoxStyle.Critical, "Total Amount Null") : txtTotal.Focus() : Exit Sub
-        SqliteEntryDate = CDate(Me.MskEntryDate.Text).ToString("yyyy-MM-dd") : SqliteChequeDate = CDate(Me.mskChequeDate.Text).ToString("yyyy-MM-dd")
+        SqliteEntryDate = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd") : SqliteChequeDate = CDate(Me.txtChequeDate.Text).ToString("yyyy-MM-dd")
         '  Dim cmd As SQLite.SQLiteCommand
         Dim BankCharges As String = String.Empty
         If CbEntryType.SelectedIndex = 0 Then
@@ -612,7 +596,7 @@
         Dim SqliteEntryDate As String : Dim SqliteChequeDate As Date
         If txtAmount.Text = "" Then MsgBox("Please Fill Amount... Amount is Empty...", MsgBoxStyle.Critical, "Amount Null") : txtAmount.Focus() : Exit Sub
         If txtTotal.Text = "" Then MsgBox("Total Amount Can not Be Empty...", MsgBoxStyle.Critical, "Total Amount Null") : txtTotal.Focus() : Exit Sub
-        SqliteEntryDate = CDate(Me.MskEntryDate.Text).ToString("yyyy-MM-dd") : SqliteChequeDate = CDate(Me.mskChequeDate.Text).ToString("yyyy-MM-dd")
+        SqliteEntryDate = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd") : SqliteChequeDate = CDate(Me.txtChequeDate.Text).ToString("yyyy-MM-dd")
         ' Dim cmd As SQLite.SQLiteCommand
         Dim BankCharges As String = String.Empty
         If CbEntryType.SelectedIndex = 0 Then
@@ -658,36 +642,36 @@
 
     Private Sub UpdateLedger()
         Dim FastQuery As String = String.Empty
-        Dim remark As String = "Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & mskChequeDate.Text & "" & txtRemark.Text
-        Dim remarkHindi As String = "Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & mskChequeDate.Text & "" & txtRemark.Text
+        Dim remark As String = "Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & txtChequeDate.Text & "" & txtRemark.Text
+        Dim remarkHindi As String = "Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & txtChequeDate.Text & "" & txtRemark.Text
 
         If CbEntryType.SelectedIndex = 1 Or CbEntryType.SelectedIndex = 3 Then
             If Val(txtAccountID.Text) > 0 Then ''Party Account
                 If Val(txtTotal.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'C' ,'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'C' ,'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'"
                 End If
             End If
             If Val(txtModeID.Text) > 0 Then ''bank account
                 If Val(txtAmount.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'D' ,'" & "(" & txtAccount.Text & ") :" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'D' ,'" & "(" & txtAccount.Text & ") :" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
                 End If
             End If
             If Val(txtExpenses.Text) > 0 Then ''Bank Charges
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'C' ,'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'C' ,'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
             End If
         Else
             If Val(txtAccountID.Text) > 0 Then ''Party Account
                 If Val(txtTotal.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'D' ,'" & "(" & txtMode.Text & ") : " & remark & "','" & txtAccount.Text & "','" & "(" & txtMode.Text & ") : " & remarkHindi & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'D' ,'" & "(" & txtMode.Text & ") : " & remark & "','" & txtAccount.Text & "','" & "(" & txtMode.Text & ") : " & remarkHindi & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'"
                 End If
             End If
             If Val(txtModeID.Text) > 0 Then ''bank account
                 If Val(txtAmount.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'C' ,'" & "(" & txtAccount.Text & ") : " & remark & "','" & txtAccount.Text & "','" & "(" & txtAccount.Text & ") : " & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'C' ,'" & "(" & txtAccount.Text & ") : " & remark & "','" & txtAccount.Text & "','" & "(" & txtAccount.Text & ") : " & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
                 End If
             End If
             If Val(txtExpenses.Text) > 0 Then ''Bank Charges
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'D' ,'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'D' ,'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'"
             End If
         End If
         If FastQuery = String.Empty Then Exit Sub
@@ -697,36 +681,36 @@
     Private Sub ServerUpdateLedger()
         If Val(OrgID) = 0 Then Exit Sub
         Dim FastQuery As String = String.Empty
-        Dim remark As String = txtMode.Text & ", Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & mskChequeDate.Text & "" & txtRemark.Text
-        Dim remarkHindi As String = txtMode.Text & ", Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & mskChequeDate.Text & "" & txtRemark.Text
+        Dim remark As String = txtMode.Text & ", Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & txtChequeDate.Text & "" & txtRemark.Text
+        Dim remarkHindi As String = txtMode.Text & ", Amount : " & Val(txtTotal.Text) & ", Cheque No : " & TxtChequeNo.Text & ",Cheque Date :" & txtChequeDate.Text & "" & txtRemark.Text
 
         If CbEntryType.SelectedIndex = 1 Or CbEntryType.SelectedIndex = 3 Then
             If Val(txtAccountID.Text) > 0 Then ''Party Account
                 If Val(txtTotal.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
                 End If
             End If
             If Val(txtModeID.Text) > 0 Then ''bank account
                 If Val(txtAmount.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
                 End If
             End If
             If Val(txtExpenses.Text) > 0 Then ''Bank Charges
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
             End If
         Else
             If Val(txtAccountID.Text) > 0 Then ''Party Account
                 If Val(txtTotal.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtTotal.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
                 End If
             End If
             If Val(txtModeID.Text) > 0 Then ''bank account
                 If Val(txtAmount.Text) > 0 Then ''Account 
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(txtModeID.Text) & ",'" & txtMode.Text & "'," & Val(txtAmount.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
                 End If
             End If
             If Val(txtExpenses.Text) > 0 Then ''Bank Charges
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & bankcharges & "'," & Val(3) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=3") & "'," & Val(txtExpenses.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & remark & "','" & txtAccount.Text & "','" & remarkHindi & "'"
             End If
         End If
         If FastQuery = String.Empty Then Exit Sub
@@ -750,8 +734,8 @@
         End Try
     End Sub
 
-    Private Sub mskEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MskEntryDate.Validating
-        MskEntryDate.Text = clsFun.convdate(MskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
         If dg1.RowCount = 0 Then
             retrive()
         End If
@@ -759,9 +743,9 @@
     Private Sub retrive()
         Dim ssql As String = String.Empty
         Dim dt As New DataTable
-        ' ssql = ("Select * FROM Vouchers WHERE EntryDate = '" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "' and BankEntry='" & Me.Text & "'")
+        ' ssql = ("Select * FROM Vouchers WHERE EntryDate = '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and BankEntry='" & Me.Text & "'")
         'dt = clsFun.ExecDataTable(ssql)
-        dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate = '" & CDate(MskEntryDate.Text).ToString("yyyy-MM-dd") & "' and BankEntry='" & Me.Text & "'")
+        dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate = '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and BankEntry='" & Me.Text & "'")
         dg1.Rows.Clear()
         Try
             If dt.Rows.Count > 0 Then
@@ -805,6 +789,7 @@
         If e.KeyCode = Keys.Enter Then
             If dg1.SelectedRows.Count = 0 Then Exit Sub
             FillControls(dg1.SelectedRows(0).Cells(0).Value)
+            txtEntryDate.Focus()
             e.SuppressKeyPress = True
         End If
         If dg1.SelectedRows.Count = 0 Then Exit Sub
@@ -816,20 +801,12 @@
         If dg1.SelectedRows.Count = 0 Then Exit Sub
         FillControls(dg1.SelectedRows(0).Cells(0).Value)
     End Sub
-    Private Sub mskChequeDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskChequeDate.Validating
-        mskChequeDate.Text = clsFun.convdate(mskChequeDate.Text)
-    End Sub
-
-    Private Sub txtMode_TextChanged(sender As Object, e As EventArgs) Handles txtMode.TextChanged
-
+    Private Sub mskChequeDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtChequeDate.Validating
+        txtChequeDate.Text = SmartDate(TxtChequeNo.Text)
     End Sub
 
     Private Sub btnClose_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
-    End Sub
-
-    Private Sub RectangleShape1_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
@@ -837,20 +814,8 @@
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
-    End Sub
-
-    Private Sub txtAccount_TextChanged(sender As Object, e As EventArgs) Handles txtAccount.TextChanged
-
-    End Sub
-
-    Private Sub txtRemark_TextChanged(sender As Object, e As EventArgs) Handles txtRemark.TextChanged
-
-    End Sub
-
-    Private Sub MskEntryDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles MskEntryDate.MaskInputRejected
-
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 End Class

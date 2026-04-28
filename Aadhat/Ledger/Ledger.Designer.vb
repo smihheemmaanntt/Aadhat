@@ -39,8 +39,6 @@ Partial Class Ledger
         Me.txtcrAmt = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtDramt = New System.Windows.Forms.TextBox()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.cbAccountName = New System.Windows.Forms.ComboBox()
         Me.ckJoin = New System.Windows.Forms.CheckBox()
         Me.ckPrintHindi = New System.Windows.Forms.CheckBox()
@@ -64,6 +62,8 @@ Partial Class Ledger
         Me.btnClose = New System.Windows.Forms.Button()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWahtsappNo.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,7 +99,7 @@ Partial Class Ledger
         Me.Label1.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label1.Location = New System.Drawing.Point(602, 83)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(116, 26)
+        Me.Label1.Size = New System.Drawing.Size(109, 26)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "From Date :"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -259,28 +259,6 @@ Partial Class Ledger
         Me.txtDramt.TabStop = False
         Me.txtDramt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.ForeColor = System.Drawing.Color.Red
-        Me.MsktoDate.Location = New System.Drawing.Point(907, 83)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(88, 26)
-        Me.MsktoDate.TabIndex = 3
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.ForeColor = System.Drawing.Color.Red
-        Me.mskFromDate.Location = New System.Drawing.Point(717, 83)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(94, 26)
-        Me.mskFromDate.TabIndex = 2
-        '
         'cbAccountName
         '
         Me.cbAccountName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
@@ -293,7 +271,7 @@ Partial Class Ledger
         Me.cbAccountName.Location = New System.Drawing.Point(152, 83)
         Me.cbAccountName.Name = "cbAccountName"
         Me.cbAccountName.Size = New System.Drawing.Size(450, 25)
-        Me.cbAccountName.TabIndex = 1
+        Me.cbAccountName.TabIndex = 0
         '
         'ckJoin
         '
@@ -303,7 +281,7 @@ Partial Class Ledger
         Me.ckJoin.Location = New System.Drawing.Point(289, 115)
         Me.ckJoin.Name = "ckJoin"
         Me.ckJoin.Size = New System.Drawing.Size(170, 20)
-        Me.ckJoin.TabIndex = 40057
+        Me.ckJoin.TabIndex = 7
         Me.ckJoin.Text = "Print Without Description"
         Me.ckJoin.UseVisualStyleBackColor = True
         '
@@ -315,7 +293,7 @@ Partial Class Ledger
         Me.ckPrintHindi.Location = New System.Drawing.Point(184, 115)
         Me.ckPrintHindi.Name = "ckPrintHindi"
         Me.ckPrintHindi.Size = New System.Drawing.Size(104, 20)
-        Me.ckPrintHindi.TabIndex = 40058
+        Me.ckPrintHindi.TabIndex = 6
         Me.ckPrintHindi.Text = "Print in Hindi"
         Me.ckPrintHindi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ckPrintHindi.UseVisualStyleBackColor = True
@@ -328,7 +306,7 @@ Partial Class Ledger
         Me.ckMerge.Location = New System.Drawing.Point(12, 115)
         Me.ckMerge.Name = "ckMerge"
         Me.ckMerge.Size = New System.Drawing.Size(168, 20)
-        Me.ckMerge.TabIndex = 40059
+        Me.ckMerge.TabIndex = 5
         Me.ckMerge.Text = "Merge Same Date Entries"
         Me.ckMerge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ckMerge.UseVisualStyleBackColor = True
@@ -336,15 +314,15 @@ Partial Class Ledger
         'Dtp2
         '
         Me.Dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.Dtp2.Location = New System.Drawing.Point(907, 83)
+        Me.Dtp2.Location = New System.Drawing.Point(916, 83)
         Me.Dtp2.Name = "Dtp2"
-        Me.Dtp2.Size = New System.Drawing.Size(103, 26)
+        Me.Dtp2.Size = New System.Drawing.Size(100, 26)
         Me.Dtp2.TabIndex = 91222
         '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.dtp1.Location = New System.Drawing.Point(717, 83)
+        Me.dtp1.Location = New System.Drawing.Point(717, 84)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(110, 26)
         Me.dtp1.TabIndex = 91221
@@ -380,7 +358,7 @@ Partial Class Ledger
         Me.pnlWahtsappNo.Location = New System.Drawing.Point(581, 139)
         Me.pnlWahtsappNo.Name = "pnlWahtsappNo"
         Me.pnlWahtsappNo.Size = New System.Drawing.Size(261, 141)
-        Me.pnlWahtsappNo.TabIndex = 91227
+        Me.pnlWahtsappNo.TabIndex = 10
         Me.pnlWahtsappNo.Visible = False
         '
         'Label11
@@ -459,7 +437,7 @@ Partial Class Ledger
         Me.ckDaywisePrint.Location = New System.Drawing.Point(1013, 60)
         Me.ckDaywisePrint.Name = "ckDaywisePrint"
         Me.ckDaywisePrint.Size = New System.Drawing.Size(168, 20)
-        Me.ckDaywisePrint.TabIndex = 91228
+        Me.ckDaywisePrint.TabIndex = 12
         Me.ckDaywisePrint.Text = "Send Whatsapp Day Wise"
         Me.ckDaywisePrint.UseVisualStyleBackColor = True
         '
@@ -471,7 +449,7 @@ Partial Class Ledger
         Me.ckWithoutCrate.Location = New System.Drawing.Point(831, 61)
         Me.ckWithoutCrate.Name = "ckWithoutCrate"
         Me.ckWithoutCrate.Size = New System.Drawing.Size(182, 20)
-        Me.ckWithoutCrate.TabIndex = 91229
+        Me.ckWithoutCrate.TabIndex = 11
         Me.ckWithoutCrate.Text = "Show Without Crate Record"
         Me.ckWithoutCrate.UseVisualStyleBackColor = True
         '
@@ -499,7 +477,7 @@ Partial Class Ledger
         Me.Button1.Location = New System.Drawing.Point(763, 110)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(144, 29)
-        Me.Button1.TabIndex = 40060
+        Me.Button1.TabIndex = 9
         Me.Button1.Text = "&Day Wise Print"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
@@ -516,7 +494,7 @@ Partial Class Ledger
         Me.Button5.Location = New System.Drawing.Point(602, 109)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(161, 30)
-        Me.Button5.TabIndex = 91226
+        Me.Button5.TabIndex = 8
         Me.Button5.Text = "Send Whatsapp"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.UseVisualStyleBackColor = False
@@ -558,7 +536,7 @@ Partial Class Ledger
         Me.BtnPrint.Location = New System.Drawing.Point(1104, 83)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(79, 27)
-        Me.BtnPrint.TabIndex = 5
+        Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -573,19 +551,39 @@ Partial Class Ledger
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(1010, 83)
+        Me.btnShow.Location = New System.Drawing.Point(1016, 83)
         Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(94, 27)
-        Me.btnShow.TabIndex = 4
+        Me.btnShow.Size = New System.Drawing.Size(88, 27)
+        Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
+        '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(904, 83)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 2
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(711, 84)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 1
         '
         'Ledger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.pnlWahtsappNo)
         Me.Controls.Add(Me.lblCrateDetails)
@@ -608,8 +606,6 @@ Partial Class Ledger
         Me.Controls.Add(Me.ckPrintHindi)
         Me.Controls.Add(Me.ckJoin)
         Me.Controls.Add(Me.cbAccountName)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
@@ -644,8 +640,6 @@ Partial Class Ledger
     Friend WithEvents txtcrAmt As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txtDramt As System.Windows.Forms.TextBox
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents cbAccountName As System.Windows.Forms.ComboBox
     Friend WithEvents ckJoin As System.Windows.Forms.CheckBox
     Friend WithEvents ckPrintHindi As System.Windows.Forms.CheckBox
@@ -668,4 +662,6 @@ Partial Class Ledger
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

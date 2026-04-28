@@ -23,7 +23,7 @@ Public Class Settle_Ledger
         AddHandler bgWorker.RunWorkerCompleted, AddressOf bgWorker_RunWorkerCompleted
     End Sub
 
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown, cbAccountName.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles cbAccountName.KeyDown, txtFromDate.KeyDown, txttoDate.KeyDown
 
         If cbAccountName.Focused Then
             If e.KeyCode = Keys.F3 Then
@@ -34,14 +34,14 @@ Public Class Settle_Ledger
                 mindate = clsFun.ExecScalarStr("Select min(EntryDate) From Ledger Where AccountID=" & Val(cbAccountName.SelectedValue) & "")
                 maxdate = clsFun.ExecScalarStr("Select Max(EntryDate) From Ledger Where AccountID=" & Val(cbAccountName.SelectedValue) & "")
                 If mindate <> "" Then
-                    mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+                    txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
                 Else
-                    mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+                    txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
                 End If
                 If maxdate <> "" Then
-                    MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+                    txttoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
                 Else
-                    MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+                    txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
                 End If
             End If
         End If
@@ -57,17 +57,17 @@ Public Class Settle_Ledger
         End Select
 
     End Sub
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub Ledger_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus
-        mskFromDate.SelectAll()
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus
+        txtFromDate.SelectAll()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus
-        MsktoDate.SelectAll()
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus
+        txttoDate.SelectAll()
     End Sub
     Private Sub Ledger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0
@@ -76,8 +76,8 @@ Public Class Settle_Ledger
         Me.KeyPreview = True
         clsFun.FillDropDownList(cbAccountName, "Select * from Account_AcGrp where (Groupid in(16,17)  or UnderGroupID in (16,17))", "AccountName", "Id", "")
         Dim mindate = String.Empty : Dim maxdate As String = String.Empty
-        mskFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyy"))
-        MsktoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyy"))
+        txtFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyy"))
+        txttoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyy"))
         rowColums()
     End Sub
 
@@ -101,19 +101,19 @@ Public Class Settle_Ledger
     Private Sub FillBalanceGrid()
         dg1.Rows.Clear()
         Dim Sql As String = String.Empty
-        Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')" &
-   "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')) " &
-   " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')" &
-   " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(cbAccountName.SelectedValue) & " Order by upper(AccountName) ;"
+        Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" &
+   "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')) " &
+   " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" &
+   " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(cbAccountName.SelectedValue) & " Order by upper(AccountName) ;"
         Dim opbal As Decimal = Val(clsFun.ExecScalarStr(Sql))
         Dim AccountOtherName As String = clsFun.ExecScalarStr("SELECT OtherName FROM Accounts WHERE ID =" & Val(cbAccountName.SelectedValue) & "")
         txtOpBal.Text = If(opbal >= 0, Format(opbal, "0.00") & " Dr", Format(Math.Abs(opbal), "0.00") & " Cr")
-        Dim fromDate As Date = CDate(mskFromDate.Text)
-        Dim toDate As Date = CDate(MsktoDate.Text)
+        Dim fromDate As Date = CDate(txtFromDate.Text)
+        Dim toDate As Date = CDate(txttoDate.Text)
         Dim accountId As Integer = Val(cbAccountName.SelectedValue)
         Dim GroupID As Integer = clsFun.ExecScalarInt("SELECT GroupID FROM ACCOUNT_ACGRP WHERE ID='" & Val(cbAccountName.SelectedValue) & "'")
-        Dim drSideDt As DataTable = clsFun.ExecDataTable("Select VourchersID,  EntryDate,TransType,Remark, Amount from Ledger where DC ='D' and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' and AccountID = " & accountId & " ORDER BY EntryDate; ")
-        Dim crSideDt As DataTable = clsFun.ExecDataTable("Select VourchersID,  EntryDate,TransType,Remark, Amount from Ledger where DC ='C' and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' and AccountID = " & accountId & " ORDER BY EntryDate; ")
+        Dim drSideDt As DataTable = clsFun.ExecDataTable("Select VourchersID,  EntryDate,TransType,Remark, Amount from Ledger where DC ='D' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' and AccountID = " & accountId & " ORDER BY EntryDate; ")
+        Dim crSideDt As DataTable = clsFun.ExecDataTable("Select VourchersID,  EntryDate,TransType,Remark, Amount from Ledger where DC ='C' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' and AccountID = " & accountId & " ORDER BY EntryDate; ")
         'Dim drSideDt As DataTable = clsFun.ExecDataTable("SELECT VourchersID, EntryDate, TransType, Remark, Dr as Amount FROM GET_DAYBOOK " &
         '                                            "('" & fromDate.ToString("yyyy-MM-dd") & "', '" & toDate.ToString("yyyy-MM-dd") & "') " &
         '                                             "WHERE AccountID = " & accountId & " AND DR <> 0 ORDER BY EntryDate;")
@@ -269,23 +269,19 @@ Public Class Settle_Ledger
         mindate = clsFun.ExecScalarStr("Select min(EntryDate) From Ledger Where AccountID=" & Val(cbAccountName.SelectedValue) & "")
         maxdate = clsFun.ExecScalarStr("Select Max(EntryDate) From Ledger Where AccountID=" & Val(cbAccountName.SelectedValue) & "")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txttoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
     End Sub
 
-    Private Sub cbAccountName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbAccountName.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub PrintRecord()
@@ -301,7 +297,7 @@ Public Class Settle_Ledger
 
         ' Ensure cross-thread safety when accessing UI elements
         Dim cbAccountNameText As String = String.Empty
-        Dim mskFromDateText As String = String.Empty
+        Dim txtFromDateText As String = String.Empty
         Dim mskToDateText As String = String.Empty
         Dim txtOpBalText As String = String.Empty
         Dim txtDramtText As String = String.Empty
@@ -314,8 +310,8 @@ Public Class Settle_Ledger
         If cbAccountName.InvokeRequired Then
             cbAccountName.Invoke(Sub()
                                      cbAccountNameText = cbAccountName.Text
-                                     mskFromDateText = mskFromDate.Text
-                                     mskToDateText = MsktoDate.Text
+                                     txtFromDateText = txtFromDate.Text
+                                     mskToDateText = txttoDate.Text
                                      txtOpBalText = txtOpBal.Text
                                      txtDramtText = txtDramt.Text
                                      txtcrAmtText = txtcrAmt.Text
@@ -325,8 +321,8 @@ Public Class Settle_Ledger
                                  End Sub)
         Else
             cbAccountNameText = cbAccountName.Text
-            mskFromDateText = mskFromDate.Text
-            mskToDateText = MsktoDate.Text
+            txtFromDateText = txtFromDate.Text
+            mskToDateText = txttoDate.Text
             txtOpBalText = txtOpBal.Text
             txtDramtText = txtDramt.Text
             txtcrAmtText = txtcrAmt.Text
@@ -340,7 +336,7 @@ Public Class Settle_Ledger
                 FastQuery = String.Empty : TotalRecord = (AllRecord - LastRecord)
                 For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
                     With dg1.Rows(LastRecord)
-                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDateText & "'," &
+                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtFromDateText & "'," &
                             "'" & mskToDateText & "','" & cbAccountNameText & "','" & txtOpBalText & "','" & txtDramtText & "','" & txtcrAmtText & "'," &
                             "'" & txtBalAmtText & "','" & .Cells("Date").Value & "','" & .Cells("Type").Value & "','" & IIf(ckPrintHindi.Checked = True, .Cells("HindiItem").Value, .Cells("Description").Value) & "'," &
                             "'" & .Cells("Debit").Value & "','" & .Cells("Credit").Value & "','" & .Cells("Balance").Value & "','" & .Cells("HindiName").Value & "','" & lblCrateText & "','" & lblCrateDetailsText & "','" & Val(LastRecord) + 1 & "'"
@@ -357,7 +353,7 @@ Public Class Settle_Ledger
                 End Try
             Next
         Else
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDateText & "'," &
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtFromDateText & "'," &
                 "'" & mskToDateText & "','" & cbAccountNameText & "','" & txtOpBalText & "','" & txtDramtText & "', " &
                 "'" & txtcrAmtText & "','" & txtBalAmtText & "','" & lblCrateText & "','" & lblCrateDetailsText & "'"
             Try
@@ -387,8 +383,8 @@ Public Class Settle_Ledger
                 For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
                     With dg1.Rows(LastRecord)
                         Dim cbAccountNameText As String = InvokeIfRequired(Function() cbAccountName.Text)
-                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDate.Text & "'," &
-                            "'" & MsktoDate.Text & "','" & cbAccountNameText & "','" & txtOpBal.Text & "','" & txtDramt.Text & "','" & txtcrAmt.Text & "'," &
+                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtFromDate.Text & "'," &
+                            "'" & txttoDate.Text & "','" & cbAccountNameText & "','" & txtOpBal.Text & "','" & txtDramt.Text & "','" & txtcrAmt.Text & "'," &
                             "'" & txtBalAmt.Text & "','" & .Cells("Date").Value & "','" & .Cells("Type").Value & "','',''," &
                             "'" & .Cells("Debit").Value & "','" & .Cells("Credit").Value & "','" & .Cells("Balance").Value & "','" & .Cells("HindiName").Value & "','" & lblCrate.Text & "','" & lblCrateDetails.Text & "'"
                     End With
@@ -405,8 +401,8 @@ Public Class Settle_Ledger
                 End Try
             Next
         Else
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDate.Text & "'," &
-                "'" & MsktoDate.Text & "','" & cbAccountName.Text & "','" & txtOpBal.Text & "','" & txtDramt.Text & "', " &
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtFromDate.Text & "'," &
+                "'" & txttoDate.Text & "','" & cbAccountName.Text & "','" & txtOpBal.Text & "','" & txtDramt.Text & "', " &
                 "'" & txtcrAmt.Text & "','" & txtBalAmt.Text & "','" & lblCrate.Text & "','" & lblCrateDetails.Text & "'"
             Try
                 If FastQuery = String.Empty Then Exit Sub
@@ -763,21 +759,21 @@ Public Class Settle_Ledger
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles Dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles Dtp2.ValueChanged
-        MsktoDate.Text = Dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = Dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         txtWhatsappNo.Text = clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(cbAccountName.SelectedValue) & "'")
@@ -821,7 +817,7 @@ Public Class Settle_Ledger
             File.Delete(deleteFile)
         Next
         PrintRecord()
-        GlobalData.PdfName = cbAccountName.Text & " (" & mskFromDate.Text & " to " & MsktoDate.Text & ").pdf"
+        GlobalData.PdfName = cbAccountName.Text & " (" & txtFromDate.Text & " to " & txttoDate.Text & ").pdf"
         If ckPrintHindi.Checked = True Then
             Pdf_Genrate.ExportReport("\Ledger2.rpt")
         Else
@@ -870,7 +866,7 @@ Public Class Settle_Ledger
         Dim sql As String = ""
         Dim con As SQLite.SQLiteConnection = clsFun.GetConnection
         WABA.ExecNonQuery("Delete from SendingData")
-        GlobalData.PdfName = mskFromDate.Text & ".pdf"
+        GlobalData.PdfName = txtFromDate.Text & ".pdf"
         PrintRecord()
         If ckPrintHindi.Checked = True Then
             Pdf_Genrate.ExportReport("\Ledger2.rpt")
@@ -909,7 +905,7 @@ Public Class Settle_Ledger
         Dim sql As String = ""
         Dim con As SQLite.SQLiteConnection = clsFun.GetConnection
         ClsFunWhatsapp.ExecNonQuery("Delete from SendingData")
-        GlobalData.PdfName = cbAccountName.Text & "-" & mskFromDate.Text & ".pdf"
+        GlobalData.PdfName = cbAccountName.Text & "-" & txtFromDate.Text & ".pdf"
         PrintRecord()
         If ckPrintHindi.Checked = True Then
             Pdf_Genrate.ExportReport("\Ledger2.rpt")
@@ -941,7 +937,7 @@ Public Class Settle_Ledger
 
         'pnlWahtsappNo.Visible = True
         'txtWhatsappNo.Focus()
-        GlobalData.PdfName = cbAccountName.Text & "-" & mskFromDate.Text & ".pdf"
+        GlobalData.PdfName = cbAccountName.Text & "-" & txtFromDate.Text & ".pdf"
         PrintRecord()
         If ckPrintHindi.Checked = True Then
             Pdf_Genrate.ExportReport("\Ledger2.rpt")

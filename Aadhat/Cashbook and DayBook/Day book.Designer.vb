@@ -28,7 +28,6 @@ Partial Class Day_book
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,9 +42,10 @@ Partial Class Day_book
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.pbWait = New System.Windows.Forms.PictureBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.ckMerge = New System.Windows.Forms.CheckBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbWait, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,16 +62,6 @@ Partial Class Day_book
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "DAY BOOK"
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(320, 91)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(100, 27)
-        Me.MsktoDate.TabIndex = 2
-        '
         'BtnPrint
         '
         Me.BtnPrint.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -79,10 +69,10 @@ Partial Class Day_book
         Me.BtnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnPrint.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
-        Me.BtnPrint.Location = New System.Drawing.Point(682, 91)
+        Me.BtnPrint.Location = New System.Drawing.Point(678, 91)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 30)
-        Me.BtnPrint.TabIndex = 40040
+        Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -95,10 +85,10 @@ Partial Class Day_book
         Me.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnShow.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnShow.Location = New System.Drawing.Point(606, 91)
+        Me.btnShow.Location = New System.Drawing.Point(602, 91)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(76, 30)
-        Me.btnShow.TabIndex = 4
+        Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -187,10 +177,10 @@ Partial Class Day_book
         Me.Cbper.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Cbper.FormattingEnabled = True
         Me.Cbper.Items.AddRange(New Object() {"Nug", "Kg", "40 Kg"})
-        Me.Cbper.Location = New System.Drawing.Point(434, 91)
+        Me.Cbper.Location = New System.Drawing.Point(430, 91)
         Me.Cbper.Name = "Cbper"
         Me.Cbper.Size = New System.Drawing.Size(172, 27)
-        Me.Cbper.TabIndex = 3
+        Me.Cbper.TabIndex = 2
         '
         'btnClose
         '
@@ -280,20 +270,10 @@ Partial Class Day_book
         Me.dtp1.Size = New System.Drawing.Size(114, 27)
         Me.dtp1.TabIndex = 91216
         '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(109, 91)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(100, 27)
-        Me.mskFromDate.TabIndex = 1
-        '
         'Dtp2
         '
         Me.Dtp2.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.Dtp2.Location = New System.Drawing.Point(320, 91)
+        Me.Dtp2.Location = New System.Drawing.Point(316, 91)
         Me.Dtp2.Name = "Dtp2"
         Me.Dtp2.Size = New System.Drawing.Size(114, 27)
         Me.Dtp2.TabIndex = 91217
@@ -303,12 +283,30 @@ Partial Class Day_book
         Me.ckMerge.AutoSize = True
         Me.ckMerge.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckMerge.ForeColor = System.Drawing.Color.Black
-        Me.ckMerge.Location = New System.Drawing.Point(765, 94)
+        Me.ckMerge.Location = New System.Drawing.Point(761, 94)
         Me.ckMerge.Name = "ckMerge"
         Me.ckMerge.Size = New System.Drawing.Size(181, 19)
-        Me.ckMerge.TabIndex = 91218
+        Me.ckMerge.TabIndex = 5
         Me.ckMerge.Text = "Merge Same Account Entries"
         Me.ckMerge.UseVisualStyleBackColor = True
+        '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(320, 91)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(110, 91)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
         '
         'Day_book
         '
@@ -316,6 +314,8 @@ Partial Class Day_book
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.ckMerge)
         Me.Controls.Add(Me.pbWait)
         Me.Controls.Add(Me.PictureBox4)
@@ -327,8 +327,6 @@ Partial Class Day_book
         Me.Controls.Add(Me.txtcrAmt)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtDramt)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
@@ -347,7 +345,6 @@ Partial Class Day_book
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -362,7 +359,8 @@ Partial Class Day_book
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents pbWait As System.Windows.Forms.PictureBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents ckMerge As System.Windows.Forms.CheckBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

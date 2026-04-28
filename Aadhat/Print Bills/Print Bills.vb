@@ -2982,19 +2982,19 @@ Public Class Print_Bills
             Stock_Sale.Show()
             Stock_Sale.FillControls(id)
             Stock_Sale.BringToFront()
-            Stock_Sale.mskEntryDate.SelectAll()
+            Stock_Sale.txtEntryDate.SelectAll()
         ElseIf type = "Super Sale" Then
             Super_Sale.MdiParent = MainScreenForm
             Super_Sale.Show()
             Super_Sale.FillControls(id)
             Super_Sale.BringToFront()
-            Super_Sale.mskEntryDate.SelectAll()
+            Super_Sale.txtEntryDate.SelectAll()
         ElseIf type = "Speed Sale" Then
             SpeedSale.MdiParent = MainScreenForm
             SpeedSale.Show()
             SpeedSale.FillContros(id)
             SpeedSale.BringToFront()
-            SpeedSale.mskEntryDate.SelectAll()
+            SpeedSale.txtEntryDate.SelectAll()
         End If
     End Sub
 
@@ -3008,19 +3008,19 @@ Public Class Print_Bills
                 Stock_Sale.Show()
                 Stock_Sale.FillControls(id)
                 Stock_Sale.BringToFront()
-                Stock_Sale.mskEntryDate.SelectAll()
+                Stock_Sale.txtEntryDate.SelectAll()
             ElseIf type = "Super Sale" Then
                 Super_Sale.MdiParent = MainScreenForm
                 Super_Sale.Show()
                 Super_Sale.FillControls(id)
                 Super_Sale.BringToFront()
-                Super_Sale.mskEntryDate.SelectAll()
+                Super_Sale.txtEntryDate.SelectAll()
             ElseIf type = "Speed Sale" Then
                 SpeedSale.MdiParent = MainScreenForm
                 SpeedSale.Show()
                 SpeedSale.FillContros(id)
                 SpeedSale.BringToFront()
-                SpeedSale.mskEntryDate.SelectAll()
+                SpeedSale.txtEntryDate.SelectAll()
             End If
             e.SuppressKeyPress = True
         End If

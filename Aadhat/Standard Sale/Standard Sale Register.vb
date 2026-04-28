@@ -477,7 +477,7 @@ Public Class Standard_Sale_Register
             Standard_Sale.Show()
             Standard_Sale.FillControls(tmpID)
             Standard_Sale.BringToFront()
-            Standard_Sale.mskEntryDate.SelectAll()
+            Standard_Sale.txtEntryDate.SelectAll()
             e.SuppressKeyPress = True
         End If
 
@@ -495,7 +495,7 @@ Public Class Standard_Sale_Register
         Standard_Sale.Show()
         Standard_Sale.FillControls(tmpID)
         Standard_Sale.BringToFront()
-        Standard_Sale.mskEntryDate.SelectAll()
+        Standard_Sale.txtEntryDate.SelectAll()
         dg1.ClearSelection()
     End Sub
 

@@ -151,7 +151,7 @@
         Dim tmpID As String = Val(dg1.SelectedRows(0).Cells(0).Value)
         Sellout_Auto.MdiParent = MainScreenForm
         Sellout_Auto.Show()
-        Sellout_Auto.mskEntryDate.Text = dg1.SelectedRows(0).Cells(1).Value
+        Sellout_Auto.txtEntryDate.Text = dg1.SelectedRows(0).Cells(1).Value
         Sellout_Auto.txtAccountID.Text = Val(dg1.SelectedRows(0).Cells(2).Value)
         Sellout_Auto.txtAccount.Text = dg1.SelectedRows(0).Cells(3).Value
         Sellout_Auto.txtVehicleID.Text = Val(dg1.SelectedRows(0).Cells(0).Value)
@@ -167,7 +167,7 @@
             Dim tmpID As String = Val(dg1.SelectedRows(0).Cells(0).Value)
             Sellout_Auto.MdiParent = MainScreenForm
             Sellout_Auto.Show()
-            Sellout_Auto.mskEntryDate.Text = dg1.SelectedRows(0).Cells(1).Value
+            Sellout_Auto.txtEntryDate.Text = dg1.SelectedRows(0).Cells(1).Value
             Sellout_Auto.txtAccountID.Text = Val(dg1.SelectedRows(0).Cells(2).Value)
             Sellout_Auto.txtAccount.Text = dg1.SelectedRows(0).Cells(3).Value
             Sellout_Auto.txtVehicleID.Text = Val(dg1.SelectedRows(0).Cells(0).Value)

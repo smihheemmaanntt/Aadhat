@@ -29,8 +29,6 @@ Partial Class Speed_Sale_Register
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.txtPrimarySearch = New System.Windows.Forms.TextBox()
@@ -85,6 +83,8 @@ Partial Class Speed_Sale_Register
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.txtDelete = New System.Windows.Forms.TextBox()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlprint.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,28 +117,6 @@ Partial Class Speed_Sale_Register
         Me.Label1.Size = New System.Drawing.Size(428, 48)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "SPEED SALE REGISTER"
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(77, 80)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(92, 26)
-        Me.mskFromDate.TabIndex = 0
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(226, 80)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(92, 26)
-        Me.MsktoDate.TabIndex = 1
         '
         'btnShow
         '
@@ -229,7 +207,7 @@ Partial Class Speed_Sale_Register
         Me.Label9.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label9.Location = New System.Drawing.Point(12, 80)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(65, 27)
+        Me.Label9.Size = New System.Drawing.Size(58, 27)
         Me.Label9.TabIndex = 40045
         Me.Label9.Text = "From : "
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -852,12 +830,32 @@ Partial Class Speed_Sale_Register
         Me.btnDelete.Text = "&Delete Selected Bills "
         Me.btnDelete.UseVisualStyleBackColor = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(224, 80)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(70, 80)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Speed_Sale_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.pnlprint)
         Me.Controls.Add(Me.PnlDeleteBills)
         Me.Controls.Add(Me.Button1)
@@ -900,8 +898,6 @@ Partial Class Speed_Sale_Register
         Me.Controls.Add(Me.txtPrimarySearch)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
@@ -921,8 +917,6 @@ Partial Class Speed_Sale_Register
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents txtPrimarySearch As System.Windows.Forms.TextBox
@@ -978,4 +972,6 @@ Partial Class Speed_Sale_Register
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents txtDelete As System.Windows.Forms.TextBox
     Friend WithEvents btnDelete As System.Windows.Forms.Button
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

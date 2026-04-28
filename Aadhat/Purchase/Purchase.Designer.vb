@@ -54,7 +54,6 @@ Partial Class Purchase
         Me.txtid = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnRefresh = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtVehicleNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -165,6 +164,7 @@ Partial Class Purchase
         Me.txtWhatsappNo = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMarka.SuspendLayout()
@@ -317,20 +317,6 @@ Partial Class Purchase
         Me.BtnRefresh.TabStop = False
         Me.BtnRefresh.Text = "R"
         Me.BtnRefresh.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(12, 107)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(98, 26)
-        Me.mskEntryDate.TabIndex = 0
-        Me.mskEntryDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.mskEntryDate.ValidatingType = GetType(Date)
         '
         'Label3
         '
@@ -1919,12 +1905,22 @@ Partial Class Purchase
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(12, 107)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Purchase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.PnlCustomerBill)
         Me.Controls.Add(Me.lblFarmer)
         Me.Controls.Add(Me.cbFarmer)
@@ -1999,7 +1995,6 @@ Partial Class Purchase
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.CbpurchaseType)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtVehicleNo)
         Me.Controls.Add(Me.Label2)
@@ -2037,7 +2032,6 @@ Partial Class Purchase
     Friend WithEvents txtid As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents BtnRefresh As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtVehicleNo As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -2155,4 +2149,5 @@ Partial Class Purchase
     Friend WithEvents Label33 As System.Windows.Forms.Label
     Friend WithEvents lblRestAmt As System.Windows.Forms.Label
     Friend WithEvents Label40 As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

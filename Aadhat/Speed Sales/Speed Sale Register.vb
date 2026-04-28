@@ -13,8 +13,8 @@
     End Sub
     Private Sub Speed_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
-            If pnlprint.Visible = True Then pnlprint.Visible = False : mskFromDate.Focus() : Exit Sub
-            If PnlDeleteBills.Visible = True Then PnlDeleteBills.Visible = False : mskFromDate.Focus() : Exit Sub
+            If pnlprint.Visible = True Then pnlprint.Visible = False : txtFromDate.Focus() : Exit Sub
+            If PnlDeleteBills.Visible = True Then PnlDeleteBills.Visible = False : txtFromDate.Focus() : Exit Sub
             Me.Close()
         End If
 
@@ -25,12 +25,6 @@
 
     End Sub
 
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
-    End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
-    End Sub
     Private Sub Speed_Sale_Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Control.CheckForIllegalCrossThreadCalls = False
         Me.Top = 0 : Me.Left = 0
@@ -40,11 +34,12 @@
         Dim mindate As String = String.Empty : Dim maxdate As String = String.Empty
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) as entrydate from transaction2 where transtype='" & Me.Text & "'")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from transaction2 where transtype='" & Me.Text & "'")
-        mskFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
-        MsktoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text) : MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
+        txtToDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
+        txtFromDate.Text = SmartDate(txtFromDate.Text) : txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
         rowColums()
     End Sub
+
     Private Sub HeaderCheckBox_Clicked(ByVal sender As Object, ByVal e As EventArgs)
         'Necessary to end the edit mode of the Cell.
         dg1.EndEdit()
@@ -54,6 +49,7 @@
             checkBox.Value = headerCheckBox.Checked
         Next
     End Sub
+
     Private Sub dg1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellClick
         'Check to ensure that the row CheckBox is clicked.
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 0 Then
@@ -68,6 +64,7 @@
             headerCheckBox.Checked = isChecked
         End If
     End Sub
+
     Private Sub rowColums()
         dg1.ColumnCount = 15
         Dim headerCellLocation As Point = Me.dg1.GetCellDisplayRectangle(0, -1, True).Location
@@ -148,17 +145,17 @@
         ' Dim duration As TimeSpan
         Dim StartTime As DateTime = DateTime.Now
         'Call the database here and execute your SQL statement
-        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
+        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
         TotalPages = Math.Ceiling(recordsCount / RowCount)
-        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & " LIMIT " + RowCount.ToString() + " OFFSET " + Offset.ToString())
+        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & " LIMIT " + RowCount.ToString() + " OFFSET " + Offset.ToString())
         lblTotalRecord.Text = "Total Pages : " & TotalPages : lblTotalRecord.Visible = True
         lblPageNumber.Text = "Page No. : " & (Offset / RowCount) + 1 : lblPageNumber.Visible = True
-        totNugs = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Nug),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lbltotNug.Visible = True
-        totWeight = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Weight),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblTotalWeight.Visible = True
-        totBasic = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Amount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblBasic.Visible = True
-        totCharges = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Charges),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblCharges.Visible = True
-        Roundoff = Format(Val(clsFun.ExecScalarStr("Select ifnull(Sum(RoundOff),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")), "0.00") : lblRounfOff.Visible = True
-        totTotal = Format(clsFun.ExecScalarDec("Select ifnull(Sum(TotalAmount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblTotal.Visible = True
+        totNugs = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Nug),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lbltotNug.Visible = True
+        totWeight = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Weight),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblTotalWeight.Visible = True
+        totBasic = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Amount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblBasic.Visible = True
+        totCharges = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Charges),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblCharges.Visible = True
+        Roundoff = Format(Val(clsFun.ExecScalarStr("Select ifnull(Sum(RoundOff),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")), "0.00") : lblRounfOff.Visible = True
+        totTotal = Format(clsFun.ExecScalarDec("Select ifnull(Sum(TotalAmount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblTotal.Visible = True
         lbltotNug.Text = "Nug  : " & Format(Val(totNugs), "0.00") : lblTotalWeight.Text = "Weight : " & Format(Val(totWeight), "0.00")
         lblBasic.Text = "Basic : " & Format(Val(totBasic), "0.00") : lblCharges.Text = "Charges : " & Format(Val(totCharges), "0.00")
         lblTotal.Text = "Total : " & Format(Val(totTotal), "0.00") : lblRounfOff.Text = "R. Off : " & Format(Val(Roundoff), "0.00")
@@ -192,7 +189,7 @@
                         .Cells(13).Value = dt.Rows(i)("CrateQty").ToString()
                         .Cells(14).Value = dt.Rows(i)("AccountID").ToString()
                         .Cells(15).Value = dt.Rows(i)("ItemID").ToString()
-          
+
                         'Dim percentage As Double = (i / dt.Rows.Count) * 100
                         'ProgressBar1.Value = Int32.Parse(Math.Truncate(percentage).ToString())
                     End With
@@ -211,9 +208,9 @@
     Public Sub retriveAll(Optional ByVal condtion As String = "", Optional ByVal condtion1 As String = "", Optional ByVal condtion2 As String = "")
         dg1.Rows.Clear()
         Dim dt, dt1 As New DataTable
-        ' Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
+        ' Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
         TotalPages = Math.Ceiling(recordsCount / RowCount)
-        dt = clsFun.ExecDataTable("Select Voucherid,EntryDate,ItemName,AccountName,Nug,Weight,Rate,Per,Amount,Charges,RoundOff,TotalAmount,CrateQty,AccountID,ItemID FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
+        dt = clsFun.ExecDataTable("Select Voucherid,EntryDate,ItemName,AccountName,Nug,Weight,Rate,Per,Amount,Charges,RoundOff,TotalAmount,CrateQty,AccountID,ItemID FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -285,7 +282,7 @@
         SpeedSale.BringToFront()
     End Sub
 
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         Else
@@ -307,7 +304,7 @@
             With row
                 Dim OtherAccountName As String = clsFun.ExecScalarStr("Select OtherName From Accounts Where ID=" & Val(.Cells(14).Value) & "")
                 Dim OtherItemName As String = clsFun.ExecScalarStr("Select OtherName From Items Where ID=" & Val(.Cells(15).Value) & "")
-                sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,T1,T2,T3,T4,T5,T6,T7,T8) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," &
+                sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,T1,T2,T3,T4,T5,T6,T7,T8) values('" & txtFromDate.Text & "','" & txtToDate.Text & "'," &
                     "'" & .Cells("Date").Value & "','" & .Cells("Item Name").Value & "','" & .Cells("Customer").Value & "','" & Format(Val(.Cells("Nug").Value), "0.00") & "'," &
                     "'" & Format(Val(.Cells("Kg").Value), "0.00") & "'," & Format(Val(.Cells("Rate").Value), "0.00") & ",'" & .Cells("Per").Value & "'," &
                     "'" & Format(Val(.Cells("Net").Value), "0.00") & "'," & Format(Val(.Cells("Charges").Value), "0.00") & ",'" & Format(Val(.Cells("Total").Value), "0.00") & "'," & Format(Val(txtTotNug.Text), "0.00") & "," &
@@ -329,13 +326,13 @@
         Dim cmd As New SQLite.SQLiteCommand
         Dim sql As String = ""
         ClsFunPrimary.ExecNonQuery("Delete from printing")
-        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & SearchText & "")
+        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & SearchText & "")
         ProgressBar1.Maximum = dt.Rows.Count - 1
         ProgressBar1.Visible = True
         For i = 0 To dt.Rows.Count - 1
             Dim OtherAccountName As String = clsFun.ExecScalarStr("Select OtherName From Accounts Where ID=" & Val(dt.Rows(i)("AccountID").ToString()) & "")
             Dim OtherItemName As String = clsFun.ExecScalarStr("Select OtherName From Items Where ID=" & Val(dt.Rows(i)("ItemID").ToString()) & "")
-            sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,T1,T2,T3,T4,T5,T6,T7,T8) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," &
+            sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,T1,T2,T3,T4,T5,T6,T7,T8) values('" & txtFromDate.Text & "','" & txtToDate.Text & "'," &
                     "'" & CDate(dt.Rows(i)("EntryDate")).ToString("dd-MM-yyyy") & "','" & dt.Rows(i)("ItemName").ToString() & "'," &
                     "'" & dt.Rows(i)("AccountName").ToString() & "','" & Format(Val(dt.Rows(i)("Nug").ToString()), "0.00") & "'," &
                     "'" & Format(Val(dt.Rows(i)("Weight").ToString()), "0.00") & "','" & Format(Val(dt.Rows(i)("Rate").ToString()), "0.00") & "'," &
@@ -352,23 +349,16 @@
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
         pnlprint.Visible = True : radioCurrent.Focus()
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        ' mskFromDate.Clear()
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        ' txtFromDate.Clear()
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        '   MsktoDate.Clear()
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txtToDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        '   txtToDate.Clear()
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
-    Private Sub txtCustomerSearch_GotFocus(sender As Object, e As EventArgs) Handles txtPrimarySearch.GotFocus
-
-    End Sub
-
-    Private Sub txtCustomerSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPrimarySearch.KeyDown
-
-    End Sub
 
     Private Sub txtPrimarySearch_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrimarySearch.KeyPress, txtSecondarySearch.KeyPress, txtThirdSearch.KeyPress
         If e.KeyChar = "'"c Then
@@ -510,21 +500,21 @@
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txtToDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtToDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = SmartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -554,7 +544,7 @@
                                     "Delete From CrateVoucher Where VoucherID in(" & ID & "); " &
                                     "Delete From Ledger Where VourchersID in(" & ID & ");") Then
                 MsgBox("Selected Bills Deleted Successfully...", MsgBoxStyle.Information, "Sucessful")
-                retrive() : PnlDeleteBills.Visible = False : mskFromDate.Focus() : txtDelete.Clear() : txtDelete.Focus()
+                retrive() : PnlDeleteBills.Visible = False : txtFromDate.Focus() : txtDelete.Clear() : txtDelete.Focus()
             End If
         End If
     End Sub
@@ -606,23 +596,4 @@
         If e.KeyCode = Keys.Enter Then btnDelete.Focus()
     End Sub
 
-    Private Sub MsktoDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles MsktoDate.MaskInputRejected
-
-    End Sub
-
-    Private Sub txtPrimarySearch_TextChanged(sender As Object, e As EventArgs) Handles txtPrimarySearch.TextChanged
-
-    End Sub
-
-    Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
-
-    End Sub
-
-    Private Sub txtThirdSearch_TextChanged(sender As Object, e As EventArgs) Handles txtThirdSearch.TextChanged
-
-    End Sub
-
-    Private Sub txtDelete_TextChanged(sender As Object, e As EventArgs) Handles txtDelete.TextChanged
-
-    End Sub
 End Class

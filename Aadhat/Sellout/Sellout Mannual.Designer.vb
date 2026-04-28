@@ -92,7 +92,6 @@ Partial Class Sellout_Mannual
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.BtnDelete = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Cbper = New System.Windows.Forms.ComboBox()
         Me.txtAccount = New System.Windows.Forms.TextBox()
         Me.DgAccountSearch = New System.Windows.Forms.DataGridView()
@@ -164,6 +163,7 @@ Partial Class Sellout_Mannual
         Me.lblAddWeight = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.txtPlusMinus = New System.Windows.Forms.TextBox()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -870,18 +870,6 @@ Partial Class Sellout_Mannual
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPrint.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(12, 112)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(95, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Cbper
         '
@@ -1902,11 +1890,21 @@ Partial Class Sellout_Mannual
         Me.txtPlusMinus.TabStop = False
         Me.txtPlusMinus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(12, 112)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(95, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Sellout_Mannual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.lblAddWeight)
         Me.Controls.Add(Me.pnlAddWeight)
@@ -1941,7 +1939,6 @@ Partial Class Sellout_Mannual
         Me.Controls.Add(Me.dgCharges)
         Me.Controls.Add(Me.dgItemSearch)
         Me.Controls.Add(Me.txtAccount)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.BtnDelete)
         Me.Controls.Add(Me.BtnSave)
@@ -2056,7 +2053,6 @@ Partial Class Sellout_Mannual
     Friend WithEvents BtnSave As System.Windows.Forms.Button
     Friend WithEvents BtnDelete As System.Windows.Forms.Button
     Friend WithEvents btnPrint As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Cbper As System.Windows.Forms.ComboBox
     Friend WithEvents txtid As System.Windows.Forms.TextBox
     Friend WithEvents tmpgrid As System.Windows.Forms.DataGridView
@@ -2135,4 +2131,5 @@ Partial Class Sellout_Mannual
     Friend WithEvents lblAddWeight As System.Windows.Forms.Label
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents txtPlusMinus As System.Windows.Forms.TextBox
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

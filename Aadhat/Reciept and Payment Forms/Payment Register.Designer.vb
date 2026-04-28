@@ -29,8 +29,6 @@ Partial Class Payment_Register
         Me.btnClose = New System.Windows.Forms.Button()
         Me.lblName = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.TxtGrandTotal = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -60,6 +58,8 @@ Partial Class Payment_Register
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtRectNo = New System.Windows.Forms.TextBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlDeleteBills.SuspendLayout()
@@ -89,7 +89,7 @@ Partial Class Payment_Register
         Me.lblName.Location = New System.Drawing.Point(409, 9)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(385, 48)
-        Me.lblName.TabIndex = 0
+        Me.lblName.TabIndex = 15
         Me.lblName.Text = "PAYMENT REGISTER"
         '
         'btnShow
@@ -104,35 +104,11 @@ Partial Class Payment_Register
         Me.btnShow.Location = New System.Drawing.Point(417, 91)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(100, 27)
-        Me.btnShow.TabIndex = 116
+        Me.btnShow.TabIndex = 9
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(314, 91)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(86, 26)
-        Me.MsktoDate.TabIndex = 115
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(112, 91)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(86, 26)
-        Me.mskFromDate.TabIndex = 114
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'dg1
         '
@@ -174,7 +150,7 @@ Partial Class Payment_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 486)
-        Me.dg1.TabIndex = 113
+        Me.dg1.TabIndex = 7
         '
         'TxtGrandTotal
         '
@@ -269,7 +245,7 @@ Partial Class Payment_Register
         Me.btnPrint.Location = New System.Drawing.Point(517, 91)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(100, 27)
-        Me.btnPrint.TabIndex = 40066
+        Me.btnPrint.TabIndex = 3
         Me.btnPrint.TabStop = False
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -306,7 +282,7 @@ Partial Class Payment_Register
         Me.Label8.Location = New System.Drawing.Point(935, 67)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(62, 19)
-        Me.Label8.TabIndex = 40079
+        Me.Label8.TabIndex = 14
         Me.Label8.Text = "Discount"
         '
         'Label7
@@ -317,7 +293,7 @@ Partial Class Payment_Register
         Me.Label7.Location = New System.Drawing.Point(809, 67)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(57, 19)
-        Me.Label7.TabIndex = 40078
+        Me.Label7.TabIndex = 13
         Me.Label7.Text = "Amount"
         '
         'Label6
@@ -328,7 +304,7 @@ Partial Class Payment_Register
         Me.Label6.Location = New System.Drawing.Point(614, 67)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(101, 19)
-        Me.Label6.TabIndex = 40077
+        Me.Label6.TabIndex = 12
         Me.Label6.Text = "Account Name"
         '
         'txtDiscSearch
@@ -340,7 +316,7 @@ Partial Class Payment_Register
         Me.txtDiscSearch.Location = New System.Drawing.Point(931, 91)
         Me.txtDiscSearch.Name = "txtDiscSearch"
         Me.txtDiscSearch.Size = New System.Drawing.Size(128, 26)
-        Me.txtDiscSearch.TabIndex = 40076
+        Me.txtDiscSearch.TabIndex = 6
         Me.txtDiscSearch.TabStop = False
         '
         'txtNetSearch
@@ -352,7 +328,7 @@ Partial Class Payment_Register
         Me.txtNetSearch.Location = New System.Drawing.Point(812, 91)
         Me.txtNetSearch.Name = "txtNetSearch"
         Me.txtNetSearch.Size = New System.Drawing.Size(120, 26)
-        Me.txtNetSearch.TabIndex = 40075
+        Me.txtNetSearch.TabIndex = 5
         Me.txtNetSearch.TabStop = False
         '
         'txtCustomerSearch
@@ -364,7 +340,7 @@ Partial Class Payment_Register
         Me.txtCustomerSearch.Location = New System.Drawing.Point(617, 91)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(196, 26)
-        Me.txtCustomerSearch.TabIndex = 40074
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         '
         'Label2
@@ -375,7 +351,7 @@ Partial Class Payment_Register
         Me.Label2.Location = New System.Drawing.Point(12, 91)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(100, 27)
-        Me.Label2.TabIndex = 40083
+        Me.Label2.TabIndex = 11
         Me.Label2.Text = "From Date :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -407,7 +383,7 @@ Partial Class Payment_Register
         Me.dtp1.Location = New System.Drawing.Point(113, 91)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(102, 26)
-        Me.dtp1.TabIndex = 91139
+        Me.dtp1.TabIndex = 10
         '
         'dtp2
         '
@@ -444,7 +420,7 @@ Partial Class Payment_Register
         Me.PnlDeleteBills.Location = New System.Drawing.Point(371, 223)
         Me.PnlDeleteBills.Name = "PnlDeleteBills"
         Me.PnlDeleteBills.Size = New System.Drawing.Size(457, 210)
-        Me.PnlDeleteBills.TabIndex = 91147
+        Me.PnlDeleteBills.TabIndex = 8
         Me.PnlDeleteBills.Visible = False
         '
         'Label10
@@ -522,11 +498,31 @@ Partial Class Payment_Register
         Me.txtRectNo.TabStop = False
         Me.txtRectNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(307, 91)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(108, 91)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(92, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Payment_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtRectNo)
         Me.Controls.Add(Me.Button1)
@@ -553,8 +549,6 @@ Partial Class Payment_Register
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.KeyPreview = True
@@ -572,8 +566,6 @@ Partial Class Payment_Register
     End Sub
     Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents TxtGrandTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -604,4 +596,6 @@ Partial Class Payment_Register
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtRectNo As System.Windows.Forms.TextBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

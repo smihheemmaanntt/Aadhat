@@ -23,15 +23,15 @@ Partial Class Bank_Entry
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Bank_Entry))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblChequeNo = New System.Windows.Forms.Label()
         Me.lblChequeDate = New System.Windows.Forms.Label()
         Me.TxtChequeNo = New System.Windows.Forms.MaskedTextBox()
@@ -43,7 +43,6 @@ Partial Class Bank_Entry
         Me.txtRemark = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.MskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -58,7 +57,6 @@ Partial Class Bank_Entry
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.mskChequeDate = New System.Windows.Forms.MaskedTextBox()
         Me.dgMode = New System.Windows.Forms.DataGridView()
         Me.txtMode = New System.Windows.Forms.TextBox()
         Me.DgAccountSearch = New System.Windows.Forms.DataGridView()
@@ -80,6 +78,8 @@ Partial Class Bank_Entry
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.lblCapAcBal = New System.Windows.Forms.Label()
         Me.lblAcBal = New System.Windows.Forms.Label()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
+        Me.txtChequeDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgMode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -213,18 +213,6 @@ Partial Class Bank_Entry
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "Date :"
         '
-        'MskEntryDate
-        '
-        Me.MskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.MskEntryDate.Location = New System.Drawing.Point(72, 106)
-        Me.MskEntryDate.Mask = "00-00-0000"
-        Me.MskEntryDate.Name = "MskEntryDate"
-        Me.MskEntryDate.Size = New System.Drawing.Size(86, 26)
-        Me.MskEntryDate.TabIndex = 1
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -265,6 +253,7 @@ Partial Class Bank_Entry
         'txtAccountID
         '
         Me.txtAccountID.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtAccountID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAccountID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtAccountID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAccountID.ForeColor = System.Drawing.Color.Teal
@@ -279,6 +268,7 @@ Partial Class Bank_Entry
         'txtModeID
         '
         Me.txtModeID.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtModeID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtModeID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtModeID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtModeID.ForeColor = System.Drawing.Color.Teal
@@ -309,24 +299,24 @@ Partial Class Bank_Entry
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle11
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
         Me.dg1.Location = New System.Drawing.Point(12, 280)
@@ -336,8 +326,8 @@ Partial Class Bank_Entry
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 42
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 336)
@@ -427,18 +417,6 @@ Partial Class Bank_Entry
         Me.Label26.TabIndex = 30
         Me.Label26.Text = "Total"
         '
-        'mskChequeDate
-        '
-        Me.mskChequeDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskChequeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskChequeDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskChequeDate.ForeColor = System.Drawing.Color.Black
-        Me.mskChequeDate.Location = New System.Drawing.Point(457, 241)
-        Me.mskChequeDate.Mask = "00-00-0000"
-        Me.mskChequeDate.Name = "mskChequeDate"
-        Me.mskChequeDate.Size = New System.Drawing.Size(99, 26)
-        Me.mskChequeDate.TabIndex = 11
-        '
         'dgMode
         '
         Me.dgMode.AllowUserToAddRows = False
@@ -446,24 +424,24 @@ Partial Class Bank_Entry
         Me.dgMode.AllowUserToResizeRows = False
         Me.dgMode.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dgMode.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgMode.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgMode.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.dgMode.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgMode.ColumnHeadersVisible = False
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgMode.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgMode.DefaultCellStyle = DataGridViewCellStyle14
         Me.dgMode.EnableHeadersVisualStyles = False
         Me.dgMode.GridColor = System.Drawing.Color.Gray
         Me.dgMode.Location = New System.Drawing.Point(388, 132)
@@ -471,8 +449,8 @@ Partial Class Bank_Entry
         Me.dgMode.Name = "dgMode"
         Me.dgMode.ReadOnly = True
         Me.dgMode.RowHeadersVisible = False
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        Me.dgMode.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
+        Me.dgMode.RowsDefaultCellStyle = DataGridViewCellStyle15
         Me.dgMode.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.dgMode.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgMode.Size = New System.Drawing.Size(369, 135)
@@ -498,24 +476,24 @@ Partial Class Bank_Entry
         Me.DgAccountSearch.AllowUserToResizeRows = False
         Me.DgAccountSearch.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.DgAccountSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgAccountSearch.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgAccountSearch.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.DgAccountSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgAccountSearch.ColumnHeadersVisible = False
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgAccountSearch.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgAccountSearch.DefaultCellStyle = DataGridViewCellStyle17
         Me.DgAccountSearch.EnableHeadersVisualStyles = False
         Me.DgAccountSearch.GridColor = System.Drawing.Color.Gray
         Me.DgAccountSearch.Location = New System.Drawing.Point(388, 173)
@@ -523,8 +501,8 @@ Partial Class Bank_Entry
         Me.DgAccountSearch.Name = "DgAccountSearch"
         Me.DgAccountSearch.ReadOnly = True
         Me.DgAccountSearch.RowHeadersVisible = False
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
-        Me.DgAccountSearch.RowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
+        Me.DgAccountSearch.RowsDefaultCellStyle = DataGridViewCellStyle18
         Me.DgAccountSearch.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.DgAccountSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgAccountSearch.Size = New System.Drawing.Size(559, 202)
@@ -732,11 +710,31 @@ Partial Class Bank_Entry
         Me.lblAcBal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.lblAcBal.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(72, 106)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(86, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
+        'txtChequeDate
+        '
+        Me.txtChequeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtChequeDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtChequeDate.Location = New System.Drawing.Point(456, 241)
+        Me.txtChequeDate.Name = "txtChequeDate"
+        Me.txtChequeDate.Size = New System.Drawing.Size(86, 26)
+        Me.txtChequeDate.TabIndex = 11
+        '
         'Bank_Entry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtChequeDate)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.lblAcBal)
         Me.Controls.Add(Me.lblCapAcBal)
         Me.Controls.Add(Me.BtnDelete)
@@ -760,7 +758,6 @@ Partial Class Bank_Entry
         Me.Controls.Add(Me.txtBillNo)
         Me.Controls.Add(Me.txtAccount)
         Me.Controls.Add(Me.txtMode)
-        Me.Controls.Add(Me.mskChequeDate)
         Me.Controls.Add(Me.Label24)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.txtTotal)
@@ -780,7 +777,6 @@ Partial Class Bank_Entry
         Me.Controls.Add(Me.txtRemark)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.MskEntryDate)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.dgMode)
         Me.Controls.Add(Me.DgAccountSearch)
@@ -808,7 +804,6 @@ Partial Class Bank_Entry
     Friend WithEvents txtRemark As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents MskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
@@ -819,7 +814,6 @@ Partial Class Bank_Entry
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
-    Friend WithEvents mskChequeDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
     Friend WithEvents dgMode As System.Windows.Forms.DataGridView
     Friend WithEvents txtMode As System.Windows.Forms.TextBox
@@ -845,4 +839,6 @@ Partial Class Bank_Entry
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblCapAcBal As System.Windows.Forms.Label
     Friend WithEvents lblAcBal As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtChequeDate As System.Windows.Forms.TextBox
 End Class

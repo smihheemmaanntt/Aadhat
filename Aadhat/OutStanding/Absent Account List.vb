@@ -168,7 +168,7 @@ Public Class Absent_Account_List
             Ledger.Show()
             Ledger.cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(0).Value)
             Ledger.BringToFront()
-            Ledger.mskFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+            Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
             Ledger.btnShow.PerformClick()
             e.SuppressKeyPress = True
         End If
@@ -180,7 +180,7 @@ Public Class Absent_Account_List
         Ledger.Show()
         Ledger.cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(0).Value)
         Ledger.BringToFront()
-        Ledger.mskFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+        Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
         Ledger.btnShow.PerformClick()
     End Sub
 

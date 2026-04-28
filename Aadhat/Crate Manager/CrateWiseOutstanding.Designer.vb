@@ -49,6 +49,10 @@ Partial Class CrateWiseOutstanding
         Me.PrintingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtArea = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtTotalIn = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtTotalOut = New System.Windows.Forms.TextBox()
         Me.pnlWait.SuspendLayout()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -131,7 +135,7 @@ Partial Class CrateWiseOutstanding
         Me.lblRecordCount.AutoSize = True
         Me.lblRecordCount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecordCount.ForeColor = System.Drawing.Color.Red
-        Me.lblRecordCount.Location = New System.Drawing.Point(17, 624)
+        Me.lblRecordCount.Location = New System.Drawing.Point(359, 596)
         Me.lblRecordCount.Name = "lblRecordCount"
         Me.lblRecordCount.Size = New System.Drawing.Size(17, 19)
         Me.lblRecordCount.TabIndex = 91264
@@ -260,7 +264,7 @@ Partial Class CrateWiseOutstanding
         Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1172, 483)
+        Me.dg1.Size = New System.Drawing.Size(1172, 449)
         Me.dg1.TabIndex = 91255
         '
         'PictureBox4
@@ -315,7 +319,7 @@ Partial Class CrateWiseOutstanding
         Me.Label4.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label4.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label4.Location = New System.Drawing.Point(852, 619)
+        Me.Label4.Location = New System.Drawing.Point(11, 586)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(68, 29)
         Me.Label4.TabIndex = 91274
@@ -328,18 +332,74 @@ Partial Class CrateWiseOutstanding
         Me.txtArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtArea.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.txtArea.ForeColor = System.Drawing.Color.Teal
-        Me.txtArea.Location = New System.Drawing.Point(920, 619)
+        Me.txtArea.Location = New System.Drawing.Point(79, 586)
         Me.txtArea.Name = "txtArea"
         Me.txtArea.Size = New System.Drawing.Size(263, 29)
         Me.txtArea.TabIndex = 91273
         Me.txtArea.TabStop = False
         Me.txtArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.DarkCyan
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.Label5.ForeColor = System.Drawing.Color.GhostWhite
+        Me.Label5.Location = New System.Drawing.Point(740, 585)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(91, 29)
+        Me.Label5.TabIndex = 91276
+        Me.Label5.Text = "Total In:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtTotalIn
+        '
+        Me.txtTotalIn.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtTotalIn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTotalIn.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtTotalIn.ForeColor = System.Drawing.Color.Red
+        Me.txtTotalIn.Location = New System.Drawing.Point(831, 585)
+        Me.txtTotalIn.Name = "txtTotalIn"
+        Me.txtTotalIn.ReadOnly = True
+        Me.txtTotalIn.Size = New System.Drawing.Size(127, 29)
+        Me.txtTotalIn.TabIndex = 91275
+        Me.txtTotalIn.TabStop = False
+        Me.txtTotalIn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label8
+        '
+        Me.Label8.BackColor = System.Drawing.Color.DarkCyan
+        Me.Label8.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.Label8.ForeColor = System.Drawing.Color.GhostWhite
+        Me.Label8.Location = New System.Drawing.Point(958, 585)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(98, 29)
+        Me.Label8.TabIndex = 91278
+        Me.Label8.Text = "Total Out :"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtTotalOut
+        '
+        Me.txtTotalOut.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtTotalOut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTotalOut.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtTotalOut.ForeColor = System.Drawing.Color.Red
+        Me.txtTotalOut.Location = New System.Drawing.Point(1056, 585)
+        Me.txtTotalOut.Name = "txtTotalOut"
+        Me.txtTotalOut.ReadOnly = True
+        Me.txtTotalOut.Size = New System.Drawing.Size(127, 29)
+        Me.txtTotalOut.TabIndex = 91277
+        Me.txtTotalOut.TabStop = False
+        Me.txtTotalOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'CrateWiseOutstanding
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtTotalOut)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtTotalIn)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtArea)
@@ -392,4 +452,8 @@ Partial Class CrateWiseOutstanding
     Friend WithEvents Transaction As Aadhat.Transaction
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtArea As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtTotalIn As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtTotalOut As System.Windows.Forms.TextBox
 End Class
