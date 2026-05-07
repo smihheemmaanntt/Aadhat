@@ -49,7 +49,6 @@ Partial Class Group_Payment
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.txtAccountID = New System.Windows.Forms.TextBox()
         Me.txtModeID = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
@@ -68,6 +67,7 @@ Partial Class Group_Payment
         Me.Button1 = New System.Windows.Forms.Button()
         Me.txtNaration = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgMode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -320,18 +320,6 @@ Partial Class Group_Payment
         Me.Label1.Size = New System.Drawing.Size(38, 19)
         Me.Label1.TabIndex = 40133
         Me.Label1.Text = "Date"
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(12, 57)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(88, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'txtAccountID
         '
@@ -590,12 +578,22 @@ Partial Class Group_Payment
         Me.Label6.TabIndex = 91254
         Me.Label6.Text = "Long Narration :"
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(12, 57)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(86, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Group_Payment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtNaration)
         Me.Controls.Add(Me.dgMode)
@@ -625,7 +623,6 @@ Partial Class Group_Payment
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.Button1)
@@ -658,7 +655,6 @@ Partial Class Group_Payment
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txtAccountID As System.Windows.Forms.TextBox
     Friend WithEvents txtModeID As System.Windows.Forms.TextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
@@ -677,4 +673,5 @@ Partial Class Group_Payment
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents txtNaration As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

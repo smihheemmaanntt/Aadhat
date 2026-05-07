@@ -37,13 +37,13 @@ Partial Class Trading_AccountNew
         Me.txtcrAmt = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.DgLibilities = New System.Windows.Forms.DataGridView()
         Me.dgAssests = New System.Windows.Forms.DataGridView()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgLibilities, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,7 +102,7 @@ Partial Class Trading_AccountNew
         Me.BtnPrint.Location = New System.Drawing.Point(316, 129)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(92, 26)
-        Me.BtnPrint.TabIndex = 40070
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -120,20 +120,10 @@ Partial Class Trading_AccountNew
         Me.btnShow.Location = New System.Drawing.Point(226, 129)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(90, 26)
-        Me.btnShow.TabIndex = 40069
+        Me.btnShow.TabIndex = 1
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(112, 129)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskEntryDate.TabIndex = 40067
         '
         'dg1
         '
@@ -189,9 +179,9 @@ Partial Class Trading_AccountNew
         Me.Label3.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(12, 128)
+        Me.Label3.Location = New System.Drawing.Point(12, 129)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(101, 27)
+        Me.Label3.Size = New System.Drawing.Size(101, 26)
         Me.Label3.TabIndex = 91121
         Me.Label3.Text = "On Date :"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -280,11 +270,21 @@ Partial Class Trading_AccountNew
         Me.dgAssests.TabIndex = 91273
         Me.dgAssests.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(113, 129)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Trading_AccountNew
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.dgAssests)
         Me.Controls.Add(Me.DgLibilities)
         Me.Controls.Add(Me.Label3)
@@ -294,7 +294,6 @@ Partial Class Trading_AccountNew
         Me.Controls.Add(Me.txtcrAmt)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Trading_AccountNew"
@@ -311,7 +310,6 @@ Partial Class Trading_AccountNew
     Friend WithEvents txtcrAmt As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -319,4 +317,5 @@ Partial Class Trading_AccountNew
     Friend WithEvents DgLibilities As System.Windows.Forms.DataGridView
     Friend WithEvents dgAssests As System.Windows.Forms.DataGridView
     Public WithEvents dg1 As System.Windows.Forms.DataGridView
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

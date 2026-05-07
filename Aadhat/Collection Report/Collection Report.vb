@@ -3,32 +3,32 @@
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
         End If
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub Collection_Report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) From Transaction2")
         maxdate = clsFun.ExecScalarStr("Select Max(EntryDate) From Transaction2 ")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txttoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
-        me.Top = 0 : Me.Left = 0
+        Me.Top = 0 : Me.Left = 0
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
@@ -76,29 +76,29 @@
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim Sql As String = String.Empty
-        'Sql = "Select ID,Accountname,OtherName,(Select ifnull(Sum(Amount),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as SaleAmount, " & _
-        '    " (Select ifnull(Sum(Roundoff),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as Roff," & _
-        '    " (Select ifnull(Sum(Charges),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as Charges, " & _
-        '    " (Select ifnull(Sum(BasicAmount),0) From Vouchers where Transtype='Receipt' and accountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as Receipts,  Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-        '    " Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
-        '    " and DC='C' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
-        '    " and DC='C' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) " & _
-        '    " as  Restbal,   Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')  " & _
-        '    " -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID   and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))   else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') " & _
-        '    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)   as  Opbal from Accounts Where  SaleAmount<>0  Order by upper(AccountName) ;"
-        Sql = "Select ID,Accountname,OtherName,(Select ifnull(Sum(Amount),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as SaleAmount, " & _
-            " (Select ifnull(Sum(Roundoff),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as Roff," & _
-            " (Select ifnull(Sum(Charges),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as Charges, " & _
-            " ((Select ifnull(Sum(Amount),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') + " & _
-            "  (Select ifnull(Sum(Roundoff),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') + " & _
-            "  (Select ifnull(Sum(Charges),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) as TotalAmount, " & _
-            " (Select ifnull(Sum(BasicAmount),0) From Vouchers where Transtype='Receipt' and accountID=Accounts.ID and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') as Receipts,  Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-            " Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
-            " and DC='C' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
-            " and DC='C' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) " & _
-            " as  Restbal,   Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')  " & _
-            " -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID   and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))   else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') " & _
-            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)   as  Opbal from Accounts Where  SaleAmount<>0  Order by upper(AccountName) ;"
+        'Sql = "Select ID,Accountname,OtherName,(Select ifnull(Sum(Amount),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as SaleAmount, " & _
+        '    " (Select ifnull(Sum(Roundoff),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as Roff," & _
+        '    " (Select ifnull(Sum(Charges),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as Charges, " & _
+        '    " (Select ifnull(Sum(BasicAmount),0) From Vouchers where Transtype='Receipt' and accountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as Receipts,  Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+        '    " Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
+        '    " and DC='C' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
+        '    " and DC='C' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) " & _
+        '    " as  Restbal,   Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')  " & _
+        '    " -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID   and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))   else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') " & _
+        '    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)   as  Opbal from Accounts Where  SaleAmount<>0  Order by upper(AccountName) ;"
+        Sql = "Select ID,Accountname,OtherName,(Select ifnull(Sum(Amount),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as SaleAmount, " & _
+            " (Select ifnull(Sum(Roundoff),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as Roff," & _
+            " (Select ifnull(Sum(Charges),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as Charges, " & _
+            " ((Select ifnull(Sum(Amount),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') + " & _
+            "  (Select ifnull(Sum(Roundoff),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') + " & _
+            "  (Select ifnull(Sum(Charges),0) From Transaction2 Where Transtype not IN ('On Sale') and AccountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')) as TotalAmount, " & _
+            " (Select ifnull(Sum(BasicAmount),0) From Vouchers where Transtype='Receipt' and accountID=Accounts.ID and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') as Receipts,  Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+            " Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
+            " and DC='C' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID " & _
+            " and DC='C' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) " & _
+            " as  Restbal,   Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')  " & _
+            " -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID   and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))   else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') " & _
+            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)   as  Opbal from Accounts Where  SaleAmount<>0  Order by upper(AccountName) ;"
         dt = clsFun.ExecDataTable(Sql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -114,13 +114,13 @@
                     .Cells(7).Value = IIf(Val(dt.Rows(i)("RestBal").ToString()) > 0, Format(Math.Abs(Val(dt.Rows(i)("RestBal").ToString())), "0.00") & " Dr", Format(Math.Abs(Val(dt.Rows(i)("RestBal").ToString())), "0.00") & " Cr")
                     .Cells(8).Value = IIf(crateopbal <= 0, IIf(Math.Abs(crateopbal) = 0, "", "(" & Math.Abs(crateopbal) & ")"), Math.Abs(crateopbal))
                     .Cells(9).Value = dt.Rows(i)("OtherName").ToString()
-                    .Cells(10).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(CommAmt),0) as Commamt FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(11).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(MAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(12).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(RdfAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(13).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(TareAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(14).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(LabourAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(15).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Nug),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(16).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Weight),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(10).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(CommAmt),0) as Commamt FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(11).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(MAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(12).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(RdfAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(13).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(TareAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(14).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(LabourAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(15).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Nug),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(16).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Weight),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
                 End With
             Next
         End If
@@ -138,11 +138,11 @@
         If ckCashEntry.Checked = True Then
             ssql = "Select t2.EntryDate as entrydate, Ac.AccountName as AccountName,ac.id as id ,Sum(t2.Amount) as Sales,Sum(t2.Charges) as Charges from Account_acgrp ac " & _
         "inner join Transaction2 t2 on ac.id=t2.accountid left join vouchers v on v.id =t2.voucherid where (ac.groupid in (16,11) or ac.undergroupid in (16,11))  " & _
-        "and  t2.EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' group by Ac.AccountName order by ac.accountname "
+        "and  t2.EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' group by Ac.AccountName order by ac.accountname "
         Else
             ssql = "Select t2.EntryDate as entrydate, Ac.AccountName as AccountName,ac.id as id ,Sum(t2.Amount) as Sales,Sum(t2.Charges) as Charges from Account_acgrp ac " & _
        "inner join Transaction2 t2 on ac.id=t2.accountid left join vouchers v on v.id =t2.voucherid where (ac.groupid in (16) or ac.undergroupid in (16))  " & _
-       "and  t2.EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' group by Ac.AccountName order by ac.accountname "
+       "and  t2.EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' group by Ac.AccountName order by ac.accountname "
         End If
 
         dt = clsFun.ExecDataTable(ssql)
@@ -151,14 +151,14 @@
                 pnlWait.Visible = True
                 Application.DoEvents()
                 pb1.Minimum = 0 : pb1.Maximum = dt.Rows.Count : pb1.Value = i
-                Dim Receipts As String = clsFun.ExecScalarStr("Select sum(BasicAmount) from Vouchers where Transtype='Receipt' and accountID=" & Val(dt.Rows(i)("Id")) & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")
-                Sql = "Select ID,Accountname,Area,DC,OtherName,Mobile1, Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" &
-                 "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) " &
-                 " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" &
-                 " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal,  " &
-                 " Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger  Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')  " &
-                 " -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID   and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID" &
-                 " and DC='C' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')) " &
+                Dim Receipts As String = clsFun.ExecScalarStr("Select sum(BasicAmount) from Vouchers where Transtype='Receipt' and accountID=" & Val(dt.Rows(i)("Id")) & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")
+                Sql = "Select ID,Accountname,Area,DC,OtherName,Mobile1, Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" &
+                 "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')) " &
+                 " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" &
+                 " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal,  " &
+                 " Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger  Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')  " &
+                 " -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID   and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID" &
+                 " and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')) " &
                  " end),2) as  Opbal from Accounts Where RestBal<>0  and ID= " & Val(dt.Rows(i)("Id")) & " Order by upper(AccountName) ;"
                 Dim dt1 As DataTable = clsFun.ExecDataTable(Sql)
 
@@ -184,24 +184,24 @@
                     .Cells(7).Value = IIf(Val(dt1.Rows(0)("RestBal").ToString()) > 0, Format(Math.Abs(Val(dt1.Rows(0)("RestBal").ToString())), "0.00") & " Dr", Format(Math.Abs(Val(dt1.Rows(0)("RestBal").ToString())), "0.00") & " Cr") 'IIf(Math.Abs(Val(tot)) >= 0, Format(Math.Abs(Val(tot)), "0.00") & " Dr", Format(Math.Abs(Val(tot)), "0.00") & " Cr")
                     .Cells(8).Value = crate
                     .Cells(9).Value = clsFun.ExecScalarStr(" Select OtherName FROM Accounts  WHERE ID = " & dt.Rows(i)("Id").ToString() & "")
-                    .Cells(10).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(CommAmt),0) as Commamt FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(11).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(MAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(12).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(RdfAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(13).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(TareAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(14).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(LabourAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(15).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Nug),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
-                    .Cells(16).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Weight),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(10).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(CommAmt),0) as Commamt FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(11).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(MAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(12).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(RdfAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(13).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(TareAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(14).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(LabourAmt),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(15).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Nug),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
+                    .Cells(16).Value = Format(Val(clsFun.ExecScalarDec(" Select ifnull(sum(Weight),0) FROM Transaction2  WHERE AccountID = " & dt.Rows(i)("Id").ToString() & " and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'")), "0.00")
                 End With
             Next i
         End If
         pnlWait.Visible = False
         calc() : dg1.ClearSelection()
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs)
+        txtFromDate.SelectionStart = 0 : txtFromDate.SelectionLength = Len(txtFromDate.Text)
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs)
+        txttoDate.SelectionStart = 0 : txttoDate.SelectionLength = Len(txttoDate.Text)
     End Sub
 
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
@@ -234,7 +234,7 @@
             FastQuery = String.Empty : TotalRecord = (AllRecord - LastRecord)
             For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
                 With dg1.Rows(LastRecord)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDate.Text & "','" & MsktoDate.Text & "'," &
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtFromDate.Text & "','" & txttoDate.Text & "'," &
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "', " &
                     "'" & .Cells(4).Value & "','" & .Cells(5).Value & "','" & .Cells(6).Value & "'," &
                       "'" & .Cells(7).Value & "','" & .Cells(8).Value & "','" & txttotalSale.Text & "', " &
@@ -278,20 +278,20 @@
         End If
     End Sub
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = smartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 End Class

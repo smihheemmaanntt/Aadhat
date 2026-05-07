@@ -63,7 +63,6 @@ Partial Class Crate_Out
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtSlipNo = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.DgAccountSearch = New System.Windows.Forms.DataGridView()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
@@ -93,6 +92,7 @@ Partial Class Crate_Out
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.tmpgrid = New System.Windows.Forms.DataGridView()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dgCrate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -496,18 +496,6 @@ Partial Class Crate_Out
         Me.Label25.Size = New System.Drawing.Size(60, 19)
         Me.Label25.TabIndex = 40269
         Me.Label25.Text = "Slip No."
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(12, 126)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskEntryDate.TabIndex = 40257
         '
         'Label42
         '
@@ -938,11 +926,21 @@ Partial Class Crate_Out
         Me.tmpgrid.TabIndex = 91272
         Me.tmpgrid.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(12, 126)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(97, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Crate_Out
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.tmpgrid)
         Me.Controls.Add(Me.pnlWhatsapp)
         Me.Controls.Add(Me.Button5)
@@ -981,7 +979,6 @@ Partial Class Crate_Out
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtSlipNo)
         Me.Controls.Add(Me.Label25)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.ckCash)
         Me.Controls.Add(Me.dtp1)
@@ -1029,7 +1026,6 @@ Partial Class Crate_Out
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtSlipNo As System.Windows.Forms.TextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
     Friend WithEvents DgAccountSearch As System.Windows.Forms.DataGridView
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
@@ -1059,4 +1055,5 @@ Partial Class Crate_Out
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents tmpgrid As System.Windows.Forms.DataGridView
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

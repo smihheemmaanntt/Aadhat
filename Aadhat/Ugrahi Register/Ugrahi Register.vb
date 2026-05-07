@@ -1,8 +1,8 @@
 ﻿Public Class Ugrahi_Report
     Dim Date1 As String
     Dim Coldate As String
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtfromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text, True, 2)
     End Sub
 
     Private Sub Ugrahi_Report_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -11,18 +11,18 @@
     Private Sub Ugrahi_Report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) From Transaction2")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtfromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtfromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         Me.Top = 0 : Me.Left = 0
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         CbDays.SelectedIndex = 2
-        rowColums(0, CDate(mskFromDate.Text))
+        rowColums(0, CDate(txtfromDate.Text))
     End Sub
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, btnShow.KeyDown, CbDays.KeyDown
+    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, btnShow.KeyDown, CbDays.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -39,12 +39,12 @@
         Dim i As Integer
         Dim count As Integer = 0
         Dim bal As Decimal = 0
-        Dim tmpdt As Date = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
+        Dim tmpdt As Date = CDate(txtfromDate.Text).ToString("yyyy-MM-dd")
         Date1 = CDate(tmpdt.AddDays(-Val(CbDays.Text))).ToString("yyyy-MM-dd")
         rowColums(Val(CbDays.Text), Date1)
         Dim lastval As Integer = 0
         '''''''''''''''''''''''''''''''''''''''''''''''''
-        ' ssql = "Select  AccountID as ID From Transaction2 Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' group by AccountID order by accountname "
+        ' ssql = "Select  AccountID as ID From Transaction2 Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "' group by AccountID order by accountname "
         ssql = "Select ID,Accountname,Area,Opbal,DC,OtherName,Mobile1, " &
     "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(Date1).ToString("yyyy-MM-dd") & "')" &
     "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(Date1).ToString("yyyy-MM-dd") & "')) " &
@@ -52,7 +52,7 @@
     " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(Date1).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where GroupID in(16,32)  Order by Upper(Area),upper(AccountName)  ;"
         'ssql = "Select  ac.id as id ,ac.id as id from Account_acgrp ac " & _
         '            "inner join Transaction2 t2 on ac.id=t2.accountid left join vouchers v on v.id =t2.voucherid where (ac.groupid =16 or ac.undergroupid=16)  " & _
-        '            "and  t2.EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' group by Ac.AccountName order by ac.accountname "
+        '            "and  t2.EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "' group by Ac.AccountName order by ac.accountname "
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -67,7 +67,7 @@
                     opbal = Format(Math.Abs(Val(dt.Rows(i)("Restbal").ToString())), "0.00") & " Cr"
                 End If
 
-                ssql = "Select strftime('%d-%m', EntryDate) as EntryDate1,AccountID as ID, AccountName, sum(Amount) as Sales From Ledger Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and id =" & dt.Rows(i)("Id") & " and DC='D' Group by Entrydate1 "
+                ssql = "Select strftime('%d-%m', EntryDate) as EntryDate1,AccountID as ID, AccountName, sum(Amount) as Sales From Ledger Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "' and id =" & dt.Rows(i)("Id") & " and DC='D' Group by Entrydate1 "
                 Dim dt1 As New DataTable
                 dt1 = clsFun.ExecDataTable(ssql)
                 If dt1.Rows.Count > 0 Then
@@ -95,8 +95,8 @@
                                 Else
                                     totalsales = totalsales - Val(opbal.ToString.Split(" ")(0))
                                 End If
-                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
-                                .Cells(4).Value = totrecpt.ToString() '' clsFun.ExecScalarStr("Select  Amount FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                .Cells(4).Value = totrecpt.ToString() '' clsFun.ExecScalarStr("Select  Amount FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate='" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
                                 '.Cells(5).Value = .Cells(3).Value
 
                                 totalsales = totalsales - Val(totrecpt)
@@ -138,8 +138,8 @@
                                     totalsales = totalsales - bal
                                 End If
                                 '  Dim totrecpt As String = ""
-                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
-                                .Cells(colno).Value = IIf(totrecpt = "", "", Format(Val(totrecpt.ToString()), "0.00")) '' clsFun.ExecScalarStr("Select  Amount FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                .Cells(colno).Value = IIf(totrecpt = "", "", Format(Val(totrecpt.ToString()), "0.00")) '' clsFun.ExecScalarStr("Select  Amount FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate='" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
                                 .Cells(colno).Style.Alignment = DataGridViewContentAlignment.MiddleRight
                                 colno = colno + 1
                                 totalsales = totalsales - Val(totrecpt)
@@ -162,19 +162,19 @@
     End Sub
 
 
-    
+
     Private Sub retrive()
         pnlWait.Visible = True : Label1.Visible = True
         dg1.Rows.Clear() : Dim dt As New DataTable
         Dim i As Integer : Dim count As Integer = 0
-        Dim tmpdt As Date = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
+        Dim tmpdt As Date = CDate(txtfromDate.Text).ToString("yyyy-MM-dd")
         Date1 = CDate(tmpdt.AddDays(-Val(CbDays.Text) + 1)).ToString("yyyy-MM-dd")
         rowColums(Val(CbDays.Text), Date1)
         Dim RowSales As Decimal = 0 : Dim RowReceipt As Decimal = 0
         Dim RowTotal As Decimal = 0 : Dim bal As Decimal = 0
         Dim lastrow As Integer = 0
         '''''''''''''''''''''''''''''''''''''''''''''''''
-        ssql = "Select  AccountID as ID From Transaction2 Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and AccountID<>7 group by AccountID order by accountname "
+        ssql = "Select  AccountID as ID From Transaction2 Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "' and AccountID<>7 group by AccountID order by accountname "
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -191,7 +191,7 @@
                 Else
                     opbal = Format(Math.Abs(Val(opbal)), "0.00") & " Cr"
                 End If
-                ssql = "Select strftime('%d-%m', EntryDate) as EntryDate1,AccountID as ID, AccountName, sum(Amount) as Sales From Ledger Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and id =" & dt.Rows(i)("Id") & " and DC='D' and AccountID<>7 Group by Entrydate1 "
+                ssql = "Select strftime('%d-%m', EntryDate) as EntryDate1,AccountID as ID, AccountName, sum(Amount) as Sales From Ledger Where EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "' and id =" & dt.Rows(i)("Id") & " and DC='D' and AccountID<>7 Group by Entrydate1 "
                 Dim dt1 As New DataTable
                 dt1 = clsFun.ExecDataTable(ssql)
                 If dt1.Rows.Count > 0 Then
@@ -212,7 +212,7 @@
                                 Else
                                     totalsales = totalsales - Val(opbal.ToString.Split(" ")(0))
                                 End If
-                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
                                 .Cells(4).Value = totrecpt.ToString()
                                 totalsales = totalsales - Val(totrecpt)
                                 .Cells(5).Value = IIf(totalsales > 0, totalsales & " Dr", Math.Abs(totalsales) & " Cr")
@@ -234,8 +234,8 @@
                                     totalsales = totalsales - bal
                                 End If
                                 '  Dim totrecpt As String = ""
-                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
-                                .Cells(colno).Value = IIf(totrecpt = "", "", Format(Val(totrecpt.ToString()), "0.00")) '' clsFun.ExecScalarStr("Select  Amount FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate='" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                totrecpt = clsFun.ExecScalarStr("Select  sum(Amount) FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate between '" & CDate(Date1).ToString("yyyy-MM-dd") & "' and '" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
+                                .Cells(colno).Value = IIf(totrecpt = "", "", Format(Val(totrecpt.ToString()), "0.00")) '' clsFun.ExecScalarStr("Select  Amount FROM Ledger where  DC='C' and Accountid=" & dt.Rows(i)("Id") & " and EntryDate='" & CDate(txtfromDate.Text).ToString("yyyy-MM-dd") & "';")
                                 colno = colno + 1
                                 totalsales = totalsales - Val(totrecpt)
                                 .Cells(colno).Value = IIf(totalsales > 0, Format(totalsales, "0.00") & " Dr", Format(Math.Abs(totalsales), "0.00") & " Cr")
@@ -259,10 +259,10 @@
             dg1.Columns(0).Name = "ID" : dg1.Columns(0).Visible = False
             dg1.Columns(1).Name = "Account name" : dg1.Columns(1).Width = 250
             dg1.Columns(2).Name = "Op. Bal." : dg1.Columns(2).Width = 100
-            dg1.Columns(3).Name = Format(CDate(mskFromDate.Text), "dd/MM") : dg1.Columns(3).Width = 100
+            dg1.Columns(3).Name = Format(CDate(txtfromDate.Text), "dd/MM") : dg1.Columns(3).Width = 100
             dg1.Columns(4).Name = "Receipts" : dg1.Columns(4).Width = 100
             dg1.Columns(5).Name = "Total" : dg1.Columns(5).Width = 100
-            Coldate = Format(CDate(mskFromDate.Text), "dd/MM") & ","
+            Coldate = Format(CDate(txtfromDate.Text), "dd/MM") & ","
             '            dg1.Columns(5).Name = "Closing Bal" : dg1.Columns(5).Width = 100
         Else
             Dim colno As Integer = 3
@@ -304,7 +304,7 @@
     End Sub
 
     Private Sub CbDays_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbDays.SelectedIndexChanged
-        '      rowColums(0, CDate(mskFromDate.Text))
+        '      rowColums(0, CDate(txtfromDate.Text))
     End Sub
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
         ButtonControl()
@@ -354,13 +354,13 @@
             ds.WriteXml("Product.xml")
             '  clsFun.xmldata()
             If CbDays.SelectedIndex = 0 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport0.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport0.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             ElseIf CbDays.SelectedIndex = 1 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport1.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport1.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             ElseIf CbDays.SelectedIndex = 2 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport2.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport2.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             ElseIf CbDays.SelectedIndex = 3 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport3.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport3.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             End If
 
             Ugrahi_Viewer.MdiParent = MainScreenForm
@@ -444,13 +444,13 @@
             ds.WriteXml("Product.xml")
             '  clsFun.xmldata()
             If CbDays.SelectedIndex = 0 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport0.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport0.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             ElseIf CbDays.SelectedIndex = 1 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport1.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport1.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             ElseIf CbDays.SelectedIndex = 2 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport2.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport2.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             ElseIf CbDays.SelectedIndex = 3 Then
-                Ugrahi_Viewer.printReport("\Reports\UgrahiReport3.rpt", mskFromDate.Text, mskFromDate.Text, Date1, Coldate)
+                Ugrahi_Viewer.printReport("\Reports\UgrahiReport3.rpt", txtfromDate.Text, txtfromDate.Text, Date1, Coldate)
             End If
 
             Ugrahi_Viewer.MdiParent = MainScreenForm
@@ -472,16 +472,16 @@
 
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtfromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
     End Sub
 
     Private Sub dtp1_Leave(sender As Object, e As EventArgs) Handles dtp1.Leave
-        mskFromDate.Focus()
+        txtfromDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskFromDate.Enabled = False Then Exit Sub
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        If txtfromDate.Enabled = False Then Exit Sub
+        txtfromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtfromDate.Text = smartDate(txtfromDate.Text)
     End Sub
 End Class

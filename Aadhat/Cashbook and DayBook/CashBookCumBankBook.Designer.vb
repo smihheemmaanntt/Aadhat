@@ -27,9 +27,7 @@ Partial Class CashBookCumBankBook
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CashBookCumBankBook))
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.cbAccountName = New System.Windows.Forms.ComboBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -45,20 +43,12 @@ Partial Class CashBookCumBankBook
         Me.cbType = New System.Windows.Forms.ComboBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(933, 113)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(91, 27)
-        Me.MsktoDate.TabIndex = 91274
         '
         'cbAccountName
         '
@@ -69,17 +59,7 @@ Partial Class CashBookCumBankBook
         Me.cbAccountName.Location = New System.Drawing.Point(142, 113)
         Me.cbAccountName.Name = "cbAccountName"
         Me.cbAccountName.Size = New System.Drawing.Size(274, 27)
-        Me.cbAccountName.TabIndex = 91270
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(744, 113)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(89, 27)
-        Me.mskFromDate.TabIndex = 91273
+        Me.cbAccountName.TabIndex = 0
         '
         'BtnPrint
         '
@@ -91,7 +71,7 @@ Partial Class CashBookCumBankBook
         Me.BtnPrint.Location = New System.Drawing.Point(1109, 113)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(67, 29)
-        Me.BtnPrint.TabIndex = 91276
+        Me.BtnPrint.TabIndex = 5
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -106,7 +86,7 @@ Partial Class CashBookCumBankBook
         Me.btnShow.Location = New System.Drawing.Point(1040, 113)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(70, 29)
-        Me.btnShow.TabIndex = 91275
+        Me.btnShow.TabIndex = 4
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -268,7 +248,7 @@ Partial Class CashBookCumBankBook
         Me.cbType.Location = New System.Drawing.Point(413, 113)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(231, 27)
-        Me.cbType.TabIndex = 91272
+        Me.cbType.TabIndex = 1
         '
         'PictureBox4
         '
@@ -292,21 +272,39 @@ Partial Class CashBookCumBankBook
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(933, 113)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(92, 27)
+        Me.txttoDate.TabIndex = 3
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(735, 113)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(97, 27)
+        Me.txtFromDate.TabIndex = 2
+        '
         'CashBookCumBankBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.Controls.Add(Me.MsktoDate)
+        Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.cbAccountName)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label42)
-        Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.pnlWait)
@@ -324,9 +322,7 @@ Partial Class CashBookCumBankBook
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents cbAccountName As System.Windows.Forms.ComboBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -342,4 +338,6 @@ Partial Class CashBookCumBankBook
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

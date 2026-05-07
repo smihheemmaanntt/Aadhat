@@ -13,11 +13,11 @@
     End Sub
 
     Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        mskFromDate.Text = smartDate(mskFromDate.Text)
     End Sub
 
     Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        MsktoDate.Text = smartDate(MsktoDate.Text)
     End Sub
 
     Private Sub dg1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellClick
@@ -62,7 +62,7 @@
         Else
             MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text) : MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        mskFromDate.Text = smartDate(mskFromDate.Text) : MsktoDate.Text = smartDate(MsktoDate.Text)
         pnlSearch.Visible = False
         rowColums()
     End Sub

@@ -35,7 +35,6 @@ Partial Class Profit_and_Loss_New
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
@@ -43,6 +42,7 @@ Partial Class Profit_and_Loss_New
         Me.btnClose = New System.Windows.Forms.Button()
         Me.dgAssests = New System.Windows.Forms.DataGridView()
         Me.DgLibilities = New System.Windows.Forms.DataGridView()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgAssests, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,7 +70,7 @@ Partial Class Profit_and_Loss_New
         Me.BtnPrint.Location = New System.Drawing.Point(303, 121)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 28)
-        Me.BtnPrint.TabIndex = 40058
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -86,20 +86,10 @@ Partial Class Profit_and_Loss_New
         Me.btnShow.Location = New System.Drawing.Point(227, 121)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(76, 28)
-        Me.btnShow.TabIndex = 40057
+        Me.btnShow.TabIndex = 1
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(113, 121)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskEntryDate.TabIndex = 40055
         '
         'dg1
         '
@@ -142,9 +132,9 @@ Partial Class Profit_and_Loss_New
         Me.Label3.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(12, 120)
+        Me.Label3.Location = New System.Drawing.Point(12, 121)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(101, 27)
+        Me.Label3.Size = New System.Drawing.Size(101, 26)
         Me.Label3.TabIndex = 91120
         Me.Label3.Text = "On Date :"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -155,7 +145,7 @@ Partial Class Profit_and_Loss_New
         Me.dtp1.Location = New System.Drawing.Point(124, 121)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(103, 26)
-        Me.dtp1.TabIndex = 91262
+        Me.dtp1.TabIndex = 0
         '
         'PictureBox2
         '
@@ -258,11 +248,21 @@ Partial Class Profit_and_Loss_New
         Me.DgLibilities.TabIndex = 91274
         Me.DgLibilities.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(111, 121)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 1
+        '
         'Profit_and_Loss_New
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.dgAssests)
         Me.Controls.Add(Me.DgLibilities)
         Me.Controls.Add(Me.dg1)
@@ -272,7 +272,6 @@ Partial Class Profit_and_Loss_New
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Profit_and_Loss_New"
         Me.Text = "Profit_and_Loss"
@@ -287,7 +286,6 @@ Partial Class Profit_and_Loss_New
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
@@ -295,4 +293,5 @@ Partial Class Profit_and_Loss_New
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dgAssests As System.Windows.Forms.DataGridView
     Friend WithEvents DgLibilities As System.Windows.Forms.DataGridView
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

@@ -4,19 +4,18 @@
         Me.Close()
     End Sub
 
-    Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
-        mskEntryDate.SelectAll()
+    Private Sub txtEntryDate_GotFocus(sender As Object, e As EventArgs) Handles txtEntryDate.GotFocus, txtEntryDate.Click
+        txtEntryDate.SelectAll()
     End Sub
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, btnShow.KeyDown
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown
         If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
             e.SuppressKeyPress = True
         End If
     End Sub
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text, True, 2)
     End Sub
 
     Private Sub OutStanding_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -27,7 +26,7 @@
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         rowColums() : ckHideze.Checked = True : RadioAll.Checked = True
     End Sub
     Private Sub rowColums()
@@ -58,17 +57,17 @@
         Dim sql As String = String.Empty
         Dim dt As DataTable
         If RadioAll.Checked = True Then
-            sql = "Select ID,Accountname,Area,Mobile1,OtherName, ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-         "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where Restbal<>0 " & condtion & "  order by AccountName ;"
+            sql = "Select ID,Accountname,Area,Mobile1,OtherName, ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+         "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where Restbal<>0 " & condtion & "  order by AccountName ;"
         ElseIf RadioCustomer.Checked = True Then
-            sql = "Select ID,Accountname,Area,Mobile1,OtherName, ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-"-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where Restbal<0 " & condtion & "  order by AccountName ;"
+            sql = "Select ID,Accountname,Area,Mobile1,OtherName, ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+"-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where Restbal<0 " & condtion & "  order by AccountName ;"
         ElseIf RadioSupplier.Checked = True Then
-            sql = "Select ID,Accountname,Area,Mobile1,OtherName, ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-"-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where Restbal>0 " & condtion & "  order by AccountName ;"
+            sql = "Select ID,Accountname,Area,Mobile1,OtherName, ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+"-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where Restbal>0 " & condtion & "  order by AccountName ;"
 
         End If
-     
+
         dt = clsFun.ExecDataTable(sql)
         If dt.rows.count > 20 Then dg1.Columns(4).Width = 250 Else dg1.Columns(4).Width = 280
         'If Val(dt.Rows.Count) = Val(dg1.Rows.Count) Then Exit Sub
@@ -105,7 +104,7 @@
         'Dim amt As Decimal = 0
         'dg1.Rows.Clear()
         'Dim dt As New DataTable
-        'dt = clsFun.ExecDataTable("Select AccountID,AccountName FROM CrateVoucher Where EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'" & condtion & " Group by AccountID order by AccountName")
+        'dt = clsFun.ExecDataTable("Select AccountID,AccountName FROM CrateVoucher Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & condtion & " Group by AccountID order by AccountName")
 
         'If dt.Rows.Count > 0 Then
         '    Application.DoEvents()
@@ -114,8 +113,8 @@
         '        Dim opbal As String = ""
         '        Dim ClBal As String = ""
         '        opbal = Val(0)
-        '        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType='Crate In' and accountID=" & Val(dt.Rows(i)("AccountId")) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-        '        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType='Crate Out' and accountID=" & Val(dt.Rows(i)("AccountId")) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        '        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType='Crate In' and accountID=" & Val(dt.Rows(i)("AccountId")) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        '        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType='Crate Out' and accountID=" & Val(dt.Rows(i)("AccountId")) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         '        Dim drcr As String = clsFun.ExecScalarStr(" Select TransType From CrateVoucher Where AccountID=" & Val(dt.Rows(i)("AccountId")) & "")
         '        If drcr = "Crate In" Then
         '            tmpamtdr = Val(opbal) + Val(tmpamtdr)
@@ -129,7 +128,7 @@
         '            opbal = Math.Round(Math.Abs(Val(tmpamt)), 2) & " In"
         '        End If
         '        Dim cntbal As Integer = 0
-        '        cntbal = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountid=" & Val(dt.Rows(i)("AccountId")) & " and  EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        '        cntbal = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountid=" & Val(dt.Rows(i)("AccountId")) & " and  EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         '        If cntbal = 0 Then
         '            opbal = Math.Round(Math.Abs(Val(tmpamt)), 2) & " " & clsFun.ExecScalarStr(" Select TransType From CrateVoucher Where AccountID=" & Val(dt.Rows(i)("AccountId")) & "")
         '            If drcr = "Dr" Then
@@ -213,7 +212,7 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = "insert into Printing(D1,P1, P2,P3,P4) values('" & mskEntryDate.Text & "'," & _
+                sql = "insert into Printing(D1,P1, P2,P3,P4) values('" & txtEntryDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(4).Value & "','" & .Cells(5).Value & "', '" & TxtGrandTotal.Text & "')"
 
                 Try
@@ -246,15 +245,19 @@
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
-    Private Sub mskEntryDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskEntryDate.MaskInputRejected
+    Private Sub txtEntryDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
+
+    End Sub
+
+    Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
 
     End Sub
 End Class

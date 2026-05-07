@@ -22,14 +22,12 @@ Partial Class Day_Wise_Sale_Report
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Day_Wise_Sale_Report))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.TxtGrandTotal = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
@@ -55,6 +53,8 @@ Partial Class Day_Wise_Sale_Report
         Me.Label10 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,32 +81,10 @@ Partial Class Day_Wise_Sale_Report
         Me.btnShow.Location = New System.Drawing.Point(450, 98)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(96, 29)
-        Me.btnShow.TabIndex = 16
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(324, 98)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(111, 29)
-        Me.MsktoDate.TabIndex = 15
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(113, 98)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(111, 29)
-        Me.mskFromDate.TabIndex = 14
         '
         'TxtGrandTotal
         '
@@ -141,23 +119,23 @@ Partial Class Day_Wise_Sale_Report
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg1.ColumnHeadersHeight = 25
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
         Me.dg1.Location = New System.Drawing.Point(12, 125)
@@ -168,8 +146,8 @@ Partial Class Day_Wise_Sale_Report
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 42
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 462)
@@ -225,7 +203,7 @@ Partial Class Day_Wise_Sale_Report
         Me.btnPrint.Location = New System.Drawing.Point(546, 98)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(96, 29)
-        Me.btnPrint.TabIndex = 91255
+        Me.btnPrint.TabIndex = 3
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPrint.UseVisualStyleBackColor = False
@@ -436,6 +414,24 @@ Partial Class Day_Wise_Sale_Report
         Me.btnClose.TabIndex = 91249
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(324, 98)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(110, 29)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(113, 98)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(111, 29)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Day_Wise_Sale_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -454,17 +450,17 @@ Partial Class Day_Wise_Sale_Report
         Me.Controls.Add(Me.txtTotalCash)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.pnlWait)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtGrandTotal)
         Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.btnPrint)
@@ -480,8 +476,6 @@ Partial Class Day_Wise_Sale_Report
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents TxtGrandTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
@@ -507,4 +501,6 @@ Partial Class Day_Wise_Sale_Report
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtTotalCharges As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

@@ -44,7 +44,6 @@ Partial Class Order_Book
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.BtnDelete = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.txtAccount = New System.Windows.Forms.TextBox()
         Me.txtItem = New System.Windows.Forms.TextBox()
         Me.dgItemSearch = New System.Windows.Forms.DataGridView()
@@ -59,6 +58,7 @@ Partial Class Order_Book
         Me.Label41 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgItemSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,7 +109,7 @@ Partial Class Order_Book
         Me.txtVoucherNo.Location = New System.Drawing.Point(139, 141)
         Me.txtVoucherNo.Name = "txtVoucherNo"
         Me.txtVoucherNo.Size = New System.Drawing.Size(191, 26)
-        Me.txtVoucherNo.TabIndex = 2
+        Me.txtVoucherNo.TabIndex = 1
         Me.txtVoucherNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label25
@@ -240,7 +240,7 @@ Partial Class Order_Book
         Me.BtnSave.Location = New System.Drawing.Point(1069, 122)
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(113, 48)
-        Me.BtnSave.TabIndex = 40165
+        Me.BtnSave.TabIndex = 6
         Me.BtnSave.TabStop = False
         Me.BtnSave.Text = "&Save"
         Me.BtnSave.UseVisualStyleBackColor = False
@@ -255,7 +255,7 @@ Partial Class Order_Book
         Me.BtnDelete.Location = New System.Drawing.Point(887, 122)
         Me.BtnDelete.Name = "BtnDelete"
         Me.BtnDelete.Size = New System.Drawing.Size(81, 48)
-        Me.BtnDelete.TabIndex = 40166
+        Me.BtnDelete.TabIndex = 8
         Me.BtnDelete.TabStop = False
         Me.BtnDelete.Text = "&Delete"
         Me.BtnDelete.UseVisualStyleBackColor = False
@@ -270,21 +270,10 @@ Partial Class Order_Book
         Me.btnPrint.Location = New System.Drawing.Point(968, 122)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(101, 48)
-        Me.btnPrint.TabIndex = 40167
+        Me.btnPrint.TabIndex = 7
         Me.btnPrint.TabStop = False
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(26, 141)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskEntryDate.TabIndex = 1
         '
         'txtAccount
         '
@@ -295,7 +284,7 @@ Partial Class Order_Book
         Me.txtAccount.Location = New System.Drawing.Point(329, 141)
         Me.txtAccount.Name = "txtAccount"
         Me.txtAccount.Size = New System.Drawing.Size(540, 26)
-        Me.txtAccount.TabIndex = 3
+        Me.txtAccount.TabIndex = 2
         Me.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtItem
@@ -307,7 +296,7 @@ Partial Class Order_Book
         Me.txtItem.Location = New System.Drawing.Point(12, 210)
         Me.txtItem.Name = "txtItem"
         Me.txtItem.Size = New System.Drawing.Size(593, 26)
-        Me.txtItem.TabIndex = 4
+        Me.txtItem.TabIndex = 3
         Me.txtItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dgItemSearch
@@ -369,7 +358,7 @@ Partial Class Order_Book
         Me.txtWeight.Location = New System.Drawing.Point(889, 210)
         Me.txtWeight.Name = "txtWeight"
         Me.txtWeight.Size = New System.Drawing.Size(295, 26)
-        Me.txtWeight.TabIndex = 6
+        Me.txtWeight.TabIndex = 5
         Me.txtWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ckShowSupplier
@@ -468,7 +457,7 @@ Partial Class Order_Book
         Me.txtNug.Location = New System.Drawing.Point(603, 210)
         Me.txtNug.Name = "txtNug"
         Me.txtNug.Size = New System.Drawing.Size(287, 26)
-        Me.txtNug.TabIndex = 5
+        Me.txtNug.TabIndex = 4
         Me.txtNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label41
@@ -503,14 +492,24 @@ Partial Class Order_Book
         Me.dtp1.Location = New System.Drawing.Point(37, 141)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(103, 26)
-        Me.dtp1.TabIndex = 91260
+        Me.dtp1.TabIndex = 0
+        Me.dtp1.TabStop = False
+        '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(12, 141)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(113, 26)
+        Me.txtEntryDate.TabIndex = 0
         '
         'Order_Book
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.Controls.Add(Me.mskEntryDate)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label41)
@@ -565,7 +564,6 @@ Partial Class Order_Book
     Friend WithEvents BtnSave As System.Windows.Forms.Button
     Friend WithEvents BtnDelete As System.Windows.Forms.Button
     Friend WithEvents btnPrint As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txtAccount As System.Windows.Forms.TextBox
     Friend WithEvents txtItem As System.Windows.Forms.TextBox
     Friend WithEvents dgItemSearch As System.Windows.Forms.DataGridView
@@ -580,4 +578,5 @@ Partial Class Order_Book
     Friend WithEvents Label41 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

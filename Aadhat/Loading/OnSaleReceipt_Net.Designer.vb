@@ -32,7 +32,6 @@ Partial Class OnSaleReceipt_Net
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtVoucherNo = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.CbChallanNo = New System.Windows.Forms.ComboBox()
@@ -71,6 +70,7 @@ Partial Class OnSaleReceipt_Net
         Me.btnClose = New System.Windows.Forms.Button()
         Me.BtnDelete = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlInvoiceID.SuspendLayout()
@@ -94,7 +94,7 @@ Partial Class OnSaleReceipt_Net
         Me.txtAccountID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtAccountID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAccountID.ForeColor = System.Drawing.Color.Teal
-        Me.txtAccountID.Location = New System.Drawing.Point(407, 101)
+        Me.txtAccountID.Location = New System.Drawing.Point(386, 98)
         Me.txtAccountID.Name = "txtAccountID"
         Me.txtAccountID.Size = New System.Drawing.Size(48, 26)
         Me.txtAccountID.TabIndex = 91266
@@ -148,18 +148,6 @@ Partial Class OnSaleReceipt_Net
         Me.Label26.Size = New System.Drawing.Size(87, 19)
         Me.Label26.TabIndex = 91264
         Me.Label26.Text = "Voucher No."
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(23, 128)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(90, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Label42
         '
@@ -250,7 +238,7 @@ Partial Class OnSaleReceipt_Net
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(177, 270)
+        Me.Label4.Location = New System.Drawing.Point(162, 270)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(58, 19)
         Me.Label4.TabIndex = 91273
@@ -274,7 +262,7 @@ Partial Class OnSaleReceipt_Net
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(177, 318)
+        Me.Label5.Location = New System.Drawing.Point(160, 318)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(60, 19)
         Me.Label5.TabIndex = 91275
@@ -323,7 +311,7 @@ Partial Class OnSaleReceipt_Net
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(118, 414)
+        Me.Label7.Location = New System.Drawing.Point(113, 414)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(107, 19)
         Me.Label7.TabIndex = 91279
@@ -348,7 +336,7 @@ Partial Class OnSaleReceipt_Net
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(133, 462)
+        Me.Label8.Location = New System.Drawing.Point(130, 462)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(90, 19)
         Me.Label8.TabIndex = 91281
@@ -670,11 +658,21 @@ Partial Class OnSaleReceipt_Net
         Me.BtnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnSave.UseVisualStyleBackColor = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(26, 128)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(86, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'OnSaleReceipt_Net
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.txtid)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.BtnDelete)
@@ -701,7 +699,6 @@ Partial Class OnSaleReceipt_Net
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtVoucherNo)
         Me.Controls.Add(Me.Label26)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.Label41)
@@ -725,7 +722,6 @@ Partial Class OnSaleReceipt_Net
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtVoucherNo As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents CbChallanNo As System.Windows.Forms.ComboBox
@@ -764,4 +760,5 @@ Partial Class OnSaleReceipt_Net
     Friend WithEvents Label56 As System.Windows.Forms.Label
     Friend WithEvents txtInvoiceID As System.Windows.Forms.TextBox
     Friend WithEvents txtid As System.Windows.Forms.TextBox
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

@@ -6,12 +6,12 @@ Public Class CratePayableTotal
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectAll()
+    Private Sub txtEntryDate_GotFocus(sender As Object, e As EventArgs) Handles txtEntryDate.GotFocus
+        txtEntryDate.SelectAll()
     End Sub
 
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text, True, 2)
     End Sub
 
     Private Sub Crate_Summary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -22,9 +22,9 @@ Public Class CratePayableTotal
         Dim mindate As String
         mindate = clsFun.ExecScalarStr("Select max(EntryDate) as entrydate from CrateVoucher ")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtEntryDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         rowColums() : RadioAll.Checked = True
     End Sub
@@ -56,19 +56,19 @@ Public Class CratePayableTotal
         Dim sql As String = String.Empty
         If RadioAll.Checked = True Then
             sql = "Select AccountID ,ACG.AccountName as AccountName,Mobile1,Area,GroupID,OtherName,CrateID,CrateName,(Select Rate From CrateMarka Where ID=CrateID)as CrateRate," & _
-       " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') -" & _
-       " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable" & _
-       " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by AccountID,CrateID Having Reciveable<0 order by upper(ACG.AccountName);"
+       " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "') -" & _
+       " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable" & _
+       " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by AccountID,CrateID Having Reciveable<0 order by upper(ACG.AccountName);"
         ElseIf RadioCustomer.Checked = True Then
             sql = "Select AccountID ,ACG.AccountName as AccountName,Mobile1,Area,GroupID,OtherName,CrateID,CrateName,(Select Rate From CrateMarka Where ID=CrateID)as CrateRate," & _
-       " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') -" & _
-       " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable" & _
-       " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and GroupID in(32,16) " & condtion & " Group by AccountID,CrateID Having Reciveable<0 order by upper(ACG.AccountName);"
+       " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "') -" & _
+       " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable" & _
+       " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and GroupID in(32,16) " & condtion & " Group by AccountID,CrateID Having Reciveable<0 order by upper(ACG.AccountName);"
         ElseIf RadioSupplier.Checked = True Then
             sql = "Select AccountID ,ACG.AccountName as AccountName,Mobile1,Area,GroupID,OtherName,CrateID,CrateName,(Select Rate From CrateMarka Where ID=CrateID)as CrateRate," & _
-       " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "') -" & _
-       " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable" & _
-       " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and GroupID in(33,17) " & condtion & " Group by AccountID,CrateID Having Reciveable<0 order by upper(ACG.AccountName);"
+       " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "') -" & _
+       " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable" & _
+       " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and GroupID in(33,17) " & condtion & " Group by AccountID,CrateID Having Reciveable<0 order by upper(ACG.AccountName);"
         End If
         dt = clsFun.ExecDataTable(sql)
         Try
@@ -127,7 +127,7 @@ Public Class CratePayableTotal
             Application.DoEvents()
             With row
                 pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
-                sql = "insert into Printing(M1,D1, P1, P2,P3, P4, P5,P6,P7,P8,P9) values('" & .Cells(0).Value & "','" & mskFromDate.Text & "'," & _
+                sql = "insert into Printing(M1,D1, P1, P2,P3, P4, P5,P6,P7,P8,P9) values('" & .Cells(0).Value & "','" & txtEntryDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "'," & _
                     "'" & .Cells(5).Value & "','" & Format(Val(.Cells(6).Value), "0.00") & "','" & Format(Val(.Cells(7).Value), "0.00") & "'," & _
                     "" & Format(Val(txtTotQty.Text), "0.00") & "," & Format(Val(txtTotAmt.Text), "0.00") & ")"
@@ -153,7 +153,7 @@ Public Class CratePayableTotal
             Application.DoEvents()
             With row
                 pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
-                sql = "insert into Printing(M1,D1, P1, P2,P3, P4, P5,P6,P7) values('" & .Cells(0).Value & "','" & mskFromDate.Text & "'," & _
+                sql = "insert into Printing(M1,D1, P1, P2,P3, P4, P5,P6,P7) values('" & .Cells(0).Value & "','" & txtEntryDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & Format(Val(.Cells(4).Value), "0.00") & "'," & _
                     "'" & .Cells(5).Value & "','" & .Cells(6).Value & "','" & .Cells(7).Value & "')"
                 Try
@@ -199,22 +199,18 @@ Public Class CratePayableTotal
 
     End Sub
 
-    Private Sub txtCustomerSearch_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerSearch.TextChanged
-
-    End Sub
-
     Private Sub txtItemSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtItemSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
             Dim offset As Integer
             Dim SearchText As String
             If txtItemSearch.Text.Trim() <> "" Then
                 SearchText = " and CrateName Like '" & txtItemSearch.Text.Trim() & "%'"
-                Offset = 0
+                offset = 0
                 Retrive(SearchText)
             End If
             If txtItemSearch.Text.Trim() = "" Then
                 SearchText = ""
-                Offset = 0
+                offset = 0
                 Retrive()
             End If
             e.SuppressKeyPress = True
@@ -236,14 +232,13 @@ Public Class CratePayableTotal
 
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtEntryDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
-
 
     Private Sub txtArea_KeyDown(sender As Object, e As KeyEventArgs) Handles txtArea.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -251,14 +246,14 @@ Public Class CratePayableTotal
             Dim SearchText As String
             If txtArea.Text.Trim() <> "" Then
                 SearchText = " and Area Like '" & txtArea.Text.Trim() & "%'"
-                Offset = 0
+                offset = 0
                 pnlWait.Visible = True
                 Retrive(SearchText)
                 pnlWait.Visible = False
             End If
             If txtArea.Text.Trim() = "" Then
                 SearchText = ""
-                Offset = 0
+                offset = 0
                 pnlWait.Visible = True
                 Retrive()
                 pnlWait.Visible = False
@@ -267,7 +262,11 @@ Public Class CratePayableTotal
         End If
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            SendKeys.Send("{TAB}")
+        End If
 
     End Sub
 End Class

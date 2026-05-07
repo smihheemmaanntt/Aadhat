@@ -44,7 +44,6 @@ Partial Class Loose_Sale
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblClcType = New System.Windows.Forms.Label()
         Me.Cbper = New System.Windows.Forms.ComboBox()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.BtnDelete = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
@@ -214,6 +213,7 @@ Partial Class Loose_Sale
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.dgVehicle = New System.Windows.Forms.DataGridView()
         Me.txtVehicleID = New System.Windows.Forms.TextBox()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMarka.SuspendLayout()
@@ -254,19 +254,6 @@ Partial Class Loose_Sale
         Me.Cbper.Name = "Cbper"
         Me.Cbper.Size = New System.Drawing.Size(88, 25)
         Me.Cbper.TabIndex = 11
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(9, 90)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(113, 26)
-        Me.mskEntryDate.TabIndex = 0
-        Me.mskEntryDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnPrint
         '
@@ -2509,11 +2496,21 @@ Partial Class Loose_Sale
         Me.txtVehicleID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtVehicleID.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(9, 90)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(113, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Loose_Sale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.txtVehicleID)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.pnlWhatsapp)
@@ -2593,7 +2590,6 @@ Partial Class Loose_Sale
         Me.Controls.Add(Me.lblCrate)
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.lblClcType)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.BtnDelete)
         Me.Controls.Add(Me.BtnSave)
@@ -2672,7 +2668,6 @@ Partial Class Loose_Sale
     End Sub
     Friend WithEvents lblClcType As System.Windows.Forms.Label
     Friend WithEvents Cbper As System.Windows.Forms.ComboBox
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnPrint As System.Windows.Forms.Button
     Friend WithEvents BtnDelete As System.Windows.Forms.Button
     Friend WithEvents BtnSave As System.Windows.Forms.Button
@@ -2842,4 +2837,5 @@ Partial Class Loose_Sale
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents dgVehicle As System.Windows.Forms.DataGridView
     Friend WithEvents txtVehicleID As System.Windows.Forms.TextBox
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

@@ -15,7 +15,7 @@
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         rowColums() : VNumber()
     End Sub
 
@@ -107,7 +107,7 @@
 
 
     Private Sub txtAccount_Click(sender As Object, e As EventArgs) Handles txtAccount.Click
-        txtAccount.SelectionStart = 0 : txtAccount.SelectionLength = Len(txtAccount.Text)
+        txtAccount.SelectAll()
     End Sub
     Private Sub AccountRowColumns()
         DgAccountSearch.ColumnCount = 3
@@ -193,7 +193,7 @@
         If e.KeyCode = Keys.Down Then dgItemSearch.Focus()
     End Sub
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, txtVoucherNo.KeyDown,
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, txtVoucherNo.KeyDown,
         txtAccount.KeyDown, txtItem.KeyDown, txtNug.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
@@ -254,7 +254,7 @@
     Private Sub save()
         Dim sql As String = String.Empty
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim cmd As SQLite.SQLiteCommand
         sql = "Insert Into OrderBook(OrderNo,EntryDate, AccountID,AccountName,TotalNug,TotalWeight) Values (@1,@2,@3,@4,@5,@6)"
@@ -282,11 +282,11 @@
     Private Sub textclear()
         dg1.ClearSelection() : dg1.Rows.Clear()
         txtAccount.Clear() : VNumber()
-        mskEntryDate.Focus() : BtnSave.Text = "&Save"
+        txtEntryDate.Focus() : BtnSave.Text = "&Save"
     End Sub
     Private Sub UpdateRecord()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim sql As String = String.Empty
         Dim cmd As SQLite.SQLiteCommand
@@ -389,7 +389,7 @@
         ad.Fill(ds, "a")
         ad1.Fill(ds, "b")
         If ds.Tables("a").Rows.Count > 0 Then
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtAccountID.Text = ds.Tables("a").Rows(0)("AccountID").ToString()
             txtAccount.Text = ds.Tables("a").Rows(0)("AccountName").ToString()
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
@@ -526,8 +526,13 @@
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
+    End Sub
+
+
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 End Class

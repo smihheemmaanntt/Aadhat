@@ -1,7 +1,12 @@
 ﻿Imports System.Data.SQLite
 Imports System.Globalization
 Public Class ClsImportBalances
-    Public Shared ConString As String = "Data Source=" & Account_Balance_Editor.txtPath.Text & ";Version=3;New=True;Compress=True;synchronous=ON;"
+    Public Shared ReadOnly Property ConString As String
+        Get
+            Return "Data Source=" & Account_Balance_Editor.txtPath.Text & ";Version=3;New=True;Compress=True;synchronous=ON;"
+        End Get
+    End Property
+
     Public Shared con As New SQLite.SQLiteConnection
     Public Shared Function GetConnection() As SQLiteConnection
         Dim cs As String = ConString

@@ -13,16 +13,16 @@
         mindate = clsFun.ExecScalarStr("Select Min(EntryDate) as entrydate from Purchase ")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from Purchase ")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txttoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text) : MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtFromDate.Text = SmartDate(txtFromDate.Text) : txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
         rowColums() : ckExpAlso.Checked = True
     End Sub
 
@@ -54,7 +54,7 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -106,7 +106,7 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -166,7 +166,7 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -217,7 +217,7 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -309,7 +309,7 @@
     '    Dim dt As New DataTable
     '    Dim i As Integer
     '    Dim count As Integer = 0
-    '    ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+    '    ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
     '    dt = clsFun.ExecDataTable(ssql)
 
     '    If dt.Rows.Count > 0 Then
@@ -378,7 +378,7 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -419,19 +419,19 @@
         dg1.ClearSelection()
         calc()
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub retrive(Optional ByVal condtion As String = "")
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -515,7 +515,7 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
+        ssql = "Select * From Purchase  Where EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID"
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -631,7 +631,7 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18) values('" & txtFromDate.Text & "','" & txttoDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "'," & _
                     "'" & .Cells(5).Value & "','" & Format(Val(.Cells(6).Value), "0.00") & "','" & Format(Val(.Cells(7).Value), "0.00") & "'," & _
                     "'" & Format(Val(.Cells(8).Value), "0.00") & "'," & Format(Val(.Cells(9).Value), "0.00") & ",'" & Format(Val(.Cells(10).Value), "0.00") & "'," & _
@@ -646,13 +646,13 @@
             End With
         Next
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
     End Sub
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -664,28 +664,28 @@
         End Select
     End Sub
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = smartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
 
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
     End Sub
 

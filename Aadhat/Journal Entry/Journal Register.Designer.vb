@@ -26,8 +26,6 @@ Partial Class Journal_Register
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Journal_Register))
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -42,29 +40,11 @@ Partial Class Journal_Register
         Me.Label9 = New System.Windows.Forms.Label()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(229, 111)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(93, 26)
-        Me.MsktoDate.TabIndex = 120
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(77, 111)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(94, 26)
-        Me.mskFromDate.TabIndex = 119
         '
         'dg1
         '
@@ -108,7 +88,7 @@ Partial Class Journal_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 451)
-        Me.dg1.TabIndex = 118
+        Me.dg1.TabIndex = 4
         '
         'btnShow
         '
@@ -119,10 +99,10 @@ Partial Class Journal_Register
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(338, 111)
+        Me.btnShow.Location = New System.Drawing.Point(352, 111)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(94, 27)
-        Me.btnShow.TabIndex = 121
+        Me.btnShow.TabIndex = 2
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -225,10 +205,10 @@ Partial Class Journal_Register
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnPrint.Image = CType(resources.GetObject("BtnPrint.Image"), System.Drawing.Image)
         Me.BtnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPrint.Location = New System.Drawing.Point(432, 111)
+        Me.BtnPrint.Location = New System.Drawing.Point(446, 111)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(108, 27)
-        Me.BtnPrint.TabIndex = 91118
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -238,7 +218,7 @@ Partial Class Journal_Register
         Me.Label10.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label10.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label10.Location = New System.Drawing.Point(187, 111)
+        Me.Label10.Location = New System.Drawing.Point(197, 111)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(42, 27)
         Me.Label10.TabIndex = 91120
@@ -260,24 +240,44 @@ Partial Class Journal_Register
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp2.Location = New System.Drawing.Point(229, 111)
+        Me.dtp2.Location = New System.Drawing.Point(243, 111)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
-        Me.dtp2.TabIndex = 91139
+        Me.dtp2.TabIndex = 6
         '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp1.Location = New System.Drawing.Point(78, 111)
+        Me.dtp1.Location = New System.Drawing.Point(88, 111)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(109, 26)
-        Me.dtp1.TabIndex = 91140
+        Me.dtp1.TabIndex = 5
+        '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(236, 111)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(100, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(76, 111)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(105, 26)
+        Me.txtFromDate.TabIndex = 0
         '
         'Journal_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
@@ -290,8 +290,6 @@ Partial Class Journal_Register
         Me.Controls.Add(Me.txtDebitBal)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.Name = "Journal_Register"
@@ -304,8 +302,6 @@ Partial Class Journal_Register
 
     End Sub
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
@@ -319,4 +315,6 @@ Partial Class Journal_Register
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

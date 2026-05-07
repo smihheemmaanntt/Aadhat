@@ -23,10 +23,10 @@ Partial Class Crate_Outstanding
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Crate_Outstanding))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPrintHindi = New System.Windows.Forms.Button()
         Me.lblRecordCount = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -35,7 +35,6 @@ Partial Class Crate_Outstanding
         Me.txtCustomerSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtGrandTotal = New System.Windows.Forms.TextBox()
@@ -47,6 +46,7 @@ Partial Class Crate_Outstanding
         Me.RadioAll = New System.Windows.Forms.RadioButton()
         Me.RadioSupplier = New System.Windows.Forms.RadioButton()
         Me.RadioCustomer = New System.Windows.Forms.RadioButton()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbWait, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +64,7 @@ Partial Class Crate_Outstanding
         Me.btnPrintHindi.Location = New System.Drawing.Point(398, 113)
         Me.btnPrintHindi.Name = "btnPrintHindi"
         Me.btnPrintHindi.Size = New System.Drawing.Size(116, 27)
-        Me.btnPrintHindi.TabIndex = 40108
+        Me.btnPrintHindi.TabIndex = 3
         Me.btnPrintHindi.TabStop = False
         Me.btnPrintHindi.Text = "Print &Hindi"
         Me.btnPrintHindi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -129,7 +129,7 @@ Partial Class Crate_Outstanding
         Me.txtCustomerSearch.Location = New System.Drawing.Point(654, 113)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(530, 26)
-        Me.txtCustomerSearch.TabIndex = 40102
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -145,7 +145,7 @@ Partial Class Crate_Outstanding
         Me.BtnPrint.Location = New System.Drawing.Point(322, 113)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 27)
-        Me.BtnPrint.TabIndex = 40097
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -163,23 +163,10 @@ Partial Class Crate_Outstanding
         Me.btnShow.Location = New System.Drawing.Point(235, 113)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(87, 27)
-        Me.btnShow.TabIndex = 40096
-        Me.btnShow.TabStop = False
+        Me.btnShow.TabIndex = 1
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.mskEntryDate.Location = New System.Drawing.Point(101, 113)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(118, 26)
-        Me.mskEntryDate.TabIndex = 40094
-        Me.mskEntryDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label25
         '
@@ -236,24 +223,24 @@ Partial Class Crate_Outstanding
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
         Me.dg1.Location = New System.Drawing.Point(14, 138)
@@ -261,18 +248,18 @@ Partial Class Crate_Outstanding
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1170, 476)
@@ -305,7 +292,8 @@ Partial Class Crate_Outstanding
         Me.dtp1.Location = New System.Drawing.Point(122, 113)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(113, 26)
-        Me.dtp1.TabIndex = 91253
+        Me.dtp1.TabIndex = 0
+        Me.dtp1.TabStop = False
         '
         'RadioAll
         '
@@ -315,7 +303,7 @@ Partial Class Crate_Outstanding
         Me.RadioAll.Location = New System.Drawing.Point(841, 87)
         Me.RadioAll.Name = "RadioAll"
         Me.RadioAll.Size = New System.Drawing.Size(41, 20)
-        Me.RadioAll.TabIndex = 91301
+        Me.RadioAll.TabIndex = 7
         Me.RadioAll.TabStop = True
         Me.RadioAll.Text = "All"
         Me.RadioAll.UseVisualStyleBackColor = True
@@ -328,7 +316,7 @@ Partial Class Crate_Outstanding
         Me.RadioSupplier.Location = New System.Drawing.Point(1055, 87)
         Me.RadioSupplier.Name = "RadioSupplier"
         Me.RadioSupplier.Size = New System.Drawing.Size(129, 20)
-        Me.RadioSupplier.TabIndex = 91300
+        Me.RadioSupplier.TabIndex = 6
         Me.RadioSupplier.TabStop = True
         Me.RadioSupplier.Text = "Crate Payable (In)"
         Me.RadioSupplier.UseVisualStyleBackColor = True
@@ -341,16 +329,26 @@ Partial Class Crate_Outstanding
         Me.RadioCustomer.Location = New System.Drawing.Point(888, 87)
         Me.RadioCustomer.Name = "RadioCustomer"
         Me.RadioCustomer.Size = New System.Drawing.Size(161, 20)
-        Me.RadioCustomer.TabIndex = 91299
+        Me.RadioCustomer.TabIndex = 5
         Me.RadioCustomer.TabStop = True
         Me.RadioCustomer.Text = "Crate &Receiveable (Out)"
         Me.RadioCustomer.UseVisualStyleBackColor = True
+        '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(96, 113)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(123, 26)
+        Me.txtEntryDate.TabIndex = 0
         '
         'Crate_Outstanding
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.RadioAll)
         Me.Controls.Add(Me.RadioSupplier)
         Me.Controls.Add(Me.RadioCustomer)
@@ -368,7 +366,6 @@ Partial Class Crate_Outstanding
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Crate_Outstanding"
@@ -388,7 +385,6 @@ Partial Class Crate_Outstanding
     Friend WithEvents txtCustomerSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents TxtGrandTotal As System.Windows.Forms.TextBox
@@ -401,4 +397,5 @@ Partial Class Crate_Outstanding
     Friend WithEvents RadioAll As System.Windows.Forms.RadioButton
     Friend WithEvents RadioSupplier As System.Windows.Forms.RadioButton
     Friend WithEvents RadioCustomer As System.Windows.Forms.RadioButton
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

@@ -1355,7 +1355,7 @@
         End If
     End Sub
     Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        mskEntryDate.Text = smartDate(mskEntryDate.Text)
     End Sub
     'Private Sub ChargesRowColums()
     '    dgCharges.ColumnCount = 3

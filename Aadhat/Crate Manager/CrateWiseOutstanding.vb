@@ -9,12 +9,12 @@ Public Class CrateWiseOutstanding
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectAll()
+    Private Sub txtEntryDate_GotFocus(sender As Object, e As EventArgs) Handles txtEntryDate.GotFocus
+        txtEntryDate.SelectAll()
     End Sub
 
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub Crate_Summary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -26,11 +26,18 @@ Public Class CrateWiseOutstanding
         Dim mindate As String
         mindate = clsFun.ExecScalarStr("Select max(EntryDate) as entrydate from CrateVoucher ")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtEntryDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         rowColums()
+    End Sub
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            SendKeys.Send("{TAB}")
+        End If
+
     End Sub
     Private Sub rowColums()
         dg1.ColumnCount = 7
@@ -57,7 +64,7 @@ Public Class CrateWiseOutstanding
         SendMessage(pb1.Handle, 1040, 3, 0)
         dg1.Rows.Clear()
 
-        Dim fromDate As String = CDate(mskFromDate.Text).ToString("yyyy-MM-dd")
+        Dim fromDate As String = CDate(txtEntryDate.Text).ToString("yyyy-MM-dd")
 
         '========================
         ' 🔥 SINGLE FAST QUERY
@@ -237,8 +244,8 @@ Public Class CrateWiseOutstanding
     '    Dim totalOpOutCrate As Integer = 0
     '    Dim totalOpInCrate As Integer = 0
     '    Dim oldbal As Decimal = 0.0
-    '    'dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & " and AccountID in(859,860,863) Group by CrateName,AccountID   order by AccountID ")
-    '    dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  Group by CrateName,AccountID   order by Upper(AccountName) ")
+    '    'dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & " and AccountID in(859,860,863) Group by CrateName,AccountID   order by AccountID ")
+    '    dt = clsFun.ExecDataTable("Select AccountID,AccountName,(Select OtherName From Accounts Where ID=CrateVoucher.AccountID) as OtherName,(Select Area From Accounts Where ID=CrateVoucher.AccountID) as area,(Select Mobile1 From Accounts Where ID=CrateVoucher.AccountID) as Mobile,CrateID,CrateName FROM CrateVoucher Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  Group by CrateName,AccountID   order by Upper(AccountName) ")
     '    Dim vchid As Integer = 0
     '    Dim tmpamt1 As Integer = 0
     '    Try
@@ -251,12 +258,12 @@ Public Class CrateWiseOutstanding
     '                pb1.Minimum = 0
     '                pb1.Maximum = dt.Rows.Count - 1
     '                pb1.Value = i
-    '                Dim tmpamtdr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-    '                Dim tmpamtcr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamtdr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamtcr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(vchid) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
     '                tmpamt1 = Val(tmpamtdr1) - Val(tmpamtcr1) '- Val(opbal)
 
-    '                Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-    '                Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+    '                Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and CrateID=" & Val(dt.Rows(i)("CrateID").ToString()) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
     '                Dim tmpamt As Integer = IIf(Val(tmpamtdr) > Val(tmpamtcr), Val(tmpamtdr) - Val(tmpamtcr), Val(tmpamtcr) - Val(tmpamtdr)) '- Val(opbal)
     '                '  If i = 4 Then MsgBox("A")
     '                If Val(tmpamtcr) >= Val(tmpamtdr) Then
@@ -412,7 +419,7 @@ Public Class CrateWiseOutstanding
 
                 Dim OneRow As String = "SELECT " & _
                     "'" & row.Cells(0).Value & "'," & _
-                    "'" & mskFromDate.Text & "'," & _
+                    "'" & txtEntryDate.Text & "'," & _
                     "'" & row.Cells(1).Value & "'," & _
                     "'" & row.Cells(2).Value & "'," & _
                     "'" & row.Cells(3).Value & "'," & _
@@ -480,10 +487,6 @@ Public Class CrateWiseOutstanding
 
     End Sub
 
-    Private Sub txtCustomerSearch_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerSearch.TextChanged
-
-    End Sub
-
     Private Sub txtItemSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtItemSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
             If txtItemSearch.Text.Trim() <> "" Then
@@ -514,16 +517,12 @@ Public Class CrateWiseOutstanding
 
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtEntryDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
-    End Sub
-
-    Private Sub ReportViewer1_Load(sender As Object, e As EventArgs)
-
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub txtArea_KeyUp(sender As Object, e As KeyEventArgs) Handles txtArea.KeyUp
@@ -542,15 +541,4 @@ Public Class CrateWiseOutstanding
         End If
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtArea.TextChanged
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
-
-    End Sub
 End Class

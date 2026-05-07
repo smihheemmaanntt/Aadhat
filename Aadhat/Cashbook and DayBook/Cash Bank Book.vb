@@ -9,7 +9,7 @@
     Private Sub Cash_Bank_Book_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, cbAccountName.KeyDown, cbType.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, cbAccountName.KeyDown, cbType.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -20,26 +20,26 @@
                 btnShow.Focus()
         End Select
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus
+        txtFromDate.SelectAll()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus
+        txttoDate.SelectAll()
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub Cash_Bank_Book_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 : cbType.SelectedIndex = 0
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         clsFun.FillDropDownList(cbAccountName, "Select * From Accounts where groupid in(11,12)", "AccountName", "Id", "")
         Dim mindate = String.Empty : Dim maxdate As String = String.Empty
-        mskFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
-        MsktoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
+        txtFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
+        txttoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
         rowColums() : cbAccountName.Focus() : Me.KeyPreview = True
     End Sub
 
@@ -54,9 +54,7 @@
             Exit Sub
         End If
     End Sub
-    Private Sub btnClose_Click(sender As Object, e As EventArgs)
-        Me.Close()
-    End Sub
+
     Private Sub rowColums()
         dg1.ColumnCount = 8
         dg1.Columns(0).Name = "ID"
@@ -86,209 +84,6 @@
         pnlWait.Visible = False
         ' Retrive()
     End Sub
-    'Private Sub RetriveOld()
-
-    '    Dim ssql As String = String.Empty
-    '    Dim dt As New DataTable
-    '    Dim drtotal As Double = 0
-    '    Dim crtotal As Double = 0
-    '    Dim closingBal As Double = 0
-    '    Dim grndTotal As Double = 0
-    '    Dim j As Integer
-    '    Dim lastval As Integer = 0
-    '    Dim tmpDt As New DataTable
-    '    Dim accFilter As String = ""
-    '    Dim prevClosing As Double = 0
-
-    '    Try
-
-    '        'Account filter
-    '        If chkAllCashBank.Checked = True Then
-    '            accFilter = " and AccountID in (Select ID from Accounts where GroupID in (11,12)) "
-    '        Else
-    '            accFilter = " and AccountID=" & Val(cbAccountName.SelectedValue)
-    '        End If
-
-
-    '        'Date list
-    '        ssql = "Select Entrydate from Ledger where DC ='D' " & accFilter &
-    '               " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") &
-    '               "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' union " &
-    '               " Select Entrydate from Ledger where Dc='C' " & accFilter &
-    '               " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") &
-    '               "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") &
-    '               "' order by Entrydate "
-
-    '        opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID=" & cbAccountName.SelectedValue)
-    '        Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID=" & cbAccountName.SelectedValue)
-
-    '        dt = clsFun.ExecDataTable(ssql)
-
-    '        dg1.Rows.Clear()
-
-    '        If dt.Rows.Count > 0 Then
-
-    '            For i As Integer = 0 To dt.Rows.Count - 1
-
-    '                drtotal = 0
-    '                crtotal = 0
-
-    '                dg1.Rows.Add()
-    '                dg1.Rows(lastval).Cells(1).Value = "Date : " & CDate(dt.Rows(i)("Entrydate")).ToString("dd-MM-yyyy")
-    '                dg1.Rows(lastval).Cells(5).Value = "Date : " & CDate(dt.Rows(i)("Entrydate")).ToString("dd-MM-yyyy")
-    '                dg1.Rows(lastval).Cells(4).Value = "|"
-    '                lastval += 1
-
-    '                dg1.Rows.Add()
-
-    '                'FIRST DATE opening calculation (original logic)
-    '                If i = 0 Then
-
-    '                    Dim tmpamtdr As Double = Val(clsFun.ExecScalarStr("Select sum(Amount) from Ledger where Dc='D' and accountID=" &
-    '                    Val(cbAccountName.SelectedValue) & " and EntryDate < '" &
-    '                    CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'"))
-
-    '                    Dim tmpamtcr As Double = Val(clsFun.ExecScalarStr("Select sum(Amount) from Ledger where Dc='C' and accountID=" &
-    '                    Val(cbAccountName.SelectedValue) & " and EntryDate < '" &
-    '                    CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'"))
-
-    '                    If drcr = "Dr" Then
-    '                        tmpamtdr = opbal + tmpamtdr
-    '                    Else
-    '                        tmpamtcr = opbal + tmpamtcr
-    '                    End If
-
-    '                    opbal = Math.Abs(tmpamtdr - tmpamtcr)
-
-    '                Else
-    '                    'Next dates opening = previous closing
-    '                    opbal = prevClosing
-    '                End If
-
-
-    '                If drcr = "Dr" Then
-    '                    dg1.Rows(lastval).Cells(1).Value = "Opening Balance"
-    '                    dg1.Rows(lastval).Cells(3).Value = Format(opbal, "0.00")
-    '                    drtotal += opbal
-    '                Else
-    '                    dg1.Rows(lastval).Cells(5).Value = "Opening Balance"
-    '                    dg1.Rows(lastval).Cells(7).Value = Format(opbal, "0.00")
-    '                    crtotal += opbal
-    '                End If
-
-    '                dg1.Rows(lastval).Cells(4).Value = "|"
-    '                lastval += 1
-
-
-    '                'Entries
-    '                ssql = "Select Entrydate,TransType,AccountName,Remark,Amount as Dr,'0' as Cr,Narration from Ledger where DC='D' " &
-    '                       accFilter & " and EntryDate='" & CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "' union all " &
-    '                       "Select Entrydate,TransType,AccountName,Remark,'0' as Dr,Amount as Cr,Narration from Ledger where DC='C' " &
-    '                       accFilter & " and EntryDate='" & CDate(dt.Rows(i)("Entrydate")).ToString("yyyy-MM-dd") & "'"
-
-    '                tmpDt = clsFun.ExecDataTable(ssql)
-
-    '                For j = 0 To tmpDt.Rows.Count - 1
-
-    '                    dg1.Rows.Add()
-
-    '                    With dg1.Rows(lastval)
-
-    '                        If tmpDt.Rows(j)("Dr").ToString() <> "0" Then
-
-    '                            .Cells(1).Value = tmpDt.Rows(j)("Narration").ToString() &
-    '                            " (" & tmpDt.Rows(j)("AccountName").ToString() & ")"
-
-    '                            .Cells(2).Value = tmpDt.Rows(j)("TransType").ToString()
-    '                            .Cells(3).Value = Format(Val(tmpDt.Rows(j)("Dr")), "0.00")
-
-    '                            drtotal += Val(.Cells(3).Value)
-
-    '                        Else
-
-    '                            .Cells(5).Value = tmpDt.Rows(j)("Narration").ToString() &
-    '                            " (" & tmpDt.Rows(j)("AccountName").ToString() & ")"
-
-    '                            .Cells(6).Value = tmpDt.Rows(j)("TransType").ToString()
-    '                            .Cells(7).Value = Format(Val(tmpDt.Rows(j)("Cr")), "0.00")
-
-    '                            crtotal += Val(.Cells(7).Value)
-
-    '                        End If
-
-    '                        .Cells(4).Value = "|"
-    '                        lastval += 1
-
-    '                    End With
-
-    '                Next
-
-
-    '                'Totals
-    '                dg1.Rows.Add()
-
-    '                dg1.Rows(lastval).Cells(2).Value = "Total"
-    '                dg1.Rows(lastval).Cells(3).Value = Format(drtotal, "0.00")
-
-    '                dg1.Rows(lastval).Cells(6).Value = "Total"
-    '                dg1.Rows(lastval).Cells(7).Value = Format(crtotal, "0.00")
-
-    '                dg1.Rows(lastval).Cells(4).Value = "|"
-    '                lastval += 1
-
-
-    '                'Closing balance
-    '                dg1.Rows.Add()
-
-    '                If drtotal > crtotal Then
-
-    '                    closingBal = drtotal - crtotal
-
-    '                    dg1.Rows(lastval).Cells(6).Value = "Closing Balance"
-    '                    dg1.Rows(lastval).Cells(7).Value = Format(closingBal, "0.00")
-
-    '                Else
-
-    '                    closingBal = crtotal - drtotal
-
-    '                    dg1.Rows(lastval).Cells(2).Value = "Closing Balance"
-    '                    dg1.Rows(lastval).Cells(3).Value = Format(closingBal, "0.00")
-
-    '                End If
-
-    '                dg1.Rows(lastval).Cells(4).Value = "|"
-    '                lastval += 1
-
-
-    '                'Grand total
-    '                dg1.Rows.Add()
-
-    '                grndTotal = Math.Max(drtotal, crtotal)
-
-    '                dg1.Rows(lastval).Cells(2).Value = "Grand Total"
-    '                dg1.Rows(lastval).Cells(3).Value = Format(grndTotal, "0.00")
-
-    '                dg1.Rows(lastval).Cells(6).Value = "Grand Total"
-    '                dg1.Rows(lastval).Cells(7).Value = Format(grndTotal, "0.00")
-
-    '                dg1.Rows(lastval).Cells(4).Value = "|"
-    '                lastval += 1
-
-
-    '                prevClosing = closingBal
-
-    '            Next
-
-    '        End If
-
-    '    Catch ex As Exception
-    '        MsgBox(ex.Message)
-    '    End Try
-
-    '    dg1.ClearSelection()
-
-
-    'End Sub
 
     Private Sub RetriveOld()
         Dim ssql As String = String.Empty
@@ -306,8 +101,8 @@
         Dim tmpopbaladd As Boolean = False
         Dim tmpDt As New DataTable
         Try
-            ssql = "Select Entrydate from Ledger where DC ='D' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'   union " &
-                " Select Entrydate from Ledger where Dc='C' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' order by Entrydate "
+            ssql = "Select Entrydate from Ledger where DC ='D' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'   union " &
+                " Select Entrydate from Ledger where Dc='C' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' order by Entrydate "
             opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID= " & cbAccountName.SelectedValue & "")
             Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID= " & cbAccountName.SelectedValue & "")
             dt = clsFun.ExecDataTable(ssql)
@@ -576,8 +371,8 @@
         Try
 
 
-            ssql = "Select Entrydate from Ledger where DC ='D' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'   union " &
-                " Select Entrydate from Ledger where Dc='C' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' order by Entrydate "
+            ssql = "Select Entrydate from Ledger where DC ='D' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'   union " &
+                " Select Entrydate from Ledger where Dc='C' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' order by Entrydate "
             opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID= " & cbAccountName.SelectedValue & "")
             Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID= " & cbAccountName.SelectedValue & "")
 
@@ -832,8 +627,8 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = sql & "insert into Printing(D1,D2,M1, P1, P2,P3, P4, P5, P6,P7) values('" & mskFromDate.Text & "'," &
-                    "'" & MsktoDate.Text & "','" & cbAccountName.Text & "'," &
+                sql = sql & "insert into Printing(D1,D2,M1, P1, P2,P3, P4, P5, P6,P7) values('" & txtFromDate.Text & "'," &
+                    "'" & txttoDate.Text & "','" & cbAccountName.Text & "'," &
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "'," &
                     "'" & .Cells(5).Value & "','" & .Cells(6).Value & "','" & .Cells(7).Value & "');"
 
@@ -864,24 +659,24 @@
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles Dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles Dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = SmartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
     End Sub
 

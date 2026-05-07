@@ -33,8 +33,6 @@ Partial Class Market_Tax
         Me.txtTotNug = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnPrint = New System.Windows.Forms.Button()
@@ -50,6 +48,8 @@ Partial Class Market_Tax
         Me.RadioHideItems = New System.Windows.Forms.RadioButton()
         Me.RadioAccountWise = New System.Windows.Forms.RadioButton()
         Me.RadioDefault = New System.Windows.Forms.RadioButton()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -142,30 +142,10 @@ Partial Class Market_Tax
         Me.btnShow.Location = New System.Drawing.Point(423, 93)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(76, 27)
-        Me.btnShow.TabIndex = 40042
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(308, 93)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(99, 26)
-        Me.MsktoDate.TabIndex = 40041
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(112, 93)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskFromDate.TabIndex = 40040
         '
         'dg1
         '
@@ -206,7 +186,7 @@ Partial Class Market_Tax
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 482)
-        Me.dg1.TabIndex = 40039
+        Me.dg1.TabIndex = 7
         '
         'Label1
         '
@@ -229,7 +209,7 @@ Partial Class Market_Tax
         Me.BtnPrint.Location = New System.Drawing.Point(499, 93)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 27)
-        Me.BtnPrint.TabIndex = 40043
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -331,7 +311,7 @@ Partial Class Market_Tax
         Me.RadioHideItems.Location = New System.Drawing.Point(700, 95)
         Me.RadioHideItems.Name = "RadioHideItems"
         Me.RadioHideItems.Size = New System.Drawing.Size(145, 23)
-        Me.RadioHideItems.TabIndex = 91257
+        Me.RadioHideItems.TabIndex = 5
         Me.RadioHideItems.TabStop = True
         Me.RadioHideItems.Text = "Hide Item Details"
         Me.RadioHideItems.UseVisualStyleBackColor = True
@@ -344,7 +324,7 @@ Partial Class Market_Tax
         Me.RadioAccountWise.Location = New System.Drawing.Point(851, 95)
         Me.RadioAccountWise.Name = "RadioAccountWise"
         Me.RadioAccountWise.Size = New System.Drawing.Size(162, 23)
-        Me.RadioAccountWise.TabIndex = 91258
+        Me.RadioAccountWise.TabIndex = 6
         Me.RadioAccountWise.TabStop = True
         Me.RadioAccountWise.Text = "Show  Account Wise"
         Me.RadioAccountWise.UseVisualStyleBackColor = True
@@ -357,16 +337,36 @@ Partial Class Market_Tax
         Me.RadioDefault.Location = New System.Drawing.Point(578, 95)
         Me.RadioDefault.Name = "RadioDefault"
         Me.RadioDefault.Size = New System.Drawing.Size(119, 23)
-        Me.RadioDefault.TabIndex = 91259
+        Me.RadioDefault.TabIndex = 4
         Me.RadioDefault.TabStop = True
         Me.RadioDefault.Text = "Show Default"
         Me.RadioDefault.UseVisualStyleBackColor = True
+        '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(307, 93)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(101, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(112, 93)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
         '
         'Market_Tax
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.RadioDefault)
         Me.Controls.Add(Me.RadioAccountWise)
         Me.Controls.Add(Me.RadioHideItems)
@@ -384,11 +384,9 @@ Partial Class Market_Tax
         Me.Controls.Add(Me.txtTotNug)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Market_Tax"
@@ -406,8 +404,6 @@ Partial Class Market_Tax
     Friend WithEvents txtTotNug As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
@@ -423,4 +419,6 @@ Partial Class Market_Tax
     Friend WithEvents RadioHideItems As System.Windows.Forms.RadioButton
     Friend WithEvents RadioAccountWise As System.Windows.Forms.RadioButton
     Friend WithEvents RadioDefault As System.Windows.Forms.RadioButton
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

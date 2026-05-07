@@ -7,27 +7,26 @@
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus
-        mskFromDate.SelectAll()
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
+    End Sub
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
     End Sub
 
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus
-        MsktoDate.SelectAll()
-    End Sub
-
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         Else
             Exit Sub
         End If
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txtToDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub Market_Tax_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0
@@ -38,14 +37,14 @@
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) as entrydate from transaction2 ")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from transaction2")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txtToDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtToDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         rowColums()
     End Sub
@@ -67,7 +66,7 @@
         'dg1.Columns(13).Name = "R.Off" : dg1.Columns(13).Width = 60
         'dg1.Columns(14).Name = "Total" : dg1.Columns(14).Width = 100
     End Sub
-   Sub calc()
+    Sub calc()
         txtTotNug.Text = Format(0, "0.00") : txtTotweight.Text = Format(0, "0.00")
         txtTotBasic.Text = Format(0, "0.00") ': txtTotCharge.Text = Format(0, "0.00")
         'TxtGrandTotal.Text = Format(0, "0.00") : txtTotROff.Text = Format(0, "0.00")
@@ -85,9 +84,9 @@
         dg1.Rows.Clear()
         Dim sql As String = String.Empty
         Dim dt As New DataTable
-        ''dt = clsFun.ExecDataTable("Select * FROM Stock_Sale_Report Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'  " & Primary & "" & Secondary & "  order by EntryDate,BillNo,Voucherid ")
+        ''dt = clsFun.ExecDataTable("Select * FROM Stock_Sale_Report Where EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "'  " & Primary & "" & Secondary & "  order by EntryDate,BillNo,Voucherid ")
         'sql = "Select VoucherID,EntryDate,BillNo,VehicleNo,SallerName,ItemName,Lot,Sum(Nug) as Nug,Sum(Weight) as Weight,Round(Avg(Rate),2) as Rate,Per,sum(Amount) as Amount," &
-        '    "Round(sum(Charges),2) as Charges,sum(TotalAmount) as TotalAmount FROM Stock_Sale_Report  Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'" &
+        '    "Round(sum(Charges),2) as Charges,sum(TotalAmount) as TotalAmount FROM Stock_Sale_Report  Where EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "'" &
         '    " " & Primary & "" & Secondary & "  Group By EntryDate,SallerName,Lot,ItemName,Per  Order by EntryDate,BillNo,Voucherid"
         sql = "SELECT T.VoucherID, T.EntryDate, T.BillNo, V.VehicleNo, V.SallerName, T.ItemName, T.Lot, " &
       "SUM(T.Nug) AS Nug, SUM(T.Weight) AS Weight, " &
@@ -95,7 +94,7 @@
       "ROUND(SUM(T.Charges), 2) AS Charges, SUM(T.TotalAmount) AS TotalAmount " &
       "FROM Transaction2 T " &
       "INNER JOIN Vouchers V ON V.ID = T.VoucherID " &
-      "WHERE T.EntryDate BETWEEN '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " &
+      "WHERE T.EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " &
       Primary & " " & Secondary & " " &
       "GROUP BY T.EntryDate, T.SallerName, T.Lot, T.ItemName,T.SRate, T.Per " &
       "ORDER BY T.EntryDate, T.BillNo, T.VoucherID"
@@ -151,21 +150,21 @@
 
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txtToDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtToDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txtToDate.Text = smartDate(txtToDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
     Private Sub printRecord()
@@ -177,7 +176,7 @@
         For Each row As DataGridViewRow In dg1.Rows
             con.BeginTransaction(IsolationLevel.ReadCommitted)
             With row
-                sql = sql & "insert into Printing(D1,D2,P1,P2, P3, P4,P5, P6, P7, P8,P9,P10,P11,P12,P13,P14) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                sql = sql & "insert into Printing(D1,D2,P1,P2, P3, P4,P5, P6, P7, P8,P9,P10,P11,P12,P13,P14) values('" & txtFromDate.Text & "','" & txtToDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "','" & .Cells(5).Value & "'," & _
                     "'" & Val(.Cells(6).Value) & "','" & Val(.Cells(7).Value) & "','" & Val(.Cells(8).Value) & "','" & Val(.Cells(9).Value) & "','" & Val(.Cells(10).Value) & "'," & _
                     "'" & Val(.Cells(11).Value) & "','" & Val(txtTotNug.Text) & "','" & Val(txtTotweight.Text) & "','" & Val(txtTotBasic.Text) & "');"
@@ -228,7 +227,7 @@
 
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
     End Sub
 End Class

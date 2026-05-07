@@ -57,10 +57,10 @@
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
     Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        mskFromDate.Text = smartDate(mskFromDate.Text)
     End Sub
     Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        MsktoDate.Text = smartDate(MsktoDate.Text)
     End Sub
     Private Sub Authorised_Person_Only_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0

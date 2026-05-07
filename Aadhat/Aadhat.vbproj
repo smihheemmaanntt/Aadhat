@@ -373,12 +373,6 @@
     <Compile Include="Combine Reports\Show_Accounts.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CopyBackup.Designer.vb">
-      <DependentUpon>CopyBackup.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CopyBackup.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Daily Reports\Account_Monthly_Summary.Designer.vb">
       <DependentUpon>Account_Monthly_Summary.vb</DependentUpon>
     </Compile>
@@ -481,10 +475,10 @@
     <Compile Include="Loose Sale\Loose Purchase Register.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OutStanding\OutStanding Amount Only - Copy.Designer.vb">
-      <DependentUpon>OutStanding Amount Only - Copy.vb</DependentUpon>
+    <Compile Include="OutStanding\OutStanding Amount Only.Designer.vb">
+      <DependentUpon>OutStanding Amount Only.vb</DependentUpon>
     </Compile>
-    <Compile Include="OutStanding\OutStanding Amount Only - Copy.vb">
+    <Compile Include="OutStanding\OutStanding Amount Only.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Purchase\Purchase RegisterDetailed.Designer.vb">
@@ -539,12 +533,6 @@
       <DependentUpon>Cash Book Grouped.vb</DependentUpon>
     </Compile>
     <Compile Include="Cashbook and DayBook\Cash Book Grouped.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashbook and DayBook\Handi Cash Book.Designer.vb">
-      <DependentUpon>Handi Cash Book.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Cashbook and DayBook\Handi Cash Book.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Change Financial Year\Change Financial Year.Designer.vb">
@@ -705,12 +693,6 @@
       <DependentUpon>Trail Balance.vb</DependentUpon>
     </Compile>
     <Compile Include="Final Accounting\Trail Balance.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Group Entry\Group Receipt Register.Designer.vb">
@@ -1272,12 +1254,6 @@
     <Compile Include="Sellout\Sellout Mannual.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetPathForm.Designer.vb">
-      <DependentUpon>SetPathForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SetPathForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Splash.Designer.vb">
       <DependentUpon>Splash.vb</DependentUpon>
     </Compile>
@@ -1424,9 +1400,6 @@
     <EmbeddedResource Include="Combine Reports\Show_Accounts.resx">
       <DependentUpon>Show_Accounts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CopyBackup.resx">
-      <DependentUpon>CopyBackup.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Daily Reports\Account_Monthly_Summary.resx">
       <DependentUpon>Account_Monthly_Summary.vb</DependentUpon>
     </EmbeddedResource>
@@ -1478,8 +1451,8 @@
     <EmbeddedResource Include="Loose Sale\Loose Purchase Register.resx">
       <DependentUpon>Loose Purchase Register.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OutStanding\OutStanding Amount Only - Copy.resx">
-      <DependentUpon>OutStanding Amount Only - Copy.vb</DependentUpon>
+    <EmbeddedResource Include="OutStanding\OutStanding Amount Only.resx">
+      <DependentUpon>OutStanding Amount Only.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Purchase\Purchase RegisterDetailed.resx">
@@ -1509,9 +1482,6 @@
     <EmbeddedResource Include="Cashbook and DayBook\Cash Book Grouped.resx">
       <DependentUpon>Cash Book Grouped.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cashbook and DayBook\Handi Cash Book.resx">
-      <DependentUpon>Handi Cash Book.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Change Financial Year\Change Financial Year.resx">
       <DependentUpon>Change Financial Year.vb</DependentUpon>
@@ -1581,9 +1551,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Final Accounting\Trail Balance.resx">
       <DependentUpon>Trail Balance.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Group Entry\Group Receipt Register.resx">
       <DependentUpon>Group Receipt Register.vb</DependentUpon>
@@ -1782,9 +1749,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sellout\Sellout Mannual.resx">
       <DependentUpon>Sellout Mannual.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SetPathForm.resx">
-      <DependentUpon>SetPathForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SMS Api\SMSTemplateRegister.resx">
       <DependentUpon>SMSTemplateRegister.vb</DependentUpon>

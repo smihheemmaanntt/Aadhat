@@ -9,7 +9,7 @@
     Private Sub Cash_Bank_Book_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, cbAccountName.KeyDown, cbType.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, cbAccountName.KeyDown, cbType.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -20,26 +20,26 @@
                 btnShow.Focus()
         End Select
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub Cash_Bank_Book_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 : cbType.SelectedIndex = 0
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         clsFun.FillDropDownList(cbAccountName, "Select * From Accounts where groupid in(11,12)", "AccountName", "Id", "")
         Dim mindate = String.Empty : Dim maxdate As String = String.Empty
-        mskFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
-        MsktoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
+        txtFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
+        txttoDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
         rowColums() : cbAccountName.Focus() : Me.KeyPreview = True
     End Sub
 
@@ -103,8 +103,8 @@
         Dim tmpopbaladd As Boolean = False
         Dim tmpDt As New DataTable
         Try
-            ssql = "Select Entrydate from Ledger where DC ='D' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'   union " &
-                " Select Entrydate from Ledger where Dc='C' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' order by Entrydate "
+            ssql = "Select Entrydate from Ledger where DC ='D' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'   union " &
+                " Select Entrydate from Ledger where Dc='C' " & IIf(cbAccountName.SelectedValue > 0, "and AccountID=" & Val(cbAccountName.SelectedValue) & "", "") & " and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' order by Entrydate "
             opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID= " & cbAccountName.SelectedValue & "")
             Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID= " & cbAccountName.SelectedValue & "")
             dt = clsFun.ExecDataTable(ssql)
@@ -379,8 +379,8 @@
             & " INNER JOIN Accounts A ON A.ID=L.AccountID " _
             & " WHERE A.GroupID IN (11,12) " _
             & " AND L.EntryDate BETWEEN '" & _
-              CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & _
-              "' AND '" & CDate(MskToDate.Text).ToString("yyyy-MM-dd") & "' " _
+              CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & _
+              "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " _
             & " GROUP BY EntryDate ORDER BY EntryDate"
 
         dtDate = clsFun.ExecDataTable(sql)
@@ -391,7 +391,7 @@
         sql = " SELECT IFNULL(SUM(CASE WHEN L.DC='D' THEN L.Amount ELSE -L.Amount END),0) " _
             & " FROM Ledger L INNER JOIN Accounts A ON A.ID=L.AccountID " _
             & " WHERE A.GroupID = 11 AND EntryDate < '" & _
-              CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'"
+              CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'"
 
         CashOp = Val(clsFun.ExecScalarStr(sql))
 
@@ -401,7 +401,7 @@
         sql = " SELECT IFNULL(SUM(CASE WHEN L.DC='D' THEN L.Amount ELSE -L.Amount END),0) " _
             & " FROM Ledger L INNER JOIN Accounts A ON A.ID=L.AccountID " _
             & " WHERE A.GroupID = 12 AND EntryDate < '" & _
-              CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'"
+              CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'"
 
         BankOp = Val(clsFun.ExecScalarStr(sql))
 
@@ -499,8 +499,8 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = sql & "insert into Printing(D1,D2,M1, P1, P2,P3, P4, P5, P6,P7) values('" & mskFromDate.Text & "'," &
-                    "'" & MsktoDate.Text & "','" & cbAccountName.Text & "'," &
+                sql = sql & "insert into Printing(D1,D2,M1, P1, P2,P3, P4, P5, P6,P7) values('" & txtFromDate.Text & "'," &
+                    "'" & txttoDate.Text & "','" & cbAccountName.Text & "'," &
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "'," &
                     "'" & .Cells(5).Value & "','" & .Cells(6).Value & "','" & .Cells(7).Value & "');"
 
@@ -531,24 +531,24 @@
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles Dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles Dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = smartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
     End Sub
 

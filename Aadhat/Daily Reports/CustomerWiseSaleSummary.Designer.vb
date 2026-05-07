@@ -46,8 +46,6 @@ Partial Class CustomerWiseSaleSummary
         Me.txtSearchPrimary = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtRdfAmt = New System.Windows.Forms.TextBox()
@@ -60,6 +58,8 @@ Partial Class CustomerWiseSaleSummary
         Me.Label8 = New System.Windows.Forms.Label()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -295,7 +295,7 @@ Partial Class CustomerWiseSaleSummary
         Me.txtSearchPrimary.Location = New System.Drawing.Point(771, 148)
         Me.txtSearchPrimary.Name = "txtSearchPrimary"
         Me.txtSearchPrimary.Size = New System.Drawing.Size(414, 25)
-        Me.txtSearchPrimary.TabIndex = 91123
+        Me.txtSearchPrimary.TabIndex = 4
         Me.txtSearchPrimary.TabStop = False
         '
         'BtnPrint
@@ -310,7 +310,7 @@ Partial Class CustomerWiseSaleSummary
         Me.BtnPrint.Location = New System.Drawing.Point(532, 148)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(96, 26)
-        Me.BtnPrint.TabIndex = 91122
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -327,33 +327,11 @@ Partial Class CustomerWiseSaleSummary
         Me.btnShow.Location = New System.Drawing.Point(434, 148)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(98, 26)
-        Me.btnShow.TabIndex = 91120
+        Me.btnShow.TabIndex = 2
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(318, 148)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(100, 26)
-        Me.MsktoDate.TabIndex = 91119
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(118, 148)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskFromDate.TabIndex = 91118
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dg1
         '
@@ -394,7 +372,7 @@ Partial Class CustomerWiseSaleSummary
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 407)
-        Me.dg1.TabIndex = 91121
+        Me.dg1.TabIndex = 5
         '
         'Label4
         '
@@ -532,12 +510,32 @@ Partial Class CustomerWiseSaleSummary
         Me.dtp1.Size = New System.Drawing.Size(109, 26)
         Me.dtp1.TabIndex = 91157
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(318, 148)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(101, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(118, 148)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'CustomerWiseSaleSummary
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
         Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtTotalbasic)
         Me.Controls.Add(Me.txtRoff)
@@ -561,9 +559,7 @@ Partial Class CustomerWiseSaleSummary
         Me.Controls.Add(Me.txtCommission)
         Me.Controls.Add(Me.txtTotweight)
         Me.Controls.Add(Me.txtTotNug)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label11)
@@ -599,8 +595,6 @@ Partial Class CustomerWiseSaleSummary
     Friend WithEvents txtSearchPrimary As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtRdfAmt As System.Windows.Forms.TextBox
@@ -613,4 +607,6 @@ Partial Class CustomerWiseSaleSummary
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

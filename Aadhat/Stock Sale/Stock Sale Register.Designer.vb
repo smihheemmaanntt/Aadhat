@@ -28,8 +28,6 @@ Partial Class Stock_Sale_Register
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.txtSearchPrimary = New System.Windows.Forms.TextBox()
@@ -62,6 +60,8 @@ Partial Class Stock_Sale_Register
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.lblvoucherCount = New System.Windows.Forms.Label()
         Me.lblbillCount = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -78,7 +78,7 @@ Partial Class Stock_Sale_Register
         Me.BtnPrint.Location = New System.Drawing.Point(360, 116)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(96, 25)
-        Me.BtnPrint.TabIndex = 6
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -95,33 +95,10 @@ Partial Class Stock_Sale_Register
         Me.btnShow.Location = New System.Drawing.Point(262, 116)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(98, 25)
-        Me.btnShow.TabIndex = 3
-        Me.btnShow.TabStop = False
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(140, 115)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(106, 26)
-        Me.MsktoDate.TabIndex = 2
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(12, 115)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(113, 26)
-        Me.mskFromDate.TabIndex = 1
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
         '
@@ -158,7 +135,7 @@ Partial Class Stock_Sale_Register
         Me.txtSearchPrimary.Location = New System.Drawing.Point(632, 115)
         Me.txtSearchPrimary.Name = "txtSearchPrimary"
         Me.txtSearchPrimary.Size = New System.Drawing.Size(190, 26)
-        Me.txtSearchPrimary.TabIndex = 40070
+        Me.txtSearchPrimary.TabIndex = 5
         Me.txtSearchPrimary.TabStop = False
         '
         'Label10
@@ -339,7 +316,7 @@ Partial Class Stock_Sale_Register
         Me.CbSearchPrimary.Location = New System.Drawing.Point(456, 117)
         Me.CbSearchPrimary.Name = "CbSearchPrimary"
         Me.CbSearchPrimary.Size = New System.Drawing.Size(176, 23)
-        Me.CbSearchPrimary.TabIndex = 40293
+        Me.CbSearchPrimary.TabIndex = 4
         '
         'cbSearchSecondary
         '
@@ -357,7 +334,7 @@ Partial Class Stock_Sale_Register
         Me.cbSearchSecondary.Location = New System.Drawing.Point(822, 117)
         Me.cbSearchSecondary.Name = "cbSearchSecondary"
         Me.cbSearchSecondary.Size = New System.Drawing.Size(183, 23)
-        Me.cbSearchSecondary.TabIndex = 40296
+        Me.cbSearchSecondary.TabIndex = 6
         '
         'txtSearchSecondary
         '
@@ -368,7 +345,7 @@ Partial Class Stock_Sale_Register
         Me.txtSearchSecondary.Location = New System.Drawing.Point(1005, 115)
         Me.txtSearchSecondary.Name = "txtSearchSecondary"
         Me.txtSearchSecondary.Size = New System.Drawing.Size(179, 26)
-        Me.txtSearchSecondary.TabIndex = 40294
+        Me.txtSearchSecondary.TabIndex = 7
         Me.txtSearchSecondary.TabStop = False
         '
         'dg1
@@ -410,7 +387,7 @@ Partial Class Stock_Sale_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 465)
-        Me.dg1.TabIndex = 5
+        Me.dg1.TabIndex = 8
         '
         'Label3
         '
@@ -456,7 +433,7 @@ Partial Class Stock_Sale_Register
         Me.dtp2.Location = New System.Drawing.Point(153, 115)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
-        Me.dtp2.TabIndex = 91139
+        Me.dtp2.TabIndex = 9
         '
         'dtp1
         '
@@ -464,7 +441,7 @@ Partial Class Stock_Sale_Register
         Me.dtp1.Location = New System.Drawing.Point(25, 115)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(116, 26)
-        Me.dtp1.TabIndex = 91142
+        Me.dtp1.TabIndex = 10
         '
         'Label4
         '
@@ -555,11 +532,31 @@ Partial Class Stock_Sale_Register
         Me.lblbillCount.Text = "0"
         Me.lblbillCount.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(140, 115)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(107, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(12, 115)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(113, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Stock_Sale_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblvoucherCount)
         Me.Controls.Add(Me.lblbillCount)
         Me.Controls.Add(Me.CheckBox1)
@@ -568,9 +565,7 @@ Partial Class Stock_Sale_Register
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.Label3)
@@ -606,8 +601,6 @@ Partial Class Stock_Sale_Register
     End Sub
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtSearchPrimary As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
@@ -640,4 +633,6 @@ Partial Class Stock_Sale_Register
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents lblvoucherCount As System.Windows.Forms.Label
     Friend WithEvents lblbillCount As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

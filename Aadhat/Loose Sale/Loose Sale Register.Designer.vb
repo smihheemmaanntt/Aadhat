@@ -42,8 +42,6 @@ Partial Class Loose_Sale_Register
         Me.txtTotNug = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnPrint = New System.Windows.Forms.Button()
@@ -84,6 +82,8 @@ Partial Class Loose_Sale_Register
         Me.ckShowItems = New System.Windows.Forms.CheckBox()
         Me.lblitemSearch = New System.Windows.Forms.Label()
         Me.txtItemSearch = New System.Windows.Forms.TextBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -239,30 +239,10 @@ Partial Class Loose_Sale_Register
         Me.btnShow.Location = New System.Drawing.Point(373, 90)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(87, 27)
-        Me.btnShow.TabIndex = 40042
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(265, 90)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(92, 26)
-        Me.MsktoDate.TabIndex = 40041
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(93, 90)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(92, 26)
-        Me.mskFromDate.TabIndex = 40040
         '
         'dg1
         '
@@ -309,7 +289,7 @@ Partial Class Loose_Sale_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 482)
-        Me.dg1.TabIndex = 40039
+        Me.dg1.TabIndex = 11
         '
         'Label1
         '
@@ -334,7 +314,7 @@ Partial Class Loose_Sale_Register
         Me.BtnPrint.Location = New System.Drawing.Point(459, 90)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 27)
-        Me.BtnPrint.TabIndex = 40043
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -477,7 +457,7 @@ Partial Class Loose_Sale_Register
         Me.txtPrimarySearch.Location = New System.Drawing.Point(763, 90)
         Me.txtPrimarySearch.Name = "txtPrimarySearch"
         Me.txtPrimarySearch.Size = New System.Drawing.Size(241, 26)
-        Me.txtPrimarySearch.TabIndex = 91141
+        Me.txtPrimarySearch.TabIndex = 5
         Me.txtPrimarySearch.TabStop = False
         Me.txtPrimarySearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -510,7 +490,7 @@ Partial Class Loose_Sale_Register
         Me.Button1.Location = New System.Drawing.Point(12, 596)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(121, 34)
-        Me.Button1.TabIndex = 91144
+        Me.Button1.TabIndex = 7
         Me.Button1.Text = "&Bill of Supply"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
@@ -535,7 +515,7 @@ Partial Class Loose_Sale_Register
         Me.txtvehicleSearch.Location = New System.Drawing.Point(1003, 90)
         Me.txtvehicleSearch.Name = "txtvehicleSearch"
         Me.txtvehicleSearch.Size = New System.Drawing.Size(181, 26)
-        Me.txtvehicleSearch.TabIndex = 91145
+        Me.txtvehicleSearch.TabIndex = 6
         Me.txtvehicleSearch.TabStop = False
         Me.txtvehicleSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -551,7 +531,7 @@ Partial Class Loose_Sale_Register
         Me.Button5.Location = New System.Drawing.Point(270, 596)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(143, 34)
-        Me.Button5.TabIndex = 91218
+        Me.Button5.TabIndex = 9
         Me.Button5.Text = "Send &Whatsapp"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.UseVisualStyleBackColor = False
@@ -568,7 +548,7 @@ Partial Class Loose_Sale_Register
         Me.Button2.Location = New System.Drawing.Point(128, 596)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(142, 34)
-        Me.Button2.TabIndex = 91219
+        Me.Button2.TabIndex = 8
         Me.Button2.Text = "&Day to Day Bils"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = False
@@ -590,7 +570,7 @@ Partial Class Loose_Sale_Register
         Me.pnlWhatsapp.Location = New System.Drawing.Point(213, 165)
         Me.pnlWhatsapp.Name = "pnlWhatsapp"
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
-        Me.pnlWhatsapp.TabIndex = 91220
+        Me.pnlWhatsapp.TabIndex = 10
         Me.pnlWhatsapp.Visible = False
         '
         'Label12
@@ -846,15 +826,35 @@ Partial Class Loose_Sale_Register
         Me.txtItemSearch.Location = New System.Drawing.Point(535, 90)
         Me.txtItemSearch.Name = "txtItemSearch"
         Me.txtItemSearch.Size = New System.Drawing.Size(229, 26)
-        Me.txtItemSearch.TabIndex = 91223
+        Me.txtItemSearch.TabIndex = 4
         Me.txtItemSearch.TabStop = False
         Me.txtItemSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(262, 90)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(85, 90)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
         '
         'Loose_Sale_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblitemSearch)
         Me.Controls.Add(Me.ckShowItems)
         Me.Controls.Add(Me.lblstdTotal)
@@ -884,8 +884,6 @@ Partial Class Loose_Sale_Register
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.txtItemSearch)
@@ -919,8 +917,6 @@ Partial Class Loose_Sale_Register
     Friend WithEvents txtTotNug As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
@@ -961,4 +957,6 @@ Partial Class Loose_Sale_Register
     Friend WithEvents txtItemSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

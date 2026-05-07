@@ -52,8 +52,8 @@ Partial Class Absent_Account_List
         Me.txtCustomerSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         Me.pnlWait.SuspendLayout()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -249,7 +249,7 @@ Partial Class Absent_Account_List
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1170, 479)
-        Me.dg1.TabIndex = 91237
+        Me.dg1.TabIndex = 8
         '
         'btnClose
         '
@@ -294,7 +294,7 @@ Partial Class Absent_Account_List
         Me.btnPrintHindi.Location = New System.Drawing.Point(1068, 113)
         Me.btnPrintHindi.Name = "btnPrintHindi"
         Me.btnPrintHindi.Size = New System.Drawing.Size(112, 26)
-        Me.btnPrintHindi.TabIndex = 91272
+        Me.btnPrintHindi.TabIndex = 3
         Me.btnPrintHindi.TabStop = False
         Me.btnPrintHindi.Text = "&Hindi Print"
         Me.btnPrintHindi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -308,7 +308,7 @@ Partial Class Absent_Account_List
         Me.RadioAll.Location = New System.Drawing.Point(1074, 88)
         Me.RadioAll.Name = "RadioAll"
         Me.RadioAll.Size = New System.Drawing.Size(104, 23)
-        Me.RadioAll.TabIndex = 91271
+        Me.RadioAll.TabIndex = 6
         Me.RadioAll.TabStop = True
         Me.RadioAll.Text = "All Accounts"
         Me.RadioAll.UseVisualStyleBackColor = True
@@ -321,7 +321,7 @@ Partial Class Absent_Account_List
         Me.RadioSundryCreditors.Location = New System.Drawing.Point(990, 88)
         Me.RadioSundryCreditors.Name = "RadioSundryCreditors"
         Me.RadioSundryCreditors.Size = New System.Drawing.Size(84, 23)
-        Me.RadioSundryCreditors.TabIndex = 91270
+        Me.RadioSundryCreditors.TabIndex = 5
         Me.RadioSundryCreditors.TabStop = True
         Me.RadioSundryCreditors.Text = "Creditors"
         Me.RadioSundryCreditors.UseVisualStyleBackColor = True
@@ -334,7 +334,7 @@ Partial Class Absent_Account_List
         Me.RadioSundryDebtors.Location = New System.Drawing.Point(914, 88)
         Me.RadioSundryDebtors.Name = "RadioSundryDebtors"
         Me.RadioSundryDebtors.Size = New System.Drawing.Size(76, 23)
-        Me.RadioSundryDebtors.TabIndex = 91269
+        Me.RadioSundryDebtors.TabIndex = 4
         Me.RadioSundryDebtors.TabStop = True
         Me.RadioSundryDebtors.Text = "Debtors"
         Me.RadioSundryDebtors.UseVisualStyleBackColor = True
@@ -360,7 +360,7 @@ Partial Class Absent_Account_List
         Me.txtCustomerSearch.Location = New System.Drawing.Point(152, 113)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(440, 26)
-        Me.txtCustomerSearch.TabIndex = 91267
+        Me.txtCustomerSearch.TabIndex = 7
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -374,7 +374,7 @@ Partial Class Absent_Account_List
         Me.BtnPrint.Location = New System.Drawing.Point(956, 113)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(112, 26)
-        Me.BtnPrint.TabIndex = 91266
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -390,22 +390,11 @@ Partial Class Absent_Account_List
         Me.btnShow.Location = New System.Drawing.Point(844, 113)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(112, 26)
-        Me.btnShow.TabIndex = 91265
+        Me.btnShow.TabIndex = 1
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(699, 113)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(130, 26)
-        Me.mskEntryDate.TabIndex = 91264
         '
         'dtp1
         '
@@ -415,12 +404,22 @@ Partial Class Absent_Account_List
         Me.dtp1.Size = New System.Drawing.Size(146, 26)
         Me.dtp1.TabIndex = 91274
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(696, 113)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(134, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Absent_Account_List
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.pnlWait)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.PictureBox4)
@@ -445,7 +444,6 @@ Partial Class Absent_Account_List
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Absent_Account_List"
         Me.Text = "Absent_Account_List"
@@ -482,6 +480,6 @@ Partial Class Absent_Account_List
     Friend WithEvents txtCustomerSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

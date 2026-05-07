@@ -56,20 +56,33 @@ Public Class Report_Viewer
         End Try
     End Sub
     Sub PrintDirect(ByRef reportName As String)
-        Dim crtableLogoninfo As New TableLogOnInfo
-        Dim crConnectionInfo As New ConnectionInfo
-        Dim CrTables As Tables
+
         Try
-            '            Dim Rpt As New ReportDocument
+            Dim Rpt As New ReportDocument()   ' ✅ ALWAYS NEW OBJECT
+
             Rpt.Load(Application.StartupPath & reportName)
-            CrTables = Rpt.Database.Tables
-            For Each CrTable In CrTables
-                crtableLogoninfo = CrTable.LogOnInfo
+
+            '==== CONNECTION ====
+            Dim crConnectionInfo As New ConnectionInfo()
+            Dim CrTables As Tables = Rpt.Database.Tables
+
+            For Each CrTable As Table In CrTables
+                Dim crtableLogoninfo As TableLogOnInfo = CrTable.LogOnInfo
                 crtableLogoninfo.ConnectionInfo = crConnectionInfo
                 CrTable.ApplyLogOnInfo(crtableLogoninfo)
             Next
+
+            '==== DATA ====
             Dim dsCustomers As DataSet = GetData()
+
+            If dsCustomers Is Nothing OrElse Not dsCustomers.Tables.Contains("Printing") Then
+                MsgBox("Printing Data Not Found")
+                Exit Sub
+            End If
+
             Rpt.SetDataSource(dsCustomers.Tables("Printing"))
+
+            '==== PARAMETERS ====
             Rpt.SetParameterValue("CompName", compname)
             Rpt.SetParameterValue("Mob1", Mob1)
             Rpt.SetParameterValue("Mob2", Mob2)
@@ -80,37 +93,102 @@ Public Class Report_Viewer
             Rpt.SetParameterValue("CityHindi", CityHindi)
             Rpt.SetParameterValue("StateHindi", StateHindi)
             Rpt.SetParameterValue("HindiCompanyName", compnameHindi)
-            'CrystalReportViewer1.ReportSource = Rpt
-            ' CrystalReportViewer1.Refresh()
-            '  Dim report1 As CrystalReport1 = New CrystalReport1()
-            Dim fontScaleFactor As Single = 1.0 ' Adjust this value as needed
+
+            '==== FONT SCALE ====
+            Dim fontScaleFactor As Single = 1.0
+
             For Each section As Section In Rpt.ReportDefinition.Sections
                 For Each obj As Object In section.ReportObjects
                     If TypeOf obj Is TextObject Then
-                        Dim textObj As TextObject = DirectCast(obj, TextObject)
+                        Dim textObj As TextObject = CType(obj, TextObject)
                         textObj.ApplyFont(New Font(textObj.Font.FontFamily, textObj.Font.Size * fontScaleFactor))
                     End If
                 Next
             Next
 
-            Dim dialog1 As PrintDialog = New PrintDialog()
-            dialog1.AllowSomePages = True
-            dialog1.AllowPrintToFile = False
-            If dialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-                Dim copies As Integer = dialog1.PrinterSettings.Copies
-                Dim fromPage As Integer = dialog1.PrinterSettings.FromPage
-                Dim toPage As Integer = dialog1.PrinterSettings.ToPage
-                Dim collate As Boolean = dialog1.PrinterSettings.Collate
-                Rpt.PrintOptions.PrinterName = dialog1.PrinterSettings.PrinterName
-                Rpt.PrintToPrinter(copies, collate, fromPage, toPage)
-            End If
-            Rpt.Dispose() : dialog1.Dispose()
-            '  Rpt.PrintToPrinter(1, False, 0, 0)
-            CrTables.Dispose() : Rpt.Close() : Rpt.Dispose() ': Me.Close()
+            '==== PRINT DIALOG ====
+            Using dialog1 As New PrintDialog()
+                dialog1.AllowSomePages = True
+
+                If dialog1.ShowDialog() = DialogResult.OK Then
+                    Rpt.PrintOptions.PrinterName = dialog1.PrinterSettings.PrinterName
+
+                    Rpt.PrintToPrinter(
+                        dialog1.PrinterSettings.Copies,
+                        dialog1.PrinterSettings.Collate,
+                        dialog1.PrinterSettings.FromPage,
+                        dialog1.PrinterSettings.ToPage
+                    )
+                End If
+            End Using
+
+            '==== CLEANUP (ONLY ONCE) ====
+            Rpt.Close()
+            Rpt.Dispose()
+            Dim PreviewClose As String = clsFun.ExecScalarStr( _
+                 "SELECT IFNULL(PreviewClose,'Yes') FROM Controls LIMIT 1")
+            If PreviewClose = "Yes" Then Me.Close()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("Error: " & ex.Message)
         End Try
+
     End Sub
+    'Sub PrintDirect(ByRef reportName As String)
+    '    Dim crtableLogoninfo As New TableLogOnInfo
+    '    Dim crConnectionInfo As New ConnectionInfo
+    '    Dim CrTables As Tables
+    '    Try
+    '        '            Dim Rpt As New ReportDocument
+    '        Rpt.Load(Application.StartupPath & reportName)
+    '        CrTables = Rpt.Database.Tables
+    '        For Each CrTable In CrTables
+    '            crtableLogoninfo = CrTable.LogOnInfo
+    '            crtableLogoninfo.ConnectionInfo = crConnectionInfo
+    '            CrTable.ApplyLogOnInfo(crtableLogoninfo)
+    '        Next
+    '        Dim dsCustomers As DataSet = GetData()
+    '        Rpt.SetDataSource(dsCustomers.Tables("Printing"))
+    '        Rpt.SetParameterValue("CompName", compname)
+    '        Rpt.SetParameterValue("Mob1", Mob1)
+    '        Rpt.SetParameterValue("Mob2", Mob2)
+    '        Rpt.SetParameterValue("Address", Address)
+    '        Rpt.SetParameterValue("City", City)
+    '        Rpt.SetParameterValue("State", State)
+    '        Rpt.SetParameterValue("AddressHindi", AddressHindi)
+    '        Rpt.SetParameterValue("CityHindi", CityHindi)
+    '        Rpt.SetParameterValue("StateHindi", StateHindi)
+    '        Rpt.SetParameterValue("HindiCompanyName", compnameHindi)
+    '        'CrystalReportViewer1.ReportSource = Rpt
+    '        ' CrystalReportViewer1.Refresh()
+    '        '  Dim report1 As CrystalReport1 = New CrystalReport1()
+    '        Dim fontScaleFactor As Single = 1.0 ' Adjust this value as needed
+    '        For Each section As Section In Rpt.ReportDefinition.Sections
+    '            For Each obj As Object In section.ReportObjects
+    '                If TypeOf obj Is TextObject Then
+    '                    Dim textObj As TextObject = DirectCast(obj, TextObject)
+    '                    textObj.ApplyFont(New Font(textObj.Font.FontFamily, textObj.Font.Size * fontScaleFactor))
+    '                End If
+    '            Next
+    '        Next
+
+    '        Dim dialog1 As PrintDialog = New PrintDialog()
+    '        dialog1.AllowSomePages = True
+    '        dialog1.AllowPrintToFile = False
+    '        If dialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+    '            Dim copies As Integer = dialog1.PrinterSettings.Copies
+    '            Dim fromPage As Integer = dialog1.PrinterSettings.FromPage
+    '            Dim toPage As Integer = dialog1.PrinterSettings.ToPage
+    '            Dim collate As Boolean = dialog1.PrinterSettings.Collate
+    '            Rpt.PrintOptions.PrinterName = dialog1.PrinterSettings.PrinterName
+    '            Rpt.PrintToPrinter(copies, collate, fromPage, toPage)
+    '        End If
+    '        Rpt.Dispose() : dialog1.Dispose()
+    '        '  Rpt.PrintToPrinter(1, False, 0, 0)
+    '        CrTables.Dispose() : Rpt.Close() : Rpt.Dispose() ': Me.Close()
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '    End Try
+    'End Sub
     Private Sub CustomPaper()
         'Dim rep = New ReportDocument()
         'Dim printerSettings = New System.Drawing.Printing.PrinterSettings()

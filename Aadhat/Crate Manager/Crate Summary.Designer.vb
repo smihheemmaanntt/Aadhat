@@ -33,8 +33,6 @@ Partial Class Crate_Summary
         Me.txtCustomerSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -45,6 +43,8 @@ Partial Class Crate_Summary
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -95,7 +95,7 @@ Partial Class Crate_Summary
         Me.txtItemSearch.Location = New System.Drawing.Point(921, 109)
         Me.txtItemSearch.Name = "txtItemSearch"
         Me.txtItemSearch.Size = New System.Drawing.Size(263, 29)
-        Me.txtItemSearch.TabIndex = 40064
+        Me.txtItemSearch.TabIndex = 6
         Me.txtItemSearch.TabStop = False
         Me.txtItemSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -108,7 +108,7 @@ Partial Class Crate_Summary
         Me.txtCustomerSearch.Location = New System.Drawing.Point(594, 109)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(259, 29)
-        Me.txtCustomerSearch.TabIndex = 40063
+        Me.txtCustomerSearch.TabIndex = 5
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -122,7 +122,7 @@ Partial Class Crate_Summary
         Me.BtnPrint.Location = New System.Drawing.Point(347, 109)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(75, 30)
-        Me.BtnPrint.TabIndex = 40052
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -137,32 +137,10 @@ Partial Class Crate_Summary
         Me.btnShow.Location = New System.Drawing.Point(264, 109)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(85, 30)
-        Me.btnShow.TabIndex = 40051
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(138, 109)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(110, 29)
-        Me.MsktoDate.TabIndex = 40050
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(12, 109)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(111, 29)
-        Me.mskFromDate.TabIndex = 40049
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
         '
@@ -241,7 +219,7 @@ Partial Class Crate_Summary
         Me.Button1.Location = New System.Drawing.Point(422, 109)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(100, 30)
-        Me.Button1.TabIndex = 40227
+        Me.Button1.TabIndex = 4
         Me.Button1.Text = "Print &Hindi"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
@@ -301,18 +279,37 @@ Partial Class Crate_Summary
         Me.dtp1.Size = New System.Drawing.Size(110, 29)
         Me.dtp1.TabIndex = 91253
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txttoDate.Location = New System.Drawing.Point(138, 109)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(110, 29)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtFromDate.Location = New System.Drawing.Point(12, 109)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(113, 29)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Crate_Summary
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.pnlWait)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblRecordCount)
         Me.Controls.Add(Me.dg1)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label7)
@@ -320,7 +317,6 @@ Partial Class Crate_Summary
         Me.Controls.Add(Me.txtItemSearch)
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.BtnPrint)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.Name = "Crate_Summary"
@@ -340,8 +336,6 @@ Partial Class Crate_Summary
     Friend WithEvents txtCustomerSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
@@ -352,4 +346,6 @@ Partial Class Crate_Summary
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

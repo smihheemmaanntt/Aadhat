@@ -29,8 +29,6 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtBalAmt = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -66,33 +64,13 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.Button5 = New System.Windows.Forms.Button()
         Me.CkHideOpBal = New System.Windows.Forms.CheckBox()
         Me.lblStatus = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWahtsappNo.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(648, 130)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(122, 29)
-        Me.MsktoDate.TabIndex = 2
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(510, 130)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(122, 29)
-        Me.mskFromDate.TabIndex = 1
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label9
         '
@@ -440,7 +418,8 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.dtp1.Location = New System.Drawing.Point(539, 130)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(110, 29)
-        Me.dtp1.TabIndex = 91255
+        Me.dtp1.TabIndex = 1
+        Me.dtp1.TabStop = False
         '
         'dtp2
         '
@@ -448,7 +427,8 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.dtp2.Location = New System.Drawing.Point(662, 130)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(124, 29)
-        Me.dtp2.TabIndex = 91254
+        Me.dtp2.TabIndex = 2
+        Me.dtp2.TabStop = False
         '
         'lblCrateDetails
         '
@@ -483,7 +463,7 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.pnlWahtsappNo.Location = New System.Drawing.Point(495, 186)
         Me.pnlWahtsappNo.Name = "pnlWahtsappNo"
         Me.pnlWahtsappNo.Size = New System.Drawing.Size(305, 94)
-        Me.pnlWahtsappNo.TabIndex = 91275
+        Me.pnlWahtsappNo.TabIndex = 6
         Me.pnlWahtsappNo.Visible = False
         '
         'Label4
@@ -566,7 +546,7 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.Button5.Location = New System.Drawing.Point(610, 159)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(177, 30)
-        Me.Button5.TabIndex = 91229
+        Me.Button5.TabIndex = 5
         Me.Button5.Text = "Send Whatsapp"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.UseVisualStyleBackColor = False
@@ -596,11 +576,31 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.lblStatus.Text = "Status"
         Me.lblStatus.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txttoDate.Location = New System.Drawing.Point(647, 130)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(123, 29)
+        Me.txttoDate.TabIndex = 2
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtFromDate.Location = New System.Drawing.Point(510, 130)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(120, 29)
+        Me.txtFromDate.TabIndex = 1
+        '
         'CrateCrateAccountCumMarkaLedger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.pnlWahtsappNo)
         Me.Controls.Add(Me.lblCrateDetails)
@@ -621,8 +621,6 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.Controls.Add(Me.DgAccountSearch)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtAccount)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.txtOpBal)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
@@ -644,8 +642,6 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtBalAmt As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
@@ -681,4 +677,6 @@ Partial Class CrateCrateAccountCumMarkaLedger
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

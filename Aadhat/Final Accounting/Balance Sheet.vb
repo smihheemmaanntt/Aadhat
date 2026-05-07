@@ -12,8 +12,8 @@
         Me.Top = 0 : Me.Left = 0
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        MskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
-        MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtfromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         Me.KeyPreview = True
         rowColums() : rowColumsLibilities() : rowColumsAssests()
         dgAssests.Visible = False : DgLibilities.Visible = False
@@ -71,15 +71,15 @@
         ' retrive()
     End Sub
 
-    Private Sub MskFromDate_GotFocus(sender As Object, e As EventArgs) Handles MskFromDate.GotFocus, MskFromDate.Click
-        MskFromDate.SelectAll()
+    Private Sub txtfromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
     End Sub
 
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectAll()
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
     End Sub
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles MskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -91,29 +91,29 @@
         End Select
     End Sub
 
-    Private Sub mskEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MskFromDate.Validating
-        MskFromDate.Text = clsFun.convdate(MskFromDate.Text)
+    Private Sub mskEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
-    Private Sub MsktoDateValidating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDateValidating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        MskFromDate.Focus()
+        txtfromDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If MskFromDate.Enabled = False Then Exit Sub
-        MskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        MskFromDate.Text = clsFun.convdate(MskFromDate.Text)
+        If txtfromDate.Enabled = False Then Exit Sub
+        txtfromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtfromDate.Text = smartDate(txtfromDate.Text)
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles Dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles Dtp2.ValueChanged
-        If MsktoDate.Enabled = False Then Exit Sub
-        MsktoDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        If txttoDate.Enabled = False Then Exit Sub
+        txttoDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = smartDate(txttoDate.Text)
     End Sub
     Private Sub RetriveLibilities()
         DgLibilities.Rows.Clear() : dgAssests.Rows.Clear()
@@ -122,20 +122,20 @@
         Dim dt2 As New DataTable
         '''''''''''''''''''GPGL'''''''''''''''''''''''''''''
         Dim GPGl As Decimal = clsFun.ExecScalarDec("  " & _
-                                                    " Select Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-                                                    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Accounts " & _
+                                                    " Select Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+                                                    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Accounts " & _
                                                     " Where  GroupID  in(22,23,24,26);")
 
         ''''''''''''''''''''''''''Credit Side/Libilities Side''''''''''''''''''''''''''''
         Dim lastval = 0
         Dim sql As String = "Select Primary2,DC,(Select GroupName From AccountGroup Where ParentID=Account_AcGrp.ParentID) as GroupName,ParentID as GroupID," & _
             "Round(Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0)  From Ledger Where AccountID=Account_AcGrp.ID and DC='D'   " & _
-            "and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C'" & _
-            "and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-            "Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')+(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-            "Where AccountID=Account_AcGrp.ID  and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)  as  GroupBal from Account_AcGrp " & _
+            "and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C'" & _
+            "and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+            "Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')+(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+            "Where AccountID=Account_AcGrp.ID  and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)  as  GroupBal from Account_AcGrp " & _
         "Where ParentID  in(1,2,3,4,5,6,7,9,10) Group BY ParentID having Groupbal<>0 Order BY DC,ParentID ASC;"
         dt = clsFun.ExecDataTable(sql)
         For i As Integer = 0 To dt.Rows.Count - 1
@@ -150,10 +150,10 @@
 
                 'If dt.Rows(i)("GroupID").ToString() = 3 Then MsgBox("a")
                 sql = " Select Primary2,DC,  GroupName,GroupID, Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) " & _
-                      " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
-                      " and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
+                      " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
+                      " and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
                     DgLibilities.Rows.Add()
@@ -167,10 +167,10 @@
                 Next
                 sql = " Select ID,Primary2,Accountname,DC,GroupID,(Select GroupName From AccountGroup Where ID=Account_AcGrp.GroupID) as GroupName, " & _
 "   (Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
-"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
+"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
 "  (GroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") or UndergroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ")) and Primary2='Y'   Order by GroupName,AccountName ;"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
@@ -193,15 +193,15 @@
                     lastval = lastval + 1
                 End With
                 sql = " Select Primary2,DC,  GroupName,GroupID, Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) " & _
-                      " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
-                      " and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
+                      " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+                      " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
+                      " and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
                 '             sql = " Select Primary2,DC,  GroupName,GroupID, Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) " & _
-                '" From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-                '" Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-                '" Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
-                '" and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where (GroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") or UndergroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") ) and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
+                '" From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+                '" Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+                '" Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
+                '" and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where (GroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") or UndergroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") ) and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
                     DgLibilities.Rows.Add()
@@ -216,10 +216,10 @@
 
                 sql = " Select ID,Primary2,Accountname,DC,GroupID,(Select GroupName From AccountGroup Where ID=Account_AcGrp.GroupID) as GroupName, " & _
 "   (Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
-"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
+"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
 "  (GroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") or UndergroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ")) and Primary2='Y'   Order by GroupName,AccountName ;"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
@@ -240,10 +240,10 @@
         lastval = 0
         sql = "Select Primary2,DC,(Select GroupName From AccountGroup Where ParentID=Account_AcGrp.ParentID) as GroupName,ParentID as GroupID," & _
             "Round(Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0)  From Ledger Where AccountID=Account_AcGrp.ID and DC='D'   " & _
-            "and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C'" & _
-            "and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-            "Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')+(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-            "Where AccountID=Account_AcGrp.ID  and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)  as  GroupBal from Account_AcGrp " & _
+            "and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C'" & _
+            "and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+            "Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')+(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+            "Where AccountID=Account_AcGrp.ID  and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end),2)  as  GroupBal from Account_AcGrp " & _
         "Where ParentID  in(1,2,3,4,5,6,7,9,10) Group BY ParentID having Groupbal<>0 Order BY  DC DESC ,ParentID,Primary2 Desc;"
         dt = clsFun.ExecDataTable(sql)
         For i As Integer = 0 To dt.Rows.Count - 1
@@ -256,10 +256,10 @@
                     lastval = lastval + 1
                 End With
                 sql = " Select Primary2,DC,  GroupName,GroupID, Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) " & _
-                    " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-                    " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-                    " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
-                    " and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
+                    " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+                    " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+                    " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
+                    " and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
                     dgAssests.Rows.Add()
@@ -274,10 +274,10 @@
 
                 sql = " Select ID,Primary2,Accountname,DC,GroupID,(Select GroupName From AccountGroup Where ID=Account_AcGrp.GroupID) as GroupName, " & _
 "   (Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
-"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
+"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
 "  (GroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") or UndergroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ")) and Primary2='Y'   Order by GroupName,AccountName ;"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
@@ -300,10 +300,10 @@
                     lastval = lastval + 1
                 End With
                 sql = " Select Primary2,DC,  GroupName,GroupID, Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) " & _
-             " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
-             " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-             " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
-             " and DC='D' and Ledger.Entrydate <= '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
+             " From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')  -(Select ifnull(Round(Sum(Amount),2),0) From Ledger  " & _
+             " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+             " Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')   +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID " & _
+             " and DC='D' and Ledger.Entrydate <= '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end)  as  GroupBal from Account_AcGrp  Where ParentID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") and Primary2<>'Y' Group by GroupID having Groupbal<>0 Order BY DC DESC ,GroupID ASC"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
                     dgAssests.Rows.Add()
@@ -318,10 +318,10 @@
 
                 sql = " Select ID,Primary2,Accountname,DC,GroupID,(Select GroupName From AccountGroup Where ID=Account_AcGrp.GroupID) as GroupName, " & _
 "   (Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
-"  and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
-"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
-"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' " & _
+"  and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where " & _
+"  AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') +(Select ifnull(Round(Sum(Amount),2),0) From Ledger " & _
+"  Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  Restbal from Account_AcGrp  Where RestBal<>0 and" & _
 "  (GroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ") or UndergroupID in(" & Val(dt.Rows(i)("GroupID").ToString()) & ")) and Primary2='Y'   Order by GroupName,AccountName ;"
                 dt2 = clsFun.ExecDataTable(sql)
                 For j As Integer = 0 To dt2.Rows.Count - 1
@@ -350,22 +350,22 @@
                                                     " Where  ParentID  in(8);")), "0.00")
 
         Dim NetPL As Decimal = clsFun.ExecScalarDec("  " & _
-                                                    " Select Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-                                                    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Accounts " & _
+                                                    " Select Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+                                                    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Accounts " & _
                                                     " Where  GroupID  in(22,23,24,25,26,27);")
 
         'Dim NetPL As Decimal = clsFun.ExecScalarDec("  " & _
-        '                                            " Select Sum(Case When DC='Dr' then ((Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-        '                                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-        '                                            " else (-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-        '                                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Account_AcGrp " & _
+        '                                            " Select Sum(Case When DC='Dr' then ((Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+        '                                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+        '                                            " else (-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+        '                                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Account_AcGrp " & _
         '                                            " Where  ParentID  in(22,23,24,25,26,27);")
-        Dim transferedPL As Decimal = clsFun.ExecScalarDec("Select Sum(Case When DC='Dr' then ((Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-                                            " else (-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Account_AcGrp " & _
+        Dim transferedPL As Decimal = clsFun.ExecScalarDec("Select Sum(Case When DC='Dr' then ((Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+                                            " else (-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Account_AcGrp " & _
                                             " Where  ParentID  in(8);")
 
         For i As Integer = 0 To IIf(DgLibilities.Rows.Count > dgAssests.Rows.Count, DgLibilities.Rows.Count, dgAssests.Rows.Count) - 1
@@ -597,7 +597,7 @@
         'Retrive()
     End Sub
 
-  
+
 
     Private Sub OpenBS(rowIndex As Integer, checkColumnIndex As Integer)
         Dim cell As DataGridViewCell = dg1.Rows(rowIndex).Cells(checkColumnIndex)
@@ -613,11 +613,11 @@
                 Ledger.Show()
                 Ledger.BringToFront()
                 Ledger.cbAccountName.SelectedValue = If(checkColumnIndex = 9, dg1.Rows(rowIndex).Cells(4).Value.ToString(), dg1.Rows(rowIndex).Cells(0).Value.ToString())
-                Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+                Ledger.txtFromDate.Text = smartDate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
                 Ledger.btnShow.PerformClick()
             Case "N"
                 Dim tmpID As String = If(checkColumnIndex = 9, dg1.Rows(rowIndex).Cells(4).Value.ToString(), dg1.Rows(rowIndex).Cells(0).Value.ToString())
-                Dim tmpdate As String = MsktoDate.Text
+                Dim tmpdate As String = txttoDate.Text
                 Group_Summary.MdiParent = MainScreenForm
                 Group_Summary.Show() : Group_Summary.BringToFront()
                 Group_Summary.retrive(tmpID, tmpdate)
@@ -666,7 +666,7 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = sql & "insert into Printing(D1,D2,P1, P2,P3, P4,P5,P6) values('" & MskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                sql = sql & "insert into Printing(D1,D2,P1, P2,P3, P4,P5,P6) values('" & txtfromDate.Text & "','" & txttoDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & IIf(Val(.Cells(2).Value) <> 0, Format(Val(.Cells(2).Value), "0.00"), "") & "', '" & IIf(Val(.Cells(3).Value) <> 0, Format(Val(.Cells(3).Value), "0.00"), "") & "'," & _
                     "'" & .Cells(5).Value & "','" & IIf(Val(.Cells(6).Value) <> 0, Format(Val(.Cells(6).Value), "0.00"), "") & "','" & IIf(Val(.Cells(7).Value) <> 0, Format(Val(.Cells(7).Value), "0.00"), "") & "');"
             End With

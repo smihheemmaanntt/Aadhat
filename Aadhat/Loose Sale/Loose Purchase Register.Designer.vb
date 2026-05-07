@@ -28,8 +28,6 @@ Partial Class Loose_Purchase_Register
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Loose_Purchase_Register))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -59,6 +57,8 @@ Partial Class Loose_Purchase_Register
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.lblRecordCount = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -84,32 +84,10 @@ Partial Class Loose_Purchase_Register
         Me.btnShow.Location = New System.Drawing.Point(396, 99)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(76, 26)
-        Me.btnShow.TabIndex = 3
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(279, 99)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(101, 26)
-        Me.MsktoDate.TabIndex = 2
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(80, 99)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(102, 26)
-        Me.mskFromDate.TabIndex = 1
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dg1
         '
@@ -150,7 +128,7 @@ Partial Class Loose_Purchase_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 473)
-        Me.dg1.TabIndex = 5
+        Me.dg1.TabIndex = 8
         Me.dg1.TabStop = False
         '
         'BtnPrint
@@ -163,7 +141,7 @@ Partial Class Loose_Purchase_Register
         Me.BtnPrint.Location = New System.Drawing.Point(472, 99)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 26)
-        Me.BtnPrint.TabIndex = 4
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -203,7 +181,7 @@ Partial Class Loose_Purchase_Register
         Me.txtAccountName.Location = New System.Drawing.Point(547, 99)
         Me.txtAccountName.Name = "txtAccountName"
         Me.txtAccountName.Size = New System.Drawing.Size(246, 26)
-        Me.txtAccountName.TabIndex = 40078
+        Me.txtAccountName.TabIndex = 4
         Me.txtAccountName.TabStop = False
         '
         'Label8
@@ -248,7 +226,7 @@ Partial Class Loose_Purchase_Register
         Me.txtTotalSearch.Location = New System.Drawing.Point(1087, 99)
         Me.txtTotalSearch.Name = "txtTotalSearch"
         Me.txtTotalSearch.Size = New System.Drawing.Size(97, 26)
-        Me.txtTotalSearch.TabIndex = 40074
+        Me.txtTotalSearch.TabIndex = 7
         Me.txtTotalSearch.TabStop = False
         '
         'txttype
@@ -260,7 +238,7 @@ Partial Class Loose_Purchase_Register
         Me.txttype.Location = New System.Drawing.Point(938, 99)
         Me.txttype.Name = "txttype"
         Me.txttype.Size = New System.Drawing.Size(150, 26)
-        Me.txttype.TabIndex = 40073
+        Me.txttype.TabIndex = 6
         Me.txttype.TabStop = False
         '
         'txtVechileSearch
@@ -272,7 +250,7 @@ Partial Class Loose_Purchase_Register
         Me.txtVechileSearch.Location = New System.Drawing.Point(792, 99)
         Me.txtVechileSearch.Name = "txtVechileSearch"
         Me.txtVechileSearch.Size = New System.Drawing.Size(147, 26)
-        Me.txtVechileSearch.TabIndex = 40072
+        Me.txtVechileSearch.TabIndex = 5
         Me.txtVechileSearch.TabStop = False
         '
         'Label10
@@ -499,16 +477,35 @@ Partial Class Loose_Purchase_Register
         Me.lblRecordCount.Text = "0"
         Me.lblRecordCount.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(280, 99)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(100, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(78, 99)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(105, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Loose_Purchase_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblRecordCount)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.BtnPrint)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
@@ -520,7 +517,6 @@ Partial Class Loose_Purchase_Register
         Me.Controls.Add(Me.txttype)
         Me.Controls.Add(Me.txtVechileSearch)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnClose)
@@ -548,8 +544,6 @@ Partial Class Loose_Purchase_Register
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents Label9 As System.Windows.Forms.Label
@@ -579,4 +573,6 @@ Partial Class Loose_Purchase_Register
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblRecordCount As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

@@ -62,19 +62,22 @@
         End If
     End Sub
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
+    End Sub
     Private Sub Purchase_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0
         Me.BackColor = Color.FromArgb(247, 220, 111)
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        mskEntryDate.Focus() : VNumber()
+        txtEntryDate.Focus() : VNumber()
         clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka", "MarkaName", "Id", "")
         clsFun.FillDropDownList(cbAccountName, "Select ID,AccountName FROM Accounts  where GroupID in(16,17,32,33) order by AccountName ", "AccountName", "ID", "--N./A.--")
         Me.KeyPreview = True : cbPer.SelectedIndex = 0
@@ -126,7 +129,7 @@
                 tmpgrid.Rows.Add()
                 cnt = cnt + 1
                 With tmpgrid.Rows(cnt)
-                    .Cells(1).Value = mskEntryDate.Text
+                    .Cells(1).Value = txtEntryDate.Text
                     .Cells(2).Value = .Cells(2).Value & txtVoucherNo.Text
                     .Cells(3).Value = txtAccount.Text
                     .Cells(5).Value = .Cells(5).Value & txtVoucherNo.Text
@@ -262,12 +265,12 @@
                 If .Cells(7).Value = "Y" Then ''Party Account
                     If Val(.Cells(0).Value) = 7 Then
                         If Val(cbAccountName.SelectedValue) > 0 Then
-                            '    clsFun.CrateLedger(0, Val(txtid.Text), clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1, CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, cbAccountName.SelectedValue, cbAccountName.Text, "Crate In", .Cells(7).Value, .Cells(8).Value, .Cells(9).Value, "", "", "", "")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "','Crate In'," & Val(.Cells(8).Value) & ",'" & .Cells(9).Value & "','" & .Cells(10).Value & "', '" & txtVehicleNo.Text & "','','',''"
+                            '    clsFun.CrateLedger(0, Val(txtid.Text), clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1, CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, cbAccountName.SelectedValue, cbAccountName.Text, "Crate In", .Cells(7).Value, .Cells(8).Value, .Cells(9).Value, "", "", "", "")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "','Crate In'," & Val(.Cells(8).Value) & ",'" & .Cells(9).Value & "','" & .Cells(10).Value & "', '" & txtVehicleNo.Text & "','','',''"
                         End If
                     Else
-                        '                        clsFun.CrateLedger(0, Val(txtid.Text), clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1, CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), CbpurchaseType.Text, txtAccountID.Text, txtAccount.Text, "Crate In", .Cells(11).Value, .Cells(12).Value, .Cells(13).Value, "", "", "", "")
-                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(.Cells(0).Value) & ",'" & .Cells(1).Value & "','Crate In'," & Val(.Cells(8).Value) & ",'" & .Cells(9).Value & "','" & .Cells(10).Value & "', '" & txtVehicleNo.Text & "','','',''"
+                        '                        clsFun.CrateLedger(0, Val(txtid.Text), clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1, CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), CbpurchaseType.Text, txtAccountID.Text, txtAccount.Text, "Crate In", .Cells(11).Value, .Cells(12).Value, .Cells(13).Value, "", "", "", "")
+                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(.Cells(0).Value) & ",'" & .Cells(1).Value & "','Crate In'," & Val(.Cells(8).Value) & ",'" & .Cells(9).Value & "','" & .Cells(10).Value & "', '" & txtVehicleNo.Text & "','','',''"
                     End If
                     ' clsFun.CrateLedger(0, VchId, txtVoucherNo.Text, SqliteEntryDate, Me.Text, txtAccountID.Text, txtAccount.Text, "Crate In", .Cells(11).Value, .Cells(12).Value, .Cells(13).Value, "")
                 End If
@@ -284,11 +287,11 @@
                 If .Cells(7).Value = "Y" Then ''Party Account
                     If txtAccountID.Text = 7 Then
                         If Val(cbAccountName.SelectedValue) > 0 Then
-                            clsFun.CrateLedger(0, Val(txtid.Text), clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1, CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, cbAccountName.SelectedValue, cbAccountName.Text, "Crate In", .Cells(11).Value, .Cells(12).Value, .Cells(13).Value, "", "", "", "")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='" & .Cells(14).Value & "'") + 1) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "','Crate In'," & Val(.Cells(11).Value) & ",'" & .Cells(12).Value & "','" & .Cells(13).Value & "', '" & txtVehicleNo.Text & "','','',''," & Val(ServerTag) & "," & Val(OrgID) & ""
+                            clsFun.CrateLedger(0, Val(txtid.Text), clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate In'") + 1, CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, cbAccountName.SelectedValue, cbAccountName.Text, "Crate In", .Cells(11).Value, .Cells(12).Value, .Cells(13).Value, "", "", "", "")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='" & .Cells(14).Value & "'") + 1) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "','Crate In'," & Val(.Cells(11).Value) & ",'" & .Cells(12).Value & "','" & .Cells(13).Value & "', '" & txtVehicleNo.Text & "','','',''," & Val(ServerTag) & "," & Val(OrgID) & ""
                         End If
                     Else
-                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='" & .Cells(14).Value & "'") + 1) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate In'," & Val(.Cells(11).Value) & ",'" & .Cells(12).Value & "','" & .Cells(13).Value & "', '" & txtVehicleNo.Text & "','','',''," & Val(ServerTag) & "," & Val(OrgID) & ""
+                        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='" & .Cells(14).Value & "'") + 1) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate In'," & Val(.Cells(11).Value) & ",'" & .Cells(12).Value & "','" & .Cells(13).Value & "', '" & txtVehicleNo.Text & "','','',''," & Val(ServerTag) & "," & Val(OrgID) & ""
                     End If
                 End If
             End With
@@ -329,19 +332,19 @@
                     Dim AccName As String = ssql
                     If clsFun.ExecScalarStr("Select COSTON from Charges where ChargeName='" & .Cells("Charge Name").Value & "'") = "Our Cost" Then
                         If .Cells(3).Value = "+" Then
-                            '                            clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            '                            clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         Else
-                            '                           clsFun.Ledger(0, VchId, CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            '                           clsFun.Ledger(0, VchId, CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         End If
                     ElseIf clsFun.ExecScalarStr("Select COSTON from Charges where ChargeName='" & .Cells("Charge Name").Value & "'") = "Party Cost" Then
                         If .Cells(3).Value = "+" Then
-                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         Else
-                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C','" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         End If
                     End If
                 End If
@@ -363,19 +366,19 @@
                     Dim AccName As String = ssql
                     If clsFun.ExecScalarStr("Select COSTON from Charges where ChargeName='" & .Cells("Charge Name").Value & "'") = "Our Cost" Then
                         If .Cells(3).Value = "+" Then
-                            '                            clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            '                            clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         Else
-                            '                           clsFun.Ledger(0, VchId, CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            '                           clsFun.Ledger(0, VchId, CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         End If
                     ElseIf clsFun.ExecScalarStr("Select COSTON from Charges where ChargeName='" & .Cells("Charge Name").Value & "'") = "Party Cost" Then
                         If .Cells(3).Value = "+" Then
-                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "D")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         Else
-                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
-                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
+                            ' clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, AcID, AccName, .Cells(4).Value, "C")
+                            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(AcID) & ", '" & AccName & "','" & Val(.Cells(4).Value) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & txtVoucherNo.Text & "','" & AccName & "','" & txtVoucherNo.Text & "'"
                         End If
                     End If
                 End If
@@ -416,24 +419,24 @@
         '    If txtAccountID.Text > 0 Then ''Party Account
         '        ' If Math.Abs(Val(txtTotalNetAmount.Text)) Then
         '        If txtTotalNetAmount.Text > 0 Then
-        '            '       clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Val(tmpamount) + Val(txtroundoff.Text), "C", remark, txtAccount.Text, remarkHindi)
-        '            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Val(tmpamount) + Val(txtroundoff.Text) & "', 'C', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+        '            '       clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Val(tmpamount) + Val(txtroundoff.Text), "C", remark, txtAccount.Text, remarkHindi)
+        '            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Val(tmpamount) + Val(txtroundoff.Text) & "', 'C', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
         '        ElseIf txtTotalNetAmount.Text < 0 Then
-        '            '                    clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)), "D", remark, txtAccount.Text, remarkHindi)
-        '            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+        '            '                    clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)), "D", remark, txtAccount.Text, remarkHindi)
+        '            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
         '        End If
         '        If Val(txtbasicTotal.Text) > 0 Then ''Maal Khata Account
-        '            'clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 28, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28"), Val(tmpamount2), "D", remark, txtAccount.Text, remarkHindi)
-        '            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(28) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28") & "','" & Math.Abs(Val(tmpamount2)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+        '            'clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 28, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28"), Val(tmpamount2), "D", remark, txtAccount.Text, remarkHindi)
+        '            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(28) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28") & "','" & Math.Abs(Val(tmpamount2)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
         '        End If
         '    End If
         'If Val(txtroundoff.Text) <> 0 Then ''Account 
         '    If Val(txtroundoff.Text) < 0 Then
-        '        '  clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Math.Abs(Val(txtroundoff.Text)), "C", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
-        '        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'C', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+        '        '  clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Math.Abs(Val(txtroundoff.Text)), "C", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
+        '        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'C', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
         '    Else
-        '        '    clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Val(txtroundoff.Text), "D", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
-        '        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+        '        '    clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Val(txtroundoff.Text), "D", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
+        '        FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
 
         '    End If
         'End If
@@ -443,21 +446,21 @@
                 Remark2 = txtVehicleNo.Text & " (Nug: " & .Cells(2).Value & ",Weight: " & Val(.Cells(3).Value) & "/-" & Val(.Cells(3).Value) / Val(.Cells(5).Value) & " ,Rate: " & .Cells(4).Value & ",Amount: " & Val(.Cells(6).Value) & ") "
                 remarkHindi = "(" & txtVehicleNo.Text & ") " & clsFun.ExecScalarStr("Select OtherName From Items Where ID=" & (txtItemID.Text) & "") & ",(नग : " & .Cells(2).Value & " वजन : " & .Cells(3).Value & " भाव : " & .Cells(4).Value & "/-" & .Cells(5).Value & ",रकम : " & Val(.Cells(6).Value) & ") "
                 If Val(.Cells(0).Value) > 0 Then
-                    clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(.Cells(0).Value), .Cells(1).Value, Val(.Cells(6).Value), "C", Remark2, .Cells(1).Value, remarkHindi)
+                    clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(.Cells(0).Value), .Cells(1).Value, Val(.Cells(6).Value), "C", Remark2, .Cells(1).Value, remarkHindi)
                 End If
             End With
         Next
         If Val(txtbasicTotal.Text) > 0 Then ''Maal Khata Account
-            'clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 28, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28"), Val(tmpamount2), "D", remark, txtAccount.Text, remarkHindi)
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(28) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28") & "','" & Math.Abs(Val(tmpamount2)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+            'clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 28, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28"), Val(tmpamount2), "D", remark, txtAccount.Text, remarkHindi)
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(28) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28") & "','" & Math.Abs(Val(tmpamount2)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
         End If
         If Val(txtroundoff.Text) <> 0 Then ''Account 
             If Val(txtroundoff.Text) < 0 Then
-                '  clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Math.Abs(Val(txtroundoff.Text)), "C", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'C', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                '  clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Math.Abs(Val(txtroundoff.Text)), "C", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'C', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
             Else
-                '    clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Val(txtroundoff.Text), "D", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                '    clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Val(txtroundoff.Text), "D", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'D', '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
             End If
         End If
         If FastQuery = "" Then Exit Sub
@@ -494,24 +497,24 @@
         If txtAccountID.Text > 0 Then ''Party Account
             ' If Math.Abs(Val(txtTotalNetAmount.Text)) Then
             If txtTotalNetAmount.Text > 0 Then
-                '       clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Val(tmpamount) + Val(txtroundoff.Text), "C", remark, txtAccount.Text, remarkHindi)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Val(tmpamount) + Val(txtroundoff.Text) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                '       clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Val(tmpamount) + Val(txtroundoff.Text), "C", remark, txtAccount.Text, remarkHindi)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Val(tmpamount) + Val(txtroundoff.Text) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
             ElseIf txtTotalNetAmount.Text < 0 Then
-                '                    clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)), "D", remark, txtAccount.Text, remarkHindi)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                '                    clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)), "D", remark, txtAccount.Text, remarkHindi)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','" & Math.Abs(Val(tmpamount) + Val(txtroundoff.Text)) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
             End If
             If Val(txtbasicTotal.Text) > 0 Then ''Maal Khata Account
-                'clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 28, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28"), Val(tmpamount2), "D", remark, txtAccount.Text, remarkHindi)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(28) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28") & "','" & Math.Abs(Val(tmpamount2)) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                'clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 28, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28"), Val(tmpamount2), "D", remark, txtAccount.Text, remarkHindi)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(28) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=28") & "','" & Math.Abs(Val(tmpamount2)) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
             End If
         End If
         If Val(txtroundoff.Text) <> 0 Then ''Account 
             If Val(txtroundoff.Text) < 0 Then
-                '  clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Math.Abs(Val(txtroundoff.Text)), "C", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                '  clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Math.Abs(Val(txtroundoff.Text)), "C", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'C'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
             Else
-                '    clsFun.Ledger(0, Val(txtid.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Val(txtroundoff.Text), "D", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
-                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
+                '    clsFun.Ledger(0, Val(txtid.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 42, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42"), Val(txtroundoff.Text), "D", "Voucher No.:" & txtVoucherNo.Text & ", " & txtAccount.Text)
+                FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(42) & ",'" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=42") & "','" & Math.Abs(Val(txtroundoff.Text)) & "', 'D'," & Val(ServerTag) & "," & Val(OrgID) & ", '" & "Voucher No.:" & txtVoucherNo.Text & IIf(txtVehicleNo.Text <> "", ",Vehicle No.: " & txtVehicleNo.Text, ",") & remark & "','" & txtAccount.Text & "',' " & remarkHindi & "' "
 
             End If
         End If
@@ -570,7 +573,7 @@
         Try
             cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
             cmd.Parameters.AddWithValue("@1", Me.Text)
-            cmd.Parameters.AddWithValue("@2", CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@2", CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@3", txtVoucherNo.Text)
             cmd.Parameters.AddWithValue("@4", Val(txtItemID.Text))
             cmd.Parameters.AddWithValue("@5", txtItem.Text)
@@ -586,7 +589,7 @@
             End If
             txtid.Text = Val(clsFun.ExecScalarInt("Select Max(ID) from Vouchers"))
             DgPurchaseRecord() : dg2Record() : ServerTag = 1
-                SellerLedger() : ChargesLedger() : CrateLedger()
+            SellerLedger() : ChargesLedger() : CrateLedger()
             'ServerSellerLedger() : ServerChargesLedger() : ServerCrateLedger()
             MsgBox("Record Saved Successfully.", vbInformation + vbOKOnly, "Saved") 'Insert Successfully", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information)
             '  RemoveDuplicateInvoice()
@@ -615,7 +618,7 @@
             ' Application.DoEvents()
             With row
                 If .Cells("Farmer Name").Value <> "" Then
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtid.Text) & ", " &
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtid.Text) & ", " &
                              "'" & txtVoucherNo.Text & "','" & txtVehicleNo.Text & "'," & Val(txtItemID.Text) & ",'" & txtItem.Text & "'," &
                             "" & Val(.Cells("FarmerID").Value) & ",'" & .Cells("Farmer Name").Value & "'," & Val(.Cells("Nug").Value) & "," & Val(.Cells("Weight").Value) & "," &
                              " " & Val(.Cells("Rate").Value) & ",'" & .Cells("Per").Value & "'," & Val(.Cells("Amount").Value) & ",'" & .Cells("MaintainCrate").Value & "'," &
@@ -656,7 +659,7 @@
                 ' cleartxt()
                 calc() : PurchaseClear()
             Else
-    
+
                 dg1.Rows.Add(Val(txtAccountID.Text), txtAccount.Text, Format(Val(txtNug.Text), "0.00"), Format(Val(txtWeight.Text), "0.00"),
                                    Format(Val(txtRate.Text), "0.00"), cbPer.Text, Format(Val(txtAmount.Text), "0.00"), lblCrate.Text,
                                     cbCrateMarka.SelectedValue, cbCrateMarka.Text, txtCrateQty.Text)
@@ -677,7 +680,7 @@
             If dt.Rows.Count > 0 Then
                 ServerTag = 0
                 For i = 0 To dt.Rows.Count - 1
-                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & dt.Rows(i)("SlipNo").ToString() & "','" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(dt.Rows(i)("AccountID").ToString()) & ",'" & dt.Rows(i)("AccountName").ToString() & "','Crate Out','" & Val(dt.Rows(i)("CrateID").ToString()) & "','" & dt.Rows(i)("CrateName").ToString() & "'," & Val(dt.Rows(i)("Qty").ToString()) & ",'', '" & Val(dt.Rows(i)("Rate").ToString()) & "','" & Val(dt.Rows(i)("Amount").ToString()) & "',''," & Val(ServerTag) & ", " & Val(OrgID) & ""
+                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & dt.Rows(i)("SlipNo").ToString() & "','" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(dt.Rows(i)("AccountID").ToString()) & ",'" & dt.Rows(i)("AccountName").ToString() & "','Crate Out','" & Val(dt.Rows(i)("CrateID").ToString()) & "','" & dt.Rows(i)("CrateName").ToString() & "'," & Val(dt.Rows(i)("Qty").ToString()) & ",'', '" & Val(dt.Rows(i)("Rate").ToString()) & "','" & Val(dt.Rows(i)("Amount").ToString()) & "',''," & Val(ServerTag) & ", " & Val(OrgID) & ""
                 Next
             End If
             If fastQuery = String.Empty Then Exit Sub
@@ -690,7 +693,7 @@
     Private Sub UpdatePurchase()
         Dim sql As String = String.Empty
         'Dim cmd As SQLite.SQLiteCommand
-        sql = "Update Vouchers Set TransType='" & Me.Text & "', EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & txtVoucherNo.Text & "'," _
+        sql = "Update Vouchers Set TransType='" & Me.Text & "', EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & txtVoucherNo.Text & "'," _
             & "ItemID='" & Val(txtItemID.Text) & "', ItemName='" & txtItem.Text & "',VehicleNo='" & txtVehicleNo.Text & "'," _
             & "Nug='" & Val(txtTotalNug.Text) & "',Kg='" & Val(txttotalWeight.Text) & "',BasicAmount='" & Val(txtbasicTotal.Text) & "'," _
             & "DiscountAmount= '" & Val(txttotalCharges.Text) & "',TotalAmount='" & Val(txtTotalNetAmount.Text) & "'," _
@@ -723,7 +726,7 @@
 
     Public Sub MultiUpdatePurchase()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim sql As String = String.Empty
         'If Val(txtNug.Text) = 0 And Val(txtKg.Text) = 0 Then
@@ -732,7 +735,7 @@
         '    Exit Sub
         'End If
         'Dim cmd As SQLite.SQLiteCommand
-        sql = "Update Vouchers Set TransType='" & Me.Text & "', EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & txtVoucherNo.Text & "'," _
+        sql = "Update Vouchers Set TransType='" & Me.Text & "', EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & txtVoucherNo.Text & "'," _
             & "ItemID='" & Val(txtAccountID.Text) & "', ItemName='" & txtAccount.Text & "',VehicleNo='" & txtVehicleNo.Text & "'," _
             & "Nug='" & Val(txtTotalNug.Text) & "',Kg='" & Val(txttotalWeight.Text) & "',BasicAmount='" & Val(txtbasicTotal.Text) & "'," _
             & " DiscountAmount= '" & Val(txttotalCharges.Text) & "',TotalAmount='" & Val(txtTotalNetAmount.Text) & "'," _
@@ -986,7 +989,7 @@
         ad2.Fill(ds2, "c")
         If ds.Tables("a").Rows.Count > 0 Then
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtItemID.Text = ds.Tables("a").Rows(0)("ItemID").ToString()
             txtItem.Text = ds.Tables("a").Rows(0)("ItemName").ToString()
             txtVehicleNo.Text = ds.Tables("a").Rows(0)("VehicleNo").ToString()
@@ -1057,7 +1060,7 @@
         ad.Fill(ds, "a")
         If ds.Tables("a").Rows.Count > 0 Then
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtItemID.Text = ds.Tables("a").Rows(0)("ItemID").ToString()
             txtItem.Text = ds.Tables("a").Rows(0)("ItemName").ToString()
             txtVehicleNo.Text = ds.Tables("a").Rows(0)("VehicleNo").ToString()
@@ -1116,7 +1119,7 @@
         dg1.ClearSelection()
         Dg2.ClearSelection()
     End Sub
-   
+
     Private Sub ChargesCalculation()
         ' If String.IsNullOrEmpty(txtOnValue.Text) OrElse String.IsNullOrEmpty(txtCalculatePer.Text) Then Exit Sub
 
@@ -1223,7 +1226,7 @@
         End If
     End Sub
 
-    Private Sub txtItem_GotFocus1(sender As Object, e As EventArgs) Handles txtItem.GotFocus  
+    Private Sub txtItem_GotFocus1(sender As Object, e As EventArgs) Handles txtItem.GotFocus
         If dgItemPurchase.ColumnCount = 0 Then PurchaseItemRowColums()
         If dgItemPurchase.RowCount = 0 Then retrivePurchaseItems()
         dgItemPurchase.Visible = True : dgItemPurchase.BringToFront()
@@ -1235,7 +1238,7 @@
         dgItemPurchase.Visible = True : txtItem.Focus()
     End Sub
 
-    Private Sub txtVoucherNo_GotFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.GotFocus, txtVehicleNo.GotFocus,
+    Private Sub txtVoucherNo_GotFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.GotFocus, txtVehicleNo.GotFocus, txtEntryDate.GotFocus,
         txtItem.GotFocus, txtAccount.GotFocus, txtNug.GotFocus, txtWeight.GotFocus, txtRate.GotFocus, txtAmount.GotFocus
         If txtAccount.Focused = Nothing Then DgAccountSearch.Visible = False : dgCharges.Visible = False
         If txtItem.Focused = Nothing Then dgItemPurchase.Visible = False : dgCharges.Visible = False
@@ -1288,18 +1291,14 @@
         tb.SelectAll()
     End Sub
 
-    Private Sub txtVoucherNo_LostFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.LostFocus, txtVehicleNo.LostFocus,
+    Private Sub txtVoucherNo_LostFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.LostFocus, txtVehicleNo.LostFocus, txtEntryDate.LostFocus,
      txtItem.LostFocus, txtAccount.LostFocus, txtNug.LostFocus, txtWeight.LostFocus, txtRate.LostFocus, txtAmount.LostFocus
         Dim tb As TextBox = CType(sender, TextBox)
         tb.BackColor = Color.GhostWhite
     End Sub
 
-    Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
-        mskEntryDate.BackColor = Color.LightGray
-        mskEntryDate.SelectAll()
-    End Sub
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, txtVoucherNo.KeyDown,
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, txtVoucherNo.KeyDown,
         txtVehicleNo.KeyDown, txtItem.KeyDown, txtAccount.KeyDown,
         txtWeight.KeyDown, cbPer.KeyDown, txtRate.KeyDown
         If txtVoucherNo.Focused Then
@@ -1459,7 +1458,7 @@
         txtItemIDStockIn.Text = ""
         txtTotalNug.Text = "" : txtbasicTotal.Text = ""
         txttotalWeight.Text = "" : txtTotalNetAmount.Text = ""
-        txttotalCharges.Text = "" : mskEntryDate.Focus()
+        txttotalCharges.Text = "" : txtEntryDate.Focus()
         BtnDelete.Enabled = False : BtnSave.Text = "&Save"
         VNumber() : ChargesClear() : txtVehicleNo.Enabled = True
         txtVehicleNo.Text = "" : dg1.Rows.Clear()
@@ -1521,7 +1520,7 @@
         'txtTotalNetAmount.Text = Format(Val(txtbasicTotal.Text) + Val(txttotalCharges.Text), "0.00")
 
     End Sub
- 
+
     Private Sub cbPurchaseItem_SelectedIndexChanged(sender As Object, e As EventArgs)
         itemfill()
     End Sub
@@ -1584,14 +1583,6 @@
         End If
     End Sub
 
-    Private Sub mskEntryDate_LostFocus(sender As Object, e As EventArgs) Handles mskEntryDate.LostFocus
-        mskEntryDate.BackColor = Color.GhostWhite
-    End Sub
-
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
-    End Sub
-
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         ButtonControl() : delete() : ButtonControl()
     End Sub
@@ -1636,9 +1627,9 @@
     Private Sub dgPurchase_MouseClick(sender As Object, e As MouseEventArgs) Handles dg1.MouseClick
         dg1.ClearSelection()
     End Sub
- 
-  
-  
+
+
+
     Private Sub PurchaseItemRowColums()
         dgItemPurchase.ColumnCount = 3
         dgItemPurchase.Columns(0).Name = "ID" : dgItemPurchase.Columns(0).Visible = False
@@ -1877,7 +1868,7 @@
             'For Each row As DataGridViewRow In .Rows
             With row
                 If .Cells(6).Value <> "" Then
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & txtVoucherNo.Text & "','" & mskEntryDate.Text & "','" & txtVehicleNo.Text & "','" & .Cells(4).Value & "'," &
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & txtVoucherNo.Text & "','" & txtEntryDate.Text & "','" & txtVehicleNo.Text & "','" & .Cells(4).Value & "'," &
                     "'" & .Cells(5).Value & "','" & .Cells(6).Value & "','" & .Cells(7).Value & "','" & .Cells(8).Value & "', " &
                     "'" & .Cells(9).Value & "','" & .Cells(10).Value & "','" & .Cells(11).Value & "','" & .Cells(12).Value & "', " &
                     "'" & .Cells(13).Value & "','" & .Cells(14).Value & "','" & .Cells(15).Value & "','" & .Cells(16).Value & "', " &

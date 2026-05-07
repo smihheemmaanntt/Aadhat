@@ -44,7 +44,6 @@ Partial Class Sale_Challan
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblClcType = New System.Windows.Forms.Label()
         Me.Cbper = New System.Windows.Forms.ComboBox()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.BtnDelete = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
@@ -221,6 +220,7 @@ Partial Class Sale_Challan
         Me.txtWhatsappNo = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.Dg2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlMarka.SuspendLayout()
@@ -241,7 +241,7 @@ Partial Class Sale_Challan
         Me.lblClcType.ForeColor = System.Drawing.Color.Teal
         Me.lblClcType.Location = New System.Drawing.Point(203, 458)
         Me.lblClcType.Name = "lblClcType"
-        Me.lblClcType.Size = New System.Drawing.Size(58, 20)
+        Me.lblClcType.Size = New System.Drawing.Size(52, 19)
         Me.lblClcType.TabIndex = 40104
         Me.lblClcType.Text = "clctype"
         Me.lblClcType.Visible = False
@@ -258,21 +258,8 @@ Partial Class Sale_Challan
         Me.Cbper.Items.AddRange(New Object() {"Nug", "Kg", "40 Kg"})
         Me.Cbper.Location = New System.Drawing.Point(859, 201)
         Me.Cbper.Name = "Cbper"
-        Me.Cbper.Size = New System.Drawing.Size(88, 28)
+        Me.Cbper.Size = New System.Drawing.Size(88, 25)
         Me.Cbper.TabIndex = 11
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(9, 90)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(113, 27)
-        Me.mskEntryDate.TabIndex = 0
-        Me.mskEntryDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnPrint
         '
@@ -332,7 +319,7 @@ Partial Class Sale_Challan
         Me.Label22.ForeColor = System.Drawing.Color.Black
         Me.Label22.Location = New System.Drawing.Point(909, 483)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(109, 21)
+        Me.Label22.Size = New System.Drawing.Size(85, 19)
         Me.Label22.TabIndex = 40100
         Me.Label22.Text = "Total Weight"
         '
@@ -346,7 +333,7 @@ Partial Class Sale_Challan
         Me.txttotalWeight.Location = New System.Drawing.Point(1040, 484)
         Me.txttotalWeight.Name = "txttotalWeight"
         Me.txttotalWeight.ReadOnly = True
-        Me.txttotalWeight.Size = New System.Drawing.Size(146, 20)
+        Me.txttotalWeight.Size = New System.Drawing.Size(146, 19)
         Me.txttotalWeight.TabIndex = 40099
         Me.txttotalWeight.TabStop = False
         Me.txttotalWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -358,7 +345,7 @@ Partial Class Sale_Challan
         Me.Label21.ForeColor = System.Drawing.Color.Black
         Me.Label21.Location = New System.Drawing.Point(932, 458)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(86, 21)
+        Me.Label21.Size = New System.Drawing.Size(69, 19)
         Me.Label21.TabIndex = 40098
         Me.Label21.Text = "Total Nug"
         '
@@ -372,7 +359,7 @@ Partial Class Sale_Challan
         Me.txtTotalNug.Location = New System.Drawing.Point(1040, 460)
         Me.txtTotalNug.Name = "txtTotalNug"
         Me.txtTotalNug.ReadOnly = True
-        Me.txtTotalNug.Size = New System.Drawing.Size(146, 20)
+        Me.txtTotalNug.Size = New System.Drawing.Size(146, 19)
         Me.txtTotalNug.TabIndex = 40097
         Me.txtTotalNug.TabStop = False
         Me.txtTotalNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -384,7 +371,7 @@ Partial Class Sale_Challan
         Me.Label20.ForeColor = System.Drawing.Color.Black
         Me.Label20.Location = New System.Drawing.Point(900, 628)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(118, 21)
+        Me.Label20.Size = New System.Drawing.Size(90, 19)
         Me.Label20.TabIndex = 40096
         Me.Label20.Text = "Total Amount"
         '
@@ -398,7 +385,7 @@ Partial Class Sale_Challan
         Me.txtTotalNetAmount.Location = New System.Drawing.Point(1040, 628)
         Me.txtTotalNetAmount.Name = "txtTotalNetAmount"
         Me.txtTotalNetAmount.ReadOnly = True
-        Me.txtTotalNetAmount.Size = New System.Drawing.Size(146, 20)
+        Me.txtTotalNetAmount.Size = New System.Drawing.Size(146, 19)
         Me.txtTotalNetAmount.TabIndex = 40095
         Me.txtTotalNetAmount.TabStop = False
         Me.txtTotalNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -410,7 +397,7 @@ Partial Class Sale_Challan
         Me.Label19.ForeColor = System.Drawing.Color.Black
         Me.Label19.Location = New System.Drawing.Point(892, 579)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(126, 21)
+        Me.Label19.Size = New System.Drawing.Size(98, 19)
         Me.Label19.TabIndex = 40094
         Me.Label19.Text = "Other Charges"
         '
@@ -424,7 +411,7 @@ Partial Class Sale_Challan
         Me.txtotherCharges.Location = New System.Drawing.Point(1040, 580)
         Me.txtotherCharges.Name = "txtotherCharges"
         Me.txtotherCharges.ReadOnly = True
-        Me.txtotherCharges.Size = New System.Drawing.Size(146, 20)
+        Me.txtotherCharges.Size = New System.Drawing.Size(146, 19)
         Me.txtotherCharges.TabIndex = 40093
         Me.txtotherCharges.TabStop = False
         Me.txtotherCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -436,7 +423,7 @@ Partial Class Sale_Challan
         Me.Label18.ForeColor = System.Drawing.Color.Black
         Me.Label18.Location = New System.Drawing.Point(942, 531)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(76, 21)
+        Me.Label18.Size = New System.Drawing.Size(59, 19)
         Me.Label18.TabIndex = 40092
         Me.Label18.Text = "Charges"
         '
@@ -450,7 +437,7 @@ Partial Class Sale_Challan
         Me.txttotalCharges.Location = New System.Drawing.Point(1040, 533)
         Me.txttotalCharges.Name = "txttotalCharges"
         Me.txttotalCharges.ReadOnly = True
-        Me.txttotalCharges.Size = New System.Drawing.Size(146, 20)
+        Me.txttotalCharges.Size = New System.Drawing.Size(146, 19)
         Me.txttotalCharges.TabIndex = 40091
         Me.txttotalCharges.TabStop = False
         Me.txttotalCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -462,7 +449,7 @@ Partial Class Sale_Challan
         Me.Label17.ForeColor = System.Drawing.Color.Black
         Me.Label17.Location = New System.Drawing.Point(900, 507)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(118, 21)
+        Me.Label17.Size = New System.Drawing.Size(93, 19)
         Me.Label17.TabIndex = 40090
         Me.Label17.Text = "Basic Amount"
         '
@@ -476,7 +463,7 @@ Partial Class Sale_Challan
         Me.txtbasicTotal.Location = New System.Drawing.Point(1040, 509)
         Me.txtbasicTotal.Name = "txtbasicTotal"
         Me.txtbasicTotal.ReadOnly = True
-        Me.txtbasicTotal.Size = New System.Drawing.Size(146, 20)
+        Me.txtbasicTotal.Size = New System.Drawing.Size(146, 19)
         Me.txtbasicTotal.TabIndex = 40089
         Me.txtbasicTotal.TabStop = False
         Me.txtbasicTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -488,7 +475,7 @@ Partial Class Sale_Challan
         Me.Label16.ForeColor = System.Drawing.Color.Black
         Me.Label16.Location = New System.Drawing.Point(655, 462)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(75, 21)
+        Me.Label16.Size = New System.Drawing.Size(57, 19)
         Me.Label16.TabIndex = 40088
         Me.Label16.Text = "Amount"
         '
@@ -499,7 +486,7 @@ Partial Class Sale_Challan
         Me.Label15.ForeColor = System.Drawing.Color.Black
         Me.Label15.Location = New System.Drawing.Point(544, 462)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(31, 21)
+        Me.Label15.Size = New System.Drawing.Size(28, 19)
         Me.Label15.TabIndex = 40087
         Me.Label15.Text = "+/-"
         '
@@ -510,7 +497,7 @@ Partial Class Sale_Challan
         Me.Label14.ForeColor = System.Drawing.Color.Black
         Me.Label14.Location = New System.Drawing.Point(472, 460)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(24, 21)
+        Me.Label14.Size = New System.Drawing.Size(24, 19)
         Me.Label14.TabIndex = 40086
         Me.Label14.Text = "@"
         '
@@ -521,7 +508,7 @@ Partial Class Sale_Challan
         Me.Label13.ForeColor = System.Drawing.Color.Black
         Me.Label13.Location = New System.Drawing.Point(290, 462)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(83, 21)
+        Me.Label13.Size = New System.Drawing.Size(65, 19)
         Me.Label13.TabIndex = 40085
         Me.Label13.Text = "On Value"
         '
@@ -532,7 +519,7 @@ Partial Class Sale_Challan
         Me.Label12.ForeColor = System.Drawing.Color.Black
         Me.Label12.Location = New System.Drawing.Point(7, 460)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(178, 21)
+        Me.Label12.Size = New System.Drawing.Size(139, 19)
         Me.Label12.TabIndex = 40084
         Me.Label12.Text = "Other Charges Name"
         '
@@ -582,7 +569,7 @@ Partial Class Sale_Challan
         Me.txtchargesAmount.ForeColor = System.Drawing.Color.Black
         Me.txtchargesAmount.Location = New System.Drawing.Point(612, 484)
         Me.txtchargesAmount.Name = "txtchargesAmount"
-        Me.txtchargesAmount.Size = New System.Drawing.Size(115, 27)
+        Me.txtchargesAmount.Size = New System.Drawing.Size(115, 26)
         Me.txtchargesAmount.TabIndex = 28
         Me.txtchargesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -596,7 +583,7 @@ Partial Class Sale_Challan
         Me.txtPlusMinus.Location = New System.Drawing.Point(498, 484)
         Me.txtPlusMinus.Name = "txtPlusMinus"
         Me.txtPlusMinus.ReadOnly = True
-        Me.txtPlusMinus.Size = New System.Drawing.Size(115, 27)
+        Me.txtPlusMinus.Size = New System.Drawing.Size(115, 26)
         Me.txtPlusMinus.TabIndex = 27
         Me.txtPlusMinus.TabStop = False
         Me.txtPlusMinus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -610,7 +597,7 @@ Partial Class Sale_Challan
         Me.txtCalculatePer.ForeColor = System.Drawing.Color.Black
         Me.txtCalculatePer.Location = New System.Drawing.Point(384, 484)
         Me.txtCalculatePer.Name = "txtCalculatePer"
-        Me.txtCalculatePer.Size = New System.Drawing.Size(115, 27)
+        Me.txtCalculatePer.Size = New System.Drawing.Size(115, 26)
         Me.txtCalculatePer.TabIndex = 26
         Me.txtCalculatePer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -623,7 +610,7 @@ Partial Class Sale_Challan
         Me.txtOnValue.ForeColor = System.Drawing.Color.Black
         Me.txtOnValue.Location = New System.Drawing.Point(270, 484)
         Me.txtOnValue.Name = "txtOnValue"
-        Me.txtOnValue.Size = New System.Drawing.Size(115, 27)
+        Me.txtOnValue.Size = New System.Drawing.Size(115, 26)
         Me.txtOnValue.TabIndex = 25
         Me.txtOnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -680,7 +667,7 @@ Partial Class Sale_Challan
         Me.Label11.ForeColor = System.Drawing.Color.Black
         Me.Label11.Location = New System.Drawing.Point(913, 177)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(34, 21)
+        Me.Label11.Size = New System.Drawing.Size(30, 19)
         Me.Label11.TabIndex = 40081
         Me.Label11.Text = "Per"
         '
@@ -691,7 +678,7 @@ Partial Class Sale_Challan
         Me.Label10.ForeColor = System.Drawing.Color.Black
         Me.Label10.Location = New System.Drawing.Point(1018, 177)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(49, 21)
+        Me.Label10.Size = New System.Drawing.Size(42, 19)
         Me.Label10.TabIndex = 40080
         Me.Label10.Text = "Basic"
         '
@@ -704,7 +691,7 @@ Partial Class Sale_Challan
         Me.txtBasicAmount.ForeColor = System.Drawing.Color.Black
         Me.txtBasicAmount.Location = New System.Drawing.Point(947, 201)
         Me.txtBasicAmount.Name = "txtBasicAmount"
-        Me.txtBasicAmount.Size = New System.Drawing.Size(120, 27)
+        Me.txtBasicAmount.Size = New System.Drawing.Size(120, 26)
         Me.txtBasicAmount.TabIndex = 22
         Me.txtBasicAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -715,7 +702,7 @@ Partial Class Sale_Challan
         Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(811, 177)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(48, 21)
+        Me.Label9.Size = New System.Drawing.Size(37, 19)
         Me.Label9.TabIndex = 40079
         Me.Label9.Text = "Rate"
         '
@@ -728,7 +715,7 @@ Partial Class Sale_Challan
         Me.txtRate.ForeColor = System.Drawing.Color.Black
         Me.txtRate.Location = New System.Drawing.Point(739, 201)
         Me.txtRate.Name = "txtRate"
-        Me.txtRate.Size = New System.Drawing.Size(120, 27)
+        Me.txtRate.Size = New System.Drawing.Size(120, 26)
         Me.txtRate.TabIndex = 10
         Me.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -739,7 +726,7 @@ Partial Class Sale_Challan
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(674, 177)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(66, 21)
+        Me.Label8.Size = New System.Drawing.Size(51, 19)
         Me.Label8.TabIndex = 40078
         Me.Label8.Text = "Weight"
         '
@@ -752,7 +739,7 @@ Partial Class Sale_Challan
         Me.txtKg.ForeColor = System.Drawing.Color.Black
         Me.txtKg.Location = New System.Drawing.Point(620, 201)
         Me.txtKg.Name = "txtKg"
-        Me.txtKg.Size = New System.Drawing.Size(120, 27)
+        Me.txtKg.Size = New System.Drawing.Size(120, 26)
         Me.txtKg.TabIndex = 9
         Me.txtKg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -763,7 +750,7 @@ Partial Class Sale_Challan
         Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(578, 179)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(43, 21)
+        Me.Label7.Size = New System.Drawing.Size(35, 19)
         Me.Label7.TabIndex = 40077
         Me.Label7.Text = "Nug"
         '
@@ -776,7 +763,7 @@ Partial Class Sale_Challan
         Me.txtNug.ForeColor = System.Drawing.Color.Black
         Me.txtNug.Location = New System.Drawing.Point(501, 201)
         Me.txtNug.Name = "txtNug"
-        Me.txtNug.Size = New System.Drawing.Size(120, 27)
+        Me.txtNug.Size = New System.Drawing.Size(120, 26)
         Me.txtNug.TabIndex = 7
         Me.txtNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -787,7 +774,7 @@ Partial Class Sale_Challan
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(441, 179)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(64, 21)
+        Me.Label6.Size = New System.Drawing.Size(58, 19)
         Me.Label6.TabIndex = 40076
         Me.Label6.Text = "Lot No."
         '
@@ -800,7 +787,7 @@ Partial Class Sale_Challan
         Me.txtLot.ForeColor = System.Drawing.Color.Black
         Me.txtLot.Location = New System.Drawing.Point(382, 201)
         Me.txtLot.Name = "txtLot"
-        Me.txtLot.Size = New System.Drawing.Size(120, 27)
+        Me.txtLot.Size = New System.Drawing.Size(120, 26)
         Me.txtLot.TabIndex = 6
         Me.txtLot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -811,7 +798,7 @@ Partial Class Sale_Challan
         Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(12, 177)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(99, 21)
+        Me.Label5.Size = New System.Drawing.Size(77, 19)
         Me.Label5.TabIndex = 40075
         Me.Label5.Text = "Item Name"
         '
@@ -822,7 +809,7 @@ Partial Class Sale_Challan
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(423, 66)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(223, 21)
+        Me.Label4.Size = New System.Drawing.Size(171, 19)
         Me.Label4.TabIndex = 40074
         Me.Label4.Text = "Customer / Account Name"
         '
@@ -833,7 +820,7 @@ Partial Class Sale_Challan
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(266, 66)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(97, 21)
+        Me.Label3.Size = New System.Drawing.Size(80, 19)
         Me.Label3.TabIndex = 40073
         Me.Label3.Text = "Vehicle No."
         '
@@ -846,7 +833,7 @@ Partial Class Sale_Challan
         Me.txtVehicleNo.ForeColor = System.Drawing.Color.Black
         Me.txtVehicleNo.Location = New System.Drawing.Point(270, 90)
         Me.txtVehicleNo.Name = "txtVehicleNo"
-        Me.txtVehicleNo.Size = New System.Drawing.Size(152, 27)
+        Me.txtVehicleNo.Size = New System.Drawing.Size(152, 26)
         Me.txtVehicleNo.TabIndex = 2
         Me.txtVehicleNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -857,7 +844,7 @@ Partial Class Sale_Challan
         Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(107, 66)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(106, 21)
+        Me.Label2.Size = New System.Drawing.Size(87, 19)
         Me.Label2.TabIndex = 40072
         Me.Label2.Text = "Voucher No."
         '
@@ -868,7 +855,7 @@ Partial Class Sale_Challan
         Me.Label25.ForeColor = System.Drawing.Color.Black
         Me.Label25.Location = New System.Drawing.Point(9, 66)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(50, 21)
+        Me.Label25.Size = New System.Drawing.Size(38, 19)
         Me.Label25.TabIndex = 40071
         Me.Label25.Text = "Date"
         '
@@ -881,7 +868,7 @@ Partial Class Sale_Challan
         Me.txtVoucherNo.ForeColor = System.Drawing.Color.Black
         Me.txtVoucherNo.Location = New System.Drawing.Point(136, 90)
         Me.txtVoucherNo.Name = "txtVoucherNo"
-        Me.txtVoucherNo.Size = New System.Drawing.Size(135, 27)
+        Me.txtVoucherNo.Size = New System.Drawing.Size(135, 26)
         Me.txtVoucherNo.TabIndex = 1
         Me.txtVoucherNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -906,7 +893,7 @@ Partial Class Sale_Challan
         Me.Label56.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label56.Location = New System.Drawing.Point(112, 19)
         Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(136, 21)
+        Me.Label56.Size = New System.Drawing.Size(105, 19)
         Me.Label56.TabIndex = 40
         Me.Label56.Text = "Account Name "
         '
@@ -921,7 +908,7 @@ Partial Class Sale_Challan
         Me.cbAccountName.FormattingEnabled = True
         Me.cbAccountName.Location = New System.Drawing.Point(22, 43)
         Me.cbAccountName.Name = "cbAccountName"
-        Me.cbAccountName.Size = New System.Drawing.Size(323, 25)
+        Me.cbAccountName.Size = New System.Drawing.Size(323, 23)
         Me.cbAccountName.TabIndex = 0
         '
         'Label34
@@ -931,7 +918,7 @@ Partial Class Sale_Challan
         Me.Label34.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label34.Location = New System.Drawing.Point(288, 71)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(39, 21)
+        Me.Label34.Size = New System.Drawing.Size(32, 19)
         Me.Label34.TabIndex = 29
         Me.Label34.Text = "Qty"
         '
@@ -955,7 +942,7 @@ Partial Class Sale_Challan
         Me.Label35.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label35.Location = New System.Drawing.Point(25, 71)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(118, 21)
+        Me.Label35.Size = New System.Drawing.Size(95, 19)
         Me.Label35.TabIndex = 28
         Me.Label35.Text = "Crate Marka :"
         '
@@ -968,7 +955,7 @@ Partial Class Sale_Challan
         Me.cbCrateMarka.FormattingEnabled = True
         Me.cbCrateMarka.Location = New System.Drawing.Point(23, 95)
         Me.cbCrateMarka.Name = "cbCrateMarka"
-        Me.cbCrateMarka.Size = New System.Drawing.Size(261, 26)
+        Me.cbCrateMarka.Size = New System.Drawing.Size(261, 25)
         Me.cbCrateMarka.TabIndex = 1
         '
         'txtTotal
@@ -981,7 +968,7 @@ Partial Class Sale_Challan
         Me.txtTotal.Location = New System.Drawing.Point(1066, 201)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
-        Me.txtTotal.Size = New System.Drawing.Size(120, 27)
+        Me.txtTotal.Size = New System.Drawing.Size(120, 26)
         Me.txtTotal.TabIndex = 23
         Me.txtTotal.TabStop = False
         Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -993,7 +980,7 @@ Partial Class Sale_Challan
         Me.Label36.ForeColor = System.Drawing.Color.Black
         Me.Label36.Location = New System.Drawing.Point(1137, 177)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(49, 21)
+        Me.Label36.Size = New System.Drawing.Size(39, 19)
         Me.Label36.TabIndex = 40107
         Me.Label36.Text = "Total"
         '
@@ -1004,7 +991,7 @@ Partial Class Sale_Challan
         Me.lblCrate.ForeColor = System.Drawing.Color.Red
         Me.lblCrate.Location = New System.Drawing.Point(124, 179)
         Me.lblCrate.Name = "lblCrate"
-        Me.lblCrate.Size = New System.Drawing.Size(35, 20)
+        Me.lblCrate.Size = New System.Drawing.Size(36, 19)
         Me.lblCrate.TabIndex = 40110
         Me.lblCrate.Text = "Y/N"
         Me.lblCrate.Visible = False
@@ -1016,7 +1003,7 @@ Partial Class Sale_Challan
         Me.Label37.ForeColor = System.Drawing.Color.Black
         Me.Label37.Location = New System.Drawing.Point(898, 556)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(120, 21)
+        Me.Label37.Size = New System.Drawing.Size(96, 19)
         Me.Label37.TabIndex = 40114
         Me.Label37.Text = "Gross Amount"
         '
@@ -1030,7 +1017,7 @@ Partial Class Sale_Challan
         Me.txtTotGross.Location = New System.Drawing.Point(1040, 556)
         Me.txtTotGross.Name = "txtTotGross"
         Me.txtTotGross.ReadOnly = True
-        Me.txtTotGross.Size = New System.Drawing.Size(146, 20)
+        Me.txtTotGross.Size = New System.Drawing.Size(146, 19)
         Me.txtTotGross.TabIndex = 40113
         Me.txtTotGross.TabStop = False
         Me.txtTotGross.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1084,7 +1071,7 @@ Partial Class Sale_Challan
         Me.txtCharges.ForeColor = System.Drawing.Color.Black
         Me.txtCharges.Location = New System.Drawing.Point(11, 484)
         Me.txtCharges.Name = "txtCharges"
-        Me.txtCharges.Size = New System.Drawing.Size(260, 27)
+        Me.txtCharges.Size = New System.Drawing.Size(260, 26)
         Me.txtCharges.TabIndex = 24
         Me.txtCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1096,7 +1083,7 @@ Partial Class Sale_Challan
         Me.txtAccount.ForeColor = System.Drawing.Color.Black
         Me.txtAccount.Location = New System.Drawing.Point(421, 90)
         Me.txtAccount.Name = "txtAccount"
-        Me.txtAccount.Size = New System.Drawing.Size(409, 27)
+        Me.txtAccount.Size = New System.Drawing.Size(409, 26)
         Me.txtAccount.TabIndex = 4
         Me.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1149,7 +1136,7 @@ Partial Class Sale_Challan
         Me.lblAcBal.ForeColor = System.Drawing.Color.Blue
         Me.lblAcBal.Location = New System.Drawing.Point(9, 117)
         Me.lblAcBal.Name = "lblAcBal"
-        Me.lblAcBal.Size = New System.Drawing.Size(33, 21)
+        Me.lblAcBal.Size = New System.Drawing.Size(29, 19)
         Me.lblAcBal.TabIndex = 40179
         Me.lblAcBal.Text = "Bal"
         Me.lblAcBal.Visible = False
@@ -1204,7 +1191,7 @@ Partial Class Sale_Challan
         Me.txtItem.ForeColor = System.Drawing.Color.Black
         Me.txtItem.Location = New System.Drawing.Point(11, 201)
         Me.txtItem.Name = "txtItem"
-        Me.txtItem.Size = New System.Drawing.Size(372, 27)
+        Me.txtItem.Size = New System.Drawing.Size(372, 26)
         Me.txtItem.TabIndex = 5
         Me.txtItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1213,9 +1200,9 @@ Partial Class Sale_Challan
         Me.lblItemBalance.AutoSize = True
         Me.lblItemBalance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblItemBalance.ForeColor = System.Drawing.Color.Red
-        Me.lblItemBalance.Location = New System.Drawing.Point(9, 123)
+        Me.lblItemBalance.Location = New System.Drawing.Point(9, 136)
         Me.lblItemBalance.Name = "lblItemBalance"
-        Me.lblItemBalance.Size = New System.Drawing.Size(45, 21)
+        Me.lblItemBalance.Size = New System.Drawing.Size(40, 19)
         Me.lblItemBalance.TabIndex = 40182
         Me.lblItemBalance.Text = "Bal. :"
         Me.lblItemBalance.Visible = False
@@ -1230,7 +1217,7 @@ Partial Class Sale_Challan
         Me.txtLaboutAmt.Location = New System.Drawing.Point(1131, 154)
         Me.txtLaboutAmt.Name = "txtLaboutAmt"
         Me.txtLaboutAmt.ReadOnly = True
-        Me.txtLaboutAmt.Size = New System.Drawing.Size(55, 20)
+        Me.txtLaboutAmt.Size = New System.Drawing.Size(55, 19)
         Me.txtLaboutAmt.TabIndex = 21
         Me.txtLaboutAmt.TabStop = False
         Me.txtLaboutAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1245,7 +1232,7 @@ Partial Class Sale_Challan
         Me.txtRdfAmt.Location = New System.Drawing.Point(828, 154)
         Me.txtRdfAmt.Name = "txtRdfAmt"
         Me.txtRdfAmt.ReadOnly = True
-        Me.txtRdfAmt.Size = New System.Drawing.Size(55, 20)
+        Me.txtRdfAmt.Size = New System.Drawing.Size(55, 19)
         Me.txtRdfAmt.TabIndex = 17
         Me.txtRdfAmt.TabStop = False
         Me.txtRdfAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1259,7 +1246,7 @@ Partial Class Sale_Challan
         Me.txtLabour.ForeColor = System.Drawing.Color.Black
         Me.txtLabour.Location = New System.Drawing.Point(1058, 154)
         Me.txtLabour.Name = "txtLabour"
-        Me.txtLabour.Size = New System.Drawing.Size(50, 20)
+        Me.txtLabour.Size = New System.Drawing.Size(50, 19)
         Me.txtLabour.TabIndex = 20
         '
         'txtComPer
@@ -1271,7 +1258,7 @@ Partial Class Sale_Challan
         Me.txtComPer.ForeColor = System.Drawing.Color.Black
         Me.txtComPer.Location = New System.Drawing.Point(438, 154)
         Me.txtComPer.Name = "txtComPer"
-        Me.txtComPer.Size = New System.Drawing.Size(50, 20)
+        Me.txtComPer.Size = New System.Drawing.Size(50, 19)
         Me.txtComPer.TabIndex = 12
         '
         'txtTareAmt
@@ -1284,7 +1271,7 @@ Partial Class Sale_Challan
         Me.txtTareAmt.Location = New System.Drawing.Point(976, 154)
         Me.txtTareAmt.Name = "txtTareAmt"
         Me.txtTareAmt.ReadOnly = True
-        Me.txtTareAmt.Size = New System.Drawing.Size(55, 20)
+        Me.txtTareAmt.Size = New System.Drawing.Size(55, 19)
         Me.txtTareAmt.TabIndex = 19
         Me.txtTareAmt.TabStop = False
         Me.txtTareAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1299,7 +1286,7 @@ Partial Class Sale_Challan
         Me.txtComAmt.Location = New System.Drawing.Point(512, 154)
         Me.txtComAmt.Name = "txtComAmt"
         Me.txtComAmt.ReadOnly = True
-        Me.txtComAmt.Size = New System.Drawing.Size(55, 20)
+        Me.txtComAmt.Size = New System.Drawing.Size(55, 19)
         Me.txtComAmt.TabIndex = 13
         Me.txtComAmt.TabStop = False
         Me.txtComAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1313,7 +1300,7 @@ Partial Class Sale_Challan
         Me.txtTare.ForeColor = System.Drawing.Color.Black
         Me.txtTare.Location = New System.Drawing.Point(905, 154)
         Me.txtTare.Name = "txtTare"
-        Me.txtTare.Size = New System.Drawing.Size(50, 20)
+        Me.txtTare.Size = New System.Drawing.Size(50, 19)
         Me.txtTare.TabIndex = 18
         '
         'txtMPer
@@ -1325,7 +1312,7 @@ Partial Class Sale_Challan
         Me.txtMPer.ForeColor = System.Drawing.Color.Black
         Me.txtMPer.Location = New System.Drawing.Point(594, 154)
         Me.txtMPer.Name = "txtMPer"
-        Me.txtMPer.Size = New System.Drawing.Size(50, 20)
+        Me.txtMPer.Size = New System.Drawing.Size(50, 19)
         Me.txtMPer.TabIndex = 14
         '
         'txtMAmt
@@ -1338,7 +1325,7 @@ Partial Class Sale_Challan
         Me.txtMAmt.Location = New System.Drawing.Point(669, 154)
         Me.txtMAmt.Name = "txtMAmt"
         Me.txtMAmt.ReadOnly = True
-        Me.txtMAmt.Size = New System.Drawing.Size(55, 20)
+        Me.txtMAmt.Size = New System.Drawing.Size(55, 19)
         Me.txtMAmt.TabIndex = 15
         Me.txtMAmt.TabStop = False
         Me.txtMAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1352,7 +1339,7 @@ Partial Class Sale_Challan
         Me.txtRdfPer.ForeColor = System.Drawing.Color.Black
         Me.txtRdfPer.Location = New System.Drawing.Point(753, 154)
         Me.txtRdfPer.Name = "txtRdfPer"
-        Me.txtRdfPer.Size = New System.Drawing.Size(50, 20)
+        Me.txtRdfPer.Size = New System.Drawing.Size(50, 19)
         Me.txtRdfPer.TabIndex = 16
         '
         'Label23
@@ -1363,7 +1350,7 @@ Partial Class Sale_Challan
         Me.Label23.Image = Global.Aadhat.My.Resources.Resources.Rupee
         Me.Label23.Location = New System.Drawing.Point(1114, 154)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(13, 20)
+        Me.Label23.Size = New System.Drawing.Size(13, 19)
         Me.Label23.TabIndex = 40184
         Me.Label23.Text = " "
         '
@@ -1375,7 +1362,7 @@ Partial Class Sale_Challan
         Me.Label24.Image = CType(resources.GetObject("Label24.Image"), System.Drawing.Image)
         Me.Label24.Location = New System.Drawing.Point(1036, 154)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(17, 20)
+        Me.Label24.Size = New System.Drawing.Size(17, 19)
         Me.Label24.TabIndex = 40185
         Me.Label24.Text = "  "
         '
@@ -1387,7 +1374,7 @@ Partial Class Sale_Challan
         Me.Label26.Image = Global.Aadhat.My.Resources.Resources.Rupee
         Me.Label26.Location = New System.Drawing.Point(961, 154)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(13, 20)
+        Me.Label26.Size = New System.Drawing.Size(13, 19)
         Me.Label26.TabIndex = 40186
         Me.Label26.Text = " "
         '
@@ -1399,7 +1386,7 @@ Partial Class Sale_Challan
         Me.Label27.Image = CType(resources.GetObject("Label27.Image"), System.Drawing.Image)
         Me.Label27.Location = New System.Drawing.Point(885, 154)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(17, 20)
+        Me.Label27.Size = New System.Drawing.Size(17, 19)
         Me.Label27.TabIndex = 40187
         Me.Label27.Text = "  "
         '
@@ -1411,7 +1398,7 @@ Partial Class Sale_Challan
         Me.Label28.Image = Global.Aadhat.My.Resources.Resources.Rupee
         Me.Label28.Location = New System.Drawing.Point(809, 154)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(13, 20)
+        Me.Label28.Size = New System.Drawing.Size(13, 19)
         Me.Label28.TabIndex = 40188
         Me.Label28.Text = " "
         '
@@ -1423,7 +1410,7 @@ Partial Class Sale_Challan
         Me.Label29.Image = CType(resources.GetObject("Label29.Image"), System.Drawing.Image)
         Me.Label29.Location = New System.Drawing.Point(730, 154)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(17, 20)
+        Me.Label29.Size = New System.Drawing.Size(17, 19)
         Me.Label29.TabIndex = 40189
         Me.Label29.Text = "  "
         '
@@ -1435,7 +1422,7 @@ Partial Class Sale_Challan
         Me.Label30.Image = Global.Aadhat.My.Resources.Resources.Rupee
         Me.Label30.Location = New System.Drawing.Point(650, 154)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(13, 20)
+        Me.Label30.Size = New System.Drawing.Size(13, 19)
         Me.Label30.TabIndex = 40190
         Me.Label30.Text = " "
         '
@@ -1447,7 +1434,7 @@ Partial Class Sale_Challan
         Me.Label31.Image = CType(resources.GetObject("Label31.Image"), System.Drawing.Image)
         Me.Label31.Location = New System.Drawing.Point(573, 153)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(17, 20)
+        Me.Label31.Size = New System.Drawing.Size(17, 19)
         Me.Label31.TabIndex = 40191
         Me.Label31.Text = "  "
         '
@@ -1459,7 +1446,7 @@ Partial Class Sale_Challan
         Me.Label32.Image = Global.Aadhat.My.Resources.Resources.Rupee
         Me.Label32.Location = New System.Drawing.Point(493, 154)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(13, 20)
+        Me.Label32.Size = New System.Drawing.Size(13, 19)
         Me.Label32.TabIndex = 4
         Me.Label32.Text = " "
         '
@@ -1471,7 +1458,7 @@ Partial Class Sale_Challan
         Me.Label33.Image = CType(resources.GetObject("Label33.Image"), System.Drawing.Image)
         Me.Label33.Location = New System.Drawing.Point(415, 154)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(17, 20)
+        Me.Label33.Size = New System.Drawing.Size(17, 19)
         Me.Label33.TabIndex = 40193
         Me.Label33.Text = "  "
         '
@@ -1482,7 +1469,7 @@ Partial Class Sale_Challan
         Me.Label38.ForeColor = System.Drawing.Color.Black
         Me.Label38.Location = New System.Drawing.Point(1078, 125)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(74, 21)
+        Me.Label38.Size = New System.Drawing.Size(72, 19)
         Me.Label38.TabIndex = 40199
         Me.Label38.Text = "LABOUR"
         '
@@ -1493,7 +1480,7 @@ Partial Class Sale_Challan
         Me.Label39.ForeColor = System.Drawing.Color.Black
         Me.Label39.Location = New System.Drawing.Point(920, 125)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(92, 21)
+        Me.Label39.Size = New System.Drawing.Size(85, 19)
         Me.Label39.TabIndex = 40198
         Me.Label39.Text = "BARDANA"
         '
@@ -1504,7 +1491,7 @@ Partial Class Sale_Challan
         Me.Label40.ForeColor = System.Drawing.Color.Black
         Me.Label40.Location = New System.Drawing.Point(791, 125)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(40, 21)
+        Me.Label40.Size = New System.Drawing.Size(39, 19)
         Me.Label40.TabIndex = 40197
         Me.Label40.Text = "RDF"
         '
@@ -1515,7 +1502,7 @@ Partial Class Sale_Challan
         Me.Label41.ForeColor = System.Drawing.Color.Black
         Me.Label41.Location = New System.Drawing.Point(593, 125)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(101, 21)
+        Me.Label41.Size = New System.Drawing.Size(96, 19)
         Me.Label41.TabIndex = 40196
         Me.Label41.Text = "MANDI TAX"
         '
@@ -1526,7 +1513,7 @@ Partial Class Sale_Challan
         Me.Label42.ForeColor = System.Drawing.Color.Black
         Me.Label42.Location = New System.Drawing.Point(434, 125)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(119, 21)
+        Me.Label42.Size = New System.Drawing.Size(112, 19)
         Me.Label42.TabIndex = 40195
         Me.Label42.Text = "COMMISSION"
         '
@@ -1537,7 +1524,7 @@ Partial Class Sale_Challan
         Me.Label43.ForeColor = System.Drawing.Color.Black
         Me.Label43.Location = New System.Drawing.Point(1024, 458)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(14, 21)
+        Me.Label43.Size = New System.Drawing.Size(12, 19)
         Me.Label43.TabIndex = 40200
         Me.Label43.Text = ":"
         '
@@ -1548,7 +1535,7 @@ Partial Class Sale_Challan
         Me.Label44.ForeColor = System.Drawing.Color.Black
         Me.Label44.Location = New System.Drawing.Point(1024, 483)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(14, 21)
+        Me.Label44.Size = New System.Drawing.Size(12, 19)
         Me.Label44.TabIndex = 40201
         Me.Label44.Text = ":"
         '
@@ -1559,7 +1546,7 @@ Partial Class Sale_Challan
         Me.Label45.ForeColor = System.Drawing.Color.Black
         Me.Label45.Location = New System.Drawing.Point(1024, 508)
         Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(14, 21)
+        Me.Label45.Size = New System.Drawing.Size(12, 19)
         Me.Label45.TabIndex = 40202
         Me.Label45.Text = ":"
         '
@@ -1570,7 +1557,7 @@ Partial Class Sale_Challan
         Me.Label46.ForeColor = System.Drawing.Color.Black
         Me.Label46.Location = New System.Drawing.Point(1024, 531)
         Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(14, 21)
+        Me.Label46.Size = New System.Drawing.Size(12, 19)
         Me.Label46.TabIndex = 40203
         Me.Label46.Text = ":"
         '
@@ -1581,7 +1568,7 @@ Partial Class Sale_Challan
         Me.Label47.ForeColor = System.Drawing.Color.Black
         Me.Label47.Location = New System.Drawing.Point(1024, 556)
         Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(14, 21)
+        Me.Label47.Size = New System.Drawing.Size(12, 19)
         Me.Label47.TabIndex = 40204
         Me.Label47.Text = ":"
         '
@@ -1592,7 +1579,7 @@ Partial Class Sale_Challan
         Me.Label48.ForeColor = System.Drawing.Color.Black
         Me.Label48.Location = New System.Drawing.Point(1024, 579)
         Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(14, 21)
+        Me.Label48.Size = New System.Drawing.Size(12, 19)
         Me.Label48.TabIndex = 40205
         Me.Label48.Text = ":"
         '
@@ -1603,7 +1590,7 @@ Partial Class Sale_Challan
         Me.Label49.ForeColor = System.Drawing.Color.Black
         Me.Label49.Location = New System.Drawing.Point(1024, 629)
         Me.Label49.Name = "Label49"
-        Me.Label49.Size = New System.Drawing.Size(14, 21)
+        Me.Label49.Size = New System.Drawing.Size(12, 19)
         Me.Label49.TabIndex = 40206
         Me.Label49.Text = ":"
         '
@@ -1818,7 +1805,7 @@ Partial Class Sale_Challan
         Me.lblTotCharges.ForeColor = System.Drawing.Color.Red
         Me.lblTotCharges.Location = New System.Drawing.Point(1077, 14)
         Me.lblTotCharges.Name = "lblTotCharges"
-        Me.lblTotCharges.Size = New System.Drawing.Size(40, 20)
+        Me.lblTotCharges.Size = New System.Drawing.Size(37, 19)
         Me.lblTotCharges.TabIndex = 40109
         Me.lblTotCharges.Text = "0.00"
         Me.lblTotCharges.Visible = False
@@ -1850,6 +1837,7 @@ Partial Class Sale_Challan
         'txtid
         '
         Me.txtid.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtid.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtid.ForeColor = System.Drawing.Color.Teal
         Me.txtid.Location = New System.Drawing.Point(13, 16)
@@ -1876,10 +1864,11 @@ Partial Class Sale_Challan
         'txtAccountID
         '
         Me.txtAccountID.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtAccountID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAccountID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtAccountID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAccountID.ForeColor = System.Drawing.Color.Teal
-        Me.txtAccountID.Location = New System.Drawing.Point(129, 18)
+        Me.txtAccountID.Location = New System.Drawing.Point(90, 16)
         Me.txtAccountID.Name = "txtAccountID"
         Me.txtAccountID.Size = New System.Drawing.Size(48, 26)
         Me.txtAccountID.TabIndex = 91120
@@ -1890,10 +1879,11 @@ Partial Class Sale_Challan
         'txtItemID
         '
         Me.txtItemID.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtItemID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtItemID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtItemID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtItemID.ForeColor = System.Drawing.Color.Teal
-        Me.txtItemID.Location = New System.Drawing.Point(213, 16)
+        Me.txtItemID.Location = New System.Drawing.Point(144, 16)
         Me.txtItemID.Name = "txtItemID"
         Me.txtItemID.Size = New System.Drawing.Size(48, 26)
         Me.txtItemID.TabIndex = 91121
@@ -1941,7 +1931,7 @@ Partial Class Sale_Challan
         Me.Label50.ForeColor = System.Drawing.Color.Black
         Me.Label50.Location = New System.Drawing.Point(931, 603)
         Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(93, 21)
+        Me.Label50.Size = New System.Drawing.Size(77, 19)
         Me.Label50.TabIndex = 91124
         Me.Label50.Text = "Round Off "
         '
@@ -1955,7 +1945,7 @@ Partial Class Sale_Challan
         Me.txtTotRoundOff.Location = New System.Drawing.Point(1040, 604)
         Me.txtTotRoundOff.Name = "txtTotRoundOff"
         Me.txtTotRoundOff.ReadOnly = True
-        Me.txtTotRoundOff.Size = New System.Drawing.Size(146, 20)
+        Me.txtTotRoundOff.Size = New System.Drawing.Size(146, 19)
         Me.txtTotRoundOff.TabIndex = 91125
         Me.txtTotRoundOff.TabStop = False
         Me.txtTotRoundOff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1967,7 +1957,7 @@ Partial Class Sale_Challan
         Me.Label51.ForeColor = System.Drawing.Color.Black
         Me.Label51.Location = New System.Drawing.Point(1024, 603)
         Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(14, 21)
+        Me.Label51.Size = New System.Drawing.Size(12, 19)
         Me.Label51.TabIndex = 91126
         Me.Label51.Text = ":"
         '
@@ -2008,7 +1998,7 @@ Partial Class Sale_Challan
         Me.Label63.ForeColor = System.Drawing.Color.Black
         Me.Label63.Location = New System.Drawing.Point(40, 242)
         Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(63, 21)
+        Me.Label63.Size = New System.Drawing.Size(56, 19)
         Me.Label63.TabIndex = 40093
         Me.Label63.Text = "Gr No :"
         '
@@ -2032,7 +2022,7 @@ Partial Class Sale_Challan
         Me.Label62.ForeColor = System.Drawing.Color.Black
         Me.Label62.Location = New System.Drawing.Point(39, 184)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(143, 21)
+        Me.Label62.Size = New System.Drawing.Size(115, 19)
         Me.Label62.TabIndex = 40091
         Me.Label62.Text = "Transport Name :"
         '
@@ -2056,7 +2046,7 @@ Partial Class Sale_Challan
         Me.Label61.ForeColor = System.Drawing.Color.Black
         Me.Label61.Location = New System.Drawing.Point(38, 38)
         Me.Label61.Name = "Label61"
-        Me.Label61.Size = New System.Drawing.Size(150, 21)
+        Me.Label61.Size = New System.Drawing.Size(122, 19)
         Me.Label61.TabIndex = 40089
         Me.Label61.Text = "Customer Mobile :"
         '
@@ -2080,7 +2070,7 @@ Partial Class Sale_Challan
         Me.Label60.ForeColor = System.Drawing.Color.Black
         Me.Label60.Location = New System.Drawing.Point(38, 154)
         Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(121, 21)
+        Me.Label60.Size = New System.Drawing.Size(106, 19)
         Me.Label60.TabIndex = 40087
         Me.Label60.Text = "Broker Mobile :"
         '
@@ -2104,7 +2094,7 @@ Partial Class Sale_Challan
         Me.Label59.ForeColor = System.Drawing.Color.Black
         Me.Label59.Location = New System.Drawing.Point(38, 122)
         Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(117, 21)
+        Me.Label59.Size = New System.Drawing.Size(100, 19)
         Me.Label59.TabIndex = 40085
         Me.Label59.Text = "Broker Name :"
         '
@@ -2128,7 +2118,7 @@ Partial Class Sale_Challan
         Me.Label58.ForeColor = System.Drawing.Color.Black
         Me.Label58.Location = New System.Drawing.Point(38, 67)
         Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(140, 21)
+        Me.Label58.Size = New System.Drawing.Size(120, 19)
         Me.Label58.TabIndex = 40083
         Me.Label58.Text = "Customer GSTN :"
         '
@@ -2152,7 +2142,7 @@ Partial Class Sale_Challan
         Me.Label57.ForeColor = System.Drawing.Color.Black
         Me.Label57.Location = New System.Drawing.Point(39, 92)
         Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(117, 21)
+        Me.Label57.Size = New System.Drawing.Size(92, 19)
         Me.Label57.TabIndex = 40081
         Me.Label57.Text = "State Name  :"
         '
@@ -2176,7 +2166,7 @@ Partial Class Sale_Challan
         Me.Label55.ForeColor = System.Drawing.Color.Black
         Me.Label55.Location = New System.Drawing.Point(10, 7)
         Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(93, 15)
+        Me.Label55.Size = New System.Drawing.Size(81, 14)
         Me.Label55.TabIndex = 40079
         Me.Label55.Text = "Sender Details :"
         '
@@ -2187,7 +2177,7 @@ Partial Class Sale_Challan
         Me.Label54.ForeColor = System.Drawing.Color.Black
         Me.Label54.Location = New System.Drawing.Point(40, 298)
         Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(154, 21)
+        Me.Label54.Size = New System.Drawing.Size(127, 19)
         Me.Label54.TabIndex = 40078
         Me.Label54.Text = "Address / Remark :"
         '
@@ -2224,7 +2214,7 @@ Partial Class Sale_Challan
         Me.Label53.ForeColor = System.Drawing.Color.Black
         Me.Label53.Location = New System.Drawing.Point(40, 271)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(119, 21)
+        Me.Label53.Size = New System.Drawing.Size(101, 19)
         Me.Label53.TabIndex = 40075
         Me.Label53.Text = "Driver Mobile :"
         '
@@ -2235,7 +2225,7 @@ Partial Class Sale_Challan
         Me.Label52.ForeColor = System.Drawing.Color.Black
         Me.Label52.Location = New System.Drawing.Point(40, 213)
         Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(115, 21)
+        Me.Label52.Size = New System.Drawing.Size(95, 19)
         Me.Label52.TabIndex = 40074
         Me.Label52.Text = "Driver Name :"
         '
@@ -2257,7 +2247,7 @@ Partial Class Sale_Challan
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.dtp1.Location = New System.Drawing.Point(9, 90)
         Me.dtp1.Name = "dtp1"
-        Me.dtp1.Size = New System.Drawing.Size(129, 27)
+        Me.dtp1.Size = New System.Drawing.Size(129, 26)
         Me.dtp1.TabIndex = 91140
         '
         'dgLot
@@ -2303,10 +2293,11 @@ Partial Class Sale_Challan
         'txtPurchaseID
         '
         Me.txtPurchaseID.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtPurchaseID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPurchaseID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPurchaseID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPurchaseID.ForeColor = System.Drawing.Color.Teal
-        Me.txtPurchaseID.Location = New System.Drawing.Point(267, 16)
+        Me.txtPurchaseID.Location = New System.Drawing.Point(198, 16)
         Me.txtPurchaseID.Name = "txtPurchaseID"
         Me.txtPurchaseID.Size = New System.Drawing.Size(48, 26)
         Me.txtPurchaseID.TabIndex = 91142
@@ -2320,7 +2311,7 @@ Partial Class Sale_Challan
         Me.lblLot.ForeColor = System.Drawing.Color.Red
         Me.lblLot.Location = New System.Drawing.Point(8, 158)
         Me.lblLot.Name = "lblLot"
-        Me.lblLot.Size = New System.Drawing.Size(40, 17)
+        Me.lblLot.Size = New System.Drawing.Size(34, 15)
         Me.lblLot.TabIndex = 91143
         Me.lblLot.Text = "Lot. :"
         Me.lblLot.Visible = False
@@ -2328,6 +2319,7 @@ Partial Class Sale_Challan
         'txtLotBal
         '
         Me.txtLotBal.BackColor = System.Drawing.Color.AliceBlue
+        Me.txtLotBal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtLotBal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtLotBal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLotBal.ForeColor = System.Drawing.Color.Teal
@@ -2345,7 +2337,7 @@ Partial Class Sale_Challan
         Me.lblRate.ForeColor = System.Drawing.Color.Red
         Me.lblRate.Location = New System.Drawing.Point(221, 157)
         Me.lblRate.Name = "lblRate"
-        Me.lblRate.Size = New System.Drawing.Size(40, 17)
+        Me.lblRate.Size = New System.Drawing.Size(34, 15)
         Me.lblRate.TabIndex = 91145
         Me.lblRate.Text = "Lot. :"
         Me.lblRate.Visible = False
@@ -2443,7 +2435,7 @@ Partial Class Sale_Challan
         Me.radioPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.radioPrint.Location = New System.Drawing.Point(123, 49)
         Me.radioPrint.Name = "radioPrint"
-        Me.radioPrint.Size = New System.Drawing.Size(59, 24)
+        Me.radioPrint.Size = New System.Drawing.Size(55, 23)
         Me.radioPrint.TabIndex = 91224
         Me.radioPrint.TabStop = True
         Me.radioPrint.Text = "&Print"
@@ -2456,7 +2448,7 @@ Partial Class Sale_Challan
         Me.radioBOS.ForeColor = System.Drawing.Color.GhostWhite
         Me.radioBOS.Location = New System.Drawing.Point(13, 49)
         Me.radioBOS.Name = "radioBOS"
-        Me.radioBOS.Size = New System.Drawing.Size(61, 24)
+        Me.radioBOS.Size = New System.Drawing.Size(58, 23)
         Me.radioBOS.TabIndex = 91223
         Me.radioBOS.TabStop = True
         Me.radioBOS.Text = "&BOS"
@@ -2469,7 +2461,7 @@ Partial Class Sale_Challan
         Me.Label64.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label64.Location = New System.Drawing.Point(33, 15)
         Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(248, 21)
+        Me.Label64.Size = New System.Drawing.Size(197, 19)
         Me.Label64.TabIndex = 91222
         Me.Label64.Text = "Print And Preview /  Whatsapp"
         '
@@ -2510,7 +2502,7 @@ Partial Class Sale_Challan
         Me.txtWhatsappNo.ForeColor = System.Drawing.Color.Black
         Me.txtWhatsappNo.Location = New System.Drawing.Point(124, 108)
         Me.txtWhatsappNo.Name = "txtWhatsappNo"
-        Me.txtWhatsappNo.Size = New System.Drawing.Size(173, 27)
+        Me.txtWhatsappNo.Size = New System.Drawing.Size(173, 26)
         Me.txtWhatsappNo.TabIndex = 91219
         Me.txtWhatsappNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2548,11 +2540,21 @@ Partial Class Sale_Challan
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(9, 90)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(113, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Sale_Challan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.pnlWhatsapp)
         Me.Controls.Add(Me.pnlSendingDetails)
         Me.Controls.Add(Me.btnPrintBOS)
@@ -2643,7 +2645,6 @@ Partial Class Sale_Challan
         Me.Controls.Add(Me.lblCrate)
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.lblClcType)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.BtnDelete)
         Me.Controls.Add(Me.BtnSave)
@@ -2720,7 +2721,6 @@ Partial Class Sale_Challan
     End Sub
     Friend WithEvents lblClcType As System.Windows.Forms.Label
     Friend WithEvents Cbper As System.Windows.Forms.ComboBox
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnPrint As System.Windows.Forms.Button
     Friend WithEvents BtnDelete As System.Windows.Forms.Button
     Friend WithEvents BtnSave As System.Windows.Forms.Button
@@ -2897,4 +2897,5 @@ Partial Class Sale_Challan
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents radioPrint As System.Windows.Forms.RadioButton
     Friend WithEvents radioBOS As System.Windows.Forms.RadioButton
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

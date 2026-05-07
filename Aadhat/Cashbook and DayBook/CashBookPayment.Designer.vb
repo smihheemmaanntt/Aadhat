@@ -23,18 +23,16 @@ Partial Class CashBookPayment
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CashBookPayment))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.pbWait = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.cbAccountName = New System.Windows.Forms.ComboBox()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,6 +41,8 @@ Partial Class CashBookPayment
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.Dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.ckDiscountAlso = New System.Windows.Forms.CheckBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.pbWait, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,23 +98,23 @@ Partial Class CashBookPayment
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.CadetBlue
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CadetBlue
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
         Me.dg1.Location = New System.Drawing.Point(14, 138)
@@ -122,18 +122,18 @@ Partial Class CashBookPayment
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1170, 500)
@@ -148,27 +148,7 @@ Partial Class CashBookPayment
         Me.cbAccountName.Location = New System.Drawing.Point(145, 112)
         Me.cbAccountName.Name = "cbAccountName"
         Me.cbAccountName.Size = New System.Drawing.Size(332, 27)
-        Me.cbAccountName.TabIndex = 91220
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(779, 112)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(110, 27)
-        Me.MsktoDate.TabIndex = 91222
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(576, 112)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(112, 27)
-        Me.mskFromDate.TabIndex = 91221
+        Me.cbAccountName.TabIndex = 0
         '
         'BtnPrint
         '
@@ -180,8 +160,7 @@ Partial Class CashBookPayment
         Me.BtnPrint.Location = New System.Drawing.Point(1044, 112)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(140, 27)
-        Me.BtnPrint.TabIndex = 91224
-        Me.BtnPrint.TabStop = False
+        Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -196,8 +175,7 @@ Partial Class CashBookPayment
         Me.btnShow.Location = New System.Drawing.Point(905, 112)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(139, 27)
-        Me.btnShow.TabIndex = 91223
-        Me.btnShow.TabStop = False
+        Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -260,9 +238,27 @@ Partial Class CashBookPayment
         Me.ckDiscountAlso.Location = New System.Drawing.Point(1063, 89)
         Me.ckDiscountAlso.Name = "ckDiscountAlso"
         Me.ckDiscountAlso.Size = New System.Drawing.Size(121, 17)
-        Me.ckDiscountAlso.TabIndex = 91234
+        Me.ckDiscountAlso.TabIndex = 5
         Me.ckDiscountAlso.Text = "Show &Discount Also"
         Me.ckDiscountAlso.UseVisualStyleBackColor = True
+        '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(779, 112)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(111, 27)
+        Me.txttoDate.TabIndex = 2
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(576, 112)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(112, 27)
+        Me.txtFromDate.TabIndex = 1
         '
         'CashBookPayment
         '
@@ -270,6 +266,8 @@ Partial Class CashBookPayment
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.ckDiscountAlso)
         Me.Controls.Add(Me.pbWait)
         Me.Controls.Add(Me.PictureBox4)
@@ -277,8 +275,6 @@ Partial Class CashBookPayment
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.cbAccountName)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
@@ -301,8 +297,6 @@ Partial Class CashBookPayment
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents cbAccountName As System.Windows.Forms.ComboBox
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -311,4 +305,6 @@ Partial Class CashBookPayment
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents ckDiscountAlso As System.Windows.Forms.CheckBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

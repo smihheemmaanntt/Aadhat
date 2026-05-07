@@ -29,7 +29,6 @@ Partial Class Trial_Balance
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -43,6 +42,7 @@ Partial Class Trial_Balance
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.RadioClosing = New System.Windows.Forms.RadioButton()
         Me.RadioOpening = New System.Windows.Forms.RadioButton()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -111,16 +111,6 @@ Partial Class Trial_Balance
         Me.dg1.Size = New System.Drawing.Size(1172, 493)
         Me.dg1.TabIndex = 40044
         '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(102, 96)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(100, 26)
-        Me.mskEntryDate.TabIndex = 40045
-        '
         'BtnPrint
         '
         Me.BtnPrint.BackColor = System.Drawing.Color.MediumAquamarine
@@ -133,7 +123,7 @@ Partial Class Trial_Balance
         Me.BtnPrint.Location = New System.Drawing.Point(310, 96)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(82, 26)
-        Me.BtnPrint.TabIndex = 40048
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -151,7 +141,7 @@ Partial Class Trial_Balance
         Me.btnShow.Location = New System.Drawing.Point(216, 96)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(94, 26)
-        Me.btnShow.TabIndex = 40047
+        Me.btnShow.TabIndex = 1
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -257,7 +247,7 @@ Partial Class Trial_Balance
         Me.RadioClosing.Location = New System.Drawing.Point(399, 97)
         Me.RadioClosing.Name = "RadioClosing"
         Me.RadioClosing.Size = New System.Drawing.Size(124, 23)
-        Me.RadioClosing.TabIndex = 91264
+        Me.RadioClosing.TabIndex = 3
         Me.RadioClosing.TabStop = True
         Me.RadioClosing.Text = "Closing Balance"
         Me.RadioClosing.UseVisualStyleBackColor = True
@@ -269,16 +259,26 @@ Partial Class Trial_Balance
         Me.RadioOpening.Location = New System.Drawing.Point(530, 97)
         Me.RadioOpening.Name = "RadioOpening"
         Me.RadioOpening.Size = New System.Drawing.Size(130, 23)
-        Me.RadioOpening.TabIndex = 91265
+        Me.RadioOpening.TabIndex = 4
         Me.RadioOpening.TabStop = True
         Me.RadioOpening.Text = "Opening Balance"
         Me.RadioOpening.UseVisualStyleBackColor = True
+        '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(100, 96)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 0
         '
         'Trial_Balance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.RadioOpening)
         Me.Controls.Add(Me.RadioClosing)
         Me.Controls.Add(Me.Label3)
@@ -293,7 +293,6 @@ Partial Class Trial_Balance
         Me.Controls.Add(Me.txtDramt)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Trial_Balance"
@@ -306,7 +305,6 @@ Partial Class Trial_Balance
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label8 As System.Windows.Forms.Label
@@ -321,4 +319,5 @@ Partial Class Trial_Balance
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents RadioClosing As System.Windows.Forms.RadioButton
     Friend WithEvents RadioOpening As System.Windows.Forms.RadioButton
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

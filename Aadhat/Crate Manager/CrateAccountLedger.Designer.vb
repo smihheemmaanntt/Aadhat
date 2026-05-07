@@ -29,8 +29,6 @@ Partial Class CrateAccountLedger
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtBalAmt = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -55,39 +53,19 @@ Partial Class CrateAccountLedger
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.lblCrateDetails = New System.Windows.Forms.Label()
         Me.lblCrate = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(911, 157)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(105, 26)
-        Me.MsktoDate.TabIndex = 3
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(711, 157)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(105, 26)
-        Me.mskFromDate.TabIndex = 2
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(973, 615)
+        Me.Label9.Location = New System.Drawing.Point(973, 608)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(64, 19)
         Me.Label9.TabIndex = 38
@@ -99,7 +77,7 @@ Partial Class CrateAccountLedger
         Me.txtBalAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBalAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtBalAmt.ForeColor = System.Drawing.Color.Navy
-        Me.txtBalAmt.Location = New System.Drawing.Point(1061, 610)
+        Me.txtBalAmt.Location = New System.Drawing.Point(1061, 603)
         Me.txtBalAmt.Name = "txtBalAmt"
         Me.txtBalAmt.ReadOnly = True
         Me.txtBalAmt.Size = New System.Drawing.Size(123, 26)
@@ -112,7 +90,7 @@ Partial Class CrateAccountLedger
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(745, 616)
+        Me.Label8.Location = New System.Drawing.Point(745, 609)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(77, 19)
         Me.Label8.TabIndex = 37
@@ -124,7 +102,7 @@ Partial Class CrateAccountLedger
         Me.txtcrAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtcrAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtcrAmt.ForeColor = System.Drawing.Color.Navy
-        Me.txtcrAmt.Location = New System.Drawing.Point(846, 613)
+        Me.txtcrAmt.Location = New System.Drawing.Point(846, 603)
         Me.txtcrAmt.Name = "txtcrAmt"
         Me.txtcrAmt.ReadOnly = True
         Me.txtcrAmt.Size = New System.Drawing.Size(123, 26)
@@ -137,7 +115,7 @@ Partial Class CrateAccountLedger
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(531, 616)
+        Me.Label7.Location = New System.Drawing.Point(531, 609)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(66, 19)
         Me.Label7.TabIndex = 36
@@ -149,7 +127,7 @@ Partial Class CrateAccountLedger
         Me.txtDramt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDramt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtDramt.ForeColor = System.Drawing.Color.Navy
-        Me.txtDramt.Location = New System.Drawing.Point(620, 613)
+        Me.txtDramt.Location = New System.Drawing.Point(620, 603)
         Me.txtDramt.Name = "txtDramt"
         Me.txtDramt.ReadOnly = True
         Me.txtDramt.Size = New System.Drawing.Size(123, 26)
@@ -192,7 +170,7 @@ Partial Class CrateAccountLedger
         Me.btnShow.Location = New System.Drawing.Point(1032, 157)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(76, 27)
-        Me.btnShow.TabIndex = 4
+        Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -269,7 +247,7 @@ Partial Class CrateAccountLedger
         Me.BtnPrint.Location = New System.Drawing.Point(1108, 157)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 27)
-        Me.BtnPrint.TabIndex = 5
+        Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -338,7 +316,7 @@ Partial Class CrateAccountLedger
         Me.txtAccount.Location = New System.Drawing.Point(164, 157)
         Me.txtAccount.Name = "txtAccount"
         Me.txtAccount.Size = New System.Drawing.Size(440, 26)
-        Me.txtAccount.TabIndex = 1
+        Me.txtAccount.TabIndex = 0
         Me.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dg1
@@ -381,6 +359,7 @@ Partial Class CrateAccountLedger
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 422)
         Me.dg1.TabIndex = 91123
+        Me.dg1.TabStop = False
         '
         'PictureBox4
         '
@@ -399,6 +378,7 @@ Partial Class CrateAccountLedger
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(130, 26)
         Me.dtp1.TabIndex = 91255
+        Me.dtp1.TabStop = False
         '
         'dtp2
         '
@@ -407,6 +387,7 @@ Partial Class CrateAccountLedger
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(134, 26)
         Me.dtp2.TabIndex = 91254
+        Me.dtp2.TabStop = False
         '
         'lblCrateDetails
         '
@@ -430,11 +411,33 @@ Partial Class CrateAccountLedger
         Me.lblCrate.Text = "0"
         Me.lblCrate.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(906, 157)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(110, 26)
+        Me.txttoDate.TabIndex = 2
+        Me.txttoDate.TabStop = False
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(711, 157)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(105, 26)
+        Me.txtFromDate.TabIndex = 1
+        '
         'CrateAccountLedger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblCrateDetails)
         Me.Controls.Add(Me.lblCrate)
         Me.Controls.Add(Me.PictureBox4)
@@ -448,10 +451,7 @@ Partial Class CrateAccountLedger
         Me.Controls.Add(Me.txtcrAmt)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtDramt)
-        Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.txtAccount)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtOpBal)
         Me.Controls.Add(Me.btnShow)
@@ -470,8 +470,6 @@ Partial Class CrateAccountLedger
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtBalAmt As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
@@ -496,4 +494,6 @@ Partial Class CrateAccountLedger
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblCrateDetails As System.Windows.Forms.Label
     Friend WithEvents lblCrate As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

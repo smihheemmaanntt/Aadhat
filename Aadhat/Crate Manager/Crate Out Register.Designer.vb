@@ -43,8 +43,6 @@ Partial Class Crate_Out_Register
         Me.Label10 = New System.Windows.Forms.Label()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.txtTotEstimateOut = New System.Windows.Forms.TextBox()
@@ -68,6 +66,8 @@ Partial Class Crate_Out_Register
         Me.DgWhatsapp = New System.Windows.Forms.DataGridView()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,7 +157,7 @@ Partial Class Crate_Out_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 448)
-        Me.dg1.TabIndex = 6
+        Me.dg1.TabIndex = 0
         Me.dg1.TabStop = False
         '
         'PictureBox4
@@ -257,26 +257,6 @@ Partial Class Crate_Out_Register
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
         '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(118, 133)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(90, 26)
-        Me.mskFromDate.TabIndex = 0
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(303, 133)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(90, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -284,6 +264,7 @@ Partial Class Crate_Out_Register
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
         Me.dtp2.TabIndex = 91267
+        Me.dtp2.TabStop = False
         '
         'dtp1
         '
@@ -291,7 +272,8 @@ Partial Class Crate_Out_Register
         Me.dtp1.Location = New System.Drawing.Point(114, 133)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(109, 26)
-        Me.dtp1.TabIndex = 91268
+        Me.dtp1.TabIndex = 1
+        Me.dtp1.TabStop = False
         '
         'txtTotEstimateOut
         '
@@ -416,7 +398,7 @@ Partial Class Crate_Out_Register
         Me.txtArea.Location = New System.Drawing.Point(110, 605)
         Me.txtArea.Name = "txtArea"
         Me.txtArea.Size = New System.Drawing.Size(250, 26)
-        Me.txtArea.TabIndex = 91281
+        Me.txtArea.TabIndex = 6
         Me.txtArea.TabStop = False
         '
         'CkHideOpBal
@@ -441,7 +423,7 @@ Partial Class Crate_Out_Register
         Me.btnSlips.Location = New System.Drawing.Point(477, 605)
         Me.btnSlips.Name = "btnSlips"
         Me.btnSlips.Size = New System.Drawing.Size(125, 27)
-        Me.btnSlips.TabIndex = 91284
+        Me.btnSlips.TabIndex = 7
         Me.btnSlips.Text = "Print S&lips"
         Me.btnSlips.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSlips.UseVisualStyleBackColor = False
@@ -460,7 +442,7 @@ Partial Class Crate_Out_Register
         Me.pnlWhatsapp.Location = New System.Drawing.Point(213, 209)
         Me.pnlWhatsapp.Name = "pnlWhatsapp"
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
-        Me.pnlWhatsapp.TabIndex = 91285
+        Me.pnlWhatsapp.TabIndex = 8
         Me.pnlWhatsapp.Visible = False
         '
         'Button1
@@ -603,12 +585,32 @@ Partial Class Crate_Out_Register
         Me.ProgressBar1.TabIndex = 40054
         Me.ProgressBar1.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(298, 133)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(109, 133)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Crate_Out_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.pnlWhatsapp)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.btnSlips)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtArea)
@@ -632,8 +634,6 @@ Partial Class Crate_Out_Register
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskFromDate)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Crate_Out_Register"
@@ -663,8 +663,6 @@ Partial Class Crate_Out_Register
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents txtTotEstimateOut As System.Windows.Forms.TextBox
@@ -688,4 +686,6 @@ Partial Class Crate_Out_Register
     Friend WithEvents DgWhatsapp As System.Windows.Forms.DataGridView
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

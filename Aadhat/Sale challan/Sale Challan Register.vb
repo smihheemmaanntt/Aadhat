@@ -1,25 +1,22 @@
-﻿
-
-Public Class Sale_Challan_Register
+﻿Public Class Sale_Challan_Register
     Private headerCheckBox As CheckBox = New CheckBox()
     Private Sub Standard_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown, btnShow.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, btnShow.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
         End If
     End Sub
 
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
     Private Sub dg1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellClick
@@ -36,11 +33,11 @@ Public Class Sale_Challan_Register
             headerCheckBox.Checked = isChecked
         End If
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
     End Sub
     Private Sub dg1_MouseClick(sender As Object, e As MouseEventArgs) Handles dg1.MouseClick
         dg1.ClearSelection()
@@ -50,21 +47,21 @@ Public Class Sale_Challan_Register
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        mskFromDate.Focus()
-        Dim mindate as String = String.Empty : Dim maxdate As String = String.Empty
+        txtFromDate.Focus()
+        Dim mindate As String = String.Empty : Dim maxdate As String = String.Empty
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) as entrydate from Vouchers where transtype='" & Me.Text & "'")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from Vouchers where transtype='" & Me.Text & "'")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txttoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text) : MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtFromDate.Text = SmartDate(txtFromDate.Text) : txttoDate.Text = SmartDate(txttoDate.Text)
         rowColums()
     End Sub
     Private Sub rowColums()
@@ -116,7 +113,7 @@ Public Class Sale_Challan_Register
     Private Sub retrive(Optional ByVal condtion As String = "")
         dg1.Rows.Clear()
         Dim dt As New DataTable
-        dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "'  " & condtion & " order by EntryDate")
+        dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "'  " & condtion & " order by EntryDate")
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -205,7 +202,7 @@ Public Class Sale_Challan_Register
         For Each row As DataGridViewRow In dg1.Rows
             con.BeginTransaction(IsolationLevel.ReadCommitted)
             With row
-                sql = sql & "insert into Printing(D1,D2,M1,M2, P1, P2,P3, P4, P5,P6,P7,T1,T2,T3,T4,T5) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                sql = sql & "insert into Printing(D1,D2,M1,M2, P1, P2,P3, P4, P5,P6,P7,T1,T2,T3,T4,T5) values('" & txtFromDate.Text & "','" & txttoDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "','" & .Cells(5).Value & "'," & _
                     "'" & Val(.Cells(6).Value) & "','" & Val(.Cells(7).Value) & "'," & _
                     "'" & Val(.Cells(8).Value) & "'," & Val(.Cells(9).Value) & ",'" & txtTotNug.Text & "','" & txtTotweight.Text & "'," & _
@@ -370,7 +367,7 @@ Public Class Sale_Challan_Register
                                   & "Vouchers.Nug, Vouchers.Kg, Vouchers.BasicAmount, Vouchers.TotalAmount, Vouchers.DiscountAmount, Vouchers.TotalCharges, vouchers.SubTotal, " _
                                   & "Vouchers.RoundOff,Vouchers.T1,Vouchers.T2,Vouchers.T3,Vouchers.T4,Vouchers.T5,Vouchers.T6,Vouchers.T7,Vouchers.T8,Vouchers.T9,Vouchers.T10, " _
                                   & "Items.OtherName, Accounts.OtherName as AccountOtherName FROM ((Vouchers INNER JOIN Transaction2 ON Vouchers.ID = Transaction2.VoucherID)" _
-                                  & "INNER JOIN Items ON Transaction2.ItemID = Items.ID) INNER JOIN Accounts ON Vouchers.AccountID = Accounts.ID  Where  Vouchers.EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & id & " " & condtion & "")
+                                  & "INNER JOIN Items ON Transaction2.ItemID = Items.ID) INNER JOIN Accounts ON Vouchers.AccountID = Accounts.ID  Where  Vouchers.EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & id & " " & condtion & "")
         'dt = clsFun.ExecDataTable("Select Vouchers.Entrydate, Vouchers.billNo, Vouchers.AccountName, Vouchers.VehicleNo, Transaction2.ItemName, Transaction2.Lot, " _
         '                         & " Transaction2.Nug, Transaction2.Weight, Transaction2.Rate, Transaction2.Per, Transaction2.Amount, Vouchers.Nug, Vouchers.Kg, " _
         '                         & " Vouchers.BasicAmount, Vouchers.TotalAmount, Vouchers.TotalCharges, Accounts.OtherName as AccountOtherName, Items.OtherName, " _
@@ -478,7 +475,7 @@ Public Class Sale_Challan_Register
     Private Sub btnPrintBills_Click(sender As Object, e As EventArgs) Handles btnPrintBills.Click
         IDGentate()
         If dg1.RowCount = 0 Then
-            MsgBox("There is no record to Print...", vbOkOnly, "Empty")
+            MsgBox("There is no record to Print...", vbOKOnly, "Empty")
             Exit Sub
         Else
             PrintRecord()
@@ -512,21 +509,21 @@ Public Class Sale_Challan_Register
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = SmartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub txtPrimarySearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrimarySearch.KeyUp
@@ -541,7 +538,7 @@ Public Class Sale_Challan_Register
     Private Sub btnPrint2_Click(sender As Object, e As EventArgs) Handles btnPrint2.Click
         IDGentate()
         If dg1.RowCount = 0 Then
-            MsgBox("There is no record to Print...", vbOkOnly, "Empty")
+            MsgBox("There is no record to Print...", vbOKOnly, "Empty")
             Exit Sub
         Else
             PrintRecord()
@@ -558,7 +555,7 @@ Public Class Sale_Challan_Register
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         IDGentate()
         If dg1.RowCount = 0 Then
-            MsgBox("There is no record to Print...", vbOkOnly, "Empty")
+            MsgBox("There is no record to Print...", vbOKOnly, "Empty")
             Exit Sub
         Else
             PrintRecord()
@@ -572,7 +569,7 @@ Public Class Sale_Challan_Register
         End If
     End Sub
 
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
+    Private Sub txtFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
     End Sub
 End Class

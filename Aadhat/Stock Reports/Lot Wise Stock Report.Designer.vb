@@ -37,7 +37,6 @@ Partial Class Lot_Wise_Stock_Report
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
@@ -49,6 +48,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.cbTrackStock = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -95,7 +95,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.txtLotNo.Location = New System.Drawing.Point(1073, 100)
         Me.txtLotNo.Name = "txtLotNo"
         Me.txtLotNo.Size = New System.Drawing.Size(111, 26)
-        Me.txtLotNo.TabIndex = 7
+        Me.txtLotNo.TabIndex = 6
         Me.txtLotNo.TabStop = False
         Me.txtLotNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -108,7 +108,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.txtItemSearch.Location = New System.Drawing.Point(884, 100)
         Me.txtItemSearch.Name = "txtItemSearch"
         Me.txtItemSearch.Size = New System.Drawing.Size(190, 26)
-        Me.txtItemSearch.TabIndex = 6
+        Me.txtItemSearch.TabIndex = 5
         Me.txtItemSearch.TabStop = False
         Me.txtItemSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -121,7 +121,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.txtCustomerSearch.Location = New System.Drawing.Point(592, 100)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(293, 26)
-        Me.txtCustomerSearch.TabIndex = 5
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -191,7 +191,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 483)
-        Me.dg1.TabIndex = 4
+        Me.dg1.TabIndex = 8
         '
         'BtnPrint
         '
@@ -225,17 +225,6 @@ Partial Class Lot_Wise_Stock_Report
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
         '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(113, 100)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(98, 26)
-        Me.mskEntryDate.TabIndex = 0
-        '
         'btnClose
         '
         Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
@@ -259,7 +248,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.Label1.Location = New System.Drawing.Point(349, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(501, 48)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 7
         Me.Label1.Text = "LOT v/s STORE WISE STOCK"
         '
         'PictureBox4
@@ -344,7 +333,7 @@ Partial Class Lot_Wise_Stock_Report
         Me.dtp1.Location = New System.Drawing.Point(124, 100)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(103, 26)
-        Me.dtp1.TabIndex = 8
+        Me.dtp1.TabIndex = 9
         '
         'cbTrackStock
         '
@@ -373,11 +362,21 @@ Partial Class Lot_Wise_Stock_Report
         Me.Label9.Text = "Stock View as :"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(113, 100)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Lot_Wise_Stock_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtPurchasedNugs)
@@ -398,7 +397,6 @@ Partial Class Lot_Wise_Stock_Report
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.cbTrackStock)
         Me.Name = "Lot_Wise_Stock_Report"
@@ -420,7 +418,6 @@ Partial Class Lot_Wise_Stock_Report
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
@@ -432,4 +429,5 @@ Partial Class Lot_Wise_Stock_Report
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents cbTrackStock As System.Windows.Forms.ComboBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

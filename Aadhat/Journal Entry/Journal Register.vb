@@ -11,23 +11,23 @@
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) as entrydate from transaction2 where transtype='" & Me.Text & "'")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from transaction2 where transtype='" & Me.Text & "'")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txtToDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtToDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         rowColums()
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txtToDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub rowColums()
         dg1.ColumnCount = 7
@@ -49,8 +49,8 @@
     Private Sub retrive()
         Dim ssql As String
         Dim dt As New DataTable
-        ssql = "Select VourchersID, EntryDate,TransType,AccountName,Amount as Dr,'0' as Cr,Remark from Ledger where DC ='D' and transtype='" & Me.Text & "' and  EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'" & _
-         " UNION ALL Select VourchersID, EntryDate,TransType,AccountName,'0' as Dr,Amount as Cr,Remark  from Ledger where Dc='C' and transtype='" & Me.Text & "' and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' order by VourchersID "
+        ssql = "Select VourchersID, EntryDate,TransType,AccountName,Amount as Dr,'0' as Cr,Remark from Ledger where DC ='D' and transtype='" & Me.Text & "' and  EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "'" & _
+         " UNION ALL Select VourchersID, EntryDate,TransType,AccountName,'0' as Dr,Amount as Cr,Remark  from Ledger where Dc='C' and transtype='" & Me.Text & "' and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' order by VourchersID "
         dt = clsFun.ExecDataTable(ssql)
         dg1.Rows.Clear()
         Try
@@ -115,25 +115,13 @@
         End If
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs)
+   
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
 
-    Private Sub RectangleShape1_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub btnClose_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click
-        Me.Close()
-    End Sub
-
-    Private Sub txtCreditBal_TextChanged(sender As Object, e As EventArgs) Handles txtCreditBal.TextChanged
-
-    End Sub
-
-    Private Sub txtDebitBal_TextChanged(sender As Object, e As EventArgs) Handles txtDebitBal.TextChanged
-
-    End Sub
     Private Sub printRecord()
         Dim count As Integer = 0
         Dim cmd As New SQLite.SQLiteCommand
@@ -143,7 +131,7 @@
         For Each row As DataGridViewRow In dg1.Rows
             con.BeginTransaction(IsolationLevel.ReadCommitted)
             With row
-                sql = sql & "insert into Printing(D1,D2,P1, P2,P3, P4, P5, P6,P7,P8) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                sql = sql & "insert into Printing(D1,D2,P1, P2,P3, P4, P5, P6,P7,P8) values('" & txtFromDate.Text & "','" & txtToDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & Format(Val(.Cells(4).Value), "0.00") & "','" & Format(Val(.Cells(5).Value), "0.00") & "','" & .Cells(6).Value & "'," & _
                     " '" & Format(Val(txtDebitBal.Text), "0.00") & "','" & Format(Val(txtCreditBal.Text), "0.00") & "');"
 
@@ -168,21 +156,35 @@
         End If
     End Sub
 
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        Else
+            Exit Sub
+        End If
+        e.SuppressKeyPress = True
+        Select Case e.KeyCode
+            Case Keys.End
+                e.Handled = True
+                btnShow.Focus()
+        End Select
+    End Sub
+
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txtToDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtToDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = SmartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 End Class

@@ -8,9 +8,6 @@ Public Class Backup_On_Server
     Dim zipPath As String
     Dim OringinalPath As String
     Dim ClsCommon As CommonClass = New CommonClass()
-    Private Sub Backup_On_Server_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        '   ZipBackup()
-    End Sub
 
     Private Sub ButtonControl()
         For Each b As Button In Me.Controls.OfType(Of Button)()
@@ -41,6 +38,7 @@ Public Class Backup_On_Server
         'If ClsCommon.IsInternetConnect() Then pb1.Image = New System.Drawing.Bitmap(New IO.MemoryStream(New System.Net.WebClient().DownloadData("http://softmanagementindia.in/images/AadhatKit.png")))
         LoadBanner() : CheckForUpdate()
     End Sub
+
     Private Sub CheckForUpdate()
         If CheckInternetConnection() = False Then Exit Sub
         Try
@@ -51,6 +49,7 @@ Public Class Backup_On_Server
             ' Local version (Auto incremented AssemblyVersion)
             Dim localVersion As New Version(GetAssemblyVersion())
             Dim serverVersion As New Version(serverVersionString)
+            'If serverVersion = localVersion Then Exit Sub
             If serverVersion > localVersion Then
                 btnUpdate.Visible = True
                 btnUpdate.Text = "Update Aadhat (" & serverVersion.ToString() & ")"
@@ -61,6 +60,7 @@ Public Class Backup_On_Server
             btnUpdate.Visible = False
         End Try
     End Sub
+
     Private Function GetAssemblyVersion() As String
         Return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
     End Function

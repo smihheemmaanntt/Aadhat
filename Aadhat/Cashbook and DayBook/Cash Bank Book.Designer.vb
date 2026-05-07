@@ -28,8 +28,6 @@ Partial Class Cash_Bank_Book
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Cash_Bank_Book))
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -46,6 +44,8 @@ Partial Class Cash_Bank_Book
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
         Me.chkAllCashBank = New System.Windows.Forms.CheckBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -61,26 +61,6 @@ Partial Class Cash_Bank_Book
         Me.Label1.Size = New System.Drawing.Size(372, 48)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "CASH / BANK  BOOK"
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(939, 106)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(91, 27)
-        Me.MsktoDate.TabIndex = 3
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(750, 106)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(89, 27)
-        Me.mskFromDate.TabIndex = 2
         '
         'BtnPrint
         '
@@ -185,7 +165,7 @@ Partial Class Cash_Bank_Book
         Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
-        Me.dg1.Location = New System.Drawing.Point(12, 132)
+        Me.dg1.Location = New System.Drawing.Point(12, 131)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
@@ -304,18 +284,36 @@ Partial Class Cash_Bank_Book
         Me.chkAllCashBank.UseVisualStyleBackColor = True
         Me.chkAllCashBank.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(937, 106)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 3
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(741, 106)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 2
+        '
         'Cash_Bank_Book
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.Controls.Add(Me.chkAllCashBank)
         Me.Controls.Add(Me.dg1)
-        Me.Controls.Add(Me.MsktoDate)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
+        Me.Controls.Add(Me.chkAllCashBank)
         Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.cbAccountName)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
@@ -339,8 +337,6 @@ Partial Class Cash_Bank_Book
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -357,4 +353,6 @@ Partial Class Cash_Bank_Book
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
     Friend WithEvents chkAllCashBank As System.Windows.Forms.CheckBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

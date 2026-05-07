@@ -301,7 +301,7 @@ Public Class MainScreenForm
         JournalEntry.MdiParent = Me
         JournalEntry.Show()
         JournalEntry.BringToFront()
-        JournalEntry.mskEntryDate.Focus()
+        JournalEntry.txtEntryDate.Focus()
     End Sub
     Private Sub PaymentVoucherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaymentVoucherToolStripMenuItem.Click
         PayMentform.MdiParent = Me
@@ -314,7 +314,7 @@ Public Class MainScreenForm
         Journal_Register.MdiParent = Me
         Journal_Register.Show()
         Journal_Register.BringToFront()
-        Journal_Register.mskFromDate.Focus()
+        Journal_Register.txtFromDate.Focus()
     End Sub
     Private Sub PaymentRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaymentRegisterToolStripMenuItem.Click
         Payment_Register.MdiParent = Me
@@ -356,35 +356,35 @@ Public Class MainScreenForm
         Print_Bills.Show()
         Print_Bills.Top = 0 : Print_Bills.Left = 0
         Print_Bills.BringToFront()
-        Print_Bills.mskFromDate.Focus()
+        Print_Bills.txtFromDate.Focus()
     End Sub
 
     Private Sub CrateInToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Crate_IN_Register.MdiParent = Me
         Crate_IN_Register.Show()
         Crate_IN_Register.BringToFront()
-        Crate_IN_Register.mskFromDate.Focus()
+        Crate_IN_Register.txtFromDate.Focus()
     End Sub
 
     Private Sub CrateOutRegisterToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Crate_Out_Register.MdiParent = Me
         Crate_Out_Register.Show()
         Crate_Out_Register.BringToFront()
-        Crate_Out_Register.mskFromDate.Focus()
+        Crate_Out_Register.txtFromDate.Focus()
     End Sub
 
     Private Sub CrateInToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CrateInToolStripMenuItem1.Click
         Crate_IN.MdiParent = Me
         Crate_IN.Show()
         Crate_IN.BringToFront()
-        Crate_IN.mskEntryDate.Focus()
+        Crate_IN.txtEntryDate.Focus()
     End Sub
 
     Private Sub CrateOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrateOutToolStripMenuItem.Click
         Crate_Out.MdiParent = Me
         Crate_Out.Show()
         Crate_Out.BringToFront()
-        Crate_Out.mskEntryDate.Focus()
+        Crate_Out.txtEntryDate.Focus()
     End Sub
 
 
@@ -400,7 +400,7 @@ Public Class MainScreenForm
         Super_Sale_Register.MdiParent = Me
         Super_Sale_Register.Show()
         Super_Sale_Register.BringToFront()
-        Super_Sale_Register.mskFromDate.Focus()
+        Super_Sale_Register.txtFromDate.Focus()
     End Sub
     Private Sub SuperSaleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuperSaleToolStripMenuItem.Click
         '   Super_Sale.ResumeLayout()
@@ -414,7 +414,7 @@ Public Class MainScreenForm
         Stock_Sale_Register.MdiParent = Me
         Stock_Sale_Register.Show()
         Stock_Sale_Register.BringToFront()
-        Stock_Sale_Register.mskFromDate.Focus()
+        Stock_Sale_Register.txtFromDate.Focus()
     End Sub
     Private Sub StandardSaleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StandardSaleToolStripMenuItem.Click
         Standard_Sale.MdiParent = Me
@@ -432,7 +432,7 @@ Public Class MainScreenForm
         OutStanding_Amount_Only.MdiParent = Me
         OutStanding_Amount_Only.Show()
         OutStanding_Amount_Only.BringToFront()
-        OutStanding_Amount_Only.mskEntryDate.Focus()
+        OutStanding_Amount_Only.txtEntryDate.Focus()
         OutStanding_Amount_Only.Left = 0 : OutStanding_Amount_Only.Top = 0
     End Sub
     Private Sub Button19_Click(sender As Object, e As EventArgs) Handles BtnBillPrints.Click
@@ -440,7 +440,7 @@ Public Class MainScreenForm
         Print_Bills.Show()
         Print_Bills.Activate()
         Print_Bills.BringToFront()
-        Print_Bills.mskFromDate.Focus()
+        Print_Bills.txtFromDate.Focus()
         Print_Bills.Top = 0 : Print_Bills.Left = 0
     End Sub
     Private Sub btnLedger_Click_1(sender As Object, e As EventArgs) Handles btnCashBankBook.Click
@@ -453,7 +453,7 @@ Public Class MainScreenForm
         Standard_Sale_Register.MdiParent = Me
         Standard_Sale_Register.Show()
         Standard_Sale_Register.BringToFront()
-        Standard_Sale_Register.mskFromDate.Focus()
+        Standard_Sale_Register.txtFromDate.Focus()
     End Sub
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles btnPurchase.Click
         Purchase.MdiParent = Me
@@ -471,7 +471,7 @@ Public Class MainScreenForm
         Purchase_Register.MdiParent = Me
         Purchase_Register.Show()
         Purchase_Register.BringToFront()
-        Purchase_Register.mskFromDate.Focus()
+        Purchase_Register.txtFromDate.Focus()
     End Sub
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles btnStockSale.Click
         Stock_Sale.MdiParent = Me
@@ -524,7 +524,7 @@ Public Class MainScreenForm
         Collection_Report.MdiParent = Me
         Collection_Report.Show()
         Collection_Report.BringToFront()
-        Collection_Report.mskFromDate.Focus()
+        Collection_Report.txtFromDate.Focus()
     End Sub
     Private Sub StockSaleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StockSaleToolStripMenuItem.Click
         Stock_Sale.MdiParent = Me
@@ -601,14 +601,14 @@ Public Class MainScreenForm
         Super_Sale_Register.MdiParent = Me
         Super_Sale_Register.Show()
         Super_Sale_Register.BringToFront()
-        Super_Sale_Register.mskFromDate.Focus()
+        Super_Sale_Register.txttoDate.Focus()
     End Sub
 
     Private Sub StockSaleRegisterToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles StockSaleRegisterToolStripMenuItem1.Click
         Stock_Sale_Register.MdiParent = Me
         Stock_Sale_Register.Show()
         Stock_Sale_Register.BringToFront()
-        Stock_Sale_Register.mskFromDate.Focus()
+        Stock_Sale_Register.txtFromDate.Focus()
     End Sub
     Private Sub StockTransterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StockTransterToolStripMenuItem.Click
         On_Sale.MdiParent = Me
@@ -736,14 +736,6 @@ Public Class MainScreenForm
         Cash_Bank_Book.Show()
         If Not Cash_Bank_Book Is Nothing Then
             Cash_Bank_Book.BringToFront()
-        End If
-    End Sub
-
-    Private Sub HandiCashBookToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        Handi_Cash_Book.MdiParent = Me
-        Handi_Cash_Book.Show()
-        If Not Handi_Cash_Book Is Nothing Then
-            Handi_Cash_Book.BringToFront()
         End If
     End Sub
 
@@ -1219,14 +1211,14 @@ Public Class MainScreenForm
         Standard_Sale_Register.MdiParent = Me
         Standard_Sale_Register.Show()
         Standard_Sale_Register.BringToFront()
-        Standard_Sale_Register.mskFromDate.Focus()
+        Standard_Sale_Register.txtFromDate.Focus()
     End Sub
 
     Private Sub OnSaleProfitReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnSaleProfitReportToolStripMenuItem.Click
         On_Sale_Profit_Report.MdiParent = Me
         On_Sale_Profit_Report.Show()
         On_Sale_Profit_Report.BringToFront()
-        On_Sale_Profit_Report.mskFromDate.Focus()
+        On_Sale_Profit_Report.txtFromDate.Focus()
     End Sub
 
     Private Sub SellOutAutoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SellOutAutoToolStripMenuItem.Click
@@ -1241,7 +1233,7 @@ Public Class MainScreenForm
         Standard_Sale_Profit_Report.MdiParent = Me
         Standard_Sale_Profit_Report.Show()
         Standard_Sale_Profit_Report.BringToFront()
-        Standard_Sale_Profit_Report.mskFromDate.Focus()
+        Standard_Sale_Profit_Report.txtFromDate.Focus()
     End Sub
 
     Private Sub TrialBalanceGroupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TrialBalanceGroupToolStripMenuItem.Click

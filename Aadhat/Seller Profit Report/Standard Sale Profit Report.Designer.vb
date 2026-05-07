@@ -23,15 +23,13 @@ Partial Class Standard_Sale_Profit_Report
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Standard_Sale_Profit_Report))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
@@ -58,6 +56,8 @@ Partial Class Standard_Sale_Profit_Report
         Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtCal = New System.Windows.Forms.TextBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
         Me.SuspendLayout()
@@ -95,58 +95,36 @@ Partial Class Standard_Sale_Profit_Report
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle10
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Tan
         Me.dg1.Location = New System.Drawing.Point(12, 102)
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dg1.RowHeadersVisible = False
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 490)
         Me.dg1.TabIndex = 91115
         Me.dg1.TabStop = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(225, 77)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(92, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(76, 77)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(92, 26)
-        Me.mskFromDate.TabIndex = 0
         '
         'Label10
         '
@@ -466,11 +444,31 @@ Partial Class Standard_Sale_Profit_Report
         Me.txtCal.Text = "5"
         Me.txtCal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(223, 77)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 91301
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(68, 77)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 91300
+        '
         'Standard_Sale_Profit_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.txtCal)
         Me.Controls.Add(Me.pnlWait)
         Me.Controls.Add(Me.txtSearch)
@@ -488,8 +486,6 @@ Partial Class Standard_Sale_Profit_Report
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtActualPNL)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dg1)
@@ -512,8 +508,6 @@ Partial Class Standard_Sale_Profit_Report
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
@@ -540,4 +534,6 @@ Partial Class Standard_Sale_Profit_Report
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtCal As System.Windows.Forms.TextBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

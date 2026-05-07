@@ -60,6 +60,7 @@ Partial Class Group_Ledger
         Me.txtOpbal = New System.Windows.Forms.TextBox()
         Me.txttoDate = New System.Windows.Forms.TextBox()
         Me.txtFromDate = New System.Windows.Forms.TextBox()
+        Me.ckShowAll = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -519,11 +520,25 @@ Partial Class Group_Ledger
         Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
         Me.txtFromDate.TabIndex = 1
         '
+        'ckShowAll
+        '
+        Me.ckShowAll.AutoSize = True
+        Me.ckShowAll.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.ckShowAll.ForeColor = System.Drawing.Color.Navy
+        Me.ckShowAll.Location = New System.Drawing.Point(505, 67)
+        Me.ckShowAll.Name = "ckShowAll"
+        Me.ckShowAll.Size = New System.Drawing.Size(215, 20)
+        Me.ckShowAll.TabIndex = 91250
+        Me.ckShowAll.Text = "Show Zero Balance Accounts also"
+        Me.ckShowAll.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ckShowAll.UseVisualStyleBackColor = True
+        '
         'Group_Ledger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.ckShowAll)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.Label5)
@@ -599,4 +614,5 @@ Partial Class Group_Ledger
     Friend WithEvents btnLedgerMerged As System.Windows.Forms.Button
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
+    Friend WithEvents ckShowAll As System.Windows.Forms.CheckBox
 End Class

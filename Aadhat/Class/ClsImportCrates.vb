@@ -1,7 +1,11 @@
 ﻿Imports System.Data.SQLite
 Imports System.Globalization
 Public Class ClsImportCrates
-    Public Shared ConString As String = "Data Source=" & Crate_Balance_Editor.txtPath.Text & ";Version=3;New=True;Compress=True;synchronous=ON;"
+    Public Shared ReadOnly Property ConString As String
+        Get
+            Return "Data Source=" & Crate_Balance_Editor.txtPath.Text & ";Version=3;New=True;Compress=True;synchronous=ON;"
+        End Get
+    End Property
     'Public Shared ConString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Data\db.accdb;Persist Security Info=true;password=smi3933"
     'Shared con As New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source =" & Application.StartupPath & "\Data\db.accdb")
     'Shared con As New OleDb.OleDbConnection(ConfigurationManager.ConnectionStrings("Con").ConnectionString)

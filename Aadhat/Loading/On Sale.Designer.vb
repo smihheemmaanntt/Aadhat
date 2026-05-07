@@ -55,7 +55,6 @@ Partial Class On_Sale
         Me.txtItemID = New System.Windows.Forms.TextBox()
         Me.txtid = New System.Windows.Forms.TextBox()
         Me.Label41 = New System.Windows.Forms.Label()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.txtVoucherNo = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -157,6 +156,7 @@ Partial Class On_Sale
         Me.Label25 = New System.Windows.Forms.Label()
         Me.cbCrateMarka = New System.Windows.Forms.ComboBox()
         Me.lblCrate = New System.Windows.Forms.Label()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgPurchaseType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgStore, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -253,18 +253,6 @@ Partial Class On_Sale
         Me.Label41.Size = New System.Drawing.Size(301, 48)
         Me.Label41.TabIndex = 1
         Me.Label41.Text = "STOCK ON SALE"
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(12, 85)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(90, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Label42
         '
@@ -1775,11 +1763,21 @@ Partial Class On_Sale
         Me.lblCrate.Text = "Y/N"
         Me.lblCrate.Visible = False
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(12, 85)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(86, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'On_Sale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.pnlMarka)
         Me.Controls.Add(Me.pnlSendingDetails)
         Me.Controls.Add(Me.lblCrate)
@@ -1858,7 +1856,6 @@ Partial Class On_Sale
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtVoucherNo)
         Me.Controls.Add(Me.Label26)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.DgAccountSearch)
         Me.Controls.Add(Me.txtRate)
@@ -1897,7 +1894,6 @@ Partial Class On_Sale
     Friend WithEvents txtItemID As System.Windows.Forms.TextBox
     Friend WithEvents txtid As System.Windows.Forms.TextBox
     Friend WithEvents Label41 As System.Windows.Forms.Label
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
     Friend WithEvents txtVoucherNo As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
@@ -2001,4 +1997,5 @@ Partial Class On_Sale
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents cbCrateMarka As System.Windows.Forms.ComboBox
     Friend WithEvents lblCrate As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

@@ -8,7 +8,7 @@
         Me.Top = 0 : Me.Left = 0
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         Me.KeyPreview = True : VNumber()
     End Sub
 
@@ -50,7 +50,7 @@
         ad.Fill(ds, "a")
         If ds.Tables("a").Rows.Count > 0 Then
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtVoucherNo.Text = ds.Tables("a").Rows(0)("BillNo").ToString()
             txtAccountID.Text = Val(ds.Tables("a").Rows(0)("AccountID").ToString())
             clsFun.FillDropDownList(CbChallanNo, "Select ItemID, ItemName From Vouchers Where AccountID='" & Val(txtAccountID.Text) & "' and TransType='Net Receipt'", "ItemName", "ItemID", "")
@@ -75,7 +75,7 @@
     Private Sub Save()
         Dim Sql As String = String.Empty
         Sql = "Insert Into Vouchers (TransType,BillNo,EntryDate,AccountID,AccountName,BasicAmount,TotalCharges,TotalAmount,N1,N2,N3,ItemID,ItemName,T1,T2,T3,T4,remark,InvoiceID) " & _
-            "values ( '" & Me.Text & "','" & txtVoucherNo.Text & "','" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'," & _
+            "values ( '" & Me.Text & "','" & txtVoucherNo.Text & "','" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'," & _
             "'" & Val(txtAccountID.Text) & "','" & txtAccount.Text & "','" & Val(txtTotalAmount.Text) & "'," & _
             "'" & Val(txtTotalExp.Text) & "','" & Val(txtTotalGrand.Text) & "','" & Val(txtFreight.Text) & "','" & Val(txtLabour.Text) & "', " & _
             "'" & Val(txtOtherCharges.Text) & "'," & (CbChallanNo.SelectedValue) & ",'" & CbChallanNo.Text & "','" & txtTransferOn.Text & "','" & CbChallanNo.Text & "'," & _
@@ -89,7 +89,7 @@
 
     Private Sub UpdateRecord()
         Dim Sql As String = String.Empty
-        Sql = "Update Vouchers Set TransType='" & Me.Text & "',BillNo='" & txtVoucherNo.Text & "',EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "',AccountID='" & Val(txtAccountID.Text) & "',AccountName='" & txtAccount.Text & "', " &
+        Sql = "Update Vouchers Set TransType='" & Me.Text & "',BillNo='" & txtVoucherNo.Text & "',EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "',AccountID='" & Val(txtAccountID.Text) & "',AccountName='" & txtAccount.Text & "', " &
             "BasicAmount='" & Val(txtTotalAmount.Text) & "',TotalCharges='" & Val(txtTotalExp.Text) & "',TotalAmount='" & Val(txtTotalGrand.Text) & "', " &
             "N1='" & Val(txtFreight.Text) & "',N2='" & Val(txtLabour.Text) & "',N3='" & Val(txtOtherCharges.Text) & "',ItemID=" & Val(CbChallanNo.SelectedValue) & ",ItemName='" & CbChallanNo.Text & "', " &
             "T1='" & txtTransferOn.Text & "',T2='" & txtChallanNo.Text & "',T3='" & txtVehicleNo.Text & "',T4='" & Val(txtOurCost.Text) & "',Remark='" & txtNarration.Text & "', " &
@@ -113,14 +113,14 @@
         txtTransferOn.Clear() : txtVehicleNo.Clear()
         txtOurCost.Clear() : CbChallanNo.Enabled = True
         txtOurCost.Clear() : BtnSave.Text = "&Save"
-        VNumber() : mskEntryDate.Focus()
+        VNumber() : txtEntryDate.Focus()
     End Sub
     Private Sub InsertLedger()
         Dim FastQuery As String = String.Empty
         If Val(txtTotalAmount.Text) <> 0 Then ''Manual Beejak Account Fixed
             '    clsFun.Ledger(0, VchId, SqliteEntryDate, Me.Text, 24, clsFun.ExecScalarStr("Select AccountName from Accounts where Id=24"), Val(tmpamount2), "C", remark, txtAccount.Text, remarkHindi)
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(24) & ", '" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=24") & "','" & Val(txtTotalGrand.Text) & "', 'C','" & txtNarration.Text & "','" & txtAccount.Text & "','" & txtNarration.Text & "'"
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ", '" & txtAccount.Text & "','" & Val(txtTotalGrand.Text) & "', 'D','" & txtNarration.Text & "','" & txtAccount.Text & "','" & txtNarration.Text & "'"
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(24) & ", '" & clsFun.ExecScalarStr("Select AccountName from Accounts where Id=24") & "','" & Val(txtTotalGrand.Text) & "', 'C','" & txtNarration.Text & "','" & txtAccount.Text & "','" & txtNarration.Text & "'"
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ", '" & txtAccount.Text & "','" & Val(txtTotalGrand.Text) & "', 'D','" & txtNarration.Text & "','" & txtAccount.Text & "','" & txtNarration.Text & "'"
         End If
         If FastQuery = String.Empty Then Exit Sub
         clsFun.FastLedger(FastQuery)
@@ -172,9 +172,9 @@
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = smartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub CbChallanNo_GotFocus(sender As Object, e As EventArgs) Handles CbChallanNo.GotFocus
@@ -196,11 +196,7 @@
         txtTotalGrand.Text = Format(Val(txtTotalAmount.Text) - Val(txtTotalExp.Text), "0.00")
     End Sub
 
-    Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus
-        mskEntryDate.SelectAll()
-        mskEntryDate.BackColor = Color.LightCyan
-    End Sub
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, txtVoucherNo.KeyDown, txtAccount.KeyDown,
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtVoucherNo.KeyDown, txtAccount.KeyDown,
         CbChallanNo.KeyDown, txtTotalAmount.KeyDown, txtFreight.KeyDown, txtLabour.KeyDown, txtOtherCharges.KeyDown, txtNarration.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
@@ -213,20 +209,18 @@
         End If
     End Sub
 
-    Private Sub mskEntryDate_Leave(sender As Object, e As EventArgs) Handles mskEntryDate.Leave
-        mskEntryDate.BackColor = Color.GhostWhite
+ 
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
-    End Sub
-    Private Sub txtVoucherNo_GotFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.GotFocus, txtAccount.GotFocus,
+    Private Sub txtVoucherNo_GotFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.GotFocus, txtAccount.GotFocus, txtEntryDate.GotFocus,
     txtTotalAmount.GotFocus, txtFreight.GotFocus, txtLabour.GotFocus, txtOtherCharges.GotFocus, txtNarration.GotFocus
         Dim tb As TextBox = CType(sender, TextBox)
         tb.BackColor = Color.LightCyan
         tb.SelectAll()
     End Sub
-    Private Sub txtVoucherNo_Leave(sender As Object, e As EventArgs) Handles txtVoucherNo.Leave, txtAccount.Leave,
-     txtTotalAmount.Leave, txtFreight.Leave, txtLabour.Leave, txtOtherCharges.Leave, txtNarration.Leave
+    Private Sub txtVoucherNo_Leave(sender As Object, e As EventArgs) Handles txtVoucherNo.Leave, txtAccount.Leave, txtEntryDate.GotFocus,
+        txtTotalAmount.Leave, txtFreight.Leave, txtLabour.Leave, txtOtherCharges.Leave, txtNarration.Leave
         Dim tb As TextBox = CType(sender, TextBox)
         tb.BackColor = Color.GhostWhite
     End Sub
@@ -253,7 +247,7 @@
         Else
             dt = clsFun.ExecDataTable("Select * FROM Vouchers Where  ID=" & Val(CbChallanNo.SelectedValue) & " order by  InvoiceID,EntryDate ")
         End If
-        
+
         Try
             If dt.Rows.Count > 0 Then
                 txtTransferOn.Text = Format(dt.Rows(0)("EntryDate"), "dd-MM-yyyy")

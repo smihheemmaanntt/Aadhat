@@ -22,13 +22,12 @@ Partial Class OutStanding
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OutStanding))
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.dg1 = New System.Windows.Forms.DataGridView()
@@ -52,8 +51,11 @@ Partial Class OutStanding
         Me.btnPrintHindi = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel13.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -67,17 +69,6 @@ Partial Class OutStanding
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "OUTSTANDING SUMMARY"
         '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.Location = New System.Drawing.Point(701, 98)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(130, 26)
-        Me.mskEntryDate.TabIndex = 40067
-        '
         'btnShow
         '
         Me.btnShow.BackColor = System.Drawing.Color.Coral
@@ -88,7 +79,7 @@ Partial Class OutStanding
         Me.btnShow.Location = New System.Drawing.Point(846, 98)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(112, 26)
-        Me.btnShow.TabIndex = 40069
+        Me.btnShow.TabIndex = 1
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -104,7 +95,7 @@ Partial Class OutStanding
         Me.BtnPrint.Location = New System.Drawing.Point(958, 98)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(112, 26)
-        Me.BtnPrint.TabIndex = 40070
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -117,24 +108,24 @@ Partial Class OutStanding
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle6
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
         Me.dg1.Location = New System.Drawing.Point(12, 123)
@@ -142,22 +133,22 @@ Partial Class OutStanding
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1170, 479)
-        Me.dg1.TabIndex = 91204
+        Me.dg1.TabIndex = 8
         '
         'Label6
         '
@@ -180,7 +171,7 @@ Partial Class OutStanding
         Me.txtCustomerSearch.Location = New System.Drawing.Point(154, 98)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(440, 26)
-        Me.txtCustomerSearch.TabIndex = 91211
+        Me.txtCustomerSearch.TabIndex = 7
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -220,6 +211,7 @@ Partial Class OutStanding
         'Panel13
         '
         Me.Panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel13.Controls.Add(Me.txtEntryDate)
         Me.Panel13.Location = New System.Drawing.Point(599, 647)
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Size = New System.Drawing.Size(214, 1)
@@ -324,7 +316,7 @@ Partial Class OutStanding
         Me.RadioAll.Location = New System.Drawing.Point(1079, 75)
         Me.RadioAll.Name = "RadioAll"
         Me.RadioAll.Size = New System.Drawing.Size(104, 23)
-        Me.RadioAll.TabIndex = 91227
+        Me.RadioAll.TabIndex = 6
         Me.RadioAll.TabStop = True
         Me.RadioAll.Text = "All Accounts"
         Me.RadioAll.UseVisualStyleBackColor = True
@@ -337,7 +329,7 @@ Partial Class OutStanding
         Me.RadioSundryCreditors.Location = New System.Drawing.Point(995, 75)
         Me.RadioSundryCreditors.Name = "RadioSundryCreditors"
         Me.RadioSundryCreditors.Size = New System.Drawing.Size(84, 23)
-        Me.RadioSundryCreditors.TabIndex = 91226
+        Me.RadioSundryCreditors.TabIndex = 5
         Me.RadioSundryCreditors.TabStop = True
         Me.RadioSundryCreditors.Text = "Creditors"
         Me.RadioSundryCreditors.UseVisualStyleBackColor = True
@@ -350,7 +342,7 @@ Partial Class OutStanding
         Me.RadioSundryDebtors.Location = New System.Drawing.Point(919, 75)
         Me.RadioSundryDebtors.Name = "RadioSundryDebtors"
         Me.RadioSundryDebtors.Size = New System.Drawing.Size(76, 23)
-        Me.RadioSundryDebtors.TabIndex = 91225
+        Me.RadioSundryDebtors.TabIndex = 4
         Me.RadioSundryDebtors.TabStop = True
         Me.RadioSundryDebtors.Text = "Debtors"
         Me.RadioSundryDebtors.UseVisualStyleBackColor = True
@@ -365,7 +357,7 @@ Partial Class OutStanding
         Me.btnPrintHindi.Location = New System.Drawing.Point(1070, 98)
         Me.btnPrintHindi.Name = "btnPrintHindi"
         Me.btnPrintHindi.Size = New System.Drawing.Size(112, 26)
-        Me.btnPrintHindi.TabIndex = 91228
+        Me.btnPrintHindi.TabIndex = 3
         Me.btnPrintHindi.TabStop = False
         Me.btnPrintHindi.Text = "&Hindi Print"
         Me.btnPrintHindi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -391,12 +383,31 @@ Partial Class OutStanding
         Me.dtp1.Size = New System.Drawing.Size(146, 26)
         Me.dtp1.TabIndex = 91263
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(39, -13)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(134, 26)
+        Me.txtEntryDate.TabIndex = 1
+        '
+        'TextBox1
+        '
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(699, 98)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(134, 26)
+        Me.TextBox1.TabIndex = 91264
+        '
         'OutStanding
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Panel13)
         Me.Controls.Add(Me.txtCreditBal)
         Me.Controls.Add(Me.Label4)
@@ -420,19 +431,19 @@ Partial Class OutStanding
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "OutStanding"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "OutStanding"
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel13.ResumeLayout(False)
+        Me.Panel13.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
@@ -456,4 +467,6 @@ Partial Class OutStanding
     Friend WithEvents btnPrintHindi As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class

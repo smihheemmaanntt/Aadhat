@@ -10,13 +10,9 @@ Public Class On_Sale
     Dim CalcType As String = String.Empty : Dim ServerTag As Integer
     Dim TotalPages As Integer = 0 : Dim PageNumber As Integer = 0
     Dim RowCount As Integer = 1 : Dim Offset As Integer = 0
-    Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
-        mskEntryDate.BackColor = Color.LightGray
-        mskEntryDate.SelectAll()
-    End Sub
 
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub Stock_Transfer_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -41,7 +37,7 @@ Public Class On_Sale
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         CbPer.SelectedIndex = 0
         ' pnlMarka.Visible = False
         RowColumns() : dg2RownColums()
@@ -65,7 +61,7 @@ Public Class On_Sale
         sql = "Select VoucherID,EntryDate,StockHolderID,StockHolderName,AccountID ,AccountName ,PurchaseTypeName,ifnull(sum(Nug),0) as PurchaseNug,(ifnull(sum(Nug),0)-(Select ifnull(sum(Nug),0)  from Transaction2 " & _
                 " where Transtype in('Stock Sale','Standard Sale', 'On Sale') and sallerID=Purchase.StockHolderID and PurchaseID=Purchase.VoucherID)) as RestNug  FROM Purchase " & _
                 " " & condtion & " group by VoucherID,StockHolderID Having RestNug=PurchaseNug Limit 5;"
-    
+
         dt = clsFun.ExecDataTable(sql)
         Try
             If dt.Rows.Count > 0 Then
@@ -196,7 +192,7 @@ Public Class On_Sale
         dgItemSearch.Visible = False
         dgCharges.Visible = False
         dgLot.Visible = False
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
 
     End Sub
     Sub retrivePrint()
@@ -413,14 +409,14 @@ Public Class On_Sale
         If BtnSave.Text = "&Save" Then
 
             sql = "Select ItemID,ItemName," &
-        "(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  and ItemID = Purchase.ItemID and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=" & Val(txtStorageID.Text) & " and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' )) as RestNug" &
-        " from Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  " & condtion & " Group By ItemID having RestNug>0  order by ItemName"
+        "(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  and ItemID = Purchase.ItemID and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=" & Val(txtStorageID.Text) & " and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' )) as RestNug" &
+        " from Purchase where EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  " & condtion & " Group By ItemID having RestNug>0  order by ItemName"
         Else
             sql = "Select ID,VoucherID,ItemID,ItemName,StockHolderID,ifnull(sum(Nug),0) as PurchaseNug," &
            "(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  and ItemID = Purchase.ItemID and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out')) as SoldNug," &
-           "(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  and ItemID = Purchase.ItemID and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=" & Val(txtStorageID.Text) & " and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' )" &
-           "+(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & "  and ItemID =Purchase.ItemID  and VoucherID=" & Val(txtid.Text) & " and TransType in('Stock Sale','On Sale','Store Out') and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' )) as RestNug" &
-           " from Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  " & condtion & " Group By ItemID having RestNug<>0 order by ItemName"
+           "(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  and ItemID = Purchase.ItemID and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=" & Val(txtStorageID.Text) & " and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' )" &
+           "+(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & "  and ItemID =Purchase.ItemID  and VoucherID=" & Val(txtid.Text) & " and TransType in('Stock Sale','On Sale','Store Out') and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' )) as RestNug" &
+           " from Purchase where EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  " & condtion & " Group By ItemID having RestNug<>0 order by ItemName"
         End If
         dt = clsFun.ExecDataTable(sql)
         Try
@@ -479,12 +475,12 @@ Public Class On_Sale
         If BtnSave.Text = "&Save" Then
             sql = "Select VoucherID, LotNo,VehicleNo,EntryDate,AccountName," &
                            "(nug-(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out') and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " &
-                           "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and StorageID=" & Val(txtStorageID.Text) & ")) as RestNug From Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and ItemID=" & Val(txtItemID.Text) & "  and RestNug > 0  " & condtion & ""
+                           "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and StorageID=" & Val(txtStorageID.Text) & ")) as RestNug From Purchase where EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and ItemID=" & Val(txtItemID.Text) & "  and RestNug > 0  " & condtion & ""
         Else
             sql = "Select VoucherID, LotNo,VehicleNo,EntryDate,AccountName," &
                         "(nug-(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out') and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " &
                         "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID))+(Select ifnull(sum(nug),0) from Transaction2 where Transtype in('Stock Sale','Standard Sale', 'On Sale','Store Out')and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " &
-                        "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and VoucherID=" & Val(txtid.Text) & " and StorageID=" & Val(txtStorageID.Text) & ")   as RestNug From Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and  StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and ItemID=" & Val(txtItemID.Text) & "  and RestNug >0    " & condtion & ""
+                        "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and VoucherID=" & Val(txtid.Text) & " and StorageID=" & Val(txtStorageID.Text) & ")   as RestNug From Purchase where EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and  StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and ItemID=" & Val(txtItemID.Text) & "  and RestNug >0    " & condtion & ""
 
         End If
 
@@ -526,64 +522,6 @@ Public Class On_Sale
 
     End Sub
 
-    'Private Sub RetriveLot1(Optional ByVal condtion As String = "")
-    '    dgLot.Rows.Clear()
-    '    Dim PurchaseLot As String = ""
-    '    Dim StockLot As String = ""
-    '    Dim RestLot As String = ""
-    '    Dim dt As New DataTable
-    '    Dim tmpval As Integer = 0
-    '    If BtnSave.Text = "&Save" Then
-    '        sql = "Select VoucherID, LotNo,VehicleNo,EntryDate,AccountName," & _
-    '                       "(nug-(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out') and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " & _
-    '                       "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID)) as RestNug From Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and ItemID=" & Val(txtItemID.Text) & "  and RestNug > 0  " & condtion & ""
-    '    Else
-    '        sql = "Select VoucherID, LotNo,VehicleNo,EntryDate,AccountName," & _
-    '                    "(nug-(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out') and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " & _
-    '                    "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID))+(Select ifnull(sum(nug),0) from Transaction2 where Transtype in('Stock Sale','Standard Sale','On Sale','Store Out')and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " & _
-    '                    "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and VoucherID=" & Val(txtid.Text) & ")   as RestNug From Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and  StorageID=" & Val(txtStorageID.Text) & " and StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and ItemID=" & Val(txtItemID.Text) & "  and RestNug >0    " & condtion & ""
-
-    '    End If
-
-    '    dt = clsFun.ExecDataTable(sql)
-
-    '    'dt = clsFun.ExecDataTable("Select VoucherID, LotNo,VehicleNo From Purchase where StorageID=" & txtStorageID.Text & " and StockHolderID=" & txtPurchaseTypeID.Text & " and ItemID=" & txtItemID.Text & " " & condtion & " ")
-    '    Try
-    '        If dt.Rows.Count > 0 Then
-    '            dgLot.Rows.Clear()
-    '            For i = 0 To dt.Rows.Count - 1
-    '                If BtnSave.Text = "&Save" Then
-    '                    PurchaseLot = clsFun.ExecScalarStr("Select sum(Nug) From Purchase Where StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and StorageID=" & Val(txtStorageID.Text) & " and ItemID = " & Val(txtItemID.Text) & " and LotNo='" & dt.Rows(i)("LotNo").ToString() & "'")
-    '                    StockLot = clsFun.ExecScalarStr("Select sum(Nug) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & "  and ItemID = " & Val(txtItemID.Text) & " and Lot='" & dt.Rows(i)("LotNo").ToString() & "'and TransType in ('Stock Sale','On Sale','Standard Sale')")
-    '                    RestLot = Val(PurchaseLot) - Val(StockLot)
-    '                    If RestLot > 0 Then
-    '                        dgLot.Rows.Add()
-
-    '                        With dgLot.Rows(tmpval)
-    '                            .Cells(0).Value = dt.Rows(i)("VoucherID").ToString()
-    '                            .Cells(1).Value = dt.Rows(i)("LotNo").ToString()
-    '                            .Cells(2).Value = dt.Rows(i)("VehicleNo").ToString()
-    '                            tmpval = tmpval + 1
-    '                        End With
-    '                    End If
-    '                Else
-    '                    dgLot.Rows.Add()
-
-    '                    With dgLot.Rows(i)
-    '                        .Cells(0).Value = dt.Rows(i)("VoucherID").ToString()
-    '                        .Cells(1).Value = dt.Rows(i)("LotNo").ToString()
-    '                        .Cells(2).Value = dt.Rows(i)("VehicleNo").ToString()
-    '                        '  tmpval = tmpval + 1
-    '                    End With
-    '                End If
-
-    '            Next
-    '        End If
-    '        dt.Dispose()
-    '    Catch ex As Exception
-    '        MsgBox(ex.Message, vbOKOnly + vbInformation, "Aadhat")
-    '    End Try
-    'End Sub
     Private Sub txtLot_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLot.KeyPress
         dgLot.BringToFront()
         LotCoulmns()
@@ -608,14 +546,14 @@ Public Class On_Sale
         'dt = clsFun.ExecDataTable("Select  StorageID,StorageName From Purchase where StockHolderID=" & txtPurchaseTypeID.Text & " " & condtion & "  group by  StorageID,StorageName ")
         If BtnSave.Text = "&Save" Then
             sql = "Select  StorageID,StorageName,(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  " & _
-            " and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=Purchase.StorageID  and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as RestNug " & _
-            "From Purchase where StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  group by  StorageID,StorageName having RestNug<>0 order by StorageName "
+            " and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=Purchase.StorageID  and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as RestNug " & _
+            "From Purchase where StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  group by  StorageID,StorageName having RestNug<>0 order by StorageName "
         Else
             sql = "Select  StorageID,StorageName,(ifnull(sum(Nug),0) -(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  " & _
-            " and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=Purchase.StorageID  and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+            " and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=Purchase.StorageID  and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
             "+(Select ifnull(sum(Nug),0) From Transaction2 Where SallerID=Purchase.StockHolderID  " & _
-            " and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=Purchase.StorageID  and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "') as RestNug " & _
-            "From Purchase where StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  and EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  group by  StorageID,StorageName having RestNug<>0 order by StorageName"
+            " and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') and StorageID=Purchase.StorageID  and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "') as RestNug " & _
+            "From Purchase where StockHolderID=" & Val(txtPurchaseTypeID.Text) & "  and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  " & condtion & "  group by  StorageID,StorageName having RestNug<>0 order by StorageName"
         End If
         dt = clsFun.ExecDataTable(sql)
         Try
@@ -689,8 +627,8 @@ Public Class On_Sale
         Dim opbal As String = ""
         Dim ClBal As String = ""
         opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID=  " & Val(txtAccountID.Text) & "")
-        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='D' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='D' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         ' opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE AccountName like '%" + cbAccountName.Text + "%'")
         Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID= " & Val(txtAccountID.Text) & "")
         If drcr = "Dr" Then
@@ -705,7 +643,7 @@ Public Class On_Sale
             opbal = Math.Abs(Val(opbal)) & " Dr"
         End If
         Dim cntbal As Integer = 0
-        cntbal = clsFun.ExecScalarInt("Select count(*) from ledger where  accountid=" & Val(txtAccountID.Text) & " and  EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        cntbal = clsFun.ExecScalarInt("Select count(*) from ledger where  accountid=" & Val(txtAccountID.Text) & " and  EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         If cntbal = 0 Then
             opbal = Math.Abs(Val(opbal)) & " " & clsFun.ExecScalarStr(" Select dc from accounts where id= " & Val(txtAccountID.Text) & "")
         Else
@@ -761,22 +699,21 @@ Public Class On_Sale
     Private Sub txtWeight_GotFocus(sender As Object, e As EventArgs) Handles txtWeight.GotFocus
         pnlMarka.Visible = False
     End Sub
-    Private Sub txtVoucherNo_LostFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.LostFocus, txtVehicleNo.LostFocus, txtAccount.LostFocus, txtPurchaseType.LostFocus,
+    Private Sub txtVoucherNo_LostFocus(sender As Object, e As EventArgs) Handles txtEntryDate.LostFocus, txtVoucherNo.LostFocus, txtVehicleNo.LostFocus, txtAccount.LostFocus, txtPurchaseType.LostFocus,
     txtStoreName.LostFocus, txtitem.LostFocus, txtLot.LostFocus, txtNug.LostFocus, txtWeight.LostFocus, txtRate.LostFocus, txtDriverName.LostFocus, txtMobile.LostFocus, txtRemark.LostFocus, txtCrateQty.LostFocus
         Dim tb As TextBox = CType(sender, TextBox)
-        If tb.Text Is mskEntryDate Then mskEntryDate.SelectAll() : mskEntryDate.BackColor = Color.LightGray : Exit Sub
         tb.BackColor = Color.GhostWhite
+    End Sub
+
+    Private Sub txtvoucherNo_GotFocus(sender As Object, e As EventArgs) Handles txtEntryDate.GotFocus, txtVoucherNo.GotFocus, txtVehicleNo.GotFocus, txtAccount.GotFocus, txtPurchaseType.GotFocus,
+    txtStoreName.GotFocus, txtitem.GotFocus, txtLot.GotFocus, txtNug.GotFocus, txtWeight.GotFocus, txtRate.GotFocus, txtDriverName.GotFocus, txtMobile.GotFocus, txtRemark.GotFocus, txtCrateQty.GotFocus
+        Dim tb As TextBox = CType(sender, TextBox)
+        '   If tb.Text Is txtEntryDate Then txtEntryDate.BackColor = Color.GhostWhite : Exit Sub
+        tb.BackColor = Color.LightGray
         tb.SelectAll()
     End Sub
 
-    Private Sub txtvoucherNo_GotFocus(sender As Object, e As EventArgs) Handles txtVoucherNo.GotFocus, txtVehicleNo.GotFocus, txtAccount.GotFocus, txtPurchaseType.GotFocus,
-    txtStoreName.GotFocus, txtitem.GotFocus, txtLot.GotFocus, txtNug.GotFocus, txtWeight.GotFocus, txtRate.GotFocus, txtDriverName.GotFocus, txtMobile.GotFocus, txtRemark.GotFocus, txtCrateQty.GotFocus
-        Dim tb As TextBox = CType(sender, TextBox)
-        '   If tb.Text Is mskEntryDate Then mskEntryDate.BackColor = Color.GhostWhite : Exit Sub
-        tb.BackColor = Color.LightGray
-    End Sub
-
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, txtVoucherNo.KeyDown, txtVehicleNo.KeyDown, txtAccount.KeyDown, txtPurchaseType.KeyDown,
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, txtVoucherNo.KeyDown, txtVehicleNo.KeyDown, txtAccount.KeyDown, txtPurchaseType.KeyDown,
         txtStoreName.KeyDown, txtitem.KeyDown, txtLot.KeyDown, txtNug.KeyDown, txtWeight.KeyDown, txtRate.KeyDown, CbPer.KeyDown, txtDriverName.KeyDown, txtMobile.KeyDown, txtRemark.KeyDown,
         cbCrateMarka.KeyDown, txtCrateQty.KeyDown
         If txtVoucherNo.Focused Then
@@ -994,8 +931,8 @@ Public Class On_Sale
         Dim PurchaseBal As String = "" : Dim StockBal As String = ""
         Dim RestBal As String = "" : Dim tmpbal As String = ""
         Dim dt As New DataTable
-        PurchaseBal = clsFun.ExecScalarStr("Select sum(Nug) From Purchase Where StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and StorageID=" & Val(txtStorageID.Text) & " and ItemID = " & Val(txtItemID.Text) & " and  EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-        StockBal = clsFun.ExecScalarStr("Select sum(Nug) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & " and StorageID=" & Val(txtStorageID.Text) & "  and ItemID = " & Val(txtItemID.Text) & " and TransType  in ('Stock Sale','On Sale','Standard Sale','Store Out') and  EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        PurchaseBal = clsFun.ExecScalarStr("Select sum(Nug) From Purchase Where StockHolderID=" & Val(txtPurchaseTypeID.Text) & " and StorageID=" & Val(txtStorageID.Text) & " and ItemID = " & Val(txtItemID.Text) & " and  EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        StockBal = clsFun.ExecScalarStr("Select sum(Nug) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & " and StorageID=" & Val(txtStorageID.Text) & "  and ItemID = " & Val(txtItemID.Text) & " and TransType  in ('Stock Sale','On Sale','Standard Sale','Store Out') and  EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         RestBal = Val(PurchaseBal) - Val(StockBal)
         If BtnSave.Text = "&Save" Then
             If dg1.SelectedRows.Count = 0 Then
@@ -1048,7 +985,7 @@ Public Class On_Sale
             If dg1.RowCount = 0 Then ' if no rows addred
                 bal = (RestBal)
             Else 'if rows count
-                UpdateTmp = clsFun.ExecScalarInt("Select sum(Nug) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & "  and ItemID = " & Val(txtItemID.Text) & " and StorageID=" & Val(txtStorageID.Text) & " AND VoucherID not in ('" & Val(txtid.Text) & "') and TransType  in ('Stock Sale','On Sale','Standard Sale','Store Out') and  EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+                UpdateTmp = clsFun.ExecScalarInt("Select sum(Nug) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & "  and ItemID = " & Val(txtItemID.Text) & " and StorageID=" & Val(txtStorageID.Text) & " AND VoucherID not in ('" & Val(txtid.Text) & "') and TransType  in ('Stock Sale','On Sale','Standard Sale','Store Out') and  EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
                 If dg1.SelectedRows.Count = 0 Then
                     For i As Integer = 0 To dg1.RowCount - 1
                         If Val(dg1.Rows(i).Cells(4).Value) = Val(txtItemID.Text) Then
@@ -1232,7 +1169,7 @@ Public Class On_Sale
             Else 'if rows count
                 UpdatetmpLot = clsFun.ExecScalarStr("Select sum(Nug) From Transaction2 Where SallerID=" & Val(txtPurchaseTypeID.Text) & "  and ItemID = " & Val(txtItemID.Text) & " " &
                                                     "AND VoucherID  in ('" & Val(txtid.Text) & "') and Lot='" & txtLot.Text & "' and PurchaseID='" & Val(txtPurchaseID.Text) & "' and StorageID=" & Val(txtStorageID.Text) & " " &
-                                                    " and  EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out')")
+                                                    " and  EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType in ('Stock Sale','On Sale','Standard Sale','Store Out')")
                 Dim UpdatedLot As String = Val(clsFun.ExecScalarStr("Select sum(Nug) From Transaction2 Where  ItemID = " & Val(txtItemID.Text) & " and Lot='" & txtLot.Text & "' " &
                                                                     "and VoucherID<>'" & Val(txtid.Text) & "' and PurchaseID='" & Val(txtPurchaseID.Text) & "' "))
                 If dg1.SelectedRows.Count = 0 Then
@@ -1331,7 +1268,7 @@ Public Class On_Sale
     Private Sub Save()
         'VNumber()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         ' Change the format:
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         dg1.ClearSelection()
@@ -1378,7 +1315,7 @@ Public Class On_Sale
                 ' If Val(.Cells(33).Value) > 0 Then
                 If Val(.Cells(16).Value) > 0 Then ''Party Account
                     '     clsFun.CrateLedger(0, VchId, clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate Out'") + 1, SqliteEntryDate, Me.Text, Val(txtAccountID.Text), txtAccount.Text, "Crate Out", Val(.Cells(14).Value), .Cells(15).Value, .Cells(16).Value, "", "", "", "")
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate Out'") + 1) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate Out'," & Val(.Cells(14).Value) & ",'" & .Cells(15).Value & "','" & .Cells(16).Value & "', '','','',''"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate Out'") + 1) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate Out'," & Val(.Cells(14).Value) & ",'" & .Cells(15).Value & "','" & .Cells(16).Value & "', '','','',''"
                 End If
                 ' End If
             End With
@@ -1395,7 +1332,7 @@ Public Class On_Sale
                 ' If Val(.Cells(33).Value) > 0 Then
                 If Val(.Cells(16).Value) > 0 Then ''Party Account
                     '     clsFun.CrateLedger(0, VchId, clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate Out'") + 1, SqliteEntryDate, Me.Text, Val(txtAccountID.Text), txtAccount.Text, "Crate Out", Val(.Cells(14).Value), .Cells(15).Value, .Cells(16).Value, "", "", "", "")
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate Out'") + 1) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate Out'," & Val(.Cells(14).Value) & ",'" & .Cells(15).Value & "','" & .Cells(16).Value & "', '','','',''," & Val(ServerTag) & "," & Val(OrgID) & ""
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & "," & Val(clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM CrateVoucher Where TransType='Crate Out'") + 1) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate Out'," & Val(.Cells(14).Value) & ",'" & .Cells(15).Value & "','" & .Cells(16).Value & "', '','','',''," & Val(ServerTag) & "," & Val(OrgID) & ""
                 End If
                 ' End If
             End With
@@ -1420,7 +1357,7 @@ Public Class On_Sale
         Dim tmpamount As Decimal = Val(txtTotbasic.Text)
         Dim tmpamount2 As Decimal = Val(txtTotbasic.Text)
         Dim remarkHindi As String = String.Empty
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         ' Change the format:
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         ''Caluclate  net amt
@@ -1465,7 +1402,7 @@ Public Class On_Sale
     End Sub
     Private Sub InsertCharges()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         ' Change the format:
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim CostON As String = clsFun.ExecScalarStr(" Select CostOn FROM Charges WHERE ID='" & txtChargeID.Text & "'")
@@ -1501,7 +1438,7 @@ Public Class On_Sale
             If dt.Rows.Count > 0 Then
                 ServerTag = 0
                 For i = 0 To dt.Rows.Count - 1
-                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & dt.Rows(i)("SlipNo").ToString() & "','" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(dt.Rows(i)("AccountID").ToString()) & ",'" & dt.Rows(i)("AccountName").ToString() & "','Crate Out','" & Val(dt.Rows(i)("CrateID").ToString()) & "','" & dt.Rows(i)("CrateName").ToString() & "'," & Val(dt.Rows(i)("Qty").ToString()) & ",'', '" & Val(dt.Rows(i)("Rate").ToString()) & "','" & Val(dt.Rows(i)("Amount").ToString()) & "',''," & Val(ServerTag) & ", " & Val(OrgID) & ""
+                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & dt.Rows(i)("SlipNo").ToString() & "','" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(dt.Rows(i)("AccountID").ToString()) & ",'" & dt.Rows(i)("AccountName").ToString() & "','Crate Out','" & Val(dt.Rows(i)("CrateID").ToString()) & "','" & dt.Rows(i)("CrateName").ToString() & "'," & Val(dt.Rows(i)("Qty").ToString()) & ",'', '" & Val(dt.Rows(i)("Rate").ToString()) & "','" & Val(dt.Rows(i)("Amount").ToString()) & "',''," & Val(ServerTag) & ", " & Val(OrgID) & ""
                 Next
             End If
             If fastQuery = String.Empty Then Exit Sub
@@ -1513,7 +1450,7 @@ Public Class On_Sale
     End Sub
     Private Sub UpdateRecord()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         ' Change the format:
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         dg1.ClearSelection()
@@ -1560,7 +1497,7 @@ Public Class On_Sale
         ad2.Fill(ds2, "c")
         If ds.Tables("a").Rows.Count > 0 Then
             txtid.Text = id
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtAccountID.Text = ds.Tables("a").Rows(0)("AccountID").ToString()
             txtAccount.Text = ds.Tables("a").Rows(0)("AccountName").ToString()
             txtVehicleNo.Text = ds.Tables("a").Rows(0)("VehicleNo").ToString()
@@ -1647,7 +1584,7 @@ Public Class On_Sale
         ad.Fill(ds, "a")
         If ds.Tables("a").Rows.Count > 0 Then
             '  txtid.Text = id
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtAccountID.Text = ds.Tables("a").Rows(0)("AccountID").ToString()
             txtAccount.Text = ds.Tables("a").Rows(0)("AccountName").ToString()
             txtVehicleNo.Text = ds.Tables("a").Rows(0)("VehicleNo").ToString()
@@ -1727,7 +1664,7 @@ Public Class On_Sale
             With dg1.Rows(i)
                 Dim typeac As String = IIf(Val(.Cells(0).Value) = Val(28), "Purchase", "Stock in")
                 If .Cells(1).Value <> "" Then
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & txtVoucherNo.Text & "'," & Val(txtid.Text) & ", '" & Me.Text & "'," &
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & txtVoucherNo.Text & "'," & Val(txtid.Text) & ", '" & Me.Text & "'," &
                              "'" & Val(txtAccountID.Text) & "','" & txtAccount.Text & "'," & Val(.Cells(0).Value) & "," &
                              "'" & .Cells(1).Value & "','" & Val(.Cells(2).Value) & "', " &
                              " '" & .Cells(3).Value & "','" & Val(.Cells(4).Value) & "','" & .Cells(5).Value & "','" & .Cells(6).Value & "'," &
@@ -2370,9 +2307,9 @@ Public Class On_Sale
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = smartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -2431,7 +2368,7 @@ Public Class On_Sale
 
         'pnlWahtsappNo.Visible = True
         'txtWhatsappNo.Focus()
-        GlobalData.PdfName = txtAccount.Text & "-" & mskEntryDate.Text & ".pdf"
+        GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
         retrivePrint()
         PrintRecord()
         Pdf_Genrate.ExportReport("\OnSale.rpt")
@@ -2457,8 +2394,8 @@ Public Class On_Sale
         '  txtCrateQty.Text = txtNug.Text
     End Sub
 
-    Private Sub mskEntryDate_LostFocus(sender As Object, e As EventArgs) Handles mskEntryDate.LostFocus
-        mskEntryDate.BackColor = Color.GhostWhite
+    Private Sub txtEntryDate_LostFocus(sender As Object, e As EventArgs)
+        txtEntryDate.BackColor = Color.GhostWhite
     End Sub
 
 

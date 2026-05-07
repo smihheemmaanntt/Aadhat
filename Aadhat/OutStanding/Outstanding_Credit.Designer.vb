@@ -31,7 +31,6 @@ Partial Class Outstanding_Credit
         Me.txtCustomerSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.lblRecordCount = New System.Windows.Forms.Label()
         Me.TxtGrandTotal = New System.Windows.Forms.TextBox()
@@ -57,6 +56,7 @@ Partial Class Outstanding_Credit
         Me.RadioSundryCreditors = New System.Windows.Forms.RadioButton()
         Me.RadioAll = New System.Windows.Forms.RadioButton()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -117,17 +117,6 @@ Partial Class Outstanding_Credit
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskEntryDate.Location = New System.Drawing.Point(779, 109)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(109, 29)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Label25
         '
@@ -449,12 +438,22 @@ Partial Class Outstanding_Credit
         Me.dtp1.Size = New System.Drawing.Size(102, 29)
         Me.dtp1.TabIndex = 91214
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtEntryDate.Location = New System.Drawing.Point(777, 109)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(115, 29)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Outstanding_Credit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.pnlWait)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.PictureBox4)
@@ -470,7 +469,6 @@ Partial Class Outstanding_Credit
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.lblRecordCount)
         Me.Controls.Add(Me.dg1)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.RadioAll)
         Me.Controls.Add(Me.RadioSundryCreditors)
@@ -497,7 +495,6 @@ Partial Class Outstanding_Credit
     Friend WithEvents txtCustomerSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents lblRecordCount As System.Windows.Forms.Label
     Friend WithEvents TxtGrandTotal As System.Windows.Forms.TextBox
@@ -523,4 +520,5 @@ Partial Class Outstanding_Credit
     Friend WithEvents RadioAll As System.Windows.Forms.RadioButton
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

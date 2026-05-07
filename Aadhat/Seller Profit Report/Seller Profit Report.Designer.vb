@@ -30,8 +30,6 @@ Partial Class Scrip_Profit_Report
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
@@ -55,6 +53,8 @@ Partial Class Scrip_Profit_Report
         Me.RadioOldMethod = New System.Windows.Forms.RadioButton()
         Me.RadioOldMethod2 = New System.Windows.Forms.RadioButton()
         Me.lblCount = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -122,28 +122,6 @@ Partial Class Scrip_Profit_Report
         Me.dg1.TabIndex = 91115
         Me.dg1.TabStop = False
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(226, 77)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(92, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(77, 77)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(92, 26)
-        Me.mskFromDate.TabIndex = 0
-        '
         'Label10
         '
         Me.Label10.BackColor = System.Drawing.Color.DarkSlateGray
@@ -163,6 +141,7 @@ Partial Class Scrip_Profit_Report
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
         Me.dtp2.TabIndex = 91151
+        Me.dtp2.TabStop = False
         '
         'dtp1
         '
@@ -171,6 +150,7 @@ Partial Class Scrip_Profit_Report
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(109, 26)
         Me.dtp1.TabIndex = 91152
+        Me.dtp1.TabStop = False
         '
         'Label9
         '
@@ -420,18 +400,38 @@ Partial Class Scrip_Profit_Report
         Me.lblCount.TabIndex = 91315
         Me.lblCount.Text = "#"
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(224, 77)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(71, 77)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Scrip_Profit_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblCount)
         Me.Controls.Add(Me.RadioOldMethod2)
         Me.Controls.Add(Me.RadioOldMethod)
         Me.Controls.Add(Me.radioSale)
         Me.Controls.Add(Me.radioOnSale)
         Me.Controls.Add(Me.radioboth)
-        Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -443,8 +443,6 @@ Partial Class Scrip_Profit_Report
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.ckExpAlso)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
@@ -463,8 +461,6 @@ Partial Class Scrip_Profit_Report
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
@@ -488,4 +484,6 @@ Partial Class Scrip_Profit_Report
     Friend WithEvents RadioOldMethod As System.Windows.Forms.RadioButton
     Friend WithEvents RadioOldMethod2 As System.Windows.Forms.RadioButton
     Friend WithEvents lblCount As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

@@ -32,8 +32,6 @@ Partial Class On_Sale_Profit_Report
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.dg1 = New System.Windows.Forms.DataGridView()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
@@ -49,6 +47,8 @@ Partial Class On_Sale_Profit_Report
         Me.ckExpAlso = New System.Windows.Forms.CheckBox()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label42 = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -145,28 +145,6 @@ Partial Class On_Sale_Profit_Report
         Me.dg1.Size = New System.Drawing.Size(1172, 494)
         Me.dg1.TabIndex = 19
         Me.dg1.TabStop = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(228, 77)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(92, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(79, 77)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(92, 26)
-        Me.mskFromDate.TabIndex = 0
         '
         'Label10
         '
@@ -341,13 +319,33 @@ Partial Class On_Sale_Profit_Report
         Me.Label42.Text = "Account Name :"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(226, 77)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(72, 77)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'On_Sale_Profit_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.ckExpAlso)
@@ -359,8 +357,6 @@ Partial Class On_Sale_Profit_Report
         Me.Controls.Add(Me.txtNetCost)
         Me.Controls.Add(Me.txtOurCost)
         Me.Controls.Add(Me.txtSentQty)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
@@ -380,8 +376,6 @@ Partial Class On_Sale_Profit_Report
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
@@ -397,4 +391,6 @@ Partial Class On_Sale_Profit_Report
     Friend WithEvents ckExpAlso As System.Windows.Forms.CheckBox
     Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

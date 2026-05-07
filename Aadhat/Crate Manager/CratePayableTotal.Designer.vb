@@ -37,7 +37,6 @@ Partial Class CratePayableTotal
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtItemSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.pb1 = New System.Windows.Forms.ProgressBar()
@@ -56,6 +55,7 @@ Partial Class CratePayableTotal
         Me.RadioAll = New System.Windows.Forms.RadioButton()
         Me.RadioSupplier = New System.Windows.Forms.RadioButton()
         Me.RadioCustomer = New System.Windows.Forms.RadioButton()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.Transaction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -101,7 +101,7 @@ Partial Class CratePayableTotal
         Me.btnShow.Location = New System.Drawing.Point(264, 109)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(85, 30)
-        Me.btnShow.TabIndex = 91276
+        Me.btnShow.TabIndex = 1
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -116,7 +116,7 @@ Partial Class CratePayableTotal
         Me.Button1.Location = New System.Drawing.Point(422, 109)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(100, 30)
-        Me.Button1.TabIndex = 91283
+        Me.Button1.TabIndex = 3
         Me.Button1.Text = "Print &Hindi"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
@@ -126,7 +126,7 @@ Partial Class CratePayableTotal
         Me.lblRecordCount.AutoSize = True
         Me.lblRecordCount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecordCount.ForeColor = System.Drawing.Color.Red
-        Me.lblRecordCount.Location = New System.Drawing.Point(374, 624)
+        Me.lblRecordCount.Location = New System.Drawing.Point(374, 611)
         Me.lblRecordCount.Name = "lblRecordCount"
         Me.lblRecordCount.Size = New System.Drawing.Size(17, 19)
         Me.lblRecordCount.TabIndex = 91282
@@ -166,7 +166,7 @@ Partial Class CratePayableTotal
         Me.txtItemSearch.Location = New System.Drawing.Point(921, 109)
         Me.txtItemSearch.Name = "txtItemSearch"
         Me.txtItemSearch.Size = New System.Drawing.Size(263, 29)
-        Me.txtItemSearch.TabIndex = 91279
+        Me.txtItemSearch.TabIndex = 5
         Me.txtItemSearch.TabStop = False
         Me.txtItemSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -180,21 +180,10 @@ Partial Class CratePayableTotal
         Me.BtnPrint.Location = New System.Drawing.Point(347, 109)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(75, 30)
-        Me.BtnPrint.TabIndex = 91277
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(137, 109)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(111, 29)
-        Me.mskFromDate.TabIndex = 91275
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dtp1
         '
@@ -283,7 +272,7 @@ Partial Class CratePayableTotal
         Me.txtCustomerSearch.Location = New System.Drawing.Point(594, 109)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(259, 29)
-        Me.txtCustomerSearch.TabIndex = 91278
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -323,7 +312,7 @@ Partial Class CratePayableTotal
         Me.txtTotQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotQty.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotQty.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotQty.Location = New System.Drawing.Point(692, 619)
+        Me.txtTotQty.Location = New System.Drawing.Point(692, 604)
         Me.txtTotQty.Name = "txtTotQty"
         Me.txtTotQty.ReadOnly = True
         Me.txtTotQty.Size = New System.Drawing.Size(174, 26)
@@ -336,7 +325,7 @@ Partial Class CratePayableTotal
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(601, 621)
+        Me.Label5.Location = New System.Drawing.Point(601, 607)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(68, 19)
         Me.Label5.TabIndex = 91290
@@ -348,7 +337,7 @@ Partial Class CratePayableTotal
         Me.txtTotAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotAmt.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotAmt.Location = New System.Drawing.Point(1010, 618)
+        Me.txtTotAmt.Location = New System.Drawing.Point(1010, 604)
         Me.txtTotAmt.Name = "txtTotAmt"
         Me.txtTotAmt.ReadOnly = True
         Me.txtTotAmt.Size = New System.Drawing.Size(174, 26)
@@ -361,7 +350,7 @@ Partial Class CratePayableTotal
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(874, 621)
+        Me.Label4.Location = New System.Drawing.Point(874, 607)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(104, 19)
         Me.Label4.TabIndex = 91292
@@ -372,7 +361,7 @@ Partial Class CratePayableTotal
         Me.Label8.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label8.Location = New System.Drawing.Point(12, 617)
+        Me.Label8.Location = New System.Drawing.Point(12, 604)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(98, 27)
         Me.Label8.TabIndex = 91297
@@ -385,7 +374,7 @@ Partial Class CratePayableTotal
         Me.txtArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtArea.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.txtArea.ForeColor = System.Drawing.Color.Black
-        Me.txtArea.Location = New System.Drawing.Point(110, 617)
+        Me.txtArea.Location = New System.Drawing.Point(110, 604)
         Me.txtArea.Name = "txtArea"
         Me.txtArea.Size = New System.Drawing.Size(250, 26)
         Me.txtArea.TabIndex = 91296
@@ -430,11 +419,22 @@ Partial Class CratePayableTotal
         Me.RadioCustomer.Text = "Customers"
         Me.RadioCustomer.UseVisualStyleBackColor = True
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtEntryDate.Location = New System.Drawing.Point(138, 109)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(110, 29)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'CratePayableTotal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtArea)
         Me.Controls.Add(Me.txtTotAmt)
@@ -446,7 +446,6 @@ Partial Class CratePayableTotal
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.lblRecordCount)
         Me.Controls.Add(Me.pnlWait)
-        Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.RadioAll)
         Me.Controls.Add(Me.RadioSupplier)
         Me.Controls.Add(Me.RadioCustomer)
@@ -457,7 +456,6 @@ Partial Class CratePayableTotal
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtItemSearch)
         Me.Controls.Add(Me.BtnPrint)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Name = "CratePayableTotal"
@@ -484,7 +482,6 @@ Partial Class CratePayableTotal
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txtItemSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
@@ -501,4 +498,5 @@ Partial Class CratePayableTotal
     Friend WithEvents RadioAll As System.Windows.Forms.RadioButton
     Friend WithEvents RadioSupplier As System.Windows.Forms.RadioButton
     Friend WithEvents RadioCustomer As System.Windows.Forms.RadioButton
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

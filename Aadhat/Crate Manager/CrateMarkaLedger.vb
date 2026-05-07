@@ -10,9 +10,10 @@
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         rowColums()
-        mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
-        MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtToDate.Text = Date.Today.ToString("dd-MM-yyyy")
     End Sub
+
     Private Sub rowColums()
         dg1.ColumnCount = 10
         dg1.Columns(0).Name = "ID" : dg1.Columns(0).Visible = False
@@ -26,12 +27,14 @@
         dg1.Columns(8).Name = "Crate Out" : dg1.Columns(8).Width = 110
         dg1.Columns(9).Name = "Balance" : dg1.Columns(9).Width = 100
     End Sub
+
     Private Sub AccountRowColumns()
         DgAccountSearch.ColumnCount = 2
         DgAccountSearch.Columns(0).Name = "ID" : DgAccountSearch.Columns(0).Visible = False
-        DgAccountSearch.Columns(1).Name = "Marka Name" : DgAccountSearch.Columns(1).Width = 270
+        DgAccountSearch.Columns(1).Name = "Marka Name" : DgAccountSearch.Columns(1).Width = 402
         retriveAccounts()
     End Sub
+
     Private Sub retriveAccounts(Optional ByVal condtion As String = "")
         Dim dt As New DataTable
         dt = clsFun.ExecDataTable("Select ID,MarkaName From CrateMarka " & condtion & " Group By MarkaName order by MarkaName")
@@ -53,7 +56,7 @@
         End Try
     End Sub
 
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus
         If txtAccount.Text = "" Then txtAccount.Focus() : Exit Sub
         DgAccountSearch.Visible = True
         If DgAccountSearch.SelectedRows.Count = 0 Then txtAccount.Focus() : Exit Sub
@@ -65,14 +68,14 @@
         Else
             txtAccount.Focus()
         End If
-        mskFromDate.SelectAll()
+        txtFromDate.SelectAll()
     End Sub
 
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus
-        MsktoDate.SelectAll()
+    Private Sub txtToDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus
+        txttoDate.SelectAll()
     End Sub
 
-    Private Sub txtAccount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAccount.KeyDown, mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtAccount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAccount.KeyDown, txtFromDate.KeyDown, txttoDate.KeyDown
         If txtAccount.Focused Then
             If e.KeyCode = Keys.Down Then DgAccountSearch.Focus()
         End If
@@ -96,8 +99,8 @@
             retriveAccounts(" Where upper(MarkaName) Like upper('" & txtAccount.Text.Trim() & "%')")
         End If
     End Sub
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub DgAccountSearch_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgAccountSearch.CellClick
@@ -107,7 +110,7 @@
         txtAccountID.Text = DgAccountSearch.SelectedRows(0).Cells(0).Value
         txtAccount.Text = DgAccountSearch.SelectedRows(0).Cells(1).Value
         DgAccountSearch.Visible = False
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
     Private Sub DgAccountSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles DgAccountSearch.KeyDown
         'If e.KeyCode = Keys.Down Then DgAccountSearch.Focus()
@@ -136,7 +139,7 @@
             txtAccountID.Text = DgAccountSearch.SelectedRows(0).Cells(0).Value
             txtAccount.Text = DgAccountSearch.SelectedRows(0).Cells(1).Value
             DgAccountSearch.Visible = False
-            mskFromDate.Focus()
+            txtFromDate.Focus()
             e.SuppressKeyPress = True
         End If
         If e.KeyCode = Keys.Back Then txtAccount.Focus()
@@ -144,27 +147,19 @@
     End Sub
 
     Private Sub txtAccount_Leave(sender As Object, e As EventArgs) Handles txtAccount.Leave
-        Dim mindate as String = String.Empty : Dim maxdate As String = String.Empty
+        Dim mindate As String = String.Empty : Dim maxdate As String = String.Empty
         mindate = clsFun.ExecScalarStr("Select min(EntryDate) as entrydate from crateVoucher where transtype='" & Me.Text & "' And CrateID='" & txtAccountID.Text & "'")
         maxdate = clsFun.ExecScalarStr("Select max(EntryDate) as entrydate from crateVoucher where transtype='" & Me.Text & "' And CrateID='" & txtAccountID.Text & "'")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txtToDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtToDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
-    End Sub
-
-    Private Sub txtAccount_TextChanged(sender As Object, e As EventArgs) Handles txtAccount.TextChanged
-
-    End Sub
-
-    Private Sub mskFromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFromDate.MaskInputRejected
-
     End Sub
 
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
@@ -177,10 +172,10 @@
         Dim tot As Decimal = 0
         Dim opbal As String = ""
         opbal = clsFun.ExecScalarStr("Select Opqty From CrateMarka Where ID=" & Val(txtAccountID.Text) & "")
-        ssql = "Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,AccountName,Remark,Qty as QtyIn,'0' as QtyOut from CrateVoucher where CrateType ='Crate In' " & IIf(Val(txtAccountID.Text) > 0, "and crateID=" & Val(txtAccountID.Text) & "", "") & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' Group by EntryDate,AccountName   union all" & _
-            " Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,AccountName,Remark,'0' as QtyOut,Qty as QtyIn from CrateVoucher where CrateType ='Crate Out' " & IIf(Val(txtAccountID.Text) > 0, "and crateID=" & Val(txtAccountID.Text) & "", "") & " and EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' Group by EntryDate,AccountName   "
-        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and crateID=" & Val(txtAccountID.Text) & " and EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
-        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and crateID=" & Val(txtAccountID.Text) & " and EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+        ssql = "Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,AccountName,Remark,Qty as QtyIn,'0' as QtyOut from CrateVoucher where CrateType ='Crate In' " & IIf(Val(txtAccountID.Text) > 0, "and crateID=" & Val(txtAccountID.Text) & "", "") & " and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' Group by EntryDate,AccountName   union all" & _
+            " Select VoucherID,[Entrydate],SlipNo, TransType,AccountID,AccountName,Remark,'0' as QtyOut,Qty as QtyIn from CrateVoucher where CrateType ='Crate Out' " & IIf(Val(txtAccountID.Text) > 0, "and crateID=" & Val(txtAccountID.Text) & "", "") & " and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' Group by EntryDate,AccountName   "
+        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and crateID=" & Val(txtAccountID.Text) & " and EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and crateID=" & Val(txtAccountID.Text) & " and EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'")
         Dim drcr As String = clsFun.ExecScalarStr(" Select CrateType FROM CrateVoucher WHERE crateID= " & Val(txtAccountID.Text) & "")
         If drcr = "Crate In" Then
             tmpamtdr = Val(opbal) + Val(tmpamtdr)
@@ -197,7 +192,7 @@
         dt = dvData.ToTable
         dg1.Rows.Clear()
         opbal = tmpamt
-        Dim cnt As Integer = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountID=" & Val(txtAccountID.Text) & " and  EntryDate < '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim cnt As Integer = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountID=" & Val(txtAccountID.Text) & " and  EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'")
         If cnt = 0 Then
             txtOpBal.Text = Math.Abs(Val(opbal)) & " " & clsFun.ExecScalarStr(" Select CrateType   FROM CrateVoucher  WHERE accountID= " & Val(txtAccountID.Text) & "")
         Else
@@ -280,11 +275,10 @@
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
         End Try
-
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txtToDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -301,8 +295,8 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = "insert into Printing(D1,D2,M1,M2, M3, M4, M5, P1, P2,P3, P4, P5, P6,P7) values('" & mskFromDate.Text & "'," & _
-                    "'" & MsktoDate.Text & "','" & txtAccount.Text & "','" & txtOpBal.Text & "','" & txtDramt.Text & "','" & txtcrAmt.Text & "'," & _
+                sql = "insert into Printing(D1,D2,M1,M2, M3, M4, M5, P1, P2,P3, P4, P5, P6,P7) values('" & txtFromDate.Text & "'," & _
+                    "'" & txtToDate.Text & "','" & txtAccount.Text & "','" & txtOpBal.Text & "','" & txtDramt.Text & "','" & txtcrAmt.Text & "'," & _
                     "'" & txtBalAmt.Text & "','" & .Cells("Date").Value & "','" & .Cells("Type").Value & "','" & .Cells("Marka Name").Value & "','" & .Cells("Description").Value & "'," & _
                     "'" & .Cells("Crate In").Value & "','" & .Cells("Crate Out").Value & "','" & .Cells("Balance").Value & "')"
                 Try
@@ -325,21 +319,21 @@
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txtToDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txtToDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txtToDate.Text = smartDate(txtToDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
 End Class

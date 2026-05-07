@@ -26,7 +26,6 @@ Partial Class Sell_Out_Pending_Bills
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Sell_Out_Pending_Bills))
-        Me.txtAccountID = New System.Windows.Forms.TextBox()
         Me.Label41 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
@@ -37,31 +36,17 @@ Partial Class Sell_Out_Pending_Bills
         Me.txtAccount = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.pnlWait = New System.Windows.Forms.Panel()
         Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'txtAccountID
-        '
-        Me.txtAccountID.BackColor = System.Drawing.Color.AliceBlue
-        Me.txtAccountID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtAccountID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAccountID.ForeColor = System.Drawing.Color.Teal
-        Me.txtAccountID.Location = New System.Drawing.Point(12, 9)
-        Me.txtAccountID.Name = "txtAccountID"
-        Me.txtAccountID.Size = New System.Drawing.Size(48, 26)
-        Me.txtAccountID.TabIndex = 91290
-        Me.txtAccountID.TabStop = False
-        Me.txtAccountID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.txtAccountID.Visible = False
         '
         'Label41
         '
@@ -113,7 +98,7 @@ Partial Class Sell_Out_Pending_Bills
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 463)
-        Me.dg1.TabIndex = 6
+        Me.dg1.TabIndex = 5
         Me.dg1.TabStop = False
         '
         'PictureBox4
@@ -146,7 +131,7 @@ Partial Class Sell_Out_Pending_Bills
         Me.Label1.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label1.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label1.Location = New System.Drawing.Point(602, 119)
+        Me.Label1.Location = New System.Drawing.Point(603, 119)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(154, 27)
         Me.Label1.TabIndex = 91302
@@ -158,9 +143,9 @@ Partial Class Sell_Out_Pending_Bills
         Me.Label11.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label11.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label11.Location = New System.Drawing.Point(224, 119)
+        Me.Label11.Location = New System.Drawing.Point(223, 119)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(80, 27)
+        Me.Label11.Size = New System.Drawing.Size(78, 27)
         Me.Label11.TabIndex = 91301
         Me.Label11.Text = "Date to :"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -172,7 +157,7 @@ Partial Class Sell_Out_Pending_Bills
         Me.Label10.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label10.Location = New System.Drawing.Point(12, 119)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(107, 26)
+        Me.Label10.Size = New System.Drawing.Size(100, 26)
         Me.Label10.TabIndex = 91300
         Me.Label10.Text = "Date From :"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -183,10 +168,10 @@ Partial Class Sell_Out_Pending_Bills
         Me.txtAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAccount.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.txtAccount.ForeColor = System.Drawing.Color.Black
-        Me.txtAccount.Location = New System.Drawing.Point(756, 119)
+        Me.txtAccount.Location = New System.Drawing.Point(757, 119)
         Me.txtAccount.Name = "txtAccount"
-        Me.txtAccount.Size = New System.Drawing.Size(428, 26)
-        Me.txtAccount.TabIndex = 5
+        Me.txtAccount.Size = New System.Drawing.Size(427, 26)
+        Me.txtAccount.TabIndex = 4
         Me.txtAccount.TabStop = False
         Me.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -199,7 +184,7 @@ Partial Class Sell_Out_Pending_Bills
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnPrint.Image = CType(resources.GetObject("BtnPrint.Image"), System.Drawing.Image)
         Me.BtnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPrint.Location = New System.Drawing.Point(507, 119)
+        Me.BtnPrint.Location = New System.Drawing.Point(508, 119)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(95, 27)
         Me.BtnPrint.TabIndex = 3
@@ -216,7 +201,7 @@ Partial Class Sell_Out_Pending_Bills
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = CType(resources.GetObject("btnShow.Image"), System.Drawing.Image)
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(409, 119)
+        Me.btnShow.Location = New System.Drawing.Point(410, 119)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(98, 27)
         Me.btnShow.TabIndex = 2
@@ -224,30 +209,10 @@ Partial Class Sell_Out_Pending_Bills
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
         '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(119, 119)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(90, 26)
-        Me.mskFromDate.TabIndex = 0
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(304, 119)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(90, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp2.Location = New System.Drawing.Point(300, 119)
+        Me.dtp2.Location = New System.Drawing.Point(301, 119)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
         Me.dtp2.TabIndex = 91303
@@ -289,14 +254,33 @@ Partial Class Sell_Out_Pending_Bills
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Please Wait..."
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(301, 119)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(111, 119)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Sell_Out_Pending_Bills
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.pnlWait)
         Me.Controls.Add(Me.PictureBox4)
-        Me.Controls.Add(Me.txtAccountID)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.dg1)
@@ -306,8 +290,6 @@ Partial Class Sell_Out_Pending_Bills
         Me.Controls.Add(Me.txtAccount)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskFromDate)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Sell_Out_Pending_Bills"
@@ -321,7 +303,6 @@ Partial Class Sell_Out_Pending_Bills
 
     End Sub
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
-    Friend WithEvents txtAccountID As System.Windows.Forms.TextBox
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Label41 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
@@ -331,11 +312,11 @@ Partial Class Sell_Out_Pending_Bills
     Friend WithEvents txtAccount As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents pnlWait As System.Windows.Forms.Panel
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

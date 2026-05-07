@@ -5,15 +5,15 @@
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
     Private Sub JournalEntry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0
         Me.Left = 0
         'rs.FindAllControls(Me)
         Me.BackColor = Color.FromArgb(247, 220, 111)
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         Me.FormBorderStyle = FormBorderStyle.None
         clsFun.FillDropDownList(CbAccountName, "Select * From Accounts", "AccountName", "Id", "")
         CbDrCr.SelectedIndex = 0
@@ -23,15 +23,15 @@
     End Sub
     Private Sub AcBalance()
         If clsFun.ExecScalarInt("Select ParentID From Account_AcGrp Where ID=" & Val(CbAccountName.SelectedValue) & "") = 8 Then
-            Dim GPGl As Decimal = clsFun.ExecScalarDec(" Select Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-                                                " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Accounts " & _
+            Dim GPGl As Decimal = clsFun.ExecScalarDec(" Select Sum(Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+                                                " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Accounts " & _
                                                 " Where  GroupID  in(22,23,24,25,26,27);")
-            Dim transferedPL As Decimal = clsFun.ExecScalarDec("Select Sum(Case When DC='Dr' then ((Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-                                    " else (-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Account_AcGrp " & _
+            Dim transferedPL As Decimal = clsFun.ExecScalarDec("Select Sum(Case When DC='Dr' then ((Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+                                    " else (-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Account_AcGrp.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end) as  GroupBal from Account_AcGrp " & _
                                     " Where  ParentID  in(8);")
             If GPGl <> 0 Then lblCapAcBal.Visible = True
             lblCapAcBal.Text = IIf(GPGl > 0, Format(Math.Abs(GPGl) - Val(transferedPL), "0.00") & " Cr", Format(Math.Abs(GPGl) - Val(transferedPL), "0.00") & " Dr")
@@ -39,10 +39,10 @@
         Else
             lblCapAcBal.Visible = True
             Dim Sql As String = String.Empty
-            Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
-                  "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " &
-                  " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
-                  " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(CbAccountName.SelectedValue) & " Order by upper(AccountName) ;"
+            Sql = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
+                  "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " &
+                  " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" &
+                  " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where ID=" & Val(CbAccountName.SelectedValue) & " Order by upper(AccountName) ;"
             Dim Bal As String = clsFun.ExecScalarStr(Sql)
             If Val(Bal) >= 0 Then
                 lblCapAcBal.Visible = True
@@ -77,7 +77,7 @@
         'rs.ResizeAllControls(Me)
     End Sub
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, txtVoucherNo.KeyDown,
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, txtVoucherNo.KeyDown,
         CbDrCr.KeyDown, CbAccountName.KeyDown, txtAmount.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
@@ -103,9 +103,6 @@
         End If
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs)
-        Me.Close()
-    End Sub
 
     Private Sub txtRemark_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRemark.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -204,7 +201,7 @@
         End If
     End Sub
     Private Sub save()
-        Dim SqliteEntryDate As String = CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim SqliteEntryDate As String = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd")
         Dim sql As String = String.Empty
         If dg1.RowCount = 0 Then MsgBox("There is nothing to Save...", MsgBoxStyle.Critical, "Not Saved") : Exit Sub
         If TxtTotalDebit.Text <> TxtTotalCredit.Text Then
@@ -217,7 +214,7 @@
         sql = "insert into Vouchers (EntryDate,TransType,BillNo) values (@1, @2, @3)"
         Try
             cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
-            cmd.Parameters.AddWithValue("@1", CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@1", CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@2", Me.Text)
             cmd.Parameters.AddWithValue("@3", txtVoucherNo.Text)
             If cmd.ExecuteNonQuery() > 0 Then
@@ -236,7 +233,7 @@
     End Sub
     Private Sub UpdateRecord()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(Me.txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim count As Integer = 0
         Dim cmd As New SQLite.SQLiteCommand
@@ -246,7 +243,7 @@
             txtAmount.Focus()
             Exit Sub
         End If
-        Dim sql As String = "Update Vouchers SET EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "',TransType='" & Me.Text & "', " &
+        Dim sql As String = "Update Vouchers SET EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "',TransType='" & Me.Text & "', " &
                            "BillNo='" & txtVoucherNo.Text & "' Where ID=" & Val(txtid.Text) & ""
         Try
             If clsFun.ExecNonQuery(sql) > 0 Then
@@ -268,7 +265,7 @@
             With row
                 If .Cells("DC").Value <> "" Then
                     '    clsFun.Ledger(0, VchId, SqliteEntryDate, Me.Text, Val(.Cells(5).Value), .Cells(1).Value, IIf(Val(.Cells(2).Value) > 0, Val(.Cells(2).Value), .Cells(3).Value), .Cells("DC").Value, .Cells(4).Value, .Cells(1).Value)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "', " & _
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "', " & _
                         "'" & Me.Text & "'," & Val(.Cells(5).Value) & ",'" & .Cells(1).Value & "'," & IIf(Val(.Cells(2).Value) > 0, Val(.Cells(2).Value), .Cells(3).Value) & ", " & _
                         "'" & .Cells("DC").Value & "' ,'" & .Cells(4).Value & "','" & .Cells(1).Value & "','" & .Cells(4).Value & "'"
                 End If
@@ -285,7 +282,7 @@
             With row
                 If .Cells("DC").Value <> "" Then
                     '    clsFun.Ledger(0, VchId, SqliteEntryDate, Me.Text, Val(.Cells(5).Value), .Cells(1).Value, IIf(Val(.Cells(2).Value) > 0, Val(.Cells(2).Value), .Cells(3).Value), .Cells("DC").Value, .Cells(4).Value, .Cells(1).Value)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "', " & _
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtid.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "', " & _
                         "'" & Me.Text & "'," & Val(.Cells(5).Value) & ",'" & .Cells(1).Value & "'," & IIf(Val(.Cells(2).Value) > 0, Val(.Cells(2).Value), .Cells(3).Value) & ", " & _
                         "'" & .Cells("DC").Value & "'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & .Cells(4).Value & "','" & .Cells(1).Value & "','" & .Cells(4).Value & "'"
                 End If
@@ -316,7 +313,7 @@
         txtRemark.Text = "" : TxtTotalCredit.Text = ""
         TxtTotalDebit.Text = "" : txtAmount.Text = ""
         BtnSave.Text = "&Save" : BtnDelete.Enabled = False
-        dg1.Rows.Clear() : mskEntryDate.Focus()
+        dg1.Rows.Clear() : txtEntryDate.Focus()
     End Sub
 
     Public Sub FillContros(ByVal id As Integer)
@@ -338,7 +335,7 @@
         ad.Fill(ds, "a")
         ad1.Fill(ds, "b")
         If ds.Tables("a").Rows.Count > 0 Then
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtVoucherNo.Text = ds.Tables("a").Rows(0)("BillNo").ToString()
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
         End If
@@ -413,35 +410,17 @@
         e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") And (sender.Text.IndexOf(".") = -1)))
     End Sub
 
-    Private Sub txtRemark_Leave(sender As Object, e As EventArgs) Handles txtRemark.Leave
-
-    End Sub
-
-    Private Sub btnClose_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
 
-    Private Sub Panel4_Paint(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
-    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
-    Private Sub txtRemark_TextChanged(sender As Object, e As EventArgs) Handles txtRemark.TextChanged
-
-    End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
-    Private Sub lblCapAcBal_Click(sender As Object, e As EventArgs) Handles lblCapAcBal.Click
-
-    End Sub
 End Class

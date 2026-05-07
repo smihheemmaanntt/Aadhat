@@ -1096,8 +1096,6 @@ Public Class Ledger
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
-        Else
-            cbType.SelectedIndex = 1
         End If
 
     End Sub

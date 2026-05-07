@@ -27,7 +27,6 @@ Partial Class CrateForm
         Me.btnClose = New System.Windows.Forms.Button()
         Me.lblgroup = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtCratename = New System.Windows.Forms.TextBox()
         Me.txtopQty = New System.Windows.Forms.TextBox()
@@ -91,29 +90,18 @@ Partial Class CrateForm
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(225, 62)
+        Me.Label22.Location = New System.Drawing.Point(236, 112)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(12, 19)
         Me.Label22.TabIndex = 178
         Me.Label22.Text = ":"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Red
-        Me.Label9.Location = New System.Drawing.Point(205, 62)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(14, 15)
-        Me.Label9.TabIndex = 177
-        Me.Label9.Text = "*"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(50, 64)
+        Me.Label3.Location = New System.Drawing.Point(149, 111)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(88, 19)
         Me.Label3.TabIndex = 176
@@ -125,9 +113,9 @@ Partial Class CrateForm
         Me.txtCratename.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCratename.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtCratename.ForeColor = System.Drawing.Color.Black
-        Me.txtCratename.Location = New System.Drawing.Point(242, 62)
+        Me.txtCratename.Location = New System.Drawing.Point(251, 109)
         Me.txtCratename.Name = "txtCratename"
-        Me.txtCratename.Size = New System.Drawing.Size(273, 26)
+        Me.txtCratename.Size = New System.Drawing.Size(264, 26)
         Me.txtCratename.TabIndex = 175
         '
         'txtopQty
@@ -136,17 +124,19 @@ Partial Class CrateForm
         Me.txtopQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtopQty.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtopQty.ForeColor = System.Drawing.Color.Black
-        Me.txtopQty.Location = New System.Drawing.Point(350, 110)
+        Me.txtopQty.Location = New System.Drawing.Point(350, 77)
         Me.txtopQty.Name = "txtopQty"
         Me.txtopQty.Size = New System.Drawing.Size(165, 26)
         Me.txtopQty.TabIndex = 179
+        Me.txtopQty.TabStop = False
+        Me.txtopQty.Visible = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(247, 155)
+        Me.Label2.Location = New System.Drawing.Point(256, 156)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(82, 19)
         Me.Label2.TabIndex = 182
@@ -200,7 +190,7 @@ Partial Class CrateForm
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(54, 110)
+        Me.PictureBox1.Location = New System.Drawing.Point(25, 110)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(118, 121)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -268,11 +258,12 @@ Partial Class CrateForm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(238, 112)
+        Me.Label1.Location = New System.Drawing.Point(238, 79)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(91, 19)
         Me.Label1.TabIndex = 180
         Me.Label1.Text = "Op.  Qty      :"
+        Me.Label1.Visible = False
         '
         'Panel8
         '
@@ -332,7 +323,6 @@ Partial Class CrateForm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtopQty)
         Me.Controls.Add(Me.Label22)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtCratename)
         Me.Controls.Add(Me.Panel1)
@@ -350,7 +340,6 @@ Partial Class CrateForm
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents lblgroup As System.Windows.Forms.Label
     Friend WithEvents Label22 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtCratename As System.Windows.Forms.TextBox
     Friend WithEvents txtopQty As System.Windows.Forms.TextBox

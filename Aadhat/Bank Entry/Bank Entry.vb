@@ -802,7 +802,7 @@
         FillControls(dg1.SelectedRows(0).Cells(0).Value)
     End Sub
     Private Sub mskChequeDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtChequeDate.Validating
-        txtChequeDate.Text = SmartDate(TxtChequeNo.Text)
+        txtChequeDate.Text = SmartDate(txtChequeDate.Text)
     End Sub
 
     Private Sub btnClose_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click

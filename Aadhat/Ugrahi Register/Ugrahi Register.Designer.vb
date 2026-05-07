@@ -22,14 +22,13 @@ Partial Class Ugrahi_Report
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ugrahi_Report))
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.CbDays = New System.Windows.Forms.ComboBox()
         Me.Label42 = New System.Windows.Forms.Label()
@@ -44,6 +43,7 @@ Partial Class Ugrahi_Report
         Me.pnlWait = New System.Windows.Forms.Panel()
         Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
         Me.SuspendLayout()
@@ -82,16 +82,6 @@ Partial Class Ugrahi_Report
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
         '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(85, 99)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(108, 26)
-        Me.mskFromDate.TabIndex = 0
-        '
         'dg1
         '
         Me.dg1.AllowUserToAddRows = False
@@ -99,43 +89,43 @@ Partial Class Ugrahi_Report
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle6
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
         Me.dg1.Location = New System.Drawing.Point(11, 124)
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(254, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(254, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 45
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 488)
         Me.dg1.TabIndex = 40053
@@ -285,11 +275,21 @@ Partial Class Ugrahi_Report
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Please Wait..."
         '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(85, 99)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(108, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Ugrahi_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.pnlWait)
         Me.Controls.Add(Me.btnPrint2)
@@ -300,7 +300,6 @@ Partial Class Ugrahi_Report
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Ugrahi_Report"
@@ -314,7 +313,6 @@ Partial Class Ugrahi_Report
     End Sub
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents CbDays As System.Windows.Forms.ComboBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
@@ -329,4 +327,5 @@ Partial Class Ugrahi_Report
     Friend WithEvents pnlWait As System.Windows.Forms.Panel
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

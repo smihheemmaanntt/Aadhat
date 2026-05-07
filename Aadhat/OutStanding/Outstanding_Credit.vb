@@ -1,6 +1,6 @@
 ﻿Public Class Outstanding_Credit
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, btnShow.KeyDown
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, btnShow.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -10,8 +10,8 @@
 
 
 
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text, True, 2)
     End Sub
 
     Private Sub OutStanding_Amount_Only_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -25,7 +25,7 @@
             Ledger.Show()
             Ledger.cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(0).Value)
             Ledger.BringToFront()
-            Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+            Ledger.txtFromDate.Text = smartDate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
             Ledger.btnShow.PerformClick()
         End If
     End Sub
@@ -36,7 +36,7 @@
         Ledger.Show()
         Ledger.cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(0).Value)
         Ledger.BringToFront()
-        Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+        Ledger.txtFromDate.Text = smartDate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
         Ledger.btnShow.PerformClick()
     End Sub
 
@@ -44,7 +44,7 @@
         Me.Top = 0 : Me.Left = 0
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         RadioAll.Checked = True
         rowColums()
     End Sub
@@ -84,12 +84,12 @@
 
     End Sub
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = smartDate(txtEntryDate.Text)
     End Sub
     Private Sub retrive(Optional ByVal condtion As String = "")
         '  pnlWait.Visible = True
@@ -98,22 +98,22 @@
         Dim sql As String = String.Empty
         If RadioSundryDebtors.Checked = True Then
             sql = "Select ID,Accountname,Area,Opbal,DC,OtherName,Mobile1, " & _
-             "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-             "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-             " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-             " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<0 and GroupID in(16,32) " & condtion & " Order by upper(AccountName) ;"
+             "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+             "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+             " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+             " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<0 and GroupID in(16,32) " & condtion & " Order by upper(AccountName) ;"
         ElseIf RadioSundryCreditors.Checked = True Then
             sql = "Select ID,Accountname,Area,Opbal,DC,OtherName,Mobile1, " & _
-    "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<0 and GroupID in(17,33) " & condtion & " Order by upper(AccountName) ;"
+    "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<0 and GroupID in(17,33) " & condtion & " Order by upper(AccountName) ;"
         ElseIf RadioAll.Checked = True Then
             sql = "Select ID,Accountname,Area,Opbal,DC,OtherName,Mobile1, " & _
-    "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
-    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<0 and GroupID in(16,32,17,33) " & condtion & " Order by upper(AccountName) ;"
+    "Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) " & _
+    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<0 and GroupID in(16,32,17,33) " & condtion & " Order by upper(AccountName) ;"
         End If
         dt = clsFun.ExecDataTable(sql)
         If Val(dt.Rows.Count) = Val(dg1.Rows.Count) Then Exit Sub
@@ -186,7 +186,7 @@
             FastQuery = String.Empty : TotalRecord = (AllRecord - LastRecord)
             For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
                 With dg1.Rows(LastRecord)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskEntryDate.Text & "'," & _
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtEntryDate.Text & "'," & _
                       "'" & .Cells("Account Name").Value & "','" & .Cells("Area").Value & "','" & .Cells("Mobile No.").Value & "', " & _
                       "'" & .Cells("Balance").Value & "','" & .Cells("OtherName").Value & "','" & .Cells("Op bal").Value & "', " & _
                       "'" & Format(Val(txtDebitBal.Text), "0.00") & "','" & Format(Val(txtCreditBal.Text), "0.00") & "', " & _
@@ -219,7 +219,7 @@
     '        pb1.Maximum = dg1.Rows.Count
     '        With row
     '            pb1.Value = IIf(Val(row.Index) < 0, 0, Val(row.Index))
-    '            sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9) values('" & mskEntryDate.Text & "'," & _
+    '            sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9) values('" & txtEntryDate.Text & "'," & _
     '                "'" & .Cells("Account Name").Value & "','" & .Cells("Area").Value & "','" & .Cells("Mobile No.").Value & "','" & .Cells("Balance").Value & "','" & .Cells("OtherName").Value & "','" & .Cells("Op bal").Value & "','" & Format(Val(txtDebitBal.Text), "0.00") & "','" & Format(Val(txtCreditBal.Text), "0.00") & "','" & Format(Val(TxtGrandTotal.Text), "0.00") & "')"
     '            Try
     '                ClsFunPrimary.ExecNonQuery(sql)

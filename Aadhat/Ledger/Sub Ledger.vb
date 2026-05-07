@@ -1077,7 +1077,7 @@ Public Class Sub_Ledger
     End Sub
 
     Private Sub SendWhatsappData()
-        Dim directoryName As String = Application.StartupPath & "\Whatsapp\Pdfs"
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
         For Each deleteFile In Directory.GetFiles(directoryName, "*.PDf*", SearchOption.TopDirectoryOnly)
             File.Delete(deleteFile)
         Next
@@ -1086,7 +1086,7 @@ Public Class Sub_Ledger
         Dim sql As String = ""
         Dim con As SQLite.SQLiteConnection = clsFun.GetConnection
         ClsFunWhatsapp.ExecNonQuery("Delete from SendingData")
-        GlobalData.PdfName = cbAccountName.Text & "-" & txtFromDate.Text & ".pdf"
+        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(cbAccountName.Text.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "-" & TxtFromDate.Text & ".pdf"
         If ckJoin.Checked = True Then
             WithoutDiscriptionPrint()
         Else
@@ -1099,15 +1099,15 @@ Public Class Sub_Ledger
         Else
             Pdf_Genrate.ExportReport("\Ledger.rpt")
         End If
-        sql = "insert into SendingData(val(cbAccountName.SelectedValue),AccountName,MobileNos,AttachedFilepath) values  " &
-         "('" & Val(cbAccountName.SelectedValue) & "','" & cbAccountName.Text.Replace("/", "") & "','" & txtWhatsappNo.Text & "','" & GlobalData.PdfPath & "')"
+        sql = "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " &
+         "('" & Val(0) & "','','" & txtWhatsappNo.Text & "','" & GlobalData.PdfPath & "')"
         If ClsFunWhatsapp.ExecNonQuery(sql) > 0 Then
             sql = "Update Settings Set MinState='N'"
             ClsFunWhatsapp.ExecScalarStr(sql)
             MsgBox("Data Send to Easy Whatsapp Successfully...", vbInformation, "Sended On Easy Whatsapp")
         End If
-        pnlWahtsappNo.Visible = False : cbAccountName.Focus()
     End Sub
+
 
     Private Sub UsingWhatsappAPI()
         If txtWhatsappNo.Text <= "" Then lblStatus.Visible = False : Exit Sub
@@ -1147,7 +1147,7 @@ Public Class Sub_Ledger
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(cbAccountName.SelectedValue) & "'") = "" And txtWhatsappNo.Text <> "" Then
+                If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(cbAccountName.SelectedValue) & "'") = "" And txtWhatsappNo.Text <> "" Then
             clsFun.ExecScalarStr("Update Accounts set Mobile1='" & txtWhatsappNo.Text & "' Where ID='" & Val(cbAccountName.SelectedValue) & "'")
         Else
             If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(cbAccountName.SelectedValue) & "'") <> txtWhatsappNo.Text Then
@@ -1157,19 +1157,12 @@ Public Class Sub_Ledger
             End If
         End If
         If cbType.SelectedIndex = 0 Then
-            instance_id = ClsFunPrimary.ExecScalarStr("Select InstanceID From API")
-            If instance_id = "" Then MainScreenForm.MdiParent = Me : WhatsApp_API.Show()
-            UsingWhatsappAPI()
-        ElseIf cbType.SelectedIndex = 1 Then
             If txtWhatsappNo.Text <> "" Then
                 SendWhatsappData()
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             End If
-        ElseIf cbType.SelectedIndex = 2 Then
-            WhatsAppDesktop()
         End If
-
     End Sub
 
 End Class

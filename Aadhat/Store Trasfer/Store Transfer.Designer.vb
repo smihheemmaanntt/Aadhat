@@ -27,7 +27,6 @@ Partial Class Store_Transfer
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.cbAccountName = New System.Windows.Forms.ComboBox()
@@ -57,6 +56,7 @@ Partial Class Store_Transfer
         Me.pnlInvoiceID = New System.Windows.Forms.Panel()
         Me.Label56 = New System.Windows.Forms.Label()
         Me.txtInvoiceID = New System.Windows.Forms.TextBox()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlInvoiceID.SuspendLayout()
         Me.SuspendLayout()
@@ -75,18 +75,6 @@ Partial Class Store_Transfer
         Me.btnClose.TabIndex = 91121
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskEntryDate.ForeColor = System.Drawing.Color.Black
-        Me.mskEntryDate.Location = New System.Drawing.Point(8, 139)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(84, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Label25
         '
@@ -499,11 +487,21 @@ Partial Class Store_Transfer
         Me.txtInvoiceID.TabIndex = 2
         Me.txtInvoiceID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(14, 139)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(80, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Store_Transfer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.pnlInvoiceID)
         Me.Controls.Add(Me.lblLot)
         Me.Controls.Add(Me.lblItemBalance)
@@ -529,7 +527,6 @@ Partial Class Store_Transfer
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cbAccountName)
         Me.Controls.Add(Me.Label42)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.btnClose)
@@ -543,7 +540,6 @@ Partial Class Store_Transfer
 
     End Sub
     Friend WithEvents btnClose As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents cbAccountName As System.Windows.Forms.ComboBox
@@ -573,4 +569,5 @@ Partial Class Store_Transfer
     Friend WithEvents pnlInvoiceID As System.Windows.Forms.Panel
     Friend WithEvents Label56 As System.Windows.Forms.Label
     Friend WithEvents txtInvoiceID As System.Windows.Forms.TextBox
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

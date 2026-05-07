@@ -170,6 +170,8 @@ Partial Class Options
         Me.Label68 = New System.Windows.Forms.Label()
         Me.cbPymtDate = New System.Windows.Forms.ComboBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label82 = New System.Windows.Forms.Label()
+        Me.cbSlipMethod = New System.Windows.Forms.ComboBox()
         Me.Label81 = New System.Windows.Forms.Label()
         Me.cbSelloutRemark = New System.Windows.Forms.ComboBox()
         Me.Label80 = New System.Windows.Forms.Label()
@@ -181,8 +183,8 @@ Partial Class Options
         Me.Label78 = New System.Windows.Forms.Label()
         Me.Label79 = New System.Windows.Forms.Label()
         Me.cbMargin = New System.Windows.Forms.ComboBox()
-        Me.Label82 = New System.Windows.Forms.Label()
-        Me.cbSlipMethod = New System.Windows.Forms.ComboBox()
+        Me.Label83 = New System.Windows.Forms.Label()
+        Me.cbPreviewClose = New System.Windows.Forms.ComboBox()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -2298,6 +2300,8 @@ Partial Class Options
         '
         Me.Panel8.BackColor = System.Drawing.SystemColors.Control
         Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.Label83)
+        Me.Panel8.Controls.Add(Me.cbPreviewClose)
         Me.Panel8.Controls.Add(Me.Label82)
         Me.Panel8.Controls.Add(Me.cbSlipMethod)
         Me.Panel8.Controls.Add(Me.Label81)
@@ -2313,15 +2317,43 @@ Partial Class Options
         Me.Panel8.Controls.Add(Me.cbMargin)
         Me.Panel8.Location = New System.Drawing.Point(358, 552)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(683, 89)
+        Me.Panel8.Size = New System.Drawing.Size(690, 89)
         Me.Panel8.TabIndex = 91229
+        '
+        'Label82
+        '
+        Me.Label82.AutoSize = True
+        Me.Label82.Font = New System.Drawing.Font("Times New Roman", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label82.ForeColor = System.Drawing.Color.Black
+        Me.Label82.Location = New System.Drawing.Point(11, 13)
+        Me.Label82.Name = "Label82"
+        Me.Label82.Size = New System.Drawing.Size(107, 13)
+        Me.Label82.TabIndex = 91200
+        Me.Label82.Text = "Slip Print Method :"
+        '
+        'cbSlipMethod
+        '
+        Me.cbSlipMethod.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(241, Byte), Integer))
+        Me.cbSlipMethod.DropDownHeight = 100
+        Me.cbSlipMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSlipMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSlipMethod.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSlipMethod.ForeColor = System.Drawing.Color.Black
+        Me.cbSlipMethod.FormattingEnabled = True
+        Me.cbSlipMethod.IntegralHeight = False
+        Me.cbSlipMethod.Items.AddRange(New Object() {"Group Wise", "Row Wise"})
+        Me.cbSlipMethod.Location = New System.Drawing.Point(125, 9)
+        Me.cbSlipMethod.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cbSlipMethod.Name = "cbSlipMethod"
+        Me.cbSlipMethod.Size = New System.Drawing.Size(80, 22)
+        Me.cbSlipMethod.TabIndex = 91199
         '
         'Label81
         '
         Me.Label81.AutoSize = True
         Me.Label81.Font = New System.Drawing.Font("Times New Roman", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Label81.ForeColor = System.Drawing.Color.Black
-        Me.Label81.Location = New System.Drawing.Point(494, 16)
+        Me.Label81.Location = New System.Drawing.Point(512, 16)
         Me.Label81.Name = "Label81"
         Me.Label81.Size = New System.Drawing.Size(97, 13)
         Me.Label81.TabIndex = 91198
@@ -2338,7 +2370,7 @@ Partial Class Options
         Me.cbSelloutRemark.FormattingEnabled = True
         Me.cbSelloutRemark.IntegralHeight = False
         Me.cbSelloutRemark.Items.AddRange(New Object() {"Short", "Full", "Default"})
-        Me.cbSelloutRemark.Location = New System.Drawing.Point(595, 12)
+        Me.cbSelloutRemark.Location = New System.Drawing.Point(613, 12)
         Me.cbSelloutRemark.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbSelloutRemark.Name = "cbSelloutRemark"
         Me.cbSelloutRemark.Size = New System.Drawing.Size(68, 22)
@@ -2349,7 +2381,7 @@ Partial Class Options
         Me.Label80.AutoSize = True
         Me.Label80.Font = New System.Drawing.Font("Times New Roman", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Label80.ForeColor = System.Drawing.Color.Black
-        Me.Label80.Location = New System.Drawing.Point(500, 55)
+        Me.Label80.Location = New System.Drawing.Point(535, 55)
         Me.Label80.Name = "Label80"
         Me.Label80.Size = New System.Drawing.Size(75, 13)
         Me.Label80.TabIndex = 91196
@@ -2366,7 +2398,7 @@ Partial Class Options
         Me.cbFarmer.FormattingEnabled = True
         Me.cbFarmer.IntegralHeight = False
         Me.cbFarmer.Items.AddRange(New Object() {"No", "Yes"})
-        Me.cbFarmer.Location = New System.Drawing.Point(595, 51)
+        Me.cbFarmer.Location = New System.Drawing.Point(613, 51)
         Me.cbFarmer.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbFarmer.Name = "cbFarmer"
         Me.cbFarmer.Size = New System.Drawing.Size(68, 22)
@@ -2433,7 +2465,7 @@ Partial Class Options
         Me.Label78.AutoSize = True
         Me.Label78.Font = New System.Drawing.Font("Times New Roman", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Label78.ForeColor = System.Drawing.Color.Black
-        Me.Label78.Location = New System.Drawing.Point(279, 9)
+        Me.Label78.Location = New System.Drawing.Point(206, 9)
         Me.Label78.Name = "Label78"
         Me.Label78.Size = New System.Drawing.Size(127, 22)
         Me.Label78.TabIndex = 91190
@@ -2467,33 +2499,33 @@ Partial Class Options
         Me.cbMargin.Size = New System.Drawing.Size(37, 22)
         Me.cbMargin.TabIndex = 0
         '
-        'Label82
+        'Label83
         '
-        Me.Label82.AutoSize = True
-        Me.Label82.Font = New System.Drawing.Font("Times New Roman", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label82.ForeColor = System.Drawing.Color.Black
-        Me.Label82.Location = New System.Drawing.Point(11, 21)
-        Me.Label82.Name = "Label82"
-        Me.Label82.Size = New System.Drawing.Size(107, 13)
-        Me.Label82.TabIndex = 91200
-        Me.Label82.Text = "Slip Print Method :"
+        Me.Label83.AutoSize = True
+        Me.Label83.Font = New System.Drawing.Font("Times New Roman", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label83.ForeColor = System.Drawing.Color.Black
+        Me.Label83.Location = New System.Drawing.Point(329, 16)
+        Me.Label83.Name = "Label83"
+        Me.Label83.Size = New System.Drawing.Size(115, 13)
+        Me.Label83.TabIndex = 91202
+        Me.Label83.Text = "Preview Auto Close :"
         '
-        'cbSlipMethod
+        'cbPreviewClose
         '
-        Me.cbSlipMethod.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(241, Byte), Integer))
-        Me.cbSlipMethod.DropDownHeight = 100
-        Me.cbSlipMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSlipMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbSlipMethod.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSlipMethod.ForeColor = System.Drawing.Color.Black
-        Me.cbSlipMethod.FormattingEnabled = True
-        Me.cbSlipMethod.IntegralHeight = False
-        Me.cbSlipMethod.Items.AddRange(New Object() {"Group Wise", "Row Wise"})
-        Me.cbSlipMethod.Location = New System.Drawing.Point(125, 18)
-        Me.cbSlipMethod.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.cbSlipMethod.Name = "cbSlipMethod"
-        Me.cbSlipMethod.Size = New System.Drawing.Size(102, 22)
-        Me.cbSlipMethod.TabIndex = 91199
+        Me.cbPreviewClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(241, Byte), Integer))
+        Me.cbPreviewClose.DropDownHeight = 100
+        Me.cbPreviewClose.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbPreviewClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbPreviewClose.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPreviewClose.ForeColor = System.Drawing.Color.Black
+        Me.cbPreviewClose.FormattingEnabled = True
+        Me.cbPreviewClose.IntegralHeight = False
+        Me.cbPreviewClose.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbPreviewClose.Location = New System.Drawing.Point(442, 12)
+        Me.cbPreviewClose.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cbPreviewClose.Name = "cbPreviewClose"
+        Me.cbPreviewClose.Size = New System.Drawing.Size(68, 22)
+        Me.cbPreviewClose.TabIndex = 91201
         '
         'Options
         '
@@ -2695,4 +2727,6 @@ Partial Class Options
     Friend WithEvents cbSelloutRemark As System.Windows.Forms.ComboBox
     Friend WithEvents Label82 As System.Windows.Forms.Label
     Friend WithEvents cbSlipMethod As System.Windows.Forms.ComboBox
+    Friend WithEvents Label83 As System.Windows.Forms.Label
+    Friend WithEvents cbPreviewClose As System.Windows.Forms.ComboBox
 End Class

@@ -18,7 +18,7 @@ Public Class Crate_IN
                 dgCrate.Focus() : Exit Sub
             ElseIf pnlWhatsapp.Visible = True Then
                 pnlWhatsapp.Visible = False
-                mskEntryDate.Focus() : Exit Sub
+                txtEntryDate.Focus() : Exit Sub
             Else
                 If isBackgroundWorkerRunning Then
                     ' e.Cancel = True
@@ -43,11 +43,11 @@ Public Class Crate_IN
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         '  clsFun.FillDropDownList(CbCustomer, "Select * from Account_AcGrp where (Groupid in(11,16)  or UnderGroupID in (11,16))", "AccountName", "Id", "")
         '  clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka", "MarkaName", "Id", "")
         rowColums() : VNumber() : rowColums2()
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
     Private Sub AcBal()
         '  Dim j As Integer
@@ -57,8 +57,8 @@ Public Class Crate_IN
         Dim opbal As String = ""
         Dim ClBal As String = ""
         opbal = Val(0)
-        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         ' opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE AccountName like '%" + cbAccountName.Text + "%'")
         Dim drcr As String = clsFun.ExecScalarStr(" Select CrateType FROM CrateVoucher WHERE AccountID= " & Val(txtAccountID.Text) & "")
         If drcr = "Crate In" Then
@@ -72,7 +72,7 @@ Public Class Crate_IN
             opbal = -Val(opbal)
         End If
         Dim cntbal As Integer = 0
-        cntbal = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountid=" & Val(txtAccountID.Text) & " and  EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        cntbal = clsFun.ExecScalarInt("Select count(*) from CrateVoucher where  accountid=" & Val(txtAccountID.Text) & " and  EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         If cntbal = 0 Then
             opbal = Math.Abs(Val(opbal)) & " " & clsFun.ExecScalarStr(" Select CrateType from CrateVoucher where id= " & Val(txtAccountID.Text) & "")
         Else
@@ -104,12 +104,6 @@ Public Class Crate_IN
         End If
     End Sub
 
-    Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
-        mskEntryDate.SelectAll()
-    End Sub
-    Private Sub mskEntryDate_Leave(sender As Object, e As EventArgs) Handles mskEntryDate.Leave
-        'retrive()
-    End Sub
     Private Sub rowColums()
         dg1.ColumnCount = 9
         dg1.Columns(0).Name = "ID"
@@ -136,11 +130,11 @@ Public Class Crate_IN
         Dim CashPaid As String = ""
         If ckCash.Checked = True Then CashPaid = "Y"
         If ckCash.Checked = False Then CashPaid = "N"
-        Dim SqliteEntryDate As String = CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim SqliteEntryDate As String = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd")
         'Dim VchId As Integer = clsFun.ExecScalarInt("Select Max(ID) from Vouchers")
         If Val(txtModeID.Text) > 0 Then ''Party Account
-            'clsFun.CrateLedger(0, txtID.Text, txtSlipNo.Text, CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, "Crate In", txtModeID.Text, txtCrateMarka.Text, txtCrateQty.Text, txtRemark.Text, txtCrateRate.Text, txtCrateAmt.Text, CashPaid)
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & "," & txtSlipNo.Text & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate In'," & Val(txtModeID.Text) & ",'" & txtCrateMarka.Text & "','" & Val(txtCrateQty.Text) & "', '" & txtRemark.Text & "','" & Val(txtCrateRate.Text) & "','" & Val(txtCrateAmt.Text) & "','" & CashPaid & "'"
+            'clsFun.CrateLedger(0, txtID.Text, txtSlipNo.Text, CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, "Crate In", txtModeID.Text, txtCrateMarka.Text, txtCrateQty.Text, txtRemark.Text, txtCrateRate.Text, txtCrateAmt.Text, CashPaid)
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & "," & txtSlipNo.Text & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate In'," & Val(txtModeID.Text) & ",'" & txtCrateMarka.Text & "','" & Val(txtCrateQty.Text) & "', '" & txtRemark.Text & "','" & Val(txtCrateRate.Text) & "','" & Val(txtCrateAmt.Text) & "','" & CashPaid & "'"
         End If
         If FastQuery = String.Empty Then Exit Sub
         clsFun.FastCrateLedger(FastQuery)
@@ -152,11 +146,11 @@ Public Class Crate_IN
         Dim CashPaid As String = ""
         If ckCash.Checked = True Then CashPaid = "Y"
         If ckCash.Checked = False Then CashPaid = "N"
-        Dim SqliteEntryDate As String = CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim SqliteEntryDate As String = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd")
         'Dim VchId As Integer = clsFun.ExecScalarInt("Select Max(ID) from Vouchers")
         If Val(txtModeID.Text) > 0 Then ''Party Account
-            'clsFun.CrateLedger(0, txtID.Text, txtSlipNo.Text, CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, "Crate In", txtModeID.Text, txtCrateMarka.Text, txtCrateQty.Text, txtRemark.Text, txtCrateRate.Text, txtCrateAmt.Text, CashPaid)
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & "," & txtSlipNo.Text & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate In'," & Val(txtModeID.Text) & ",'" & txtCrateMarka.Text & "','" & Val(txtCrateQty.Text) & "', '" & txtRemark.Text & "','" & Val(txtCrateRate.Text) & "','" & Val(txtCrateAmt.Text) & "','" & CashPaid & "', " & Val(ServerTag) & "," & Val(OrgID) & ""
+            'clsFun.CrateLedger(0, txtID.Text, txtSlipNo.Text, CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, Val(txtAccountID.Text), txtAccount.Text, "Crate In", txtModeID.Text, txtCrateMarka.Text, txtCrateQty.Text, txtRemark.Text, txtCrateRate.Text, txtCrateAmt.Text, CashPaid)
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & "," & txtSlipNo.Text & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "','Crate In'," & Val(txtModeID.Text) & ",'" & txtCrateMarka.Text & "','" & Val(txtCrateQty.Text) & "', '" & txtRemark.Text & "','" & Val(txtCrateRate.Text) & "','" & Val(txtCrateAmt.Text) & "','" & CashPaid & "', " & Val(ServerTag) & "," & Val(OrgID) & ""
         End If
         If FastQuery = String.Empty Then Exit Sub
         ClsFunserver.FastCrateLedger(FastQuery)
@@ -183,7 +177,7 @@ Public Class Crate_IN
         sql = "insert into printing (D1,M1,M2,M3,P1,P2,P3,P4,P5,P6) values (@1, @2, @3,@4,@5,@6,@7,@8,@9,@10)"
         Try
             cmd = New SQLite.SQLiteCommand(sql, ClsFunPrimary.GetConnection())
-            cmd.Parameters.AddWithValue("@1", mskEntryDate.Text)
+            cmd.Parameters.AddWithValue("@1", txtEntryDate.Text)
             cmd.Parameters.AddWithValue("@2", Me.Text)
             cmd.Parameters.AddWithValue("@3", txtCrateMarka.Text)
             cmd.Parameters.AddWithValue("@4", txtAccount.Text)
@@ -230,13 +224,13 @@ Public Class Crate_IN
             MsgBox("There is No Crate Quantity to Save", MsgBoxStyle.Critical, "Empty Quantity")
             txtCrateQty.Focus() : Exit Sub
         End If
-        Dim SqliteEntryDate As String = CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim SqliteEntryDate As String = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd")
         Dim cmd As SQLite.SQLiteCommand
         sql = "insert into Vouchers (TransType,EntryDate,BillNo,InvoiceID) values (@1,@2,@3,@4)"
         Try
             cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
             cmd.Parameters.AddWithValue("@1", Me.Text)
-            cmd.Parameters.AddWithValue("@2", CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@2", CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@3", txtSlipNo.Text)
             cmd.Parameters.AddWithValue("@4", Val(txtInvoiceID.Text))
             If cmd.ExecuteNonQuery() > 0 Then
@@ -253,7 +247,7 @@ Public Class Crate_IN
     End Sub
 
     Private Sub UpdateRecord()
-        Dim SqliteEntryDate As String = CDate(Me.mskEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim SqliteEntryDate As String = CDate(Me.txtEntryDate.Text).ToString("yyyy-MM-dd")
         Dim cmd As SQLite.SQLiteCommand
         sql = "Update Vouchers SET TransType='" & Me.Text & "',Entrydate='" & SqliteEntryDate & "',BillNo='" & txtSlipNo.Text & "',InvoiceID='" & Val(txtInvoiceID.Text) & "' where ID =" & Val(txtID.Text) & ""
         cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
@@ -272,14 +266,14 @@ Public Class Crate_IN
         Dim FastQuery As String = String.Empty
         Dim Remark2 As String = txtCrateMarka.Text & ", Qty : " & txtCrateQty.Text & ", Rate /- " & txtCrateRate.Text & " ( " & IIf(ckCash.Checked = True, "Cash Recived", "Bardana Recived") & " )"
         If Val(txtCrateAmt.Text) > 0 Then ''Party Account
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtCrateAmt.Text) & ",'C','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtCrateAmt.Text) & ",'C','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
         End If
         If Val(txtCrateAmt.Text) > 0 Then ''Total Amout
             If txtModeID.Text > 0 Then ''Party Account
                 If ckCash.Checked = True Then
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(7) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=7") & "'," & Val(txtCrateAmt.Text) & ",'D','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(7) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=7") & "'," & Val(txtCrateAmt.Text) & ",'D','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
                 Else
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(4) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=4") & "'," & Val(txtCrateAmt.Text) & ",'D','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(4) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=4") & "'," & Val(txtCrateAmt.Text) & ",'D','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
                 End If
             End If
         End If
@@ -293,17 +287,17 @@ Public Class Crate_IN
         Dim FastQuery As String = String.Empty
         Dim Remark2 As String = txtCrateMarka.Text & ", Qty : " & txtCrateQty.Text & ", Rate /- " & txtCrateRate.Text & " ( " & IIf(ckCash.Checked = True, "Cash Recived", "Bardana Recived") & " )"
         If Val(txtCrateAmt.Text) > 0 Then ''Party Account
-            '   clsFun.Ledger(0, Val(txtID.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, txtAccountID.Text, txtAccount.Text, Val(txtCrateAmt.Text), "C", Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text), txtAccount.Text)
-            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtCrateAmt.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
+            '   clsFun.Ledger(0, Val(txtID.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, txtAccountID.Text, txtAccount.Text, Val(txtCrateAmt.Text), "C", Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text), txtAccount.Text)
+            FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(txtAccountID.Text) & ",'" & txtAccount.Text & "'," & Val(txtCrateAmt.Text) & ",'C'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
         End If
         If Val(txtCrateAmt.Text) > 0 Then ''Total Amout
             If Val(txtModeID.Text) > 0 Then ''Party Account
                 If ckCash.Checked = True Then
-                    'clsFun.Ledger(0, Val(txtID.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 7, clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=7"), Val(txtCrateAmt.Text), "D", Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text), txtAccount.Text)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(7) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=7") & "'," & Val(txtCrateAmt.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
+                    'clsFun.Ledger(0, Val(txtID.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 7, clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=7"), Val(txtCrateAmt.Text), "D", Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text), txtAccount.Text)
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(7) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=7") & "'," & Val(txtCrateAmt.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
                 Else
-                    '    clsFun.Ledger(0, Val(txtID.Text), CDate(mskEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 4, clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=4"), Val(txtCrateAmt.Text), "D", Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text), txtAccount.Text)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(4) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=4") & "'," & Val(txtCrateAmt.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
+                    '    clsFun.Ledger(0, Val(txtID.Text), CDate(txtEntryDate.Text).ToString("yyyy-MM-dd"), Me.Text, 4, clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=4"), Val(txtCrateAmt.Text), "D", Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text), txtAccount.Text)
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(txtID.Text) & ",'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','" & Me.Text & "'," & Val(4) & ",'" & clsFun.ExecScalarStr("Select AccountName From Accounts Where ID=4") & "'," & Val(txtCrateAmt.Text) & ",'D'," & Val(ServerTag) & "," & Val(OrgID) & ",'" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "','" & txtAccount.Text & "','" & Remark2 & IIf(txtRemark.Text = "", "", ", Remark :" & txtRemark.Text) & "'"
                 End If
             End If
         End If
@@ -327,7 +321,7 @@ Public Class Crate_IN
         dg1.Rows.Clear()
         Dim dt As New DataTable
         ' dt = clsFun.ExecDataTable("Select * from vouchers where entrydate='" & mskFromDate.Text & "' and MsktoDate='" & mskFromDate.Text & "'and TransType='" & Me.Text & "'")
-        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
+        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -355,15 +349,15 @@ Public Class Crate_IN
     End Sub
     Private Sub retriveNext()
         Dim dt As New DataTable
-        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate = (Select Date('" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','+1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
-        'dt = clsFun.ExecDataTable("Select * from Vouchers where TransType= '" & Me.Text & "'and EntryDate='" & mskEntryDate.Text & "'")
+        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate = (Select Date('" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','+1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
+        'dt = clsFun.ExecDataTable("Select * from Vouchers where TransType= '" & Me.Text & "'and EntryDate='" & txtEntryDate.Text & "'")
         dg1.Rows.Clear()
         If dt.Rows.Count = 0 Then
-            Dim NextDate As String = clsFun.ExecScalarStr("Select EntryDate FROM CrateVoucher WHERE EntryDate >'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "' limit 1")
+            Dim NextDate As String = clsFun.ExecScalarStr("Select EntryDate FROM CrateVoucher WHERE EntryDate >'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "' limit 1")
             If NextDate = "" Then MsgBox("No More Record Found", MsgBoxStyle.Critical, "Record Ended") : Exit Sub
             dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate ='" & CDate(NextDate).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "' Order by ID Desc")
         End If
-        '        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
+        '        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -380,7 +374,7 @@ Public Class Crate_IN
                         .Cells(6).Value = Format(Val(dt.Rows(i)("Rate").ToString()), "0.00")
                         .Cells(7).Value = Format(Val(dt.Rows(i)("Amount").ToString()), "0.00")
                         .Cells(8).Value = dt.Rows(i)("Remark").ToString()
-                        mskEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
+                        txtEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
                     End With
                 Next
             End If
@@ -394,10 +388,10 @@ Public Class Crate_IN
     Private Sub retriveFirst()
         Dim dt As New DataTable
         Dim NextDate As String = clsFun.ExecScalarStr("Select EntryDate FROM CrateVoucher WHERE transtype='" & Me.Text & "' Order by EntryDate limit 1")
-        '  dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate = (Select Date('" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','-1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
+        '  dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate = (Select Date('" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','-1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
         dt = clsFun.ExecDataTable("Select * from CrateVoucher where TransType= '" & Me.Text & "'and EntryDate='" & CDate(NextDate).ToString("yyyy-MM-dd") & "' Order By ID")
         dg1.Rows.Clear()
-        '        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
+        '        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -414,7 +408,7 @@ Public Class Crate_IN
                         .Cells(6).Value = Format(Val(dt.Rows(i)("Rate").ToString()), "0.00")
                         .Cells(7).Value = Format(Val(dt.Rows(i)("Amount").ToString()), "0.00")
                         .Cells(8).Value = dt.Rows(i)("Remark").ToString()
-                        mskEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
+                        txtEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
                     End With
                 Next
             End If
@@ -427,10 +421,10 @@ Public Class Crate_IN
 
     Private Sub retrivePrev()
         Dim dt As New DataTable
-        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate = (Select Date('" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','-1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
+        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate = (Select Date('" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','-1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
         dg1.Rows.Clear()
         If dt.Rows.Count = 0 Then
-            Dim NextDate As String = clsFun.ExecScalarStr("Select EntryDate FROM CrateVoucher WHERE EntryDate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  and transtype='" & Me.Text & "' ORDER BY EntryDate DESC limit 1")
+            Dim NextDate As String = clsFun.ExecScalarStr("Select EntryDate FROM CrateVoucher WHERE EntryDate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  and transtype='" & Me.Text & "' ORDER BY EntryDate DESC limit 1")
             If NextDate = "" Then MsgBox("No More Record Found", MsgBoxStyle.Critical, "Record Ended") : Exit Sub
             dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate ='" & CDate(NextDate).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "' Order by ID Desc")
         End If
@@ -449,7 +443,7 @@ Public Class Crate_IN
                         .Cells(6).Value = Format(Val(dt.Rows(i)("Rate").ToString()), "0.00")
                         .Cells(7).Value = Format(Val(dt.Rows(i)("Amount").ToString()), "0.00")
                         .Cells(8).Value = dt.Rows(i)("Remark").ToString()
-                        mskEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
+                        txtEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
                     End With
                 Next
             End If
@@ -463,11 +457,11 @@ Public Class Crate_IN
     Private Sub retriveLast()
         Dim dt As New DataTable
         Dim NextDate As String = clsFun.ExecScalarStr("Select EntryDate FROM CrateVoucher WHERE transtype='" & Me.Text & "' Order by EntryDate Desc limit 1")
-        '  dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate = (Select Date('" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "','-1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
+        '  dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE EntryDate = (Select Date('" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "','-1 day')) and transtype='" & Me.Text & "' Order by ID Desc")
         dt = clsFun.ExecDataTable("Select * from CrateVoucher where TransType= '" & Me.Text & "'and EntryDate='" & CDate(NextDate).ToString("yyyy-MM-dd") & "' Order by ID Desc")
         dg1.Rows.Clear()
 
-        '        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
+        '        dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE EntryDate= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and TransType = 'Crate In' Order by VoucherID Desc")
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -484,7 +478,7 @@ Public Class Crate_IN
                         .Cells(6).Value = Format(Val(dt.Rows(i)("Rate").ToString()), "0.00")
                         .Cells(7).Value = Format(Val(dt.Rows(i)("Amount").ToString()), "0.00")
                         .Cells(8).Value = dt.Rows(i)("Remark").ToString()
-                        mskEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
+                        txtEntryDate.Text = Format(dt.Rows(i)("Entrydate"), "dd-MM-yyyy")
                     End With
                 Next
             End If
@@ -509,7 +503,7 @@ Public Class Crate_IN
         dt = clsFun.ExecDataTable(ssql) ' where id=" & id & "")
         If dt.Rows.Count > 0 Then
             txtID.Text = id
-            mskEntryDate.Text = CDate(dt.Rows(0)("EntryDate")).ToString("dd-MM-yyyy")
+            txtEntryDate.Text = CDate(dt.Rows(0)("EntryDate")).ToString("dd-MM-yyyy")
             txtSlipNo.Text = dt.Rows(0)("SlipNo").ToString()
             txtAccountID.Text = dt.Rows(0)("AccountID").ToString()
             txtAccount.Text = dt.Rows(0)("AccountName").ToString()
@@ -524,8 +518,8 @@ Public Class Crate_IN
             If CashPaid = "N" Then ckCash.Checked = False
         End If
     End Sub
-    Private Sub mskEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
         If dg1.RowCount = 0 Then
             retrive()
         End If
@@ -539,7 +533,7 @@ Public Class Crate_IN
         If e.KeyCode = Keys.Enter Then
             If dg1.SelectedRows.Count = 0 Then Exit Sub
             FillControls(dg1.SelectedRows(0).Cells(0).Value)
-            mskEntryDate.Focus() : e.SuppressKeyPress = True
+            txtEntryDate.Focus() : e.SuppressKeyPress = True
         End If
         If e.KeyCode = Keys.Delete Then
             Delete()
@@ -593,7 +587,7 @@ Public Class Crate_IN
     Private Sub Txtclear()
         print() : btnSave.Text = "&Save" : txtSlipNo.Clear()
         txtCrateQty.Clear() : txtRemark.Clear()
-        mskEntryDate.Focus() : VNumber()
+        txtEntryDate.Focus() : VNumber()
         btnSave.BackColor = Color.DarkTurquoise
         btnSave.Image = My.Resources.Save
         retrive()
@@ -615,7 +609,7 @@ Public Class Crate_IN
     'End Sub
 
 
-    Private Sub txtCrateQty_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCrateQty.KeyDown, mskEntryDate.KeyDown,
+    Private Sub txtCrateQty_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCrateQty.KeyDown, txtEntryDate.KeyDown,
         txtCrateMarka.KeyDown, txtSlipNo.KeyDown, txtAccount.KeyDown, txtCrateRate.KeyDown, txtCrateAmt.KeyDown, txtRemark.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
@@ -780,12 +774,12 @@ Public Class Crate_IN
             If dt.Rows.Count > 0 Then
                 dgCrate.Rows.Clear()
                 For i = 0 To dt.Rows.Count - 1
-                    'Dim tmpamtdr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-                    'Dim tmpamtcr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+                    'Dim tmpamtdr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+                    'Dim tmpamtcr1 As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
                     'tmpamt1 = Val(tmpamtdr1) - Val(tmpamtcr1) '- Val(opbal)
 
-                    Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(txtAccountID.Text) & " and CrateID=" & Val(dt.Rows(i)("ID").ToString()) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-                    Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(txtAccountID.Text) & " and CrateID=" & Val(dt.Rows(i)("ID").ToString()) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+                    Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate In' and accountID=" & Val(txtAccountID.Text) & " and CrateID=" & Val(dt.Rows(i)("ID").ToString()) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+                    Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Qty) as tot from CrateVoucher where CrateType ='Crate Out'  and accountID=" & Val(txtAccountID.Text) & " and CrateID=" & Val(dt.Rows(i)("ID").ToString()) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
                     Dim tmpamt As Integer = IIf(Val(tmpamtdr) > Val(tmpamtcr), Val(tmpamtdr) - Val(tmpamtcr), Val(tmpamtcr) - Val(tmpamtdr)) '- Val(opbal)
                     If Val(tmpamtcr) > Val(tmpamtdr) Then
                         totalOpOutCrate = Val(totalOpOutCrate) + Val(tmpamt)
@@ -903,12 +897,12 @@ Public Class Crate_IN
 
     End Sub
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub txtInvoiceID_KeyDown(sender As Object, e As KeyEventArgs) Handles txtInvoiceID.KeyDown
@@ -1045,7 +1039,7 @@ Public Class Crate_IN
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        Dim SSql As String = "Select * From CrateVoucher Where TransType='Crate In' and EntryDate='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'"
+        Dim SSql As String = "Select * From CrateVoucher Where TransType='Crate In' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'"
         dt = clsFun.ExecDataTable(SSql)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
@@ -1057,24 +1051,24 @@ Public Class Crate_IN
                     .Cells(3).Value = clsFun.ExecScalarStr("Select MObile1 From Accounts Where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "'")
                     .Cells(4).Value = dt.Rows(i)("AccountName").ToString()
                     .Cells(7).Value = dt.Rows(i)("AccountID").ToString()
-                    Dim OpSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                          "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "' and Restbal<>0  ;"
+                    Dim OpSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                          "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "' and Restbal<>0  ;"
                     Dim OpBal As String = clsFun.ExecScalarStr(OpSql)
                     If Val(OpBal) >= 0 Then
                         OpBal = Format(Math.Abs(Val(OpBal)), "0") & " In"
                     Else
                         OpBal = Format(Math.Abs(Val(OpBal)), "0") & " Out"
                     End If
-                    Dim ClSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                          "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "' and Restbal<>0   ;"
+                    Dim ClSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                          "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "' and Restbal<>0   ;"
                     Dim ClBal As String = clsFun.ExecScalarStr(ClSql)
                     If Val(ClBal) >= 0 Then
                         ClBal = Format(Math.Abs(Val(ClBal)), "0.00") & " In"
                     Else
                         ClBal = Format(Math.Abs(Val(ClBal)), "0.00") & " Ont"
                     End If
-                    Dim msg As String = "Dear " & .Cells(4).Value & ", " & vbCrLf & " Thank you for your *Crate In of Qty " & dt.Rows(i)("Qty").ToString() & "* Received today(" & mskEntryDate.Text & ") to *" & compname & "*. Your previous Total Crate balance Was  *₹ " & OpBal & "*. After todays Deposits, your new *total Crate outstanding balance is ₹ " & ClBal & "*."
-                    Dim msg2 As String = "प्रिय " & .Cells(4).Value & ", " & vbCrLf & " आज दिनांक (" & mskEntryDate.Text & ") *" & compnameHindi & "* को क्रैट " & dt.Rows(i)("Qty").ToString() & " जमा* कराने के लिए आपका धन्यवाद।  आपका *पुराना क्रैट बकाया  ₹ " & OpBal & "* था। आज के जमा के बाद, आपका नया *कुल बकाया क्रैट " & ClBal & "* है। " & vbCrLf & " *धन्यवाद। " & vbCrLf & " सादर: *" & compnameHindi & "*"
+                    Dim msg As String = "Dear " & .Cells(4).Value & ", " & vbCrLf & " Thank you for your *Crate In of Qty " & dt.Rows(i)("Qty").ToString() & "* Received today(" & txtEntryDate.Text & ") to *" & compname & "*. Your previous Total Crate balance Was  *₹ " & OpBal & "*. After todays Deposits, your new *total Crate outstanding balance is ₹ " & ClBal & "*."
+                    Dim msg2 As String = "प्रिय " & .Cells(4).Value & ", " & vbCrLf & " आज दिनांक (" & txtEntryDate.Text & ") *" & compnameHindi & "* को क्रैट " & dt.Rows(i)("Qty").ToString() & " जमा* कराने के लिए आपका धन्यवाद।  आपका *पुराना क्रैट बकाया  ₹ " & OpBal & "* था। आज के जमा के बाद, आपका नया *कुल बकाया क्रैट " & ClBal & "* है। " & vbCrLf & " *धन्यवाद। " & vbCrLf & " सादर: *" & compnameHindi & "*"
 
                     .Cells(8).Value = msg.Trim
                     .Cells(9).Value = msg2.Trim
@@ -1111,7 +1105,7 @@ Public Class Crate_IN
         tmpgrid.Rows.Clear()
         Dim dt As New DataTable
         dt = clsFun.ExecDataTable("Select * FROM CrateVoucher WHERE VoucherID='" & Val(VoucherID) & "'")
-        'dt = clsFun.ExecDataTable("Select * from Vouchers where TransType= '" & Me.Text & "'and EntryDate='" & mskEntryDate.Text & "'")
+        'dt = clsFun.ExecDataTable("Select * from Vouchers where TransType= '" & Me.Text & "'and EntryDate='" & txtEntryDate.Text & "'")
         tmpgrid.Rows.Clear()
         Try
             If dt.Rows.Count > 0 Then
@@ -1153,16 +1147,16 @@ Public Class Crate_IN
             For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
                 With tmpgrid.Rows(LastRecord)
                     If .Cells(2).Value <> "" Then
-                        Dim OpSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                                          "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(.Cells(9).Value) & "' and Restbal<>0  ;"
+                        Dim OpSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                                          "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(.Cells(9).Value) & "' and Restbal<>0  ;"
                         Dim OpBal As String = clsFun.ExecScalarStr(OpSql)
                         If Val(OpBal) >= 0 Then
                             OpBal = Format(Math.Abs(Val(OpBal)), "0") & " In"
                         Else
                             OpBal = Format(Math.Abs(Val(OpBal)), "0") & " Out"
                         End If
-                        Dim ClSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                              "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(.Cells(9).Value) & "' and Restbal<>0   ;"
+                        Dim ClSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate In' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                                              "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(.Cells(9).Value) & "' and Restbal<>0   ;"
                         Dim ClBal As String = clsFun.ExecScalarStr(ClSql)
                         If Val(ClBal) >= 0 Then
                             ClBal = Format(Math.Abs(Val(ClBal)), "0.00") & " In"
@@ -1210,13 +1204,13 @@ Public Class Crate_IN
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(8).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1227,13 +1221,13 @@ Public Class Crate_IN
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(9).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\transCrate.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1283,14 +1277,14 @@ Public Class Crate_IN
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
                             fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(4).Value & "','" & .Cells(3).Value & "', " &
                            "'" & .Cells(8).Value & "', '" & whatsappSender.FilePath & "'"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -1302,14 +1296,14 @@ Public Class Crate_IN
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
                             fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(4).Value & "','" & .Cells(3).Value & "', " &
                            "'" & .Cells(9).Value & "', '" & whatsappSender.FilePath & "'"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & mskEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = .Cells(4).Value & "(" & .Cells(7).Value & ")-" & txtEntryDate.Text & ".pdf"
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             whatsappSender.FilePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)

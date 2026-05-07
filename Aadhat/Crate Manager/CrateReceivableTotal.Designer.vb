@@ -37,7 +37,6 @@ Partial Class CrateReceivableTotal
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtItemSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.pb1 = New System.Windows.Forms.ProgressBar()
@@ -56,6 +55,7 @@ Partial Class CrateReceivableTotal
         Me.RadioCustomer = New System.Windows.Forms.RadioButton()
         Me.RadioSupplier = New System.Windows.Forms.RadioButton()
         Me.RadioAll = New System.Windows.Forms.RadioButton()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.Transaction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -184,17 +184,6 @@ Partial Class CrateReceivableTotal
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(137, 109)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(111, 29)
-        Me.mskFromDate.TabIndex = 91275
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dtp1
         '
@@ -432,11 +421,21 @@ Partial Class CrateReceivableTotal
         Me.RadioAll.Text = "All"
         Me.RadioAll.UseVisualStyleBackColor = True
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtEntryDate.Location = New System.Drawing.Point(137, 109)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(112, 29)
+        Me.txtEntryDate.TabIndex = 91299
+        '
         'CrateReceivableTotal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtArea)
         Me.Controls.Add(Me.Label1)
@@ -455,7 +454,6 @@ Partial Class CrateReceivableTotal
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtItemSearch)
         Me.Controls.Add(Me.BtnPrint)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.txtTotAmt)
@@ -486,7 +484,6 @@ Partial Class CrateReceivableTotal
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txtItemSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
@@ -503,4 +500,5 @@ Partial Class CrateReceivableTotal
     Friend WithEvents RadioCustomer As System.Windows.Forms.RadioButton
     Friend WithEvents RadioSupplier As System.Windows.Forms.RadioButton
     Friend WithEvents RadioAll As System.Windows.Forms.RadioButton
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

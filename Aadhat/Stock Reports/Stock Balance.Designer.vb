@@ -31,7 +31,6 @@ Partial Class Stock_Balance
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskEntryDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.txtTotCrate = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -45,6 +44,7 @@ Partial Class Stock_Balance
         Me.Label3 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -72,7 +72,7 @@ Partial Class Stock_Balance
         Me.Label1.Location = New System.Drawing.Point(432, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(318, 48)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 100000
         Me.Label1.Text = "STOCK BALANCE"
         '
         'dg1
@@ -150,17 +150,6 @@ Partial Class Stock_Balance
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'mskEntryDate
-        '
-        Me.mskEntryDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.mskEntryDate.Location = New System.Drawing.Point(99, 94)
-        Me.mskEntryDate.Mask = "00-00-0000"
-        Me.mskEntryDate.Name = "mskEntryDate"
-        Me.mskEntryDate.Size = New System.Drawing.Size(88, 26)
-        Me.mskEntryDate.TabIndex = 0
         '
         'Label25
         '
@@ -328,18 +317,27 @@ Partial Class Stock_Balance
         Me.dtp1.Size = New System.Drawing.Size(103, 26)
         Me.dtp1.TabIndex = 91263
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntryDate.Location = New System.Drawing.Point(88, 94)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(99, 26)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'Stock_Balance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.cbMoreSearch)
         Me.Controls.Add(Me.txtItemSearch)
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskEntryDate)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.dtp1)
@@ -364,7 +362,6 @@ End Sub
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskEntryDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents txtTotCrate As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -379,4 +376,5 @@ End Sub
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

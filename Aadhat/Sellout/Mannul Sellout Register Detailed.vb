@@ -13,7 +13,7 @@
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
     Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        mskFromDate.Text = smartDate(mskFromDate.Text)
     End Sub
     Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -32,7 +32,7 @@
         dg1.ClearSelection()
     End Sub
     Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        MsktoDate.Text = smartDate(MsktoDate.Text)
     End Sub
     Private Sub Scrip_Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0
@@ -234,12 +234,12 @@
     End Sub
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
         MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        MsktoDate.Text = smartDate(MsktoDate.Text)
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        mskFromDate.Text = smartDate(mskFromDate.Text)
     End Sub
 
     Private Sub txtVoucherSearch_TextChanged(sender As Object, e As EventArgs) Handles txtVoucherSearch.TextChanged

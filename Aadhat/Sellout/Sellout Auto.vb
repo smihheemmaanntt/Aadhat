@@ -2627,4 +2627,7 @@ Public Class Sellout_Auto
         ExpSettings()
     End Sub
 
+    Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
+
+    End Sub
 End Class

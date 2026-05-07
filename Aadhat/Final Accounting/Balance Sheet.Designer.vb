@@ -34,7 +34,6 @@ Partial Class Balance_Sheet
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.BtnPrint = New System.Windows.Forms.Button()
@@ -43,11 +42,12 @@ Partial Class Balance_Sheet
         Me.pnlWait = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dgAssests = New System.Windows.Forms.DataGridView()
         Me.DgLibilities = New System.Windows.Forms.DataGridView()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -80,16 +80,6 @@ Partial Class Balance_Sheet
         Me.Label1.Size = New System.Drawing.Size(319, 48)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "BALANCE SHEET"
-        '
-        'MskFromDate
-        '
-        Me.MskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MskFromDate.Location = New System.Drawing.Point(118, 89)
-        Me.MskFromDate.Mask = "00-00-0000"
-        Me.MskFromDate.Name = "MskFromDate"
-        Me.MskFromDate.Size = New System.Drawing.Size(88, 26)
-        Me.MskFromDate.TabIndex = 0
         '
         'Label3
         '
@@ -138,7 +128,7 @@ Partial Class Balance_Sheet
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 487)
-        Me.dg1.TabIndex = 40228
+        Me.dg1.TabIndex = 4
         '
         'BtnPrint
         '
@@ -149,7 +139,7 @@ Partial Class Balance_Sheet
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnPrint.Image = Global.Aadhat.My.Resources.Resources.icons8_printer_24px
         Me.BtnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPrint.Location = New System.Drawing.Point(508, 89)
+        Me.BtnPrint.Location = New System.Drawing.Point(490, 89)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 28)
         Me.BtnPrint.TabIndex = 3
@@ -167,7 +157,7 @@ Partial Class Balance_Sheet
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(423, 89)
+        Me.btnShow.Location = New System.Drawing.Point(405, 89)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(85, 28)
         Me.btnShow.TabIndex = 2
@@ -214,16 +204,6 @@ Partial Class Balance_Sheet
         Me.dtp1.Size = New System.Drawing.Size(103, 26)
         Me.dtp1.TabIndex = 91262
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(321, 89)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(88, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.DarkSlateGray
@@ -231,7 +211,7 @@ Partial Class Balance_Sheet
         Me.Label4.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label4.Location = New System.Drawing.Point(221, 89)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(100, 28)
+        Me.Label4.Size = New System.Drawing.Size(73, 28)
         Me.Label4.TabIndex = 91264
         Me.Label4.Text = "End Date :"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -239,7 +219,7 @@ Partial Class Balance_Sheet
         'Dtp2
         '
         Me.Dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Dtp2.Location = New System.Drawing.Point(321, 89)
+        Me.Dtp2.Location = New System.Drawing.Point(303, 89)
         Me.Dtp2.Name = "Dtp2"
         Me.Dtp2.Size = New System.Drawing.Size(103, 26)
         Me.Dtp2.TabIndex = 91265
@@ -318,11 +298,31 @@ Partial Class Balance_Sheet
         Me.DgLibilities.Size = New System.Drawing.Size(482, 217)
         Me.DgLibilities.TabIndex = 91274
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(294, 89)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(106, 89)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Balance_Sheet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.dgAssests)
         Me.Controls.Add(Me.DgLibilities)
         Me.Controls.Add(Me.pnlWait)
@@ -330,11 +330,9 @@ Partial Class Balance_Sheet
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dg1)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label4)
@@ -354,16 +352,16 @@ Partial Class Balance_Sheet
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents pnlWait As System.Windows.Forms.Panel
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dgAssests As System.Windows.Forms.DataGridView
     Friend WithEvents DgLibilities As System.Windows.Forms.DataGridView
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

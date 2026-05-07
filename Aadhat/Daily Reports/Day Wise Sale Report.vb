@@ -3,6 +3,12 @@
     Private Sub Cash_Sale_Report_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
+    End Sub
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
+    End Sub
 
     Private Sub Cash_Sale_Report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0
@@ -13,8 +19,8 @@
         Dim mindate as String = String.Empty : Dim maxdate As String = String.Empty
         mindate = clsFun.ExecScalarStr("Select Min(EntryDate) from Transaction2 ")
         maxdate = clsFun.ExecScalarStr("Select max(EntryDate) from Transaction2 ")
-        mskFromDate.Text = IIf(mindate <> "", CDate(mindate).ToString("dd-MM-yyyy"), Date.Today.ToString("dd-MM-yyyy"))
-        MsktoDate.Text = IIf(maxdate <> "", CDate(maxdate).ToString("dd-MM-yyyy"), Date.Today.ToString("dd-MM-yyyy"))
+        txtFromDate.Text = IIf(mindate <> "", CDate(mindate).ToString("dd-MM-yyyy"), Date.Today.ToString("dd-MM-yyyy"))
+        txttoDate.Text = IIf(maxdate <> "", CDate(maxdate).ToString("dd-MM-yyyy"), Date.Today.ToString("dd-MM-yyyy"))
         rowColums()
     End Sub
     Private Sub rowColums()
@@ -58,8 +64,8 @@
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ' ssql = "Select VourchersID,EntryDate,round(Sum(Amount),2) as CashAmount From Ledger Where AccountID=7  and DC='D' and TransType in('Stock Sale','Super Sale' ,'Standard Sale','Speed Sale') and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'Group by EntryDate Order By EntryDate"
-        ssql = "Select EntryDate,Sum(Nug)as Nug,Sum(Weight)as Weight,Sum(Amount) as Amount,Sum(Charges) as Charges From Transaction2  Where TransType <>'On Sale' and EntryDate between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "'Group by EntryDate Order By EntryDate"
+        ' ssql = "Select VourchersID,EntryDate,round(Sum(Amount),2) as CashAmount From Ledger Where AccountID=7  and DC='D' and TransType in('Stock Sale','Super Sale' ,'Standard Sale','Speed Sale') and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'Group by EntryDate Order By EntryDate"
+        ssql = "Select EntryDate,Sum(Nug)as Nug,Sum(Weight)as Weight,Sum(Amount) as Amount,Sum(Charges) as Charges From Transaction2  Where TransType <>'On Sale' and EntryDate between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'Group by EntryDate Order By EntryDate"
 
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
@@ -95,7 +101,7 @@
         calc() : dg1.ClearSelection()
     End Sub
 
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             SendKeys.Send("{TAB}")
@@ -107,34 +113,30 @@
         End Select
     End Sub
 
-    Private Sub mskFromDate_Validated(sender As Object, e As EventArgs) Handles mskFromDate.Validated
-
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
-    End Sub
-
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles Dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles Dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = smartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
     Private Sub PrintRecord()
         Dim count As Integer = 0
@@ -150,7 +152,7 @@
 
             With row
                 pb1.Value = Val(row.Index)
-                sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,P11,P12,P13,P14,P15) values('" & mskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                sql = "insert into Printing(D1,D2, P1, P2,P3, P4, P5, P6,P7,P8,P9,P10,P11,P12,P13,P14,P15) values('" & txtFromDate.Text & "','" & txttoDate.Text & "'," & _
                     "'" & .Cells(1).Value & "','" & Format(Val(.Cells(2).Value), "0.00") & "','" & Format(Val(.Cells(3).Value), "0.00") & "','" & Format(Val(.Cells(4).Value), "0.00") & "'," & _
                     "'" & Format(Val(.Cells(5).Value), "0.00") & "'," & Format(Val(.Cells(6).Value), "0.00") & ",'" & Format(Val(.Cells(7).Value), "0.00") & "'," & _
                     "'" & Format(Val(.Cells(8).Value), "0.00") & "'," & Format(Val(txtTotalNug.Text), "0.00") & "," & _

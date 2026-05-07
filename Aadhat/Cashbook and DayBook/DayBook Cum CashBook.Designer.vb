@@ -28,8 +28,6 @@ Partial Class DayBook_Cum_CashBook
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,6 +40,8 @@ Partial Class DayBook_Cum_CashBook
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.dg1 = New System.Windows.Forms.DataGridView()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         Me.pnlWait.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,26 +58,6 @@ Partial Class DayBook_Cum_CashBook
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "DAY BOOK CUM CASH BOOK"
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(777, 106)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(110, 27)
-        Me.MsktoDate.TabIndex = 3
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(565, 106)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(112, 27)
-        Me.mskFromDate.TabIndex = 2
-        '
         'BtnPrint
         '
         Me.BtnPrint.BackColor = System.Drawing.Color.DarkSlateGray
@@ -88,7 +68,7 @@ Partial Class DayBook_Cum_CashBook
         Me.BtnPrint.Location = New System.Drawing.Point(1042, 106)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(140, 29)
-        Me.BtnPrint.TabIndex = 5
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -104,7 +84,7 @@ Partial Class DayBook_Cum_CashBook
         Me.btnShow.Location = New System.Drawing.Point(903, 106)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(139, 29)
-        Me.btnShow.TabIndex = 4
+        Me.btnShow.TabIndex = 2
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -127,7 +107,7 @@ Partial Class DayBook_Cum_CashBook
         Me.Label3.BackColor = System.Drawing.Color.CadetBlue
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(465, 106)
+        Me.Label3.Location = New System.Drawing.Point(466, 106)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(100, 29)
         Me.Label3.TabIndex = 40039
@@ -226,7 +206,7 @@ Partial Class DayBook_Cum_CashBook
         Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
-        Me.dg1.Location = New System.Drawing.Point(12, 132)
+        Me.dg1.Location = New System.Drawing.Point(12, 131)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
@@ -248,6 +228,24 @@ Partial Class DayBook_Cum_CashBook
         Me.dg1.Size = New System.Drawing.Size(1170, 472)
         Me.dg1.TabIndex = 91214
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(777, 106)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(111, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(566, 106)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(110, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'DayBook_Cum_CashBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -255,13 +253,13 @@ Partial Class DayBook_Cum_CashBook
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
         Me.Controls.Add(Me.pnlWait)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dg1)
-        Me.Controls.Add(Me.mskFromDate)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
+        Me.Controls.Add(Me.Dtp2)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label2)
@@ -279,8 +277,6 @@ Partial Class DayBook_Cum_CashBook
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -293,4 +289,6 @@ Partial Class DayBook_Cum_CashBook
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

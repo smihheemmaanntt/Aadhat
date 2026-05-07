@@ -39,7 +39,6 @@ Partial Class CrateWiseOutstanding
         Me.txtItemSearch = New System.Windows.Forms.TextBox()
         Me.txtCustomerSearch = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
@@ -53,6 +52,7 @@ Partial Class CrateWiseOutstanding
         Me.txtTotalIn = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtTotalOut = New System.Windows.Forms.TextBox()
+        Me.txtEntryDate = New System.Windows.Forms.TextBox()
         Me.pnlWait.SuspendLayout()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,7 +99,7 @@ Partial Class CrateWiseOutstanding
         Me.btnShow.Location = New System.Drawing.Point(263, 109)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(85, 30)
-        Me.btnShow.TabIndex = 91258
+        Me.btnShow.TabIndex = 1
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -125,7 +125,7 @@ Partial Class CrateWiseOutstanding
         Me.Button1.Location = New System.Drawing.Point(421, 109)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(100, 30)
-        Me.Button1.TabIndex = 91265
+        Me.Button1.TabIndex = 3
         Me.Button1.Text = "Print &Hindi"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
@@ -175,7 +175,7 @@ Partial Class CrateWiseOutstanding
         Me.txtItemSearch.Location = New System.Drawing.Point(920, 109)
         Me.txtItemSearch.Name = "txtItemSearch"
         Me.txtItemSearch.Size = New System.Drawing.Size(263, 29)
-        Me.txtItemSearch.TabIndex = 91261
+        Me.txtItemSearch.TabIndex = 5
         Me.txtItemSearch.TabStop = False
         Me.txtItemSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -188,7 +188,7 @@ Partial Class CrateWiseOutstanding
         Me.txtCustomerSearch.Location = New System.Drawing.Point(593, 109)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(259, 29)
-        Me.txtCustomerSearch.TabIndex = 91260
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -202,21 +202,10 @@ Partial Class CrateWiseOutstanding
         Me.BtnPrint.Location = New System.Drawing.Point(346, 109)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(75, 30)
-        Me.BtnPrint.TabIndex = 91259
+        Me.BtnPrint.TabIndex = 2
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(136, 109)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(111, 29)
-        Me.mskFromDate.TabIndex = 91256
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dtp1
         '
@@ -335,7 +324,7 @@ Partial Class CrateWiseOutstanding
         Me.txtArea.Location = New System.Drawing.Point(79, 586)
         Me.txtArea.Name = "txtArea"
         Me.txtArea.Size = New System.Drawing.Size(263, 29)
-        Me.txtArea.TabIndex = 91273
+        Me.txtArea.TabIndex = 6
         Me.txtArea.TabStop = False
         Me.txtArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -391,11 +380,21 @@ Partial Class CrateWiseOutstanding
         Me.txtTotalOut.TabStop = False
         Me.txtTotalOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'txtEntryDate
+        '
+        Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtEntryDate.Location = New System.Drawing.Point(136, 109)
+        Me.txtEntryDate.Name = "txtEntryDate"
+        Me.txtEntryDate.Size = New System.Drawing.Size(112, 29)
+        Me.txtEntryDate.TabIndex = 0
+        '
         'CrateWiseOutstanding
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtTotalOut)
         Me.Controls.Add(Me.Label5)
@@ -416,7 +415,6 @@ Partial Class CrateWiseOutstanding
         Me.Controls.Add(Me.txtItemSearch)
         Me.Controls.Add(Me.txtCustomerSearch)
         Me.Controls.Add(Me.BtnPrint)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "CrateWiseOutstanding"
         Me.Text = "CrateWiseOutstanding"
@@ -444,7 +442,6 @@ Partial Class CrateWiseOutstanding
     Friend WithEvents txtItemSearch As System.Windows.Forms.TextBox
     Friend WithEvents txtCustomerSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -456,4 +453,5 @@ Partial Class CrateWiseOutstanding
     Friend WithEvents txtTotalIn As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtTotalOut As System.Windows.Forms.TextBox
+    Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
 End Class

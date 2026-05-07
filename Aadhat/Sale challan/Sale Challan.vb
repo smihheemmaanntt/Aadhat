@@ -34,8 +34,8 @@ Public Class Sale_Challan
         Dim opbal As String = ""
         Dim ClBal As String = ""
         opbal = clsFun.ExecScalarStr(" Select (OpBal) FROM Accounts WHERE ID=  " & Val(txtAccountID.Text) & "")
-        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='D' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtdr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='D' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        Dim tmpamtcr As String = clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & Val(txtAccountID.Text) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         Dim drcr As String = clsFun.ExecScalarStr(" Select Dc FROM Accounts WHERE ID= " & Val(txtAccountID.Text) & "")
         If drcr = "Dr" Then
             tmpamtdr = Val(opbal) + Val(tmpamtdr)
@@ -49,7 +49,7 @@ Public Class Sale_Challan
             opbal = Math.Round(Math.Abs(Val(opbal)), 2) & " Dr"
         End If
         Dim cntbal As Integer = 0
-        cntbal = clsFun.ExecScalarInt("Select count(*) from ledger where  accountid=" & Val(txtAccountID.Text) & " and  EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        cntbal = clsFun.ExecScalarInt("Select count(*) from ledger where  accountid=" & Val(txtAccountID.Text) & " and  EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
         If cntbal = 0 Then
             opbal = Math.Round(Math.Abs(Val(opbal)), 2) & " " & clsFun.ExecScalarStr(" Select dc from accounts where id= " & Val(txtAccountID.Text) & "")
         Else
@@ -63,22 +63,22 @@ Public Class Sale_Challan
         lblAcBal.Text = "Account Balance : " & opbal
     End Sub
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
     End Sub
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = smartDate(txtEntryDate.Text)
     End Sub
 
     Private Sub Standard_Sale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.Top = 0 : Me.Left = 0
         Me.BackColor = Color.FromArgb(247, 220, 111)
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka", "MarkaName", "Id", "")
         clsFun.FillDropDownList(cbAccountName, "Select ID,AccountName FROM Accounts  where GroupID in(16,17,32,33,11) order by AccountName ", "AccountName", "ID", "--N./A.--")
         Cbper.SelectedIndex = 0
-        mskEntryDate.Focus() : Me.KeyPreview = True
+        txtEntryDate.Focus() : Me.KeyPreview = True
         pnlMarka.Visible = False : BtnDelete.Enabled = False
         VNumber() : rowColums() : FillstdSale()
     End Sub
@@ -344,7 +344,7 @@ Public Class Sale_Challan
         If dgItemSearch.Visible = True Then dgItemSearch.Visible = False
         If dgCharges.Visible = True Then dgCharges.Visible = False
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim sql As String = String.Empty
         dg1.ClearSelection()
@@ -394,7 +394,7 @@ Public Class Sale_Challan
     Dim sallerAmt As Decimal = 0
     Private Sub Dg1Record()
         Dim cmd As SQLite.SQLiteCommand
-        Dim SqliteEntryDate As String = CDate(mskEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim SqliteEntryDate As String = CDate(txtEntryDate.Text).ToString("yyyy-MM-dd")
         For Each row As DataGridViewRow In dg1.Rows
             With row
                 sallerAmt = Val(txtTotalNetAmount.Text)
@@ -429,7 +429,7 @@ Public Class Sale_Challan
         remark2 = String.Empty : remarkHindi = String.Empty
 
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         For Each row As DataGridViewRow In dg1.Rows
             With row
@@ -477,7 +477,7 @@ Public Class Sale_Challan
     End Sub
     Private Sub UpdateCrateLedger()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         For Each row As DataGridViewRow In dg1.Rows
             With row
@@ -508,7 +508,7 @@ Public Class Sale_Challan
     End Sub
     Private Sub InsertCharges()
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         For Each row As DataGridViewRow In Dg2.Rows
             With row
@@ -548,7 +548,7 @@ Public Class Sale_Challan
         ad2.Fill(ds, "c")
         If ds.Tables("a").Rows.Count > 0 Then
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtAccountID.Text = ds.Tables("a").Rows(0)("AccountID").ToString()
             txtAccount.Text = ds.Tables("a").Rows(0)("AccountName").ToString()
             txtVehicleNo.Text = ds.Tables("a").Rows(0)("VehicleNo").ToString()
@@ -646,7 +646,7 @@ Public Class Sale_Challan
         ad.Fill(ds, "a")
         If ds.Tables("a").Rows.Count > 0 Then
             txtid.Text = ds.Tables("a").Rows(0)("ID").ToString()
-            mskEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
+            txtEntryDate.Text = Format(ds.Tables("a").Rows(0)("EntryDate"), "dd-MM-yyyy")
             txtAccountID.Text = ds.Tables("a").Rows(0)("AccountID").ToString()
             txtAccount.Text = ds.Tables("a").Rows(0)("AccountName").ToString()
             txtVehicleNo.Text = ds.Tables("a").Rows(0)("VehicleNo").ToString()
@@ -730,7 +730,7 @@ Public Class Sale_Challan
         If dgItemSearch.Visible = True Then dgItemSearch.Visible = False
         If dgCharges.Visible = True Then dgCharges.Visible = False
         Dim dt As DateTime
-        dt = CDate(Me.mskEntryDate.Text)
+        dt = CDate(txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
         Dim sql As String = String.Empty
         dg1.ClearSelection()
@@ -1128,12 +1128,12 @@ Public Class Sale_Challan
         If BtnSave.Text = "&Save" Then
             sql = "Select VoucherID, LotNo,VehicleNo,EntryDate,Rate,AccountName," &
                            "(nug-(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale') and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " &
-                           "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID)) as RestNug From Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' and ItemID=" & Val(txtItemID.Text) & "  and RestNug > 0  " & condtion & ""
+                           "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID)) as RestNug From Purchase where EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and ItemID=" & Val(txtItemID.Text) & "  and RestNug > 0  " & condtion & ""
         Else
             sql = "Select VoucherID, LotNo,VehicleNo,EntryDate,AccountName," &
                         "(nug-(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale') and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " &
                         "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID))+(Select ifnull(sum(nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale')  and sallerID=Purchase.StockHolderID  and ItemID=Purchase.ItemID " &
-                        "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and VoucherID=" & Val(txtid.Text) & ")   as RestNug From Purchase where EntryDate<='" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'  and ItemID=" & Val(txtItemID.Text) & "  and RestNug >0    " & condtion & ""
+                        "and Lot=Purchase.LotNo and PurchaseID=Purchase.VoucherID and VoucherID=" & Val(txtid.Text) & ")   as RestNug From Purchase where EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  and ItemID=" & Val(txtItemID.Text) & "  and RestNug >0    " & condtion & ""
 
         End If
 
@@ -1175,10 +1175,10 @@ Public Class Sale_Challan
     Private Sub txtVehicleNo_GotFocus(sender As Object, e As EventArgs) Handles txtVehicleNo.GotFocus
     End Sub
 
-    Private Sub mskEntryDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
-        mskEntryDate.SelectionStart = 0 : mskEntryDate.SelectionLength = Len(mskEntryDate.Text)
+    Private Sub txtEntryDate_GotFocus(sender As Object, e As EventArgs)
+        txtEntryDate.SelectionStart = 0 : txtEntryDate.SelectionLength = Len(txtEntryDate.Text)
     End Sub
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown, txtVoucherNo.KeyDown, txtVehicleNo.KeyDown,
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtVoucherNo.KeyDown, txtVehicleNo.KeyDown,
           txtLot.KeyDown, txtKg.KeyDown, txtRate.KeyDown, Cbper.KeyDown, txtAccount.KeyDown, txtItem.KeyDown, txtDriverName.KeyDown,
           txtDriverMobile.KeyDown, txtRemark.KeyDown, txtStateName.KeyDown, txtGSTN.KeyDown, txtCustMobile.KeyDown, txtBrokerName.KeyDown, txtBrokerMob.KeyDown,
         txtTransPort.KeyDown, txtGrNo.KeyDown
@@ -1423,7 +1423,7 @@ Public Class Sale_Challan
     End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If dg1.Rows.Count = 0 Then MsgBox("There is No Items to Save/Update Record... Add Items First", MsgBoxStyle.Critical, "No Item") : Exit Sub
-        mskEntryDate.Focus()
+        txtEntryDate.Focus()
         ButtonControl()
         If BtnSave.Text = "&Save" Then
             save()
@@ -1740,8 +1740,8 @@ Public Class Sale_Challan
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         pnlWhatsapp.Visible = True : txtWhatsappNo.Focus() : radioPrint.Checked = True : Exit Sub
     End Sub
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
     Private Sub ChargesRowColums()
         dgCharges.ColumnCount = 3
@@ -1998,7 +1998,7 @@ Public Class Sale_Challan
         Dim con As SQLite.SQLiteConnection = clsFun.GetConnection
         ClsFunWhatsapp.ExecNonQuery("Delete from SendingData")
 
-        GlobalData.PdfName = txtAccount.Text & "-" & mskEntryDate.Text & ".pdf"
+        GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
         retrive2()
         PrintRecord()
         If radioBOS.Checked = True Then

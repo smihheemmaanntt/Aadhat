@@ -55,14 +55,14 @@ Partial Class Super_Sale_Register_Simple
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.txtTotRoundOff = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,9 +85,9 @@ Partial Class Super_Sale_Register_Simple
         Me.txtAccountName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAccountName.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtAccountName.ForeColor = System.Drawing.Color.Black
-        Me.txtAccountName.Location = New System.Drawing.Point(528, 127)
+        Me.txtAccountName.Location = New System.Drawing.Point(516, 127)
         Me.txtAccountName.Name = "txtAccountName"
-        Me.txtAccountName.Size = New System.Drawing.Size(200, 26)
+        Me.txtAccountName.Size = New System.Drawing.Size(210, 26)
         Me.txtAccountName.TabIndex = 4
         Me.txtAccountName.TabStop = False
         Me.txtAccountName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -157,9 +157,9 @@ Partial Class Super_Sale_Register_Simple
         Me.txtCustomerSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCustomerSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtCustomerSearch.ForeColor = System.Drawing.Color.Black
-        Me.txtCustomerSearch.Location = New System.Drawing.Point(727, 127)
+        Me.txtCustomerSearch.Location = New System.Drawing.Point(725, 127)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
-        Me.txtCustomerSearch.Size = New System.Drawing.Size(200, 26)
+        Me.txtCustomerSearch.Size = New System.Drawing.Size(202, 26)
         Me.txtCustomerSearch.TabIndex = 5
         Me.txtCustomerSearch.TabStop = False
         Me.txtCustomerSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -213,7 +213,7 @@ Partial Class Super_Sale_Register_Simple
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1162, 463)
-        Me.dg1.TabIndex = 40097
+        Me.dg1.TabIndex = 5
         Me.dg1.TabStop = False
         '
         'BtnPrint
@@ -223,7 +223,7 @@ Partial Class Super_Sale_Register_Simple
         Me.BtnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnPrint.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
-        Me.BtnPrint.Location = New System.Drawing.Point(452, 127)
+        Me.BtnPrint.Location = New System.Drawing.Point(440, 127)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(76, 28)
         Me.BtnPrint.TabIndex = 3
@@ -361,7 +361,7 @@ Partial Class Super_Sale_Register_Simple
         Me.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnShow.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnShow.Location = New System.Drawing.Point(376, 127)
+        Me.btnShow.Location = New System.Drawing.Point(364, 127)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(76, 28)
         Me.btnShow.TabIndex = 2
@@ -450,30 +450,6 @@ Partial Class Super_Sale_Register_Simple
         Me.Label9.Text = "From :"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(259, 127)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(101, 27)
-        Me.MsktoDate.TabIndex = 1
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 13.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(77, 127)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(100, 27)
-        Me.mskFromDate.TabIndex = 0
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -486,7 +462,7 @@ Partial Class Super_Sale_Register_Simple
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp2.Location = New System.Drawing.Point(268, 127)
+        Me.dtp2.Location = New System.Drawing.Point(256, 127)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(108, 26)
         Me.dtp2.TabIndex = 1
@@ -545,11 +521,31 @@ Partial Class Super_Sale_Register_Simple
         Me.Label13.TabIndex = 91183
         Me.Label13.Text = "(SUPPLIER WISE)"
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(253, 127)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(77, 127)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Super_Sale_Register_Simple
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.txtTotRoundOff)
@@ -557,8 +553,6 @@ Partial Class Super_Sale_Register_Simple
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.PictureBox3)
@@ -621,12 +615,12 @@ Partial Class Super_Sale_Register_Simple
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents txtTotRoundOff As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

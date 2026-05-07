@@ -22,9 +22,9 @@ Partial Class Sub_Ledger
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Sub_Ledger))
         Me.Label41 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
@@ -123,23 +123,23 @@ Partial Class Sub_Ledger
         Me.dg1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
         Me.dg1.Location = New System.Drawing.Point(12, 138)
@@ -147,9 +147,9 @@ Partial Class Sub_Ledger
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersVisible = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1171, 452)
@@ -273,7 +273,7 @@ Partial Class Sub_Ledger
         Me.cbAccountName.Location = New System.Drawing.Point(152, 82)
         Me.cbAccountName.Name = "cbAccountName"
         Me.cbAccountName.Size = New System.Drawing.Size(450, 25)
-        Me.cbAccountName.TabIndex = 1
+        Me.cbAccountName.TabIndex = 0
         '
         'ckJoin
         '
@@ -360,7 +360,7 @@ Partial Class Sub_Ledger
         Me.pnlWahtsappNo.Location = New System.Drawing.Point(581, 139)
         Me.pnlWahtsappNo.Name = "pnlWahtsappNo"
         Me.pnlWahtsappNo.Size = New System.Drawing.Size(261, 141)
-        Me.pnlWahtsappNo.TabIndex = 91227
+        Me.pnlWahtsappNo.TabIndex = 6
         Me.pnlWahtsappNo.Visible = False
         '
         'Label11
@@ -496,7 +496,7 @@ Partial Class Sub_Ledger
         Me.Button5.Location = New System.Drawing.Point(602, 109)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(161, 30)
-        Me.Button5.TabIndex = 91226
+        Me.Button5.TabIndex = 5
         Me.Button5.Text = "Send Whatsapp"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.UseVisualStyleBackColor = False
@@ -538,7 +538,7 @@ Partial Class Sub_Ledger
         Me.BtnPrint.Location = New System.Drawing.Point(1104, 83)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(79, 27)
-        Me.BtnPrint.TabIndex = 5
+        Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -556,7 +556,7 @@ Partial Class Sub_Ledger
         Me.btnShow.Location = New System.Drawing.Point(1013, 83)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(91, 27)
-        Me.btnShow.TabIndex = 4
+        Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
@@ -568,7 +568,7 @@ Partial Class Sub_Ledger
         Me.txttoDate.Location = New System.Drawing.Point(903, 83)
         Me.txttoDate.Name = "txttoDate"
         Me.txttoDate.Size = New System.Drawing.Size(95, 26)
-        Me.txttoDate.TabIndex = 91235
+        Me.txttoDate.TabIndex = 2
         '
         'txtFromDate
         '
@@ -577,7 +577,7 @@ Partial Class Sub_Ledger
         Me.txtFromDate.Location = New System.Drawing.Point(711, 83)
         Me.txtFromDate.Name = "txtFromDate"
         Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
-        Me.txtFromDate.TabIndex = 91234
+        Me.txtFromDate.TabIndex = 1
         '
         'Sub_Ledger
         '

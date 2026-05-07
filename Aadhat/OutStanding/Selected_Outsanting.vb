@@ -28,7 +28,7 @@ Public Class Selected_Outsanting
 
 
     Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        mskEntryDate.Text = smartDate(mskEntryDate.Text)
     End Sub
 
     Private Sub OutStanding_Amount_Only_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -61,7 +61,7 @@ Public Class Selected_Outsanting
             Ledger.Show()
             Ledger.cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(0).Value)
             Ledger.BringToFront()
-            Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+            Ledger.txtFromDate.Text = smartDate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
             Ledger.btnShow.PerformClick()
             e.SuppressKeyPress = True
         End If
@@ -73,7 +73,7 @@ Public Class Selected_Outsanting
         Ledger.Show()
         Ledger.cbAccountName.SelectedValue = Val(dg1.SelectedRows(0).Cells(0).Value)
         Ledger.BringToFront()
-        Ledger.txtFromDate.Text = clsFun.convdate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
+        Ledger.txtFromDate.Text = smartDate(CDate(clsFun.ExecScalarStr("Select YearStart From Company")).ToString("dd-MM-yyyy"))
         Ledger.btnShow.PerformClick()
     End Sub
 
@@ -115,7 +115,7 @@ Public Class Selected_Outsanting
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        mskEntryDate.Text = smartDate(mskEntryDate.Text)
     End Sub
     Private Sub txtGreater_KeyUp(sender As Object, e As KeyEventArgs) Handles txtGrater.KeyUp
         If e.KeyCode = Keys.Enter Then

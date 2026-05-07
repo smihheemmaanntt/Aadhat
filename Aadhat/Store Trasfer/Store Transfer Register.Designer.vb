@@ -28,8 +28,6 @@ Partial Class Store_Transfer_Register
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.TxtGrandTotal = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -47,6 +45,8 @@ Partial Class Store_Transfer_Register
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.lblName = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -77,35 +77,11 @@ Partial Class Store_Transfer_Register
         Me.btnShow.Location = New System.Drawing.Point(417, 89)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(103, 27)
-        Me.btnShow.TabIndex = 116
+        Me.btnShow.TabIndex = 2
         Me.btnShow.TabStop = False
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(314, 89)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(86, 26)
-        Me.MsktoDate.TabIndex = 115
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(113, 89)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(86, 26)
-        Me.mskFromDate.TabIndex = 114
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'dg1
         '
@@ -147,7 +123,7 @@ Partial Class Store_Transfer_Register
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 486)
-        Me.dg1.TabIndex = 113
+        Me.dg1.TabIndex = 8
         '
         'TxtGrandTotal
         '
@@ -187,7 +163,7 @@ Partial Class Store_Transfer_Register
         Me.btnPrint.Location = New System.Drawing.Point(518, 89)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(100, 27)
-        Me.btnPrint.TabIndex = 40066
+        Me.btnPrint.TabIndex = 3
         Me.btnPrint.TabStop = False
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -213,7 +189,7 @@ Partial Class Store_Transfer_Register
         Me.txtTotalSearch.Location = New System.Drawing.Point(1058, 89)
         Me.txtTotalSearch.Name = "txtTotalSearch"
         Me.txtTotalSearch.Size = New System.Drawing.Size(126, 26)
-        Me.txtTotalSearch.TabIndex = 40080
+        Me.txtTotalSearch.TabIndex = 7
         Me.txtTotalSearch.TabStop = False
         '
         'Label8
@@ -258,7 +234,7 @@ Partial Class Store_Transfer_Register
         Me.txtDiscSearch.Location = New System.Drawing.Point(931, 89)
         Me.txtDiscSearch.Name = "txtDiscSearch"
         Me.txtDiscSearch.Size = New System.Drawing.Size(128, 26)
-        Me.txtDiscSearch.TabIndex = 40076
+        Me.txtDiscSearch.TabIndex = 6
         Me.txtDiscSearch.TabStop = False
         '
         'txtNetSearch
@@ -270,7 +246,7 @@ Partial Class Store_Transfer_Register
         Me.txtNetSearch.Location = New System.Drawing.Point(812, 89)
         Me.txtNetSearch.Name = "txtNetSearch"
         Me.txtNetSearch.Size = New System.Drawing.Size(120, 26)
-        Me.txtNetSearch.TabIndex = 40075
+        Me.txtNetSearch.TabIndex = 5
         Me.txtNetSearch.TabStop = False
         '
         'txtCustomerSearch
@@ -282,7 +258,7 @@ Partial Class Store_Transfer_Register
         Me.txtCustomerSearch.Location = New System.Drawing.Point(618, 89)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(195, 26)
-        Me.txtCustomerSearch.TabIndex = 40074
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         '
         'Label2
@@ -302,9 +278,9 @@ Partial Class Store_Transfer_Register
         Me.Label9.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label9.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label9.Location = New System.Drawing.Point(216, 89)
+        Me.Label9.Location = New System.Drawing.Point(228, 89)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(100, 27)
+        Me.Label9.Size = New System.Drawing.Size(88, 27)
         Me.Label9.TabIndex = 40084
         Me.Label9.Text = "To Date :"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -312,7 +288,7 @@ Partial Class Store_Transfer_Register
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp1.Location = New System.Drawing.Point(114, 89)
+        Me.dtp1.Location = New System.Drawing.Point(126, 89)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(102, 26)
         Me.dtp1.TabIndex = 91139
@@ -336,11 +312,31 @@ Partial Class Store_Transfer_Register
         Me.lblName.TabIndex = 91141
         Me.lblName.Text = "STORE TRANSFER REGISTER"
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(305, 89)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(112, 89)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Store_Transfer_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.btnClose)
@@ -358,8 +354,6 @@ Partial Class Store_Transfer_Register
         Me.Controls.Add(Me.TxtGrandTotal)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.KeyPreview = True
@@ -372,8 +366,6 @@ Partial Class Store_Transfer_Register
 
     End Sub
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents TxtGrandTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -392,4 +384,6 @@ Partial Class Store_Transfer_Register
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblName As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

@@ -1763,7 +1763,22 @@ D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResourc
 D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
 D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
 D:\1\Aadhat - Original\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.config
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.application
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.pdb
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.xml
+D:\1\Aadhat\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\Ionic.Zip.Reduced.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Configuration.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Drawing.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Management.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Xml.dll
+D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.account_group_list.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Group.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_List.resources
@@ -1781,7 +1796,6 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DayBook_Cum_CashBook.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CarryForword.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CollectionReportAll.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Show_Accounts.resources
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CopyBackup.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Account_Monthly_Summary.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Daily_Nakal.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ChargesSetting.resources
@@ -1809,7 +1823,6 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CratePayableTotal.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.DaySummary.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Day_Wise_Sale_Report.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Cash_Book_Grouped.resources
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Handi_Cash_Book.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Change_Financial_Year.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Collection_Report.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CompanyList.resources
@@ -1833,7 +1846,6 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance.resources
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Form1.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt_Register.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Receipt.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Payment_Register.resources
@@ -1898,7 +1910,6 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenForm.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SetPathForm.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
@@ -1940,24 +1951,9 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CheckUpdate.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.WhatsApp_API.resources
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbproj.GenerateResource.Cache
-D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.config
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe.manifest
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.application
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.exe
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.pdb
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Aadhat.xml
-D:\1\Aadhat\AADHAT\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Ionic.Zip.Reduced.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Configuration.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Data.DataSetExtensions.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Drawing.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Management.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Windows.Forms.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Xml.dll
-D:\1\Aadhat\AADHAT\bin\x86\Debug\System.Xml.Linq.dll
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xml
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb

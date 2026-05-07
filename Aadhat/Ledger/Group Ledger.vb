@@ -133,7 +133,6 @@
         dg1.Columns(8).Name = "OtherName" : dg1.Columns(8).Visible = False
     End Sub
     Private Sub RetriveGroupLedger()
-
         dg1.Rows.Clear()
         txtOpbal.Text = ""
         txtBalAmt.Text = ""
@@ -303,18 +302,33 @@
         Dim Drtotal As Decimal = 0
         Dim CrTotal As Decimal = 0
         Dim CloseTotal As Decimal = 0
-        sql = "SELECT A.ID as ID, A.AccountName as AccountName, A.GroupName as GroupName, " & _
-             " ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0)+(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
-              " -(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') ELSE -IFNULL(A.Opbal,0)- " & _
-              " (SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')+(SELECT IFNULL(SUM(Amount),0) FROM Ledger " & _
-              " WHERE AccountID=A.ID AND DC='D' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS TotalOpbal," & _
-              " ROUND((SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'),2) AS TotalDr, " & _
-              " ROUND((SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'),2) AS TotalCr,  " & _
-              " ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0)+(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
-              " -(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') ELSE -IFNULL(A.Opbal,0)- " & _
-              " (SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')+(SELECT IFNULL(SUM(Amount),0) FROM Ledger " & _
-              " WHERE AccountID=A.ID AND DC='D' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS TotalRestbal FROM Account_AcGrp A WHERE A.GroupID=" & Val(cbAccountName.SelectedValue) & " and TotalRestbal<>0 " & _
-              " ORDER BY UPPER(A.AccountName);"
+        If ckShowAll.Checked = True Then
+            sql = "SELECT A.ID as ID, A.AccountName as AccountName, A.GroupName as GroupName, " & _
+     " ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0)+(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
+      " -(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') ELSE -IFNULL(A.Opbal,0)- " & _
+      " (SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')+(SELECT IFNULL(SUM(Amount),0) FROM Ledger " & _
+      " WHERE AccountID=A.ID AND DC='D' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS TotalOpbal," & _
+      " ROUND((SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'),2) AS TotalDr, " & _
+      " ROUND((SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'),2) AS TotalCr,  " & _
+      " ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0)+(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+      " -(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') ELSE -IFNULL(A.Opbal,0)- " & _
+      " (SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')+(SELECT IFNULL(SUM(Amount),0) FROM Ledger " & _
+      " WHERE AccountID=A.ID AND DC='D' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS TotalRestbal FROM Account_AcGrp A WHERE A.GroupID=" & Val(cbAccountName.SelectedValue) & "  " & _
+      " ORDER BY UPPER(A.AccountName);"
+        Else
+            sql = "SELECT A.ID as ID, A.AccountName as AccountName, A.GroupName as GroupName, " & _
+                 " ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0)+(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                  " -(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') ELSE -IFNULL(A.Opbal,0)- " & _
+                  " (SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')+(SELECT IFNULL(SUM(Amount),0) FROM Ledger " & _
+                  " WHERE AccountID=A.ID AND DC='D' AND EntryDate<'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS TotalOpbal," & _
+                  " ROUND((SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'),2) AS TotalDr, " & _
+                  " ROUND((SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "'),2) AS TotalCr,  " & _
+                  " ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0)+(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='D' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                  " -(SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') ELSE -IFNULL(A.Opbal,0)- " & _
+                  " (SELECT IFNULL(SUM(Amount),0) FROM Ledger WHERE AccountID=A.ID AND DC='C' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "')+(SELECT IFNULL(SUM(Amount),0) FROM Ledger " & _
+                  " WHERE AccountID=A.ID AND DC='D' AND EntryDate<='" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS TotalRestbal FROM Account_AcGrp A WHERE A.GroupID=" & Val(cbAccountName.SelectedValue) & " and TotalRestbal<>0 " & _
+                  " ORDER BY UPPER(A.AccountName);"
+        End If
         dt = clsFun.ExecDataTable(sql)
         If Val(dt.Rows.Count) > 20 Then dg1.Columns(5).Width = 150
         dg1.Rows.Clear()
@@ -505,9 +519,9 @@
         pb1.Visible = False
 
     End Sub
-
     Private Sub RetriveLedgerMerged()
         tmpgrid.Rows.Clear()
+
         Dim sql As String = ""
         Dim dt As DataTable
 
@@ -515,126 +529,115 @@
         pb1.Minimum = 0
         pb1.Maximum = dg1.Rows.Count
         pb1.Value = 0
+
         For i As Integer = 0 To dg1.Rows.Count - 1
-            If dg1.Rows(i).Cells("checkBoxColumn").Value = False Then
-                Continue For
-            End If
+
+            If dg1.Rows(i).Cells("checkBoxColumn").Value = False Then Continue For
 
             Dim accountId As Integer = Val(dg1.Rows(i).Cells(1).Value)
-            '=========================================
-            '        SQL GROUP BY QUERY
-            '=========================================
-            sql = "SELECT L.EntryDate AS EntryDate, L.TransType AS TransType, " &
-                  "A.AccountName AS AccountName, A.OtherName AS OtherName, " &
-                  "ROUND(CASE WHEN A.DC='Dr' THEN IFNULL(A.Opbal,0) + " &
-                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='D' " &
-                  " AND L1.EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') - " &
-                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='C' " &
-                  " AND L1.EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" &
-                  " ELSE -IFNULL(A.Opbal,0) - " &
-                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='C' " &
-                  " AND L1.EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') + " &
-                  "(SELECT IFNULL(SUM(Amount),0) FROM Ledger L1 WHERE L1.AccountID=A.ID AND L1.DC='D' " &
-                  " AND L1.EntryDate < '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "') END,2) AS OpeningBalance, " &
-                  "SUM(CASE WHEN L.DC='D' THEN L.Amount ELSE 0 END) AS Dr, " &
-                  "SUM(CASE WHEN L.DC='C' THEN L.Amount ELSE 0 END) AS Cr " &
-                  "FROM Account_AcGrp A LEFT JOIN Ledger L ON L.AccountID=A.ID " &
-                  "WHERE A.ID=" & accountId &
-                  " AND L.EntryDate BETWEEN '" &
-                  CDate(txtFromDate.Text).ToString("yyyy-MM-dd") &
-                  "' AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " &
-                  "GROUP BY L.EntryDate, L.TransType " &
-                  "ORDER BY L.EntryDate"
+
+            '==============================
+            ' OPENING BALANCE
+            '==============================
+            Dim opbal As Decimal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & Format(CDate(txtFromDate.Text), "yyyy-MM-dd") & "')" &
+                                    "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & Format(CDate(txtFromDate.Text), "yyyy-MM-dd") & "')) " &
+                                    " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & Format(CDate(txtFromDate.Text), "yyyy-MM-dd") & "')" &
+                                    " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & Format(CDate(txtFromDate.Text), "yyyy-MM-dd") & "'))  end),2) from Accounts Where ID=" & accountId))
+
+            '==============================
+            ' CLOSING BALANCE
+            '==============================
+            Dim clbal As Decimal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & Format(CDate(txttoDate.Text), "yyyy-MM-dd") & "')" &
+                                     "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & Format(CDate(txttoDate.Text), "yyyy-MM-dd") & "')) " &
+                                     " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & Format(CDate(txttoDate.Text), "yyyy-MM-dd") & "')" &
+                                     " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & Format(CDate(txttoDate.Text), "yyyy-MM-dd") & "'))  end),2) from Accounts Where ID=" & accountId))
+
+            '==============================
+            ' MAIN QUERY
+            '==============================
+            sql = ""
+            sql &= "SELECT EntryDate, TransType, "
+            sql &= "SUM(CASE WHEN DC='D' THEN Amount ELSE 0 END) AS Dr, "
+            sql &= "SUM(CASE WHEN DC='C' THEN Amount ELSE 0 END) AS Cr "
+            sql &= "FROM Ledger "
+            sql &= "WHERE AccountID=" & accountId
+            sql &= " AND EntryDate BETWEEN '" & Format(CDate(txtFromDate.Text), "yyyy-MM-dd") & "'"
+            sql &= " AND '" & Format(CDate(txttoDate.Text), "yyyy-MM-dd") & "' "
+            sql &= "GROUP BY EntryDate, TransType "
+            sql &= "ORDER BY EntryDate"
 
             dt = clsFun.ExecDataTable(sql)
 
-            '=========================================
-            '        MERGED TABLE (in VB.NET)
-            '=========================================
-            Dim Merged As New DataTable
-            Merged.Columns.Add("EntryDate", GetType(Date))
-            Merged.Columns.Add("TransType", GetType(String))
-            Merged.Columns.Add("Dr", GetType(Decimal))
-            Merged.Columns.Add("Cr", GetType(Decimal))
-            Merged.Columns.Add("OpeningBalance", GetType(Decimal))
-            Merged.Columns.Add("AccountName", GetType(String))
-            Merged.Columns.Add("OtherName", GetType(String))
-
-            ' MERGE rows
-            For Each r As DataRow In dt.Rows
-                Dim EDate As Date = CDate(r("EntryDate"))
-                Dim TType As String = r("TransType").ToString()
-
-                Dim found() As DataRow = Merged.Select("EntryDate='" &
-                                EDate.ToString("yyyy-MM-dd") & "' AND TransType='" & TType & "'")
-
-                If found.Length = 0 Then
-                    Merged.Rows.Add(EDate, TType,
-                        Val(r("Dr")), Val(r("Cr")),
-                        Val(r("OpeningBalance")),
-                        r("AccountName"), r("OtherName"))
-                Else
-                    found(0)("Dr") = Val(found(0)("Dr")) + Val(r("Dr"))
-                    found(0)("Cr") = Val(found(0)("Cr")) + Val(r("Cr"))
-                End If
-            Next
-
-            '=========================================
-            '        RUNNING BALANCE APPLY
-            '=========================================
-            Dim runningBalance As Decimal = 0
-            Dim isFirst As Boolean = True
+            Dim runningBalance As Decimal = opbal
             Dim totalDr As Decimal = 0
             Dim totalCr As Decimal = 0
 
-            For Each r As DataRow In Merged.Rows
-                Dim openBal As Decimal = Val(r("OpeningBalance"))
+            '==============================
+            ' 🔹 OPENING ROW (Always Show)
+            '==============================
+            tmpgrid.Rows.Add("", "", "Opening", dg1.Rows(i).Cells(2).Value, "",
+                             "", "",
+                             Format(Math.Abs(opbal), "0.00") & If(opbal >= 0, " Dr", " Cr"),
+                             "", "", "", "", Format(opbal, "0.00"), "", "")
+
+            '==============================
+            ' TRANSACTIONS
+            '==============================
+            For Each r As DataRow In dt.Rows
+
+                Dim entryDate As Date = CDate(r("EntryDate"))
+                Dim transType As String = r("TransType").ToString()
                 Dim dr As Decimal = Val(r("Dr"))
                 Dim cr As Decimal = Val(r("Cr"))
-                If isFirst Then
-                    runningBalance = openBal
-                    isFirst = False
-                End If
-                runningBalance += dr
-                runningBalance -= cr
+
                 totalDr += dr
                 totalCr += cr
-                Dim daysDiff As Integer =
-                    DateDiff(DateInterval.Day, CDate(txttoDate.Text), CDate(r("EntryDate")))
+
+                ' Remark
+                Dim remarkSql As String = "SELECT Remark FROM Ledger WHERE AccountID=" & accountId &
+                                         " AND EntryDate='" & Format(entryDate, "yyyy-MM-dd") & "'" &
+                                         " AND TransType='" & transType.Replace("'", "''") & "'"
+
+                Dim dtRemark As DataTable = clsFun.ExecDataTable(remarkSql)
+
+                Dim finalRemark As String = ""
+                For Each rr As DataRow In dtRemark.Rows
+                    finalRemark &= rr("Remark").ToString() & vbCrLf
+                Next
+
+                runningBalance += dr - cr
+
                 tmpgrid.Rows.Add(
-       "",
-       CDate(r("EntryDate")).ToString("dd-MM-yyyy"),
-       r("TransType"),
-       r("AccountName"),
-       "",
-       If(dr = 0D, "", Format(dr, "0.00")),
-       If(cr = 0D, "", Format(cr, "0.00")),
-       If(runningBalance >= 0,
-           Format(runningBalance, "0.00") & " Dr",
-           Format(Math.Abs(runningBalance), "0.00") & " Cr"),
-       r("OtherName"),
-       "",
-       If(totalDr = 0, "", totalDr),
-       If(totalCr = 0, "", totalCr),
-       If(openBal >= 0,
-           Format(Math.Abs(openBal), "0.00") & " Dr",
-           Format(Math.Abs(openBal), "0.00") & " Cr"),
-                   dg1.Rows(i).Cells(6).Value,
-                   "",
-                   Math.Abs(daysDiff)
-   )
+                    "",
+                    Format(entryDate, "dd-MM-yyyy"),
+                    transType,
+                    dg1.Rows(i).Cells(2).Value,
+                    finalRemark,
+                    If(dr = 0, "", Format(dr, "0.00")),
+                    If(cr = 0, "", Format(cr, "0.00")),
+                    Format(Math.Abs(runningBalance), "0.00") & If(runningBalance >= 0, " Dr", " Cr"),
+                    "",
+                    "",
+                    Format(totalDr, "0.00"),
+                    Format(totalCr, "0.00"),
+                    "",
+                    "",
+                    ""
+                )
             Next
 
-            '=========================================
-            '     FINAL BALANCE (ACCOUNT WISE)
-            '=========================================
-            'Dim AccountFinalBalance As Decimal = runningBalance
-            'For rIndex As Integer = tmpgrid.Rows.Count - Merged.Rows.Count To tmpgrid.Rows.Count - 1
-            '    tmpgrid.Rows(rIndex).Cells(13).Value =
-            '        IIf(AccountFinalBalance > 0,
-            '            Format(Math.Abs(AccountFinalBalance), "0.00") & " Dr",
-            '            Format(Math.Abs(AccountFinalBalance), "0.00") & " Cr")
-            'Next
+            '==============================
+            ' 🔹 CLOSING ROW (Always Show)
+            '==============================
+            tmpgrid.Rows.Add("", "", "Closing", dg1.Rows(i).Cells(2).Value, "",
+                             "", "",
+                             Format(Math.Abs(clbal), "0.00") & If(clbal >= 0, " Dr", " Cr"),
+                             "", "",
+                             Format(totalDr, "0.00"),
+                             Format(totalCr, "0.00"),
+                             "",
+                             Format(clbal, "0.00"),
+                             "")
 
             pb1.Value = i + 1
             Application.DoEvents()
@@ -642,90 +645,131 @@
         Next
 
         pb1.Visible = False
+
     End Sub
+    'Private Sub RetriveLedgerMerged()
+    '        tmpgrid.Rows.Clear()
+
+    '        Dim sql As String = ""
+    '        Dim dt As DataTable
+
+    '        pb1.Visible = True
+    '        pb1.Minimum = 0
+    '        pb1.Maximum = dg1.Rows.Count
+    '        pb1.Value = 0
+
+    '        For i As Integer = 0 To dg1.Rows.Count - 1
+
+    '            If dg1.Rows(i).Cells("checkBoxColumn").Value = False Then Continue For
+
+    '            Dim accountId As Integer = Val(dg1.Rows(i).Cells(1).Value)
+
+    '            '=========================================
+    '            ' MAIN QUERY (SUM BY DATE + TRANSTYPE)
+    '            '=========================================
+    '            opbal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text.ToString("yyyy-MM-dd")) & "')" &
+    '                                "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text.ToString("yyyy-MM-dd")) & "')) " &
+    '                                " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text.ToString("yyyy-MM-dd")) & "')" &
+    '                                " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text.ToString("yyyy-MM-dd")) & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(AcID) & " Order by upper(AccountName) ;"))
+    '            Dim ClBal As Decimal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text.ToString("yyyy-MM-dd")) & "')" &
+    '                                     "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text.ToString("yyyy-MM-dd")) & "')) " &
+    '                                     " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txttoDate.Text.ToString("yyyy-MM-dd")) & "')" &
+    '                                     " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txttoDate.Text.ToString("yyyy-MM-dd")) & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(AcID) & " Order by upper(AccountName) ;"))
+
+    '            sql = ""
+    '            sql &= "SELECT EntryDate, TransType, "
+    '            sql &= "SUM(CASE WHEN DC='D' THEN Amount ELSE 0 END) AS Dr, "
+    '            sql &= "SUM(CASE WHEN DC='C' THEN Amount ELSE 0 END) AS Cr "
+    '            sql &= "FROM Ledger "
+    '            sql &= "WHERE AccountID=" & accountId
+    '            sql &= " AND EntryDate BETWEEN '" & Format(CDate(txtFromDate.Text), "yyyy-MM-dd") & "'"
+    '            sql &= " AND '" & Format(CDate(txttoDate.Text), "yyyy-MM-dd") & "' "
+    '            sql &= "GROUP BY EntryDate, TransType "
+    '            sql &= "ORDER BY EntryDate"
+
+    '            dt = clsFun.ExecDataTable(sql)
+
+    '            '=========================================
+    '            ' RUNNING BALANCE VARIABLES
+    '            '=========================================
+    '            Dim runningBalance As Decimal = 0
+    '            Dim isFirst As Boolean = True
+
+    '            For Each r As DataRow In dt.Rows
+
+    '                Dim entryDate As Date = CDate(r("EntryDate"))
+    '                Dim transType As String = r("TransType").ToString()
+    '                Dim dr As Decimal = Val(r("Dr"))
+    '                Dim cr As Decimal = Val(r("Cr"))
+
+    '                '=========================================
+    '                ' 🔥 REMARK FETCH (SEPARATE QUERY - SAME AS YOUR STYLE)
+    '                '=========================================
+    '                Dim remarkSql As String = ""
+    '                remarkSql &= "SELECT Remark FROM Ledger "
+    '                remarkSql &= "WHERE AccountID=" & accountId
+    '                remarkSql &= " AND EntryDate='" & Format(entryDate, "yyyy-MM-dd") & "'"
+    '                remarkSql &= " AND TransType='" & transType.Replace("'", "''") & "'"
+
+    '                Dim dtRemark As DataTable = clsFun.ExecDataTable(remarkSql)
+
+    '                Dim finalRemark As String = ""
+
+    '                If dtRemark.Rows.Count > 0 Then
+    '                    For j As Integer = 0 To dtRemark.Rows.Count - 1
+    '                        finalRemark &= dtRemark.Rows(j)("Remark").ToString() & vbCrLf
+    '                    Next
+    '                End If
+
+    '                '=========================================
+    '                ' RUNNING BALANCE
+    '                '=========================================
+    '                If isFirst Then
+    '                    runningBalance = 0
+    '                    isFirst = False
+    '                End If
+
+    '                runningBalance += dr
+    '                runningBalance -= cr
+
+    '                '=========================================
+    '                ' ADD ROW
+    '                '=========================================
+    '                tmpgrid.Rows.Add(
+    '                    "",
+    '                    Format(entryDate, "dd-MM-yyyy"),
+    '                    transType,
+    '                    dg1.Rows(i).Cells(2).Value,
+    '                    finalRemark,
+    '                    IIf(dr = 0, "", Format(dr, "0.00")),
+    '                    IIf(cr = 0, "", Format(cr, "0.00")),
+    '                    IIf(runningBalance >= 0,
+    '                        Format(runningBalance, "0.00") & " Dr",
+    '                        Format(Math.Abs(runningBalance), "0.00") & " Cr"),
+    '                    "",
+    '                    "",
+    '                    "",
+    '                    "",
+    '                    "",
+    '                    "",
+    '                    ""
+    '                )
+
+    '            Next
+
+    '            pb1.Value = i + 1
+    '            Application.DoEvents()
+
+    '        Next
+
+    '        pb1.Visible = False
+
+    '    End Sub
 
 
-    'private sub retriveledger()
-    '    dim i as integer = 0
-    '    tmpgrid.rows.clear()
-    '    dim sql as string = string.empty
-    '    dim dt as datatable
-    '    ' set progressbar initial settings
-    '    pb1.visible = true
-    '    pb1.minimum = 0
-    '    pb1.maximum = dg1.rows.count
-    '    pb1.value = 0
 
-    '    ' step 1: temporary list to store last balance row index
-    '    dim lastrowindexlist as new list(of integer)
 
-    '    for i = 0 to dg1.rows.count - 1
-    '        dim runningbalance as decimal = 0
-    '        dim drtotal as decimal = 0
-    '        dim crtotal as decimal = 0
-    '        dim isfirstrow as boolean = true
-    '        dim lastrunningbalance as decimal = 0
-    '        dim accountid as integer = val(dg1.rows(i).cells(0).value)
-    '        dim rowcount as integer = 0
-    '        sql = "select  a.accountname,a.othername,  " & _
-    '              "round(case when a.dc = 'dr' then ifnull(a.opbal,0) + " & _
-    '              "(select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'd' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') - " & _
-    '              "(select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'c' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') " & _
-    '              "else -ifnull(a.opbal,0) - (select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'c' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') " & _
-    '              "+ (select ifnull(sum(amount), 0) from ledger l1 where l1.accountid = a.id and l1.dc = 'd' and l1.entrydate < '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "') end, 2) as openingbalance, " & _
-    '              "l.entrydate, l.vourchersid, l.transtype, l.remark,l.remarkhindi, l.narration, " & _
-    '              "case when l.dc = 'd' then round(l.amount, 2) else 0 end as dr, " & _
-    '              "case when l.dc = 'c' then round(l.amount, 2) else 0 end as cr " & _
-    '              "from account_acgrp a left join ledger l on l.accountid = a.id " & _
-    '              "where a.id = " & accountid & "  and l.entrydate between '" & cdate(mskfromdate.text).tostring("yyyy-mm-dd") & "' and '" & cdate(msktodate.text).tostring("yyyy-mm-dd") & "' " & _
-    '              "order by l.vourchersid, l.entrydate"
-    '        dt = clsfun.execdatatable(sql)
-    '        for each row as datarow in dt.rows
-    '            dim dr as decimal = val(row("dr"))
-    '            dim cr as decimal = val(row("cr"))
-    '            dim openingbalance as decimal = val(row("openingbalance"))
-    '            if isfirstrow then
-    '                runningbalance = openingbalance
-    '                isfirstrow = false
-    '            end if
-    '            runningbalance += dr
-    '            runningbalance -= cr
-    '            drtotal += dr
-    '            crtotal += cr
-    '            rowcount += 1
-    '            ' add row to grid
-    '            tmpgrid.rows.add(row("l.vourchersid"),
-    '              cdate(row("l.entrydate")).tostring("dd-mm-yyyy"),
-    '              row("l.transtype"),
-    '              row("a.accountname"),
-    '              row("l.remark"),
-    '              format(dr, "0.00"),
-    '              format(cr, "0.00"),
-    '              iif(runningbalance > 0, format(math.abs(runningbalance), "0.00") & " dr", format(math.abs(runningbalance), "0.00") & " cr"),
-    '              row("a.othername"),
-    '              row("l.remarkhindi"), drtotal, crtotal,
-    '              iif(openingbalance > 0, format(math.abs(openingbalance), "0.00") & " dr", format(math.abs(openingbalance), "0.00") & " cr"),
-    '              "", rowcount)
-    '            lastrunningbalance = runningbalance
 
-    '        next
-
-    '        ' ---- set final balance in each row of this account block ----
-    '        dim lastrowcount as integer = dt.rows.count + 1 ' +1 for opening row
-    '        if lastrowcount > 0 then
-    '            for j as integer = tmpgrid.rows.count - lastrowcount to tmpgrid.rows.count - 1
-    '                tmpgrid.rows(j).cells("calbaltotal").value = iif(lastrunningbalance > 0, format(lastrunningbalance, "0.00") & " dr", format(math.abs(lastrunningbalance), "0.00") & " cr")
-    '            next
-    '        end if
-
-    '        ' update progressbar
-    '        pb1.value = i + 1
-    '        application.doevents()
-    '    next
-    '    ' hide progressbar after completion
-    '    pb1.value = 0
-    '    pb1.visible = false
-    'end sub
     Private Sub PrintRecord()
         Dim AllRecord As Integer = Val(tmpgrid.Rows.Count)
         Dim maxRowCount As Decimal = Math.Ceiling(AllRecord / 100)
@@ -843,11 +887,6 @@
 
     Private Sub btnPrintLedger_Click(sender As Object, e As EventArgs) Handles btnPrintLedger.Click
         pnlWait.Visible = True : pnlPrint.Visible = False : rowColumsTemp() : RetriveLedger() : PrintRecord()
-        'If ckJoin.Checked = True Then
-        '    WithoutDiscriptionPrint()
-        'Else
-        '    PrintRecord()
-        'End If
         If ckPrintHindi.Checked = True Then
             Report_Viewer.printReport("\Reports\GroupLedger2.rpt")
             Report_Viewer.MdiParent = MainScreenForm
@@ -890,11 +929,6 @@
 
     Private Sub btnLedgerMerged_Click(sender As Object, e As EventArgs) Handles btnLedgerMerged.Click
         pnlWait.Visible = True : pnlPrint.Visible = False : rowColumsTemp() : RetriveLedgerMerged() : PrintRecord()
-        'If ckJoin.Checked = True Then
-        '    WithoutDiscriptionPrint()
-        'Else
-        '    PrintRecord()
-        'End If
         If ckPrintHindi.Checked = True Then
             Report_Viewer.printReport("\Reports\GroupLedger2.rpt")
             Report_Viewer.MdiParent = MainScreenForm
@@ -908,9 +942,32 @@
         End If
         pnlWait.Visible = False
     End Sub
-
+    Private Sub PrintOutstanding()
+        Dim count As Integer = 0
+        Dim cmd As New SQLite.SQLiteCommand
+        Dim sql As String = ""
+        ClsFunPrimary.ExecNonQuery("Delete from printing")
+        For Each row As DataGridViewRow In dg1.Rows
+            Application.DoEvents()
+            If Application.OpenForms().OfType(Of OutStanding).Any = False Then Exit Sub
+            With row
+                sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9) values('" & txttoDate.Text & "'," & _
+                    "'" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(5).Value & "','" & .Cells(6).Value & "','" & .Cells(7).Value & "','" & .Cells(8).Value & "','" & Format(Val(txtDramt.Text), "0.00") & "','" & Format(Val(txtcrAmt.Text), "0.00") & "','" & Format(Val(txtBalAmt.Text), "0.00") & "')"
+                Try
+                    ClsFunPrimary.ExecNonQuery(sql)
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    ClsFunPrimary.CloseConnection()
+                End Try
+            End With
+        Next
+    End Sub
     Private Sub btnPrintOutstanding_Click(sender As Object, e As EventArgs) Handles btnPrintOutstanding.Click
-
+        PrintOutstanding()
+        Report_Viewer.printReport("\Outstanding.rpt")
+        Report_Viewer.MdiParent = MainScreenForm
+        Report_Viewer.Show()
+        Report_Viewer.BringToFront()
     End Sub
 
     Private Sub dg1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick

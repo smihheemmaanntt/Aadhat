@@ -36,8 +36,6 @@ Partial Class Print_Bills
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.tmpgrid = New System.Windows.Forms.DataGridView()
@@ -98,6 +96,8 @@ Partial Class Print_Bills
         Me.btnClose = New System.Windows.Forms.Button()
         Me.lblvoucherCount = New System.Windows.Forms.Label()
         Me.lblbillCount = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlSearch.SuspendLayout()
@@ -132,29 +132,9 @@ Partial Class Print_Bills
         Me.btnShow.Location = New System.Drawing.Point(393, 72)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(112, 30)
-        Me.btnShow.TabIndex = 7
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(273, 72)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(103, 29)
-        Me.MsktoDate.TabIndex = 6
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(94, 72)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(103, 29)
-        Me.mskFromDate.TabIndex = 5
         '
         'dg1
         '
@@ -198,7 +178,7 @@ Partial Class Print_Bills
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 476)
-        Me.dg1.TabIndex = 8
+        Me.dg1.TabIndex = 9
         '
         'btnPrint
         '
@@ -212,7 +192,7 @@ Partial Class Print_Bills
         Me.btnPrint.Location = New System.Drawing.Point(505, 72)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(112, 30)
-        Me.btnPrint.TabIndex = 9
+        Me.btnPrint.TabIndex = 3
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.UseVisualStyleBackColor = False
         '
@@ -376,7 +356,7 @@ Partial Class Print_Bills
         Me.Button1.Location = New System.Drawing.Point(617, 72)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(134, 30)
-        Me.Button1.TabIndex = 40048
+        Me.Button1.TabIndex = 4
         Me.Button1.Text = "Print &Hindi"
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -392,7 +372,7 @@ Partial Class Print_Bills
         Me.btnSlips.Location = New System.Drawing.Point(751, 72)
         Me.btnSlips.Name = "btnSlips"
         Me.btnSlips.Size = New System.Drawing.Size(112, 30)
-        Me.btnSlips.TabIndex = 40049
+        Me.btnSlips.TabIndex = 5
         Me.btnSlips.Text = "Sl&ips"
         Me.btnSlips.UseVisualStyleBackColor = False
         '
@@ -408,7 +388,7 @@ Partial Class Print_Bills
         Me.btnSlipsHindi.Location = New System.Drawing.Point(863, 72)
         Me.btnSlipsHindi.Name = "btnSlipsHindi"
         Me.btnSlipsHindi.Size = New System.Drawing.Size(126, 30)
-        Me.btnSlipsHindi.TabIndex = 40050
+        Me.btnSlipsHindi.TabIndex = 6
         Me.btnSlipsHindi.Text = "Slips Hi&ndi"
         Me.btnSlipsHindi.UseVisualStyleBackColor = False
         '
@@ -424,7 +404,7 @@ Partial Class Print_Bills
         Me.Button2.Location = New System.Drawing.Point(987, 72)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(197, 30)
-        Me.Button2.TabIndex = 40051
+        Me.Button2.TabIndex = 7
         Me.Button2.Text = "&Choose Account"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = False
@@ -440,7 +420,7 @@ Partial Class Print_Bills
         Me.pnlSearch.Location = New System.Drawing.Point(802, 101)
         Me.pnlSearch.Name = "pnlSearch"
         Me.pnlSearch.Size = New System.Drawing.Size(382, 259)
-        Me.pnlSearch.TabIndex = 40052
+        Me.pnlSearch.TabIndex = 8
         '
         'dgAccounts
         '
@@ -552,7 +532,7 @@ Partial Class Print_Bills
         Me.ckJoin.Location = New System.Drawing.Point(12, 581)
         Me.ckJoin.Name = "ckJoin"
         Me.ckJoin.Size = New System.Drawing.Size(148, 17)
-        Me.ckJoin.TabIndex = 40056
+        Me.ckJoin.TabIndex = 13
         Me.ckJoin.Text = "Join Same Rate Entry"
         Me.ckJoin.UseVisualStyleBackColor = True
         '
@@ -568,7 +548,7 @@ Partial Class Print_Bills
         Me.Button3.Location = New System.Drawing.Point(970, 602)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(89, 30)
-        Me.Button3.TabIndex = 40057
+        Me.Button3.TabIndex = 11
         Me.Button3.Text = "Na&kal"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = False
@@ -581,7 +561,7 @@ Partial Class Print_Bills
         Me.ckCashBankBills.Location = New System.Drawing.Point(12, 604)
         Me.ckCashBankBills.Name = "ckCashBankBills"
         Me.ckCashBankBills.Size = New System.Drawing.Size(182, 17)
-        Me.ckCashBankBills.TabIndex = 40058
+        Me.ckCashBankBills.TabIndex = 14
         Me.ckCashBankBills.Text = "Print Cash / Bank Bills Also"
         Me.ckCashBankBills.UseVisualStyleBackColor = True
         '
@@ -621,7 +601,7 @@ Partial Class Print_Bills
         Me.Button4.Location = New System.Drawing.Point(1059, 602)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(125, 30)
-        Me.Button4.TabIndex = 40060
+        Me.Button4.TabIndex = 12
         Me.Button4.Text = "&Day to Day"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button4.UseVisualStyleBackColor = False
@@ -710,7 +690,7 @@ Partial Class Print_Bills
         Me.BtnSendWhatsapp.Location = New System.Drawing.Point(748, 602)
         Me.BtnSendWhatsapp.Name = "BtnSendWhatsapp"
         Me.BtnSendWhatsapp.Size = New System.Drawing.Size(222, 30)
-        Me.BtnSendWhatsapp.TabIndex = 91217
+        Me.BtnSendWhatsapp.TabIndex = 10
         Me.BtnSendWhatsapp.Text = "Send Whatsapp / SMS"
         Me.BtnSendWhatsapp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnSendWhatsapp.UseVisualStyleBackColor = False
@@ -1017,12 +997,32 @@ Partial Class Print_Bills
         Me.lblbillCount.Text = "0"
         Me.lblbillCount.Visible = False
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txttoDate.Location = New System.Drawing.Point(273, 72)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(100, 29)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.txtFromDate.Location = New System.Drawing.Point(89, 72)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(105, 29)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Print_Bills
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblvoucherCount)
         Me.Controls.Add(Me.BtnSendWhatsapp)
         Me.Controls.Add(Me.lblbillCount)
@@ -1049,7 +1049,6 @@ Partial Class Print_Bills
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.Label7)
@@ -1059,7 +1058,6 @@ Partial Class Print_Bills
         Me.Controls.Add(Me.btnSlips)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnPrint)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.Label8)
         Me.Name = "Print_Bills"
@@ -1082,8 +1080,6 @@ Partial Class Print_Bills
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents btnPrint As System.Windows.Forms.Button
     Friend WithEvents tmpgrid As System.Windows.Forms.DataGridView
@@ -1144,4 +1140,6 @@ Partial Class Print_Bills
     Friend WithEvents lblvoucherCount As System.Windows.Forms.Label
     Friend WithEvents lblbillCount As System.Windows.Forms.Label
     Friend WithEvents cbSim As System.Windows.Forms.ComboBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

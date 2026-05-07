@@ -1010,6 +1010,9 @@ Public Class CompanyList
         If clsFun.CheckIfColumnExists("Controls", "SlipMethod") = False Then
             clsFun.ExecNonQuery("ALTER TABLE Controls ADD COLUMN SlipMethod TEXT DEFAULT 'Group Wise';")
         End If
+        If clsFun.CheckIfColumnExists("Controls", "PreviewClose") = False Then
+            clsFun.ExecNonQuery("ALTER TABLE Controls ADD COLUMN PreviewClose TEXT DEFAULT 'Yes';")
+        End If
     End Sub
 
     Private Sub CreateOptions()

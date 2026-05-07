@@ -1,11 +1,15 @@
 ﻿Public Class Vehicle_Wise_Stock
 
+    Public Sub New()
+        InitializeComponent()
+        clsFun.DoubleBuffered(dg1, True)
+    End Sub
 
     Private Sub Stock_Balance_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles mskEntryDate.GotFocus, mskEntryDate.Click
-        mskEntryDate.SelectionStart = 0 : mskEntryDate.SelectionLength = Len(mskEntryDate.Text)
+    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles txtEntryDate.GotFocus, txtEntryDate.Click
+        txtEntryDate.SelectAll()
     End Sub
 
     Private Sub Stock_Balance_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -13,7 +17,7 @@
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        mskEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
         rowColums()
     End Sub
     Private Sub rowColums()
@@ -50,11 +54,21 @@
         End If
     End Sub
 
-    Private Sub mskEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskEntryDate.KeyDown
-        If e.KeyCode = Keys.Enter Then btnShow.Focus()
+    Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        Else
+            Exit Sub
+        End If
+        e.SuppressKeyPress = True
+        Select Case e.KeyCode
+            Case Keys.End
+                e.Handled = True
+                btnShow.Focus()
+        End Select
     End Sub
-    Private Sub mskEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+    Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        txtEntryDate.Text = SmartDate(txtEntryDate.Text, True, 2)
     End Sub
 
     Private Sub Retrive(Optional ByVal condtion As String = "", Optional ByVal condtion1 As String = "")
@@ -62,11 +76,11 @@
         'Dim dt As New DataTable
         'Dim i As Integer
         'Dim count As Integer = 0
-        'ssql = "Select VoucherID,EntryDate, AccountID,AccountName,StorageName,ItemID,VehicleNo, ItemName,sum(nug) as PurchaseNug From Purchase Where EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID order by VoucherID"
+        'ssql = "Select VoucherID,EntryDate, AccountID,AccountName,StorageName,ItemID,VehicleNo, ItemName,sum(nug) as PurchaseNug From Purchase Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " Group by VoucherID order by VoucherID"
         'dt = clsFun.ExecDataTable(ssql)
         'If dt.Rows.Count > 0 Then
         '    For i = 0 To dt.Rows.Count - 1
-        '        Dim SoldNug As String = clsFun.ExecScalarStr("Select sum(Nug) as SoldNug,PurchaseID from Transaction2 where Transtype='Stock Sale' and SallerID=" & Val(dt.Rows(i)("AccountID")) & " and PurchaseID=" & Val(dt.Rows(i)("VoucherID")) & " and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "'" & condtion1 & "Group by PurchaseID order by PurchaseID")
+        '        Dim SoldNug As String = clsFun.ExecScalarStr("Select sum(Nug) as SoldNug,PurchaseID from Transaction2 where Transtype='Stock Sale' and SallerID=" & Val(dt.Rows(i)("AccountID")) & " and PurchaseID=" & Val(dt.Rows(i)("VoucherID")) & " and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & condtion1 & "Group by PurchaseID order by PurchaseID")
         '        dg1.Rows.Add()
         '        With dg1.Rows(i)
         '            .Cells(0).Value = dt.Rows(i)("AccountId").ToString()
@@ -87,10 +101,10 @@
         Dim sql As String = String.Empty
         sql = "Select VoucherID,EntryDate, AccountID,AccountName, VehicleNo,ItemID, ItemName,LotNo,Sum(Nug) as PurchaseNug," & _
         "(Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')  and Lot=Purchase.LotNo and ItemID=Purchase.ItemID" & _
-        " and PurchaseID=Purchase.VoucherID and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')as soldNug,(Sum(Nug)-" & _
+        " and PurchaseID=Purchase.VoucherID and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')as soldNug,(Sum(Nug)-" & _
         "(Select ifnull(sum(Nug),0) from Transaction2 where Transtype in ('Stock Sale','On Sale','Standard Sale','Store Out')  and ItemID=Purchase.ItemID" & _
-        " and PurchaseID=Purchase.VoucherID and EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "')) as RestNug From Purchase" & _
-        " Where EntryDate <= '" & CDate(mskEntryDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " " & condtion1 & " " & _
+        " and PurchaseID=Purchase.VoucherID and EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as RestNug From Purchase" & _
+        " Where EntryDate <= '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & " " & condtion1 & " " & _
         "Group by ItemID,VoucherID Having RestNug <> 0  order by EntryDate,AccountName,ItemName "
         dt = clsFun.ExecDataTable(sql)
         For i = 0 To dt.Rows.Count - 1
@@ -129,9 +143,9 @@
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        If mskEntryDate.Enabled = False Then Exit Sub
-        mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        If txtEntryDate.Enabled = False Then Exit Sub
+        txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtEntryDate.Text = smartDate(txtEntryDate.Text)
     End Sub
     Private Sub printRecord()
         Dim count As Integer = 0
@@ -141,7 +155,7 @@
         ClsFunPrimary.ExecNonQuery("Delete from printing")
         For Each row As DataGridViewRow In dg1.Rows
             With row
-                sql = sql & "insert into Printing(D1,D2,P1, P2,P3, P4, P5, P6,P7,P8) values('" & mskEntryDate.Text & "','" & .Cells(1).Value & "'," & _
+                sql = sql & "insert into Printing(D1,D2,P1, P2,P3, P4, P5, P6,P7,P8) values('" & txtEntryDate.Text & "','" & .Cells(1).Value & "'," & _
                     "'" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(4).Value & "','" & .Cells(5).Value & "','" & .Cells(6).Value & "', " & _
                     "'" & .Cells(7).Value & "''" & txtTotCrate.Text & "');"
             End With

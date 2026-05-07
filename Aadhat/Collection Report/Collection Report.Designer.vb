@@ -32,8 +32,6 @@ Partial Class Collection_Report
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.txtTotCrate = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtTotGross = New System.Windows.Forms.TextBox()
@@ -58,6 +56,8 @@ Partial Class Collection_Report
         Me.pnlWait = New System.Windows.Forms.Panel()
         Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -140,7 +140,7 @@ Partial Class Collection_Report
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 472)
-        Me.dg1.TabIndex = 43
+        Me.dg1.TabIndex = 5
         '
         'BtnPrint
         '
@@ -154,7 +154,7 @@ Partial Class Collection_Report
         Me.BtnPrint.Location = New System.Drawing.Point(468, 79)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(89, 26)
-        Me.BtnPrint.TabIndex = 116
+        Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPrint.UseVisualStyleBackColor = False
@@ -171,32 +171,10 @@ Partial Class Collection_Report
         Me.btnShow.Location = New System.Drawing.Point(379, 79)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(90, 26)
-        Me.btnShow.TabIndex = 115
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.MsktoDate.Location = New System.Drawing.Point(266, 79)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(97, 26)
-        Me.MsktoDate.TabIndex = 114
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.mskFromDate.Location = New System.Drawing.Point(92, 79)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(98, 26)
-        Me.mskFromDate.TabIndex = 113
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtTotCrate
         '
@@ -435,7 +413,7 @@ Partial Class Collection_Report
         Me.Button1.Location = New System.Drawing.Point(557, 79)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(123, 26)
-        Me.Button1.TabIndex = 91217
+        Me.Button1.TabIndex = 4
         Me.Button1.Text = "Print &Hindi"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
@@ -456,7 +434,7 @@ Partial Class Collection_Report
         Me.dtp2.Location = New System.Drawing.Point(270, 79)
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
-        Me.dtp2.TabIndex = 91219
+        Me.dtp2.TabIndex = 1
         '
         'dtp1
         '
@@ -474,7 +452,7 @@ Partial Class Collection_Report
         Me.pnlWait.Location = New System.Drawing.Point(421, 263)
         Me.pnlWait.Name = "pnlWait"
         Me.pnlWait.Size = New System.Drawing.Size(388, 131)
-        Me.pnlWait.TabIndex = 91222
+        Me.pnlWait.TabIndex = 6
         Me.pnlWait.Visible = False
         '
         'pb1
@@ -495,12 +473,32 @@ Partial Class Collection_Report
         Me.Label9.TabIndex = 1
         Me.Label9.Text = "Please Wait..."
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(262, 79)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(101, 26)
+        Me.txttoDate.TabIndex = 5
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(89, 79)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Collection_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.pnlWait)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.txtid)
         Me.Controls.Add(Me.btnClose)
@@ -526,8 +524,6 @@ Partial Class Collection_Report
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.Name = "Collection_Report"
@@ -545,8 +541,6 @@ Partial Class Collection_Report
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txtTotCrate As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtTotGross As System.Windows.Forms.TextBox
@@ -572,4 +566,6 @@ Partial Class Collection_Report
     Friend WithEvents pnlWait As System.Windows.Forms.Panel
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

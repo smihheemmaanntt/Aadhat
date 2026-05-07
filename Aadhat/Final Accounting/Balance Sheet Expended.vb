@@ -27,7 +27,7 @@
         End Select
     End Sub
     Private Sub mskEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles mskEntryDate.Validating
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        mskEntryDate.Text = smartDate(mskEntryDate.Text)
     End Sub
     Private Sub rowColums()
         dg1.ColumnCount = 6
@@ -1372,6 +1372,6 @@
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         If mskEntryDate.Enabled = False Then Exit Sub
         mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskEntryDate.Text = clsFun.convdate(mskEntryDate.Text)
+        mskEntryDate.Text = smartDate(mskEntryDate.Text)
     End Sub
 End Class

@@ -17,18 +17,18 @@
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) from transaction2 where transtype='" & Me.Text & "'")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) from transaction2 where transtype='" & Me.Text & "'")
         If mindate <> "" Then
-            mskFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
+            txtFromDate.Text = CDate(mindate).ToString("dd-MM-yyyy")
         Else
-            mskFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txtFromDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         If maxdate <> "" Then
-            MsktoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
+            txttoDate.Text = CDate(maxdate).ToString("dd-MM-yyyy")
         Else
-            MsktoDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            txttoDate.Text = Date.Today.ToString("dd-MM-yyyy")
         End If
         rowColums()
     End Sub
-    Private Sub mskFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles mskFromDate.KeyDown, MsktoDate.KeyDown
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         Else
@@ -41,11 +41,11 @@
                 btnShow.Focus()
         End Select
     End Sub
-    Private Sub mskFromDate_GotFocus(sender As Object, e As EventArgs) Handles mskFromDate.GotFocus, mskFromDate.Click
-        mskFromDate.SelectionStart = 0 : mskFromDate.SelectionLength = Len(mskFromDate.Text)
+    Private Sub txtFromDate_GotFocus(sender As Object, e As EventArgs) Handles txtFromDate.GotFocus, txtFromDate.Click
+        txtFromDate.SelectAll()
     End Sub
-    Private Sub MsktoDate_GotFocus(sender As Object, e As EventArgs) Handles MsktoDate.GotFocus, MsktoDate.Click
-        MsktoDate.SelectionStart = 0 : MsktoDate.SelectionLength = Len(MsktoDate.Text)
+    Private Sub txttoDate_GotFocus(sender As Object, e As EventArgs) Handles txttoDate.GotFocus, txttoDate.Click
+        txttoDate.SelectAll()
     End Sub
 
     Private Sub rowColums()
@@ -69,8 +69,8 @@
     '            "SELECT V.SallerName AS AccountName," & _
     '            " SUM(V.TotalAmount) AS ChargesAmt " & _
     '            " FROM Vouchers V WHERE V.ID IN (SELECT DISTINCT T2.VoucherID FROM Transaction2 T2)" & _
-    '            " AND V.EntryDate BETWEEN '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' " & _
-    '            " AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & _
+    '            " AND V.EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' " & _
+    '            " AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & _
     '            " GROUP BY V.SallerName, V.SallerID " & _
     '            " ORDER BY V.SallerName"
     '        dtCharges = clsFun.ExecDataTable(sqlCharges)
@@ -83,8 +83,8 @@
     '                                     "SUM(RdfAmt) AS RDF, '' AS Bardana, " & _
     '                                     "SUM(LabourAmt) AS Labour, (SUM(LabourAmt)+sum(RdfAmt)) AS TotalExp " & _
     '                                     "FROM Transaction2 WHERE EntryDate BETWEEN '" & _
-    '                                     CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
-    '                                     CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
+    '                                     CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
+    '                                     CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
 
     '        ' ============================
     '        ' Get Account Totals
@@ -92,8 +92,8 @@
     '        Dim dtAcc As New DataTable
     '        dtAcc = clsFun.ExecDataTable("SELECT AccountName, SUM(TotalAmount) AS TotalAmount " & _
     '                                     "FROM Transaction2 WHERE EntryDate BETWEEN '" & _
-    '                                     CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
-    '                                     CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & _
+    '                                     CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
+    '                                     CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & _
     '                                     " GROUP BY AccountName ORDER BY AccountName")
 
     '        ' ============================
@@ -209,10 +209,10 @@
     '    dg1.Rows.Clear()
     '     Get Expense Data
     '    Dim dtExp As New DataTable
-    '    dtExp = clsFun.ExecDataTable("Select sum(CommAmt) as Commission, sum(MAmt) as MandiTax, sum(RdfAmt) as RDF, sum(TareAmt) as Bardana, sum(LabourAmt) as Labour, sum(Charges) as Charges from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
+    '    dtExp = clsFun.ExecDataTable("Select sum(CommAmt) as Commission, sum(MAmt) as MandiTax, sum(RdfAmt) as RDF, sum(TareAmt) as Bardana, sum(LabourAmt) as Labour, sum(Charges) as Charges from Transaction2 Where EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
     '     Get Account Data
     '    Dim dtAcc As New DataTable
-    '    dtAcc = clsFun.ExecDataTable("Select AccountName, sum(TotalAmount) as TotalAmount from Transaction2 Where EntryDate Between '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & " Group By AccountName order by AccountName")
+    '    dtAcc = clsFun.ExecDataTable("Select AccountName, sum(TotalAmount) as TotalAmount from Transaction2 Where EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & " Group By AccountName order by AccountName")
 
     '    Try
     '        Dim maxRows As Integer = Math.Max(dtExp.Rows.Count, dtAcc.Rows.Count)
@@ -279,15 +279,15 @@
             'Dim sqlCharges As String = _
             '    "SELECT SallerName as AccountName, SUM(SallerAmt) AS ChargesAmt " & _
             '                             "FROM Transaction2  INNER JOIN Vouchers V ON V.ID = T2.VoucherID WHERE EntryDate BETWEEN '" & _
-            '                             CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
-            '                             CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & _
+            '                             CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
+            '                             CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & _
             '                             " GROUP BY SallerID ORDER BY SallerName"
             Dim sqlCharges As String = _
                 "SELECT V.SallerName AS AccountName, SUM(T2.SallerAmt) AS ChargesAmt " & _
                 "FROM Transaction2 T2 " & _
                 "INNER JOIN Vouchers V ON V.ID = T2.VoucherID " & _
-                "WHERE V.EntryDate BETWEEN '" & CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' " & _
-                "AND '" & CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & _
+                "WHERE V.EntryDate BETWEEN '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' " & _
+                "AND '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & _
                 Primary & " " & _
                 "GROUP BY V.SallerName, V.SallerID " & _
                 "ORDER BY V.SallerName"
@@ -301,8 +301,8 @@
                                          "SUM(RdfAmt) AS RDF, SUM(TareAmt) AS Bardana, " & _
                                          "SUM(LabourAmt) AS Labour, SUM(Charges) AS TotalExp " & _
                                          "FROM Transaction2 WHERE EntryDate BETWEEN '" & _
-                                         CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
-                                         CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
+                                         CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
+                                         CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary)
 
             ' ============================
             ' Get Account Totals (Transaction2)
@@ -310,8 +310,8 @@
             Dim dtAcc As New DataTable
             dtAcc = clsFun.ExecDataTable("SELECT AccountName, SUM(TotalAmount) AS TotalAmount " & _
                                          "FROM Transaction2 WHERE EntryDate BETWEEN '" & _
-                                         CDate(mskFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
-                                         CDate(MsktoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & _
+                                         CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & _
+                                         CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & Primary & _
                                          " GROUP BY AccountName ORDER BY AccountName")
 
             ' ============================
@@ -477,7 +477,7 @@
             FastQuery = String.Empty : TotalRecord = (AllRecord - LastRecord)
             For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), 99)
                 With dg1.Rows(LastRecord)
-                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & mskFromDate.Text & "','" & MsktoDate.Text & "'," & _
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & "'" & txtFromDate.Text & "','" & txttoDate.Text & "'," & _
                       "'" & .Cells(1).Value & "','" & .Cells(2).Value & "','" & .Cells(3).Value & "', " & _
                       "'" & .Cells(4).Value & "'"
                 End With
@@ -503,32 +503,32 @@
     End Sub
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        MsktoDate.Focus()
+        txttoDate.Focus()
     End Sub
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+        txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
+        txttoDate.Text = smartDate(txttoDate.Text)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        mskFromDate.Focus()
+        txtFromDate.Focus()
     End Sub
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
+        txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub MsktoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MsktoDate.Validating
-        MsktoDate.Text = clsFun.convdate(MsktoDate.Text)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
-    Private Sub mskFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mskFromDate.Validating
-        mskFromDate.Text = clsFun.convdate(mskFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
+    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
 
     End Sub
 End Class

@@ -23,14 +23,12 @@ Partial Class Group_Receipt_Register
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Group_Receipt_Register))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.lblName = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
         Me.dg1 = New System.Windows.Forms.DataGridView()
         Me.txtTotBasic = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -48,6 +46,8 @@ Partial Class Group_Receipt_Register
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -90,35 +90,10 @@ Partial Class Group_Receipt_Register
         Me.btnShow.Location = New System.Drawing.Point(417, 89)
         Me.btnShow.Name = "btnShow"
         Me.btnShow.Size = New System.Drawing.Size(103, 27)
-        Me.btnShow.TabIndex = 116
-        Me.btnShow.TabStop = False
+        Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(314, 89)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(86, 26)
-        Me.MsktoDate.TabIndex = 115
-        Me.MsktoDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'mskFromDate
-        '
-        Me.mskFromDate.BackColor = System.Drawing.Color.GhostWhite
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(113, 89)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(86, 26)
-        Me.mskFromDate.TabIndex = 114
-        Me.mskFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'dg1
         '
@@ -127,24 +102,24 @@ Partial Class Group_Receipt_Register
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dg1.ColumnHeadersHeight = 25
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkTurquoise
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkTurquoise
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle8
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
         Me.dg1.Location = New System.Drawing.Point(12, 114)
@@ -154,9 +129,9 @@ Partial Class Group_Receipt_Register
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 42
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle9
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 500)
@@ -200,8 +175,7 @@ Partial Class Group_Receipt_Register
         Me.btnPrint.Location = New System.Drawing.Point(518, 89)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(100, 27)
-        Me.btnPrint.TabIndex = 40066
-        Me.btnPrint.TabStop = False
+        Me.btnPrint.TabIndex = 3
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPrint.UseVisualStyleBackColor = False
@@ -226,7 +200,7 @@ Partial Class Group_Receipt_Register
         Me.txtTotalSearch.Location = New System.Drawing.Point(1058, 89)
         Me.txtTotalSearch.Name = "txtTotalSearch"
         Me.txtTotalSearch.Size = New System.Drawing.Size(126, 26)
-        Me.txtTotalSearch.TabIndex = 40080
+        Me.txtTotalSearch.TabIndex = 7
         Me.txtTotalSearch.TabStop = False
         '
         'Label8
@@ -271,7 +245,7 @@ Partial Class Group_Receipt_Register
         Me.txtDiscSearch.Location = New System.Drawing.Point(931, 89)
         Me.txtDiscSearch.Name = "txtDiscSearch"
         Me.txtDiscSearch.Size = New System.Drawing.Size(128, 26)
-        Me.txtDiscSearch.TabIndex = 40076
+        Me.txtDiscSearch.TabIndex = 6
         Me.txtDiscSearch.TabStop = False
         '
         'txtNetSearch
@@ -283,7 +257,7 @@ Partial Class Group_Receipt_Register
         Me.txtNetSearch.Location = New System.Drawing.Point(812, 89)
         Me.txtNetSearch.Name = "txtNetSearch"
         Me.txtNetSearch.Size = New System.Drawing.Size(120, 26)
-        Me.txtNetSearch.TabIndex = 40075
+        Me.txtNetSearch.TabIndex = 5
         Me.txtNetSearch.TabStop = False
         '
         'txtCustomerSearch
@@ -295,7 +269,7 @@ Partial Class Group_Receipt_Register
         Me.txtCustomerSearch.Location = New System.Drawing.Point(618, 89)
         Me.txtCustomerSearch.Name = "txtCustomerSearch"
         Me.txtCustomerSearch.Size = New System.Drawing.Size(195, 26)
-        Me.txtCustomerSearch.TabIndex = 40074
+        Me.txtCustomerSearch.TabIndex = 4
         Me.txtCustomerSearch.TabStop = False
         '
         'Label2
@@ -348,11 +322,31 @@ Partial Class Group_Receipt_Register
         Me.dtp2.Size = New System.Drawing.Size(102, 26)
         Me.dtp2.TabIndex = 91140
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(308, 89)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(112, 89)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(89, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Group_Receipt_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnClose)
@@ -371,8 +365,6 @@ Partial Class Group_Receipt_Register
         Me.Controls.Add(Me.txtTotBasic)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.MsktoDate)
-        Me.Controls.Add(Me.mskFromDate)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.dtp2)
         Me.KeyPreview = True
@@ -387,8 +379,6 @@ Partial Class Group_Receipt_Register
     End Sub
     Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
     Friend WithEvents txtTotBasic As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -407,4 +397,6 @@ Partial Class Group_Receipt_Register
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class

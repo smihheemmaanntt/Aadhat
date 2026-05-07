@@ -2697,4 +2697,8 @@ Public Class Purchase
     Private Sub txtTotalNetAmount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTotalNetAmount.KeyDown
 
     End Sub
+
+    Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
+
+    End Sub
 End Class

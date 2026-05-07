@@ -137,6 +137,7 @@ Partial Class MainScreenPicture
         Me.Label7 = New System.Windows.Forms.Label()
         Me.pbAadhat = New System.Windows.Forms.PictureBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -726,7 +727,7 @@ Partial Class MainScreenPicture
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(914, 584)
+        Me.Label16.Location = New System.Drawing.Point(926, 572)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(222, 15)
         Me.Label16.TabIndex = 44
@@ -737,7 +738,7 @@ Partial Class MainScreenPicture
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Times New Roman", 15.0!)
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(910, 601)
+        Me.Label15.Location = New System.Drawing.Point(910, 589)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(262, 22)
         Me.Label15.TabIndex = 43
@@ -1195,7 +1196,7 @@ Partial Class MainScreenPicture
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.Black
-        Me.Label28.Location = New System.Drawing.Point(970, 624)
+        Me.Label28.Location = New System.Drawing.Point(970, 612)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(163, 15)
         Me.Label28.TabIndex = 50
@@ -1426,12 +1427,24 @@ Partial Class MainScreenPicture
         Me.Label9.Text = "समय-समय पर डाटा का बैकअप जरूर ले, और" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "अनावश्यक हानि से बचे |"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Navy
+        Me.Label10.Location = New System.Drawing.Point(1005, 627)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(104, 15)
+        Me.Label10.TabIndex = 71
+        Me.Label10.Text = "Copyright ©  2026"
+        '
         'MainScreenPicture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(1197, 653)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.pnlSale)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.pbAadhat)
@@ -1650,4 +1663,5 @@ Partial Class MainScreenPicture
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents pbAadhat As System.Windows.Forms.PictureBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class

@@ -1914,4 +1914,8 @@
     Private Sub txtKg_TextChanged(sender As Object, e As EventArgs) Handles txtKg.TextChanged
 
     End Sub
+
+    Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
+
+    End Sub
 End Class

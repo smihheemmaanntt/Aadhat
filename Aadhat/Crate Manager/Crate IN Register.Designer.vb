@@ -40,8 +40,6 @@ Partial Class Crate_IN_Register
         Me.txtAccount = New System.Windows.Forms.TextBox()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
-        Me.mskFromDate = New System.Windows.Forms.MaskedTextBox()
-        Me.MsktoDate = New System.Windows.Forms.MaskedTextBox()
         Me.dtp2 = New System.Windows.Forms.DateTimePicker()
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.pnlWait = New System.Windows.Forms.Panel()
@@ -52,6 +50,8 @@ Partial Class Crate_IN_Register
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtMarka = New System.Windows.Forms.TextBox()
         Me.CkHideOpBal = New System.Windows.Forms.CheckBox()
+        Me.txttoDate = New System.Windows.Forms.TextBox()
+        Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlWait.SuspendLayout()
@@ -102,7 +102,7 @@ Partial Class Crate_IN_Register
         Me.TxtGrandTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtGrandTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.TxtGrandTotal.ForeColor = System.Drawing.Color.Navy
-        Me.TxtGrandTotal.Location = New System.Drawing.Point(855, 612)
+        Me.TxtGrandTotal.Location = New System.Drawing.Point(859, 603)
         Me.TxtGrandTotal.Name = "TxtGrandTotal"
         Me.TxtGrandTotal.ReadOnly = True
         Me.TxtGrandTotal.Size = New System.Drawing.Size(86, 26)
@@ -115,7 +115,7 @@ Partial Class Crate_IN_Register
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(787, 616)
+        Me.Label5.Location = New System.Drawing.Point(791, 608)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(62, 19)
         Me.Label5.TabIndex = 40046
@@ -252,26 +252,6 @@ Partial Class Crate_IN_Register
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnShow.UseVisualStyleBackColor = False
         '
-        'mskFromDate
-        '
-        Me.mskFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.mskFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.mskFromDate.Location = New System.Drawing.Point(119, 108)
-        Me.mskFromDate.Mask = "00-00-0000"
-        Me.mskFromDate.Name = "mskFromDate"
-        Me.mskFromDate.Size = New System.Drawing.Size(90, 26)
-        Me.mskFromDate.TabIndex = 0
-        '
-        'MsktoDate
-        '
-        Me.MsktoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MsktoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MsktoDate.Location = New System.Drawing.Point(304, 108)
-        Me.MsktoDate.Mask = "00-00-0000"
-        Me.MsktoDate.Name = "MsktoDate"
-        Me.MsktoDate.Size = New System.Drawing.Size(90, 26)
-        Me.MsktoDate.TabIndex = 1
-        '
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -279,14 +259,16 @@ Partial Class Crate_IN_Register
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
         Me.dtp2.TabIndex = 91257
+        Me.dtp2.TabStop = False
         '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp1.Location = New System.Drawing.Point(115, 108)
+        Me.dtp1.Location = New System.Drawing.Point(117, 108)
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(109, 26)
-        Me.dtp1.TabIndex = 91258
+        Me.dtp1.TabIndex = 10000
+        Me.dtp1.TabStop = False
         '
         'pnlWait
         '
@@ -324,7 +306,7 @@ Partial Class Crate_IN_Register
         Me.txtTotEstimateOut.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotEstimateOut.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotEstimateOut.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotEstimateOut.Location = New System.Drawing.Point(1027, 611)
+        Me.txtTotEstimateOut.Location = New System.Drawing.Point(1031, 603)
         Me.txtTotEstimateOut.Name = "txtTotEstimateOut"
         Me.txtTotEstimateOut.ReadOnly = True
         Me.txtTotEstimateOut.Size = New System.Drawing.Size(153, 26)
@@ -337,7 +319,7 @@ Partial Class Crate_IN_Register
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(950, 615)
+        Me.Label3.Location = New System.Drawing.Point(954, 607)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 19)
         Me.Label3.TabIndex = 40246
@@ -377,11 +359,32 @@ Partial Class Crate_IN_Register
         Me.CkHideOpBal.Text = "&Hide Opening Balance"
         Me.CkHideOpBal.UseVisualStyleBackColor = True
         '
+        'txttoDate
+        '
+        Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttoDate.Location = New System.Drawing.Point(298, 108)
+        Me.txttoDate.Name = "txttoDate"
+        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.TabIndex = 1
+        '
+        'txtFromDate
+        '
+        Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFromDate.Location = New System.Drawing.Point(110, 108)
+        Me.txtFromDate.Name = "txtFromDate"
+        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.TabIndex = 0
+        '
         'Crate_IN_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.txttoDate)
+        Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.txtTotEstimateOut)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.pnlWait)
@@ -391,7 +394,6 @@ Partial Class Crate_IN_Register
         Me.Controls.Add(Me.lblRecordCount)
         Me.Controls.Add(Me.TxtGrandTotal)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.CkHideOpBal)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtMarka)
@@ -401,8 +403,6 @@ Partial Class Crate_IN_Register
         Me.Controls.Add(Me.txtAccount)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
-        Me.Controls.Add(Me.mskFromDate)
-        Me.Controls.Add(Me.MsktoDate)
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Name = "Crate_IN_Register"
@@ -428,8 +428,6 @@ Partial Class Crate_IN_Register
     Friend WithEvents txtAccount As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
     Friend WithEvents btnShow As System.Windows.Forms.Button
-    Friend WithEvents mskFromDate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents MsktoDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents dtp2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtp1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents pnlWait As System.Windows.Forms.Panel
@@ -440,4 +438,6 @@ Partial Class Crate_IN_Register
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtMarka As System.Windows.Forms.TextBox
     Friend WithEvents CkHideOpBal As System.Windows.Forms.CheckBox
+    Friend WithEvents txttoDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
 End Class
