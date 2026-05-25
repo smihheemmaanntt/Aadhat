@@ -352,6 +352,7 @@
     <Compile Include="Class\ClsImportCrates.vb" />
     <Compile Include="Class\ClsFunserver.vb" />
     <Compile Include="Class\ClsImportBalances.vb" />
+    <Compile Include="Class\ComplaintApiModels.vb" />
     <Compile Include="Class\DetectDebugger.vb" />
     <Compile Include="Class\GlobalApi.vb" />
     <Compile Include="Class\LicenseModule.vb" />
@@ -361,6 +362,7 @@
     <Compile Include="Class\Translation.vb" />
     <Compile Include="Class\WABA.vb" />
     <Compile Include="Class\WhatsAppSender.vb" />
+    <Compile Include="Class\WinHttpHelper.vb" />
     <Compile Include="Collection Report\CollectionReportAll.Designer.vb">
       <DependentUpon>CollectionReportAll.vb</DependentUpon>
     </Compile>
@@ -371,6 +373,18 @@
       <DependentUpon>Show_Accounts.vb</DependentUpon>
     </Compile>
     <Compile Include="Combine Reports\Show_Accounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Complaints\ComplaintListForm.designer.vb">
+      <DependentUpon>ComplaintListForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Complaints\ComplaintListForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Complaints\ComplaintRegisterForm.Designer.vb">
+      <DependentUpon>ComplaintRegisterForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Complaints\ComplaintRegisterForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Daily Reports\Account_Monthly_Summary.Designer.vb">
@@ -1399,6 +1413,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Combine Reports\Show_Accounts.resx">
       <DependentUpon>Show_Accounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Complaints\ComplaintListForm.resx">
+      <DependentUpon>ComplaintListForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Complaints\ComplaintRegisterForm.resx">
+      <DependentUpon>ComplaintRegisterForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Daily Reports\Account_Monthly_Summary.resx">
       <DependentUpon>Account_Monthly_Summary.vb</DependentUpon>

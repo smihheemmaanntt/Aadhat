@@ -107,10 +107,16 @@ Public Class ApplyLicenseKey
         If IsCustomerCode(inputKey) Then
 
             If AccentStorageHelper.RetrieveLicense(inputKey) Then
-                MsgBox("License retrieved and activated on this PC.", vbInformation)
-                Me.Close()
+                If AccentStorageHelper.IsLicenseUsable() Then
+                    MsgBox("License retrieved and activated on this PC.", vbInformation)
+                    Me.Close()
+                ElseIf AccentStorageHelper.IsLocallyBlocked() OrElse AccentStorageHelper.LastLicenseError = "blocked" Then
+                    MsgBox("Licence is blocked.", vbCritical, "Access Denied")
+                Else
+                    MsgBox("Unable to retrieve license. This PC may not be authorized or license is expired.", vbCritical)
+                End If
             Else
-                MsgBox("Unable to retrieve license. Please check customer code.", vbCritical)
+                MsgBox("Unable to retrieve license. This PC may not be authorized or license is blocked.", vbCritical)
             End If
 
             Exit Sub
@@ -129,10 +135,17 @@ Public Class ApplyLicenseKey
         '==============================================================
         If Not File.Exists(filePath) Then
 
+            Dim boardId As String = AccentStorageHelper.GetMotherboardID()
+
+            If boardId = "" Then
+                MsgBox("Unable to read Motherboard ID. License cannot be activated.", vbCritical)
+                Exit Sub
+            End If
+
             Dim data As New LicenseData With {
                 .license_key = inputKey,
                 .product_id = 1,
-                .board_id = AccentStorageHelper.GetMotherboardID(),
+                .board_id = boardId,
                 .pc_name = Environment.MachineName,
                 .firm_name = txtFrimName.Text,
                 .address = txtfullAddress.Text,
@@ -140,7 +153,7 @@ Public Class ApplyLicenseKey
                 .state = txtState.Text,
                 .mobile1 = txtMobile1.Text,
                 .mobile2 = txtMobile2.Text,
-            .email = txtEmail.Text
+                .email = txtEmail.Text
             }
 
             Dim response = AccentStorageHelper.SaveLicense(data)
@@ -173,7 +186,9 @@ Public Class ApplyLicenseKey
         MsgBox(amcRespObj.message, If(amcRespObj.status = "success", vbInformation, vbCritical))
 
         If amcRespObj.status = "success" Then Me.Close()
-
+        AccentStorageHelper.GetRemainingDays()
+        MainScreenForm.lblARC.Text =
+            If(daysLeft > 0, "ARC Expire In Next " & daysLeft & " Days", "")
     End Sub
 
     'Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click

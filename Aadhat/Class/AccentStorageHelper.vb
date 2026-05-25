@@ -4,6 +4,7 @@ Imports System.Text
 Imports System.Security.Cryptography
 Imports Newtonsoft.Json
 Imports System.Management
+Imports System.Linq
 
 '=====================================================
 ' MODELS
@@ -37,6 +38,7 @@ Public Class CustomerActivationResponse
     Public Property address As String
 
     Public Property activation_date As String
+    Public Property license_effective_from As String
 
     ' 🔥 EXACT NAMES AS API
     Public Property license_expiry_date As String
@@ -67,7 +69,7 @@ Public Class AmcData
     Public Property activation_date As String
     Public Property amc_start As String
     Public Property amc_end As String
-    Public Property amc_days  As Integer
+    Public Property amc_days As Integer
     Public Property status As String
 End Class
 
@@ -102,13 +104,15 @@ Public Class AccentStorageHelper
     Private Shared storePath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
     Private Shared AES_KEY As String = "12345678901234567890123456789012"
     Private Shared AES_IV As String = "1234567890123456"
+    Public Shared LastLicenseError As String = ""
 
     '=====================================================
     ' INTERNET CHECK (PING / HTTP)
     '=====================================================
     Public Shared Function IsInternetAvailable() As Boolean
         Try
-            Dim req = CType(WebRequest.Create("https://crm.softmanagementindia.in/ping.txt"), HttpWebRequest)
+            Dim pingUrl As String = BASE_URL.Replace("/api/", "/ping.txt")
+            Dim req = CType(WebRequest.Create(pingUrl), HttpWebRequest)
             req.Method = "GET"
             req.Timeout = 4000
             req.ReadWriteTimeout = 4000
@@ -130,11 +134,24 @@ Public Class AccentStorageHelper
     Public Shared Function CheckOnlineBlock(customerCode As String) As Boolean?
         Try
             If Not IsInternetAvailable() Then Return Nothing
-            Dim json = New WebClient().DownloadString(BlockStatusUrl & "?customer_code=" & customerCode)
+
+            Dim url As String = BlockStatusUrl & _
+                "?customer_code=" & Uri.EscapeDataString(customerCode) & _
+                "&board_id=" & Uri.EscapeDataString(GetMotherboardID())
+
+            Dim json = New WebClient().DownloadString(url)
             Dim obj = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(json)
-            If obj.ContainsKey("is_blocked") Then
-                Return Convert.ToBoolean(obj("is_blocked"))
+
+            If obj Is Nothing OrElse Not obj.ContainsKey("status") OrElse Convert.ToString(obj("status")).ToLower() <> "success" Then
+                Return Nothing
             End If
+
+            If obj.ContainsKey("is_blocked") Then
+                Dim apiBlocked As Boolean = Convert.ToBoolean(obj("is_blocked"))
+                SetLocalBlock(apiBlocked)
+                Return apiBlocked
+            End If
+
             Return Nothing
         Catch
             Return Nothing
@@ -149,6 +166,16 @@ Public Class AccentStorageHelper
         store.is_blocked = status
         SaveStore(store)
     End Sub
+
+    Public Shared Function IsLocallyBlocked() As Boolean
+        Try
+            Dim store = LoadStore()
+            If store Is Nothing Then Return False
+            Return store.is_blocked
+        Catch
+            Return False
+        End Try
+    End Function
 
     '=====================================================
     ' AES ENCRYPT / DECRYPT
@@ -253,6 +280,15 @@ Public Class AccentStorageHelper
         End Using
     End Function
 
+    '    Public Shared Function PostJson(
+    '    url As String,
+    '    obj As Object
+    ') As String
+
+    '        Return WinHttpHelper.PostJson(url, obj)
+
+    '    End Function
+
     '=====================================================
     ' SAVE LICENSE (FRESH + RESPONSE DRIVEN STORE)
     '=====================================================
@@ -271,7 +307,8 @@ Public Class AccentStorageHelper
         store.license_data = New LicenseData With {
             .license_key = data.license_key,
             .product_id = data.product_id,
-            .pc_name = data.pc_name
+            .pc_name = data.pc_name,
+            .board_id = data.board_id
         }
 
         ' 🔥 CUSTOMER PROFILE – SERVER AUTHORITY
@@ -292,7 +329,7 @@ Public Class AccentStorageHelper
             .message = resp.message,
             .customer_code = resp.customer_code,
             .activation_date = resp.activation_date,
-            .license_effective_from = resp.activation_date,
+            .license_effective_from = If(String.IsNullOrEmpty(resp.license_effective_from), resp.activation_date, resp.license_effective_from),
             .license_expiry_date = resp.license_expiry_date,
             .license_expiry = resp.license_expiry,
             .expires_on = resp.expires_on,
@@ -342,7 +379,9 @@ Public Class AccentStorageHelper
             Dim store = LoadStore()
             Dim payload = New With {
                 .customer_code = store.response_data.customer_code,
-                .board_id = GetMotherboardID()
+                .board_id = GetMotherboardID(),
+                .action = "revoke_board",
+                .reason = "Released from VB app"
             }
             Dim res = PostJson(ReleaseLicenseUrl, payload)
             Return res.ToLower().Contains("success")
@@ -405,12 +444,28 @@ Public Class AccentStorageHelper
         Try
             For Each mo As ManagementObject In
                 New ManagementObjectSearcher("SELECT SerialNumber FROM Win32_BaseBoard").Get()
-                Return mo("SerialNumber").ToString()
+                Return NormalizeBoardId(mo("SerialNumber").ToString())
             Next
         Catch
         End Try
         Return ""
     End Function
+
+    Private Shared Function NormalizeBoardId(value As String) As String
+        If value Is Nothing Then Return ""
+        Return value.Trim().ToUpperInvariant()
+    End Function
+
+    Private Shared Function SplitBoardIds(boardIds As String) As List(Of String)
+        If String.IsNullOrEmpty(boardIds) Then Return New List(Of String)
+
+        Return boardIds.Split(","c).
+            Select(Function(x) NormalizeBoardId(x)).
+            Where(Function(x) x <> "").
+            Distinct().
+            ToList()
+    End Function
+
     '=====================================================
     ' CHECK CURRENT BOARD AUTHORIZATION (MULTI BOARD SAFE)
     '=====================================================
@@ -418,79 +473,65 @@ Public Class AccentStorageHelper
         Dim store = LoadStore()
         If store Is Nothing OrElse store.response_data Is Nothing Then Return False
 
-        Dim currentBoard As String = GetMotherboardID()
-        Dim boardIds As String = store.response_data.board_ids
+        Dim currentBoard As String = NormalizeBoardId(GetMotherboardID())
+        If String.IsNullOrEmpty(currentBoard) Then Return False
 
-        ' No board list → force retrieve
-        If String.IsNullOrEmpty(boardIds) Then
-            Return TryRetrieve(store.response_data.customer_code, currentBoard)
+        Dim boardIds As String = store.response_data.board_ids
+        If String.IsNullOrEmpty(boardIds) AndAlso store.license_data IsNot Nothing Then
+            boardIds = store.license_data.board_ids
         End If
 
-        Dim boards = boardIds.Split(","c).
-            Select(Function(x) x.Trim()).
-            Where(Function(x) x <> "").
-            ToList()
+        If String.IsNullOrEmpty(boardIds) AndAlso store.license_data IsNot Nothing Then
+            boardIds = store.license_data.board_id
+        End If
 
-        ' Already authorized
-        If boards.Contains(currentBoard) Then Return True
+        If String.IsNullOrEmpty(boardIds) Then Return False
 
-        ' Try retrieve from server
-        Return TryRetrieve(store.response_data.customer_code, currentBoard)
-    End Function
-
-
-    '=====================================================
-    ' INTERNAL RETRIEVE + RECHECK
-    '=====================================================
-    Private Shared Function TryRetrieve(customerCode As String, currentBoard As String) As Boolean
-        If Not IsInternetAvailable() Then Return False
-
-        If Not RetrieveLicense(customerCode) Then Return False
-
-        Dim store = LoadStore()
-        If store Is Nothing OrElse store.response_data Is Nothing Then Return False
-
-        Dim boards = store.response_data.board_ids.Split(","c).
-            Select(Function(x) x.Trim()).
-            Where(Function(x) x <> "").
-            ToList()
-
+        Dim boards = SplitBoardIds(boardIds)
         Return boards.Contains(currentBoard)
+        'Return boards.Contains("123")
     End Function
     '=====================================================
     ' COMPLETE LICENSE GATE CHECK (LOGIN SAFE)
     '=====================================================
     Public Shared Function IsLicenseUsable() As Boolean
 
+        LastLicenseError = ""
+
         ' License file + structure
         Dim store = LoadStore()
         If store Is Nothing OrElse store.license_data Is Nothing OrElse store.response_data Is Nothing Then
+            LastLicenseError = "missing"
             Return False
         End If
 
-        ' Board authorization (auto retrieve supported)
-        'If Not EnsureBoardAuthorized() Then
-        '    Return False
-        'End If
-
-        ' Online block sync (only if internet)
-        If IsInternetAvailable() Then
-            Try
-                Dim onlineBlock = CheckOnlineBlock(store.response_data.customer_code)
-                If onlineBlock IsNot Nothing Then
-                    SetLocalBlock(onlineBlock)
-                End If
-            Catch
-            End Try
+        ' Online hone par sirf block status check hota hai.
+        Dim onlineBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
+        If onlineBlock.HasValue AndAlso onlineBlock.Value = True Then
+            LastLicenseError = "blocked"
+            Return False
         End If
 
         ' Local block
-        If store.is_blocked Then
+        If IsLocallyBlocked() Then
+            LastLicenseError = "blocked"
+            Return False
+        End If
+
+        ' Board authorization hamesha local coreaccess.smx file se hota hai.
+        If Not EnsureBoardAuthorized() Then
+            If LastLicenseError = "" Then LastLicenseError = "not_authorized"
             Return False
         End If
 
         ' Final expiry check (license / AMC)
-        Return CheckLicense()
+        If Not CheckLicense() Then
+            If LastLicenseError = "" Then LastLicenseError = "expired"
+            Return False
+        End If
+
+        LastLicenseError = ""
+        Return True
     End Function
     '=====================================================
     ' GET REMAINING LICENSE / AMC DAYS

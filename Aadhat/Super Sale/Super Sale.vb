@@ -328,10 +328,11 @@ Public Class Super_Sale
         If dgCustomer.Rows.Count = 0 Then RetriveCustomer()
         If dgCustomer.SelectedRows.Count = 0 Then dgCustomer.Visible = True
         If txtCustomer.Text.Trim() <> "" Then
-            RetriveCustomer(" And upper(AccountName) Like upper('" & txtCustomer.Text.Trim() & "%')")
+            RetriveCustomer(" And upper(AccountName) Like upper('" & txtCustomer.Text.Trim() & "')")
         Else
             RetriveCustomer()
         End If
+
         txtcustomerID.Text = dgCustomer.SelectedRows(0).Cells(0).Value
         txtCustomer.Text = dgCustomer.SelectedRows(0).Cells(1).Value
         dgCustomer.Visible = False : AcCustBal()
@@ -2762,8 +2763,7 @@ Public Class Super_Sale
     '    End If
     'End Sub
     Private Sub dgCustomer_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgCustomer.CellClick
-        txtCustomer.Clear()
-        txtcustomerID.Clear()
+        txtCustomer.Clear() : txtcustomerID.Clear()
         txtcustomerID.Text = dgCustomer.SelectedRows(0).Cells(0).Value
         txtCustomer.Text = dgCustomer.SelectedRows(0).Cells(1).Value
         dgCustomer.Visible = False
@@ -2776,7 +2776,7 @@ Public Class Super_Sale
             txtcustomerID.Clear()
             txtcustomerID.Text = dgCustomer.SelectedRows(0).Cells(0).Value
             txtCustomer.Text = dgCustomer.SelectedRows(0).Cells(1).Value
-            dgCustomer.Visible = False
+            'dgCustomer.Visible = False
             If clsFun.ExecScalarStr("Select SpeedKaat From Controls") = "Y" Then txtCut.TabStop = True : txtCut.Focus() Else txtCut.TabStop = False : txtNug.Focus()
             e.SuppressKeyPress = True
         End If
@@ -3260,6 +3260,10 @@ Public Class Super_Sale
     End Sub
 
     Private Sub txtRdfAmt_TextChanged(sender As Object, e As EventArgs) Handles txtRdfAmt.TextChanged
+
+    End Sub
+
+    Private Sub txtNug_TextChanged(sender As Object, e As EventArgs) Handles txtNug.TextChanged
 
     End Sub
 End Class

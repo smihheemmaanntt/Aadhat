@@ -13,7 +13,7 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
+        System.Net.ServicePointManager.SecurityProtocol = CType(768 Or 3072, System.Net.SecurityProtocolType)
         '  rs.FindAllControls(Me)
         CompanyList.Enabled = False
         Me.Top = 130 : Me.Left = 84
@@ -57,20 +57,29 @@ Public Class Login
             Exit Sub
         End If
 
-        ' ---------------- LICENSE FILE ----------------
+        ' ---------------- LICENSE / TRIAL CHECK ----------------
         Dim isExpired As Boolean = AccentStorageHelper.CheckLicence()
-        Dim licPath = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        Dim licPath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
+
         If Not File.Exists(licPath) Then
             If isExpired = True Then
                 ShowApplyLicense()
                 Exit Sub
-
             End If
-        End If
+        Else
+            If Not AccentStorageHelper.IsLicenseUsable() Then
+                If AccentStorageHelper.IsLocallyBlocked() OrElse AccentStorageHelper.LastLicenseError = "blocked" Then
+                    MsgBox("Licence is blocked.Please contact your service provider...", vbCritical, "Access Denied")
+                    Exit Sub
+                End If
+                If AccentStorageHelper.LastLicenseError = "expired" Then
+                    MsgBox("License expired. please contact your service provider", vbCritical, "Access Denied")
+                    ShowApplyLicense()
+                Else
+                    MsgBox("Invalid Licence.please contact your service provider", vbCritical, "Access Denied")
+                    ShowApplyLicense()
+                End If
 
-        ' ---------------- LICENSE VALIDATION ----------------
-        If Not AccentStorageHelper.IsLicenseUsable() Then
-            If isExpired = True Then
                 ShowApplyLicense()
                 Exit Sub
             End If
@@ -149,7 +158,7 @@ Public Class Login
     Private Sub txtPassword_TextChanged_1(sender As Object, e As EventArgs) Handles txtPassword.TextChanged
         If txtPassword.Text = "" Then btnViewPassword.Visible = False
     End Sub
-  
+
     Private Sub Login_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         'rs.ResizeAllControls(Me)
     End Sub

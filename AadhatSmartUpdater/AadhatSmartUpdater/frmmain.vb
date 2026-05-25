@@ -49,9 +49,9 @@ Public Class frmUpdater
     End Sub
 
 
-      Private Sub wc_DownloadFileCompleted(sender As Object,
-                                       e As System.ComponentModel.AsyncCompletedEventArgs) _
-                                       Handles wc.DownloadFileCompleted
+    Private Sub wc_DownloadFileCompleted(sender As Object,
+                                     e As System.ComponentModel.AsyncCompletedEventArgs) _
+                                     Handles wc.DownloadFileCompleted
 
         If e.Error IsNot Nothing Then
             MsgBox("Download failed: " & e.Error.Message, MsgBoxStyle.Critical)

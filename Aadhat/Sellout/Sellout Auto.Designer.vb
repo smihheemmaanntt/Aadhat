@@ -1611,6 +1611,7 @@ Partial Class Sellout_Auto
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.pnlWhatsapp)
         Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.pnlGrossWeight)
         Me.Controls.Add(Me.lblFarmerName)
@@ -1694,7 +1695,6 @@ Partial Class Sellout_Auto
         Me.Controls.Add(Me.dgVehicleNo)
         Me.Controls.Add(Me.txtItem)
         Me.Controls.Add(Me.dtp1)
-        Me.Controls.Add(Me.pnlWhatsapp)
         Me.Name = "Sellout_Auto"
         Me.Text = "Auto Beejak"
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).EndInit()

@@ -227,11 +227,14 @@ Public Class MainScreenForm
             Dim store = AccentStorageHelper.LoadStore()
             If store IsNot Nothing AndAlso store.response_data IsNot Nothing Then
                 customerCode = Safe(store.response_data.customer_code)
+                ComplaintsToolStripMenuItem.Visible = True
             Else
                 customerCode = " Trail "
+                ComplaintsToolStripMenuItem.Visible = False
             End If
         Else
             customerCode = " Trail "
+            ComplaintsToolStripMenuItem.Visible = False
         End If
         MainScreenPicture.MdiParent = Me
         MainScreenPicture.Show()
@@ -244,9 +247,11 @@ Public Class MainScreenForm
             'Me.Text = "[Aadhat 26.0.0 # " & customerCode & " " & version &" & CDate(fecha).ToString("yyMMdd") & "] [#" & AccName & "]" & " [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
             Me.Text = "[Aadhat #" & customerCode.Trim & "] [#" & compname.Trim & "] [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
         Next
+
         'If Not File.Exists(fileName) Then RegistrationToolStripMenuItem.Visible = True
         lblBuildVersion.Text = version.ToString()
     End Sub
+
     Private Function Safe(s As String) As String
         If s Is Nothing Then Return ""
         Return s.Trim()
@@ -1156,11 +1161,7 @@ Public Class MainScreenForm
         On_Sale_Register.BringToFront()
     End Sub
 
-    Private Sub WhatsNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WhatsNewToolStripMenuItem.Click
-        Whats_New.MdiParent = Me
-        Whats_New.Show()
-        Whats_New.BringToFront()
-    End Sub
+
 
     Private Sub OnSaleReceiptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnSaleReceiptToolStripMenuItem.Click
         OnSale_Receipt_Register.MdiParent = Me
@@ -1745,5 +1746,17 @@ Public Class MainScreenForm
         frmUpdater.MdiParent = Me
         frmUpdater.Show()
         frmUpdater.BringToFront()
+    End Sub
+
+    Private Sub AddComplaintToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddComplaintToolStripMenuItem.Click
+        ComplaintRegisterForm.MdiParent = Me
+        ComplaintRegisterForm.Show()
+        ComplaintRegisterForm.BringToFront()
+    End Sub
+
+    Private Sub ComplaintListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComplaintListToolStripMenuItem.Click
+        ComplaintListForm.MdiParent = Me
+        ComplaintListForm.Show()
+        ComplaintListForm.BringToFront()
     End Sub
 End Class

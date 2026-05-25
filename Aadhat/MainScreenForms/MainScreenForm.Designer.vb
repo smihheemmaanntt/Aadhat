@@ -239,7 +239,9 @@ Partial Class MainScreenForm
         Me.UpdateEasyWhatsappToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MobileAppToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportFromServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WhatsNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComplaintsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddComplaintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComplaintListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SMSConfigrationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckForUpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -280,7 +282,7 @@ Partial Class MainScreenForm
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.MenuStrip1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.EntryToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ReportsToolStripMenuItem1, Me.CrateManagerToolStripMenuItem1, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.MobileAppToolStripMenuItem, Me.ImportFromServerToolStripMenuItem, Me.WhatsNewToolStripMenuItem, Me.SMSConfigrationToolStripMenuItem, Me.CheckForUpdateToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.EntryToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ReportsToolStripMenuItem1, Me.CrateManagerToolStripMenuItem1, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.MobileAppToolStripMenuItem, Me.ImportFromServerToolStripMenuItem, Me.ComplaintsToolStripMenuItem, Me.SMSConfigrationToolStripMenuItem, Me.CheckForUpdateToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1370, 48)
@@ -623,7 +625,7 @@ Partial Class MainScreenForm
         Me.CrateOutToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.CrateOutToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateOutToolStripMenuItem.Name = "CrateOutToolStripMenuItem"
-        Me.CrateOutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6
+        Me.CrateOutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D4), System.Windows.Forms.Keys)
         Me.CrateOutToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.CrateOutToolStripMenuItem.Text = "Crate Out ( Issue )"
         '
@@ -632,7 +634,7 @@ Partial Class MainScreenForm
         Me.CrateInToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control
         Me.CrateInToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.CrateInToolStripMenuItem1.Name = "CrateInToolStripMenuItem1"
-        Me.CrateInToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F4
+        Me.CrateInToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D5), System.Windows.Forms.Keys)
         Me.CrateInToolStripMenuItem1.Size = New System.Drawing.Size(277, 24)
         Me.CrateInToolStripMenuItem1.Text = "Crate In  ( Recieve )"
         '
@@ -1070,6 +1072,8 @@ Partial Class MainScreenForm
         'GroupLedgwerToolStripMenuItem
         '
         Me.GroupLedgwerToolStripMenuItem.Name = "GroupLedgwerToolStripMenuItem"
+        Me.GroupLedgwerToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
         Me.GroupLedgwerToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
         Me.GroupLedgwerToolStripMenuItem.Text = "Group Ledger"
         '
@@ -1772,12 +1776,25 @@ Partial Class MainScreenForm
         Me.ImportFromServerToolStripMenuItem.Text = "Import From Mobile App"
         Me.ImportFromServerToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         '
-        'WhatsNewToolStripMenuItem
+        'ComplaintsToolStripMenuItem
         '
-        Me.WhatsNewToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.WhatsNewToolStripMenuItem.Name = "WhatsNewToolStripMenuItem"
-        Me.WhatsNewToolStripMenuItem.Size = New System.Drawing.Size(97, 44)
-        Me.WhatsNewToolStripMenuItem.Text = "What's New"
+        Me.ComplaintsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddComplaintToolStripMenuItem, Me.ComplaintListToolStripMenuItem})
+        Me.ComplaintsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComplaintsToolStripMenuItem.Name = "ComplaintsToolStripMenuItem"
+        Me.ComplaintsToolStripMenuItem.Size = New System.Drawing.Size(127, 44)
+        Me.ComplaintsToolStripMenuItem.Text = "Complaint (New)"
+        '
+        'AddComplaintToolStripMenuItem
+        '
+        Me.AddComplaintToolStripMenuItem.Name = "AddComplaintToolStripMenuItem"
+        Me.AddComplaintToolStripMenuItem.Size = New System.Drawing.Size(171, 24)
+        Me.AddComplaintToolStripMenuItem.Text = "Add Complaint"
+        '
+        'ComplaintListToolStripMenuItem
+        '
+        Me.ComplaintListToolStripMenuItem.Name = "ComplaintListToolStripMenuItem"
+        Me.ComplaintListToolStripMenuItem.Size = New System.Drawing.Size(171, 24)
+        Me.ComplaintListToolStripMenuItem.Text = "Complaint List"
         '
         'SMSConfigrationToolStripMenuItem
         '
@@ -2488,7 +2505,7 @@ Partial Class MainScreenForm
     Friend WithEvents CreateIndexToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OnSaleTransferRegisterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OnSaleReceiptToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents WhatsNewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ComplaintsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     ' Friend WithEvents OnSaleReceiptToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AbsentAccountsListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SupplierStatementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -2607,4 +2624,6 @@ Partial Class MainScreenForm
     Friend WithEvents CashBookCumBankBookToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RegistrationRevokeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UpdateEasyWhatsappToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddComplaintToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ComplaintListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

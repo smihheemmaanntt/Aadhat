@@ -77,6 +77,27 @@
         'rs.ResizeAllControls(Me)
     End Sub
 
+    Private Sub txtEntryDate_GotFocus(sender As Object, e As EventArgs) Handles txtEntryDate.GotFocus, txtVoucherNo.GotFocus,
+        CbDrCr.GotFocus, CbAccountName.GotFocus, txtAmount.GotFocus
+        Dim ctrl As Control = CType(sender, Control)
+
+        ctrl.BackColor = Color.LightGray
+        ctrl.ForeColor = Color.Maroon
+
+        If TypeOf ctrl Is TextBox Then
+            CType(ctrl, TextBox).SelectAll()
+        End If
+
+    End Sub
+
+    Private Sub txtEntryDate_Lostfocus(sender As Object, e As EventArgs) Handles txtEntryDate.LostFocus, txtVoucherNo.LostFocus,
+        CbDrCr.LostFocus, CbAccountName.LostFocus, txtAmount.LostFocus
+        Dim ctrl As Control = CType(sender, Control)
+        ctrl.BackColor = Color.GhostWhite
+        ctrl.ForeColor = Color.Black
+    End Sub
+
+
     Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, txtVoucherNo.KeyDown,
         CbDrCr.KeyDown, CbAccountName.KeyDown, txtAmount.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -423,4 +444,7 @@
         txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
 
+    Private Sub txtAmount_TextChanged(sender As Object, e As EventArgs) Handles txtAmount.TextChanged
+
+    End Sub
 End Class

@@ -39,7 +39,7 @@ Public Class Sellout_Auto
     End Sub
     Private Sub TempRowColumn()
         With tmpgrid
-            .ColumnCount = 50
+            .ColumnCount = 52
             .Columns(0).Name = "ID" : .Columns(0).Visible = False
             .Columns(1).Name = "Date" : .Columns(1).Width = 95
             .Columns(2).Name = "VoucherNo" : .Columns(2).Width = 159
@@ -92,9 +92,11 @@ Public Class Sellout_Auto
             .Columns(47).Name = "ChargeAmount" : .Columns(47).Width = 69
             .Columns(48).Name = "HindiItem" : .Columns(48).Width = 69
             .Columns(49).Name = "GrossWt" : .Columns(49).Width = 69
+            .Columns(50).Name = "ChargePrintName" : .Columns(50).Width = 159
+            .Columns(51).Name = "ChargePrintNameList" : .Columns(51).Width = 159
         End With
     End Sub
- 
+
     Private Sub PrintOnly()
         TempRowColumn()
         Dim i, j As Integer
@@ -164,11 +166,13 @@ Public Class Sellout_Auto
                             .Cells(15).Value = .Cells(15).Value & dg3.Rows(j).Cells(2).Value & vbCrLf
                             .Cells(16).Value = .Cells(16).Value & dg3.Rows(j).Cells(3).Value & vbCrLf
                             .Cells(17).Value = .Cells(17).Value & dg3.Rows(j).Cells(4).Value & vbCrLf
+                            .Cells(51).Value = .Cells(51).Value & GetChargePrintName(Val(dg3.Rows(j).Cells(5).Value), dg3.Rows(j).Cells(0).Value) & vbCrLf
                             .Cells(43).Value = .Cells(43).Value & dg3.Rows(j).Cells(0).Value & margin
                             .Cells(44).Value = .Cells(44).Value & Format(Val(dg3.Rows(j).Cells(1).Value), "0.00") & margin
                             .Cells(45).Value = .Cells(45).Value & dg3.Rows(j).Cells(2).Value & margin
                             .Cells(46).Value = .Cells(46).Value & dg3.Rows(j).Cells(3).Value & margin
                             .Cells(47).Value = .Cells(47).Value & Format(Val(dg3.Rows(j).Cells(4).Value), "0.00") & margin
+                            .Cells(50).Value = .Cells(50).Value & GetChargePrintName(Val(dg3.Rows(j).Cells(5).Value), dg3.Rows(j).Cells(0).Value) & margin
                         Next
                     End If
                     If Dg2.Rows.Count > 0 Then
@@ -178,11 +182,13 @@ Public Class Sellout_Auto
                             .Cells(15).Value = .Cells(15).Value & Dg2.Rows(j).Cells(2).Value & vbCrLf
                             .Cells(16).Value = .Cells(16).Value & Dg2.Rows(j).Cells(3).Value & vbCrLf
                             .Cells(17).Value = .Cells(17).Value & Dg2.Rows(j).Cells(4).Value & vbCrLf
+                            .Cells(51).Value = .Cells(51).Value & GetChargePrintName(Val(Dg2.Rows(j).Cells(5).Value), Dg2.Rows(j).Cells(0).Value) & vbCrLf
                             .Cells(43).Value = .Cells(43).Value & Dg2.Rows(j).Cells(0).Value & margin
                             .Cells(44).Value = .Cells(44).Value & Format(Val(Dg2.Rows(j).Cells(1).Value), "0.00") & margin
                             .Cells(45).Value = .Cells(45).Value & Dg2.Rows(j).Cells(2).Value & margin
                             .Cells(46).Value = .Cells(46).Value & Dg2.Rows(j).Cells(3).Value & margin
                             .Cells(47).Value = .Cells(47).Value & Format(Val(Dg2.Rows(j).Cells(4).Value), "0.00") & margin
+                            .Cells(50).Value = .Cells(50).Value & GetChargePrintName(Val(Dg2.Rows(j).Cells(5).Value), Dg2.Rows(j).Cells(0).Value) & margin
                         Next
                     End If
                     If dg3.Rows.Count = 0 AndAlso Dg2.Rows.Count = 0 Then
@@ -197,6 +203,15 @@ Public Class Sellout_Auto
             Next
         End If
     End Sub
+
+    Private Function GetChargePrintName(ByVal chargeId As Integer, ByVal defaultName As Object) As String
+        Dim printName As String = String.Empty
+        If chargeId > 0 Then
+            printName = clsFun.ExecScalarStr("Select PrintName From Charges Where ID=" & Val(chargeId) & "")
+        End If
+        If printName.Trim() = "" Then printName = Convert.ToString(defaultName)
+        Return printName
+    End Function
 
     Private Sub dg1_MouseClick(sender As Object, e As MouseEventArgs) Handles dg1.MouseClick
         dg1.ClearSelection()
@@ -403,14 +418,14 @@ Public Class Sellout_Auto
                                 "'" & .Cells(33).Value & "','" & .Cells(34).Value & "','" & .Cells(35).Value & "','" & .Cells(36).Value & "', " & _
                                 "'" & .Cells(37).Value & "','" & .Cells(38).Value & "','" & .Cells(39).Value & "','" & .Cells(40).Value & "'," & _
                                 "'" & .Cells(41).Value & "','" & .Cells(42).Value & "','" & .Cells(43).Value & "','" & .Cells(44).Value & "'," & _
-                                "'" & .Cells(45).Value & "','" & .Cells(46).Value & "','" & .Cells(47).Value & "','" & .Cells(48).Value & "','" & .Cells(49).Value & "'"
+                                "'" & .Cells(45).Value & "','" & .Cells(46).Value & "','" & .Cells(47).Value & "','" & .Cells(48).Value & "','" & .Cells(49).Value & "','" & .Cells(50).Value & "','" & .Cells(51).Value & "'"
                 End If
             End With
         Next
         Try
             If FastQuery = String.Empty Then Exit Sub
             sql = "insert into Printing(D1, D2,M1,M2,M3,M4, P1,P2, P3, P4, P5, P6,P7,P8,P9, " & _
-                    " P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20,P21,P22,P23,P24,T1,T2,T3,T4,T5,T6,T7,T8,P25,P26,P27,P28,P29,P30,P31,P32,P33,P34,P35,P36,P37,P38)" & FastQuery & ""
+                    " P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20,P21,P22,P23,P24,T1,T2,T3,T4,T5,T6,T7,T8,P25,P26,P27,P28,P29,P30,P31,P32,P33,P34,P35,P36,P37,P38,P39,P40)" & FastQuery & ""
             ClsFunPrimary.ExecNonQuery(sql)
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -2335,7 +2350,7 @@ Public Class Sellout_Auto
         FillWithNevigation()
     End Sub
 
- 
+
 
     Private Sub btnPnlClose_Click(sender As Object, e As EventArgs) Handles btnPnlClose.Click
         pnlPaidCharges.Visible = False : txtCharges.Focus() : btnPnlShow.Visible = True
@@ -2586,7 +2601,7 @@ Public Class Sellout_Auto
     End Sub
 
 
- 
+
 
     Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 

@@ -1957,3 +1957,5 @@ D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
 D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ComplaintRegisterForm.resources
+D:\1\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ComplaintListForm.resources

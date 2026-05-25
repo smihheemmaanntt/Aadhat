@@ -169,9 +169,9 @@ Partial Class Backup_On_Server
         'PictureBox3
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(628, 2)
+        Me.PictureBox3.Location = New System.Drawing.Point(838, 54)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(340, 86)
+        Me.PictureBox3.Size = New System.Drawing.Size(182, 37)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 57
         Me.PictureBox3.TabStop = False

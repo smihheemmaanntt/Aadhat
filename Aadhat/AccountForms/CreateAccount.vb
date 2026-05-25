@@ -778,4 +778,8 @@ Public Class CreateAccount
     Private Sub txtOPBal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtOPBal.KeyPress
         e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") And (sender.Text.IndexOf(".") = -1)))
     End Sub
+
+    Private Sub txtArea_TextChanged(sender As Object, e As EventArgs) Handles txtArea.TextChanged
+
+    End Sub
 End Class

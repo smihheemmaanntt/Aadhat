@@ -2703,3 +2703,18 @@ Message: Update Vouchers Set TransType='Super Sale',BillNo='95510' ,VehicleNo=''
 StackTrace: RITIK TRADING COMPANY
 Date/Time: 29-Apr-26 1:21:55 AM
 ===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2026-05-25','Stock Sale','Stock in',3880,1004,'AADITYA CHUGH', '3','Shop','35','AADU','0', '100','100','120', 'Kg',0
+StackTrace: RAJASTHAN FRUIT COMPANY
+Date/Time: 25-May-26 10:54:34 AM
+===========================================================================================
+Title: Stock Sale Saved
+Message: insert into Vouchers(TransType,BillNo, Entrydate, SallerID, SallerName, Nug, kg,BasicAmount, TotalAmount,TotalCharges,StorageID,Storagename,InvoiceID,UserID,EntryTime)values (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,@11,@12,@13,@14,@15)
+StackTrace: RAJASTHAN FRUIT COMPANY
+Date/Time: 25-May-26 10:54:34 AM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2026-05-25','1',3881, 'Stock Sale','1349','22 PS',35,'AADU','100',  '100','120','0','100', '100','Kg','12000','3340', '15340','6', '720','1','120', '0','0','0', '0','25','2500', '0','','0','N','Stock in',1004,'AADITYA CHUGH','3880','12000','0' ,'0','','3','Shop','','0'
+StackTrace: RAJASTHAN FRUIT COMPANY
+Date/Time: 25-May-26 10:54:34 AM
+===========================================================================================

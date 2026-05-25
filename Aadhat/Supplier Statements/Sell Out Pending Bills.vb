@@ -68,7 +68,7 @@
         Dim sql As String = String.Empty
         sql = " Select EntryDate,AccountID,AccountName,VoucherID,VehicleNo,sum(Nug) as Nug,ifnull((Select PurchaseID From Transaction1 Where PurchaseID=Purchase.VoucherID),0) as SaleVoucherID, " & _
               " ifnull((Select Sum(Nug) From Transaction2 Where PurchaseID=Purchase.VoucherID),0) as SoldNug ,ifnull((Select Sum(SallerAmt) From Transaction2 Where PurchaseID=Purchase.VoucherID),0) as Amount " & _
-              " From Purchase WHERE EntryDate Between '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & _
+              " From Purchase WHERE EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " & _
               " and PurchaseTypeName='Stock In' " & condtion & " Group By VoucherID Having SaleVoucherID=0;"
         dt = clsFun.ExecDataTable(sql)
         Try
@@ -143,7 +143,7 @@
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        txtFromDate.Text = SmartDate(txttoDate.Text)
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub btnShow_Click_1(sender As Object, e As EventArgs) Handles btnShow.Click
