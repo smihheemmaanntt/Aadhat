@@ -1517,7 +1517,7 @@ Partial Class MainScreenForm
         Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateCutEntriesToolStripMenuItem, Me.UpdateStorageInTransToolStripMenuItem, Me.UpdateJoinBillOptionToolStripMenuItem, Me.TestSelloutToolStripMenuItem, Me.UpdateViewsAndPrintingTableToolStripMenuItem, Me.TestBalanceToolStripMenuItem, Me.TestCashBookToolStripMenuItem, Me.TestCombineReportsToolStripMenuItem, Me.SettleLedgerToolStripMenuItem, Me.TestAccountsToolStripMenuItem})
         Me.UtilityToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.UtilityToolStripMenuItem.Name = "UtilityToolStripMenuItem"
-        Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.UtilityToolStripMenuItem.Text = "Utility"
         '
         'UpdateCutEntriesToolStripMenuItem
@@ -1586,102 +1586,102 @@ Partial Class MainScreenForm
         Me.OptionsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
         Me.OptionsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'ToolStripSeparator35
         '
         Me.ToolStripSeparator35.Name = "ToolStripSeparator35"
-        Me.ToolStripSeparator35.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator35.Size = New System.Drawing.Size(274, 6)
         '
         'ChargesSettingToolStripMenuItem
         '
         Me.ChargesSettingToolStripMenuItem.Name = "ChargesSettingToolStripMenuItem"
-        Me.ChargesSettingToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.ChargesSettingToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.ChargesSettingToolStripMenuItem.Text = "Charges Setting"
         '
         'ToolStripSeparator25
         '
         Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
-        Me.ToolStripSeparator25.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator25.Size = New System.Drawing.Size(274, 6)
         '
         'SMSTempletesToolStripMenuItem
         '
         Me.SMSTempletesToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.SMSTempletesToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SMSTempletesToolStripMenuItem.Name = "SMSTempletesToolStripMenuItem"
-        Me.SMSTempletesToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.SMSTempletesToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.SMSTempletesToolStripMenuItem.Text = "SMS Templetes"
         '
         'ToolStripSeparator26
         '
         Me.ToolStripSeparator26.Name = "ToolStripSeparator26"
-        Me.ToolStripSeparator26.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator26.Size = New System.Drawing.Size(274, 6)
         '
         'RunSqliteQueryToolStripMenuItem
         '
         Me.RunSqliteQueryToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.RunSqliteQueryToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.RunSqliteQueryToolStripMenuItem.Name = "RunSqliteQueryToolStripMenuItem"
-        Me.RunSqliteQueryToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.RunSqliteQueryToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.RunSqliteQueryToolStripMenuItem.Text = "Run Sqlite Query"
         '
         'UpdateCompanyInfoOnServerToolStripMenuItem
         '
         Me.UpdateCompanyInfoOnServerToolStripMenuItem.Name = "UpdateCompanyInfoOnServerToolStripMenuItem"
-        Me.UpdateCompanyInfoOnServerToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.UpdateCompanyInfoOnServerToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.UpdateCompanyInfoOnServerToolStripMenuItem.Text = "Update Company Info on Server"
         '
         'ToolStripSeparator27
         '
         Me.ToolStripSeparator27.Name = "ToolStripSeparator27"
-        Me.ToolStripSeparator27.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator27.Size = New System.Drawing.Size(274, 6)
         '
         'AuthorisedPersonOnlyToolStripMenuItem
         '
         Me.AuthorisedPersonOnlyToolStripMenuItem.Name = "AuthorisedPersonOnlyToolStripMenuItem"
-        Me.AuthorisedPersonOnlyToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.AuthorisedPersonOnlyToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.AuthorisedPersonOnlyToolStripMenuItem.Text = "Authorised Person Only"
         '
         'ToolStripSeparator28
         '
         Me.ToolStripSeparator28.Name = "ToolStripSeparator28"
-        Me.ToolStripSeparator28.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator28.Size = New System.Drawing.Size(274, 6)
         '
         'MergeAccountsToolStripMenuItem
         '
         Me.MergeAccountsToolStripMenuItem.Name = "MergeAccountsToolStripMenuItem"
-        Me.MergeAccountsToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.MergeAccountsToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.MergeAccountsToolStripMenuItem.Text = "Merge Accounts"
         '
         'ToolStripSeparator29
         '
         Me.ToolStripSeparator29.Name = "ToolStripSeparator29"
-        Me.ToolStripSeparator29.Size = New System.Drawing.Size(286, 6)
+        Me.ToolStripSeparator29.Size = New System.Drawing.Size(274, 6)
         '
         'PartyWiseRateToolStripMenuItem
         '
         Me.PartyWiseRateToolStripMenuItem.Name = "PartyWiseRateToolStripMenuItem"
-        Me.PartyWiseRateToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.PartyWiseRateToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.PartyWiseRateToolStripMenuItem.Text = "Account Wise Rate"
         '
         'RerarangeInvoiceNoToolStripMenuItem
         '
         Me.RerarangeInvoiceNoToolStripMenuItem.Name = "RerarangeInvoiceNoToolStripMenuItem"
-        Me.RerarangeInvoiceNoToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.RerarangeInvoiceNoToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.RerarangeInvoiceNoToolStripMenuItem.Text = "Rerarange Invoice Numbers"
         '
         'CreateIndexToolStripMenuItem
         '
         Me.CreateIndexToolStripMenuItem.Name = "CreateIndexToolStripMenuItem"
-        Me.CreateIndexToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
+        Me.CreateIndexToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.CreateIndexToolStripMenuItem.Text = "Boost Up"
         '
         'WhatsappConfigrationUnofficialToolStripMenuItem
         '
         Me.WhatsappConfigrationUnofficialToolStripMenuItem.Name = "WhatsappConfigrationUnofficialToolStripMenuItem"
-        Me.WhatsappConfigrationUnofficialToolStripMenuItem.Size = New System.Drawing.Size(289, 24)
-        Me.WhatsappConfigrationUnofficialToolStripMenuItem.Text = "Whatsapp Configration (Unofficial)"
+        Me.WhatsappConfigrationUnofficialToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.WhatsappConfigrationUnofficialToolStripMenuItem.Text = "Whatsapp Configration"
         '
         'HelpToolStripMenuItem
         '

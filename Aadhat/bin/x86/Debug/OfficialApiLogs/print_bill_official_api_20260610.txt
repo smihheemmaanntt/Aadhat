@@ -1,0 +1,11 @@
+============================================================
+Time: 10-06-2026 08:49:02
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bad...db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"अशोक सैनी दिवानवाडा","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/ESGWZR","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-06-08 09:45:16","service_window_expires_at":"2026-06-09 09:45:16","log_uid":"0d75f6bb-24af-44a4-a997-aeafa817511a","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSRENFQjk2NDc2Qzc3QzZFNjU0AA==","status":"accepted"}}
+

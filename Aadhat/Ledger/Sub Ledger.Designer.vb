@@ -50,6 +50,8 @@ Partial Class Sub_Ledger
         Me.pnlWahtsappNo = New System.Windows.Forms.Panel()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtWhatsappNo = New System.Windows.Forms.TextBox()
@@ -354,6 +356,8 @@ Partial Class Sub_Ledger
         '
         Me.pnlWahtsappNo.Controls.Add(Me.Label11)
         Me.pnlWahtsappNo.Controls.Add(Me.cbType)
+        Me.pnlWahtsappNo.Controls.Add(Me.lblSim)
+        Me.pnlWahtsappNo.Controls.Add(Me.cbSim)
         Me.pnlWahtsappNo.Controls.Add(Me.Button2)
         Me.pnlWahtsappNo.Controls.Add(Me.Label3)
         Me.pnlWahtsappNo.Controls.Add(Me.txtWhatsappNo)
@@ -384,11 +388,38 @@ Partial Class Sub_Ledger
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(109, 19)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
         Me.cbType.TabIndex = 91231
+        '
+        'lblSim
+        '
+        Me.lblSim.BackColor = System.Drawing.Color.CadetBlue
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.GhostWhite
+        Me.lblSim.Location = New System.Drawing.Point(10, 45)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(92, 29)
+        Me.lblSim.TabIndex = 91232
+        Me.lblSim.Text = "SIM"
+        Me.lblSim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(7, 77)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(100, 23)
+        Me.cbSim.TabIndex = 91233
+        Me.cbSim.Visible = False
         '
         'Button2
         '
@@ -412,9 +443,9 @@ Partial Class Sub_Ledger
         Me.Label3.BackColor = System.Drawing.Color.CadetBlue
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(10, 45)
+        Me.Label3.Location = New System.Drawing.Point(108, 45)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(245, 29)
+        Me.Label3.Size = New System.Drawing.Size(147, 29)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Enter Whatsapp No. "
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -425,9 +456,9 @@ Partial Class Sub_Ledger
         Me.txtWhatsappNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtWhatsappNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtWhatsappNo.ForeColor = System.Drawing.Color.Black
-        Me.txtWhatsappNo.Location = New System.Drawing.Point(10, 74)
+        Me.txtWhatsappNo.Location = New System.Drawing.Point(108, 74)
         Me.txtWhatsappNo.Name = "txtWhatsappNo"
-        Me.txtWhatsappNo.Size = New System.Drawing.Size(245, 26)
+        Me.txtWhatsappNo.Size = New System.Drawing.Size(147, 26)
         Me.txtWhatsappNo.TabIndex = 3
         Me.txtWhatsappNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -663,6 +694,8 @@ Partial Class Sub_Ledger
     Friend WithEvents ckWithoutCrate As System.Windows.Forms.CheckBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox

@@ -4,6 +4,7 @@ Imports System.Net
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.Text
+Imports System.Collections.Generic
 
 Public Class Standard_Sale_Register
     Private headerCheckBox As CheckBox = New CheckBox()
@@ -12,6 +13,7 @@ Public Class Standard_Sale_Register
     Dim access_token As String = "6687c047a58e1"
     Dim instance_id As String = ClsFunPrimary.ExecScalarStr("Select InstanceID From API")
     Dim APIResposne As String : Dim whatsappSender As New WhatsAppSender()
+    Private Const MobileSendingMethod As String = "From Mobile"
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
 
@@ -29,19 +31,43 @@ Public Class Standard_Sale_Register
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
-    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, btnShow.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True
+    Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, dtp1.KeyDown, dtp2.KeyDown
+              If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
+            e.SuppressKeyPress = True
+            'SendKeys.Send("{TAB}")
         End If
     End Sub
 
-    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+    Private Sub btnShow_KeyDown(sender As Object, e As KeyEventArgs) Handles btnShow.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnShow.PerformClick()
+        End If
+    End Sub
+
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
         txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub txtToDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
         txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
+    End Sub
+
+    Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
+        txtFromDate.Focus()
+    End Sub
+
+    Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
+        txttoDate.Focus()
+    End Sub
+
+    Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
+        txtFromDate.Text = SmartDate(dtp1.Value.ToString("dd-MM-yyyy"))
+    End Sub
+
+    Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
+        txttoDate.Text = SmartDate(dtp2.Value.ToString("dd-MM-yyyy"), True, 2)
     End Sub
 
     Private Sub dg1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellClick
@@ -63,6 +89,7 @@ Public Class Standard_Sale_Register
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True : txtFromDate.Focus()
+        txtFromDate.BringToFront() : txttoDate.BringToFront()
         Dim mindate As String = String.Empty : Dim maxdate As String = String.Empty
         mindate = clsFun.ExecScalarStr("Select Max(EntryDate) as entrydate from Vouchers where transtype='" & Me.Text & "'")
         maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from Vouchers where transtype='" & Me.Text & "'")
@@ -836,24 +863,6 @@ Public Class Standard_Sale_Register
 
     End Sub
 
-    Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
-        txtToDate.Focus()
-    End Sub
-
-    Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
-        txtToDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        txtToDate.Text = SmartDate(txtToDate.Text)
-    End Sub
-
-    Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
-        txtFromDate.Focus()
-    End Sub
-
-    Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
-        txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        txtFromDate.Text = SmartDate(txtFromDate.Text)
-    End Sub
-
     Private Sub txtPrimarySearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrimarySearch.KeyUp
         If dg1.RowCount = 0 Then Exit Sub
         If ckShowItems.Checked = True Then
@@ -959,6 +968,145 @@ Public Class Standard_Sale_Register
             ProgressBar1.Visible = visible
         End If
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("Easy WhatsApp") = False Then cbType.Items.Add("Easy WhatsApp")
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains(MobileSendingMethod) = False Then cbType.Items.Add(MobileSendingMethod)
+        lblSim.Visible = (cbType.Text = MobileSendingMethod) : cbSim.Visible = (cbType.Text = MobileSendingMethod)
+        Label10.Visible = (cbType.Text <> MobileSendingMethod)
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function ExportRegisterPdfForMobile(ByVal row As DataGridViewRow) As String
+        If RadioMsgOnly.Checked = True Then Return ""
+        retrive2(row.Cells(1).Value)
+        GlobalData.PdfName = row.Cells(2).Value & "-" & txtFromDate.Text & ".pdf"
+        PrintRecord()
+        If btnRadioEnglish.Checked = True Then
+            Pdf_Genrate.ExportReport("\Formats\StandardSale.rpt")
+        Else
+            Pdf_Genrate.ExportReport("\Formats\StandardSale2.rpt")
+        End If
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Function BuildRegisterPhoneMsgBody(ByVal row As DataGridViewRow, ByVal fileUrl As String) As String
+        Dim messageText As String = If(btnRadioEnglish.Checked = True, Convert.ToString(row.Cells(4).Value), Convert.ToString(row.Cells(6).Value))
+        If RadioMsgOnly.Checked = True Then Return messageText
+        If RadioPDFMsg.Checked = True AndAlso messageText.Trim() <> "" Then
+            Return messageText & vbCrLf & "STANDARD SALE VIEW : " & fileUrl.Trim()
+        End If
+        Return "STANDARD SALE VIEW : " & fileUrl.Trim()
+    End Function
+
+    Private Sub SendPhoneMsgzData()
+        If RefreshMobileSimList() = False Then Exit Sub
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        UpdateProgressBarVisibility(True)
+        If DgWhatsapp.RowCount > 0 Then ProgressBar1.Maximum = DgWhatsapp.RowCount
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(.Index)
+                Dim isChecked As Boolean = False
+                If .Cells(0).Value IsNot Nothing Then Boolean.TryParse(.Cells(0).Value.ToString(), isChecked)
+                If isChecked = False Then Continue For
+                Dim mobile As String = NormalizeIndianMobile(Convert.ToString(.Cells(3).Value))
+                If mobile = "" Then
+                    .Cells(7).Value = "Invalid Mobile"
+                    Continue For
+                End If
+                Dim fileUrl As String = ExportRegisterPdfForMobile(row)
+                If RadioMsgOnly.Checked = False AndAlso fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+                    .Cells(7).Value = "PDF upload failed"
+                    Continue For
+                End If
+                Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildRegisterPhoneMsgBody(row, fileUrl))
+                .Cells(7).Value = apiResult
+            End With
+        Next
+        UpdateProgressBarVisibility(False)
+        MsgBox("Standard Sale Register sent on msgz.in server", vbInformation, "Sended")
+    End Sub
+
+    Private Sub SendOfficialStandardSaleRegisterData()
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        UpdateProgressBarVisibility(True)
+        If DgWhatsapp.RowCount > 0 Then ProgressBar1.Maximum = DgWhatsapp.RowCount
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(.Index)
+                Dim isChecked As Boolean = False
+                If .Cells(0).Value IsNot Nothing Then Boolean.TryParse(.Cells(0).Value.ToString(), isChecked)
+                If isChecked = False Then Continue For
+                Dim mobile As String = NormalizeIndianMobile(Convert.ToString(.Cells(3).Value))
+                If mobile = "" Then
+                    .Cells(7).Value = "Invalid Mobile"
+                    Continue For
+                End If
+                Dim fileUrl As String = ExportRegisterPdfForMobile(row)
+                If RadioMsgOnly.Checked = False AndAlso fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+                    .Cells(7).Value = "PDF upload failed"
+                    Continue For
+                End If
+                Dim accountName As String = If(btnRadioEnglish.Checked = True, Convert.ToString(.Cells(2).Value), Convert.ToString(.Cells(5).Value))
+                Dim messageText As String = If(btnRadioEnglish.Checked = True, Convert.ToString(.Cells(4).Value), Convert.ToString(.Cells(6).Value))
+                Dim apiResponse As String = ""
+                Dim ok As Boolean
+                If RadioMsgOnly.Checked = True Then
+                    ok = WhatsAppOfficialSendHelper.SendAadhatText("standard_sale", "STANDARD_SALE", mobile, accountName, txtFromDate.Text, "", messageText, apiResponse, If(RadioRegional.Checked, "hi", "en"))
+                Else
+                    ok = WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, accountName, txtFromDate.Text, "", fileUrl, "Bill.pdf", apiResponse, If(RadioRegional.Checked, "hi", "en"))
+                End If
+                .Cells(7).Value = If(ok, "Sent via Official API", apiResponse)
+            End With
+        Next
+        UpdateProgressBarVisibility(False)
+        MsgBox("Standard Sale Register sent via Official API", vbInformation, "Official API")
+    End Sub
+
     Private Sub WahSoft()
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         For Each deleteFile In Directory.GetFiles(directoryName, "*.PDf*", SearchOption.TopDirectoryOnly)
@@ -1117,7 +1265,7 @@ Public Class Standard_Sale_Register
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        If cbType.SelectedIndex = 0 Then
+        If cbType.Text = "Easy WhatsApp" Then
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -1131,21 +1279,10 @@ Public Class Standard_Sale_Register
                 StartWhatsapp.Start()
             End If
             StartBackgroundTask(AddressOf SendWhatsappData)
-        Else
-            pnlWhatsapp.Visible = True
-            Dim WhatsappFile As String = Application.StartupPath & "\WahSoft\WahSoft.exe"
-            If System.IO.File.Exists(WhatsappFile) = False Then
-                MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
-                Exit Sub
-            End If
-            Dim p() As Process
-            p = Process.GetProcessesByName("WahSoft")
-            If p.Count = 0 Then
-                Dim StartWhatsapp As New System.Diagnostics.Process
-                StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\WahSoft\WahSoft.exe"
-                StartWhatsapp.Start()
-            End If
-            StartBackgroundTask(AddressOf WahSoft)
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            StartBackgroundTask(AddressOf SendOfficialStandardSaleRegisterData)
+        ElseIf cbType.Text = MobileSendingMethod Then
+            StartBackgroundTask(AddressOf SendPhoneMsgzData)
         End If
     End Sub
     Private Sub StartBackgroundTask(action As Action)
@@ -1257,6 +1394,7 @@ Public Class Standard_Sale_Register
         End If
     End Sub
     Public Sub FillControl()
+        EnsureMobileWhatsappControls()
         Dim SendingMethod As String
         Dim LangugageType As String
         Dim MsgType As String
@@ -1267,8 +1405,14 @@ Public Class Standard_Sale_Register
             If dt.Rows.Count > 0 Then
                 For i = 0 To dt.Rows.Count - 1
                     SendingMethod = dt.Rows(i)("SendingMethod").ToString()
-                    cbType.SelectedIndex = 0
-                    If SendingMethod = "Easy WhatsApp" Then cbType.SelectedIndex = 0 Else cbType.SelectedIndex = 0 : cbType.Visible = True
+                    If SendingMethod = "Easy WhatsApp" Then
+                        cbType.SelectedItem = "Easy WhatsApp"
+                    ElseIf SendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+                        cbType.SelectedItem = MobileSendingMethod
+                    ElseIf cbType.Items.Contains("WhatsApp Official API") Then
+                        cbType.SelectedItem = "WhatsApp Official API"
+                    End If
+                    cbType.Visible = True
                     LangugageType = dt.Rows(i)("LanguageType").ToString()
                     btnRadioEnglish.Checked = True
                     If LangugageType = "English" Then btnRadioEnglish.Checked = True Else RadioRegional.Checked = True
@@ -1289,9 +1433,14 @@ Public Class Standard_Sale_Register
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         FillControl()
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
-            RowColumsWhatsapp() : ShowWhatsappContacts()
-            pnlWhatsapp.Visible = True
+        If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
+        ShowWhatsappContacts()
+        pnlWhatsapp.Visible = True
+        If cbType.Text = MobileSendingMethod Then
+            RefreshMobileSimList()
+            Exit Sub
+        End If
+        If cbType.Text = "Easy WhatsApp" Then
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -1304,13 +1453,13 @@ Public Class Standard_Sale_Register
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
-            cbType.SelectedIndex = 0 : Exit Sub
-            'ElseIf ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "WahSoft" Then
-            '    cbType.SelectedIndex = 1
+            Exit Sub
         End If
-        pnlWhatsapp.Visible = True
-        If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
-        ShowWhatsappContacts()
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
     End Sub
 
     Private Sub btnPnlVisHide_Click(sender As Object, e As EventArgs) Handles btnPnlVisHide.Click
@@ -1382,5 +1531,9 @@ Public Class Standard_Sale_Register
 
     Private Sub cbArea_KeyDown(sender As Object, e As KeyEventArgs) Handles cbArea.KeyDown
         If e.KeyCode = Keys.Enter Then btnok.Focus() : e.SuppressKeyPress = True
+    End Sub
+
+    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
+
     End Sub
 End Class

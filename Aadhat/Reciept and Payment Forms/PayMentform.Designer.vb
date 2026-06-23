@@ -90,11 +90,15 @@ Partial Class PayMentform
         Me.RadioPdfOnly = New System.Windows.Forms.RadioButton()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblOfficialTemplate = New System.Windows.Forms.Label()
+        Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btnPnlVisHide = New System.Windows.Forms.Button()
         Me.DgWhatsapp = New System.Windows.Forms.DataGridView()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.txtEntryDate = New System.Windows.Forms.TextBox()
         CType(Me.DgAccountSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -742,11 +746,15 @@ Partial Class PayMentform
         Me.pnlWhatsapp.Controls.Add(Me.RadioPdfOnly)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
         Me.pnlWhatsapp.Controls.Add(Me.cbType)
+        Me.pnlWhatsapp.Controls.Add(Me.lblOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.cbOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label13)
         Me.pnlWhatsapp.Controls.Add(Me.btnPnlVisHide)
         Me.pnlWhatsapp.Controls.Add(Me.DgWhatsapp)
         Me.pnlWhatsapp.Controls.Add(Me.Button6)
-        Me.pnlWhatsapp.Controls.Add(Me.ProgressBar1)
+        Me.pnlWhatsapp.Controls.Add(Me.pb1)
         Me.pnlWhatsapp.Location = New System.Drawing.Point(213, 164)
         Me.pnlWhatsapp.Name = "pnlWhatsapp"
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
@@ -848,11 +856,61 @@ Partial Class PayMentform
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(349, 14)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
         Me.cbType.TabIndex = 91229
+        '
+        'lblOfficialTemplate
+        '
+        Me.lblOfficialTemplate.AutoSize = True
+        Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.Red
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(503, 17)
+        Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(63, 15)
+        Me.lblOfficialTemplate.TabIndex = 91268
+        Me.lblOfficialTemplate.Text = "Template:"
+        Me.lblOfficialTemplate.Visible = False
+        '
+        'cbOfficialTemplate
+        '
+        Me.cbOfficialTemplate.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbOfficialTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOfficialTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbOfficialTemplate.FormattingEnabled = True
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(568, 14)
+        Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(181, 23)
+        Me.cbOfficialTemplate.TabIndex = 91269
+        Me.cbOfficialTemplate.Visible = False
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(14, 292)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(44, 19)
+        Me.lblSim.TabIndex = 91266
+        Me.lblSim.Text = "SIM :"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(59, 290)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(214, 23)
+        Me.cbSim.TabIndex = 91267
+        Me.cbSim.Visible = False
         '
         'Label13
         '
@@ -940,13 +998,13 @@ Partial Class PayMentform
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.UseVisualStyleBackColor = False
         '
-        'ProgressBar1
+        'pb1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 290)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(233, 23)
-        Me.ProgressBar1.TabIndex = 40054
-        Me.ProgressBar1.Visible = False
+        Me.pb1.Location = New System.Drawing.Point(12, 290)
+        Me.pb1.Name = "pb1"
+        Me.pb1.Size = New System.Drawing.Size(261, 23)
+        Me.pb1.TabIndex = 40054
+        Me.pb1.Visible = False
         '
         'Button5
         '
@@ -1090,11 +1148,15 @@ Partial Class PayMentform
     Friend WithEvents pnlWhatsapp As System.Windows.Forms.Panel
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
+    Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents btnPnlVisHide As System.Windows.Forms.Button
     Friend WithEvents DgWhatsapp As System.Windows.Forms.DataGridView
     Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents RadioMsgOnly As System.Windows.Forms.RadioButton
     Friend WithEvents RadioPDFMsg As System.Windows.Forms.RadioButton

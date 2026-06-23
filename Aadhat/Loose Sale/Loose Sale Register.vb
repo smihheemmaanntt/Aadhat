@@ -48,8 +48,8 @@ Public Class Loose_Sale_Register
         End If
     End Sub
 
-    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
-        txtFromDate.Text = smartDate(txtFromDate.Text)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub txtToDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
@@ -1060,7 +1060,7 @@ Public Class Loose_Sale_Register
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
         txtToDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        txtToDate.Text = smartDate(txtToDate.Text)
+        txtToDate.Text = SmartDate(txtToDate.Text, True, 2)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus
@@ -1069,7 +1069,7 @@ Public Class Loose_Sale_Register
 
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
-        txtFromDate.Text = smartDate(txtFromDate.Text)
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
     Private Sub txtPrimarySearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrimarySearch.KeyUp

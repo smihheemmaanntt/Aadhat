@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 
+Imports System.Collections.Generic
+
 Public Class Purchase
     Dim vno As Integer : Dim VchId As Integer
     Dim sql As String = String.Empty : Dim count As Integer = 0 : Dim MaxID As String = String.Empty
@@ -7,6 +9,7 @@ Public Class Purchase
     Dim remarkHindi As String = String.Empty : Dim TotalPages As Integer = 0 : Dim PageNumber As Integer = 0
     Dim RowCount As Integer = 1 : Dim Offset As Integer = 0 : Dim ServerTag As Integer
     Dim whatsappSender As New WhatsAppSender()
+    Private Const MobileSendingMethod As String = "From Mobile"
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
     Public Sub New()
@@ -731,6 +734,43 @@ Public Class Purchase
         clsFun.CloseConnection()
     End Sub
 
+    Private Function ValidatePurchaseRowsAgainstSales() As Boolean
+        If Val(txtid.Text) = 0 Then Return True
+        Dim soldDt As DataTable = clsFun.ExecDataTable("Select ItemID, Lot, Sum(Nug) as SoldNug From Transaction2 Where PurchaseID=" & Val(txtid.Text) & " And TransType in ('Stock Sale','On Sale','Standard Sale','Store Out') Group By ItemID, Lot")
+        If soldDt Is Nothing OrElse soldDt.Rows.Count = 0 Then Return True
+
+        For Each soldRow As DataRow In soldDt.Rows
+            Dim soldItemId As Integer = Val(soldRow("ItemID").ToString())
+            Dim soldLot As String = soldRow("Lot").ToString().Trim()
+            Dim soldNug As Decimal = Val(soldRow("SoldNug").ToString())
+            Dim purchaseNug As Decimal = 0
+            Dim found As Boolean = False
+
+            For Each gridRow As DataGridViewRow In dg1.Rows
+                If gridRow.IsNewRow Then Continue For
+                If Val(gridRow.Cells("ItemID").Value) = soldItemId AndAlso gridRow.Cells("Lot No").Value.ToString().Trim().ToUpper() = soldLot.ToUpper() Then
+                    found = True
+                    purchaseNug += Val(gridRow.Cells("Nug").Value)
+                End If
+            Next
+
+            If found = False Then
+                MsgBox("This purchase lot is already used in sale. You cannot change or remove its item/lot." & vbCrLf &
+                       "Item ID: " & soldItemId.ToString() & ", Lot: " & soldLot, MsgBoxStyle.Critical, "Stock Validation")
+                Return False
+            End If
+            If purchaseNug < soldNug Then
+                MsgBox("Purchase nug cannot be less than sold nug." & vbCrLf &
+                       "Lot: " & soldLot & vbCrLf &
+                       "Sold Nug: " & Format(soldNug, "0.00") & vbCrLf &
+                       "Purchase Nug: " & Format(purchaseNug, "0.00"), MsgBoxStyle.Critical, "Stock Validation")
+                Return False
+            End If
+        Next
+
+        Return True
+    End Function
+
     Private Sub txtPurchaseTotAmount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAmount.KeyDown
         If txtItem.Text = "" Or Val(txtItemID.Text) < 0 Then txtItem.Focus() : Exit Sub
         If e.KeyCode = Keys.Enter Then
@@ -767,7 +807,7 @@ Public Class Purchase
                 calc() : PurchaseClear()
             Else
                 For i = 0 To dg1.Rows.Count - 1
-                    If dg1.Rows(i).Cells(0).Value = txtItem.Text And dg1.Rows(i).Cells(1).Value = TxtPurchaseLot.Text Then
+                    If Val(dg1.Rows(i).Cells(7).Value) = Val(txtItemID.Text) AndAlso dg1.Rows(i).Cells(1).Value.ToString().Trim().ToUpper() = TxtPurchaseLot.Text.Trim().ToUpper() Then
                         MsgBox("Lot Already Exist...You Entered : " & TxtPurchaseLot.Text & " " & vbNewLine & "Same Lot No. Already Exists For this Item In this Bill...", MsgBoxStyle.Critical, "Lot Exists...") : TxtPurchaseLot.Focus() : Exit Sub
                     End If
                 Next
@@ -846,6 +886,7 @@ Public Class Purchase
     End Sub
     Private Sub UpdatePurchase()
         Dim sql As String = String.Empty
+        If ValidatePurchaseRowsAgainstSales() = False Then Exit Sub
         'Dim cmd As SQLite.SQLiteCommand
         sql = "Update Vouchers Set TransType='" & Me.Text & "', EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "',BillNo='" & txtVoucherNo.Text & "'," _
             & "SallerID='" & Val(txtAccountID.Text) & "', SallerName='" & txtAccount.Text & "',VehicleNo='" & txtVehicleNo.Text & "'," _
@@ -885,6 +926,7 @@ Public Class Purchase
     End Sub
 
     Public Sub MultiUpdatePurchase()
+        If ValidatePurchaseRowsAgainstSales() = False Then Exit Sub
         Dim dt As DateTime
         dt = CDate(Me.txtEntryDate.Text)
         SqliteEntryDate = dt.ToString("yyyy-MM-dd")
@@ -2254,7 +2296,9 @@ Public Class Purchase
         PrintOnly()
         txtWhatsappNo.Text = clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(txtAccountID.Text) & "'")
         pnlWhatsapp.Visible = True : pnlWhatsapp.BringToFront() : txtWhatsappNo.Focus()
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+        EnsureMobileWhatsappControls()
+        Dim sendingMethod As String = ClsFunPrimary.ExecScalarStr("Select SendingMethod From API")
+        If sendingMethod = "Easy WhatsApp" Then
             cbType.SelectedIndex = 0
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
@@ -2268,8 +2312,11 @@ Public Class Purchase
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
-        Else
-            cbType.SelectedIndex = 1
+        ElseIf sendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+            cbType.SelectedItem = MobileSendingMethod
+            RefreshMobileSimList()
+        ElseIf cbType.Items.Contains("WhatsApp Official API") Then
+            cbType.SelectedItem = "WhatsApp Official API"
         End If
     End Sub
 
@@ -2591,7 +2638,7 @@ Public Class Purchase
                 End If
             End If
         End If
-        If cbType.SelectedIndex = 0 Then
+        If cbType.Text = "Easy WhatsApp" Then
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -2610,10 +2657,115 @@ Public Class Purchase
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus() : Exit Sub
             End If
-        Else
-            StartBackgroundTask(AddressOf WahSoft)
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            SendOfficialPurchaseData()
+        ElseIf cbType.Text = MobileSendingMethod Then
+            SendPhoneMsgzData()
         End If
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("Easy WhatsApp") = False Then cbType.Items.Add("Easy WhatsApp")
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains(MobileSendingMethod) = False Then cbType.Items.Add(MobileSendingMethod)
+        lblSim.Visible = (cbType.Text = MobileSendingMethod) : cbSim.Visible = (cbType.Text = MobileSendingMethod)
+        Label58.Visible = (cbType.Text <> MobileSendingMethod)
+        ' txtWhatsappNo.Visible = (cbType.Text <> MobileSendingMethod)
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function BuildPhoneMsgBody(ByVal fileUrl As String) As String
+        If fileUrl.Trim() = "" Then Return ""
+        Return "PURCHASE VIEW : " & fileUrl.Trim()
+    End Function
+
+    Private Function ExportPurchasePdfForMobile() As String
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
+        PrintOnly() : PrintRecord()
+        Pdf_Genrate.ExportReport("\Purchase.rpt")
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Sub SendPhoneMsgzData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+        If RefreshMobileSimList() = False Then Exit Sub
+        Dim fileUrl As String = ExportPurchasePdfForMobile()
+        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+            MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Mobile API")
+            Exit Sub
+        End If
+        Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildPhoneMsgBody(fileUrl))
+        If apiResult = "SUCCESS" Then
+            MsgBox("Purchase sent on msgz.in server", vbInformation, "Sended")
+            pnlWhatsapp.Visible = False : txtEntryDate.Focus()
+        Else
+            MsgBox(apiResult, MsgBoxStyle.Critical, "Mobile API")
+        End If
+    End Sub
+
+    Private Sub SendOfficialPurchaseData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+        Dim fileUrl As String = ExportPurchasePdfForMobile()
+        Dim apiResponse As String = ""
+        Dim amountText As String = txtTotalNetAmount.Text
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, txtAccount.Text, txtEntryDate.Text, amountText, fileUrl, "Purchase.pdf", apiResponse) Then
+            MsgBox("Purchase sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
+            pnlWhatsapp.Visible = False : txtEntryDate.Focus()
+        Else
+            MsgBox(apiResponse, MsgBoxStyle.Critical, "Official API")
+        End If
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
+    End Sub
+
     Private Sub SendWhatsappData()
         Dim directoryName As String = Application.StartupPath & "\Whatsapp\Pdfs"
         For Each deleteFile In Directory.GetFiles(directoryName, "*.PDf*", SearchOption.TopDirectoryOnly)

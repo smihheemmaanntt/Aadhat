@@ -6,8 +6,8 @@ Imports Newtonsoft.Json.Linq
 Public Class WhatsAppSender
     Public FilePath As String
     Public hostedFilePath As String
-    Public access_token As String = ClsFunPrimary.ExecScalarStr("Select AccessToken From API")
-    Public instance_id As String = ClsFunPrimary.ExecScalarStr("Select InstanceID From API")
+    Public access_token As String = ""
+    Public instance_id As String = ""
     Public APIResposne As String
 
     Public Sub SendWhatsAppMessage(ByVal phoneNumber As String, ByVal message As String)
@@ -52,6 +52,25 @@ Public Class WhatsAppSender
             APIResposne = "Unsuccessful"
         End If
     End Sub
+
+    Public Function SendOfficialSmartMessage(ByVal phoneNumber As String, ByVal message As String, ByVal pdfFilePath As String) As Boolean
+        Try
+            APIResposne = ""
+
+            If pdfFilePath.Trim() <> "" Then
+                FilePath = pdfFilePath
+                SendWhatsAppFile(phoneNumber, message, pdfFilePath)
+            Else
+                SendWhatsAppMessage(phoneNumber, message)
+            End If
+
+            Dim result As String = If(APIResposne, "").Trim().ToLower()
+            Return result.Contains("successful") OrElse result.Contains("success")
+        Catch ex As Exception
+            APIResposne = ex.Message
+            Return False
+        End Try
+    End Function
 
 
     Public Shared Function UploadFile(filePath As String) As String

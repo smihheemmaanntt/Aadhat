@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
+Imports System.Collections.Generic
 
 Public Class PayMentform
     Dim vno As Integer : Dim ServerTag As Integer
@@ -7,8 +8,23 @@ Public Class PayMentform
     Dim whatsappSender As New WhatsAppSender()
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
+
+    Private Class OfficialTemplateItem
+        Public TemplateCode As String
+        Public TemplateName As String
+        Public LanguageCode As String
+        Public ParameterFields As String
+        Public BodyText As String
+
+        Public Overrides Function ToString() As String
+            If TemplateCode Is Nothing OrElse TemplateCode.Trim() = "" Then Return TemplateName
+            Return TemplateName & " (" & TemplateCode & " / " & LanguageCode & ")"
+        End Function
+    End Class
+
     Public Sub New()
         InitializeComponent()
+        ConfigureOfficialTemplateSelector()
         clsFun.DoubleBuffered(dg1, True)
         bgWorker.WorkerSupportsCancellation = True
         AddHandler bgWorker.DoWork, AddressOf bgWorker_DoWork
@@ -69,9 +85,18 @@ Public Class PayMentform
         Try
             If dt.Rows.Count > 0 Then
                 For i = 0 To dt.Rows.Count - 1
+                    EnsureMobileWhatsappControls()
                     SendingMethod = dt.Rows(i)("SendingMethod").ToString()
                     cbType.SelectedIndex = 0
-                    If SendingMethod = "Easy WhatsApp" Then cbType.SelectedIndex = 0 Else cbType.SelectedIndex = 0 : cbType.Visible = True
+                    If SendingMethod = "Easy WhatsApp" Then
+                        cbType.SelectedIndex = 0
+                    ElseIf SendingMethod = "WhatsApp Official API" Then
+                        cbType.SelectedIndex = 1 : cbType.Visible = True
+                    ElseIf SendingMethod = "From Mobile" Then
+                        cbType.SelectedIndex = 2 : cbType.Visible = True
+                    Else
+                        cbType.SelectedIndex = 0 : cbType.Visible = True
+                    End If
                     LangugageType = dt.Rows(i)("LanguageType").ToString()
                     btnRadioEnglish.Checked = True
                     If LangugageType = "English" Then btnRadioEnglish.Checked = True Else RadioRegional.Checked = True
@@ -101,6 +126,121 @@ Public Class PayMentform
         tmpgrid.Columns(7).Name = "Total" : tmpgrid.Columns(7).Width = 120
         tmpgrid.Columns(8).Name = "Remark" : tmpgrid.Columns(8).Width = 260
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains("From Mobile") = False Then cbType.Items.Add("From Mobile")
+        lblSim.Visible = (cbType.SelectedIndex = 2) : cbSim.Visible = (cbType.SelectedIndex = 2)
+        UpdateOfficialTemplateSelectorVisibility()
+    End Sub
+
+    Private Sub ConfigureOfficialTemplateSelector()
+        If lblOfficialTemplate IsNot Nothing Then lblOfficialTemplate.BringToFront()
+        If cbOfficialTemplate IsNot Nothing Then cbOfficialTemplate.BringToFront()
+    End Sub
+
+    Private Sub UpdateOfficialTemplateSelectorVisibility()
+        Dim showTemplate As Boolean = (cbType.Text = "WhatsApp Official API")
+        If lblOfficialTemplate IsNot Nothing Then lblOfficialTemplate.Visible = showTemplate
+        If cbOfficialTemplate IsNot Nothing Then cbOfficialTemplate.Visible = showTemplate
+        If showTemplate Then LoadOfficialPaymentTemplates()
+    End Sub
+
+    Private Sub LoadOfficialPaymentTemplates()
+        If cbOfficialTemplate Is Nothing Then Exit Sub
+        cbOfficialTemplate.Items.Clear()
+
+        Dim languageCode As String = If(RadioRegional.Checked, "hi", "en")
+        Dim alternateLanguage As String = If(languageCode = "hi", "en", "hi")
+        Dim preferredIndex As Integer = -1
+        Dim dt As DataTable = WhatsAppOfficialDb.GetApprovedTemplates("payment", languageCode)
+        AddOfficialPaymentTemplateRows(dt, languageCode, languageCode, preferredIndex)
+        dt.Dispose()
+
+        dt = WhatsAppOfficialDb.GetApprovedTemplates("payment", alternateLanguage)
+        AddOfficialPaymentTemplateRows(dt, languageCode, alternateLanguage, preferredIndex)
+        dt.Dispose()
+
+        If cbOfficialTemplate.Items.Count = 0 Then
+            Dim item As New OfficialTemplateItem()
+            item.TemplateName = "No approved Payment template"
+            item.TemplateCode = ""
+            item.LanguageCode = languageCode
+            item.ParameterFields = ""
+            cbOfficialTemplate.Items.Add(item)
+            preferredIndex = 0
+        End If
+
+        If preferredIndex < 0 Then preferredIndex = 0
+        cbOfficialTemplate.SelectedIndex = preferredIndex
+    End Sub
+
+    Private Sub AddOfficialPaymentTemplateRows(ByVal dt As DataTable, ByVal preferredLanguage As String, ByVal rowLanguage As String, ByRef preferredIndex As Integer)
+        If dt Is Nothing Then Exit Sub
+        For Each row As DataRow In dt.Rows
+            Dim item As New OfficialTemplateItem()
+            item.TemplateCode = row("TemplateCode").ToString()
+            item.TemplateName = row("TemplateName").ToString()
+            item.LanguageCode = row("LanguageCode").ToString()
+            If item.TemplateCode.ToLower().Contains("hi") OrElse item.TemplateName.ToLower().Contains("hindi") OrElse item.TemplateName.ToLower().Contains(" hi") Then
+                item.LanguageCode = "hi"
+            ElseIf item.LanguageCode.Trim() = "" Then
+                item.LanguageCode = rowLanguage
+            End If
+            If item.LanguageCode.Trim().ToLower().StartsWith("hi") Then
+                item.LanguageCode = "hi"
+            ElseIf item.LanguageCode.Trim() = "" Then
+                item.LanguageCode = "en"
+            End If
+            item.ParameterFields = row("ParameterFields").ToString()
+            If dt.Columns.Contains("BodyText") Then item.BodyText = row("BodyText").ToString()
+            cbOfficialTemplate.Items.Add(item)
+
+            If preferredIndex < 0 AndAlso item.LanguageCode = preferredLanguage Then preferredIndex = cbOfficialTemplate.Items.Count - 1
+        Next
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function BuildPhoneMsgBody(ByVal msgText As String, ByVal fileUrl As String) As String
+        Dim body As String = msgText.Trim()
+        If fileUrl.Trim() <> "" Then
+            If body <> "" Then body &= vbCrLf
+            Dim pdfLabel As String = If(btnRadioEnglish.Checked, "PAYMENT VIEW : ", "पेमेंट रसीद : ")
+            body &= pdfLabel & fileUrl.Trim()
+        End If
+        Return body
+    End Function
+
     Public Sub FillPayment()
         ssql = "Select * from Controls "
         dt = clsFun.ExecDataTable(ssql)
@@ -1343,7 +1483,9 @@ Public Class PayMentform
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        If ClsFunPrimary.ExecScalarStr("Select InstanceID From API") <> "" AndAlso ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+        FillControl()
+        Dim sendingMethod As String = ClsFunPrimary.ExecScalarStr("Select SendingMethod From API").Trim()
+        If ClsFunPrimary.ExecScalarStr("Select InstanceID From API") <> "" AndAlso sendingMethod = "Easy WhatsApp" Then
             If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
             pnlWhatsapp.Visible = True : ShowWhatsappContacts()
             pnlWhatsapp.BringToFront() : cbType.SelectedIndex = 0 : Exit Sub
@@ -1365,9 +1507,16 @@ Public Class PayMentform
         Else
             If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
             pnlWhatsapp.Visible = True : ShowWhatsappContacts()
-            pnlWhatsapp.BringToFront() : cbType.SelectedIndex = 0
+            pnlWhatsapp.BringToFront()
+            If sendingMethod = "WhatsApp Official API" Then
+                cbType.SelectedIndex = 1
+            ElseIf sendingMethod = "From Mobile" Then
+                cbType.SelectedIndex = 2
+                RefreshMobileSimList()
+            Else
+                cbType.SelectedIndex = 0
+            End If
         End If
-        FillControl()
     End Sub
 
     Private Sub WhatsappCheckBox_Clicked(ByVal sender As Object, ByVal e As EventArgs)
@@ -1479,6 +1628,255 @@ Public Class PayMentform
         End If
         UpdateProgressBarVisibility(False)
     End Sub
+
+    Private Sub SendPhoneMsgzData()
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+
+        If RefreshMobileSimList() = False Then Exit Sub
+        UpdateProgressBarVisibility(True)
+
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(row.Index)
+                If .Cells(0).Value = True AndAlso .Cells(3).Value <> "" Then
+                    Dim mobile As String = NormalizeIndianMobile(.Cells(3).Value.ToString())
+                    If mobile = "" Then
+                        .Cells(5).Value = "Invalid mobile no"
+                        .Cells(5).Style.ForeColor = Color.Red
+                        Continue For
+                    End If
+
+                    Dim msgText As String = If(btnRadioEnglish.Checked, .Cells(8).Value.ToString(), .Cells(9).Value.ToString())
+                    Dim fileUrl As String = ""
+
+                    If RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked Then
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                        retrive2(.Cells(1).Value) : PrintPayments()
+                        Pdf_Genrate.ExportReport("\Trans.rpt")
+                        fileUrl = PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+                        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+                            .Cells(5).Value = "PDF upload failed"
+                            .Cells(5).ToolTipText = fileUrl
+                            .Cells(5).Style.ForeColor = Color.Red
+                            Continue For
+                        End If
+                    End If
+
+                    If RadioPdfOnly.Checked Then msgText = ""
+                    Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildPhoneMsgBody(msgText, fileUrl))
+
+                    If apiResult = "SUCCESS" Then
+                        .Cells(5).Value = "Sent on msgz.in server"
+                        .Cells(5).Style.ForeColor = Color.Green
+                    Else
+                        .Cells(5).Value = "Failed"
+                        .Cells(5).ToolTipText = apiResult
+                        .Cells(5).Style.ForeColor = Color.Red
+                    End If
+                    Application.DoEvents()
+                End If
+            End With
+        Next
+
+        UpdateProgressBarVisibility(False)
+    End Sub
+
+    Private Function CleanOfficialPaymentParameterFields(ByVal parameterFields As String) As String
+        Dim cleanedFields As New List(Of String)()
+        For Each fieldName As String In If(parameterFields, "").Split(","c)
+            Dim key As String = fieldName.Trim().ToLower()
+            If key <> "" Then cleanedFields.Add(key)
+        Next
+        If cleanedFields.Count = 0 Then Return "company_name,account_name,entry_date,amount"
+        Return String.Join(",", cleanedFields.ToArray())
+    End Function
+
+    Private Function GetCellText(ByVal row As DataGridViewRow, ByVal index As Integer) As String
+        If row Is Nothing OrElse index < 0 OrElse index >= row.Cells.Count OrElse row.Cells(index).Value Is Nothing Then Return ""
+        Return row.Cells(index).Value.ToString().Trim()
+    End Function
+
+    Private Function ExportPaymentPdfForOfficial(ByVal row As DataGridViewRow) As String
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+
+        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(GetCellText(row, 4), "[\\\/\:\*\?\""<>\|]", "") & "(" & GetCellText(row, 1) & ")-" & txtEntryDate.Text & ".pdf"
+        retrive2(Val(GetCellText(row, 1))) : PrintPayments()
+        Pdf_Genrate.ExportReport("\Trans.rpt")
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Function BuildOfficialPaymentFields(ByVal row As DataGridViewRow, ByVal mobileNo As String, ByVal fileUrl As String, ByVal parameterFields As String) As List(Of String)
+        parameterFields = CleanOfficialPaymentParameterFields(parameterFields)
+
+        Dim voucherId As Integer = Val(GetCellText(row, 1))
+        Dim voucher As DataTable = clsFun.ExecDataTable("Select * From Vouchers Where ID='" & voucherId & "'")
+        Dim values As New Dictionary(Of String, String)
+        values("company_name") = compname.Trim()
+        values("account_name") = GetCellText(row, 4)
+        values("mobile_no") = mobileNo.Trim()
+        values("city") = clsFun.ExecScalarStr("Select City From Accounts Where ID='" & Val(GetCellText(row, 10)) & "'")
+        values("entry_date") = txtEntryDate.Text.Trim()
+        values("payment_date") = txtEntryDate.Text.Trim()
+        values("payment_no") = GetCellText(row, 2)
+        values("voucher_no") = GetCellText(row, 2)
+        values("mode") = GetCellText(row, 7)
+        values("amount") = ""
+        values("basic_amount") = ""
+        values("discount_amount") = ""
+        values("total_amount") = ""
+        values("remark") = ""
+        values("pdf_link") = fileUrl.Trim()
+
+        If voucher.Rows.Count > 0 Then
+            values("entry_date") = Format(voucher.Rows(0)("EntryDate"), "dd-MM-yyyy")
+            values("payment_date") = values("entry_date")
+            values("payment_no") = voucher.Rows(0)("BillNo").ToString()
+            values("voucher_no") = values("payment_no")
+            values("mode") = voucher.Rows(0)("SallerName").ToString()
+            values("basic_amount") = Format(Val(voucher.Rows(0)("BasicAmount").ToString()), "0.00")
+            values("discount_amount") = Format(Val(voucher.Rows(0)("DiscountAmount").ToString()), "0.00")
+            values("total_amount") = Format(Val(voucher.Rows(0)("TotalAmount").ToString()), "0.00")
+            values("amount") = values("total_amount")
+            values("remark") = voucher.Rows(0)("Remark").ToString()
+        End If
+        voucher.Dispose()
+
+        Dim fields As New List(Of String)
+        For Each fieldName As String In parameterFields.Split(","c)
+            Dim key As String = fieldName.Trim().ToLower()
+            If key = "" Then Continue For
+            If values.ContainsKey(key) Then
+                fields.Add(values(key))
+            Else
+                fields.Add("")
+            End If
+        Next
+
+        Return fields
+    End Function
+
+    Private Function BuildOfficialPaymentServiceMessage(ByVal templateBody As String, ByVal fields As List(Of String)) As String
+        Dim text As String = If(templateBody, "").Trim()
+        If text = "" Then text = "Hello {{2}}, your payment receipt dated {{3}} from {{1}} is ready. Amount is {{4}}. Thank you"
+        text = System.Text.RegularExpressions.Regex.Replace(text, "\{\{(\d+)\}\}", Function(m)
+                                                                                       Dim n As Integer = Val(m.Groups(1).Value)
+                                                                                       If fields IsNot Nothing AndAlso n > 0 AndAlso fields.Count >= n Then Return fields(n - 1)
+                                                                                       Return ""
+                                                                                   End Function)
+        text = text.Replace("  ", " ").Trim()
+        If text = "" Then text = "Your payment receipt is ready. Thank you"
+        Return text
+    End Function
+
+    Private Function ShortStatusText(ByVal value As String, ByVal maxLength As Integer) As String
+        If value Is Nothing Then Return ""
+        Dim text As String = value.Replace(vbCr, " ").Replace(vbLf, " ").Trim()
+        If text.Length <= maxLength Then Return text
+        Return text.Substring(0, maxLength - 3) & "..."
+    End Function
+
+    Private Sub SendOfficialPaymentData()
+        WhatsAppOfficialDb.EnsureDatabase()
+        Dim vendorUid As String = WhatsAppOfficialDb.GetSetting("VendorUid").Trim()
+        Dim accessToken As String = WhatsAppOfficialDb.GetSetting("AccessToken").Trim()
+        If vendorUid = "" OrElse accessToken = "" Then
+            MsgBox("Official API Vendor ID / Access Token is missing. Please validate and save WhatsApp API Configuration.", MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+
+        If cbOfficialTemplate Is Nothing OrElse cbOfficialTemplate.Items.Count = 0 Then LoadOfficialPaymentTemplates()
+        If cbOfficialTemplate Is Nothing OrElse cbOfficialTemplate.SelectedItem Is Nothing Then
+            MsgBox("No approved Payment document template found. Please approve/sync a Payment document template first.", MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+
+        Dim selectedTemplate As OfficialTemplateItem = CType(cbOfficialTemplate.SelectedItem, OfficialTemplateItem)
+        If selectedTemplate.TemplateCode.Trim() = "" Then
+            MsgBox("No approved Payment document template found. Please approve/sync a Payment document template first.", MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+
+        UpdateProgressBarVisibility(True)
+        Dim sentCount As Integer = 0
+        Dim failedCount As Integer = 0
+
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(row.Index)
+                If .Cells(0).Value = True AndAlso GetCellText(row, 3) <> "" Then
+                    Dim mobile As String = WhatsAppOfficialApi.NormalizeMobile(GetCellText(row, 3))
+                    If mobile = "" OrElse mobile.Length <> 12 OrElse mobile.StartsWith("91") = False Then
+                        .Cells(5).Value = "Invalid mobile no"
+                        .Cells(5).Style.ForeColor = Color.Red
+                        failedCount += 1
+                        Continue For
+                    End If
+
+                    Dim fileUrl As String = ""
+                    If RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked Then
+                        fileUrl = ExportPaymentPdfForOfficial(row)
+                        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+                            .Cells(5).Value = "PDF upload failed"
+                            .Cells(5).ToolTipText = fileUrl
+                            .Cells(5).Style.ForeColor = Color.Red
+                            WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "PAYMENT", "FAILED", "PDF upload failed: " & fileUrl)
+                            failedCount += 1
+                            Continue For
+                        End If
+                    End If
+
+                    Dim fields As List(Of String) = BuildOfficialPaymentFields(row, mobile, fileUrl, selectedTemplate.ParameterFields)
+                    Dim serviceMessage As String = BuildOfficialPaymentServiceMessage(selectedTemplate.BodyText, fields)
+                    If RadioPdfOnly.Checked Then serviceMessage = BuildOfficialPaymentServiceMessage(selectedTemplate.BodyText, fields)
+
+                    Dim apiResponse As String = ""
+                    Dim sent As Boolean = WhatsAppOfficialApi.SendSmartMessage(
+                        vendorUid,
+                        accessToken,
+                        mobile,
+                        serviceMessage,
+                        fileUrl,
+                        selectedTemplate.TemplateCode,
+                        selectedTemplate.LanguageCode,
+                        fields,
+                        apiResponse,
+                        "Payment.pdf")
+
+                    If sent Then
+                        .Cells(5).Value = "Sent via Official API"
+                        Dim responseText As String = If(apiResponse, "")
+                        .Cells(5).ToolTipText = ShortStatusText(apiResponse, 500)
+                        .Cells(5).Style.ForeColor = Color.Green
+                        WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "PAYMENT", "SUCCESS", apiResponse)
+                        sentCount += 1
+                    Else
+                        .Cells(5).Value = "Failed"
+                        .Cells(5).ToolTipText = ShortStatusText(apiResponse, 500)
+                        .Cells(5).Style.ForeColor = Color.Red
+                        WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "PAYMENT", "FAILED", apiResponse)
+                        failedCount += 1
+                    End If
+                    Application.DoEvents()
+                End If
+            End With
+        Next
+
+        UpdateProgressBarVisibility(False)
+        MsgBox("Official API send complete." & vbCrLf & "Sent : " & sentCount & vbCrLf & "Failed : " & failedCount, MsgBoxStyle.Information, "Official API")
+    End Sub
+
     Private Sub DgWhatsapp_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellEndEdit
         If clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & DgWhatsapp.CurrentRow.Cells(10).Value & "'") = "" And DgWhatsapp.CurrentRow.Cells(3).Value <> "" Then
             clsFun.ExecNonQuery("Update Accounts set Mobile1='" & DgWhatsapp.CurrentRow.Cells(3).Value & "' Where ID='" & Val(DgWhatsapp.CurrentRow.Cells(10).Value) & "'")
@@ -1570,8 +1968,16 @@ Public Class PayMentform
                 StartWhatsapp.Start()
             End If
             SendWhatsappData()
-
+        ElseIf cbType.SelectedIndex = 1 Then
+            SendOfficialPaymentData()
+        ElseIf cbType.SelectedIndex = 2 Then
+            SendPhoneMsgzData()
         End If
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.SelectedIndex = 2 AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
     End Sub
     Private Sub StartBackgroundTask(action As Action)
         If Not bgWorker.IsBusy Then
@@ -1717,18 +2123,18 @@ Public Class PayMentform
     End Sub
 
     Private Sub UpdateProgressBar(value As Integer)
-        If ProgressBar1.InvokeRequired Then
-            ProgressBar1.Invoke(New Action(Of Integer)(AddressOf UpdateProgressBar), value)
+        If pb1.InvokeRequired Then
+            pb1.Invoke(New Action(Of Integer)(AddressOf UpdateProgressBar), value)
         Else
-            ProgressBar1.Value = value
+            pb1.Value = value
         End If
     End Sub
 
     Private Sub UpdateProgressBarVisibility(visible As Boolean)
-        If ProgressBar1.InvokeRequired Then
-            ProgressBar1.Invoke(New Action(Of Boolean)(AddressOf UpdateProgressBarVisibility), visible)
+        If pb1.InvokeRequired Then
+            pb1.Invoke(New Action(Of Boolean)(AddressOf UpdateProgressBarVisibility), visible)
         Else
-            ProgressBar1.Visible = visible
+            pb1.Visible = visible
         End If
     End Sub
     Private Sub lblInword_Click(sender As Object, e As EventArgs) Handles lblInword.Click
@@ -1742,5 +2148,9 @@ Public Class PayMentform
 
     Private Sub txtAccount_TextChanged(sender As Object, e As EventArgs) Handles txtAccount.TextChanged
 
+    End Sub
+
+    Private Sub OfficialTemplateLanguage_CheckedChanged(sender As Object, e As EventArgs) Handles btnRadioEnglish.CheckedChanged, RadioRegional.CheckedChanged
+        If cbType.Text = "WhatsApp Official API" Then LoadOfficialPaymentTemplates()
     End Sub
 End Class

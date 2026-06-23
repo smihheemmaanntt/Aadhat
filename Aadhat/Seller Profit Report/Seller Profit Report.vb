@@ -742,4 +742,8 @@
     Private Sub RadioOldMethod_CheckedChanged(sender As Object, e As EventArgs) Handles RadioOldMethod.CheckedChanged
 
     End Sub
+
+    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
+
+    End Sub
 End Class

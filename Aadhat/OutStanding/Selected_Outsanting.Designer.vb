@@ -61,6 +61,8 @@ Partial Class Selected_Outsanting
         Me.ckAreaWise = New System.Windows.Forms.CheckBox()
         Me.btnWhatsapp = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtMsg = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -480,6 +482,8 @@ Partial Class Selected_Outsanting
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label8)
         Me.pnlWhatsapp.Controls.Add(Me.txtMsg)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
@@ -495,6 +499,34 @@ Partial Class Selected_Outsanting
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
         Me.pnlWhatsapp.TabIndex = 91221
         Me.pnlWhatsapp.Visible = False
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(520, 291)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(40, 19)
+        Me.lblSim.TabIndex = 91235
+        Me.lblSim.Text = "SIM :"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbSim.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(566, 288)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(186, 23)
+        Me.cbSim.TabIndex = 91236
+        Me.cbSim.Visible = False
         '
         'Label8
         '
@@ -538,7 +570,7 @@ Partial Class Selected_Outsanting
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(349, 17)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
@@ -817,4 +849,6 @@ Partial Class Selected_Outsanting
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtGrater As System.Windows.Forms.TextBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
 End Class

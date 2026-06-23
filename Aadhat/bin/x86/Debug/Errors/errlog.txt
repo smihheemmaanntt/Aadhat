@@ -2718,3 +2718,8 @@ Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID
 StackTrace: RAJASTHAN FRUIT COMPANY
 Date/Time: 25-May-26 10:54:34 AM
 ===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-04-27',InvoiceID='2611',  billNo='2611',ModifiedByID='1',ModifiedTime='2026-06-08 15:40:16'  where ID =3440
+StackTrace: PANKAJ FRUIT COMPANY
+Date/Time: 08-Jun-26 3:40:16 PM
+===========================================================================================

@@ -1,0 +1,165 @@
+============================================================
+Time: 06-06-2026 14:39:03
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी","template_name":"bill_hi","template_language":"en_US","field_1":"आशीष ओमी मुरारी","field_2":"27-04-2026","field_3":"1333.00","field_4":"https://msgz.in/W4RAYE","field_5":"आशीष ओमी मुरारी,\r\n नग : 3, वज़न : 87.5, बिक्री रकम : 1232.5, ख़र्चे : 101.28, कुल रकम : 1333","header_document":"https://msgz.in/W4RAYE","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 14:39:07
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"अशोक सैनी दिवानवाडा","template_name":"bill_hi","template_language":"en_US","field_1":"अशोक सैनी दिवानवाडा","field_2":"27-04-2026","field_3":"1735.00","field_4":"https://msgz.in/B2JRMW","field_5":"अशोक सैनी दिवानवाडा,\r\n नग : 3, वज़न : 135.0, बिक्री रकम : 1607.5, ख़र्चे : 127.53, कुल रकम : 1735","header_document":"https://msgz.in/B2JRMW","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 14:39:09
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"बब्बू भोकार","template_name":"bill_hi","template_language":"en_US","field_1":"बब्बू भोकार","field_2":"27-04-2026","field_3":"355.00","field_4":"https://msgz.in/YZNH2U","field_5":"बब्बू भोकार,\r\n नग : 1, वज़न : 0, बिक्री रकम : 350, ख़र्चे : 5, कुल रकम : 355","header_document":"https://msgz.in/YZNH2U","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 14:51:43
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी","template_name":"bill_hi","template_language":"en_US","field_1":"आशीष ओमी मुरारी","field_2":"27-04-2026","field_3":"1333.00","field_4":"https://msgz.in/59EYPM","field_5":"आशीष ओमी मुरारी,\r\n नग : 3, वज़न : 87.5, बिक्री रकम : 1232.5, ख़र्चे : 101.28, कुल रकम : 1333","header_document":"https://msgz.in/59EYPM","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 14:51:47
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"अशोक सैनी दिवानवाडा","template_name":"bill_hi","template_language":"en_US","field_1":"अशोक सैनी दिवानवाडा","field_2":"27-04-2026","field_3":"1735.00","field_4":"https://msgz.in/PSKEYB","field_5":"अशोक सैनी दिवानवाडा,\r\n नग : 3, वज़न : 135.0, बिक्री रकम : 1607.5, ख़र्चे : 127.53, कुल रकम : 1735","header_document":"https://msgz.in/PSKEYB","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 14:51:50
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"बब्बू भोकार","template_name":"bill_hi","template_language":"en_US","field_1":"बब्बू भोकार","field_2":"27-04-2026","field_3":"355.00","field_4":"https://msgz.in/ZVWAGC","field_5":"बब्बू भोकार,\r\n नग : 1, वज़न : 0, बिक्री रकम : 350, ख़र्चे : 5, कुल रकम : 355","header_document":"https://msgz.in/ZVWAGC","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 15:03:41
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"AASHISH OMI MURARI","template_name":"bill_hi","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"27-04-2026","field_3":"1333.00","field_4":"https://msgz.in/SZW8FA","field_5":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 87.5, Basic : 1232.5, Charges : 101.28, Total : 1333","header_document":"https://msgz.in/SZW8FA","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 15:03:44
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"ASHOK SAINI DIWANWADA","template_name":"bill_hi","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"27-04-2026","field_3":"1735.00","field_4":"https://msgz.in/PLQDJB","field_5":"Dear, ASHOK SAINI DIWANWADA,\r\nTodays Sale :  Nug : 3, Weight : 135.0, Basic : 1607.5, Charges : 127.53, Total : 1735","header_document":"https://msgz.in/PLQDJB","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 15:03:46
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"BABBU BHOKAR","template_name":"bill_hi","template_language":"en_US","field_1":"BABBU BHOKAR","field_2":"27-04-2026","field_3":"355.00","field_4":"https://msgz.in/QKUHPZ","field_5":"Dear, BABBU BHOKAR,\r\nTodays Sale :  Nug : 1, Weight : 0, Basic : 350, Charges : 5, Total : 355","header_document":"https://msgz.in/QKUHPZ","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 15:03:56
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"AASHISH OMI MURARI","template_name":"sb_en","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"27-04-2026","field_3":"1333.00","field_4":"https://msgz.in/8U64NT","field_5":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 87.5, Basic : 1232.5, Charges : 101.28, Total : 1333","header_document":"https://msgz.in/8U64NT","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132018) There’s an issue with the parameters in your template  Param text cannot have new-line/tab characters or more than 4 consecutive spaces | Data: [] | Template=sb_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132018) There\u2019s an issue with the parameters in your template  Param text cannot have new-line\/tab characters or more than 4 consecutive spaces","data":[]}
+
+============================================================
+Time: 06-06-2026 15:03:58
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"ASHOK SAINI DIWANWADA","template_name":"sb_en","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"27-04-2026","field_3":"1735.00","field_4":"https://msgz.in/GW4SZT","field_5":"Dear, ASHOK SAINI DIWANWADA,\r\nTodays Sale :  Nug : 3, Weight : 135.0, Basic : 1607.5, Charges : 127.53, Total : 1735","header_document":"https://msgz.in/GW4SZT","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132018) There’s an issue with the parameters in your template  Param text cannot have new-line/tab characters or more than 4 consecutive spaces | Data: [] | Template=sb_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132018) There\u2019s an issue with the parameters in your template  Param text cannot have new-line\/tab characters or more than 4 consecutive spaces","data":[]}
+
+============================================================
+Time: 06-06-2026 15:04:01
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"BABBU BHOKAR","template_name":"sb_en","template_language":"en_US","field_1":"BABBU BHOKAR","field_2":"27-04-2026","field_3":"355.00","field_4":"https://msgz.in/HM85BR","field_5":"Dear, BABBU BHOKAR,\r\nTodays Sale :  Nug : 1, Weight : 0, Basic : 350, Charges : 5, Total : 355","header_document":"https://msgz.in/HM85BR","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132018) There’s an issue with the parameters in your template  Param text cannot have new-line/tab characters or more than 4 consecutive spaces | Data: [] | Template=sb_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132018) There\u2019s an issue with the parameters in your template  Param text cannot have new-line\/tab characters or more than 4 consecutive spaces","data":[]}
+
+============================================================
+Time: 06-06-2026 15:11:15
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f93abb-9a8b-4050-b28e-be61d48481a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"AASHISH OMI MURARI","template_name":"bill_hi","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"27-04-2026","field_3":"1333.00","field_4":"https://msgz.in/WEPYKS","field_5":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 87.5, Basic : 1232.5, Charges : 101.28, Total : 1333","header_document":"https://msgz.in/WEPYKS","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+
+============================================================
+Time: 06-06-2026 15:11:20
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f93abb-9a8b-4050-b28e-be61d48481a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"ASHOK SAINI DIWANWADA","template_name":"bill_hi","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"27-04-2026","field_3":"1735.00","field_4":"https://msgz.in/NUM236","field_5":"Dear, ASHOK SAINI DIWANWADA,\r\nTodays Sale :  Nug : 3, Weight : 135.0, Basic : 1607.5, Charges : 127.53, Total : 1735","header_document":"https://msgz.in/NUM236","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful (service_message)
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_message","service_window_open":true,"last_incoming_message_at":"2026-06-05 10:37:17","service_window_expires_at":"2026-06-06 10:37:17","log_uid":"24965d43-7f5a-42bd-9c05-a116c5edf6e0","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSQ0IxN0UyMzIzQTFFN0EyQ0QzAA==","status":"accepted"}}
+
+============================================================
+Time: 06-06-2026 15:11:23
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f93abb-9a8b-4050-b28e-be61d48481a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"BABBU BHOKAR","template_name":"bill_hi","template_language":"en_US","field_1":"BABBU BHOKAR","field_2":"27-04-2026","field_3":"355.00","field_4":"https://msgz.in/DVTBMY","field_5":"Dear, BABBU BHOKAR,\r\nTodays Sale :  Nug : 1, Weight : 0, Basic : 350, Charges : 5, Total : 355","header_document":"https://msgz.in/DVTBMY","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US | Data: [] | Template=bill_hi, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132001) Template name does not exist in the translation  template name (bill_hi) does not exist in en_US","data":[]}
+

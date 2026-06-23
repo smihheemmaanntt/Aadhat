@@ -114,6 +114,8 @@ Partial Class Sellout_Mannual
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.RadioPrint2 = New System.Windows.Forms.RadioButton()
         Me.RadioPrint1 = New System.Windows.Forms.RadioButton()
         Me.Label57 = New System.Windows.Forms.Label()
@@ -1224,6 +1226,8 @@ Partial Class Sellout_Mannual
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.DarkSeaGreen
         Me.pnlWhatsapp.Controls.Add(Me.Label23)
         Me.pnlWhatsapp.Controls.Add(Me.cbType)
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.RadioPrint2)
         Me.pnlWhatsapp.Controls.Add(Me.RadioPrint1)
         Me.pnlWhatsapp.Controls.Add(Me.Label57)
@@ -1259,11 +1263,36 @@ Partial Class Sellout_Mannual
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(151, 9)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
         Me.cbType.TabIndex = 91233
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(76, 39)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(39, 19)
+        Me.lblSim.TabIndex = 91235
+        Me.lblSim.Text = "SIM :"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(124, 37)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(173, 23)
+        Me.cbSim.TabIndex = 91236
+        Me.cbSim.Visible = False
         '
         'RadioPrint2
         '
@@ -2124,6 +2153,8 @@ Partial Class Sellout_Mannual
     Friend WithEvents RadioPrint1 As System.Windows.Forms.RadioButton
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents pnlAddWeight As System.Windows.Forms.Panel
     Friend WithEvents Label24 As System.Windows.Forms.Label

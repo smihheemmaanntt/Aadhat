@@ -89,13 +89,7 @@
         Retrive()
 
     End Sub
-    Private Sub txtfromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
-        txtfromDate.Text = SmartDate(txtfromDate.Text)
-    End Sub
 
-    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
-        txttoDate.Text = SmartDate(txttoDate.Text)
-    End Sub
     Private Sub Retrive(Optional ByVal condtion As String = "")
         dg1.Rows.Clear() : Dim dt As New DataTable
         Dim i As Integer : Dim count As Integer = 0
@@ -302,11 +296,12 @@
         End If
     End Sub
 
-    Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
-
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
+        txtFromDate.Text = SmartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub txtfromDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
-
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
+
 End Class

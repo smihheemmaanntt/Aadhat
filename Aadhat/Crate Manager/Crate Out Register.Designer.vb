@@ -483,7 +483,7 @@ Partial Class Crate_Out_Register
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"WhatsApp API", "Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"WhatsApp API", "Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(332, 17)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)

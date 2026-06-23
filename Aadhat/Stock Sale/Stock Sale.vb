@@ -1547,6 +1547,54 @@
         cbAccountName.SelectedValue = 0 : cbAccountName.Text = ""
         txtGrossWt.Text = ""
     End Sub
+
+    Private Function ValidateStockSaleRows() As Boolean
+        If dg1.Rows.Count = 0 Then Return True
+
+        Dim requiredNug As New Dictionary(Of String, Decimal)()
+        Dim displayText As New Dictionary(Of String, String)()
+
+        For Each row As DataGridViewRow In dg1.Rows
+            If row.IsNewRow Then Continue For
+            Dim purchaseId As Integer = Val(row.Cells("PurchaseID").Value)
+            Dim itemId As Integer = Val(row.Cells("ItemID").Value)
+            Dim lotNo As String = If(row.Cells("Lot/Veriety").Value, "").ToString().Trim()
+            If purchaseId <= 0 OrElse itemId <= 0 OrElse lotNo = "" Then
+                MsgBox("Please select a valid purchase lot for every stock sale row.", MsgBoxStyle.Critical, "Stock Validation")
+                Return False
+            End If
+
+            Dim key As String = purchaseId.ToString() & "|" & itemId.ToString() & "|" & lotNo.ToUpper()
+            If requiredNug.ContainsKey(key) = False Then
+                requiredNug(key) = 0
+                displayText(key) = row.Cells("Item Name").Value.ToString() & " / Lot: " & lotNo
+            End If
+            requiredNug(key) += Val(row.Cells("Nug").Value)
+        Next
+
+        For Each key As String In requiredNug.Keys
+            Dim parts() As String = key.Split("|"c)
+            Dim purchaseId As Integer = Val(parts(0))
+            Dim itemId As Integer = Val(parts(1))
+            Dim lotNo As String = parts(2).Replace("'", "''")
+            Dim excludeVoucher As String = If(Val(txtid.Text) > 0, " And VoucherID<>" & Val(txtid.Text), "")
+
+            Dim purchaseNug As Decimal = Val(clsFun.ExecScalarStr("Select IfNull(Sum(Nug),0) From Purchase Where VoucherID=" & purchaseId & " And ItemID=" & itemId & " And Upper(Trim(LotNo))='" & lotNo & "'"))
+            Dim soldNug As Decimal = Val(clsFun.ExecScalarStr("Select IfNull(Sum(Nug),0) From Transaction2 Where PurchaseID=" & purchaseId & " And ItemID=" & itemId & " And Upper(Trim(Lot))='" & lotNo & "' And TransType in ('Stock Sale','On Sale','Standard Sale','Store Out')" & excludeVoucher))
+
+            Dim availableNug As Decimal = purchaseNug - soldNug
+            If requiredNug(key) > availableNug Then
+                MsgBox("Stock cannot go negative." & vbCrLf &
+                       displayText(key) & vbCrLf &
+                       "Available Nug: " & Format(availableNug, "0.00") & vbCrLf &
+                       "Entered Nug: " & Format(requiredNug(key), "0.00"), MsgBoxStyle.Critical, "Stock Validation")
+                Return False
+            End If
+        Next
+
+        Return True
+    End Function
+
     Private Sub Save()
         '    VNumber()
         Dim dt As DateTime
@@ -2029,6 +2077,7 @@
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If dg1.RowCount = 0 Then MsgBox("There is No Record to Save / Update...", vbOKOnly, "Empty") : Exit Sub
+        If ValidateStockSaleRows() = False Then Exit Sub
         If BtnSave.Text = "&Save" Then
             Dim addSale As String = clsFun.ExecScalarStr("SELECT Save FROM UserRights AS UR INNER JOIN Users AS U ON UR.UserTypeID = U.UserTypeID Where UserName='" & MainScreenPicture.lblUser.Text & "' and EntryType='Sale'")
             If addSale <> "Y" Then MsgBox("You Don't Have Rights to Add Bills... " & vbNewLine & " Please Contact to Admin...", MsgBoxStyle.Critical, "Access Denied") : ClearAll() : Exit Sub

@@ -165,6 +165,32 @@
         Dim frm As msgAlert = New msgAlert()
         frm.showAlert(msg, type)
     End Sub
+
+    Private Function SqlText(ByVal value As String) As String
+        Return value.Replace("'", "''")
+    End Function
+
+    Private Sub UpdateItemNameInTable(ByVal tableName As String, ByVal itemId As Integer, ByVal itemName As String)
+        Try
+            If clsFun.CheckIfColumnExists(tableName, "ItemID") = False Then Exit Sub
+            If clsFun.CheckIfColumnExists(tableName, "ItemName") = False Then Exit Sub
+            clsFun.ExecNonQuery("Update " & tableName & " Set ItemName='" & SqlText(itemName) & "' Where ItemID=" & itemId)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub SyncItemNameToUsedRecords(ByVal itemId As Integer, ByVal itemName As String)
+        If itemId <= 0 Then Exit Sub
+        UpdateItemNameInTable("Purchase", itemId, itemName)
+        UpdateItemNameInTable("PurchaseLoose", itemId, itemName)
+        UpdateItemNameInTable("Transaction1", itemId, itemName)
+        UpdateItemNameInTable("Transaction2", itemId, itemName)
+        UpdateItemNameInTable("Transaction3", itemId, itemName)
+        UpdateItemNameInTable("Transaction4", itemId, itemName)
+        UpdateItemNameInTable("Stock", itemId, itemName)
+        UpdateItemNameInTable("Vouchers", itemId, itemName)
+    End Sub
+
     Private Sub UpdateItems()
         If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & txtItemName.Text & "')") > 1 Then
             MsgBox("Item Already Exists...", vbOkOnly, "Access Denied") : txtItemName.Focus() : Exit Sub
@@ -184,6 +210,7 @@
             cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
             Try
                 If clsFun.ExecNonQuery(sql) > 0 Then
+                    SyncItemNameToUsedRecords(Val(txtid.Text), txtItemName.Text.Trim)
                     ItemNameValue = txtItemName.Text : ItemNameID = Val(txtid.Text)
                     Textclear() : If OpenedFromItems Then Me.Close() : Exit Sub
                     Me.Alert("Updated Successful...", msgAlert.enmType.Update)

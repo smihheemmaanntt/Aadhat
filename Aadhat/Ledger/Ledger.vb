@@ -5,7 +5,10 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.Text
 Imports System.Threading
+Imports System.Data
 Imports System.Data.SQLite
+Imports System.Collections.Generic
+Imports System.Text.RegularExpressions
 
 Public Class Ledger
     Dim rs As New Resizer
@@ -15,9 +18,24 @@ Public Class Ledger
     Dim whatsappSender As New WhatsAppSender()
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
+    Private Const MobileSendingMethod As String = "From Mobile"
+
+    Private Class OfficialTemplateItem
+        Public TemplateCode As String
+        Public TemplateName As String
+        Public LanguageCode As String
+        Public ParameterFields As String
+        Public BodyText As String
+
+        Public Overrides Function ToString() As String
+            If TemplateCode Is Nothing OrElse TemplateCode.Trim() = "" Then Return TemplateName
+            Return TemplateName & " (" & TemplateCode & " / " & LanguageCode & ")"
+        End Function
+    End Class
 
     Public Sub New()
         InitializeComponent()
+        ConfigureOfficialTemplateSelector()
         clsFun.DoubleBuffered(dg1, True)
         bgWorker.WorkerSupportsCancellation = True
         AddHandler bgWorker.DoWork, AddressOf bgWorker_DoWork
@@ -1079,10 +1097,304 @@ Public Class Ledger
         TxtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         TxtFromDate.Text = SmartDate(TxtFromDate.Text)
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("Easy WhatsApp") = False Then cbType.Items.Add("Easy WhatsApp")
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains(MobileSendingMethod) = False Then cbType.Items.Add(MobileSendingMethod)
+        lblSim.Visible = (cbType.Text = MobileSendingMethod) : cbSim.Visible = (cbType.Text = MobileSendingMethod)
+        Label3.Visible = (cbType.Text <> MobileSendingMethod)
+        UpdateOfficialTemplateSelectorVisibility()
+    End Sub
+
+    Private Sub ConfigureOfficialTemplateSelector()
+        If pnlWahtsappNo Is Nothing Then Exit Sub
+        If lblOfficialTemplate IsNot Nothing Then lblOfficialTemplate.BringToFront()
+        If cbOfficialTemplate IsNot Nothing Then cbOfficialTemplate.BringToFront()
+    End Sub
+
+    Private Sub UpdateOfficialTemplateSelectorVisibility()
+        Dim showTemplate As Boolean = (cbType.Text = "WhatsApp Official API")
+        If lblOfficialTemplate IsNot Nothing Then lblOfficialTemplate.Visible = showTemplate
+        If cbOfficialTemplate IsNot Nothing Then cbOfficialTemplate.Visible = showTemplate
+        If showTemplate Then LoadOfficialLedgerTemplates()
+    End Sub
+
+    Private Sub LoadOfficialLedgerTemplates()
+        If cbOfficialTemplate Is Nothing Then Exit Sub
+        cbOfficialTemplate.Items.Clear()
+
+        Dim languageCode As String = GetPreferredOfficialLedgerLanguage()
+        Dim alternateLanguage As String = If(languageCode = "hi", "en", "hi")
+        Dim preferredIndex As Integer = -1
+        Dim dt As DataTable = WhatsAppOfficialDb.GetApprovedDocumentTemplates("ledger", languageCode)
+        AddOfficialLedgerTemplateRows(dt, languageCode, languageCode, preferredIndex)
+        dt.Dispose()
+
+        dt = WhatsAppOfficialDb.GetApprovedDocumentTemplates("ledger", alternateLanguage)
+        AddOfficialLedgerTemplateRows(dt, languageCode, alternateLanguage, preferredIndex)
+        dt.Dispose()
+
+        If cbOfficialTemplate.Items.Count = 0 Then
+            Dim item As New OfficialTemplateItem()
+            item.TemplateName = "No approved Ledger document template"
+            item.TemplateCode = ""
+            item.LanguageCode = languageCode
+            item.ParameterFields = ""
+            cbOfficialTemplate.Items.Add(item)
+            preferredIndex = 0
+        End If
+
+        If preferredIndex < 0 Then preferredIndex = 0
+        cbOfficialTemplate.SelectedIndex = preferredIndex
+    End Sub
+
+    Private Function GetPreferredOfficialLedgerLanguage() As String
+        Dim languageType As String = ClsFunPrimary.ExecScalarStr("Select LanguageType From API")
+        languageType = languageType.ToLower()
+        If languageType.Contains("regional") OrElse languageType.Contains("hindi") OrElse languageType.StartsWith("hi") Then Return "hi"
+        Return "en"
+    End Function
+
+    Private Sub AddOfficialLedgerTemplateRows(ByVal dt As DataTable, ByVal preferredLanguage As String, ByVal rowLanguage As String, ByRef preferredIndex As Integer)
+        If dt Is Nothing Then Exit Sub
+        For Each row As DataRow In dt.Rows
+            Dim item As New OfficialTemplateItem()
+            item.TemplateCode = row("TemplateCode").ToString()
+            item.TemplateName = row("TemplateName").ToString()
+            item.LanguageCode = row("LanguageCode").ToString()
+            If item.TemplateCode.ToLower().Contains("hi") OrElse item.TemplateName.ToLower().Contains("hindi") OrElse item.TemplateName.ToLower().Contains(" hi") Then
+                item.LanguageCode = "hi"
+            ElseIf item.LanguageCode.Trim() = "" Then
+                item.LanguageCode = rowLanguage
+            End If
+            If item.LanguageCode.Trim().ToLower().StartsWith("hi") Then
+                item.LanguageCode = "hi"
+            ElseIf item.LanguageCode.Trim() = "" Then
+                item.LanguageCode = "en"
+            End If
+            item.ParameterFields = row("ParameterFields").ToString()
+            If dt.Columns.Contains("BodyText") Then item.BodyText = row("BodyText").ToString()
+            cbOfficialTemplate.Items.Add(item)
+
+            If preferredIndex < 0 AndAlso item.LanguageCode = preferredLanguage Then preferredIndex = cbOfficialTemplate.Items.Count - 1
+        Next
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function BuildPhoneMsgBody(ByVal fileUrl As String) As String
+        If fileUrl.Trim() = "" Then Return ""
+        Return "LEDGER VIEW : " & fileUrl.Trim()
+    End Function
+
+    Private Function ExportLedgerPdfForMobile() As String
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        GlobalData.PdfName = cbAccountName.Text & "-" & txtFromDate.Text & ".pdf"
+        If ckJoin.Checked = True Then
+            WithoutDiscriptionPrint()
+        Else
+            PrintRecord()
+        End If
+        If ckPrintHindi.Checked = True Then
+            Pdf_Genrate.ExportReport("\Ledger2.rpt")
+        ElseIf ckDaywisePrint.Checked = True Then
+            Pdf_Genrate.ExportReport("\Ledger-DayWise.rpt")
+        Else
+            Pdf_Genrate.ExportReport("\Ledger.rpt")
+        End If
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Sub SendPhoneMsgzData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+        If RefreshMobileSimList() = False Then Exit Sub
+        Dim fileUrl As String = ExportLedgerPdfForMobile()
+        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+            MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Mobile API")
+            Exit Sub
+        End If
+        Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildPhoneMsgBody(fileUrl))
+        If apiResult = "SUCCESS" Then
+            MsgBox("Ledger sent on msgz.in server", vbInformation, "Sended")
+            pnlWahtsappNo.Visible = False : cbAccountName.Focus()
+        Else
+            MsgBox(apiResult, MsgBoxStyle.Critical, "Mobile API")
+        End If
+    End Sub
+
+    Private Function CleanOfficialLedgerParameterFields(ByVal parameterFields As String) As String
+        Dim cleanedFields As New List(Of String)()
+        For Each fieldName As String In If(parameterFields, "").Split(","c)
+            Dim key As String = fieldName.Trim().ToLower()
+            If key <> "" Then cleanedFields.Add(key)
+        Next
+        If cleanedFields.Count = 0 Then Return "company_name,account_name,from_date,to_date"
+        Return String.Join(",", cleanedFields.ToArray())
+    End Function
+
+    Private Function BuildOfficialLedgerFields(ByVal mobileNo As String, ByVal fileUrl As String, ByVal parameterFields As String) As List(Of String)
+        parameterFields = CleanOfficialLedgerParameterFields(parameterFields)
+
+        Dim values As New Dictionary(Of String, String)
+        values("company_name") = compname.Trim()
+        values("account_name") = cbAccountName.Text.Trim()
+        values("mobile_no") = mobileNo.Trim()
+        values("city") = clsFun.ExecScalarStr("Select City From Accounts Where ID='" & Val(cbAccountName.SelectedValue) & "'")
+        values("from_date") = TxtFromDate.Text.Trim()
+        values("to_date") = txtToDate.Text.Trim()
+        values("opening_balance") = txtOpBal.Text.Trim()
+        values("closing_balance") = txtBalAmt.Text.Trim()
+        values("debit_total") = txtDramt.Text.Trim()
+        values("credit_total") = txtcrAmt.Text.Trim()
+        values("pdf_link") = fileUrl.Trim()
+
+        Dim fields As New List(Of String)
+        For Each fieldName As String In parameterFields.Split(","c)
+            Dim key As String = fieldName.Trim().ToLower()
+            If key = "" Then Continue For
+            If values.ContainsKey(key) Then
+                fields.Add(values(key))
+            Else
+                fields.Add("")
+            End If
+        Next
+
+        Return fields
+    End Function
+
+    Private Function BuildOfficialLedgerServiceMessage(ByVal templateBody As String, ByVal fields As List(Of String)) As String
+        Dim text As String = If(templateBody, "").Trim()
+        If text = "" Then
+            text = "Hello {{2}}, your ledger with {{1}} from {{3}} to {{4}} is ready. Thank you"
+        End If
+
+        text = System.Text.RegularExpressions.Regex.Replace(text, "\{\{(\d+)\}\}", Function(m)
+                                                                                       Dim n As Integer = Val(m.Groups(1).Value)
+                                                                                       If fields IsNot Nothing AndAlso n > 0 AndAlso fields.Count >= n Then Return fields(n - 1)
+                                                                                       Return ""
+                                                                                   End Function)
+
+        text = text.Replace("  ", " ").Trim()
+        If text = "" Then text = "Your ledger is ready. Thank you"
+        Return text
+    End Function
+
+    Private Function ShortStatusText(ByVal value As String, ByVal maxLength As Integer) As String
+        If value Is Nothing Then Return ""
+        Dim text As String = value.Replace(vbCr, " ").Replace(vbLf, " ").Trim()
+        If text.Length <= maxLength Then Return text
+        Return text.Substring(0, maxLength - 3) & "..."
+    End Function
+
+    Private Sub SendOfficialLedgerData()
+        Dim mobile As String = WhatsAppOfficialApi.NormalizeMobile(txtWhatsappNo.Text)
+        If mobile = "" OrElse mobile.Length <> 12 OrElse mobile.StartsWith("91") = False Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+
+        WhatsAppOfficialDb.EnsureDatabase()
+        Dim vendorUid As String = WhatsAppOfficialDb.GetSetting("VendorUid").Trim()
+        Dim accessToken As String = WhatsAppOfficialDb.GetSetting("AccessToken").Trim()
+        If vendorUid = "" OrElse accessToken = "" Then
+            MsgBox("Official API Vendor ID / Access Token is missing. Please validate and save WhatsApp API Configuration.", MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+
+        If cbOfficialTemplate Is Nothing OrElse cbOfficialTemplate.Items.Count = 0 Then LoadOfficialLedgerTemplates()
+        If cbOfficialTemplate Is Nothing OrElse cbOfficialTemplate.SelectedItem Is Nothing Then
+            MsgBox("No approved Ledger document template found. Please approve/sync a Ledger document template first.", MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+
+        Dim selectedTemplate As OfficialTemplateItem = CType(cbOfficialTemplate.SelectedItem, OfficialTemplateItem)
+        If selectedTemplate.TemplateCode.Trim() = "" Then
+            MsgBox("No approved Ledger document template found. Please approve/sync a Ledger document template first.", MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+
+        Dim fileUrl As String = ExportLedgerPdfForMobile()
+        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+            MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Official API")
+            WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "LEDGER", "FAILED", "PDF upload failed: " & fileUrl)
+            Exit Sub
+        End If
+
+        Dim fields As List(Of String) = BuildOfficialLedgerFields(mobile, fileUrl, selectedTemplate.ParameterFields)
+        Dim serviceMessage As String = BuildOfficialLedgerServiceMessage(selectedTemplate.BodyText, fields)
+        Dim apiResponse As String = ""
+        Dim sent As Boolean = WhatsAppOfficialApi.SendSmartMessage(
+            vendorUid,
+            accessToken,
+            mobile,
+            serviceMessage,
+            fileUrl,
+            selectedTemplate.TemplateCode,
+            selectedTemplate.LanguageCode,
+            fields,
+            apiResponse,
+            "Ledger.pdf")
+        If sent Then
+            WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "LEDGER", "SUCCESS", apiResponse)
+            MsgBox("Ledger sent via Official API." & vbCrLf & ShortStatusText(apiResponse, 220), MsgBoxStyle.Information, "Official API")
+            pnlWahtsappNo.Visible = False : cbAccountName.Focus()
+        Else
+            WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "LEDGER", "FAILED", apiResponse)
+            MsgBox("Official API failed." & vbCrLf & apiResponse, MsgBoxStyle.Critical, "Official API")
+        End If
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWahtsappNo.Visible Then RefreshMobileSimList()
+    End Sub
+
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         txtWhatsappNo.Text = clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(cbAccountName.SelectedValue) & "'")
         pnlWahtsappNo.Visible = True : txtWhatsappNo.Focus()
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+        EnsureMobileWhatsappControls()
+        Dim sendingMethod As String = ClsFunPrimary.ExecScalarStr("Select SendingMethod From API")
+        If sendingMethod = "Easy WhatsApp" Then
             cbType.SelectedIndex = 0
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
@@ -1096,6 +1408,11 @@ Public Class Ledger
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
+        ElseIf sendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+            cbType.SelectedItem = MobileSendingMethod
+            RefreshMobileSimList()
+        ElseIf cbType.Items.Contains("WhatsApp Official API") Then
+            cbType.SelectedItem = "WhatsApp Official API"
         End If
 
     End Sub
@@ -1189,12 +1506,16 @@ Public Class Ledger
                 End If
             End If
         End If
-        If cbType.SelectedIndex = 0 Then
+        If cbType.Text = "Easy WhatsApp" Then
             If txtWhatsappNo.Text <> "" Then
                 SendWhatsappData()
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             End If
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            SendOfficialLedgerData()
+        ElseIf cbType.Text = MobileSendingMethod Then
+            SendPhoneMsgzData()
         End If
     End Sub
     Private Sub StartBackgroundTask(action As Action)

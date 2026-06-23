@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 
+Imports System.Collections.Generic
+
 Public Class Crate_Out
     Dim vno As Integer
     Dim VchId As Integer = 0
@@ -7,6 +9,8 @@ Public Class Crate_Out
     Dim bal As String = ""
     Dim ServerTag As Integer
     Private WhatsappCheckBox As CheckBox = New CheckBox()
+    Dim whatsappSender As New WhatsAppSender()
+    Private Const MobileSendingMethod As String = "From Mobile"
     Private Sub Crate_IN_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
@@ -30,8 +34,14 @@ Public Class Crate_Out
             If dt.Rows.Count > 0 Then
                 For i = 0 To dt.Rows.Count - 1
                     SendingMethod = dt.Rows(i)("SendingMethod").ToString()
+                    EnsureMobileWhatsappControls()
                     cbType.SelectedIndex = 0
-                    If SendingMethod = "Easy WhatsApp" Then cbType.SelectedIndex = 0 Else cbType.SelectedIndex = 0 : cbType.Visible = True
+                    If SendingMethod = "WhatsApp Official API" AndAlso cbType.Items.Contains("WhatsApp Official API") Then
+                        cbType.SelectedItem = "WhatsApp Official API"
+                    ElseIf SendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+                        cbType.SelectedItem = MobileSendingMethod
+                    End If
+                    cbType.Visible = True
                     LangugageType = dt.Rows(i)("LanguageType").ToString()
                     btnRadioEnglish.Checked = True
                     If LangugageType = "English" Then btnRadioEnglish.Checked = True Else RadioRegional.Checked = True
@@ -48,6 +58,68 @@ Public Class Crate_Out
         End Try
         'clsFun.CloseConnection()
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("Easy WhatsApp") = False Then cbType.Items.Add("Easy WhatsApp")
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains(MobileSendingMethod) = False Then cbType.Items.Add(MobileSendingMethod)
+        Dim showMobile As Boolean = (cbType.Text = MobileSendingMethod)
+        Dim showOfficial As Boolean = (cbType.Text = "WhatsApp Official API")
+        lblSim.Visible = showMobile : cbSim.Visible = showMobile
+        Label13.Visible = (Not showMobile AndAlso Not showOfficial)
+        If showOfficial Then LoadOfficialTemplateCombo() Else WhatsAppOfficialSendHelper.SetTemplateComboVisible(cbOfficialTemplate, lblOfficialTemplate, False)
+    End Sub
+
+    Private Sub LoadOfficialTemplateCombo()
+        Dim preferredLanguage As String = If(btnRadioEnglish.Checked, "en", "hi")
+        WhatsAppOfficialSendHelper.LoadOfficialTemplateCombo(cbOfficialTemplate, lblOfficialTemplate, "crate_out", preferredLanguage, Not RadioMsgOnly.Checked)
+    End Sub
+
+    Private Function SelectedOfficialTemplateCode() As String
+        Return WhatsAppOfficialSendHelper.SelectedTemplateCode(cbOfficialTemplate)
+    End Function
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function BuildPhoneMsgBody(ByVal msgText As String, ByVal fileUrl As String) As String
+        Dim body As String = msgText.Trim()
+        If fileUrl.Trim() <> "" Then
+            If body <> "" Then body &= vbCrLf
+            Dim pdfLabel As String = If(btnRadioEnglish.Checked, "CRATE OUT VIEW : ", "क्रेट निकासी रसीद : ")
+            body &= pdfLabel & fileUrl.Trim()
+        End If
+        Return body
+    End Function
+
     Private Sub AcBal()
         '  Dim j As Integer
         Dim dt As New DataTable
@@ -982,30 +1054,12 @@ Public Class Crate_Out
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         FillControl()
-        If ClsFunPrimary.ExecScalarStr("Select InstanceID From API") <> "" AndAlso ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
-            If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
-            pnlWhatsapp.Visible = True : ShowWhatsappContacts()
-            pnlWhatsapp.BringToFront() : cbType.SelectedIndex = 0 : Exit Sub
-            Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
-            If System.IO.File.Exists(WhatsappFile) = False Then
-                MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
-                Exit Sub
-            End If
-            Dim p() As Process
-            p = Process.GetProcessesByName("Easy Whatsapp")
-            If p.Count = 0 Then
-                Dim StartWhatsapp As New System.Diagnostics.Process
-                StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
-                StartWhatsapp.Start()
-            End If
-            pnlWhatsapp.Visible = True
-            If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
-            ShowWhatsappContacts()
-        Else
-            If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
-            pnlWhatsapp.Visible = True : ShowWhatsappContacts()
-            pnlWhatsapp.BringToFront() : cbType.SelectedIndex = 0
-        End If
+        If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
+        pnlWhatsapp.Visible = True : ShowWhatsappContacts()
+        pnlWhatsapp.BringToFront()
+        EnsureMobileWhatsappControls()
+        If cbType.SelectedIndex < 0 AndAlso cbType.Items.Count > 0 Then cbType.SelectedIndex = 0
+        If cbType.Text = MobileSendingMethod Then RefreshMobileSimList()
     End Sub
     Sub RowColumsWhatsapp()
         DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 10
@@ -1072,7 +1126,7 @@ Public Class Crate_Out
                     .Cells(2).Value = dt.Rows(i)("SlipNo").ToString()
                     .Cells(3).Value = clsFun.ExecScalarStr("Select MObile1 From Accounts Where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "'")
                     .Cells(4).Value = dt.Rows(i)("AccountName").ToString()
-                    '.Cells(7).Value = dt.Rows(i)("SallerName").ToString()
+                    .Cells(7).Value = dt.Rows(i)("AccountID").ToString()
                     Dim OpSql As String = "Select ((Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')" & _
                                           "-(Select ifnull(Sum(Qty),0) From CrateVoucher Where AccountID=Accounts.ID and CrateType='Crate Out' and CrateVoucher.Entrydate <'" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "')) as  Restbal from Accounts   where ID='" & Val(dt.Rows(i)("AccountId").ToString()) & "' and Restbal<>0  ;"
                     Dim OpBal As String = clsFun.ExecScalarStr(OpSql)
@@ -1102,7 +1156,7 @@ Public Class Crate_Out
         DgWhatsapp.ClearSelection()
     End Sub
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        If cbType.SelectedIndex = 0 Then
+        If cbType.Text = "Easy WhatsApp" Then
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -1117,8 +1171,153 @@ Public Class Crate_Out
                 End If
                 SendWhatsappData()
             End If
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            SendOfficialCrateOutData()
+        ElseIf cbType.Text = MobileSendingMethod Then
+            SendPhoneMsgzData()
         End If
     End Sub
+
+    Private Sub SendOfficialCrateOutData()
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        UpdateProgressBarVisibility(True)
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(row.Index)
+                If .Cells(0).Value = True AndAlso .Cells(3).Value <> "" Then
+                    Dim mobile As String = NormalizeIndianMobile(.Cells(3).Value.ToString())
+                    If mobile = "" Then
+                        .Cells(5).Value = "Invalid mobile no" : .Cells(5).Style.ForeColor = Color.Red
+                        Continue For
+                    End If
+                    Dim msgText As String = If(btnRadioEnglish.Checked, .Cells(8).Value.ToString(), .Cells(9).Value.ToString())
+                    Dim fileUrl As String = ""
+                    If RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked Then
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                        retrive2(.Cells(1).Value) : PrintReceipts()
+                        Pdf_Genrate.ExportReport("\transCrate.rpt")
+                        fileUrl = PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+                        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+                            .Cells(5).Value = "PDF upload failed" : .Cells(5).ToolTipText = fileUrl : .Cells(5).Style.ForeColor = Color.Red
+                            Continue For
+                        End If
+                    End If
+                    Dim apiResponse As String = ""
+                    Dim ok As Boolean
+                    If RadioMsgOnly.Checked Then
+                        ok = WhatsAppOfficialSendHelper.SendAadhatText("crate_out", "CRATE_OUT", mobile, .Cells(4).Value.ToString(), txtEntryDate.Text, "", msgText, apiResponse, If(btnRadioEnglish.Checked, "en", "hi"), "", SelectedOfficialTemplateCode())
+                    Else
+                        ok = WhatsAppOfficialSendHelper.SendAadhatDocument("crate_out", "CRATE_OUT", mobile, .Cells(4).Value.ToString(), txtEntryDate.Text, "", fileUrl, "Crate.pdf", apiResponse, If(btnRadioEnglish.Checked, "en", "hi"), "", SelectedOfficialTemplateCode())
+                    End If
+                    .Cells(5).Value = If(ok, "Sent via Official API", "Failed")
+                    .Cells(5).ToolTipText = apiResponse
+                    .Cells(5).Style.ForeColor = If(ok, Color.Green, Color.Red)
+                End If
+            End With
+        Next
+        UpdateProgressBarVisibility(False)
+    End Sub
+
+    Private Sub SendPhoneMsgzData()
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        If RefreshMobileSimList() = False Then Exit Sub
+        UpdateProgressBarVisibility(True)
+
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(row.Index)
+                If .Cells(0).Value = True AndAlso .Cells(3).Value <> "" Then
+                    Dim mobile As String = NormalizeIndianMobile(.Cells(3).Value.ToString())
+                    If mobile = "" Then
+                        .Cells(5).Value = "Invalid mobile no"
+                        .Cells(5).Style.ForeColor = Color.Red
+                        Continue For
+                    End If
+
+                    Dim msgText As String = If(btnRadioEnglish.Checked, .Cells(8).Value.ToString(), .Cells(9).Value.ToString())
+                    Dim fileUrl As String = ""
+                    If RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked Then
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                        retrive2(.Cells(1).Value) : PrintReceipts()
+                        Pdf_Genrate.ExportReport("\transCrate.rpt")
+                        fileUrl = PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+                        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+                            .Cells(5).Value = "PDF upload failed"
+                            .Cells(5).ToolTipText = fileUrl
+                            .Cells(5).Style.ForeColor = Color.Red
+                            Continue For
+                        End If
+                    End If
+
+                    If RadioPdfOnly.Checked Then msgText = ""
+                    Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildPhoneMsgBody(msgText, fileUrl))
+                    If apiResult = "SUCCESS" Then
+                        .Cells(5).Value = "Sent on msgz.in server"
+                        .Cells(5).Style.ForeColor = Color.Green
+                    Else
+                        .Cells(5).Value = "Failed"
+                        .Cells(5).ToolTipText = apiResult
+                        .Cells(5).Style.ForeColor = Color.Red
+                    End If
+                End If
+            End With
+        Next
+        UpdateProgressBarVisibility(False)
+    End Sub
+
+    Private Sub WhatsAppDesktop()
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        Dim count As Integer = 0
+        Dim fastQuery As String = String.Empty
+        WABA.ExecNonQuery("Delete from SendingData")
+        UpdateProgressBarVisibility(True)
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            With row
+                UpdateProgressBar(count)
+                If .Cells(0).Value = True AndAlso .Cells(3).Value <> "" Then
+                    Dim msgText As String = If(btnRadioEnglish.Checked, .Cells(8).Value.ToString(), .Cells(9).Value.ToString())
+                    Dim filePath As String = ""
+                    If RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked Then
+                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                        retrive2(.Cells(1).Value) : PrintReceipts()
+                        Pdf_Genrate.ExportReport("\transCrate.rpt")
+                        filePath = whatsappSender.UploadFile(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+                    End If
+                    If RadioPdfOnly.Checked Then msgText = ""
+                    fastQuery = fastQuery & IIf(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") & Val(.Cells(1).Value) & ",'" & .Cells(4).Value & "','" & .Cells(3).Value & "', " &
+                        "'" & msgText & "', '" & filePath & "'"
+                End If
+            End With
+            count += 1
+        Next
+        If fastQuery <> String.Empty Then
+            Dim Sql As String = "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " & fastQuery & ""
+            If WABA.ExecNonQuery(Sql) > 0 Then
+                WABA.ExecScalarStr("Update Settings Set MinState='N'")
+                MsgBox("Data Send to WhatsApp Official API Successfully...", vbInformation, "Sended")
+            End If
+        End If
+        UpdateProgressBarVisibility(False)
+    End Sub
+
     Private Sub SendWhatsappData()
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         For Each deleteFile In Directory.GetFiles(directoryName, "*.PDf*", SearchOption.TopDirectoryOnly)
@@ -1302,5 +1501,14 @@ Public Class Crate_Out
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
+    End Sub
+
+    Private Sub OfficialTemplateOptions_Changed(sender As Object, e As EventArgs) Handles btnRadioEnglish.CheckedChanged, RadioRegional.CheckedChanged, RadioPdfOnly.CheckedChanged, RadioMsgOnly.CheckedChanged, RadioPDFMsg.CheckedChanged
+        If cbType.Text = "WhatsApp Official API" Then LoadOfficialTemplateCombo()
     End Sub
 End Class

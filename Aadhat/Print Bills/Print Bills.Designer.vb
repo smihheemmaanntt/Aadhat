@@ -77,6 +77,10 @@ Partial Class Print_Bills
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.BtnSendWhatsapp = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.lblOfficialTemplate = New System.Windows.Forms.Label()
+        Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
+        Me.chkEasyReplyNote = New System.Windows.Forms.CheckBox()
+        Me.txtEasyReplyNote = New System.Windows.Forms.TextBox()
         Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -310,9 +314,9 @@ Partial Class Print_Bills
         Me.Label2.BackColor = System.Drawing.Color.CadetBlue
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label2.Location = New System.Drawing.Point(382, 577)
+        Me.Label2.Location = New System.Drawing.Point(382, 576)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(72, 25)
+        Me.Label2.Size = New System.Drawing.Size(72, 26)
         Me.Label2.TabIndex = 40040
         Me.Label2.Text = "Weight :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -698,6 +702,10 @@ Partial Class Print_Bills
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.pnlWhatsapp.Controls.Add(Me.lblOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.cbOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.chkEasyReplyNote)
+        Me.pnlWhatsapp.Controls.Add(Me.txtEasyReplyNote)
         Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label13)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
@@ -712,11 +720,66 @@ Partial Class Print_Bills
         Me.pnlWhatsapp.Controls.Add(Me.RadioPdfOnly)
         Me.pnlWhatsapp.Controls.Add(Me.btnSending)
         Me.pnlWhatsapp.Controls.Add(Me.ProgressBar1)
-        Me.pnlWhatsapp.Location = New System.Drawing.Point(186, 196)
+        Me.pnlWhatsapp.Location = New System.Drawing.Point(186, 167)
         Me.pnlWhatsapp.Name = "pnlWhatsapp"
-        Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 353)
+        Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 382)
         Me.pnlWhatsapp.TabIndex = 91218
         Me.pnlWhatsapp.Visible = False
+        '
+        'lblOfficialTemplate
+        '
+        Me.lblOfficialTemplate.AutoSize = True
+        Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 11.0!)
+        Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.Red
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(503, 20)
+        Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(65, 17)
+        Me.lblOfficialTemplate.TabIndex = 91239
+        Me.lblOfficialTemplate.Text = "Template:"
+        Me.lblOfficialTemplate.Visible = False
+        '
+        'cbOfficialTemplate
+        '
+        Me.cbOfficialTemplate.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbOfficialTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOfficialTemplate.DropDownWidth = 340
+        Me.cbOfficialTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbOfficialTemplate.ForeColor = System.Drawing.Color.Black
+        Me.cbOfficialTemplate.FormattingEnabled = True
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(578, 17)
+        Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(138, 23)
+        Me.cbOfficialTemplate.TabIndex = 91240
+        Me.cbOfficialTemplate.Visible = False
+        '
+        'chkEasyReplyNote
+        '
+        Me.chkEasyReplyNote.Checked = True
+        Me.chkEasyReplyNote.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkEasyReplyNote.Font = New System.Drawing.Font("Arial Unicode MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkEasyReplyNote.ForeColor = System.Drawing.Color.Navy
+        Me.chkEasyReplyNote.Location = New System.Drawing.Point(12, 354)
+        Me.chkEasyReplyNote.Name = "chkEasyReplyNote"
+        Me.chkEasyReplyNote.Size = New System.Drawing.Size(131, 24)
+        Me.chkEasyReplyNote.TabIndex = 91237
+        Me.chkEasyReplyNote.Text = "Reply note include"
+        Me.chkEasyReplyNote.UseVisualStyleBackColor = True
+        Me.chkEasyReplyNote.Visible = False
+        '
+        'txtEasyReplyNote
+        '
+        Me.txtEasyReplyNote.BackColor = System.Drawing.Color.White
+        Me.txtEasyReplyNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEasyReplyNote.Font = New System.Drawing.Font("Arial Unicode MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEasyReplyNote.ForeColor = System.Drawing.Color.Maroon
+        Me.txtEasyReplyNote.Location = New System.Drawing.Point(159, 355)
+        Me.txtEasyReplyNote.Name = "txtEasyReplyNote"
+        Me.txtEasyReplyNote.Size = New System.Drawing.Size(594, 24)
+        Me.txtEasyReplyNote.TabIndex = 91238
+        Me.txtEasyReplyNote.Text = "*कृपया बिल देखकर जवाब दें: सही हो तो हाँ, ok, या ठीक है में जरूर उत्तर दे |* " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "_न" & _
+    "ोट : जवाब whatsapp पर ही मान्य होगा कॉल न करे |_"
+        Me.txtEasyReplyNote.Visible = False
         '
         'cbSim
         '
@@ -729,9 +792,9 @@ Partial Class Print_Bills
         Me.cbSim.ForeColor = System.Drawing.Color.Black
         Me.cbSim.FormattingEnabled = True
         Me.cbSim.Items.AddRange(New Object() {"SIM 1", "SIM 2"})
-        Me.cbSim.Location = New System.Drawing.Point(665, 321)
+        Me.cbSim.Location = New System.Drawing.Point(554, 321)
         Me.cbSim.Name = "cbSim"
-        Me.cbSim.Size = New System.Drawing.Size(86, 23)
+        Me.cbSim.Size = New System.Drawing.Size(197, 23)
         Me.cbSim.TabIndex = 91236
         Me.cbSim.Visible = False
         '
@@ -1140,6 +1203,10 @@ Partial Class Print_Bills
     Friend WithEvents lblvoucherCount As System.Windows.Forms.Label
     Friend WithEvents lblbillCount As System.Windows.Forms.Label
     Friend WithEvents cbSim As System.Windows.Forms.ComboBox
+    Friend WithEvents chkEasyReplyNote As System.Windows.Forms.CheckBox
+    Friend WithEvents txtEasyReplyNote As System.Windows.Forms.TextBox
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
+    Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
+    Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
 End Class

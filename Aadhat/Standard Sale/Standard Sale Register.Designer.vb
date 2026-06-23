@@ -64,6 +64,8 @@ Partial Class Standard_Sale_Register
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -434,6 +436,7 @@ Partial Class Standard_Sale_Register
         Me.dtp1.Name = "dtp1"
         Me.dtp1.Size = New System.Drawing.Size(109, 26)
         Me.dtp1.TabIndex = 0
+        Me.dtp1.TabStop = False
         '
         'dtp2
         '
@@ -442,6 +445,7 @@ Partial Class Standard_Sale_Register
         Me.dtp2.Name = "dtp2"
         Me.dtp2.Size = New System.Drawing.Size(109, 26)
         Me.dtp2.TabIndex = 91140
+        Me.dtp2.TabStop = False
         '
         'Label11
         '
@@ -562,6 +566,8 @@ Partial Class Standard_Sale_Register
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
         Me.pnlWhatsapp.Controls.Add(Me.cbType)
         Me.pnlWhatsapp.Controls.Add(Me.Label10)
@@ -578,6 +584,32 @@ Partial Class Standard_Sale_Register
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
         Me.pnlWhatsapp.TabIndex = 9
         Me.pnlWhatsapp.Visible = False
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(14, 292)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(40, 19)
+        Me.lblSim.TabIndex = 91233
+        Me.lblSim.Text = "SIM:"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(58, 290)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(187, 23)
+        Me.cbSim.TabIndex = 91234
+        Me.cbSim.Visible = False
         '
         'Label12
         '
@@ -600,7 +632,7 @@ Partial Class Standard_Sale_Register
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(349, 17)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
@@ -1071,6 +1103,8 @@ Partial Class Standard_Sale_Register
     Friend WithEvents txtItemSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents cbArea As System.Windows.Forms.ComboBox
     Friend WithEvents Button4 As System.Windows.Forms.Button

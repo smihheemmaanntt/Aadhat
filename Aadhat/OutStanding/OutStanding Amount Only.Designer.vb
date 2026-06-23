@@ -60,10 +60,14 @@ Partial Class OutStanding_Amount_Only
         Me.ckAreaWise = New System.Windows.Forms.CheckBox()
         Me.btnWhatsapp = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtMsg = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblOfficialTemplate = New System.Windows.Forms.Label()
+        Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnPnlVisHide = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -470,10 +474,14 @@ Partial Class OutStanding_Amount_Only
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label8)
         Me.pnlWhatsapp.Controls.Add(Me.txtMsg)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
         Me.pnlWhatsapp.Controls.Add(Me.cbType)
+        Me.pnlWhatsapp.Controls.Add(Me.lblOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.cbOfficialTemplate)
         Me.pnlWhatsapp.Controls.Add(Me.Label10)
         Me.pnlWhatsapp.Controls.Add(Me.btnPnlVisHide)
         Me.pnlWhatsapp.Controls.Add(Me.Panel1)
@@ -485,6 +493,34 @@ Partial Class OutStanding_Amount_Only
         Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
         Me.pnlWhatsapp.TabIndex = 91221
         Me.pnlWhatsapp.Visible = False
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(520, 291)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(40, 19)
+        Me.lblSim.TabIndex = 91235
+        Me.lblSim.Text = "SIM :"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbSim.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(566, 288)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(186, 23)
+        Me.cbSim.TabIndex = 91236
+        Me.cbSim.Visible = False
         '
         'Label8
         '
@@ -528,11 +564,36 @@ Partial Class OutStanding_Amount_Only
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(349, 17)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
         Me.cbType.TabIndex = 91231
+        '
+        'lblOfficialTemplate
+        '
+        Me.lblOfficialTemplate.AutoSize = True
+        Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.Red
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(501, 21)
+        Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(65, 16)
+        Me.lblOfficialTemplate.TabIndex = 91237
+        Me.lblOfficialTemplate.Text = "Template:"
+        Me.lblOfficialTemplate.Visible = False
+        '
+        'cbOfficialTemplate
+        '
+        Me.cbOfficialTemplate.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbOfficialTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOfficialTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbOfficialTemplate.FormattingEnabled = True
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(568, 17)
+        Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(146, 23)
+        Me.cbOfficialTemplate.TabIndex = 91238
+        Me.cbOfficialTemplate.Visible = False
         '
         'Label10
         '
@@ -758,18 +819,18 @@ Partial Class OutStanding_Amount_Only
         Me.Controls.Add(Me.pnlWhatsapp)
         Me.Name = "OutStanding_Amount_Only"
         Me.Text = "OutStanding_Amount_Only"
-        CType(Me.dg1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox4,System.ComponentModel.ISupportInitialize).EndInit
-        Me.pnlWait.ResumeLayout(false)
-        Me.pnlWait.PerformLayout
-        Me.pnlWhatsapp.ResumeLayout(false)
-        Me.pnlWhatsapp.PerformLayout
-        Me.Panel1.ResumeLayout(false)
-        CType(Me.DgWhatsapp,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlWait.ResumeLayout(False)
+        Me.pnlWait.PerformLayout()
+        Me.pnlWhatsapp.ResumeLayout(False)
+        Me.pnlWhatsapp.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txtCustomerSearch As System.Windows.Forms.TextBox
     Friend WithEvents BtnPrint As System.Windows.Forms.Button
@@ -801,6 +862,8 @@ End Sub
     Friend WithEvents pnlWhatsapp As System.Windows.Forms.Panel
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
+    Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents btnPnlVisHide As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -816,4 +879,6 @@ End Sub
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtGrater As System.Windows.Forms.TextBox
     Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
 End Class

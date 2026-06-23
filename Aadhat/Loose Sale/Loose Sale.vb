@@ -2513,9 +2513,9 @@ Public Class Loose_Sale
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             End If
-        Else
+        ElseIf cbType.Text = "WhatsApp Official API" Then
             If txtWhatsappNo.Text <> "" Then
-                StartBackgroundTask(AddressOf WahSoft)
+                StartBackgroundTask(AddressOf SendOfficialLooseSaleData)
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             End If
@@ -2546,6 +2546,41 @@ Public Class Loose_Sale
             MsgBox("Data Send to Easy Whatsapp Successfully...", vbInformation, "Sended On Easy Whatsapp")
         End If
         pnlWhatsapp.Visible = False : FootertextClear()
+    End Sub
+
+    Private Function ExportLooseSalePdfForOfficial() As String
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.Pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        GlobalData.PdfName = txtAccount.Text.Replace("/", "") & "-" & txtEntryDate.Text & ".pdf"
+        retrive2() : PrintRecord()
+        Pdf_Genrate.ExportReport("\LooseSale.rpt")
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Sub SendOfficialLooseSaleData()
+        Dim mobile As String = WhatsAppOfficialApi.NormalizeMobile(txtWhatsappNo.Text)
+        If mobile = "" OrElse mobile.Length < 12 Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+        Dim fileUrl As String = ExportLooseSalePdfForOfficial()
+        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+            MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Official API")
+            Exit Sub
+        End If
+        Dim apiResponse As String = ""
+        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("loose_sale", "LOOSE_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse)
+        If ok Then
+            MsgBox("Loose Sale sent via Official API", vbInformation, "Official API")
+            pnlWhatsapp.Visible = False : FootertextClear()
+        Else
+            MsgBox(apiResponse, MsgBoxStyle.Critical, "Official API")
+        End If
     End Sub
 
     Private Sub WahSoft()

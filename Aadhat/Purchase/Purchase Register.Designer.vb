@@ -63,6 +63,8 @@ Partial Class Purchase_Register
         Me.btnPrintBills = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -501,6 +503,8 @@ Partial Class Purchase_Register
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.pnlWhatsapp.Controls.Add(Me.Button1)
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label13)
         Me.pnlWhatsapp.Controls.Add(Me.cbType)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
@@ -531,6 +535,32 @@ Partial Class Purchase_Register
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(271, 293)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(40, 19)
+        Me.lblSim.TabIndex = 91232
+        Me.lblSim.Text = "SIM:"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(315, 291)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(163, 23)
+        Me.cbSim.TabIndex = 91233
+        Me.cbSim.Visible = False
+        '
         'Label13
         '
         Me.Label13.AutoSize = True
@@ -552,7 +582,7 @@ Partial Class Purchase_Register
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(332, 17)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
@@ -724,16 +754,16 @@ Partial Class Purchase_Register
         Me.Name = "Purchase_Register"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Purchase"
-        CType(Me.dg1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.pnlWhatsapp.ResumeLayout(false)
-        Me.pnlWhatsapp.PerformLayout
-        CType(Me.DgWhatsapp,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tmpgrid,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlWhatsapp.ResumeLayout(False)
+        Me.pnlWhatsapp.PerformLayout()
+        CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents dg1 As System.Windows.Forms.DataGridView
@@ -767,6 +797,8 @@ End Sub
     Friend WithEvents btnPrintBills As System.Windows.Forms.Button
     Friend WithEvents pnlWhatsapp As System.Windows.Forms.Panel
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
     Friend WithEvents Label12 As System.Windows.Forms.Label

@@ -1,0 +1,297 @@
+============================================================
+Time: 12-06-2026 20:06:46
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/VU9XHP","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#131005) Access denied  There was a problem with the access token or permissions you are using for the API call. | Data: [] | Template=bill_hi, Lang=hi
+Raw Response:
+{"result":"failed","message":" (#131005) Access denied  There was a problem with the access token or permissions you are using for the API call.","data":[]}
+
+============================================================
+Time: 12-06-2026 20:07:38
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/JKUVZN","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#131005) Access denied  There was a problem with the access token or permissions you are using for the API call. | Data: [] | Template=bill_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#131005) Access denied  There was a problem with the access token or permissions you are using for the API call.","data":[]}
+
+============================================================
+Time: 12-06-2026 20:08:02
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"अशोक सैनी दिवानवाडा","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/R8K3HF","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#131005) Access denied  There was a problem with the access token or permissions you are using for the API call. | Data: [] | Template=bill_hi, Lang=hi
+Raw Response:
+{"result":"failed","message":" (#131005) Access denied  There was a problem with the access token or permissions you are using for the API call.","data":[]}
+
+============================================================
+Time: 12-06-2026 20:32:54
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"अशोक सैनी दिवानवाडा","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/NMHCZG","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 10:46:50","service_window_expires_at":"2026-06-13 10:46:50","log_uid":"bffe44cb-93c3-4f1d-990b-9a118254dd74","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSNTYwQjI4N0MxMDY1OTIyNTU1AA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:33:54
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/DT82VK","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 10:46:50","service_window_expires_at":"2026-06-13 10:46:50","log_uid":"a1983a92-8cfb-4b7f-a1f8-eb65041f7246","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSQ0I4NzdFRkM2RTY3MkJDNkUwAA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:44:08
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"अशोक सैनी दिवानवाडा","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/T4CBMV","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 10:46:50","service_window_expires_at":"2026-06-13 10:46:50","log_uid":"6922d296-75aa-4185-9f7f-e7ddf48a6b40","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSNjA4MUZGRkQyN0RFRjY5MEQ3AA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:44:31
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"बब्बू भोकार","field_3":"27-04-2026","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/5BND4K","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"393256d3-dd69-46ff-bc6c-e81180290553","contact_uid":"b9a6491d-63cb-438a-bb3a-d6bab5f561fd","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgUQ0VCNDkxNEM2QkVFRjNFNEZFNDAA","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:46:52
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"27-04-2026","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/Y6NTH3","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 20:46:58
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/LJ2YBM","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 10:46:50","service_window_expires_at":"2026-06-13 10:46:50","log_uid":"fa5ca485-9757-451b-89d6-18614df53f46","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSNzdFNDFENTg5NjAxQTA1RjcwAA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:47:02
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BABBU BHOKAR","field_3":"27-04-2026","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/6APJS3","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 20:47:07
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BIJJI KACHORI WALA","field_3":"27-04-2026","field_4":"1758.00","body_param_count":4,"header_document":"https://msgz.in/A5TGSB","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 20:52:22
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/2Q5PBU","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"597e7de7-8393-4c47-b579-b8787d462d5f","contact_uid":"b9a6491d-63cb-438a-bb3a-d6bab5f561fd","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSOTM1OTUwOTM5NjNFODA1OTY3AA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:52:26
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"अशोक सैनी दिवानवाडा","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/HP7NZC","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 10:46:50","service_window_expires_at":"2026-06-13 10:46:50","log_uid":"aa946fb9-0d77-4527-914a-72b67534a571","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSOUY4RENFMTg1Mjg5NDJCMDkwAA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:52:32
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"बब्बू भोकार","field_3":"27-04-2026","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/EQBC7Z","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"fe005f07-88ba-4ea1-935e-2cc68842603c","contact_uid":"b9a6491d-63cb-438a-bb3a-d6bab5f561fd","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNUZFN0NFNzBBMkVBRTQ0QzczAA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:52:36
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"बिज्जी कचोरी वाला","field_3":"27-04-2026","field_4":"1758.00","body_param_count":4,"header_document":"https://msgz.in/RY6A9K","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"ae216e8c-d602-473c-8afb-7e9892275856","contact_uid":"1d730407-25c0-4b1a-af95-317f6044584e","phone_number":"919680397933","wamid":"wamid.HBgMOTE5NjgwMzk3OTMzFQIAERgUQ0UyNzY4MTU4MjkzOUNDMzc0ODEA","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:52:44
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"27-04-2026","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/DMTQ6W","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 20:52:48
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/378BMZ","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 10:46:50","service_window_expires_at":"2026-06-13 10:46:50","log_uid":"01d05a13-b180-4a9c-8b56-53b89dec041a","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSOTkyRkNCOUUzRTZGNUU3NEZDAA==","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 20:52:51
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BABBU BHOKAR","field_3":"27-04-2026","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/G8BXD2","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 20:52:53
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BIJJI KACHORI WALA","field_3":"27-04-2026","field_4":"1758.00","body_param_count":4,"header_document":"https://msgz.in/G86WLV","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 21:23:58
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"AASHISH OMI MURARI","template_name":"bill_en","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/HRWFY5","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 21:24:03
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"ASHOK SAINI DIWANWADA","template_name":"bill_en","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/KC9ZBP","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 15:50:36","service_window_expires_at":"2026-06-13 15:50:36","log_uid":"70140c7a-8a16-485e-b44f-09f96fc82f34","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U1MUY5MkExMkRBRDQzMjY0NjUA","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 21:24:05
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"BABBU BHOKAR","template_name":"bill_en","template_language":"en_US","field_1":"BABBU BHOKAR","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/UJXBP5","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 21:24:08
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"BIJJI KACHORI WALA","template_name":"bill_en","template_language":"en_US","field_1":"BIJJI KACHORI WALA","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1758.00","body_param_count":4,"header_document":"https://msgz.in/W9H8XQ","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 21:29:14
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"AASHISH OMI MURARI","template_name":"bill_en","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/Y7BSTP","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 21:29:18
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"ASHOK SAINI DIWANWADA","template_name":"bill_en","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/R3XYW6","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-12 15:50:36","service_window_expires_at":"2026-06-13 15:50:36","log_uid":"34cf2da3-ad2d-43e6-8ec1-bb5e1579802e","contact_uid":"3e7a2486-8669-487b-a88b-eac25f5f295b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0UxNDBDNzE1RDc0NkMwODMyNDgA","status":"accepted"}}
+
+============================================================
+Time: 12-06-2026 21:29:20
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"BABBU BHOKAR","template_name":"bill_en","template_language":"en_US","field_1":"BABBU BHOKAR","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/SVD6Z2","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+
+============================================================
+Time: 12-06-2026 21:29:23
+VendorUid: f4f9...1a0
+Endpoint: https://wahsoft.in/public/api/f4f9...1a0/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"BIJJI KACHORI WALA","template_name":"bill_en","template_language":"en_US","field_1":"BIJJI KACHORI WALA","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1758.00","body_param_count":4,"header_document":"https://msgz.in/4YP69C","header_document_name":"Bill.pdf"}
+Parsed Response:
+The field 5 field is required. | Errors: {"field_5":["The field 5 field is required."]} | Template=bill_en, Lang=en_US
+Raw Response:
+{"message":"The field 5 field is required.","errors":{"field_5":["The field 5 field is required."]}}
+

@@ -1,0 +1,939 @@
+AADHAT SOFTWARE SUPPORT KNOWLEDGEBASE
+Hindi / Hinglish Training Data
+Purpose: Customer support AI agent ke liye workflow knowledge
+Scope: Sabji mandi / fruit mandi / commission agent / trader software usage
+Note: Is file me password, database, source code, token, internal configuration, ya sensitive technical details include nahi ki gayi hain.
+
+============================================================
+1. PRODUCT OVERVIEW
+============================================================
+
+Aadhat Software fruit aur sabji mandi ke vyapari, commission agent, trader, wholesaler aur stock based business ke liye bana accounting aur billing software hai.
+
+Is software me customer account, item master, purchase, sale, standard sale, stock sale, receipt, payment, ledger, outstanding, crate manager, bill print, WhatsApp/SMS/mobile message, stock reports aur daily reports jaise kaam kiye ja sakte hain.
+
+Common use:
+- Customer ya party ka account banana
+- Item / maal ka master banana
+- Purchase ya stock entry karna
+- Sale / bill banana
+- Bill print karna
+- Customer ko bill PDF WhatsApp, mobile SMS ya official WhatsApp API se bhejna
+- Ledger / account statement dekhna
+- Receipt aur payment entry karna
+- Outstanding balance dekhna
+- Stock balance aur stock reports dekhna
+- Crate in/out aur crate ledger maintain karna
+- Day book, cash book, sale register, purchase register dekhna
+
+============================================================
+2. MAIN MENU AUR SHORTCUTS
+============================================================
+
+Main menu me generally ye options milte hain:
+- Master
+- Entry
+- Registers
+- Reports
+- Crate Manager
+- Tools
+- Help
+- Mobile App
+- Import From Mobile App
+- Complaint (New)
+
+Right side shortcut panel me common screens ke shortcut dikhte hain:
+- Account [Ctrl + A]
+- Item [Ctrl + I]
+- Speed Sale [Ctrl + S]
+- Sellout Manual [Ctrl + E]
+- Receipt [F7]
+- Payment [F8]
+- Bank Entry [Ctrl + B]
+- Super Sale [Ctrl + U]
+- Purchase [Ctrl + K]
+- Stock Sale [Ctrl + H]
+- Standard Sale [Ctrl + T]
+- Cash / Bank Book
+- Day Book [Ctrl + D]
+- Ledger [Ctrl + L]
+- Bill Prints [Ctrl + P]
+- Outstanding [Ctrl + Y]
+
+Important:
+- Shortcut user ke setup/version ke hisab se thoda change ho sakta hai.
+- Agar shortcut kaam na kare to right side shortcut list ya top menu se form open karein.
+
+============================================================
+3. MASTER SETUP
+============================================================
+
+3.1 Account Master
+
+Account master me customer, supplier, trader, cash/bank party, commission party, transport ya dusre ledger account banaye ja sakte hain.
+
+Kaise open karein:
+- Right panel se Account [Ctrl + A]
+- Ya Master menu me Account option
+
+Account banane ka general process:
+1. Account form open karein.
+2. Account name enter karein.
+3. Mobile number, address, city, party type, group ya balance details fill karein.
+4. Save karein.
+
+Support answer:
+"Account banane ke liye Account [Ctrl + A] open kijiye, party ka naam aur mobile number bhar kar Save kijiye. Ledger, bill aur message sending me yahi account use hoga."
+
+3.2 Item Master
+
+Item master me sabji/fruit/maal ka naam banaya jata hai, jaise PYAJ, AALU, SHIMLA, ADRAK, etc.
+
+Kaise open karein:
+- Right panel se Item [Ctrl + I]
+- Ya Master menu me Item option
+
+Support answer:
+"Naya item banane ke liye Item [Ctrl + I] par jaiye, item name enter kijiye aur Save kijiye. Sale/purchase entry me wahi item list me aayega."
+
+============================================================
+4. DATE SELECTION AUR SMART DATE
+============================================================
+
+Kai forms me From Date aur To Date hote hain.
+
+Use:
+- From date se report/bill ki starting date select hoti hai.
+- To date se ending date select hoti hai.
+- Show button dabane par selected date range ka data aata hai.
+
+Common flow:
+1. From date select karein.
+2. To date select karein.
+3. Show / Search / View button dabayein.
+
+Support answer:
+"Date change karne ke liye form ke upar From aur To date select karein, fir Show button dabayein. Report ya register selected date range ke hisab se refresh ho jayega."
+
+============================================================
+5. SALE, BILLING AUR PRINT BILLS
+============================================================
+
+5.1 Speed Sale
+
+Speed Sale fast billing ke liye use hota hai.
+
+Shortcut:
+- Speed Sale [Ctrl + S]
+
+Use:
+- Jaldi sale entry
+- Item wise billing
+- Customer wise sale
+- Bill amount calculate karna
+
+Support answer:
+"Speed Sale fast bill entry ke liye hai. Ctrl + S se open kijiye, customer aur item select karke quantity/rate bhar kar bill save kar sakte hain."
+
+5.2 Standard Sale
+
+Shortcut:
+- Standard Sale [Ctrl + T]
+
+Use:
+- Standard sale entry
+- Register se date wise sale records
+- Print / WhatsApp sending where available
+
+Support answer:
+"Standard Sale me regular sale entry ki jaati hai. Standard Sale Register se date wise record, print aur report check kar sakte hain."
+
+5.3 Stock Sale
+
+Shortcut:
+- Stock Sale [Ctrl + H]
+
+Use:
+- Stock se maal sale karna
+- Stock balance par effect
+- Stock sale register dekhna
+
+Support answer:
+"Stock Sale tab use karein jab maal stock se issue/sale karna ho. Stock Sale Register me uski date wise details milengi."
+
+5.4 Super Sale
+
+Shortcut:
+- Super Sale [Ctrl + U]
+
+Use:
+- Advanced sale entry
+- Mandi style multiple item sale
+- Super Sale Register me records
+
+Support answer:
+"Super Sale advanced sale entry ke liye hai. Super Sale Register me saved entries aur print/report mil jati hai."
+
+5.5 Print Bills
+
+Shortcut:
+- Bill Prints [Ctrl + P]
+
+Use:
+- Date wise bills dekhna
+- Customer wise bill print
+- Hindi/Regional bill print
+- Slip print
+- WhatsApp / SMS / mobile message se bill bhejna
+
+Print Bills ka general process:
+1. Bill Prints [Ctrl + P] open karein.
+2. From aur To date select karein.
+3. Show button dabayein.
+4. List me bills/customer records dikhenge.
+5. Print, Print Hindi, Slips, Slips Hindi ya Send WhatsApp/SMS option use karein.
+
+Support answer:
+"Bill print karne ke liye Ctrl + P se Print Bills open kijiye. From-To date select karke Show dabayein, fir Print ya Print Hindi se bill print kar sakte hain."
+
+5.6 Bill WhatsApp/SMS se kaise bhejein?
+
+Print Bills form me Send WhatsApp / SMS button se bill customer ko bheja ja sakta hai.
+
+Available sending types version/setup par depend karte hain:
+- Easy WhatsApp
+- WhatsApp Official API
+- From Mobile
+- Mobile App / Normal SMS
+
+General flow:
+1. Print Bills open karein.
+2. Date select karke Show karein.
+3. Send WhatsApp / SMS panel open karein.
+4. English ya Regional select karein.
+5. Type select karein:
+   - Easy WhatsApp: Desktop WhatsApp based sending.
+   - WhatsApp Official API: Approved template ke through official sending.
+   - From Mobile: Connected Android mobile/SIM se SMS/message sending.
+6. Customer rows tick karein.
+7. PDF Only, Message Only, ya PDF + Message select karein.
+8. Start Sending dabayein.
+
+Support answer:
+"Bill bhejne ke liye Print Bills me Send WhatsApp/SMS par click kijiye, customer select kijiye, sending type choose kijiye aur Start Sending dabayein. Official API use kar rahe hain to approved template select karna zaroori hota hai."
+
+============================================================
+6. RECEIPT AUR PAYMENT
+============================================================
+
+6.1 Receipt
+
+Shortcut:
+- Receipt [F7]
+
+Use:
+- Customer se paise receive karna
+- Cash/bank receipt entry
+- Receipt number aur amount maintain karna
+- Receipt PDF/message bhejna where available
+
+Receipt process:
+1. Receipt [F7] open karein.
+2. Date select karein.
+3. Receipt mode select karein.
+4. Account name select karein.
+5. Receipt number aur amount enter karein.
+6. Save karein.
+
+Support answer:
+"Receipt entry ke liye F7 press kijiye. Account select karke amount enter karein aur Save karein. Receipt register se purani receipts dekh sakte hain."
+
+6.2 Payment
+
+Shortcut:
+- Payment [F8]
+
+Use:
+- Party ko payment dena
+- Cash/bank payment entry
+- Payment receipt/message bhejna where available
+
+Payment process:
+1. Payment [F8] open karein.
+2. Date select karein.
+3. Payment mode select karein.
+4. Account name select karein.
+5. Amount enter karein.
+6. Save karein.
+
+Support answer:
+"Payment entry ke liye F8 press kijiye. Party/account select karke amount enter karein aur Save karein. Payment Register me old payments mil jayenge."
+
+6.3 Receipt/Payment message kaise bhejein?
+
+Receipt aur Payment forms/registers me WhatsApp panel available ho to:
+1. Send WhatsApp button par click karein.
+2. English ya Regional select karein.
+3. Type select karein.
+4. Official API me approved Receipt/Payment template select karein.
+5. Customer rows select karein.
+6. PDF Only / Message Only / PDF + Message select karein.
+7. Start Sending dabayein.
+
+============================================================
+7. LEDGER, SETTLE LEDGER, SUB LEDGER
+============================================================
+
+7.1 Ledger ka use
+
+Ledger se kisi account/party ka poora hisab dekha ja sakta hai.
+
+Shortcut:
+- Ledger [Ctrl + L]
+
+Ledger me generally dikh sakta hai:
+- Opening balance
+- Date wise debit/credit
+- Receipt/payment/sale/purchase entries
+- Closing balance
+- Dr/Cr balance
+
+Ledger dekhne ka process:
+1. Ledger [Ctrl + L] open karein.
+2. Account/party select karein.
+3. From aur To date select karein.
+4. Show / View button dabayein.
+5. Print ya PDF/WhatsApp option use karein where available.
+
+Support answer:
+"Ledger dekhne ke liye Ctrl + L press kijiye, account select kijiye, From-To date set karke Show dabayein. Yahan se account ka pura hisab aur balance dikhega."
+
+7.2 Settle Ledger
+
+Use:
+- Account settlement view
+- Customer ke hisab ko settlement format me dekhna
+- Date range wise settlement report
+
+Support answer:
+"Settle Ledger account settlement check karne ke liye use hota hai. Account aur date range select karke settlement details dekh sakte hain."
+
+7.3 Sub Ledger
+
+Use:
+- Detailed ya sub-level account ledger
+- Account related detail wise entries
+
+Support answer:
+"Sub Ledger me account ki detailed/sub-level entries milti hain. Account aur date range select karke report view/print kar sakte hain."
+
+7.4 Ledger WhatsApp/Official API se bhejna
+
+Ledger form me WhatsApp panel available ho to:
+1. Account/date range select karein.
+2. Send WhatsApp/SMS panel open karein.
+3. Type me WhatsApp Official API ya From Mobile select karein.
+4. Official API me approved Ledger template select karein.
+5. PDF + Message ya PDF Only select karein.
+6. Start Sending karein.
+
+============================================================
+8. OUTSTANDING / BALANCE
+============================================================
+
+Outstanding me customer ya party ka baki balance dekha ja sakta hai.
+
+Shortcut:
+- Outstanding [Ctrl + Y]
+
+Outstanding reports:
+- Total outstanding
+- Debit outstanding
+- Credit outstanding
+- Amount only outstanding
+- Selected outstanding
+- Absent account list
+
+Outstanding dekhne ka process:
+1. Outstanding [Ctrl + Y] open karein.
+2. Date ya filter select karein.
+3. Show / View dabayein.
+4. Customer balances list me aayenge.
+5. Print ya message option use kar sakte hain where available.
+
+Support answer:
+"Outstanding dekhne ke liye Ctrl + Y use kijiye. Report me customer wise baki balance dikhega. Yahan se balance message bhi bheja ja sakta hai agar WhatsApp/message option available ho."
+
+Balance message:
+- Balance template se customer ko account balance bheja ja sakta hai.
+- Regional/Hindi ya English format version/setup ke hisab se select hota hai.
+
+============================================================
+9. PURCHASE AUR PURCHASE REGISTER
+============================================================
+
+Purchase ka use maal kharid ya stock in entry ke liye hota hai.
+
+Shortcut:
+- Purchase [Ctrl + K]
+
+Purchase process:
+1. Purchase open karein.
+2. Date select karein.
+3. Supplier/account select karein.
+4. Item, quantity, weight, rate, charges etc. enter karein.
+5. Save karein.
+
+Purchase Register:
+- Date wise purchase records
+- Supplier wise records
+- Print/report
+- WhatsApp message where available
+
+Support answer:
+"Purchase entry ke liye Ctrl + K se Purchase open karein. Supplier aur item details fill karke Save karein. Purchase Register me date wise purchase records milenge."
+
+============================================================
+10. STOCK REPORTS
+============================================================
+
+Stock related kaam ke liye Stock Reports aur Stock Sale forms use hote hain.
+
+Common stock reports:
+- Stock Balance
+- Lot Wise Stock Report
+- Vehicle Wise Stock
+- Stock Sale Register
+- Seller Day Book
+
+Stock kaise dekhein:
+1. Stock Reports menu open karein.
+2. Stock Balance ya Lot Wise Stock Report select karein.
+3. Date/filter select karein.
+4. Show / View dabayein.
+
+Support answer:
+"Stock dekhne ke liye Stock Reports me Stock Balance open kijiye. Date ya item filter select karke Show karein. Lot wise stock ke liye Lot Wise Stock Report use karein."
+
+============================================================
+11. CRATE MANAGER
+============================================================
+
+Crate Manager mandi business me crate/peti/token type container ka hisab rakhne ke liye use hota hai.
+
+Common forms:
+- Crate In
+- Crate Out
+- Crate In Register
+- Crate Out Register
+- Crate Ledger
+- Crate Account Ledger
+- Crate Marka Ledger
+- Crate Summary
+- Crate Outstanding
+- Crate Receivable Total
+- Crate Payable Total
+
+Crate In:
+- Jab crate party se receive ho ya inward entry ho.
+
+Crate Out:
+- Jab crate party ko issue/outward ho.
+
+Crate Ledger:
+- Account wise crate ka hisab.
+
+Crate Outstanding:
+- Kitni crate baki/receive/payable hai ye dekhne ke liye.
+
+Support answer:
+"Crate ka hisab Crate Manager menu se maintain hota hai. Crate In se inward entry, Crate Out se outward entry, aur Crate Ledger/Outstanding se party wise crate balance dekh sakte hain."
+
+Crate message:
+- Crate Ledger/Crate In/Crate Out forms me WhatsApp option available ho to PDF/message customer ko bheja ja sakta hai.
+
+============================================================
+12. REGISTERS
+============================================================
+
+Registers saved entries ko date wise dekhne ke liye hote hain.
+
+Common registers:
+- Speed Sale Register
+- Super Sale Register
+- Purchase Register
+- Stock Sale Register
+- Standard Sale Register
+- Receipt Register
+- Payment Register
+- Bank Entry Register
+- Journal Entry Register
+- Sale Challan Register
+- Sellout Register
+- On Sale / Transfer Register
+- Crate In Register
+- Crate Out Register
+
+Register ka general process:
+1. Register open karein.
+2. From aur To date select karein.
+3. Show / Search dabayein.
+4. Entry list me data aayega.
+5. Print/export/message options available ho sakte hain.
+
+Support answer:
+"Register me saved entries date wise dikhte hain. From-To date select karke Show dabayein. Uske baad entry view, print ya report kar sakte hain."
+
+============================================================
+13. CASH BOOK, BANK BOOK, DAY BOOK
+============================================================
+
+Cash / Bank Book:
+- Cash aur bank transactions dekhne ke liye.
+- Receipt, payment, bank entry ka summary.
+
+Day Book [Ctrl + D]:
+- Ek din ya date range ka overall transaction summary.
+- Sale, purchase, receipt, payment, cash/bank entries check karne ke liye.
+
+Support answer:
+"Day Book ke liye Ctrl + D press kijiye. Date range select karke day wise saari entries ka summary dekh sakte hain."
+
+============================================================
+14. WHATSAPP / SMS / MOBILE MESSAGE
+============================================================
+
+14.1 Sending methods
+
+Aadhat me different sending methods ho sakte hain:
+
+Easy WhatsApp:
+- Desktop WhatsApp based normal sending.
+- User ke WhatsApp login/desktop setup par depend karta hai.
+
+WhatsApp Official API:
+- Approved Meta template ke through official sending.
+- Template approved hona zaroori hai.
+- PDF/document templates me PDF file attach hoti hai.
+
+From Mobile:
+- Connected Android mobile app/SIM ke through message/SMS send.
+- Mobile online/connected hona chahiye.
+- Correct SIM select hona chahiye.
+
+Mobile App / Normal SMS:
+- Android app se customer ko normal SMS bheja ja sakta hai.
+- SMS me PDF bill/receipt/ledger link ja sakta hai.
+
+14.2 From Mobile se message kaise jayega?
+
+1. WhatsApp/SMS panel me Type = From Mobile select karein.
+2. SIM dropdown me available SIM select karein.
+3. Customer/mobile number select karein.
+4. Message/PDF option choose karein.
+5. Start Sending karein.
+
+Support answer:
+"From Mobile option me message connected Android phone/SIM se jayega. Type me From Mobile select kijiye, SIM choose kijiye aur Start Sending dabayiye."
+
+14.3 SIM select kyu zaroori hai?
+
+SIM select karne se software ko pata chalta hai ki message kaunse mobile SIM/subscriber se bhejna hai.
+
+Support answer:
+"Agar phone me 2 SIM hain to sending se pehle correct SIM select karna zaroori hai, warna message galat SIM se send ho sakta hai ya fail ho sakta hai."
+
+14.4 Mobile message fail ho to kya check karein?
+
+- Android mobile app online hai ya nahi
+- Device internet connected hai ya nahi
+- Selected SIM available hai ya nahi
+- Mobile number valid hai ya nahi
+- SMS permission mobile app me enabled hai ya nahi
+- Plan/message limit expired to nahi
+
+============================================================
+15. WHATSAPP OFFICIAL API
+============================================================
+
+15.1 Official API ka use
+
+Official API ka use WhatsApp Business Cloud/API ke through template based messages bhejne ke liye hota hai.
+
+Important:
+- Template Meta par approved hona chahiye.
+- Local template ka Local Type form ke hisab se hona chahiye, jaise Print Bill, Ledger, Receipt, Payment, Balance.
+- Format English/Regional ke hisab se template select hota hai.
+- Document/PDF bhejne ke liye header/document template required hota hai.
+
+15.2 WhatsApp API Configuration
+
+WhatsApp API Configuration screen me:
+- Default sending setting
+- WhatsApp Official API setting
+- Template Editor
+- Sync Templates
+- Send Test Message
+- Message Logs
+- Default SIM / mobile message setting
+
+Support answer:
+"Official API setup ke liye WhatsApp API Configuration me Vendor ID aur Access Token enter karke Validate Official API karein. Validate successful hone ke baad templates sync/editor options use kar sakte hain."
+
+15.3 Template Editor
+
+Template Editor me local templates create/edit kiye ja sakte hain.
+
+Fields:
+- Template Code / Meta Name
+- Title
+- Language
+- Category
+- Header: none/text/document/image/video
+- Sample Media
+- Local Type
+- Format: English / Regional
+- Parameter Field
+- Message Body
+- Footer
+- Quick Reply Buttons
+- Template Parameters
+
+Template banane ka general process:
+1. Template Editor open karein.
+2. New Template ya existing template select karein.
+3. Local Type select karein, jaise Print Bill, Ledger, Receipt.
+4. Format select karein: English ya Regional.
+5. Header select karein:
+   - Balance text-only ho to none/text use ho sakta hai.
+   - Bill/Ledger/Receipt/Payment PDF ke liye document use karein.
+6. Message body me dynamic variables add karein.
+7. Parameter Field list se field select karke Add Variable karein.
+8. Save Local karein.
+9. Submit / Update Meta karein.
+10. Approval ke baad template sending forms me show hoga.
+
+Support answer:
+"Official template banane ke liye Template Editor me Local Type aur Format select kijiye, message body me variables add kijiye, Save Local kijiye aur Submit/Update Meta karein. Approved hone ke baad wahi template Print Bill/Ledger/Receipt/Payment me select hoga."
+
+15.4 Dynamic Parameters kya hote hain?
+
+Dynamic parameters wo fields hain jo message bhejte waqt software automatically fill karta hai.
+
+Examples:
+- Firm Name
+- Customer / Account Name
+- Mobile No.
+- City
+- Bill Date
+- Bill Total
+- Receipt Date
+- Payment Date
+- Amount
+- From Date
+- To Date
+- Opening Balance
+- Closing Balance
+- Balance Amount
+
+Support answer:
+"Template body me jo {{1}}, {{2}} jaise variables hote hain unme software form ke hisab se value fill karta hai, jaise customer name, bill date, firm name, total amount."
+
+15.5 Template approved nahi aa raha ho to kya karein?
+
+- Official API validate karein.
+- Sync Templates click karein.
+- Correct Local Type check karein.
+- Correct language/format check karein.
+- Template Meta par approved hai ya pending/rejected hai check karein.
+- Same vendor/account ka token use ho raha hai ya nahi check karein.
+
+Support answer:
+"Agar template dropdown me nahi aa raha hai to pehle Official API validate kijiye, Sync Templates kariye, aur check kijiye ki template same Local Type aur English/Regional format me approved hai."
+
+15.6 Balance text template me template name upar kyu dikhta hai?
+
+Agar text header set hai to WhatsApp message ke top par header text dikhta hai. Agar customer ko header nahi chahiye to template me Header = none rakhein aur naya/updated template approval ke liye bhejein.
+
+Support answer:
+"Text message me upar template name dikh raha hai to wo template header hai. Template Editor me Header none karke template update/approval karna padega."
+
+15.7 Official API message fail ho to common reason
+
+- Template approved nahi hai
+- Template name/language mismatch
+- Parameter count mismatch
+- Document template me PDF link missing
+- Customer mobile number invalid
+- Official API plan/account expired
+- Token/vendor validation failed
+- Meta quality hold ya template review issue
+
+Support answer:
+"Official API fail hone par template approval, language, parameters, PDF link aur mobile number check karein. Message Logs me actual response dekh sakte hain."
+
+============================================================
+16. MESSAGE LOGS
+============================================================
+
+Message Logs me Official API se bheje gaye messages ka status dekha ja sakta hai.
+
+Status examples:
+- Sent
+- Delivered
+- Read
+- Failed
+- Held / quality assessment
+
+Use:
+1. WhatsApp API Configuration open karein.
+2. Message Logs button click karein.
+3. From date / To date select karein.
+4. Search karein.
+5. Mobile number, template, status aur response check karein.
+
+Support answer:
+"Official API message ka status dekhne ke liye WhatsApp API Configuration me Message Logs open kijiye. Date range select karke Sent/Delivered/Read/Failed response dekh sakte hain."
+
+============================================================
+17. IMPORT FROM MOBILE APP
+============================================================
+
+Mobile App se data import ka option mobile/device based messages ya mobile app workflow ke liye hota hai.
+
+Use:
+- Mobile se received/synced data import
+- Mobile app based message/device flow
+
+Support answer:
+"Mobile App se related data import karne ke liye Import From Mobile App menu use karein. Ye connected mobile app ke data sync/import ke liye hota hai."
+
+============================================================
+18. REPORTS
+============================================================
+
+Common reports:
+- Day Wise Sale Report
+- Customer Wise Sale Summary
+- Account Monthly Summary
+- Total Sale Report
+- Item Summary
+- Supplier VS Item Summary
+- Sellout Item Summary
+- Seller Profit Reports
+- Standard Sale Profit Report
+- On Sale Profit Report
+- Loose Sale Profit Report
+- Trial Balance
+- Profit and Loss
+- Balance Sheet
+- Trading Account
+
+Support answer:
+"Reports menu me sale, item, account, profit, trial balance aur balance sheet reports milti hain. Report open karke date/filter select karein aur Show dabayein."
+
+============================================================
+19. SELL OUT
+============================================================
+
+Sellout forms mandi business me seller/customer wise settlement ya beejak style reports ke liye use hote hain.
+
+Common:
+- Sellout Manual
+- Sellout Auto
+- Sellout Register
+- Manual Sellout Register
+- Auto Sellout Register
+
+Support answer:
+"Sellout ka use seller/customer wise beejak/settlement ke liye hota hai. Manual Sellout me user entries/check manually control karta hai, Auto Sellout me software available sale data se report banata hai."
+
+============================================================
+20. BANK ENTRY AUR JOURNAL ENTRY
+============================================================
+
+Bank Entry [Ctrl + B]:
+- Bank transaction entry
+- Bank receipt/payment adjustment
+
+Journal Entry:
+- Accounting adjustment entries
+- Ledger adjustment
+
+Support answer:
+"Bank transaction ke liye Bank Entry use karein. General accounting adjustment ke liye Journal Entry use hoti hai."
+
+============================================================
+21. COMMON CUSTOMER QUESTIONS AND ANSWERS
+============================================================
+
+Q: Ledger kaise dekhu?
+A: Ctrl + L se Ledger open kijiye, account select kijiye, From-To date select karke Show dabayein. Yahan se print/PDF/message bhi kar sakte hain agar option available ho.
+
+Q: Bill kaise print karu?
+A: Ctrl + P se Print Bills open kijiye, date range select karke Show dabayein, fir Print ya Print Hindi button use kijiye.
+
+Q: Bill WhatsApp par kaise bheju?
+A: Print Bills me Send WhatsApp/SMS par click kijiye, customer select kijiye, sending type choose kijiye, PDF Only ya PDF + Message select karke Start Sending dabayein.
+
+Q: Hindi bill kaise bheju?
+A: Print Bills me Regional select kijiye. Official API me Regional/Hindi approved template select karein, fir Start Sending karein.
+
+Q: Official API template dropdown me nahi aa raha?
+A: Official API validate karein, Sync Templates karein, aur check karein ki template same Local Type aur English/Regional format me approved hai.
+
+Q: Receipt entry kaise karu?
+A: F7 press karke Receipt open kijiye, account/mode/amount enter karke Save karein.
+
+Q: Payment entry kaise karu?
+A: F8 press karke Payment open kijiye, account/mode/amount enter karke Save karein.
+
+Q: Outstanding balance kaha milega?
+A: Ctrl + Y se Outstanding open karein. Date/filter select karke Show karein. Customer wise baki balance dikhega.
+
+Q: Stock kaha se dekhu?
+A: Stock Reports me Stock Balance ya Lot Wise Stock Report open karein. Date/filter select karke Show karein.
+
+Q: Crate ka hisab kaha milega?
+A: Crate Manager menu me Crate Ledger, Crate Outstanding, Crate In Register ya Crate Out Register open karein.
+
+Q: Mobile se message kaise bheju?
+A: WhatsApp/SMS panel me Type = From Mobile select karein, SIM select karein, customer tick karein aur Start Sending karein.
+
+Q: From Mobile me SIM kyu select karna padta hai?
+A: Agar phone me 2 SIM hain to correct SIM se message bhejne ke liye SIM select karna zaroori hai.
+
+Q: Message send nahi ho raha?
+A: Mobile/app online hai ya nahi, SIM selected hai ya nahi, number valid hai ya nahi, plan/message limit active hai ya nahi aur internet check karein.
+
+Q: Official API message fail ho raha hai?
+A: Approved template, language, parameters, PDF link aur mobile number check karein. Message Logs me exact status/response dekhein.
+
+Q: Template kaise banau?
+A: WhatsApp API Configuration me Template Editor open karein. Local Type, Format, Header, Body aur Parameters set karein. Save Local karke Submit/Update Meta karein.
+
+Q: Template me variable kaise add karu?
+A: Template Editor me Parameter Field list se field select karke Add Variable dabayein. Variable cursor position par message body me add hoga.
+
+Q: Day wise sale kaha dekhu?
+A: Reports me Day Wise Sale Report open karein, date select karein aur Show karein.
+
+Q: Purchase register kaha milega?
+A: Registers menu ya right panel se Purchase Register open karein, date range select karke Show karein.
+
+Q: Cash book/day book kaha hai?
+A: Right panel me Cash / Bank Book aur Day Book [Ctrl + D] options milte hain.
+
+Q: Customer ka mobile number wrong hai to kya karein?
+A: Account master me jaakar customer/account ka mobile number correct karein, fir message resend karein.
+
+Q: Regional aur English me kya difference hai?
+A: English format me message English body/template se jata hai. Regional me Hindi/local language template/body use hota hai.
+
+Q: PDF Only aur PDF + Message me kya difference hai?
+A: PDF Only me PDF/document link/file focus hota hai. PDF + Message me PDF ke saath text message bhi jata hai.
+
+Q: Message Only ka use kab karein?
+A: Jab sirf text notification bhejna ho aur PDF/document bhejna zaroori na ho.
+
+============================================================
+22. SUPPORT STYLE GUIDELINES FOR AI AGENT
+============================================================
+
+AI agent ko answer dete waqt:
+- Simple Hinglish me jawab de.
+- Step-by-step bataaye.
+- User ko exact menu/shortcut bataye.
+- Agar form/version me option ka naam thoda different ho sakta hai to kahe: "Aapke version me naam thoda alag ho sakta hai."
+- Password, token, database, code, internal file path, license bypass ya sensitive setting kabhi share na kare.
+- Agar issue sending/API se related hai to pehle user se puchhe:
+  - Kaunsa sending type use kar rahe hain?
+  - Easy WhatsApp, Official API ya From Mobile?
+  - Error message kya aa raha hai?
+  - Template approved hai ya pending?
+  - Mobile app online hai?
+- Agar issue report/date ka hai to puchhe:
+  - From date / To date kya selected hai?
+  - Show button dabaya?
+  - Account/item filter selected hai?
+
+Good response examples:
+
+Example 1:
+"Ledger dekhne ke liye Ctrl + L press kijiye. Account select kijiye, From-To date set karke Show dabayiye. Agar print chahiye to Print button use karein."
+
+Example 2:
+"Bill WhatsApp par bhejne ke liye Ctrl + P se Print Bills open kijiye, date select karke Show karein, Send WhatsApp/SMS par click karein, customer tick karein aur Start Sending dabayein."
+
+Example 3:
+"Official API me template show nahi ho raha to pehle WhatsApp API Configuration me Validate Official API karein, fir Sync Templates karein. Template same Local Type aur English/Regional format me approved hona chahiye."
+
+Example 4:
+"From Mobile se message bhejne ke liye connected mobile app online rakhein, Type me From Mobile select karein, correct SIM choose karein aur Start Sending karein."
+
+============================================================
+23. DO NOT ANSWER / SENSITIVE TOPICS
+============================================================
+
+AI support agent ko in topics par details nahi deni chahiye:
+- Database ka location, structure, query ya password
+- Source code changes
+- Token, Vendor ID, API secret ka raw value
+- License bypass ya activation bypass
+- Admin password reset internal method
+- Server credentials
+- AnyDesk/remote credential
+- Customer private data
+
+Safe answer:
+"Is type ki technical/sensitive setting ke liye please authorized support team se contact karein."
+
+============================================================
+24. QUICK ROUTING GUIDE
+============================================================
+
+User asks: "Account banana hai"
+Answer route: Account [Ctrl + A]
+
+User asks: "Item banana hai"
+Answer route: Item [Ctrl + I]
+
+User asks: "Bill print karna hai"
+Answer route: Print Bills [Ctrl + P]
+
+User asks: "Ledger dekhna hai"
+Answer route: Ledger [Ctrl + L]
+
+User asks: "Receipt entry"
+Answer route: Receipt [F7]
+
+User asks: "Payment entry"
+Answer route: Payment [F8]
+
+User asks: "Purchase"
+Answer route: Purchase [Ctrl + K]
+
+User asks: "Stock sale"
+Answer route: Stock Sale [Ctrl + H]
+
+User asks: "Standard sale"
+Answer route: Standard Sale [Ctrl + T]
+
+User asks: "Day book"
+Answer route: Day Book [Ctrl + D]
+
+User asks: "Outstanding"
+Answer route: Outstanding [Ctrl + Y]
+
+User asks: "WhatsApp template"
+Answer route: WhatsApp API Configuration > Template Editor
+
+User asks: "Official API logs"
+Answer route: WhatsApp API Configuration > Message Logs
+
+User asks: "Mobile se SMS/message"
+Answer route: WhatsApp/SMS panel > Type = From Mobile > SIM select
+
+============================================================
+END OF KNOWLEDGEBASE
+============================================================

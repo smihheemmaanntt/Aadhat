@@ -525,7 +525,6 @@ Partial Class Super_Sale_Supplier_Wise
         Me.ClientSize = New System.Drawing.Size(1196, 653)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
-        Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.txtTotalSearch)
         Me.Controls.Add(Me.txtItemSearch)
         Me.Controls.Add(Me.txtCustomerSearch)
@@ -557,6 +556,7 @@ Partial Class Super_Sale_Supplier_Wise
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.btnShow)
+        Me.Controls.Add(Me.dg1)
         Me.Name = "Super_Sale_Supplier_Wise"
         Me.Text = "Super_Sale_Supplier_Wise"
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()

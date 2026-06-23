@@ -6,6 +6,7 @@ Imports Newtonsoft.Json.Linq
 Imports System.Text
 Imports System.Threading
 Imports System.Text.RegularExpressions
+Imports System.Collections.Generic
 
 Public Class Print_Bills
     Dim id As String
@@ -14,8 +15,22 @@ Public Class Print_Bills
     Private WhatsappCheckBox As CheckBox = New CheckBox()
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
+    Private Class OfficialTemplateItem
+        Public TemplateCode As String
+        Public TemplateName As String
+        Public LanguageCode As String
+        Public ParameterFields As String
+        Public BodyText As String
+
+        Public Overrides Function ToString() As String
+            If TemplateCode Is Nothing OrElse TemplateCode.Trim() = "" Then Return TemplateName
+            Return TemplateName & " (" & TemplateCode & " / " & LanguageCode & ")"
+        End Function
+    End Class
+
     Public Sub New()
         InitializeComponent()
+        InitializeOfficialTemplateSelector()
         clsFun.DoubleBuffered(dg1, True)
         bgWorker.WorkerSupportsCancellation = True
         AddHandler bgWorker.DoWork, AddressOf bgWorker_DoWork
@@ -76,6 +91,7 @@ Public Class Print_Bills
         If maxdate <> "" Then txtToDate.Text = CDate(maxdate).ToString("dd-MM-yyyy") Else txtToDate.Text = Date.Today.ToString("dd-MM-yyyy")
         rowColums()
     End Sub
+
     Private Sub rowColums()
         dg1.ColumnCount = 12
         dg1.Columns(0).Name = "ID" : dg1.Columns(0).Visible = False
@@ -415,6 +431,333 @@ Public Class Print_Bills
         Return "91" & Mobile
 
     End Function
+
+    Private Function BuildMobileBillMessage(ByVal fileUrl As String) As String
+        Dim billDate As String = txtFromDate.Text.Trim()
+        Try
+            billDate = CDate(txtFromDate.Text).ToString("dd-MM-yyyy")
+        Catch
+        End Try
+
+        Dim firmCity As String = BuildFirmCityCode()
+        Dim line1 As String
+
+        If RadioRegional.Checked Then
+            line1 = "बिल देखे (" & billDate & "): " & fileUrl
+        Else
+            line1 = "View bill (" & billDate & "): " & fileUrl
+        End If
+
+        If firmCity <> "" Then
+            Dim fullMsg As String = line1 & vbCrLf & firmCity
+            If fullMsg.Length <= 160 Then Return fullMsg
+        End If
+
+        Return line1
+    End Function
+
+    Private Function BuildBillDateText() As String
+        Try
+            If CDate(txtFromDate.Text).ToString("dd-MM-yyyy") = CDate(txtToDate.Text).ToString("dd-MM-yyyy") Then
+                Return CDate(txtFromDate.Text).ToString("dd-MM-yyyy")
+            End If
+            Return CDate(txtFromDate.Text).ToString("dd-MM-yyyy") & " to " & CDate(txtToDate.Text).ToString("dd-MM-yyyy")
+        Catch
+            Return txtFromDate.Text.Trim()
+        End Try
+    End Function
+
+    Private Function GetBillTotalForAccount(ByVal accountId As String) As String
+        Try
+            Dim totalText As String = clsFun.ExecScalarStr("Select sum(TotalAmount) from Transaction2 Where AccountID='" & Val(accountId) & "' and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and TransType Not In('On Sale','Store Transfer')")
+            Return Format(Val(totalText), "0.00")
+        Catch
+            Return "0.00"
+        End Try
+    End Function
+
+    Private Function GetBillSumForAccount(ByVal accountId As String, ByVal columnName As String) As String
+        Try
+            Select Case columnName.ToLower()
+                Case "nug", "weight", "amount", "charges", "totalamount"
+                Case Else
+                    Return "0.00"
+            End Select
+            Dim totalText As String = clsFun.ExecScalarStr("Select sum(" & columnName & ") from Transaction2 Where AccountID='" & Val(accountId) & "' and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and TransType Not In('On Sale','Store Transfer')")
+            Return Format(Val(totalText), "0.00")
+        Catch
+            Return "0.00"
+        End Try
+    End Function
+
+    Private Function GetAccountField(ByVal accountId As String, ByVal fieldName As String) As String
+        Try
+            Select Case fieldName.ToLower()
+                Case "city", "mobile1", "mobile2", "address", "state"
+                Case Else
+                    Return ""
+            End Select
+            Return clsFun.ExecScalarStr("Select " & fieldName & " From Accounts Where ID='" & Val(accountId) & "'")
+        Catch
+            Return ""
+        End Try
+    End Function
+
+    Private Function BuildOfficialTemplateFields(ByVal accountName As String, ByVal accountId As String, ByVal mobileNo As String, ByVal fileUrl As String, ByVal messageText As String, ByVal parameterFields As String) As List(Of String)
+        parameterFields = CleanOfficialPrintBillParameterFields(parameterFields)
+
+        Dim values As New Dictionary(Of String, String)
+        values("company_name") = compname.Trim()
+        values("account_name") = accountName.Trim()
+        values("mobile_no") = mobileNo.Trim()
+        values("customer_mobile_no") = mobileNo.Trim()
+        values("city") = GetAccountField(accountId, "City")
+        values("customer_city") = values("city")
+        values("from_date") = txtFromDate.Text.Trim()
+        values("to_date") = txtToDate.Text.Trim()
+        values("bill_no") = BuildBillDateText()
+        values("bill_date") = BuildBillDateText()
+        values("bill_total") = GetBillTotalForAccount(accountId)
+        values("total_amount") = values("bill_total")
+        values("nug") = GetBillSumForAccount(accountId, "Nug")
+        values("weight") = GetBillSumForAccount(accountId, "Weight")
+        values("basic_amount") = GetBillSumForAccount(accountId, "Amount")
+        values("charges") = GetBillSumForAccount(accountId, "Charges")
+        values("pdf_link") = fileUrl.Trim()
+        values("message_text") = messageText.Trim()
+
+        Dim fields As New List(Of String)
+        For Each fieldName As String In parameterFields.Split(","c)
+            Dim key As String = NormalizeOfficialParameterFieldKey(fieldName)
+            If key = "" Then Continue For
+            If values.ContainsKey(key) Then
+                fields.Add(values(key))
+            Else
+                fields.Add("")
+            End If
+        Next
+
+        Return fields
+    End Function
+
+    Private Function NormalizeOfficialParameterFieldKey(ByVal fieldKey As String) As String
+        Dim key As String = If(fieldKey, "").Trim().ToLower().Replace(" ", "_").Replace("/", "_")
+        key = Regex.Replace(key, "_+", "_")
+        Select Case key
+            Case "firm_name"
+                Return "company_name"
+            Case "customer_name", "customer_account_name", "party_name"
+                Return "account_name"
+            Case "mobile_no", "mobile", "whatsapp_no", "customer_mobile", "account_mobile"
+                Return "customer_mobile_no"
+            Case "city", "account_city"
+                Return "customer_city"
+            Case "total_amount", "sale_total"
+                Return "bill_total"
+        End Select
+        Return key
+    End Function
+
+    Private Function GetTemplateParameterCount(ByVal bodyText As String, ByVal fallbackCount As Integer) As Integer
+        Dim maxNumber As Integer = 0
+        If bodyText IsNot Nothing Then
+            For Each m As Match In Regex.Matches(bodyText, "\{\{(\d+)\}\}")
+                maxNumber = Math.Max(maxNumber, Val(m.Groups(1).Value))
+            Next
+        End If
+        If maxNumber <= 0 Then maxNumber = fallbackCount
+        If maxNumber <= 0 Then maxNumber = 4
+        Return maxNumber
+    End Function
+
+    Private Function ExpandOfficialPrintBillParameterFields(ByVal parameterFields As String, ByVal templateBody As String) As String
+        Dim fields As New List(Of String)()
+        For Each fieldName As String In CleanOfficialPrintBillParameterFields(parameterFields).Split(","c)
+            Dim key As String = fieldName.Trim().ToLower()
+            If key <> "" Then fields.Add(key)
+        Next
+
+        Dim fallbackFields() As String = {"company_name", "account_name", "bill_date", "bill_total", "nug", "weight", "basic_amount", "charges", "customer_city", "customer_mobile_no"}
+        Dim requiredCount As Integer = GetTemplateParameterCount(templateBody, fields.Count)
+        If fields.Count > requiredCount Then
+            fields.RemoveRange(requiredCount, fields.Count - requiredCount)
+        End If
+
+        For Each key As String In fallbackFields
+            If fields.Count >= requiredCount Then Exit For
+            If fields.Contains(key) = False Then fields.Add(key)
+        Next
+
+        While fields.Count < requiredCount
+            fields.Add("")
+        End While
+
+        Return String.Join(",", fields.ToArray())
+    End Function
+
+    Private Function DefaultOfficialPrintBillParameterFields() As String
+        Return "account_name,bill_date,company_name,bill_total"
+    End Function
+
+    Private Function CleanOfficialPrintBillParameterFields(ByVal parameterFields As String) As String
+        Dim cleanedFields As New List(Of String)()
+        For Each fieldName As String In If(parameterFields, "").Split(","c)
+            Dim key As String = fieldName.Trim().ToLower()
+            If key <> "" Then cleanedFields.Add(key)
+        Next
+
+        If cleanedFields.Count = 0 Then Return DefaultOfficialPrintBillParameterFields()
+        Return String.Join(",", cleanedFields.ToArray())
+    End Function
+
+    Private Function IsValidUrl(ByVal value As String) As Boolean
+        If value Is Nothing Then Return False
+        Dim text As String = value.Trim().ToLower()
+        Return text.StartsWith("http://") OrElse text.StartsWith("https://")
+    End Function
+
+    Private Function IsValidOfficialMobile(ByVal mobile As String) As Boolean
+        If mobile Is Nothing Then Return False
+        mobile = mobile.Trim()
+        If mobile.Length <> 12 Then Return False
+        If mobile.StartsWith("91") = False Then Return False
+        Return "6789".Contains(mobile.Substring(2, 1))
+    End Function
+
+    Private Function ShortStatusText(ByVal value As String, ByVal maxLength As Integer) As String
+        If value Is Nothing Then Return ""
+        Dim text As String = value.Replace(vbCr, " ").Replace(vbLf, " ").Trim()
+        If text.Length <= maxLength Then Return text
+        Return text.Substring(0, maxLength - 3) & "..."
+    End Function
+
+    Private Function BuildFirmCityCode() As String
+        Dim firmCode As String = ShortFirmName(compname)
+        Dim cityCode As String = ShortCityName(City)
+
+        If firmCode <> "" AndAlso cityCode <> "" Then Return firmCode & "," & cityCode
+        If firmCode <> "" Then Return firmCode
+        Return cityCode
+    End Function
+
+    Private Function ShortFirmName(ByVal firmName As String) As String
+        If firmName Is Nothing Then Return ""
+
+        Dim cleanName As String = Regex.Replace(firmName.ToUpperInvariant(), "[^A-Z0-9 ]", " ")
+        Dim words() As String = cleanName.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries)
+        Dim code As String = ""
+
+        For Each word As String In words
+            If word.Length > 0 Then code &= word.Substring(0, 1)
+            If code.Length >= 4 Then Exit For
+        Next
+
+        If code = "" AndAlso cleanName.Trim().Length > 0 Then
+            code = cleanName.Trim().Substring(0, Math.Min(4, cleanName.Trim().Length))
+        End If
+
+        Return code
+    End Function
+
+    Private Function ShortCityName(ByVal cityName As String) As String
+        If cityName Is Nothing Then Return ""
+
+        Dim cleanCity As String = Regex.Replace(cityName.ToLowerInvariant(), "[^a-z0-9]", "")
+        If cleanCity = "" Then Return ""
+
+        Dim code As String = cleanCity.Substring(0, 1)
+        For i As Integer = 1 To cleanCity.Length - 1
+            Dim ch As Char = cleanCity(i)
+            If "aeiou".IndexOf(ch) = -1 Then code &= ch
+            If code.Length >= 3 Then Exit For
+        Next
+
+        If code.Length < 3 Then
+            code = cleanCity.Substring(0, Math.Min(3, cleanCity.Length))
+        End If
+
+        Return code
+    End Function
+
+    Private Function GetEasyReplyNote() As String
+        If cbType.SelectedIndex <> 0 Then Return ""
+        If chkEasyReplyNote Is Nothing OrElse txtEasyReplyNote Is Nothing Then Return ""
+        If chkEasyReplyNote.Checked = False Then Return ""
+
+        Dim note As String = txtEasyReplyNote.Text.Trim()
+        If note = "" Then Return ""
+
+        Return "(" & note & ")"
+    End Function
+
+    Private Sub InitializeOfficialTemplateSelector()
+        If lblOfficialTemplate Is Nothing OrElse cbOfficialTemplate Is Nothing Then Exit Sub
+        lblOfficialTemplate.BringToFront()
+        cbOfficialTemplate.BringToFront()
+    End Sub
+
+    Private Sub LoadOfficialPrintBillTemplates()
+        If cbOfficialTemplate Is Nothing Then Exit Sub
+        cbOfficialTemplate.Items.Clear()
+
+        Dim preferredLanguage As String = If(RadioRegional.Checked, "hi", "en")
+        Dim alternateLanguage As String = If(preferredLanguage = "hi", "en", "hi")
+        Dim preferredIndex As Integer = -1
+        Dim dt As DataTable = WhatsAppOfficialDb.GetApprovedPrintBillDocumentTemplates(preferredLanguage)
+        AddOfficialPrintBillTemplateRows(dt, preferredLanguage, preferredLanguage, preferredIndex)
+        dt.Dispose()
+
+        dt = WhatsAppOfficialDb.GetApprovedPrintBillDocumentTemplates(alternateLanguage)
+        AddOfficialPrintBillTemplateRows(dt, preferredLanguage, alternateLanguage, preferredIndex)
+        dt.Dispose()
+
+        If cbOfficialTemplate.Items.Count = 0 Then
+            Dim item As New OfficialTemplateItem()
+            item.TemplateName = "No approved Print Bill document template"
+            item.TemplateCode = ""
+            item.LanguageCode = preferredLanguage
+            item.ParameterFields = ""
+            cbOfficialTemplate.Items.Add(item)
+            preferredIndex = 0
+        End If
+
+        If preferredIndex < 0 Then preferredIndex = 0
+        cbOfficialTemplate.SelectedIndex = preferredIndex
+    End Sub
+
+    Private Sub AddOfficialPrintBillTemplateRows(ByVal dt As DataTable, ByVal preferredLanguage As String, ByVal rowLanguage As String, ByRef preferredIndex As Integer)
+        If dt Is Nothing Then Exit Sub
+        For Each row As DataRow In dt.Rows
+            Dim item As New OfficialTemplateItem()
+            item.TemplateCode = row("TemplateCode").ToString()
+            item.TemplateName = row("TemplateName").ToString()
+            item.LanguageCode = row("LanguageCode").ToString()
+            If item.TemplateCode.ToLower().Contains("hi") OrElse item.TemplateName.ToLower().Contains("hindi") OrElse item.TemplateName.ToLower().Contains(" hi") Then
+                item.LanguageCode = "hi"
+            ElseIf item.LanguageCode.Trim() = "" Then
+                item.LanguageCode = rowLanguage
+            End If
+            If item.LanguageCode.Trim().ToLower().StartsWith("hi") Then
+                item.LanguageCode = "hi"
+            ElseIf item.LanguageCode.Trim() = "" Then
+                item.LanguageCode = "en"
+            End If
+            item.ParameterFields = row("ParameterFields").ToString()
+            If dt.Columns.Contains("BodyText") Then item.BodyText = row("BodyText").ToString()
+            cbOfficialTemplate.Items.Add(item)
+
+            If preferredIndex < 0 AndAlso item.LanguageCode = preferredLanguage Then preferredIndex = cbOfficialTemplate.Items.Count - 1
+        Next
+    End Sub
+
+    Private Sub UpdateOfficialTemplateSelectorVisibility()
+        Dim showTemplateSelector As Boolean = (cbType.SelectedIndex = 1)
+        If lblOfficialTemplate IsNot Nothing Then lblOfficialTemplate.Visible = showTemplateSelector
+        If cbOfficialTemplate IsNot Nothing Then cbOfficialTemplate.Visible = showTemplateSelector
+        Label10.Visible = Not showTemplateSelector
+        If showTemplateSelector Then LoadOfficialPrintBillTemplates()
+    End Sub
+
     Private Sub SendWhatsApp()
         ' ================= PDF FOLDER =================
         Dim pdfDir = Application.StartupPath & "\Pdfs"
@@ -425,8 +768,54 @@ Public Class Print_Bills
         Dim mode = cbType.SelectedIndex
         Dim fastQuery As String = ""
         Dim count As Integer = 0
+        Dim sentCount As Integer = 0
+        Dim failedCount As Integer = 0
         Dim SlipType As String = clsFun.ExecScalarStr( _
     "SELECT IFNULL(SlipMethod,'Group Wise') FROM Controls LIMIT 1")
+        Dim officialVendorUid As String = ""
+        Dim officialAccessToken As String = ""
+        Dim officialTemplateCode As String = ""
+        Dim officialLanguageCode As String = ""
+        Dim officialParamCount As Integer = 0
+        Dim officialParameterFields As String = ""
+        Dim officialBodyParamCount As Integer = 4
+        If mode = 1 Then
+            WhatsAppOfficialDb.EnsureDatabase()
+            officialVendorUid = WhatsAppOfficialDb.GetSetting("VendorUid").Trim()
+            officialAccessToken = WhatsAppOfficialDb.GetSetting("AccessToken").Trim()
+            If officialVendorUid = "" OrElse officialAccessToken = "" Then
+                MsgBox("Official API Vendor ID / Access Token is missing. Please validate and save WhatsApp API Configuration.", MsgBoxStyle.Critical, "Official API")
+                UpdateProgressBarVisibility(False)
+                Exit Sub
+            End If
+
+            Dim templateError As String = ""
+            If cbOfficialTemplate IsNot Nothing AndAlso cbOfficialTemplate.Items.Count = 0 Then LoadOfficialPrintBillTemplates()
+
+            If cbOfficialTemplate IsNot Nothing AndAlso cbOfficialTemplate.SelectedItem IsNot Nothing Then
+                Dim selectedTemplate As OfficialTemplateItem = CType(cbOfficialTemplate.SelectedItem, OfficialTemplateItem)
+                If selectedTemplate.TemplateCode.Trim() = "" Then
+                    Dim selectedLanguageText As String = If(RadioRegional.Checked, "Regional", "English")
+                    MsgBox("No approved Print Bill document template found for " & selectedLanguageText & ". Please approve/sync a document template first.", MsgBoxStyle.Critical, "Official API")
+                    UpdateProgressBarVisibility(False)
+                    Exit Sub
+                End If
+                officialTemplateCode = selectedTemplate.TemplateCode
+                officialLanguageCode = selectedTemplate.LanguageCode
+                officialParameterFields = ExpandOfficialPrintBillParameterFields(selectedTemplate.ParameterFields, selectedTemplate.BodyText)
+                officialParamCount = officialParameterFields.Split(","c).Length
+                officialBodyParamCount = GetTemplateParameterCount(selectedTemplate.BodyText, officialParamCount)
+            Else
+                Dim languageType As String = If(RadioRegional.Checked, "Regional", "English")
+                Dim messageMode As String = "Pdf + Msg"
+                If WhatsAppOfficialDb.GetApprovedPrintBillTemplate(languageType, messageMode, officialTemplateCode, officialLanguageCode, officialParamCount, officialParameterFields, templateError) = False Then
+                    Dim selectedLanguageText As String = If(RadioRegional.Checked, "Regional", "English")
+                    MsgBox("No approved Print Bill template found for " & selectedLanguageText & ". Please approve/sync the template, then select it from the Template list.", MsgBoxStyle.Critical, "Official API")
+                    UpdateProgressBarVisibility(False)
+                    Exit Sub
+                End If
+            End If
+        End If
         ' ================= CLEAR OLD QUEUE =================
         If mode = 0 Then
             ClsFunWhatsapp.ExecNonQuery("Delete From SendingData")
@@ -438,7 +827,13 @@ Public Class Print_Bills
         Dim rows = DgWhatsapp.Rows.Cast(Of DataGridViewRow).
       Where(Function(row) row.Cells(0).Value = True _
       AndAlso row.Cells(3).Value <> "").ToList()
+        If rows.Count = 0 Then
+            MsgBox("Please select at least one account with mobile number.", MsgBoxStyle.Exclamation, "WhatsApp")
+            UpdateProgressBarVisibility(False)
+            Exit Sub
+        End If
         ProgressBar1.Maximum = rows.Count
+        Dim firstFailure As String = ""
         ' ================= LOOP =================
         For Each r In rows
             UpdateProgressBar(count)
@@ -447,17 +842,27 @@ Public Class Print_Bills
             Dim Mobile = r.Cells(3).Value.ToString.Trim
             Dim MsgTxt = If(RadioRegional.Checked, r.Cells(6).Value, r.Cells(4).Value)
             Dim ID As String = Val(r.Cells(1).Value)
+            If mode = 1 Then Mobile = WhatsAppOfficialApi.NormalizeMobile(Mobile)
             ' ===== AUTO 91 ONLY MODE 2 =====
             If mode = 2 Then
-                NormalizeIndianMobile(Mobile.trim)
+                Mobile = NormalizeIndianMobile(Mobile.Trim())
+            End If
+            If Mobile = "" OrElse (mode = 1 AndAlso IsValidOfficialMobile(Mobile) = False) Then
+                r.Cells(7).Value = "Invalid mobile number"
+                r.Cells(7).Style.ForeColor = Color.Red
+                r.Cells(7).ToolTipText = "Official API requires Indian mobile number with 91 prefix and 10 valid digits."
+                If firstFailure = "" Then firstFailure = r.Cells(2).Value.ToString() & ": invalid mobile number (" & Mobile & ")"
+                failedCount += 1
+                count += 1
+                Continue For
             End If
             Dim FileURL As String = ""
             ' ================= PDF GENERATE =================
             If RadioPDFMsg.Checked Or RadioPdfOnly.Checked Then
                 If SlipType = "Group Wise" Then
-                    SlipsRecord_GroupWise(id)
+                    SlipsRecord_GroupWise(AccID)
                 Else   ' Default = Group Wise
-                    SlipsRecord_RowWise(id)
+                    SlipsRecord_RowWise(AccID)
                 End If
                 GlobalData.PdfName =
                     Regex.Replace(r.Cells(2).Value, "[\\\/:*?""<>|]", "") &
@@ -471,67 +876,122 @@ Public Class Print_Bills
                 If mode = 0 Then
                     FileURL = GlobalData.PdfPath
                 ElseIf mode = 1 Then
-                    FileURL = whatsappSender.UploadFile(fullPath)
+                    FileURL = PhoneMSg.UploadPDF_Local(fullPath)
                 ElseIf mode = 2 Then
                     FileURL = PhoneMSg.UploadPDF_Local(fullPath)
+                End If
+                r.Cells(8).Value = FileURL
+
+                If mode = 1 AndAlso IsValidUrl(FileURL) = False Then
+                    r.Cells(7).Value = "PDF upload failed"
+                    r.Cells(7).Style.ForeColor = Color.Red
+                    r.Cells(7).ToolTipText = FileURL
+                    If firstFailure = "" Then firstFailure = "PDF upload failed: " & FileURL
+                    WhatsAppOfficialDb.AddMessageLog(Mobile, officialTemplateCode, "PRINT_BILL", "FAILED", "PDF upload failed: " & FileURL)
+                    failedCount += 1
+                    count += 1
+                    Continue For
                 End If
             End If
             ' ================= BODY BUILD =================
             Dim body As String = ""
             If RadioMsgOnly.Checked Then
-                ' ✅ Sirf Message
+                ' Message only
                 body = MsgTxt
             ElseIf RadioPdfOnly.Checked Then
-                ' ✅ Sirf PDF (message blank)
+                ' PDF only
                 body = ""
             ElseIf RadioPDFMsg.Checked Then
-                ' ✅ Message + PDF (but NO path in text)
+                ' Message with PDF, without adding the path in text
                 body = MsgTxt
             End If
-            ' ===== IMPORTANT: ONLY MODE 2 me URL add hoga =====
+
+            Dim easyReplyNote As String = GetEasyReplyNote()
+            If easyReplyNote <> "" Then
+                If body <> "" Then body &= vbCrLf
+                body &= easyReplyNote
+            End If
+
+            ' Compact bill link SMS is only for mode 2.
             If mode = 2 AndAlso FileURL <> "" Then
-                If body <> "" Then
-                    body &= vbCrLf
-                End If
-                body &= FileURL
+                body = BuildMobileBillMessage(FileURL)
             End If
             ' ================= MODE 2 → API SEND =================
             If mode = 2 Then
                 Dim apiResult As String =
-                    PhoneMSg.SendPhoneMsg(Mobile, Val(cbSim.SelectedIndex + 1), body)
+                    PhoneMSg.SendPhoneMsg(Mobile, cbSim.Text, body)
                 ' ===== STATUS SHOW IN GRID COLUMN(7) =====
                 If apiResult = "SUCCESS" Then
                     r.Cells(7).Value = "Sent on msgz.in server"
                     r.Cells(7).Style.ForeColor = Color.Green
+                    sentCount += 1
                 Else
                     r.Cells(7).Value = "Failed"
                     r.Cells(7).Style.ForeColor = Color.Red
+                    failedCount += 1
                 End If
                 r.Cells(7).ToolTipText = apiResult
                 Application.DoEvents()
+            ElseIf mode = 1 Then
+                Dim fields As List(Of String) = BuildOfficialTemplateFields(Name, AccID, Mobile, FileURL, MsgTxt, officialParameterFields)
+                Dim apiResponse As String = ""
+                Dim sent As Boolean = WhatsAppOfficialApi.SendSmartMessage(
+                    officialVendorUid,
+                    officialAccessToken,
+                    Mobile,
+                    body,
+                    FileURL,
+                    officialTemplateCode,
+                    officialLanguageCode,
+                    fields,
+                    apiResponse,
+                    "Bill.pdf",
+                    officialBodyParamCount)
+
+                If sent Then
+                    r.Cells(7).Value = "Sent via Official API (" & officialTemplateCode & ")"
+                    r.Cells(7).Style.ForeColor = Color.Green
+                    WhatsAppOfficialDb.AddMessageLog(Mobile, officialTemplateCode, "PRINT_BILL", "SUCCESS", apiResponse)
+                    sentCount += 1
+                Else
+                    Dim failedText As String = ShortStatusText(apiResponse, 160)
+                    If failedText = "" Then failedText = "Official API failed"
+                    r.Cells(7).Value = "Failed: " & failedText
+                    r.Cells(7).Style.ForeColor = Color.Red
+                    If firstFailure = "" Then firstFailure = failedText
+                    WhatsAppOfficialDb.AddMessageLog(Mobile, officialTemplateCode, "PRINT_BILL", "FAILED", apiResponse)
+                    failedCount += 1
+                End If
+                r.Cells(7).ToolTipText = apiResponse
+                Application.DoEvents()
             Else
                 ' ================= DB QUEUE =================
+                Dim safeBody As String = body.Replace("'", "''")
+                Dim safeFileUrl As String = FileURL.Replace("'", "''")
                 fastQuery &= If(fastQuery <> "", " UNION ALL SELECT ", " SELECT ") &
                              AccID & ",'" & Name & "','" & Mobile & "','" &
-                             body & "','" & FileURL & "'"
+                             safeBody & "','" & safeFileUrl & "'"
             End If
             count += 1
         Next
 
         ' ================= INSERT DB =================
-        If mode <> 2 Then
+        If mode = 0 Then
             Dim Sql =
             "Insert Into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) " &
             fastQuery & ";Update Settings Set MinState='N'"
-            If mode = 0 Then
-                ClsFunWhatsapp.ExecNonQuery(Sql)
-                MsgBox("Data Sent to Easy Whatsapp Successfully")
-            Else
-                ClsFunWhatsapp.ExecNonQuery(Sql)
-                MsgBox("Bills Sent to Official API")
+            ClsFunWhatsapp.ExecNonQuery(Sql)
+            MsgBox("Data Sent to Easy Whatsapp Successfully")
+        ElseIf mode = 1 Then
+            Dim finalMessage As String = "Official API send complete." & vbCrLf &
+                "Sent : " & sentCount.ToString() & vbCrLf &
+                "Failed : " & failedCount.ToString()
+            If failedCount > 0 AndAlso firstFailure <> "" Then
+                finalMessage &= vbCrLf & "Reason : " & ShortStatusText(firstFailure, 350)
             End If
+            MsgBox(finalMessage, MsgBoxStyle.Information, "Official API")
         Else
-            MsgBox("Messages Sent via PhoneMsg API")
+            MsgBox("Messages Sent via PhoneMsg API" & vbCrLf & "Sent : " & sentCount.ToString() & vbCrLf & "Failed : " & failedCount.ToString())
         End If
         UpdateProgressBarVisibility(False)
     End Sub
@@ -2394,11 +2854,38 @@ Public Class Print_Bills
             MsgBox("Still Working...") : Exit Sub
         End If
         cbType.SelectedIndex = 2
-        cbSim.Visible = True : cbSim.SelectedIndex = 0
+        cbSim.Visible = True
+        If RefreshMobileSimList() = False Then Exit Sub
         pnlWhatsapp.Visible = True
         If DgWhatsapp.ColumnCount = 0 Then RowColumsWhatsapp()
         ShowWhatsappContacts()
     End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        cbSim.Items.Clear()
+        cbSim.Text = ""
+
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+
+        Return cbSim.SelectedIndex >= 0
+    End Function
     Private Sub DgWhatsapp_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 1 Then
             'Loop to verify whether all row CheckBoxes are checked or not.
@@ -3109,6 +3596,7 @@ Public Class Print_Bills
 
                 cbType.SelectedIndex = 0
                 cbSim.Visible = False
+                UpdateEasyReplyNoteVisibility()
 
                 Dim WhatsappFile As String =
                     Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
@@ -3129,6 +3617,8 @@ Public Class Print_Bills
             Case "WhatsApp Official API"
                 cbType.SelectedIndex = 1
                 cbSim.Visible = False
+                UpdateEasyReplyNoteVisibility()
+                UpdateOfficialTemplateSelectorVisibility()
 
                 '----------------------------------
                 ' From Mobile
@@ -3136,12 +3626,9 @@ Public Class Print_Bills
             Case "From Mobile"
                 cbType.SelectedIndex = 2
                 cbSim.Visible = True
-                Dim DefaultSim As Integer =
-                    Val(ClsFunPrimary.ExecScalarStr(
-                        "Select DefaultSim From API"))
-                If DefaultSim > 0 Then
-                    cbSim.SelectedIndex = DefaultSim - 1
-                End If
+                UpdateEasyReplyNoteVisibility()
+                UpdateOfficialTemplateSelectorVisibility()
+                If RefreshMobileSimList() = False Then Exit Sub
         End Select
     End Sub
     'Private Sub Button5_Click(sender As Object, e As EventArgs) Handles BtnSendWhatsapp.Click
@@ -3252,7 +3739,26 @@ Public Class Print_Bills
     End Sub
 
 
+    Private Sub UpdateEasyReplyNoteVisibility()
+        If chkEasyReplyNote Is Nothing OrElse txtEasyReplyNote Is Nothing Then Exit Sub
+
+        Dim showReplyNote As Boolean = (cbType.SelectedIndex = 0)
+        chkEasyReplyNote.Visible = showReplyNote
+        txtEasyReplyNote.Visible = showReplyNote
+    End Sub
+
     Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
-        If cbType.SelectedIndex = 2 Then cbSim.Visible = True Else cbSim.Visible = False
+        If cbType.SelectedIndex = 2 Then
+            cbSim.Visible = True
+            RefreshMobileSimList()
+        Else
+            cbSim.Visible = False
+        End If
+        UpdateEasyReplyNoteVisibility()
+        UpdateOfficialTemplateSelectorVisibility()
+    End Sub
+
+    Private Sub OfficialTemplateLanguage_CheckedChanged(sender As Object, e As EventArgs) Handles btnRadioEnglish.CheckedChanged, RadioRegional.CheckedChanged
+        If cbType.SelectedIndex = 1 Then LoadOfficialPrintBillTemplates()
     End Sub
 End Class

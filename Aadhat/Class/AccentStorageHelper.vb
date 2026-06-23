@@ -111,17 +111,30 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function IsInternetAvailable() As Boolean
         Try
-            Dim pingUrl As String = BASE_URL.Replace("/api/", "/ping.txt")
+            ServicePointManager.Expect100Continue = False
+            ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType) Or SecurityProtocolType.Tls
+
+            Dim pingUrl As String = BASE_URL.Trim().Replace("/api/", "/ping.txt")
             Dim req = CType(WebRequest.Create(pingUrl), HttpWebRequest)
             req.Method = "GET"
-            req.Timeout = 4000
+            req.Timeout = 10000
             req.ReadWriteTimeout = 4000
             req.UserAgent = "AccoBook"
+            req.KeepAlive = False
+            req.Proxy = Nothing
+            req.CachePolicy = New System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore)
 
             Using resp = CType(req.GetResponse(), HttpWebResponse)
                 Return (resp.StatusCode = HttpStatusCode.OK)
             End Using
 
+        Catch ex As WebException
+            Try
+                Dim httpResp = TryCast(ex.Response, HttpWebResponse)
+                If httpResp IsNot Nothing Then Return (httpResp.StatusCode = HttpStatusCode.OK)
+            Catch
+            End Try
+            Return False
         Catch
             Return False
         End Try
@@ -229,42 +242,45 @@ Public Class AccentStorageHelper
 
     Public Shared Function CheckLicence() As Boolean
         Dim IsExpired As Boolean = False
+        Try
 
-        Dim count As Integer = clsFun.ExecScalarInt("Select OpenTime from Licence")
+            Dim count As Integer = clsFun.ExecScalarInt("Select OpenTime from Licence")
+            Dim todayDate As Date = CDate(clsFun.GetServerDate)
 
-        If count > 30 Then
-            IsExpired = True
-
-        Else
-            If count = 0 Then
-                clsFun.ExecNonQuery("Insert into Licence(OpenTime,InstallDate) values(" & count + 1 & ",'" & clsFun.GetServerDate & "')")
-                IsExpired = False
+            If count > 30 Then
+                IsExpired = True
 
             Else
-                Dim instDate As Date = clsFun.ExecScalarStr("Select InstallDate from Licence")
-
-                If clsFun.ExecScalarInt("Select count(*) from ledger") > 30 Then
-                    Dim Expdate As Date = clsFun.ExecScalarStr("Select Max(entrydate) from ledger limit 1")
-                    Dim difference As TimeSpan = Expdate.Subtract(instDate)
-
-                    If difference.TotalDays > 7 Then
-                        IsExpired = True
-                    End If
+                If count = 0 Then
+                    clsFun.ExecNonQuery("Delete From Licence; Insert into Licence(OpenTime,InstallDate) values(1,'" & todayDate.ToString("yyyy-MM-dd") & "')")
+                    IsExpired = False
 
                 Else
-                    Dim compdate As Date = clsFun.GetServerDate
-                    Dim dif As TimeSpan = compdate.Subtract(instDate)
-
-                    If dif.TotalDays > 7 Then
-                        IsExpired = True
+                    Dim installText As String = clsFun.ExecScalarStr("Select InstallDate from Licence")
+                    Dim instDate As Date
+                    If Date.TryParse(installText, instDate) = False OrElse instDate = Date.MinValue Then
+                        instDate = todayDate
+                        clsFun.ExecNonQuery("Update Licence set InstallDate='" & instDate.ToString("yyyy-MM-dd") & "'")
                     End If
+
+                    Dim runningDays As TimeSpan = todayDate.Date.Subtract(instDate.Date)
+                    If runningDays.TotalDays >= 7 Then IsExpired = True
+
+                    Dim ledgerDateText As String = clsFun.ExecScalarStr("Select Max(entrydate) from ledger")
+                    Dim ledgerMaxDate As Date
+                    If Date.TryParse(ledgerDateText, ledgerMaxDate) Then
+                        If ledgerMaxDate.Date > instDate.Date.AddMonths(1) Then
+                            IsExpired = True
+                        End If
+                    End If
+
+                    clsFun.ExecNonQuery("Update Licence set OpenTime = OpenTime + 1")
                 End If
-
-                clsFun.ExecNonQuery("Update Licence set OpenTime = OpenTime + 1")
             End If
-        End If
+        Catch
+            IsExpired = False
+        End Try
 
-        ' ✅ Event fire karo
         RaiseEvent LicenceStatusChanged(IsExpired)
 
         Return IsExpired
@@ -418,22 +434,60 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function CheckLicense() As Boolean
         Dim store = LoadStore()
-        If store Is Nothing OrElse store.license_data Is Nothing Then Return False
+        If store Is Nothing OrElse store.license_data Is Nothing OrElse store.response_data Is Nothing Then Return False
         If store.is_blocked Then Return False
 
-        Dim finalExpiry As Date = Date.MinValue
-
-        If store.amc IsNot Nothing AndAlso store.amc.Count > 0 Then
-            Date.TryParse(store.amc(store.amc.Count - 1).amc_end, finalExpiry)
-        Else
-            Date.TryParse(store.response_data.expires_on, finalExpiry)
-        End If
+        Dim finalExpiry As Date = GetFinalExpiryDate(store)
+        If finalExpiry = Date.MinValue Then Return True
 
         If finalExpiry <> Date.MinValue AndAlso finalExpiry < Date.Today Then
             Return False
         End If
 
         Return True
+    End Function
+
+    Private Shared Function GetFinalExpiryDate(ByVal store As FinalStore) As Date
+        Dim finalExpiry As Date = Date.MinValue
+        If store Is Nothing OrElse store.response_data Is Nothing Then Return finalExpiry
+
+        If store.amc IsNot Nothing AndAlso store.amc.Count > 0 Then
+            For Each item As AmcData In store.amc
+                Dim d As Date
+                If Date.TryParse(item.amc_end, d) AndAlso d > finalExpiry Then finalExpiry = d
+            Next
+        End If
+
+        If finalExpiry = Date.MinValue Then
+            Date.TryParse(store.response_data.expires_on, finalExpiry)
+        End If
+        If finalExpiry = Date.MinValue Then
+            Date.TryParse(store.response_data.license_expiry_date, finalExpiry)
+        End If
+        If finalExpiry = Date.MinValue Then
+            Date.TryParse(store.response_data.license_expiry, finalExpiry)
+        End If
+        Return finalExpiry
+    End Function
+
+    Public Shared Function IsTrialMode() As Boolean
+        Try
+            Dim store = LoadStore()
+            If store Is Nothing OrElse store.license_data Is Nothing OrElse store.response_data Is Nothing Then Return True
+            If store.is_blocked OrElse IsLocallyBlocked() Then Return False
+            Return GetFinalExpiryDate(store) = Date.MinValue
+        Catch
+            Return True
+        End Try
+    End Function
+
+    Public Shared Function IsOfficialApiAllowed() As Boolean
+        Try
+            If IsTrialMode() Then Return False
+            Return IsLicenseUsable()
+        Catch
+            Return False
+        End Try
     End Function
 
 
@@ -501,8 +555,8 @@ Public Class AccentStorageHelper
         ' License file + structure
         Dim store = LoadStore()
         If store Is Nothing OrElse store.license_data Is Nothing OrElse store.response_data Is Nothing Then
-            LastLicenseError = "missing"
-            Return False
+            LastLicenseError = "trial"
+            Return True
         End If
 
         ' Online hone par sirf block status check hota hai.
@@ -526,6 +580,10 @@ Public Class AccentStorageHelper
 
         ' Final expiry check (license / AMC)
         If Not CheckLicense() Then
+            If GetFinalExpiryDate(store) = Date.MinValue Then
+                LastLicenseError = "trial"
+                Return True
+            End If
             If LastLicenseError = "" Then LastLicenseError = "expired"
             Return False
         End If

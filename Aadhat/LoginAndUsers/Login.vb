@@ -58,28 +58,27 @@ Public Class Login
         End If
 
         ' ---------------- LICENSE / TRIAL CHECK ----------------
-        Dim isExpired As Boolean = AccentStorageHelper.CheckLicence()
-        Dim licPath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        Dim coreAccessPath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
+        Dim hasCoreAccess As Boolean = File.Exists(coreAccessPath)
 
-        If Not File.Exists(licPath) Then
-            If isExpired = True Then
-                ShowApplyLicense()
-                Exit Sub
-            End If
-        Else
+        If hasCoreAccess Then
             If Not AccentStorageHelper.IsLicenseUsable() Then
-                If AccentStorageHelper.IsLocallyBlocked() OrElse AccentStorageHelper.LastLicenseError = "blocked" Then
+                If AccentStorageHelper.LastLicenseError = "blocked" Then
                     MsgBox("Licence is blocked.Please contact your service provider...", vbCritical, "Access Denied")
                     Exit Sub
                 End If
                 If AccentStorageHelper.LastLicenseError = "expired" Then
                     MsgBox("License expired. please contact your service provider", vbCritical, "Access Denied")
-                    ShowApplyLicense()
                 Else
                     MsgBox("Invalid Licence.please contact your service provider", vbCritical, "Access Denied")
-                    ShowApplyLicense()
                 End If
 
+                ShowApplyLicense()
+                Exit Sub
+            End If
+        Else
+            Dim isExpired As Boolean = AccentStorageHelper.CheckLicence()
+            If isExpired = True Then
                 ShowApplyLicense()
                 Exit Sub
             End If
@@ -91,7 +90,7 @@ Public Class Login
 
         Dim daysLeft = AccentStorageHelper.GetRemainingDays()
         MainScreenForm.lblARC.Text =
-            If(daysLeft > 0, "ARC Expire In Next " & daysLeft & " Days", "")
+            If(daysLeft > 0, "ARC Expire In Next " & daysLeft & " Days", If(AccentStorageHelper.IsTrialMode(), "Trial Mode", ""))
 
         MainScreenPicture.lblUser.Text = CbUserName.Text
         MainScreenForm.Show()

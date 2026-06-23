@@ -1,6 +1,9 @@
 ﻿Imports System.IO
 
+Imports System.Collections.Generic
+
 Public Class Selected_Outsanting
+    Private Const MobileSendingMethod As String = "From Mobile"
     Private WhatsappCheckBox As CheckBox = New CheckBox()
     Dim FilePath As String : Dim hostedFilePath As String
     Dim access_token As String = "649299554c995"
@@ -130,7 +133,7 @@ Public Class Selected_Outsanting
         End If
     End Sub
 
-' ---------- Declarations ----------
+    ' ---------- Declarations ----------
     Private headerCheckBox As CheckBox = Nothing
     Private dt As DataTable
 
@@ -832,6 +835,10 @@ Public Class Selected_Outsanting
             End If
             SendWhatsappData()
             'StartBackgroundTask(AddressOf SendWhatsappData)
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            SendOfficialOutstandingData()
+        ElseIf cbType.Text = MobileSendingMethod Then
+            SendMobileOutstandingData()
         End If
     End Sub
     Private Sub StartBackgroundTask(action As Action)
@@ -881,7 +888,16 @@ Public Class Selected_Outsanting
                 For i = 0 To dt.Rows.Count - 1
                     SendingMethod = dt.Rows(i)("SendingMethod").ToString()
                     cbType.SelectedIndex = 0
-                    If SendingMethod = "Easy WhatsApp" Then cbType.SelectedIndex = 0 Else cbType.SelectedIndex = 0 : cbType.Visible = True
+                    If SendingMethod = "WhatsApp Official API" AndAlso cbType.Items.Contains("WhatsApp Official API") Then
+                        cbType.SelectedItem = "WhatsApp Official API"
+                    ElseIf SendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+                        cbType.SelectedItem = MobileSendingMethod
+                        RefreshMobileSimList()
+                    Else
+                        cbType.SelectedIndex = 0
+                    End If
+                    cbType.Visible = True
+                    ToggleMobileControls()
                     LangugageType = dt.Rows(i)("LanguageType").ToString()
                     btnRadioEnglish.Checked = True
                     If LangugageType = "English" Then btnRadioEnglish.Checked = True Else RadioRegional.Checked = True
@@ -950,6 +966,113 @@ Public Class Selected_Outsanting
     End Sub
 
 
+
+    Private Function ExtractBalanceAmount(ByVal messageText As String) As String
+        If messageText Is Nothing Then Return ""
+        Dim match As System.Text.RegularExpressions.Match = System.Text.RegularExpressions.Regex.Match(messageText, "([0-9]+(?:\.[0-9]+)?\s*(?:Dr|Cr))", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+        If match.Success Then Return match.Groups(1).Value.Trim()
+        Return ""
+    End Function
+
+    Private Sub SendOfficialOutstandingData()
+        UpdateProgressBarVisibility(True)
+        Dim filteredRows As List(Of DataGridViewRow) = DgWhatsapp.Rows.Cast(Of DataGridViewRow)().
+            Where(Function(row) row.Cells(0).Value = True AndAlso row.Cells(3).Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells(3).Value.ToString())).ToList()
+
+        If ProgressBar1.InvokeRequired Then
+            ProgressBar1.Invoke(Sub() ProgressBar1.Maximum = Math.Max(filteredRows.Count, 1))
+        Else
+            ProgressBar1.Maximum = Math.Max(filteredRows.Count, 1)
+        End If
+
+        Dim count As Integer = 0
+        For Each row As DataGridViewRow In filteredRows
+            UpdateProgressBar(count)
+            Dim mobile As String = WhatsAppOfficialApi.NormalizeMobile(row.Cells(3).Value.ToString())
+            If mobile = "" OrElse mobile.Length < 12 Then
+                row.Cells(7).Value = "Invalid mobile no"
+                row.Cells(7).Style.ForeColor = System.Drawing.Color.Red
+                count += 1
+                Continue For
+            End If
+
+            Dim preferredLanguage As String = If(btnRadioEnglish.Checked, "en", "hi")
+            Dim accountName As String = If(btnRadioEnglish.Checked, row.Cells(2).Value.ToString(), row.Cells(5).Value.ToString())
+            If accountName.Trim() = "" Then accountName = row.Cells(2).Value.ToString()
+            Dim messageText As String = If(btnRadioEnglish.Checked, row.Cells(4).Value.ToString(), row.Cells(6).Value.ToString())
+            Dim apiResponse As String = ""
+            Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatText("balance", "OUTSTANDING", mobile, accountName, mskEntryDate.Text, ExtractBalanceAmount(messageText), messageText, apiResponse, preferredLanguage)
+
+            row.Cells(7).Value = If(ok, "Sent via Official API", "Failed")
+            row.Cells(7).ToolTipText = apiResponse
+            row.Cells(7).Style.ForeColor = If(ok, System.Drawing.Color.Green, System.Drawing.Color.Red)
+            count += 1
+        Next
+
+        UpdateProgressBarVisibility(False)
+    End Sub
+
+    Private Sub ToggleMobileControls()
+        Dim showMobile As Boolean = (cbType.Text = MobileSendingMethod)
+        lblSim.Visible = showMobile
+        cbSim.Visible = showMobile
+        Label10.Visible = Not showMobile
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        cbSim.Items.Clear()
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+
+        For Each item As String In simItems
+            cbSim.Items.Add(item)
+        Next
+
+        Dim savedSim As String = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Sub SendMobileOutstandingData()
+        If RefreshMobileSimList() = False Then Exit Sub
+        UpdateProgressBarVisibility(True)
+        Dim filteredRows As List(Of DataGridViewRow) = DgWhatsapp.Rows.Cast(Of DataGridViewRow)().
+            Where(Function(row) row.Cells(0).Value = True AndAlso row.Cells(3).Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells(3).Value.ToString())).ToList()
+
+        If ProgressBar1.InvokeRequired Then
+            ProgressBar1.Invoke(Sub() ProgressBar1.Maximum = Math.Max(filteredRows.Count, 1))
+        Else
+            ProgressBar1.Maximum = Math.Max(filteredRows.Count, 1)
+        End If
+
+        Dim count As Integer = 0
+        For Each row As DataGridViewRow In filteredRows
+            UpdateProgressBar(count)
+            Dim mobile As String = WhatsAppOfficialApi.NormalizeMobile(row.Cells(3).Value.ToString())
+            Dim messageText As String = If(btnRadioEnglish.Checked, row.Cells(4).Value.ToString(), row.Cells(6).Value.ToString())
+            If txtMsg.Text.Trim() <> "" Then messageText &= vbNewLine & txtMsg.Text.Trim()
+            Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, messageText)
+            row.Cells(7).Value = apiResult
+            row.Cells(7).ToolTipText = apiResult
+            row.Cells(7).Style.ForeColor = If(apiResult.ToLower().Contains("success"), System.Drawing.Color.Green, System.Drawing.Color.Red)
+            count += 1
+        Next
+
+        UpdateProgressBarVisibility(False)
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        ToggleMobileControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
+    End Sub
 
     Private Sub btnPnlVisHide_Click(sender As Object, e As EventArgs) Handles btnPnlVisHide.Click
         pnlWhatsapp.Visible = False

@@ -48,8 +48,12 @@ Partial Class Ledger
         Me.lblCrate = New System.Windows.Forms.Label()
         Me.lblCrateDetails = New System.Windows.Forms.Label()
         Me.pnlWahtsappNo = New System.Windows.Forms.Panel()
+        Me.lblOfficialTemplate = New System.Windows.Forms.Label()
+        Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtWhatsappNo = New System.Windows.Forms.TextBox()
@@ -350,16 +354,48 @@ Partial Class Ledger
         '
         'pnlWahtsappNo
         '
+        Me.pnlWahtsappNo.Controls.Add(Me.lblOfficialTemplate)
+        Me.pnlWahtsappNo.Controls.Add(Me.cbOfficialTemplate)
         Me.pnlWahtsappNo.Controls.Add(Me.Label11)
         Me.pnlWahtsappNo.Controls.Add(Me.cbType)
+        Me.pnlWahtsappNo.Controls.Add(Me.lblSim)
+        Me.pnlWahtsappNo.Controls.Add(Me.cbSim)
         Me.pnlWahtsappNo.Controls.Add(Me.Button2)
         Me.pnlWahtsappNo.Controls.Add(Me.Label3)
         Me.pnlWahtsappNo.Controls.Add(Me.txtWhatsappNo)
         Me.pnlWahtsappNo.Location = New System.Drawing.Point(581, 139)
         Me.pnlWahtsappNo.Name = "pnlWahtsappNo"
-        Me.pnlWahtsappNo.Size = New System.Drawing.Size(261, 141)
+        Me.pnlWahtsappNo.Size = New System.Drawing.Size(261, 196)
         Me.pnlWahtsappNo.TabIndex = 10
         Me.pnlWahtsappNo.Visible = False
+        '
+        'lblOfficialTemplate
+        '
+        Me.lblOfficialTemplate.BackColor = System.Drawing.Color.CadetBlue
+        Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.GhostWhite
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(7, 103)
+        Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(95, 25)
+        Me.lblOfficialTemplate.TabIndex = 91234
+        Me.lblOfficialTemplate.Text = "Template"
+        Me.lblOfficialTemplate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblOfficialTemplate.Visible = False
+        '
+        'cbOfficialTemplate
+        '
+        Me.cbOfficialTemplate.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbOfficialTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOfficialTemplate.DropDownWidth = 330
+        Me.cbOfficialTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        Me.cbOfficialTemplate.ForeColor = System.Drawing.Color.Black
+        Me.cbOfficialTemplate.FormattingEnabled = True
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(108, 104)
+        Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(147, 23)
+        Me.cbOfficialTemplate.TabIndex = 91235
+        Me.cbOfficialTemplate.Visible = False
         '
         'Label11
         '
@@ -382,11 +418,38 @@ Partial Class Ledger
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(109, 19)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
         Me.cbType.TabIndex = 91231
+        '
+        'lblSim
+        '
+        Me.lblSim.BackColor = System.Drawing.Color.CadetBlue
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.GhostWhite
+        Me.lblSim.Location = New System.Drawing.Point(10, 45)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(92, 29)
+        Me.lblSim.TabIndex = 91232
+        Me.lblSim.Text = "SIM"
+        Me.lblSim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(7, 76)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(95, 23)
+        Me.cbSim.TabIndex = 91233
+        Me.cbSim.Visible = False
         '
         'Button2
         '
@@ -397,9 +460,9 @@ Partial Class Ledger
         Me.Button2.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button2.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(113, 100)
+        Me.Button2.Location = New System.Drawing.Point(109, 145)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(142, 33)
+        Me.Button2.Size = New System.Drawing.Size(146, 33)
         Me.Button2.TabIndex = 91228
         Me.Button2.Text = "&Send ledger"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -410,9 +473,9 @@ Partial Class Ledger
         Me.Label3.BackColor = System.Drawing.Color.CadetBlue
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(10, 45)
+        Me.Label3.Location = New System.Drawing.Point(108, 45)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(245, 29)
+        Me.Label3.Size = New System.Drawing.Size(147, 29)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Enter Whatsapp No. "
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -423,9 +486,9 @@ Partial Class Ledger
         Me.txtWhatsappNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtWhatsappNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtWhatsappNo.ForeColor = System.Drawing.Color.Black
-        Me.txtWhatsappNo.Location = New System.Drawing.Point(10, 74)
+        Me.txtWhatsappNo.Location = New System.Drawing.Point(109, 74)
         Me.txtWhatsappNo.Name = "txtWhatsappNo"
-        Me.txtWhatsappNo.Size = New System.Drawing.Size(245, 26)
+        Me.txtWhatsappNo.Size = New System.Drawing.Size(146, 26)
         Me.txtWhatsappNo.TabIndex = 3
         Me.txtWhatsappNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -661,6 +724,10 @@ Partial Class Ledger
     Friend WithEvents ckWithoutCrate As System.Windows.Forms.CheckBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
+    Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
+    Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox

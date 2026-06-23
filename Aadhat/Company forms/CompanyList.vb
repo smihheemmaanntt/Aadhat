@@ -8,9 +8,17 @@ Public Class CompanyList
     Public newconnection As String = ""
 
     Private Sub CompanyList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        EnsureWhatsAppOfficialLocalUpdate()
         txtMainPath.Text = ClsFunPrimary.ExecScalarStr("Select DefaultPath From Path")
         rowColums() : getCompanies()
         rs.FindAllControls(Me)
+    End Sub
+
+    Private Sub EnsureWhatsAppOfficialLocalUpdate()
+        Try
+            WhatsAppOfficialDb.EnsureDatabase()
+        Catch ex As Exception
+        End Try
     End Sub
 
     Public Sub rowColums()
@@ -85,6 +93,7 @@ Public Class CompanyList
     End Sub
     Private Sub dg1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellDoubleClick
         If dg1.SelectedRows.Count = 0 Then Exit Sub
+        EnsureWhatsAppOfficialLocalUpdate()
         UpdateLedgerTable() : ReceiptUpdate() : UpdateVoucher()
         If clsFun.CheckIfColumnExists("Vouchers", "InvoiceID") = False Then
             MsgBox("Update Database.... Contact to Service Partner...") : Exit Sub
@@ -335,6 +344,7 @@ Public Class CompanyList
 
     Private Sub dg1_KeyDown(sender As Object, e As KeyEventArgs) Handles dg1.KeyDown
         If e.KeyCode = Keys.Enter Then
+            EnsureWhatsAppOfficialLocalUpdate()
             Transaction1() : UpdateAccountGroups() : ReceiptUpdate()
             UpdateLedgerTable() : UpdateVoucher()
             If clsFun.CheckIfColumnExists("CrateVoucher", "CashPaid") = False Then UpdateCrateTable()
@@ -688,7 +698,7 @@ Public Class CompanyList
         AccountsFields()
     End Sub
     Public Sub CompanyInfo()
-        
+
         Dim Sql As String = "Select * From Company Where ID=" & Val(dg1.SelectedRows(0).Cells(0).Value) & ""
         Dim dt As New DataTable
         dt = clsFun.ExecDataTable(Sql)
@@ -740,14 +750,14 @@ Public Class CompanyList
         End If
     End Sub
     Private Sub updateCompanytbl()
-            Dim sql As String = String.Empty
-            sql = "PRAGMA foreign_keys = 0;CREATE TABLE TempCompany AS SELECT *  FROM Company;DROP TABLE Company;CREATE TABLE Company(ID INTEGER PRIMARY KEY AUTOINCREMENT," & _
-                    "CompanyName TEXT,PrintOtherName TEXT,Address TEXT,PrintOtheraddress TEXT,City TEXT,PrintOtherCity TEXT,State TEXT,PrintOtherState TEXT," & _
-                    "MobileNo1 TEXT,MobileNo2 TEXT,PhoneNo TEXT,FaxNo TEXT,EmailID TEXT,Website TEXT,GSTN TEXT,DealsIN TEXT,RegistrationNo TEXT,PanNo TEXT,Marka TEXT,Other TEXT,Logo  BLOB,YearStart DATE,Yearend   DATE,CompData  TEXT,LinkedDB TEXT," & _
-                    "tag   TEXT,OrganizationID INTEGER,Password  TEXT,AutoSync  TEXT,SyncDate  TEXT);INSERT INTO Company (ID,CompanyName,PrintOtherName,Address,PrintOtheraddress,City,PrintOtherCity,State,PrintOtherState,MobileNo1,MobileNo2," & _
-                    "PhoneNo,FaxNo,EmailID,Website,GSTN,DealsIN,RegistrationNo,PanNo,Marka,Other,Logo,YearStart,Yearend,CompData,tag,OrganizationID,Password,AutoSync,SyncDate)SELECT ID,CompanyName,PrintOtherName,Address,PrintOtheraddress,City,PrintOtherCity,State,PrintOtherState,MobileNo1," & _
-                    "MobileNo2,PhoneNo,FaxNo,EmailID,Website,GSTN,DealsIN,RegistrationNo,PanNo,Marka,Other,Logo,YearStart,Yearend,CompData,tag,OrganizationID,Password,AutoSync,SyncDate FROM TempCompany;DROP TABLE TempCompany;PRAGMA foreign_keys = 1;"
-            clsFun.ExecNonQuery(sql)
+        Dim sql As String = String.Empty
+        sql = "PRAGMA foreign_keys = 0;CREATE TABLE TempCompany AS SELECT *  FROM Company;DROP TABLE Company;CREATE TABLE Company(ID INTEGER PRIMARY KEY AUTOINCREMENT," & _
+                "CompanyName TEXT,PrintOtherName TEXT,Address TEXT,PrintOtheraddress TEXT,City TEXT,PrintOtherCity TEXT,State TEXT,PrintOtherState TEXT," & _
+                "MobileNo1 TEXT,MobileNo2 TEXT,PhoneNo TEXT,FaxNo TEXT,EmailID TEXT,Website TEXT,GSTN TEXT,DealsIN TEXT,RegistrationNo TEXT,PanNo TEXT,Marka TEXT,Other TEXT,Logo  BLOB,YearStart DATE,Yearend   DATE,CompData  TEXT,LinkedDB TEXT," & _
+                "tag   TEXT,OrganizationID INTEGER,Password  TEXT,AutoSync  TEXT,SyncDate  TEXT);INSERT INTO Company (ID,CompanyName,PrintOtherName,Address,PrintOtheraddress,City,PrintOtherCity,State,PrintOtherState,MobileNo1,MobileNo2," & _
+                "PhoneNo,FaxNo,EmailID,Website,GSTN,DealsIN,RegistrationNo,PanNo,Marka,Other,Logo,YearStart,Yearend,CompData,tag,OrganizationID,Password,AutoSync,SyncDate)SELECT ID,CompanyName,PrintOtherName,Address,PrintOtheraddress,City,PrintOtherCity,State,PrintOtherState,MobileNo1," & _
+                "MobileNo2,PhoneNo,FaxNo,EmailID,Website,GSTN,DealsIN,RegistrationNo,PanNo,Marka,Other,Logo,YearStart,Yearend,CompData,tag,OrganizationID,Password,AutoSync,SyncDate FROM TempCompany;DROP TABLE TempCompany;PRAGMA foreign_keys = 1;"
+        clsFun.ExecNonQuery(sql)
 
     End Sub
 

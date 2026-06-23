@@ -1,0 +1,286 @@
+============================================================
+Time: 07-06-2026 12:00:45
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"27-04-2026","field_4":"1333.00","field_5":"","header_document":"https://msgz.in/VPGZWE","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful (template_message)
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"2438087a-8817-42a9-a82a-327591cb8206","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSMUMxQTQ1MkY3QkYyNTJCMjM4AA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:00:49
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","field_5":"","header_document":"https://msgz.in/J27VP3","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful (template_message)
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-05-26 17:14:00","service_window_expires_at":"2026-05-27 17:14:00","log_uid":"f9fc4d6b-8175-46b6-af12-b9f4e0e0a237","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSN0NCMkJFRDQyRkRDQThBNDMyAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:00:54
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BABBU BHOKAR","field_3":"27-04-2026","field_4":"355.00","field_5":"","header_document":"https://msgz.in/UTSKMZ","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful (template_message)
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"07d5f740-1b2a-4c70-b9b0-f9f9e57c46bf","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSOUY2RTJFRTA0MjFGMEI1QkIyAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:04:20
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"27-04-2026","field_4":"1333.00","field_5":"","header_document":"https://msgz.in/XHYCVE","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful (template_message)
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"98bb918f-9711-4c9d-ad60-5fce2becff0b","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNUE4Njg0NjhEOUJGQjIwQTQwAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:14:14
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"27-04-2026","field_4":"1333.00","field_5":"","header_document":"https://msgz.in/9U65DA","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted WAMID: wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSODkxMUE1RjEwOUIyQTFEM0Y1AA==
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"da99cebc-6a7a-4aa6-8c41-679a00b283cf","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSODkxMUE1RjEwOUIyQTFEM0Y1AA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:14:19
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ASHOK SAINI DIWANWADA","field_3":"27-04-2026","field_4":"1735.00","field_5":"","header_document":"https://msgz.in/H4ZNLQ","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted WAMID: wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSM0YwQ0UxQTY1RDc4QkY2NkY1AA==
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-05-26 17:14:00","service_window_expires_at":"2026-05-27 17:14:00","log_uid":"94bd8050-d533-4774-852b-0252da30c4ff","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSM0YwQ0UxQTY1RDc4QkY2NkY1AA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:14:24
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BABBU BHOKAR","field_3":"27-04-2026","field_4":"355.00","field_5":"","header_document":"https://msgz.in/Z3PFRQ","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted WAMID: wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSQ0U4QjQyNTlGRDBGN0VDNTRBAA==
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"220c083e-6076-4f2a-af0b-4902c9c87042","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSQ0U4QjQyNTlGRDBGN0VDNTRBAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:24:22
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Ledger","template_name":"ledger_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ANISH KHAN FIROJPUR","field_3":"08-04-2026","field_4":"16-04-2026","field_5":"","header_document":"https://msgz.in/SC584E","header_document_name":"Ledger.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted WAMID: wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSREU3ODFDODAzN0E2NkEyRDMyAA==
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-05-26 17:14:00","service_window_expires_at":"2026-05-27 17:14:00","log_uid":"4668c9e4-4ae5-4daf-a8e3-f969d05a241a","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSREU3ODFDODAzN0E2NkEyRDMyAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 12:48:45
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"Ledger","template_name":"ledger_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AARIF GUDDU AADTI","field_3":"08-04-2026","field_4":"30-05-2026","field_5":"","header_document":"https://msgz.in/BM9UNA","header_document_name":"Ledger.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted WAMID: wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNTVGMTgyREUwNTNBRjJENEJDAA==
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"e74d6ca9-7c2f-4bfc-a731-0bc0be7bc04b","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNTVGMTgyREUwNTNBRjJENEJDAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 13:14:44
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Ledger","template_name":"ledger_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AARIF GUDDU AADTI","field_3":"08-04-2026","field_4":"30-05-2026","field_5":"","header_document":"https://msgz.in/CAM2SR","header_document_name":"Ledger.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-05-26 17:14:00","service_window_expires_at":"2026-05-27 17:14:00","log_uid":"3c178560-8e1d-4be5-89b1-3f330f8ea83d","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSNTRDMDI3Q0FFMzI4Q0U2RDBDAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 13:17:53
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Ledger","template_name":"ledger_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AARIF GUDDU AADTI","field_3":"08-04-2026","field_4":"30-05-2026","field_5":"","header_document":"https://msgz.in/XF4KMQ","header_document_name":"Ledger.pdf"}
+Parsed Response:
+Successful - Message processed (service_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_message","service_window_open":true,"last_incoming_message_at":"2026-06-07 07:47:20","service_window_expires_at":"2026-06-08 07:47:20","log_uid":"11c3f144-65a9-45e8-87cd-b62d227b5161","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSQkUxQkVDOEEyNTk1Qjk3QjdCAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 13:32:07
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Hello AARIF GUDDU AADTI, your ledger with PANKAJ FRUIT COMPANY from 08-04-2026 to 30-05-2026 is ready. Thank you","template_name":"ledger_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AARIF GUDDU AADTI","field_3":"08-04-2026","field_4":"30-05-2026","field_5":"","header_document":"https://msgz.in/XPHLW6","header_document_name":"Ledger.pdf"}
+Parsed Response:
+Successful - Message processed (service_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_message","service_window_open":true,"last_incoming_message_at":"2026-06-07 07:47:20","service_window_expires_at":"2026-06-08 07:47:20","log_uid":"bb6423f3-6873-4286-8148-8a1489d84142","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSQzA3QUJERUI5NDIzMzhGOTFEAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 14:24:26
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"","header_document":"https://msgz.in/DW7REG","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5) | Data: [] | Template=bill_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5)","data":[]}
+
+============================================================
+Time: 07-06-2026 14:34:57
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"3.00","header_document":"https://msgz.in/AUMVRG","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5) | Data: [] | Template=bill_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5)","data":[]}
+
+============================================================
+Time: 07-06-2026 14:36:01
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"3.00","header_document":"https://msgz.in/6X4BAJ","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5) | Data: [] | Template=bill_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5)","data":[]}
+
+============================================================
+Time: 07-06-2026 14:52:49
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"3.00","body_param_count":5,"header_document":"https://msgz.in/5DTJ8X","header_document_name":"Bill.pdf"}
+Parsed Response:
+(#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5) | Data: [] | Template=bill_en, Lang=en_US
+Raw Response:
+{"result":"failed","message":" (#132000) Number of parameters does not match the expected number of params  body: number of localizable_params (4) does not match the expected number of params (5)","data":[]}
+
+============================================================
+Time: 07-06-2026 14:57:00
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"3.00","body_param_count":5,"header_document":"https://msgz.in/JDR95G","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"d43a5419-983c-440c-95fb-cd6dd5e3960c","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSM0U1RjMxNkQ2MEJDM0JCNkFBAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 14:58:23
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"बिज्जी कचोरी वाला","field_3":"27-04-2026","field_4":"1758.00","field_5":"3.00","body_param_count":5,"header_document":"https://msgz.in/8KWG9A","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"1ee2db0b-bcb0-4387-91be-e9c999314363","contact_uid":"1b404c6e-88ac-4fe2-b519-780628421c5c","phone_number":"919680397933","wamid":"wamid.HBgMOTE5NjgwMzk3OTMzFQIAERgSQTM2QkQ0QUI4RkFDMzg0MkMwAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 15:01:38
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"3.00","body_param_count":5,"header_document":"https://msgz.in/BMRV8L","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"4bfc2b59-cca7-4e64-9b80-b73af090134b","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNzFBQ0YwRTY2RjdENDg1ODdDAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 15:13:17
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"Hello BABBU BHOKAR, your receipt dated 27-04-2026 from PANKAJ FRUIT COMPANY is ready. Amount is 1900.00. Thank you","template_name":"rec_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"BABBU BHOKAR","field_3":"27-04-2026","field_4":"1900.00","body_param_count":4,"header_document":"https://msgz.in/4KSX67","header_document_name":"Receipt.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"53933d86-191b-4e30-b013-96b8cd341dc4","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSRDBBNTBEQTYyNTNFREM0RjgxAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 15:13:57
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"PANKAJ FRUIT COMPANY","template_name":"bill_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"27-04-2026","field_4":"1333.00","field_5":"3.00","body_param_count":5,"header_document":"https://msgz.in/Y349BZ","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"77a39ec9-a0ba-4ef4-883c-fc9bc4709fe3","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNkI3OEE1MjY4OUY5NTc2OTQzAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 16:25:17
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी","template_name":"bill_hi","template_language":"hi","field_1":"आशीष ओमी मुरारी","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/ZHVDLX","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"82a58e51-af16-4b64-aba4-0765be94b01f","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSMTYxQ0Y2QTQ5MThDMDc5QjBEAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 21:20:19
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी","template_name":"bill_hi","template_language":"hi","field_1":"आशीष ओमी मुरारी","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1333.00","body_param_count":4,"header_document":"https://msgz.in/H6VS4R","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"94f5378b-4286-47c1-b4af-9c99fb1d00f5","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSM0U5QTkwRjBDMzQ1MEY5RkNDAA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 21:20:28
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"अशोक सैनी दिवानवाडा","template_name":"bill_hi","template_language":"hi","field_1":"अशोक सैनी दिवानवाडा","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1735.00","body_param_count":4,"header_document":"https://msgz.in/TLRP32","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-06-07 07:47:20","service_window_expires_at":"2026-06-08 07:47:20","log_uid":"e57749ba-5c99-4835-9b94-99810d97fd6c","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgSOTAyNTM3MkFBMDBDNjJCNjU4AA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 21:20:33
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"बब्बू भोकार","template_name":"bill_hi","template_language":"hi","field_1":"बब्बू भोकार","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"355.00","body_param_count":4,"header_document":"https://msgz.in/7WDFZ6","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"179285b7-ab68-4b13-8c29-cda622414894","contact_uid":"21e5d91d-9220-408c-9efb-f58a82f2e02b","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgSNTNCMTBDMzI2MENENkM2Q0U3AA==","status":"accepted"}}
+
+============================================================
+Time: 07-06-2026 21:20:40
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bada391-ea5a-4a64-860f-b1b5afca3db3/contact/send-smart-message
+Payload:
+{"phone_number":"919680397933","message_body":"बिज्जी कचोरी वाला","template_name":"bill_hi","template_language":"hi","field_1":"बिज्जी कचोरी वाला","field_2":"27-04-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1758.00","body_param_count":4,"header_document":"https://msgz.in/V8PZFH","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message held for quality assessment, it may sent or dropped at this point. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message held for quality assessment, it may sent or dropped at this point.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"c969eb0f-8bed-41c2-bf97-79a30def158f","contact_uid":"1b404c6e-88ac-4fe2-b519-780628421c5c","phone_number":"919680397933","wamid":"wamid.HBgMOTE5NjgwMzk3OTMzFQIAERgSRjUxQTFDRUFDQkE4MzgyMkY2AA==","status":"accepted"}}
+

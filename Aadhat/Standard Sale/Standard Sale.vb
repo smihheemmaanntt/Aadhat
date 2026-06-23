@@ -4,6 +4,7 @@ Imports System.Net
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.Text
+Imports System.Collections.Generic
 
 Public Class Standard_Sale
     Dim vno As Integer : Dim VchId As Integer
@@ -21,6 +22,7 @@ Public Class Standard_Sale
     Dim FilePath As String : Dim hostedFilePath As String
     Dim access_token As String = "6687c047a58e1"
     Dim instance_id As String = ClsFunPrimary.ExecScalarStr("Select InstanceID From API")
+    Private Const MobileSendingMethod As String = "From Mobile"
     'Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     'Private isBackgroundWorkerRunning As Boolean = False
     Dim whatsappSender As New WhatsAppSender() : Dim stopBasic As String = String.Empty
@@ -56,9 +58,9 @@ Public Class Standard_Sale
             If dgItemSearch.Visible = True Then dgItemSearch.Visible = False : txtItem.Focus() : Exit Sub
             If dgCharges.Visible = True Then dgCharges.Visible = False : txtCharges.Focus() : Exit Sub
             If pnlWhatsapp.Visible = True Then pnlWhatsapp.Visible = False : txtEntryDate.Focus() : Exit Sub
-                If MessageBox.Show("Are You Sure want to Exit Standard Sale ??", "Exit Confirmation...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                    Me.Close() : e.SuppressKeyPress = True
-                End If
+            If MessageBox.Show("Are You Sure want to Exit Standard Sale ??", "Exit Confirmation...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                Me.Close() : e.SuppressKeyPress = True
+            End If
         End If
     End Sub
     Private Sub dg1_MouseClick(sender As Object, e As MouseEventArgs) Handles dg1.MouseClick
@@ -2695,7 +2697,9 @@ Public Class Standard_Sale
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         pnlWhatsapp.Visible = True : pnlWhatsapp.BringToFront() : txtWhatsappNo.Focus() : RadioPrint1.Checked = True
         txtWhatsappNo.Text = clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(txtAccountID.Text) & "'")
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+        EnsureMobileWhatsappControls()
+        Dim sendingMethod As String = ClsFunPrimary.ExecScalarStr("Select SendingMethod From API")
+        If sendingMethod = "Easy WhatsApp" Then
             cbType.SelectedIndex = 0
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
@@ -2709,8 +2713,11 @@ Public Class Standard_Sale
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
-        Else
-            cbType.SelectedIndex = 1
+        ElseIf sendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+            cbType.SelectedItem = MobileSendingMethod
+            RefreshMobileSimList()
+        ElseIf cbType.Items.Contains("WhatsApp Official API") Then
+            cbType.SelectedItem = "WhatsApp Official API"
         End If
 
     End Sub
@@ -2925,10 +2932,18 @@ Public Class Standard_Sale
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPrintBOS.Click
         pnlWhatsapp.Visible = True : pnlWhatsapp.BringToFront() : txtWhatsappNo.Focus() : radioBOS.Checked = True
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Whatsapp API" Then
-            cbType.SelectedIndex = 0 : Exit Sub
+        txtWhatsappNo.Text = clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(txtAccountID.Text) & "'")
+        EnsureMobileWhatsappControls()
+        Dim sendingMethod As String = ClsFunPrimary.ExecScalarStr("Select SendingMethod From API")
+        If sendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+            cbType.SelectedItem = MobileSendingMethod
+            RefreshMobileSimList()
+            Exit Sub
+        ElseIf sendingMethod = "WhatsApp Official API" OrElse sendingMethod = "Whatsapp API" Then
+            If cbType.Items.Contains("WhatsApp Official API") Then cbType.SelectedItem = "WhatsApp Official API"
+            Exit Sub
         Else
-            cbType.SelectedIndex = 1
+            cbType.SelectedItem = "Easy WhatsApp"
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -3101,7 +3116,7 @@ Public Class Standard_Sale
                 End If
             End If
         End If
-        If cbType.SelectedIndex = 0 Then
+        If cbType.Text = "Easy WhatsApp" Then
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -3120,10 +3135,120 @@ Public Class Standard_Sale
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             End If
-        Else
-            'StartBackgroundTask(AddressOf WahSoft)
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            SendOfficialStandardSaleData()
+        ElseIf cbType.Text = MobileSendingMethod Then
+            SendPhoneMsgzData()
         End If
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("Easy WhatsApp") = False Then cbType.Items.Add("Easy WhatsApp")
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains(MobileSendingMethod) = False Then cbType.Items.Add(MobileSendingMethod)
+        lblSim.Visible = (cbType.Text = MobileSendingMethod) : cbSim.Visible = (cbType.Text = MobileSendingMethod)
+        Label65.Visible = (cbType.Text <> MobileSendingMethod)
+        'cbSim.Visible = (cbType.Text <> MobileSendingMethod)
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function BuildPhoneMsgBody(ByVal fileUrl As String) As String
+        If fileUrl.Trim() = "" Then Return ""
+        Return "STANDARD SALE VIEW : " & fileUrl.Trim()
+    End Function
+
+    Private Function ExportStandardSalePdfForMobile() As String
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
+        retrive2() : PrintRecord()
+        If radioBOS.Checked = True Then
+            Pdf_Genrate.ExportReport("\BillofSupply.rpt")
+        ElseIf RadioPrint2.Checked = True Then
+            Pdf_Genrate.ExportReport("\Formats\StandardSale2.rpt")
+        Else
+            Pdf_Genrate.ExportReport("\Formats\StandardSale.rpt")
+        End If
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Sub SendPhoneMsgzData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+        If RefreshMobileSimList() = False Then Exit Sub
+        Dim fileUrl As String = ExportStandardSalePdfForMobile()
+        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+            MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Mobile API")
+            Exit Sub
+        End If
+        Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildPhoneMsgBody(fileUrl))
+        If apiResult = "SUCCESS" Then
+            MsgBox("Standard Sale sent on msgz.in server", vbInformation, "Sended")
+            pnlWhatsapp.Visible = False : txtEntryDate.Focus()
+        Else
+            MsgBox(apiResult, MsgBoxStyle.Critical, "Mobile API")
+        End If
+    End Sub
+
+    Private Sub SendOfficialStandardSaleData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
+            Exit Sub
+        End If
+        Dim fileUrl As String = ExportStandardSalePdfForMobile()
+        Dim apiResponse As String = ""
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse) Then
+            MsgBox("Standard Sale sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
+            pnlWhatsapp.Visible = False : txtEntryDate.Focus()
+        Else
+            MsgBox(apiResponse, MsgBoxStyle.Critical, "Official API")
+        End If
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
+    End Sub
+
     'Private Sub StartBackgroundTask(action As Action)
     '    If Not bgWorker.IsBusy Then
     '        bgWorker.RunWorkerAsync(action)

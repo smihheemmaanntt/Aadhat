@@ -86,6 +86,10 @@ Partial Class Crate_Out
         Me.RadioRegional = New System.Windows.Forms.RadioButton()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblOfficialTemplate = New System.Windows.Forms.Label()
+        Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btnPnlVisHide = New System.Windows.Forms.Button()
         Me.DgWhatsapp = New System.Windows.Forms.DataGridView()
@@ -711,6 +715,10 @@ Partial Class Crate_Out
         Me.pnlWhatsapp.Controls.Add(Me.Panel2)
         Me.pnlWhatsapp.Controls.Add(Me.Label12)
         Me.pnlWhatsapp.Controls.Add(Me.cbType)
+        Me.pnlWhatsapp.Controls.Add(Me.lblOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.cbOfficialTemplate)
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
         Me.pnlWhatsapp.Controls.Add(Me.Label13)
         Me.pnlWhatsapp.Controls.Add(Me.btnPnlVisHide)
         Me.pnlWhatsapp.Controls.Add(Me.DgWhatsapp)
@@ -817,11 +825,61 @@ Partial Class Crate_Out
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(309, 13)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(186, 23)
         Me.cbType.TabIndex = 91229
+        '
+        'lblOfficialTemplate
+        '
+        Me.lblOfficialTemplate.AutoSize = True
+        Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.Red
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(501, 17)
+        Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(65, 16)
+        Me.lblOfficialTemplate.TabIndex = 91269
+        Me.lblOfficialTemplate.Text = "Template:"
+        Me.lblOfficialTemplate.Visible = False
+        '
+        'cbOfficialTemplate
+        '
+        Me.cbOfficialTemplate.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbOfficialTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOfficialTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbOfficialTemplate.FormattingEnabled = True
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(568, 13)
+        Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(146, 23)
+        Me.cbOfficialTemplate.TabIndex = 91270
+        Me.cbOfficialTemplate.Visible = False
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(501, 15)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(39, 19)
+        Me.lblSim.TabIndex = 91272
+        Me.lblSim.Text = "SIM :"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(546, 13)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(162, 23)
+        Me.cbSim.TabIndex = 91273
+        Me.cbSim.Visible = False
         '
         'Label13
         '
@@ -1049,6 +1107,10 @@ Partial Class Crate_Out
     Friend WithEvents RadioRegional As System.Windows.Forms.RadioButton
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
+    Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents btnPnlVisHide As System.Windows.Forms.Button
     Friend WithEvents DgWhatsapp As System.Windows.Forms.DataGridView

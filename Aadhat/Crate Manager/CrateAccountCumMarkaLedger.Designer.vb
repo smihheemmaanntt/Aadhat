@@ -56,8 +56,12 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.lblCrateDetails = New System.Windows.Forms.Label()
         Me.lblCrate = New System.Windows.Forms.Label()
         Me.pnlWahtsappNo = New System.Windows.Forms.Panel()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblOfficialTemplate = New System.Windows.Forms.Label()
+        Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtWhatsappNo = New System.Windows.Forms.TextBox()
@@ -455,14 +459,18 @@ Partial Class CrateCrateAccountCumMarkaLedger
         'pnlWahtsappNo
         '
         Me.pnlWahtsappNo.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.pnlWahtsappNo.Controls.Add(Me.lblSim)
+        Me.pnlWahtsappNo.Controls.Add(Me.cbSim)
         Me.pnlWahtsappNo.Controls.Add(Me.Label4)
         Me.pnlWahtsappNo.Controls.Add(Me.cbType)
+        Me.pnlWahtsappNo.Controls.Add(Me.lblOfficialTemplate)
+        Me.pnlWahtsappNo.Controls.Add(Me.cbOfficialTemplate)
         Me.pnlWahtsappNo.Controls.Add(Me.Button2)
         Me.pnlWahtsappNo.Controls.Add(Me.Label5)
         Me.pnlWahtsappNo.Controls.Add(Me.txtWhatsappNo)
         Me.pnlWahtsappNo.Location = New System.Drawing.Point(495, 186)
         Me.pnlWahtsappNo.Name = "pnlWahtsappNo"
-        Me.pnlWahtsappNo.Size = New System.Drawing.Size(305, 94)
+        Me.pnlWahtsappNo.Size = New System.Drawing.Size(305, 124)
         Me.pnlWahtsappNo.TabIndex = 6
         Me.pnlWahtsappNo.Visible = False
         '
@@ -487,11 +495,65 @@ Partial Class CrateCrateAccountCumMarkaLedger
         Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
-        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp"})
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
         Me.cbType.Location = New System.Drawing.Point(152, 9)
         Me.cbType.Name = "cbType"
         Me.cbType.Size = New System.Drawing.Size(146, 23)
         Me.cbType.TabIndex = 91237
+        '
+        'lblOfficialTemplate
+        '
+        Me.lblOfficialTemplate.BackColor = System.Drawing.Color.CadetBlue
+        Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.GhostWhite
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(3, 91)
+        Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(82, 24)
+        Me.lblOfficialTemplate.TabIndex = 91241
+        Me.lblOfficialTemplate.Text = "Template"
+        Me.lblOfficialTemplate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblOfficialTemplate.Visible = False
+        '
+        'cbOfficialTemplate
+        '
+        Me.cbOfficialTemplate.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbOfficialTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOfficialTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!)
+        Me.cbOfficialTemplate.ForeColor = System.Drawing.Color.Black
+        Me.cbOfficialTemplate.FormattingEnabled = True
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(88, 91)
+        Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(210, 23)
+        Me.cbOfficialTemplate.TabIndex = 91242
+        Me.cbOfficialTemplate.Visible = False
+        '
+        'lblSim
+        '
+        Me.lblSim.BackColor = System.Drawing.Color.CadetBlue
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.GhostWhite
+        Me.lblSim.Location = New System.Drawing.Point(3, 35)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(185, 24)
+        Me.lblSim.TabIndex = 91239
+        Me.lblSim.Text = "Select SIM"
+        Me.lblSim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(3, 61)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(185, 23)
+        Me.cbSim.TabIndex = 91240
+        Me.cbSim.Visible = False
         '
         'Button2
         '
@@ -669,6 +731,8 @@ Partial Class CrateCrateAccountCumMarkaLedger
     Friend WithEvents lblCrateDetails As System.Windows.Forms.Label
     Friend WithEvents lblCrate As System.Windows.Forms.Label
     Friend WithEvents pnlWahtsappNo As System.Windows.Forms.Panel
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtWhatsappNo As System.Windows.Forms.TextBox
@@ -676,6 +740,8 @@ Partial Class CrateCrateAccountCumMarkaLedger
     Friend WithEvents CkHideOpBal As System.Windows.Forms.CheckBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
+    Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox

@@ -514,7 +514,7 @@
 
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
         txttoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
-        txttoDate.Text = SmartDate(txttoDate.Text)
+        txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
 
     Private Sub dtp1_GotFocus(sender As Object, e As EventArgs) Handles dtp1.GotFocus

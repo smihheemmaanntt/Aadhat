@@ -5,6 +5,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.Text
 Imports System.Threading
+Imports System.Collections.Generic
 
 Public Class Sellout_Auto
     Dim sql As String = String.Empty
@@ -25,6 +26,7 @@ Public Class Sellout_Auto
     Dim whatsappSender As New WhatsAppSender()
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
+    Private Const MobileSendingMethod As String = "From Mobile"
 
     Public Sub New()
         InitializeComponent()
@@ -256,6 +258,51 @@ Public Class Sellout_Auto
         BtnDelete.Enabled = False : rowColums() : FootertextClear()
         Cbper.Text = clsFun.ExecScalarStr("Select per From Controls")
     End Sub
+
+    Private Sub EnsureMobileWhatsappControls()
+        If cbType.Items.Contains("Easy WhatsApp") = False Then cbType.Items.Add("Easy WhatsApp")
+        If cbType.Items.Contains("WhatsApp Official API") = False Then cbType.Items.Add("WhatsApp Official API")
+        If cbType.Items.Contains(MobileSendingMethod) = False Then cbType.Items.Add(MobileSendingMethod)
+        lblSim.Visible = (cbType.Text = MobileSendingMethod) : cbSim.Visible = (cbType.Text = MobileSendingMethod)
+        Label35.Visible = (cbType.Text <> MobileSendingMethod)
+    End Sub
+
+    Private Function RefreshMobileSimList() As Boolean
+        EnsureMobileWhatsappControls() : cbSim.Items.Clear() : cbSim.Text = ""
+        Dim simItems As List(Of String) = PhoneMSg.GetSimDisplayList("", False)
+        If simItems Is Nothing OrElse simItems.Count = 0 Then
+            MsgBox("No verified mobile SIM found. Please verify PhoneMSg access token in WhatsApp API Configuration.", MsgBoxStyle.Exclamation, "Mobile API")
+            Return False
+        End If
+        For Each simText In simItems
+            cbSim.Items.Add(simText)
+        Next
+        Dim savedSim As String = WhatsAppOfficialDb.GetSetting("DefaultSim")
+        If savedSim.Trim() = "" Then savedSim = ClsFunPrimary.ExecScalarStr("Select DefaultSim From API")
+        Dim savedIndex As Integer = PhoneMSg.FindSimIndexBySubscriberId(savedSim, cbSim.Items)
+        If savedIndex >= 0 Then
+            cbSim.SelectedIndex = savedIndex
+        ElseIf cbSim.Items.Count > 0 Then
+            cbSim.SelectedIndex = 0
+        End If
+        Return cbSim.SelectedIndex >= 0
+    End Function
+
+    Private Function NormalizeIndianMobile(ByVal mobile As String) As String
+        If mobile Is Nothing Then Return ""
+        mobile = mobile.Replace(" ", "").Replace("-", "").Replace("+", "").Replace("(", "").Replace(")", "").Trim()
+        If mobile.StartsWith("0") Then mobile = mobile.Substring(1)
+        If mobile.StartsWith("91") AndAlso mobile.Length > 10 Then mobile = mobile.Substring(2)
+        If mobile.Length <> 10 Then Return ""
+        If Not "6789".Contains(mobile.Substring(0, 1)) Then Return ""
+        Return "91" & mobile
+    End Function
+
+    Private Function BuildPhoneMsgBody(ByVal fileUrl As String) As String
+        If fileUrl.Trim() = "" Then Return ""
+        Return "SELL OUT VIEW : " & fileUrl.Trim()
+    End Function
+
     Private Sub VNumber()
         Vno = clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM Vouchers Where TransType='" & Me.Text & "'")
         txtVoucherNo.Text = Vno + 1
@@ -1656,7 +1703,9 @@ Public Class Sellout_Auto
         If PrintSellout <> "Y" Then MsgBox("You Don't Have Rights to Print Purchase... " & vbNewLine & " Please Contact to Admin..Contact to Owner...", MsgBoxStyle.Critical, "Access Denied") : Exit Sub
         txtWhatsappNo.Text = clsFun.ExecScalarStr("Select Mobile1 From Accounts Where ID='" & Val(txtAccountID.Text) & "'")
         pnlWhatsapp.Visible = True : pnlWhatsapp.BringToFront() : txtWhatsappNo.Focus()
-        If ClsFunPrimary.ExecScalarStr("Select SendingMethod From API") = "Easy WhatsApp" Then
+        EnsureMobileWhatsappControls()
+        Dim sendingMethod As String = ClsFunPrimary.ExecScalarStr("Select SendingMethod From API")
+        If sendingMethod = "Easy WhatsApp" Then
             cbType.SelectedIndex = 0
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
@@ -1670,8 +1719,11 @@ Public Class Sellout_Auto
                 StartWhatsapp.StartInfo.FileName = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
                 StartWhatsapp.Start()
             End If
-        Else
-            cbType.SelectedIndex = 1
+        ElseIf sendingMethod = MobileSendingMethod AndAlso cbType.Items.Contains(MobileSendingMethod) Then
+            cbType.SelectedItem = MobileSendingMethod
+            RefreshMobileSimList()
+        ElseIf cbType.Items.Contains("WhatsApp Official API") Then
+            cbType.SelectedItem = "WhatsApp Official API"
         End If
 
     End Sub
@@ -2450,7 +2502,7 @@ Public Class Sellout_Auto
                 End If
             End If
         End If
-        If cbType.SelectedIndex = 0 Then
+        If cbType.Text = "Easy WhatsApp" Then
             Dim WhatsappFile As String = Application.StartupPath & "\Whatsapp\Easy Whatsapp.exe"
             If System.IO.File.Exists(WhatsappFile) = False Then
                 MsgBox("Please Contact to Support Officer...", MsgBoxStyle.Critical, "Access Denied")
@@ -2469,10 +2521,86 @@ Public Class Sellout_Auto
             Else
                 MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus() : Exit Sub
             End If
+        ElseIf cbType.Text = MobileSendingMethod Then
+            SendPhoneMsgzData()
+        ElseIf cbType.Text = "WhatsApp Official API" Then
+            SendOfficialSelloutAutoData()
         Else
             StartBackgroundTask(AddressOf WahSoft)
         End If
     End Sub
+
+    Private Sub SendPhoneMsgzData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus() : Exit Sub
+        End If
+        If RefreshMobileSimList() = False Then Exit Sub
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
+        PrintOnly() : PrintRecord()
+        If RadioPrint1.Checked = True Then
+            Pdf_Genrate.ExportReport("\AutoBeejak.rpt")
+        Else
+            Pdf_Genrate.ExportReport("\AutoBeejak2.rpt")
+        End If
+        Dim fileUrl As String = PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+            MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Mobile API")
+            Exit Sub
+        End If
+        Dim apiResult As String = PhoneMSg.SendPhoneMsg(mobile, cbSim.Text, BuildPhoneMsgBody(fileUrl))
+        If apiResult = "SUCCESS" Then
+            MsgBox("Sellout Auto sent on msgz.in server", vbInformation, "Sended")
+        Else
+            MsgBox(apiResult, MsgBoxStyle.Critical, "Mobile API")
+        End If
+    End Sub
+
+    Private Function ExportSelloutAutoPdfForOfficial() As String
+        Dim directoryName As String = Application.StartupPath & "\Pdfs"
+        If Directory.Exists(directoryName) Then
+            For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
+                File.Delete(deleteFile)
+            Next
+        End If
+        Directory.CreateDirectory(directoryName)
+        GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
+        PrintOnly() : PrintRecord()
+        If RadioPrint1.Checked = True Then
+            Pdf_Genrate.ExportReport("\AutoBeejak.rpt")
+        Else
+            Pdf_Genrate.ExportReport("\AutoBeejak2.rpt")
+        End If
+        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Sub SendOfficialSelloutAutoData()
+        Dim mobile As String = NormalizeIndianMobile(txtWhatsappNo.Text)
+        If mobile = "" Then
+            MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus() : Exit Sub
+        End If
+        Dim fileUrl As String = ExportSelloutAutoPdfForOfficial()
+        Dim apiResponse As String = ""
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_auto", "SELLOUT_AUTO", mobile, txtAccount.Text, txtEntryDate.Text, txttotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse) Then
+            MsgBox("Sellout Auto sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
+            pnlWhatsapp.Visible = False : txtEntryDate.Focus()
+        Else
+            MsgBox(apiResponse, MsgBoxStyle.Critical, "Official API")
+        End If
+    End Sub
+
+    Private Sub cbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbType.SelectedIndexChanged
+        EnsureMobileWhatsappControls()
+        If cbType.Text = MobileSendingMethod AndAlso pnlWhatsapp.Visible Then RefreshMobileSimList()
+    End Sub
+
     Private Sub WahSoft()
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         For Each deleteFile In Directory.GetFiles(directoryName, "*.PDf*", SearchOption.TopDirectoryOnly)
