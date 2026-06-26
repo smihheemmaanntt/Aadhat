@@ -24,16 +24,16 @@ Partial Class Print_Bills
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Print_Bills))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.dg1 = New System.Windows.Forms.DataGridView()
@@ -77,6 +77,7 @@ Partial Class Print_Bills
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.BtnSendWhatsapp = New System.Windows.Forms.Button()
         Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.lblSelectedWhatsappCount = New System.Windows.Forms.Label()
         Me.lblOfficialTemplate = New System.Windows.Forms.Label()
         Me.cbOfficialTemplate = New System.Windows.Forms.ComboBox()
         Me.chkEasyReplyNote = New System.Windows.Forms.CheckBox()
@@ -147,23 +148,23 @@ Partial Class Print_Bills
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle12
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
         Me.dg1.Location = New System.Drawing.Point(12, 100)
@@ -174,11 +175,11 @@ Partial Class Print_Bills
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 45
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Maroon
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Maroon
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle13
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 476)
@@ -433,23 +434,23 @@ Partial Class Print_Bills
         Me.dgAccounts.AllowUserToResizeRows = False
         Me.dgAccounts.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dgAccounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.IndianRed
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgAccounts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.IndianRed
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgAccounts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.dgAccounts.ColumnHeadersHeight = 28
         Me.dgAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgAccounts.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgAccounts.DefaultCellStyle = DataGridViewCellStyle15
         Me.dgAccounts.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.dgAccounts.EnableHeadersVisualStyles = False
         Me.dgAccounts.GridColor = System.Drawing.Color.Gray
@@ -460,8 +461,8 @@ Partial Class Print_Bills
         Me.dgAccounts.RowHeadersVisible = False
         Me.dgAccounts.RowHeadersWidth = 45
         Me.dgAccounts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgAccounts.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgAccounts.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.dgAccounts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dgAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgAccounts.Size = New System.Drawing.Size(362, 205)
@@ -702,6 +703,7 @@ Partial Class Print_Bills
         'pnlWhatsapp
         '
         Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.pnlWhatsapp.Controls.Add(Me.lblSelectedWhatsappCount)
         Me.pnlWhatsapp.Controls.Add(Me.lblOfficialTemplate)
         Me.pnlWhatsapp.Controls.Add(Me.cbOfficialTemplate)
         Me.pnlWhatsapp.Controls.Add(Me.chkEasyReplyNote)
@@ -726,6 +728,17 @@ Partial Class Print_Bills
         Me.pnlWhatsapp.TabIndex = 91218
         Me.pnlWhatsapp.Visible = False
         '
+        'lblSelectedWhatsappCount
+        '
+        Me.lblSelectedWhatsappCount.AutoSize = True
+        Me.lblSelectedWhatsappCount.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblSelectedWhatsappCount.ForeColor = System.Drawing.Color.Navy
+        Me.lblSelectedWhatsappCount.Location = New System.Drawing.Point(419, 317)
+        Me.lblSelectedWhatsappCount.Name = "lblSelectedWhatsappCount"
+        Me.lblSelectedWhatsappCount.Size = New System.Drawing.Size(129, 17)
+        Me.lblSelectedWhatsappCount.TabIndex = 91241
+        Me.lblSelectedWhatsappCount.Text = "Selected Bills : 0 / 0"
+        '
         'lblOfficialTemplate
         '
         Me.lblOfficialTemplate.AutoSize = True
@@ -747,7 +760,7 @@ Partial Class Print_Bills
         Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.75!)
         Me.cbOfficialTemplate.ForeColor = System.Drawing.Color.Black
         Me.cbOfficialTemplate.FormattingEnabled = True
-        Me.cbOfficialTemplate.Location = New System.Drawing.Point(578, 17)
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(568, 17)
         Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
         Me.cbOfficialTemplate.Size = New System.Drawing.Size(138, 23)
         Me.cbOfficialTemplate.TabIndex = 91240
@@ -792,9 +805,9 @@ Partial Class Print_Bills
         Me.cbSim.ForeColor = System.Drawing.Color.Black
         Me.cbSim.FormattingEnabled = True
         Me.cbSim.Items.AddRange(New Object() {"SIM 1", "SIM 2"})
-        Me.cbSim.Location = New System.Drawing.Point(554, 321)
+        Me.cbSim.Location = New System.Drawing.Point(578, 321)
         Me.cbSim.Name = "cbSim"
-        Me.cbSim.Size = New System.Drawing.Size(197, 23)
+        Me.cbSim.Size = New System.Drawing.Size(173, 23)
         Me.cbSim.TabIndex = 91236
         Me.cbSim.Visible = False
         '
@@ -914,22 +927,22 @@ Partial Class Print_Bills
         Me.DgWhatsapp.AllowUserToResizeRows = False
         Me.DgWhatsapp.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.DgWhatsapp.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgWhatsapp.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgWhatsapp.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
         Me.DgWhatsapp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgWhatsapp.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgWhatsapp.DefaultCellStyle = DataGridViewCellStyle18
         Me.DgWhatsapp.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.DgWhatsapp.EnableHeadersVisualStyles = False
         Me.DgWhatsapp.GridColor = System.Drawing.Color.Crimson
@@ -937,19 +950,19 @@ Partial Class Print_Bills
         Me.DgWhatsapp.MultiSelect = False
         Me.DgWhatsapp.Name = "DgWhatsapp"
         Me.DgWhatsapp.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.GhostWhite
-        Me.DgWhatsapp.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.GhostWhite
+        Me.DgWhatsapp.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
         Me.DgWhatsapp.RowHeadersVisible = False
         Me.DgWhatsapp.RowHeadersWidth = 45
         Me.DgWhatsapp.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Maroon
-        Me.DgWhatsapp.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Maroon
+        Me.DgWhatsapp.RowsDefaultCellStyle = DataGridViewCellStyle20
         Me.DgWhatsapp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DgWhatsapp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgWhatsapp.Size = New System.Drawing.Size(740, 232)
@@ -1209,4 +1222,5 @@ Partial Class Print_Bills
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
     Friend WithEvents lblOfficialTemplate As System.Windows.Forms.Label
     Friend WithEvents cbOfficialTemplate As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSelectedWhatsappCount As System.Windows.Forms.Label
 End Class

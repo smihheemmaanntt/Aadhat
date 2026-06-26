@@ -423,7 +423,27 @@ Public Class WhatsAppOfficialDb
         Dim countText As Integer = CountBodyParameters(bodyText)
         If SafeValue(footerText).Trim() = "" Then footerText = DefaultTemplateFooter
         headerType = NormalizeHeaderType(headerType)
-        UpsertTemplate(templateCode, title, languageCode, templateType, countText, headerType, If(headerType = "document" Or headerType = "image" Or headerType = "video", 1, 0), bodyText, "LOCAL", 0, 0, 0, "LOCAL", bodyText, footerText, category, examples, buttonsJson)
+        Dim normalizedLanguageCode As String = NormalizeLanguageCode(languageCode)
+        Dim existing As DataTable = ExecDataTable("Select MetaStatus, IsApproved, IsPending, IsRejected, Status From PredefinedTemplates Where TemplateCode='" & SqlText(templateCode) & "' And LanguageCode='" & SqlText(normalizedLanguageCode) & "' Limit 1")
+        Dim metaStatus As String = "LOCAL"
+        Dim statusText As String = "LOCAL"
+        Dim isApproved As Integer = 0
+        Dim isPending As Integer = 0
+        Dim isRejected As Integer = 0
+
+        If existing.Rows.Count > 0 Then
+            metaStatus = SafeValue(existing.Rows(0)("MetaStatus").ToString())
+            statusText = SafeValue(existing.Rows(0)("Status").ToString())
+            isApproved = Val(existing.Rows(0)("IsApproved").ToString())
+            isPending = Val(existing.Rows(0)("IsPending").ToString())
+            isRejected = Val(existing.Rows(0)("IsRejected").ToString())
+
+            If metaStatus.Trim() = "" Then metaStatus = "LOCAL"
+            If statusText.Trim() = "" Then statusText = metaStatus
+        End If
+        existing.Dispose()
+
+        UpsertTemplate(templateCode, title, normalizedLanguageCode, templateType, countText, headerType, If(headerType = "document" Or headerType = "image" Or headerType = "video", 1, 0), bodyText, metaStatus, isApproved, isPending, isRejected, statusText, bodyText, footerText, category, examples, buttonsJson)
     End Sub
 
     Private Shared Function NormalizeHeaderType(ByVal headerType As String) As String
@@ -466,7 +486,21 @@ Public Class WhatsAppOfficialDb
         parameterFields = NormalizeParameterFieldsText(parameterFields)
         Dim moduleName As String = templateType.ToUpper()
         Dim mappingKey As String = moduleName & "_" & If(languageCode = "hi", "HI", "EN") & "_" & SafeValue(templateCode).ToUpper()
-        SaveTemplateMapping(mappingKey, moduleName, templateType.Replace("_", " ") & " " & If(languageCode = "hi", "Regional", "English"), templateCode, languageCode, "AUTO", parameterFields)
+        Dim existing As DataTable = ExecDataTable("Select ParameterFields, MessageMode From TemplateMappings Where MappingKey='" & SqlText(mappingKey) & "' Limit 1")
+        Dim finalParameterFields As String = parameterFields
+        Dim finalMessageMode As String = "AUTO"
+
+        If existing.Rows.Count > 0 Then
+            Dim existingMode As String = SafeValue(existing.Rows(0)("MessageMode").ToString()).Trim().ToUpper()
+            Dim existingFields As String = NormalizeParameterFieldsText(SafeValue(existing.Rows(0)("ParameterFields").ToString()))
+            If existingFields <> "" AndAlso existingMode <> "" AndAlso existingMode <> "AUTO" Then
+                finalParameterFields = existingFields
+                finalMessageMode = existingMode
+            End If
+        End If
+        existing.Dispose()
+
+        SaveTemplateMapping(mappingKey, moduleName, templateType.Replace("_", " ") & " " & If(languageCode = "hi", "Regional", "English"), templateCode, languageCode, finalMessageMode, finalParameterFields)
     End Sub
 
     Private Shared Function NormalizeParameterFieldsText(ByVal parameterFields As String) As String

@@ -943,17 +943,19 @@
         pnlWait.Visible = False
     End Sub
     Private Sub PrintOutstanding()
-        Dim count As Integer = 0
-        Dim cmd As New SQLite.SQLiteCommand
         Dim sql As String = ""
+        Dim marka As String = clsFun.ExecScalarStr("Select Marka From Company")
         ClsFunPrimary.ExecNonQuery("Delete from printing")
+        If dg1.Rows.Count = 0 Then Exit Sub
         For Each row As DataGridViewRow In dg1.Rows
+            If row.IsNewRow Then Continue For
             Application.DoEvents()
-            If Application.OpenForms().OfType(Of OutStanding).Any = False Then Exit Sub
             With row
-                sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9) values('" & txttoDate.Text & "'," & _
-                    "'" & .Cells(2).Value & "','" & .Cells(3).Value & "','" & .Cells(5).Value & "','" & .Cells(6).Value & "','" & .Cells(7).Value & "','" & .Cells(8).Value & "','" & Format(Val(txtDramt.Text), "0.00") & "','" & Format(Val(txtcrAmt.Text), "0.00") & "','" & Format(Val(txtBalAmt.Text), "0.00") & "')"
                 Try
+                    sql = "insert into Printing(D1,P1, P2,P3, P4,P5,P6,P7,P8,P9,M10) values('" & txttoDate.Text & "'," & _
+                    "'" & .Cells(2).Value & "','" & .Cells(3).Value & "',''," & _
+                    "'" & .Cells(7).Value & "','" & .Cells(8).Value & "','" & .Cells(4).Value & "'," & _
+                    "'" & Format(Val(txtDramt.Text), "0.00") & "','" & Format(Val(txtcrAmt.Text), "0.00") & "','" & Format(Val(txtBalAmt.Text), "0.00") & "','" & marka & "')"
                     ClsFunPrimary.ExecNonQuery(sql)
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -964,7 +966,11 @@
     End Sub
     Private Sub btnPrintOutstanding_Click(sender As Object, e As EventArgs) Handles btnPrintOutstanding.Click
         PrintOutstanding()
-        Report_Viewer.printReport("\Outstanding.rpt")
+        If ckPrintHindi.Checked = True Then
+            Report_Viewer.printReport("\OutstandingHindi.rpt")
+        Else
+            Report_Viewer.printReport("\Outstanding.rpt")
+        End If
         Report_Viewer.MdiParent = MainScreenForm
         Report_Viewer.Show()
         Report_Viewer.BringToFront()

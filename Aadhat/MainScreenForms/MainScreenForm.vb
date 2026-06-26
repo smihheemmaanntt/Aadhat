@@ -123,6 +123,12 @@ Public Class MainScreenForm
         ReceiptForm.Top = 0 : ReceiptForm.Left = 0
     End Sub
 
+    Private Sub SpeedSaleDateCorrectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SpeedSaleDateCorrectionToolStripMenuItem.Click
+        SpeedSaleDateCorrection.MdiParent = Me
+        SpeedSaleDateCorrection.Show()
+        SpeedSaleDateCorrection.BringToFront()
+    End Sub
+
     Private Sub btnLedger_Click(sender As Object, e As EventArgs) Handles btnSpeedRegister.Click
         Speed_Sale_Register.MdiParent = Me
         Speed_Sale_Register.Show()

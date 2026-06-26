@@ -154,6 +154,7 @@ Public Class Print_Bills
             Dim checkBox As DataGridViewCheckBoxCell = (TryCast(row.Cells("checkBoxColumn"), DataGridViewCheckBoxCell))
             checkBox.Value = WhatsappCheckBox.Checked
         Next
+        UpdateSelectedWhatsappCount()
     End Sub
     Private Sub IDGentate4Slips()
         Dim id As String = String.Empty
@@ -253,6 +254,7 @@ Public Class Print_Bills
         DgWhatsapp.Columns(6).Name = "message2" : DgWhatsapp.Columns(6).Visible = False
         DgWhatsapp.Columns(7).Name = "Status" : DgWhatsapp.Columns(7).Width = 210
         DgWhatsapp.Columns(8).Name = "Path" : DgWhatsapp.Columns(8).Width = 200
+        UpdateSelectedWhatsappCount()
     End Sub
 
     Sub calc()
@@ -398,6 +400,30 @@ Public Class Print_Bills
             End With
         Next
         DgWhatsapp.ClearSelection()
+        UpdateSelectedWhatsappCount()
+    End Sub
+    Private Function CountSelectedWhatsappBills() As Integer
+        Dim totalSelected As Integer = 0
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            If row.IsNewRow Then Continue For
+            Dim isChecked As Boolean = False
+            If row.Cells(0).Value IsNot Nothing Then Boolean.TryParse(row.Cells(0).Value.ToString(), isChecked)
+            If isChecked Then
+                Dim mobileNo As String = NormalizeIndianMobile(If(row.Cells(3).Value, "").ToString())
+                If mobileNo <> "" Then totalSelected += 1
+            End If
+        Next
+        Return totalSelected
+    End Function
+
+    Private Sub UpdateSelectedWhatsappCount()
+        If lblSelectedWhatsappCount Is Nothing Then Exit Sub
+        Dim totalWithNumber As Integer = 0
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            If row.IsNewRow Then Continue For
+            If NormalizeIndianMobile(If(row.Cells(3).Value, "").ToString()) <> "" Then totalWithNumber += 1
+        Next
+        lblSelectedWhatsappCount.Text = "Selected Bills : " & CountSelectedWhatsappBills().ToString() & " / " & totalWithNumber.ToString()
     End Sub
     Private Function NormalizeIndianMobile(ByVal Mobile As String) As String
 
@@ -819,8 +845,6 @@ Public Class Print_Bills
         ' ================= CLEAR OLD QUEUE =================
         If mode = 0 Then
             ClsFunWhatsapp.ExecNonQuery("Delete From SendingData")
-        ElseIf mode = 1 Then
-            WABA.ExecNonQuery("Delete From SendingData")
         End If
 
         ' ================= FILTER ROWS =================
@@ -2898,6 +2922,7 @@ Public Class Print_Bills
             Next
             WhatsappCheckBox.Checked = isChecked
         End If
+        UpdateSelectedWhatsappCount()
     End Sub
     Private Sub dgAccounts_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgAccounts.CellClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 1 Then
@@ -3736,6 +3761,17 @@ Public Class Print_Bills
                 End If
             End If
         End If
+        UpdateSelectedWhatsappCount()
+    End Sub
+
+    Private Sub DgWhatsapp_CurrentCellDirtyStateChanged(sender As Object, e As EventArgs) Handles DgWhatsapp.CurrentCellDirtyStateChanged
+        If DgWhatsapp.IsCurrentCellDirty Then
+            DgWhatsapp.CommitEdit(DataGridViewDataErrorContexts.Commit)
+        End If
+    End Sub
+
+    Private Sub DgWhatsapp_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellValueChanged
+        If e.RowIndex >= 0 Then UpdateSelectedWhatsappCount()
     End Sub
 
 

@@ -774,3 +774,6 @@ D:\1\Aadhat\AADHAT\obj\Debug\Aadhat.TestForm.resources
 D:\1\Aadhat\AADHAT\obj\Debug\Aadhat.TrustInfo.xml
 D:\1\Aadhat\AADHAT\obj\Debug\Aadhat.exe.manifest
 D:\1\Aadhat\AADHAT\obj\Debug\Aadhat.application
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\Debug\Aadhat.exe
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\Debug\Aadhat.xml
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\Debug\Aadhat.pdb
