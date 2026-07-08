@@ -22,11 +22,24 @@ Partial Class Scrip_Register
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Scrip_Register))
         Me.tmpgrid = New System.Windows.Forms.DataGridView()
+        Me.pnlWhatsapp = New System.Windows.Forms.Panel()
+        Me.lblType = New System.Windows.Forms.Label()
+        Me.cbType = New System.Windows.Forms.ComboBox()
+        Me.lblSim = New System.Windows.Forms.Label()
+        Me.cbSim = New System.Windows.Forms.ComboBox()
+        Me.txtSearchWhatsapp = New System.Windows.Forms.TextBox()
+        Me.lblSearchWhatsapp = New System.Windows.Forms.Label()
+        Me.lblWhatsappTitle = New System.Windows.Forms.Label()
+        Me.btnPnlVisHide = New System.Windows.Forms.Button()
+        Me.DgWhatsapp = New System.Windows.Forms.DataGridView()
+        Me.btnPrintSelectedBills = New System.Windows.Forms.Button()
+        Me.btnStartSending = New System.Windows.Forms.Button()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -60,6 +73,8 @@ Partial Class Scrip_Register
         Me.txttoDate = New System.Windows.Forms.TextBox()
         Me.txtFromDate = New System.Windows.Forms.TextBox()
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlWhatsapp.SuspendLayout()
+        CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -72,6 +87,188 @@ Partial Class Scrip_Register
         Me.tmpgrid.Size = New System.Drawing.Size(61, 37)
         Me.tmpgrid.TabIndex = 40111
         Me.tmpgrid.Visible = False
+        '
+        'pnlWhatsapp
+        '
+        Me.pnlWhatsapp.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.pnlWhatsapp.Controls.Add(Me.lblType)
+        Me.pnlWhatsapp.Controls.Add(Me.cbType)
+        Me.pnlWhatsapp.Controls.Add(Me.lblSim)
+        Me.pnlWhatsapp.Controls.Add(Me.cbSim)
+        Me.pnlWhatsapp.Controls.Add(Me.txtSearchWhatsapp)
+        Me.pnlWhatsapp.Controls.Add(Me.lblSearchWhatsapp)
+        Me.pnlWhatsapp.Controls.Add(Me.lblWhatsappTitle)
+        Me.pnlWhatsapp.Controls.Add(Me.btnPnlVisHide)
+        Me.pnlWhatsapp.Controls.Add(Me.DgWhatsapp)
+        Me.pnlWhatsapp.Controls.Add(Me.btnPrintSelectedBills)
+        Me.pnlWhatsapp.Controls.Add(Me.btnStartSending)
+        Me.pnlWhatsapp.Controls.Add(Me.ProgressBar1)
+        Me.pnlWhatsapp.Location = New System.Drawing.Point(213, 165)
+        Me.pnlWhatsapp.Name = "pnlWhatsapp"
+        Me.pnlWhatsapp.Size = New System.Drawing.Size(770, 322)
+        Me.pnlWhatsapp.TabIndex = 40258
+        Me.pnlWhatsapp.Visible = False
+        '
+        'lblType
+        '
+        Me.lblType.AutoSize = True
+        Me.lblType.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblType.ForeColor = System.Drawing.Color.Red
+        Me.lblType.Location = New System.Drawing.Point(12, 15)
+        Me.lblType.Name = "lblType"
+        Me.lblType.Size = New System.Drawing.Size(107, 21)
+        Me.lblType.TabIndex = 40259
+        Me.lblType.Text = "Select Type :"
+        '
+        'cbType
+        '
+        Me.cbType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbType.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbType.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbType.ForeColor = System.Drawing.Color.Black
+        Me.cbType.FormattingEnabled = True
+        Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
+        Me.cbType.Location = New System.Drawing.Point(124, 14)
+        Me.cbType.Name = "cbType"
+        Me.cbType.Size = New System.Drawing.Size(146, 23)
+        Me.cbType.TabIndex = 40260
+        '
+        'lblSim
+        '
+        Me.lblSim.AutoSize = True
+        Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSim.ForeColor = System.Drawing.Color.Red
+        Me.lblSim.Location = New System.Drawing.Point(14, 291)
+        Me.lblSim.Name = "lblSim"
+        Me.lblSim.Size = New System.Drawing.Size(40, 19)
+        Me.lblSim.TabIndex = 40261
+        Me.lblSim.Text = "SIM:"
+        Me.lblSim.Visible = False
+        '
+        'cbSim
+        '
+        Me.cbSim.BackColor = System.Drawing.Color.GhostWhite
+        Me.cbSim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cbSim.ForeColor = System.Drawing.Color.Black
+        Me.cbSim.FormattingEnabled = True
+        Me.cbSim.Location = New System.Drawing.Point(56, 289)
+        Me.cbSim.Name = "cbSim"
+        Me.cbSim.Size = New System.Drawing.Size(187, 23)
+        Me.cbSim.TabIndex = 40262
+        Me.cbSim.Visible = False
+        '
+        'txtSearchWhatsapp
+        '
+        Me.txtSearchWhatsapp.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtSearchWhatsapp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSearchWhatsapp.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearchWhatsapp.ForeColor = System.Drawing.Color.Black
+        Me.txtSearchWhatsapp.Location = New System.Drawing.Point(471, 13)
+        Me.txtSearchWhatsapp.Name = "txtSearchWhatsapp"
+        Me.txtSearchWhatsapp.Size = New System.Drawing.Size(237, 26)
+        Me.txtSearchWhatsapp.TabIndex = 40263
+        Me.txtSearchWhatsapp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblSearchWhatsapp
+        '
+        Me.lblSearchWhatsapp.AutoSize = True
+        Me.lblSearchWhatsapp.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSearchWhatsapp.ForeColor = System.Drawing.Color.Red
+        Me.lblSearchWhatsapp.Location = New System.Drawing.Point(351, 15)
+        Me.lblSearchWhatsapp.Name = "lblSearchWhatsapp"
+        Me.lblSearchWhatsapp.Size = New System.Drawing.Size(118, 21)
+        Me.lblSearchWhatsapp.TabIndex = 40264
+        Me.lblSearchWhatsapp.Text = "Search Name :"
+        '
+        'lblWhatsappTitle
+        '
+        Me.lblWhatsappTitle.AutoSize = True
+        Me.lblWhatsappTitle.Font = New System.Drawing.Font("Times New Roman", 14.25!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWhatsappTitle.ForeColor = System.Drawing.Color.Green
+        Me.lblWhatsappTitle.Location = New System.Drawing.Point(281, 291)
+        Me.lblWhatsappTitle.Name = "lblWhatsappTitle"
+        Me.lblWhatsappTitle.Size = New System.Drawing.Size(223, 22)
+        Me.lblWhatsappTitle.TabIndex = 40265
+        Me.lblWhatsappTitle.Text = "Sellout Bills On Whatsapp"
+        '
+        'btnPnlVisHide
+        '
+        Me.btnPnlVisHide.Location = New System.Drawing.Point(714, 4)
+        Me.btnPnlVisHide.Name = "btnPnlVisHide"
+        Me.btnPnlVisHide.Size = New System.Drawing.Size(38, 36)
+        Me.btnPnlVisHide.TabIndex = 40266
+        Me.btnPnlVisHide.UseVisualStyleBackColor = True
+        '
+        'DgWhatsapp
+        '
+        Me.DgWhatsapp.AllowUserToAddRows = False
+        Me.DgWhatsapp.AllowUserToDeleteRows = False
+        Me.DgWhatsapp.AllowUserToOrderColumns = True
+        Me.DgWhatsapp.AllowUserToResizeColumns = False
+        Me.DgWhatsapp.AllowUserToResizeRows = False
+        Me.DgWhatsapp.BackgroundColor = System.Drawing.Color.GhostWhite
+        Me.DgWhatsapp.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DgWhatsapp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgWhatsapp.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
+        Me.DgWhatsapp.EnableHeadersVisualStyles = False
+        Me.DgWhatsapp.GridColor = System.Drawing.Color.Crimson
+        Me.DgWhatsapp.Location = New System.Drawing.Point(12, 47)
+        Me.DgWhatsapp.MultiSelect = False
+        Me.DgWhatsapp.Name = "DgWhatsapp"
+        Me.DgWhatsapp.RowHeadersVisible = False
+        Me.DgWhatsapp.RowHeadersWidth = 45
+        Me.DgWhatsapp.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.DgWhatsapp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.DgWhatsapp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgWhatsapp.Size = New System.Drawing.Size(740, 232)
+        Me.DgWhatsapp.TabIndex = 40267
+        '
+        'btnPrintSelectedBills
+        '
+        Me.btnPrintSelectedBills.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnPrintSelectedBills.FlatAppearance.BorderSize = 0
+        Me.btnPrintSelectedBills.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrintSelectedBills.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btnPrintSelectedBills.ForeColor = System.Drawing.Color.GhostWhite
+        Me.btnPrintSelectedBills.Image = Global.Aadhat.My.Resources.Resources.icons8_printer_24px
+        Me.btnPrintSelectedBills.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnPrintSelectedBills.Location = New System.Drawing.Point(517, 285)
+        Me.btnPrintSelectedBills.Name = "btnPrintSelectedBills"
+        Me.btnPrintSelectedBills.Size = New System.Drawing.Size(99, 30)
+        Me.btnPrintSelectedBills.TabIndex = 40268
+        Me.btnPrintSelectedBills.Text = "Print Bills"
+        Me.btnPrintSelectedBills.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPrintSelectedBills.UseVisualStyleBackColor = False
+        '
+        'btnStartSending
+        '
+        Me.btnStartSending.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(191, Byte), Integer), CType(CType(165, Byte), Integer))
+        Me.btnStartSending.FlatAppearance.BorderSize = 0
+        Me.btnStartSending.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStartSending.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btnStartSending.ForeColor = System.Drawing.Color.GhostWhite
+        Me.btnStartSending.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStartSending.Location = New System.Drawing.Point(616, 285)
+        Me.btnStartSending.Name = "btnStartSending"
+        Me.btnStartSending.Size = New System.Drawing.Size(136, 30)
+        Me.btnStartSending.TabIndex = 40269
+        Me.btnStartSending.Text = "Start Sending"
+        Me.btnStartSending.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnStartSending.UseVisualStyleBackColor = False
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 290)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(233, 23)
+        Me.ProgressBar1.TabIndex = 40270
+        Me.ProgressBar1.Visible = False
         '
         'Label1
         '
@@ -301,23 +498,23 @@ Partial Class Scrip_Register
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
         Me.dg1.Location = New System.Drawing.Point(12, 137)
@@ -327,9 +524,9 @@ Partial Class Scrip_Register
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 42
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dg1.Size = New System.Drawing.Size(1172, 477)
@@ -522,6 +719,7 @@ Partial Class Scrip_Register
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.pnlWhatsapp)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.Label7)
@@ -559,6 +757,9 @@ Partial Class Scrip_Register
         Me.Name = "Scrip_Register"
         Me.Text = "Beejak"
         CType(Me.tmpgrid, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlWhatsapp.ResumeLayout(False)
+        Me.pnlWhatsapp.PerformLayout()
+        CType(Me.DgWhatsapp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -566,6 +767,19 @@ Partial Class Scrip_Register
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents pnlWhatsapp As System.Windows.Forms.Panel
+    Friend WithEvents lblType As System.Windows.Forms.Label
+    Friend WithEvents cbType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSim As System.Windows.Forms.Label
+    Friend WithEvents cbSim As System.Windows.Forms.ComboBox
+    Friend WithEvents txtSearchWhatsapp As System.Windows.Forms.TextBox
+    Friend WithEvents lblSearchWhatsapp As System.Windows.Forms.Label
+    Friend WithEvents lblWhatsappTitle As System.Windows.Forms.Label
+    Friend WithEvents btnPnlVisHide As System.Windows.Forms.Button
+    Friend WithEvents DgWhatsapp As System.Windows.Forms.DataGridView
+    Friend WithEvents btnPrintSelectedBills As System.Windows.Forms.Button
+    Friend WithEvents btnStartSending As System.Windows.Forms.Button
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents btnShow As System.Windows.Forms.Button
     Friend WithEvents tmpgrid As System.Windows.Forms.DataGridView
     Friend WithEvents Button1 As System.Windows.Forms.Button

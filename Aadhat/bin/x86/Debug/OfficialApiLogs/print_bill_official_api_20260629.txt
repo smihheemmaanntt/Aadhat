@@ -1,0 +1,44 @@
+============================================================
+Time: 29-06-2026 11:05:58
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bad...db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear ABHAY KARELA NETA JI,\r\n Your Due Balance is:6805.00 Dr.\r\n (_Please Deposit as Soon As Possible_)","template_name":"bal_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ABHAY KARELA NETA JI","field_3":"31-03-2026","field_4":"6805.00 Dr","field_5":"-","body_param_count":5}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-06-08 09:45:16","service_window_expires_at":"2026-06-09 09:45:16","log_uid":"090afe9c-5138-41e3-b212-dd688ffb894d","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0VEMkFFRkRDNEZDMDkxRERFMkUA","status":"accepted"}}
+
+============================================================
+Time: 29-06-2026 11:06:34
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bad...db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear ABHAY KARELA NETA JI,\r\n Your Due Balance is:6805.00 Dr.\r\n (_Please Deposit as Soon As Possible_)","template_name":"bal_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"ABHAY KARELA NETA JI","field_3":"31-03-2026","field_4":"6805.00 Dr","field_5":"Please Pay Payment on Time","body_param_count":5}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-06-08 09:45:16","service_window_expires_at":"2026-06-09 09:45:16","log_uid":"0287f9d6-1c78-4db1-a178-29e3fe4460c6","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0VBMzAyQjdDNjkyNzA4RkI2MTAA","status":"accepted"}}
+
+============================================================
+Time: 29-06-2026 11:08:03
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bad...db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear ABHAY KARELA NETA JI,\r\n Your Due Balance is:6805.00 Dr.\r\n (_Please Deposit as Soon As Possible_)","template_name":"bal_en","template_language":"en_US","field_1":"ABHAY KARELA NETA JI","field_2":"PANKAJ FRUIT COMPANY","field_3":"31-03-2026","field_4":"6805.00 Dr","field_5":"Please Pay Payment on Time","body_param_count":5}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-06-08 09:45:16","service_window_expires_at":"2026-06-09 09:45:16","log_uid":"4337a791-2d3e-418f-9667-fe05d6325cb5","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0VFNkNBQTgyOTg3M0Y2N0E3RTEA","status":"accepted"}}
+
+============================================================
+Time: 29-06-2026 13:41:27
+VendorUid: 6bad...db3
+Endpoint: https://wahsoft.in/public/api/6bad...db3/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Hello *PANKAJ FRUIT COMPANY*, your sellout manual dated *SOHAL LAL NO.2 KOT* from *01-04-2026* is ready. Total amount is *26208.00*. Thank you","template_name":"sellman_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"SOHAL LAL NO.2 KOT","field_3":"01-04-2026","field_4":"26208.00","body_param_count":4,"header_document":"https://msgz.in/ZDKA24","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-06-08 09:45:16","service_window_expires_at":"2026-06-09 09:45:16","log_uid":"210cbf2a-51a2-4aa6-a82f-18035cb27cc3","contact_uid":"71f9f50a-a5b4-4cf6-b92e-5db8987f9c72","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U0RkI0OTYyMjdENDM3RTgwNzgA","status":"accepted"}}
+

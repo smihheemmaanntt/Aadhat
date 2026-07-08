@@ -2157,3 +2157,4 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TrustInfo.xm
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe.manifest
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbprojResolveAssemblyReference.cache

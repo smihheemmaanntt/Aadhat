@@ -7,7 +7,7 @@ Public Class Pdf_Genrate
     Dim reportName As String
 
     Private Function GetData() As DataSet
-        Dim sSql As String = "vacuum;Select * from Printing"
+        Dim sSql As String = "Select * from Printing"
         Dim ds As New DataSet
         ds = ClsFunPrimary.ExecDataSet(sSql, "Printing")
         GetData = ds

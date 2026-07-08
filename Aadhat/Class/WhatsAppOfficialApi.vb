@@ -365,8 +365,8 @@ Public Module WhatsAppOfficialApi
 
     Private Sub WriteSendLog(ByVal vendorUid As String, ByVal payload As JObject, ByVal rawResponse As String, ByVal parsedResponse As String)
         Try
-            Dim logDir As String = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "OfficialApiLogs")
-            If System.IO.Directory.Exists(logDir) = False Then System.IO.Directory.CreateDirectory(logDir)
+            Dim logDir As String = ResolveOfficialApiLogDirectory()
+            If logDir = "" Then Exit Sub
 
             Dim logFile As String = System.IO.Path.Combine(logDir, "print_bill_official_api_" & DateTime.Now.ToString("yyyyMMdd") & ".txt")
             Dim sb As New System.Text.StringBuilder()
@@ -388,6 +388,50 @@ Public Module WhatsAppOfficialApi
         End Try
     End Sub
 
+    Private Function ResolveOfficialApiLogDirectory() As String
+        Dim possibleDirs As New List(Of String)()
+
+        Try
+            possibleDirs.Add(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "OfficialApiLogs"))
+        Catch ex As Exception
+        End Try
+
+        Try
+            Dim localAppData As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+            If SafeTrim(localAppData) <> "" Then
+                possibleDirs.Add(System.IO.Path.Combine(System.IO.Path.Combine(localAppData, "Aadhat"), "OfficialApiLogs"))
+            End If
+        Catch ex As Exception
+        End Try
+
+        Try
+            Dim appData As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+            If SafeTrim(appData) <> "" Then
+                possibleDirs.Add(System.IO.Path.Combine(System.IO.Path.Combine(appData, "Aadhat"), "OfficialApiLogs"))
+            End If
+        Catch ex As Exception
+        End Try
+
+        For Each dirPath As String In possibleDirs
+            Try
+                If SafeTrim(dirPath) = "" Then Continue For
+                If System.IO.Directory.Exists(dirPath) = False Then
+                    System.IO.Directory.CreateDirectory(dirPath)
+                End If
+
+                Dim testFile As String = System.IO.Path.Combine(dirPath, "write_test.tmp")
+                System.IO.File.WriteAllText(testFile, "ok")
+                If System.IO.File.Exists(testFile) Then
+                    System.IO.File.Delete(testFile)
+                End If
+                Return dirPath
+            Catch ex As Exception
+            End Try
+        Next
+
+        Return ""
+    End Function
+
     Private Function ExtractApiErrorMessage(ByVal responseJson As JObject, ByVal rawResponse As String) As String
         Dim parts As New List(Of String)()
 
@@ -399,6 +443,9 @@ Public Module WhatsAppOfficialApi
         Dim messageText As String = If(parts.Count = 0, rawResponse, String.Join(" | ", parts.ToArray()))
         If messageText.Contains("#131005") OrElse messageText.ToLower().Contains("access denied") Then
             Return "Wahsoft API token is accepted, but WhatsApp Cloud send permission was denied. Please reconnect WhatsApp Cloud API setup in the Wahsoft panel, then sync templates again and send."
+        End If
+        If messageText.ToLower().Contains("you can not send message to your whatsapp api number") Then
+            Return "You cannot send an Official API message to the same WhatsApp number that is connected as your business API number. Please send to a different customer number."
         End If
         Return messageText
     End Function
@@ -422,6 +469,27 @@ Public Module WhatsAppOfficialApi
         Return NormalizeOfficialApiDisplayMessage(responseText)
     End Function
 
+    Public Function GetSendGridStatus(ByVal apiResponse As String, ByVal templateCode As String) As String
+        Dim responseText As String = SafeTrim(apiResponse).ToLower()
+        Dim codeText As String = SafeTrim(templateCode)
+
+        If responseText.Contains("status: delivered") OrElse responseText.Contains("""status"":""delivered""") Then
+            Return "Delivered via Official API (" & codeText & ")"
+        End If
+
+        If responseText.Contains("status: read") OrElse responseText.Contains("""status"":""read""") Then
+            Return "Read on Official API (" & codeText & ")"
+        End If
+
+        If responseText.Contains("status: accepted") OrElse
+           responseText.Contains("message processed") OrElse
+           responseText.Contains("quality assessment") Then
+            Return "Accepted by Official API (" & codeText & ")"
+        End If
+
+        Return "Sent via Official API (" & codeText & ")"
+    End Function
+
     Private Function NormalizeOfficialApiDisplayMessage(ByVal messageText As String) As String
         messageText = SafeTrim(messageText)
         If messageText = "" Then Return "No response message."
@@ -434,6 +502,10 @@ Public Module WhatsAppOfficialApi
 
         If messageText.Contains("#131005") OrElse messageText.ToLower().Contains("access denied") Then
             Return "Wahsoft API token is accepted, but WhatsApp Cloud send permission was denied. Please reconnect WhatsApp Cloud API setup in the Wahsoft panel, then sync templates again and send."
+        End If
+
+        If messageText.ToLower().Contains("you can not send message to your whatsapp api number") Then
+            Return "You cannot send an Official API message to the same WhatsApp number that is connected as your business API number. Please send to a different customer number."
         End If
 
         Return messageText
@@ -753,6 +825,8 @@ Public Module WhatsAppOfficialSendHelper
                     result.Add(amount)
                 Case "pdf_link"
                     result.Add(pdfUrl)
+                Case "custom_message", "message_text", "extra_message", "own_message"
+                    result.Add(extraValue)
                 Case Else
                     result.Add(If(extraValue.Trim() <> "", extraValue, amount))
             End Select
@@ -782,6 +856,8 @@ Public Module WhatsAppOfficialSendHelper
                 Return "bill_total"
             Case "receipt_amount", "payment_amount", "balance_amount"
                 Return "amount"
+            Case "message_text", "extra_message", "own_message"
+                Return "custom_message"
         End Select
         Return key
     End Function

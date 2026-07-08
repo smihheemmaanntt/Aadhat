@@ -108,6 +108,23 @@ Public Class Sellout_Mannual
         Dim i, j As Integer
         Dim dt As New DataTable : Dim dt1 As New DataTable
         Dim dt2 As New DataTable : Dim cnt As Integer = -1
+        Dim paidAmountText As String = String.Empty
+        Dim lastReceiptText As String = String.Empty
+        Dim allItemLines As String = String.Empty
+        Dim allLotLines As String = String.Empty
+        Dim allNugLines As String = String.Empty
+        Dim allWeightLines As String = String.Empty
+        Dim allRateLines As String = String.Empty
+        Dim allPerLines As String = String.Empty
+        Dim allAmountLines As String = String.Empty
+        Dim allHindiItemLines As String = String.Empty
+        Dim allAddWeightLines As String = String.Empty
+        Dim chargeNameLines As String = String.Empty
+        Dim chargeOnValueLines As String = String.Empty
+        Dim chargeCalcLines As String = String.Empty
+        Dim chargeTypeLines As String = String.Empty
+        Dim chargeAmountLines As String = String.Empty
+        Dim chargePrintNameLines As String = String.Empty
         tmpgrid.Rows.Clear() : Dim sql As String = String.Empty
         LineMargin = clsFun.ExecScalarInt("Select Margin From Controls")
         Dim margin As String = String.Empty
@@ -128,6 +145,30 @@ Public Class Sellout_Mannual
         dt2 = clsFun.ExecDataTable(sql)
         tmpgrid.Rows.Clear()
         If dt.Rows.Count = 0 Then Exit Sub
+        paidAmountText = clsFun.ExecScalarStr("Select Sum(Amount) From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
+        lastReceiptText = clsFun.ExecScalarStr("Select 'Last Payment Rs. : '|| Amount || ' On : '|| strftime('%d-%m-%Y', Entrydate) as lastReceipt From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  order by  VourchersID desc limit 1")
+        For k = 0 To dt2.Rows.Count - 1
+            allItemLines &= dt2.Rows(k)("ItemName").ToString() & vbCrLf
+            allLotLines &= dt2.Rows(k)("Lot").ToString() & vbCrLf
+            allNugLines &= Format(Val(dt2.Rows(k)("TransNug").ToString()), "0.00") & vbCrLf
+            allWeightLines &= Format(Val(dt2.Rows(k)("Weight").ToString()), "0.00") & vbCrLf
+            allRateLines &= Format(Val(dt2.Rows(k)("Rate").ToString()), "0.00") & vbCrLf
+            allPerLines &= dt2.Rows(k)("Per").ToString() & vbCrLf
+            allAmountLines &= Format(Val(dt2.Rows(k)("Amount").ToString()), "0.00") & vbCrLf
+            allHindiItemLines &= dt2.Rows(k)("OtherName").ToString() & vbCrLf
+            allAddWeightLines &= dt2.Rows(k)("AddWeight").ToString() & vbCrLf
+        Next
+        dt1 = clsFun.ExecDataTable("Select CT.*, C.PrintName From ChargesTrans CT Left Join Charges C On CT.ChargesID=C.ID Where CT.VoucherID=" & Val(txtid.Text))
+        If dt1.Rows.Count > 0 Then
+            For j = 0 To dt1.Rows.Count - 1
+                chargeNameLines &= dt1.Rows(j)("ChargeName").ToString() & vbCrLf
+                chargeOnValueLines &= Format(Val(dt1.Rows(j)("OnValue").ToString()), "0.00") & vbCrLf
+                chargeCalcLines &= dt1.Rows(j)("Calculate").ToString() & vbCrLf
+                chargeTypeLines &= dt1.Rows(j)("ChargeType").ToString() & vbCrLf
+                chargeAmountLines &= Format(Val(dt1.Rows(j)("Amount").ToString()), "0.00") & vbCrLf
+                chargePrintNameLines &= dt1.Rows(j)("PrintName").ToString() & margin
+            Next
+        End If
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
                 tmpgrid.Rows.Add()
@@ -152,22 +193,17 @@ Public Class Sellout_Mannual
                     .Cells(23).Value = .Cells(23).Value & dt.Rows(i)("OtherName").ToString()
                     .Cells(24).Value = .Cells(24).Value & dt.Rows(i)("OtherName1").ToString()
                     .Cells(50).Value = .Cells(50).Value & dt.Rows(i)("AddWeight").ToString()
-                    .Cells(51).Value = clsFun.ExecScalarStr("Select Sum(Amount) From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'")
-                    .Cells(52).Value = clsFun.ExecScalarStr("Select 'Last Payment Rs. : '|| Amount || ' On : '|| strftime('%d-%m-%Y', Entrydate) as lastReceipt From Ledger Where AccountID=" & Val(txtAccountID.Text) & " and DC='D' and EntryDate<='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'  order by  VourchersID desc limit 1")
-
-                    For k = 0 To dt2.Rows.Count - 1
-                        If dt2.Rows.Count > 0 Then
-                            .Cells(36).Value = .Cells(36).Value & dt2.Rows(k)("ItemName").ToString() & vbCrLf
-                            .Cells(37).Value = .Cells(37).Value & dt2.Rows(k)("Lot").ToString() & vbCrLf
-                            .Cells(38).Value = .Cells(38).Value & Format(Val(dt2.Rows(k)("TransNug").ToString())) & vbCrLf
-                            .Cells(39).Value = .Cells(39).Value & Format(Val(dt2.Rows(k)("Weight").ToString()), "0.00") & vbCrLf
-                            .Cells(40).Value = .Cells(40).Value & Format(Val(dt2.Rows(k)("Rate").ToString()), "0.00") & vbCrLf
-                            .Cells(41).Value = .Cells(41).Value & dt2.Rows(k)("Per").ToString() & vbCrLf
-                            .Cells(42).Value = .Cells(42).Value & Format(Val(dt2.Rows(k)("Amount").ToString()), "0.00") & vbCrLf
-                            .Cells(48).Value = .Cells(48).Value & dt2.Rows(k)("OtherName").ToString() & vbCrLf
-                            .Cells(53).Value = .Cells(53).Value & dt2.Rows(k)("AddWeight").ToString() & vbCrLf
-                        End If
-                    Next
+                    .Cells(51).Value = paidAmountText
+                    .Cells(52).Value = lastReceiptText
+                    .Cells(36).Value = allItemLines
+                    .Cells(37).Value = allLotLines
+                    .Cells(38).Value = allNugLines
+                    .Cells(39).Value = allWeightLines
+                    .Cells(40).Value = allRateLines
+                    .Cells(41).Value = allPerLines
+                    .Cells(42).Value = allAmountLines
+                    .Cells(48).Value = allHindiItemLines
+                    .Cells(53).Value = allAddWeightLines
 
 
                     .Cells(25).Value = .Cells(25).Value & dt.Rows(i)("T1").ToString()
@@ -181,24 +217,18 @@ Public Class Sellout_Mannual
                     .Cells(33).Value = .Cells(33).Value & dt.Rows(i)("T9").ToString()
                     .Cells(34).Value = .Cells(34).Value & dt.Rows(i)("T10").ToString()
                     .Cells(35).Value = .Cells(35).Value & dt.Rows(i)("T11").ToString()
-
-                    dt1 = clsFun.ExecDataTable("Select * FROM ChargesTrans WHERE VoucherID=" & dt.Rows(i)("ID").ToString() & "")
-                    '  tmpgrid.Rows.Clear()
-                    '  Dim ManageSpace As String = String.Empty
                     If dt1.Rows.Count > 0 Then
-                        For j = 0 To dt1.Rows.Count - 1
-                            .Cells(13).Value = .Cells(13).Value & dt1.Rows(j)("ChargeName").ToString() & vbCrLf
-                            .Cells(14).Value = .Cells(14).Value & Format(Val(dt1.Rows(j)("OnValue").ToString()), "0.00") & vbCrLf
-                            .Cells(15).Value = .Cells(15).Value & dt1.Rows(j)("Calculate").ToString() & vbCrLf
-                            .Cells(16).Value = .Cells(16).Value & dt1.Rows(j)("ChargeType").ToString() & vbCrLf
-                            .Cells(17).Value = .Cells(17).Value & Format(Val(dt1.Rows(j)("Amount").ToString()), "0.00") & vbCrLf
-                            .Cells(43).Value = .Cells(43).Value & dt1.Rows(j)("ChargeName").ToString() & margin
-                            .Cells(44).Value = .Cells(44).Value & Format(Val(dt1.Rows(j)("OnValue").ToString()), "0.00") & margin
-                            .Cells(45).Value = .Cells(45).Value & dt1.Rows(j)("Calculate").ToString() & margin
-                            .Cells(46).Value = .Cells(46).Value & dt1.Rows(j)("ChargeType").ToString() & margin
-                            .Cells(47).Value = .Cells(47).Value & Format(Val(dt1.Rows(j)("Amount").ToString()), "0.00") & margin
-                            .Cells(49).Value = .Cells(49).Value & clsFun.ExecScalarStr("Select PrintName From Charges Where ID ='" & Val(dt1.Rows(j)("ChargesID").ToString()) & "'") & margin
-                        Next
+                        .Cells(13).Value = chargeNameLines
+                        .Cells(14).Value = chargeOnValueLines
+                        .Cells(15).Value = chargeCalcLines
+                        .Cells(16).Value = chargeTypeLines
+                        .Cells(17).Value = chargeAmountLines
+                        .Cells(43).Value = Replace(chargeNameLines, vbCrLf, margin)
+                        .Cells(44).Value = Replace(chargeOnValueLines, vbCrLf, margin)
+                        .Cells(45).Value = Replace(chargeCalcLines, vbCrLf, margin)
+                        .Cells(46).Value = Replace(chargeTypeLines, vbCrLf, margin)
+                        .Cells(47).Value = Replace(chargeAmountLines, vbCrLf, margin)
+                        .Cells(49).Value = chargePrintNameLines
                     Else
                         .Cells(13).Value = ""
                         .Cells(14).Value = ""

@@ -766,7 +766,7 @@ Public Class OutStanding_Amount_Only
             If accountName.Trim() = "" Then accountName = row.Cells(2).Value.ToString()
             Dim messageText As String = If(btnRadioEnglish.Checked, row.Cells(4).Value.ToString(), row.Cells(6).Value.ToString())
             Dim apiResponse As String = ""
-            Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatText("balance", "OUTSTANDING", mobile, accountName, txtEntryDate.Text, ExtractBalanceAmount(messageText), messageText, apiResponse, preferredLanguage, "", SelectedOfficialTemplateCode())
+            Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatText("balance", "OUTSTANDING", mobile, accountName, txtEntryDate.Text, ExtractBalanceAmount(messageText), messageText, apiResponse, preferredLanguage, txtMsg.Text.Trim(), SelectedOfficialTemplateCode())
 
             row.Cells(7).Value = If(ok, "Sent via Official API", "Failed")
             row.Cells(7).ToolTipText = apiResponse

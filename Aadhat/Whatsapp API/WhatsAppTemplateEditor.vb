@@ -434,7 +434,7 @@ Public Class WhatsAppTemplateEditor
             Case "basic_amount" : Return "7800"
             Case "charges" : Return "700"
             Case "pdf_link" : Return "https://msgz.in/5SACW2"
-            Case "message_text" : Return "Please verify this document."
+            Case "message_text", "custom_message" : Return "Please verify this document."
             Case "payment_mode" : Return "Cash"
             Case "dr_cr" : Return "Dr"
             Case "opening_balance" : Return "2500 Dr"
@@ -913,6 +913,7 @@ Public Class WhatsAppTemplateEditor
                 AddParameterField(dt, "Balance Date", "balance_date")
                 AddParameterField(dt, "Balance Amount", "balance_amount")
                 AddParameterField(dt, "Dr / Cr", "dr_cr")
+                AddParameterField(dt, "Custom Message", "custom_message")
             Case "statement", "ledger", "settle_ledger", "sub_ledger", "crate_ledger"
                 AddParameterField(dt, "From Date", "from_date")
                 AddParameterField(dt, "To Date", "to_date")
@@ -959,6 +960,8 @@ Public Class WhatsAppTemplateEditor
                 Return "bill_total"
             Case "receipt_amount", "payment_amount", "balance_amount"
                 Return "amount"
+            Case "message_text", "extra_message", "own_message"
+                Return "custom_message"
         End Select
         Return key
     End Function
@@ -1343,8 +1346,20 @@ Public Class WhatsAppTemplateEditor
             TemplateParameterFields.Add("")
         End While
         TemplateParameterFields(n - 1) = selectedFieldKey
-        InsertParameter("*{{" & n.ToString() & "}}*")
+        If selectedFieldKey = "custom_message" Then
+            InsertParameter(CustomMessageInsertText(n))
+        Else
+            InsertParameter("*{{" & n.ToString() & "}}*")
+        End If
     End Sub
+
+    Private Function CustomMessageInsertText(ByVal parameterNumber As Integer) As String
+        Dim placeholder As String = "*{{" & parameterNumber.ToString() & "}}*"
+        If CurrentLanguageCode() = "hi" Then
+            Return " आवश्यक सन्देश : " & placeholder & " "
+        End If
+        Return " Important Message : " & placeholder & " "
+    End Function
 
     Private Sub InsertParameter(ByVal parameterText As String)
         Dim target As TextBox = If(LastTemplateTextBox IsNot Nothing, LastTemplateTextBox, txtBody)

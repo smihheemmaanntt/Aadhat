@@ -973,7 +973,7 @@ Public Class Print_Bills
                     officialBodyParamCount)
 
                 If sent Then
-                    r.Cells(7).Value = "Sent via Official API (" & officialTemplateCode & ")"
+                    r.Cells(7).Value = WhatsAppOfficialApi.GetSendGridStatus(apiResponse, officialTemplateCode)
                     r.Cells(7).Style.ForeColor = Color.Green
                     WhatsAppOfficialDb.AddMessageLog(Mobile, officialTemplateCode, "PRINT_BILL", "SUCCESS", apiResponse)
                     sentCount += 1
