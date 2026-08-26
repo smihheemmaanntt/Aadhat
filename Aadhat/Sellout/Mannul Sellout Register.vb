@@ -501,7 +501,7 @@
     End Sub
 
     Private Function ExportSelloutRegisterPdf(ByVal row As DataGridViewRow, Optional ByVal uploadLocal As Boolean = False) As String
-        GlobalData.PdfName = row.Cells(4).Value.ToString().Replace("/", "") & ".pdf"
+        GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(row.Cells(4).Value.ToString() & "(" & row.Cells(2).Value.ToString() & ")-" & row.Cells(6).Value.ToString(), "Bill.pdf")
         retrive2(row.Cells(1).Value.ToString()) : PrintRecord()
         Pdf_Genrate.ExportReport("\MannualBeejak.rpt")
         If uploadLocal Then
@@ -624,7 +624,7 @@
                 End If
                 Dim fileUrl As String = ExportSelloutRegisterPdf(row, True)
                 Dim apiResponse As String = ""
-                If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_manual", "SELLOUT_MANUAL", mobile, Convert.ToString(.Cells(4).Value), Convert.ToString(.Cells(6).Value), "", fileUrl, "Bill.pdf", apiResponse) Then
+                If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_manual", "SELLOUT_MANUAL", mobile, Convert.ToString(.Cells(4).Value), Convert.ToString(.Cells(6).Value), "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
                     .Cells(5).Value = "Sent via Official API"
                 Else
                     .Cells(5).Value = apiResponse

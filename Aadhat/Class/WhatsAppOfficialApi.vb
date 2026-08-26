@@ -263,6 +263,19 @@ Public Module WhatsAppOfficialApi
         Return SendSmartMessage(vendorUid, accessToken, phoneNumber, messageBody, pdfUrl, templateName, templateLanguage, fields, apiResponse, documentName, bodyParamCount)
     End Function
 
+    Public Function CleanDocumentName(ByVal documentName As String, Optional ByVal fallbackName As String = "Bill.pdf") As String
+        Dim name As String = SafeTrim(documentName)
+        Dim fallback As String = SafeTrim(fallbackName)
+        If fallback = "" Then fallback = "Bill.pdf"
+        If name = "" Then name = fallback
+        name = name.Replace(vbCr, " ").Replace(vbLf, " ").Replace(vbTab, " ")
+        name = System.Text.RegularExpressions.Regex.Replace(name, "[\\/:*?""<>|]", "")
+        name = System.Text.RegularExpressions.Regex.Replace(name, "\s+", " ").Trim()
+        If name = "" Then name = fallback
+        If name.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase) = False Then name &= ".pdf"
+        Return name
+    End Function
+
     Public Function SendSmartMessage(ByVal vendorUid As String, ByVal accessToken As String, ByVal phoneNumber As String, ByVal messageBody As String, ByVal pdfUrl As String, ByVal templateName As String, ByVal templateLanguage As String, ByVal fields As List(Of String), ByRef apiResponse As String, Optional ByVal documentName As String = "Bill.pdf", Optional ByVal bodyParamCount As Integer = -1) As Boolean
         Try
             vendorUid = SafeTrim(vendorUid)
@@ -298,7 +311,7 @@ Public Module WhatsAppOfficialApi
                     Return False
                 End If
                 payload("header_document") = New JValue(SafeTrim(pdfUrl))
-                payload("header_document_name") = New JValue(If(SafeTrim(documentName) = "", "Bill.pdf", SafeTrim(documentName)))
+                payload("header_document_name") = New JValue(CleanDocumentName(documentName, "Bill.pdf"))
             End If
 
             Dim responseString As String = WinHttpHelper.PostJson(url, payload)
@@ -596,7 +609,6 @@ Public Module WhatsAppOfficialSendHelper
         combo.Items.Clear()
         Dim languageCode As String = NormalizePreferredLanguage(preferredLanguage)
         AddOfficialTemplateComboRows(combo, localType, languageCode, documentOnly)
-        AddOfficialTemplateComboRows(combo, localType, If(languageCode = "hi", "en", "hi"), documentOnly)
         If combo.Items.Count = 0 Then
             combo.Items.Add(New OfficialTemplateComboItem With {.TemplateName = "No approved " & localType.Replace("_", " ") & " template", .TemplateCode = "", .LanguageCode = languageCode})
         End If
@@ -672,10 +684,6 @@ Public Module WhatsAppOfficialSendHelper
         Dim languageCode As String = NormalizePreferredLanguage(preferredLanguage)
         Dim templateRow As DataRow = FindApprovedTemplateRow(localType, languageCode, selectedTemplateCode)
         If templateRow Is Nothing Then
-            languageCode = If(languageCode = "hi", "en", "hi")
-            templateRow = FindApprovedTemplateRow(localType, languageCode, selectedTemplateCode)
-        End If
-        If templateRow Is Nothing Then
             apiResponse = "No approved " & localType.Replace("_", " ") & " template found. Please approve/sync a document template first."
             Return False
         End If
@@ -725,10 +733,6 @@ Public Module WhatsAppOfficialSendHelper
 
         Dim languageCode As String = NormalizePreferredLanguage(preferredLanguage)
         Dim templateRow As DataRow = FindApprovedAnyTemplateRow(localType, languageCode, selectedTemplateCode)
-        If templateRow Is Nothing Then
-            languageCode = If(languageCode = "hi", "en", "hi")
-            templateRow = FindApprovedAnyTemplateRow(localType, languageCode, selectedTemplateCode)
-        End If
         If templateRow Is Nothing Then
             apiResponse = "No approved " & localType.Replace("_", " ") & " template found. Please approve/sync a template first."
             Return False
@@ -796,10 +800,11 @@ Public Module WhatsAppOfficialSendHelper
 
     Private Function NormalizePreferredLanguage(ByVal preferredLanguage As String) As String
         Dim value As String = If(preferredLanguage, "").Trim().ToLower()
-        If value.Contains("regional") OrElse value = "hi" Then Return "hi"
-        If value = "en" OrElse value.Contains("english") Then Return "en"
+        If value.Contains("regional") OrElse value.Contains("hindi") OrElse value = "hi" OrElse value.StartsWith("gu") OrElse value.Contains("gujarati") OrElse value.Contains("gujrati") Then Return "hi"
+        If value = "en" OrElse value.StartsWith("en_") OrElse value.Contains("english") Then Return "en"
+        If value <> "" Then Return "hi"
         value = WhatsAppOfficialDb.GetSetting("LanguageType").Trim().ToLower()
-        If value.Contains("regional") OrElse value = "hi" Then Return "hi"
+        If value.Contains("regional") OrElse value.Contains("hindi") OrElse value = "hi" OrElse value.StartsWith("gu") OrElse value.Contains("gujarati") OrElse value.Contains("gujrati") Then Return "hi"
         Return "en"
     End Function
 
@@ -811,8 +816,18 @@ Public Module WhatsAppOfficialSendHelper
             Select Case fieldName
                 Case "company_name", "firm_name"
                     result.Add(GetCompanyName())
+                Case "company_other_name", "firm_other_name"
+                    result.Add(GetCompanyOtherName())
+                Case "company_hindi_name", "firm_hindi_name"
+                    result.Add(GetCompanyOtherName())
                 Case "account_name", "customer_name", "customer_account_name", "party_name"
                     result.Add(accountName)
+                Case "account_other_name", "account_hindi_name", "party_other_name", "party_hindi_name", "customer_other_name", "customer_hindi_name"
+                    result.Add(GetAccountOtherName(accountName))
+                Case "item_name"
+                    result.Add(GetItemNames(localType, accountName, entryDate))
+                Case "item_other_name", "item_hindi_name"
+                    result.Add(GetItemOtherNames(localType, accountName, entryDate))
                 Case "customer_mobile_no", "mobile_no"
                     result.Add(customerMobileNo)
                 Case "customer_city", "city"
@@ -823,6 +838,10 @@ Public Module WhatsAppOfficialSendHelper
                     result.Add(If(extraValue.Trim() <> "", extraValue, entryDate))
                 Case "bill_total", "amount", "payment_amount", "receipt_amount", "balance_amount", "crate_qty", "nug"
                     result.Add(amount)
+                Case "opening_balance"
+                    result.Add(GetAccountBalance(accountName, entryDate, False))
+                Case "closing_balance"
+                    result.Add(GetAccountBalance(accountName, entryDate, True))
                 Case "pdf_link"
                     result.Add(pdfUrl)
                 Case "custom_message", "message_text", "extra_message", "own_message"
@@ -846,8 +865,16 @@ Public Module WhatsAppOfficialSendHelper
         Select Case key
             Case "firm_name"
                 Return "company_name"
+            Case "firm_hindi_name", "hindi_company_name", "company_hindi_name", "firm_other_name"
+                Return "company_other_name"
             Case "customer_name", "customer_account_name", "party_name"
                 Return "account_name"
+            Case "party_other_name", "customer_other_name"
+                Return "account_other_name"
+            Case "party_hindi_name", "customer_hindi_name", "account_hindi_name"
+                Return "account_other_name"
+            Case "item_hindi_name"
+                Return "item_other_name"
             Case "mobile_no", "mobile", "whatsapp_no", "customer_mobile", "account_mobile"
                 Return "customer_mobile_no"
             Case "city", "account_city"
@@ -865,11 +892,11 @@ Public Module WhatsAppOfficialSendHelper
     Private Function DefaultFields(ByVal localType As String) As String
         Select Case localType.Trim().ToLower()
             Case "ledger", "settle_ledger", "sub_ledger", "crate_ledger"
-                Return "company_name,account_name,from_date,to_date"
+                Return "company_name,account_name,from_date,to_date,company_other_name,account_other_name,opening_balance,closing_balance"
             Case "crate_in", "crate_out"
                 Return "company_name,account_name,entry_date,crate_qty"
             Case Else
-                Return "company_name,account_name,bill_date,bill_total"
+                Return "company_name,account_name,bill_date,bill_total,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
         End Select
     End Function
 
@@ -877,6 +904,83 @@ Public Module WhatsAppOfficialSendHelper
         Dim name As String = clsFun.ExecScalarStr("Select CompanyName From Company Limit 1")
         If name.Trim() = "" Then name = "Aadhat"
         Return name
+    End Function
+
+    Private Function GetCompanyOtherName() As String
+        Dim name As String = clsFun.ExecScalarStr("Select PrintOtherName From Company Limit 1")
+        If name.Trim() = "" Then name = compnameHindi
+        If name.Trim() = "" Then name = GetCompanyName()
+        Return name
+    End Function
+
+    Private Function SqlText(ByVal value As String) As String
+        Return If(value, "").Replace("'", "''")
+    End Function
+
+    Private Function GetAccountIdByName(ByVal accountName As String) As Integer
+        accountName = If(accountName, "").Trim()
+        If accountName = "" Then Return 0
+        Return Val(clsFun.ExecScalarStr("Select ID From Accounts Where AccountName='" & SqlText(accountName) & "' Or OtherName='" & SqlText(accountName) & "' Limit 1"))
+    End Function
+
+    Private Function GetAccountOtherName(ByVal accountName As String) As String
+        Dim accountId As Integer = GetAccountIdByName(accountName)
+        Dim otherName As String = ""
+        If accountId > 0 Then otherName = clsFun.ExecScalarStr("Select OtherName From Accounts Where ID=" & accountId)
+        If otherName.Trim() = "" Then otherName = accountName
+        Return otherName
+    End Function
+
+    Private Function GetItemOtherNames(ByVal localType As String, ByVal accountName As String, ByVal entryDate As String) As String
+        Try
+            Dim accountId As Integer = GetAccountIdByName(accountName)
+            Dim sqlDate As String = CDate(entryDate).ToString("yyyy-MM-dd")
+            Dim accountFilter As String = ""
+            If accountId > 0 Then
+                accountFilter = " And t.AccountID=" & accountId
+            ElseIf If(accountName, "").Trim() <> "" Then
+                accountFilter = " And t.AccountName='" & SqlText(accountName) & "'"
+            End If
+            If accountFilter = "" Then Return ""
+            Return clsFun.ExecScalarStr("Select group_concat(Distinct i.OtherName) From Transaction2 t Inner Join Items i On t.ItemID=i.ID Where IfNull(i.OtherName,'')<>'' And t.EntryDate='" & sqlDate & "'" & accountFilter)
+        Catch
+            Return ""
+        End Try
+    End Function
+
+    Private Function GetItemNames(ByVal localType As String, ByVal accountName As String, ByVal entryDate As String) As String
+        Try
+            Dim accountId As Integer = GetAccountIdByName(accountName)
+            Dim sqlDate As String = CDate(entryDate).ToString("yyyy-MM-dd")
+            Dim accountFilter As String = ""
+            If accountId > 0 Then
+                accountFilter = " And t.AccountID=" & accountId
+            ElseIf If(accountName, "").Trim() <> "" Then
+                accountFilter = " And t.AccountName='" & SqlText(accountName) & "'"
+            End If
+            If accountFilter = "" Then Return ""
+            Return clsFun.ExecScalarStr("Select group_concat(Distinct i.ItemName) From Transaction2 t Inner Join Items i On t.ItemID=i.ID Where IfNull(i.ItemName,'')<>'' And t.EntryDate='" & sqlDate & "'" & accountFilter)
+        Catch
+            Return ""
+        End Try
+    End Function
+
+    Private Function GetAccountBalance(ByVal accountName As String, ByVal entryDate As String, ByVal includeEntryDate As Boolean) As String
+        Try
+            Dim accountId As Integer = GetAccountIdByName(accountName)
+            If accountId <= 0 Then Return ""
+            Dim sqlDate As String = CDate(entryDate).ToString("yyyy-MM-dd")
+            Dim op As String = If(includeEntryDate, "<=", "<")
+            Dim sql As String = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate " & op & "'" & sqlDate & "')" & _
+                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate " & op & "'" & sqlDate & "')) " & _
+                            " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate " & op & "'" & sqlDate & "')" & _
+                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate " & op & "'" & sqlDate & "'))  end),2) as Restbal from Accounts Where ID=" & accountId
+            Dim balance As Decimal = Val(clsFun.ExecScalarStr(sql))
+            If balance >= 0 Then Return Format(Math.Abs(balance), "0.00") & " Dr"
+            Return Format(Math.Abs(balance), "0.00") & " Cr"
+        Catch
+            Return ""
+        End Try
     End Function
 
     Private Function MaxTemplateParameterIndex(ByVal bodyText As String) As Integer

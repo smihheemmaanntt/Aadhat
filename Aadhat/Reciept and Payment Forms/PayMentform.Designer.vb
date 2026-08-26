@@ -97,6 +97,7 @@ Partial Class PayMentform
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btnPnlVisHide = New System.Windows.Forms.Button()
         Me.DgWhatsapp = New System.Windows.Forms.DataGridView()
+        Me.btnWhatsappPrintBills = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.pb1 = New System.Windows.Forms.ProgressBar()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -753,6 +754,7 @@ Partial Class PayMentform
         Me.pnlWhatsapp.Controls.Add(Me.Label13)
         Me.pnlWhatsapp.Controls.Add(Me.btnPnlVisHide)
         Me.pnlWhatsapp.Controls.Add(Me.DgWhatsapp)
+        Me.pnlWhatsapp.Controls.Add(Me.btnWhatsappPrintBills)
         Me.pnlWhatsapp.Controls.Add(Me.Button6)
         Me.pnlWhatsapp.Controls.Add(Me.pb1)
         Me.pnlWhatsapp.Location = New System.Drawing.Point(213, 164)
@@ -801,7 +803,7 @@ Partial Class PayMentform
         Me.RadioMsgOnly.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.RadioMsgOnly.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.RadioMsgOnly.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioMsgOnly.Location = New System.Drawing.Point(381, 285)
+        Me.RadioMsgOnly.Location = New System.Drawing.Point(284, 252)
         Me.RadioMsgOnly.Name = "RadioMsgOnly"
         Me.RadioMsgOnly.Size = New System.Drawing.Size(117, 30)
         Me.RadioMsgOnly.TabIndex = 91237
@@ -814,7 +816,7 @@ Partial Class PayMentform
         Me.RadioPDFMsg.BackColor = System.Drawing.Color.Goldenrod
         Me.RadioPDFMsg.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.RadioPDFMsg.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioPDFMsg.Location = New System.Drawing.Point(498, 285)
+        Me.RadioPDFMsg.Location = New System.Drawing.Point(401, 252)
         Me.RadioPDFMsg.Name = "RadioPDFMsg"
         Me.RadioPDFMsg.Size = New System.Drawing.Size(128, 30)
         Me.RadioPDFMsg.TabIndex = 91236
@@ -827,7 +829,7 @@ Partial Class PayMentform
         Me.RadioPdfOnly.BackColor = System.Drawing.Color.YellowGreen
         Me.RadioPdfOnly.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.RadioPdfOnly.ForeColor = System.Drawing.Color.GhostWhite
-        Me.RadioPdfOnly.Location = New System.Drawing.Point(292, 285)
+        Me.RadioPdfOnly.Location = New System.Drawing.Point(195, 252)
         Me.RadioPdfOnly.Name = "RadioPdfOnly"
         Me.RadioPdfOnly.Size = New System.Drawing.Size(89, 30)
         Me.RadioPdfOnly.TabIndex = 91235
@@ -869,7 +871,7 @@ Partial Class PayMentform
         Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.Red
         Me.lblOfficialTemplate.Location = New System.Drawing.Point(503, 17)
         Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
-        Me.lblOfficialTemplate.Size = New System.Drawing.Size(63, 15)
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(60, 15)
         Me.lblOfficialTemplate.TabIndex = 91268
         Me.lblOfficialTemplate.Text = "Template:"
         Me.lblOfficialTemplate.Visible = False
@@ -883,7 +885,7 @@ Partial Class PayMentform
         Me.cbOfficialTemplate.FormattingEnabled = True
         Me.cbOfficialTemplate.Location = New System.Drawing.Point(568, 14)
         Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
-        Me.cbOfficialTemplate.Size = New System.Drawing.Size(181, 23)
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(140, 23)
         Me.cbOfficialTemplate.TabIndex = 91269
         Me.cbOfficialTemplate.Visible = False
         '
@@ -892,7 +894,7 @@ Partial Class PayMentform
         Me.lblSim.AutoSize = True
         Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblSim.ForeColor = System.Drawing.Color.Red
-        Me.lblSim.Location = New System.Drawing.Point(14, 292)
+        Me.lblSim.Location = New System.Drawing.Point(14, 258)
         Me.lblSim.Name = "lblSim"
         Me.lblSim.Size = New System.Drawing.Size(44, 19)
         Me.lblSim.TabIndex = 91266
@@ -906,9 +908,9 @@ Partial Class PayMentform
         Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!)
         Me.cbSim.FormattingEnabled = True
-        Me.cbSim.Location = New System.Drawing.Point(59, 290)
+        Me.cbSim.Location = New System.Drawing.Point(59, 256)
         Me.cbSim.Name = "cbSim"
-        Me.cbSim.Size = New System.Drawing.Size(214, 23)
+        Me.cbSim.Size = New System.Drawing.Size(134, 23)
         Me.cbSim.TabIndex = 91267
         Me.cbSim.Visible = False
         '
@@ -978,8 +980,22 @@ Partial Class PayMentform
         Me.DgWhatsapp.RowsDefaultCellStyle = DataGridViewCellStyle14
         Me.DgWhatsapp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DgWhatsapp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgWhatsapp.Size = New System.Drawing.Size(740, 232)
+        Me.DgWhatsapp.Size = New System.Drawing.Size(740, 198)
         Me.DgWhatsapp.TabIndex = 91219
+        '
+        'btnWhatsappPrintBills
+        '
+        Me.btnWhatsappPrintBills.BackColor = System.Drawing.Color.LightCoral
+        Me.btnWhatsappPrintBills.FlatAppearance.BorderSize = 0
+        Me.btnWhatsappPrintBills.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnWhatsappPrintBills.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btnWhatsappPrintBills.ForeColor = System.Drawing.Color.GhostWhite
+        Me.btnWhatsappPrintBills.Location = New System.Drawing.Point(529, 252)
+        Me.btnWhatsappPrintBills.Name = "btnWhatsappPrintBills"
+        Me.btnWhatsappPrintBills.Size = New System.Drawing.Size(91, 30)
+        Me.btnWhatsappPrintBills.TabIndex = 91270
+        Me.btnWhatsappPrintBills.Text = "Print Bills"
+        Me.btnWhatsappPrintBills.UseVisualStyleBackColor = False
         '
         'Button6
         '
@@ -990,9 +1006,9 @@ Partial Class PayMentform
         Me.Button6.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(626, 285)
+        Me.Button6.Location = New System.Drawing.Point(620, 252)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(126, 30)
+        Me.Button6.Size = New System.Drawing.Size(132, 30)
         Me.Button6.TabIndex = 91219
         Me.Button6.Text = "Start Sending"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1000,9 +1016,9 @@ Partial Class PayMentform
         '
         'pb1
         '
-        Me.pb1.Location = New System.Drawing.Point(12, 290)
+        Me.pb1.Location = New System.Drawing.Point(12, 256)
         Me.pb1.Name = "pb1"
-        Me.pb1.Size = New System.Drawing.Size(261, 23)
+        Me.pb1.Size = New System.Drawing.Size(181, 23)
         Me.pb1.TabIndex = 40054
         Me.pb1.Visible = False
         '
@@ -1156,6 +1172,7 @@ Partial Class PayMentform
     Friend WithEvents btnPnlVisHide As System.Windows.Forms.Button
     Friend WithEvents DgWhatsapp As System.Windows.Forms.DataGridView
     Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents btnWhatsappPrintBills As System.Windows.Forms.Button
     Friend WithEvents pb1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents RadioMsgOnly As System.Windows.Forms.RadioButton

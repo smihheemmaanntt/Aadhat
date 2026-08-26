@@ -1472,7 +1472,7 @@ Public Class Crate_IN
                     If RadioMsgOnly.Checked Then
                         ok = WhatsAppOfficialSendHelper.SendAadhatText("crate_in", "CRATE_IN", mobile, .Cells(4).Value.ToString(), txtEntryDate.Text, "", msgText, apiResponse, If(btnRadioEnglish.Checked, "en", "hi"), "", SelectedOfficialTemplateCode())
                     Else
-                        ok = WhatsAppOfficialSendHelper.SendAadhatDocument("crate_in", "CRATE_IN", mobile, .Cells(4).Value.ToString(), txtEntryDate.Text, "", fileUrl, "Crate.pdf", apiResponse, If(btnRadioEnglish.Checked, "en", "hi"), "", SelectedOfficialTemplateCode())
+                        ok = WhatsAppOfficialSendHelper.SendAadhatDocument("crate_in", "CRATE_IN", mobile, .Cells(4).Value.ToString(), txtEntryDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Crate.pdf"), apiResponse, If(btnRadioEnglish.Checked, "en", "hi"), "", SelectedOfficialTemplateCode())
                     End If
                     .Cells(5).Value = If(ok, "Sent via Official API", "Failed")
                     .Cells(5).ToolTipText = apiResponse

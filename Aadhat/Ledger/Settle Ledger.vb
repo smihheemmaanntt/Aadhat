@@ -873,7 +873,7 @@ Public Class Settle_Ledger
             Exit Sub
         End If
         Dim apiResponse As String = ""
-        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("settle_ledger", "SETTLE_LEDGER", mobile, cbAccountName.Text, txtFromDate.Text, "", fileUrl, "Ledger.pdf", apiResponse, If(ckPrintHindi.Checked, "hi", "en"), txttoDate.Text)
+        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("settle_ledger", "SETTLE_LEDGER", mobile, cbAccountName.Text, txtFromDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Ledger.pdf"), apiResponse, If(ckPrintHindi.Checked, "hi", "en"), txttoDate.Text)
         If ok Then
             MsgBox("Settle Ledger sent via Official API", vbInformation, "Official API")
             pnlWahtsappNo.Visible = False : cbAccountName.Focus()

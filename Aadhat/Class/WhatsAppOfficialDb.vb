@@ -5,7 +5,13 @@ Imports System.Windows.Forms
 Imports System.Collections.Generic
 
 Public Class WhatsAppOfficialDb
-    Private Const DefaultTemplateFooter As String = ""
+    Private Const DefaultTemplateFooter As String = "Sent by Aadhat Software"
+
+    Public Shared ReadOnly Property DefaultLocalTemplateFooter() As String
+        Get
+            Return DefaultTemplateFooter
+        End Get
+    End Property
 
     Public Shared ReadOnly Property DatabasePath() As String
         Get
@@ -41,6 +47,7 @@ Public Class WhatsAppOfficialDb
         EnsureColumn("PredefinedTemplates", "Category", "TEXT")
         EnsureColumn("PredefinedTemplates", "Examples", "TEXT")
         EnsureColumn("PredefinedTemplates", "ButtonsJson", "TEXT")
+        EnsureColumn("PredefinedTemplates", "LocalTypeManual", "INTEGER DEFAULT 0")
         EnsureColumn("TemplateMappings", "ParameterFields", "TEXT")
         ExecNonQuery("Create Table If Not Exists MessageLog (ID INTEGER PRIMARY KEY AUTOINCREMENT, MobileNo TEXT, TemplateCode TEXT, MessageMode TEXT, Status TEXT, ResponseMessage TEXT, CreatedAt TEXT)")
         MigrateProtectedCredentials()
@@ -48,6 +55,7 @@ Public Class WhatsAppOfficialDb
         SeedLocalPredefinedTemplates()
         SeedDefaultTemplateMappings()
         NormalizeExistingTemplateTypes()
+        NormalizeMarketingTemplateTypes()
     End Sub
 
     Public Shared Function ExecDataTable(ByVal cmdText As String) As DataTable
@@ -196,6 +204,7 @@ Public Class WhatsAppOfficialDb
                              "When 'sellout_manual' Then 'Sellout Manual' " & _
                              "When 'sellout_auto' Then 'Sellout Auto' " & _
                              "When 'crate_ledger' Then 'Crate Ledger' " & _
+                             "When '' Then 'None' " & _
                              "Else TemplateType End As LocalTypeName, " & _
                              "ParameterCount, HeaderType, Case When Status Is Not Null And Status<>'' Then Status When IsApproved=1 Then 'APPROVED' When IsPending=1 Then 'PENDING' When IsRejected=1 Then 'REJECTED' When MetaStatus Is Null Or MetaStatus='' Then 'LOCAL' Else MetaStatus End As Status, Case When SupportsFile=1 Then 'YES' Else 'NO' End As FileSupport, Description, BodyText, FooterText, Category, Examples, ButtonsJson From PredefinedTemplates Order By LocalTypeName, LanguageCode, TemplateName")
     End Function
@@ -203,17 +212,10 @@ Public Class WhatsAppOfficialDb
     Public Shared Function GetApprovedPrintBillDocumentTemplates(Optional ByVal languageCode As String = "") As DataTable
         EnsureDatabase()
         languageCode = NormalizeLanguageCode(languageCode)
-        Dim languageFilter As String = "p.LanguageCode='" & SqlText(languageCode) & "'"
-        Dim languageOrder As String = "Case When p.LanguageCode='" & SqlText(languageCode) & "' Then 0 Else 1 End"
-        If languageCode = "hi" Then
-            languageFilter = "(p.LanguageCode='hi' Or Lower(p.TemplateCode) Like '%hi%' Or Lower(p.TemplateName) Like '%hindi%' Or Lower(p.TemplateName) Like '% hi%')"
-            languageOrder = "Case When p.LanguageCode='hi' Then 0 When Lower(p.TemplateCode) Like '%hi%' Or Lower(p.TemplateName) Like '%hindi%' Or Lower(p.TemplateName) Like '% hi%' Then 1 Else 2 End"
-        Else
-            languageFilter = "(p.LanguageCode='en' And Lower(p.TemplateCode) Not Like '%hi%' And Lower(p.TemplateName) Not Like '%hindi%' And Lower(p.TemplateName) Not Like '% hi%')"
-            languageOrder = "Case When p.LanguageCode='en' Then 0 Else 1 End"
-        End If
+        Dim languageFilter As String = GetTemplateLanguageFilter(languageCode)
+        Dim languageOrder As String = GetTemplateLanguageOrder(languageCode)
         Return ExecDataTable("Select p.TemplateCode, p.TemplateName, p.LanguageCode, p.ParameterCount, p.BodyText, " & _
-                             "IfNull((Select m.ParameterFields From TemplateMappings m Where m.ModuleName='PRINT_BILL' And m.TemplateCode=p.TemplateCode And IfNull(m.ParameterFields,'')<>'' Order By m.UpdatedAt Desc Limit 1),'account_name,bill_date,company_name,bill_total') As ParameterFields " & _
+                             "IfNull((Select m.ParameterFields From TemplateMappings m Where m.ModuleName='PRINT_BILL' And m.TemplateCode=p.TemplateCode And IfNull(m.ParameterFields,'')<>'' Order By m.UpdatedAt Desc Limit 1),'" & SqlText(DefaultParameterFields("print_bill")) & "') As ParameterFields " & _
                              "From PredefinedTemplates p Where p.TemplateType In ('print_bill','print_bill_pdf_only','print_bill_pdf_message','sale_bill') " & _
                              "And " & languageFilter & " " & _
                              "And (IfNull(p.HeaderType,'')='document' Or p.SupportsFile=1) " & _
@@ -304,7 +306,11 @@ Public Class WhatsAppOfficialDb
         End If
         dt.Dispose()
 
-        If templateCode <> "" AndAlso IsTemplateApproved(templateCode, languageCode, parameterCount) Then Return True
+        Dim approvedTemplates As DataTable = GetApprovedPrintBillDocumentTemplates(languageCode)
+        If TryUseApprovedTemplateRow(approvedTemplates, templateCode, languageCode, parameterCount, parameterFields) Then
+            approvedTemplates.Dispose()
+            Return True
+        End If
 
         mappingKey = "PRINT_BILL_" & If(languageCode = "hi", "HI", "EN") & "_" & modeCode
         dt = ExecDataTable("Select TemplateCode, ParameterFields From TemplateMappings Where MappingKey='" & SqlText(mappingKey) & "' Limit 1")
@@ -315,25 +321,18 @@ Public Class WhatsAppOfficialDb
         End If
         dt.Dispose()
 
-        If templateCode <> "" AndAlso IsTemplateApproved(templateCode, languageCode, parameterCount) Then Return True
-
-        Dim fallbackType As String = If(modeCode = "PDF_ONLY", "print_bill_pdf_only", "print_bill_pdf_message")
-        templateCode = ExecScalarStr("Select TemplateCode From PredefinedTemplates Where TemplateType='" & SqlText(fallbackType) & "' And LanguageCode='" & SqlText(languageCode) & "' And (IsApproved=1 Or Upper(IfNull(Status,'')) Like '%APPROVED%' Or Upper(IfNull(MetaStatus,'')) Like '%APPROVED%') Order By IsDefault Desc, TemplateName Limit 1")
-        If templateCode <> "" AndAlso IsTemplateApproved(templateCode, languageCode, parameterCount) Then Return True
-
-        templateCode = ExecScalarStr("Select TemplateCode From PredefinedTemplates Where TemplateType='print_bill' And LanguageCode='" & SqlText(languageCode) & "' And (IsApproved=1 Or Upper(IfNull(Status,'')) Like '%APPROVED%' Or Upper(IfNull(MetaStatus,'')) Like '%APPROVED%') Order By IsDefault Desc, TemplateName Limit 1")
-        If templateCode <> "" AndAlso IsTemplateApproved(templateCode, languageCode, parameterCount) Then Return True
-
-        dt = ExecDataTable("Select TemplateCode, LanguageCode, ParameterCount From PredefinedTemplates Where TemplateType='print_bill' And IfNull(HeaderType,'')='document' And SupportsFile=1 And (IsApproved=1 Or Upper(IfNull(Status,'')) Like '%APPROVED%' Or Upper(IfNull(MetaStatus,'')) Like '%APPROVED%') Order By Case When LanguageCode='" & SqlText(languageCode) & "' Then 0 Else 1 End, Case When Lower(TemplateCode) Like '%hi%' Or Lower(TemplateName) Like '%hindi%' Then 0 Else 1 End, IsDefault Desc, TemplateName Limit 1")
-        If dt.Rows.Count > 0 Then
-            templateCode = SafeValue(dt.Rows(0)("TemplateCode").ToString())
-            languageCode = SafeValue(dt.Rows(0)("LanguageCode").ToString())
-            parameterCount = Val(dt.Rows(0)("ParameterCount").ToString())
-            If parameterFields = "" Then parameterFields = "account_name,bill_date,company_name,bill_total"
-            dt.Dispose()
+        If TryUseApprovedTemplateRow(approvedTemplates, templateCode, languageCode, parameterCount, parameterFields) Then
+            approvedTemplates.Dispose()
             Return True
         End If
-        dt.Dispose()
+
+        If approvedTemplates.Rows.Count > 0 Then
+            UseApprovedTemplateRow(approvedTemplates.Rows(0), languageCode, parameterCount, parameterFields)
+            templateCode = SafeValue(approvedTemplates.Rows(0)("TemplateCode").ToString())
+            approvedTemplates.Dispose()
+            Return True
+        End If
+        approvedTemplates.Dispose()
 
         Dim displayTemplateCode As String = If(mappedTemplateCode <> "", mappedTemplateCode, templateCode)
         errorMessage = "No approved Print Bill document template found. MappingKey: " & mappingKey & ", TemplateCode: " & displayTemplateCode & ". Please approve or sync a Print Bill document template."
@@ -342,6 +341,26 @@ Public Class WhatsAppOfficialDb
         parameterFields = ""
         Return False
     End Function
+
+    Private Shared Function TryUseApprovedTemplateRow(ByVal dt As DataTable, ByVal templateCode As String, ByRef languageCode As String, ByRef parameterCount As Integer, ByRef parameterFields As String) As Boolean
+        templateCode = SafeValue(templateCode).Trim().ToLower()
+        If templateCode = "" OrElse dt Is Nothing Then Return False
+        For Each row As DataRow In dt.Rows
+            If SafeValue(row("TemplateCode").ToString()).Trim().ToLower() = templateCode Then
+                UseApprovedTemplateRow(row, languageCode, parameterCount, parameterFields)
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+    Private Shared Sub UseApprovedTemplateRow(ByVal row As DataRow, ByRef languageCode As String, ByRef parameterCount As Integer, ByRef parameterFields As String)
+        If row Is Nothing Then Exit Sub
+        languageCode = SafeValue(row("LanguageCode").ToString())
+        parameterCount = Val(row("ParameterCount").ToString())
+        If row.Table.Columns.Contains("ParameterFields") AndAlso parameterFields.Trim() = "" Then parameterFields = SafeValue(row("ParameterFields").ToString())
+        If parameterFields.Trim() = "" Then parameterFields = DefaultParameterFields("print_bill")
+    End Sub
 
     Public Shared Sub SaveTemplateMapping(ByVal mappingKey As String, ByVal moduleName As String, ByVal displayName As String, ByVal templateCode As String, ByVal languageCode As String, ByVal messageMode As String, ByVal parameterFields As String)
         EnsureDatabase()
@@ -375,9 +394,11 @@ Public Class WhatsAppOfficialDb
             End If
             ResetTemplateMetaState()
             For Each item As Newtonsoft.Json.Linq.JObject In templates
-                Dim templateType As String = ResolveSyncedTemplateType(ReadJson(item, "template_code"), ReadJson(item, "template_type"))
-                UpsertTemplate(ReadJson(item, "template_code"), ReadJson(item, "title"), ReadJson(item, "language_code"), templateType, Val(ReadJson(item, "parameter_count")), ReadJson(item, "header_type"), If(IsJsonTrue(ReadJson(item, "supports_file")), 1, 0), ReadJson(item, "body"), ReadJson(item, "meta_status"), If(IsJsonTrue(ReadJson(item, "is_approved")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_pending")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_rejected")), 1, 0), GetTemplateDisplayStatus(ReadJson(item, "meta_status"), ReadJson(item, "is_approved"), ReadJson(item, "is_pending"), ReadJson(item, "is_rejected")), ReadJson(item, "body"), ReadJson(item, "footer"), ReadJson(item, "category"), JoinJsonArray(item, "examples"), ReadJson(item, "buttons_json"))
-                SaveApiTemplateMapping(templateType, ReadJson(item, "template_code"), ReadJson(item, "language_code"), ReadJson(item, "parameter_fields"))
+                Dim category As String = ReadJson(item, "category")
+                Dim templateType As String = ResolveSyncedTemplateType(ReadJson(item, "template_code"), ReadJson(item, "template_type"), category)
+                Dim syncedLanguageCode As String = ReadTemplateLanguageCode(item)
+                UpsertTemplate(ReadJson(item, "template_code"), ReadJson(item, "title"), syncedLanguageCode, templateType, Val(ReadJson(item, "parameter_count")), ReadJson(item, "header_type"), If(IsJsonTrue(ReadJson(item, "supports_file")), 1, 0), ReadJson(item, "body"), ReadJson(item, "meta_status"), If(IsJsonTrue(ReadJson(item, "is_approved")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_pending")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_rejected")), 1, 0), GetTemplateDisplayStatus(ReadJson(item, "meta_status"), ReadJson(item, "is_approved"), ReadJson(item, "is_pending"), ReadJson(item, "is_rejected")), ReadJson(item, "body"), ReadJson(item, "footer"), category, JoinJsonArray(item, "examples"), ReadJson(item, "buttons_json"))
+                SaveApiTemplateMapping(templateType, ReadJson(item, "template_code"), syncedLanguageCode, ReadJson(item, "parameter_fields"))
             Next
             responseMessage = templates.Count.ToString() & " templates synced successfully."
             Return True
@@ -405,9 +426,11 @@ Public Class WhatsAppOfficialDb
             End If
             ResetTemplateMetaState()
             For Each item As Newtonsoft.Json.Linq.JObject In templates
-                Dim templateType As String = ResolveSyncedTemplateType(ReadJson(item, "template_code"), ReadJson(item, "template_type"))
-                UpsertTemplate(ReadJson(item, "template_code"), ReadJson(item, "title"), ReadJson(item, "language_code"), templateType, Val(ReadJson(item, "parameter_count")), ReadJson(item, "header_type"), If(IsJsonTrue(ReadJson(item, "supports_file")), 1, 0), ReadJson(item, "body"), ReadJson(item, "meta_status"), If(IsJsonTrue(ReadJson(item, "is_approved")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_pending")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_rejected")), 1, 0), GetTemplateDisplayStatus(ReadJson(item, "meta_status"), ReadJson(item, "is_approved"), ReadJson(item, "is_pending"), ReadJson(item, "is_rejected")), ReadJson(item, "body"), ReadJson(item, "footer"), ReadJson(item, "category"), JoinJsonArray(item, "examples"), ReadJson(item, "buttons_json"))
-                SaveApiTemplateMapping(templateType, ReadJson(item, "template_code"), ReadJson(item, "language_code"), ReadJson(item, "parameter_fields"))
+                Dim category As String = ReadJson(item, "category")
+                Dim templateType As String = ResolveSyncedTemplateType(ReadJson(item, "template_code"), ReadJson(item, "template_type"), category)
+                Dim syncedLanguageCode As String = ReadTemplateLanguageCode(item)
+                UpsertTemplate(ReadJson(item, "template_code"), ReadJson(item, "title"), syncedLanguageCode, templateType, Val(ReadJson(item, "parameter_count")), ReadJson(item, "header_type"), If(IsJsonTrue(ReadJson(item, "supports_file")), 1, 0), ReadJson(item, "body"), ReadJson(item, "meta_status"), If(IsJsonTrue(ReadJson(item, "is_approved")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_pending")), 1, 0), If(IsJsonTrue(ReadJson(item, "is_rejected")), 1, 0), GetTemplateDisplayStatus(ReadJson(item, "meta_status"), ReadJson(item, "is_approved"), ReadJson(item, "is_pending"), ReadJson(item, "is_rejected")), ReadJson(item, "body"), ReadJson(item, "footer"), category, JoinJsonArray(item, "examples"), ReadJson(item, "buttons_json"))
+                SaveApiTemplateMapping(templateType, ReadJson(item, "template_code"), syncedLanguageCode, ReadJson(item, "parameter_fields"))
             Next
             responseMessage = templates.Count.ToString() & " templates synced from Meta/server."
             Return True
@@ -444,6 +467,7 @@ Public Class WhatsAppOfficialDb
         existing.Dispose()
 
         UpsertTemplate(templateCode, title, normalizedLanguageCode, templateType, countText, headerType, If(headerType = "document" Or headerType = "image" Or headerType = "video", 1, 0), bodyText, metaStatus, isApproved, isPending, isRejected, statusText, bodyText, footerText, category, examples, buttonsJson)
+        ExecNonQuery("Update PredefinedTemplates Set LocalTypeManual=1 Where TemplateCode='" & SqlText(templateCode) & "' And LanguageCode='" & SqlText(normalizedLanguageCode) & "'")
     End Sub
 
     Private Shared Function NormalizeHeaderType(ByVal headerType As String) As String
@@ -475,7 +499,18 @@ Public Class WhatsAppOfficialDb
 
     Private Shared Sub UpsertTemplate(ByVal code As String, ByVal name As String, ByVal languageCode As String, ByVal templateType As String, ByVal parameterCount As Integer, ByVal headerType As String, ByVal supportsFile As Integer, ByVal description As String, ByVal metaStatus As String, ByVal isApproved As Integer, ByVal isPending As Integer, ByVal isRejected As Integer, ByVal statusText As String, Optional ByVal bodyText As String = "", Optional ByVal footerText As String = "", Optional ByVal category As String = "UTILITY", Optional ByVal examples As String = "", Optional ByVal buttonsJson As String = "")
         If code = "" Then Exit Sub
-        ExecNonQuery("Insert Or Replace Into PredefinedTemplates(TemplateCode, TemplateName, LanguageCode, TemplateType, ParameterCount, IsDefault, HeaderType, SupportsFile, Description, MetaStatus, IsApproved, IsPending, IsRejected, Status, BodyText, FooterText, Category, Examples, ButtonsJson) Values('" & SqlText(code) & "','" & SqlText(name) & "','" & SqlText(NormalizeLanguageCode(languageCode)) & "','" & SqlText(templateType) & "'," & parameterCount & "," & If(templateType = "sale_bill", 1, 0) & ",'" & SqlText(headerType) & "'," & supportsFile & ",'" & SqlText(description) & "','" & SqlText(metaStatus) & "'," & isApproved & "," & isPending & "," & isRejected & ",'" & SqlText(statusText) & "','" & SqlText(bodyText) & "','" & SqlText(footerText) & "','" & SqlText(category) & "','" & SqlText(examples) & "','" & SqlText(buttonsJson) & "')")
+        Dim normalizedLanguageCode As String = NormalizeLanguageCode(languageCode)
+        Dim existing As DataTable = ExecDataTable("Select TemplateType, IfNull(LocalTypeManual,0) As LocalTypeManual From PredefinedTemplates Where TemplateCode='" & SqlText(code) & "' And LanguageCode='" & SqlText(normalizedLanguageCode) & "' Limit 1")
+        Dim localTypeManual As Integer = 0
+        If existing.Rows.Count > 0 Then
+            localTypeManual = Val(existing.Rows(0)("LocalTypeManual").ToString())
+            If SafeValue(category).Trim().ToUpper() = "MARKETING" AndAlso localTypeManual = 1 AndAlso SafeValue(existing.Rows(0)("TemplateType").ToString()) <> "" Then
+                templateType = SafeValue(existing.Rows(0)("TemplateType").ToString())
+            End If
+        End If
+        existing.Dispose()
+
+        ExecNonQuery("Insert Or Replace Into PredefinedTemplates(TemplateCode, TemplateName, LanguageCode, TemplateType, ParameterCount, IsDefault, HeaderType, SupportsFile, Description, MetaStatus, IsApproved, IsPending, IsRejected, Status, BodyText, FooterText, Category, Examples, ButtonsJson, LocalTypeManual) Values('" & SqlText(code) & "','" & SqlText(name) & "','" & SqlText(normalizedLanguageCode) & "','" & SqlText(templateType) & "'," & parameterCount & "," & If(templateType = "sale_bill", 1, 0) & ",'" & SqlText(headerType) & "'," & supportsFile & ",'" & SqlText(description) & "','" & SqlText(metaStatus) & "'," & isApproved & "," & isPending & "," & isRejected & ",'" & SqlText(statusText) & "','" & SqlText(bodyText) & "','" & SqlText(footerText) & "','" & SqlText(category) & "','" & SqlText(examples) & "','" & SqlText(buttonsJson) & "'," & localTypeManual & ")")
     End Sub
 
     Private Shared Sub SaveApiTemplateMapping(ByVal templateType As String, ByVal templateCode As String, ByVal languageCode As String, ByVal parameterFields As String)
@@ -485,7 +520,7 @@ Public Class WhatsAppOfficialDb
         If parameterFields.Trim() = "" Then parameterFields = DefaultParameterFields(templateType)
         parameterFields = NormalizeParameterFieldsText(parameterFields)
         Dim moduleName As String = templateType.ToUpper()
-        Dim mappingKey As String = moduleName & "_" & If(languageCode = "hi", "HI", "EN") & "_" & SafeValue(templateCode).ToUpper()
+        Dim mappingKey As String = moduleName & "_" & LanguageSuffix(languageCode) & "_" & SafeValue(templateCode).ToUpper()
         Dim existing As DataTable = ExecDataTable("Select ParameterFields, MessageMode From TemplateMappings Where MappingKey='" & SqlText(mappingKey) & "' Limit 1")
         Dim finalParameterFields As String = parameterFields
         Dim finalMessageMode As String = "AUTO"
@@ -500,7 +535,7 @@ Public Class WhatsAppOfficialDb
         End If
         existing.Dispose()
 
-        SaveTemplateMapping(mappingKey, moduleName, templateType.Replace("_", " ") & " " & If(languageCode = "hi", "Regional", "English"), templateCode, languageCode, finalMessageMode, finalParameterFields)
+        SaveTemplateMapping(mappingKey, moduleName, templateType.Replace("_", " ") & " " & LanguageDisplayName(languageCode), templateCode, languageCode, finalMessageMode, finalParameterFields)
     End Sub
 
     Private Shared Function NormalizeParameterFieldsText(ByVal parameterFields As String) As String
@@ -518,8 +553,16 @@ Public Class WhatsAppOfficialDb
         Select Case key
             Case "firm_name"
                 Return "company_name"
+            Case "firm_hindi_name", "hindi_company_name", "company_hindi_name", "firm_other_name"
+                Return "company_other_name"
             Case "customer_name", "customer_account_name", "party_name"
                 Return "account_name"
+            Case "party_other_name", "customer_other_name"
+                Return "account_other_name"
+            Case "party_hindi_name", "customer_hindi_name", "account_hindi_name"
+                Return "account_other_name"
+            Case "item_hindi_name"
+                Return "item_other_name"
             Case "mobile_no", "mobile", "whatsapp_no", "customer_mobile", "account_mobile"
                 Return "customer_mobile_no"
             Case "city", "account_city"
@@ -556,7 +599,7 @@ Public Class WhatsAppOfficialDb
         InsertLocalTemplate("bill_en", "Print Bill", "en", "print_bill", 4, "document", 1, "Hello {{2}}, your bill dated {{3}} from {{1}} is ready. Total amount is {{4}}. Thank you")
         InsertLocalTemplate("bill_hi", "Print Bill Hindi", "hi", "print_bill", 4, "document", 1, "नमस्ते *{{1}}*, आपका बिल दिनांक *{{2}}* फर्म *{{3}}* तैयार है।" & vbCrLf & "बिल की कुल रकम *{{4}}* है।" & vbCrLf & "धन्यवाद")
         InsertLocalTemplate("ledger_en", "Ledger", "en", "ledger", 4, "document", 1, "Hello {{2}}, your ledger with {{1}} from {{3}} to {{4}} is ready. Thank you")
-        InsertLocalTemplate("ledger_hi", "Ledger Hindi", "hi", "ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका लेजर तैयार है। धन्यवाद")
+        InsertLocalTemplate("ledger_hi", "Ledger Hindi", "hi", "ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका लेनदेन विवरण तैयार है। धन्यवाद")
         InsertLocalTemplate("rec_en", "Receipt", "en", "receipt", 4, "document", 1, "Hello {{2}}, your receipt dated {{3}} from {{1}} is ready. Amount is {{4}}. Thank you")
         InsertLocalTemplate("rec_hi", "Receipt Hindi", "hi", "receipt", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* से दिनांक *{{3}}* की जमा रसीद तैयार है। रकम *{{4}}* है। धन्यवाद")
         InsertLocalTemplate("pay_en", "Payment", "en", "payment", 4, "document", 1, "Hello {{2}}, your payment receipt dated {{3}} from {{1}} is ready. Amount is {{4}}. Thank you")
@@ -568,20 +611,20 @@ Public Class WhatsAppOfficialDb
         InsertLocalTemplate("crateout_en", "Crate Out", "en", "crate_out", 4, "document", 1, "Hello {{2}}, your crate out dated {{3}} from {{1}} is ready. Crate qty is {{4}}. Thank you")
         InsertLocalTemplate("crateout_hi", "Crate Out Hindi", "hi", "crate_out", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* की क्रेट आउट एंट्री तैयार है। क्रेट संख्या *{{4}}* है। धन्यवाद")
         InsertLocalTemplate("setledger_en", "Settle Ledger", "en", "settle_ledger", 4, "document", 1, "Hello {{2}}, your settle ledger with {{1}} from {{3}} to {{4}} is ready. Thank you")
-        InsertLocalTemplate("setledger_hi", "Settle Ledger Hindi", "hi", "settle_ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका सेटल लेजर तैयार है। धन्यवाद")
+        InsertLocalTemplate("setledger_hi", "Settle Ledger Hindi", "hi", "settle_ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका लेनदेन विवरण तैयार है। धन्यवाद")
         InsertLocalTemplate("subledger_en", "Sub Ledger", "en", "sub_ledger", 4, "document", 1, "Hello {{2}}, your sub ledger with {{1}} from {{3}} to {{4}} is ready. Thank you")
-        InsertLocalTemplate("subledger_hi", "Sub Ledger Hindi", "hi", "sub_ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका सब लेजर तैयार है। धन्यवाद")
-        InsertLocalTemplate("sellman_en", "Sellout Manual", "en", "sellout_manual", 4, "document", 1, "Hello {{2}}, your sellout manual dated {{3}} from {{1}} is ready. Total amount is {{4}}. Thank you")
-        InsertLocalTemplate("sellman_hi", "Sellout Manual Hindi", "hi", "sellout_manual", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* से दिनांक *{{3}}* का सेलआउट मैनुअल तैयार है। कुल रकम *{{4}}* है। धन्यवाद")
-        InsertLocalTemplate("sellauto_en", "Sellout Auto", "en", "sellout_auto", 4, "document", 1, "Hello {{2}}, your sellout auto dated {{3}} from {{1}} is ready. Total amount is {{4}}. Thank you")
-        InsertLocalTemplate("sellauto_hi", "Sellout Auto Hindi", "hi", "sellout_auto", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* से दिनांक *{{3}}* का सेलआउट ऑटो तैयार है। कुल रकम *{{4}}* है। धन्यवाद")
+        InsertLocalTemplate("subledger_hi", "Sub Ledger Hindi", "hi", "sub_ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका लेनदेन विवरण तैयार है। धन्यवाद")
+        InsertLocalTemplate("sellman_en", "Sellout Manual", "en", "sellout_manual", 4, "document", 1, "Hello {{2}}, your sale slip dated {{3}} from {{1}} is ready. Total amount is {{4}}. Thank you")
+        InsertLocalTemplate("sellman_hi", "Sellout Manual Hindi", "hi", "sellout_manual", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* से दिनांक *{{3}}* की बिक्री पर्चा तैयार है। कुल रकम *{{4}}* है। धन्यवाद")
+        InsertLocalTemplate("sellauto_en", "Sellout Auto", "en", "sellout_auto", 4, "document", 1, "Hello {{2}}, your sale slip dated {{3}} from {{1}} is ready. Total amount is {{4}}. Thank you")
+        InsertLocalTemplate("sellauto_hi", "Sellout Auto Hindi", "hi", "sellout_auto", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* से दिनांक *{{3}}* की बिक्री पर्चा तैयार है। कुल रकम *{{4}}* है। धन्यवाद")
         InsertLocalTemplate("stdsale_en", "Standard Sale", "en", "standard_sale", 4, "document", 1, "Hello {{2}}, your standard sale dated {{3}} from {{1}} is ready. Total amount is {{4}}. Thank you")
         InsertLocalTemplate("stdsale_hi", "Standard Sale Hindi", "hi", "standard_sale", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* से दिनांक *{{3}}* की स्टैंडर्ड सेल तैयार है। कुल रकम *{{4}}* है। धन्यवाद")
         InsertLocalTemplate("crateledger_en", "Crate Ledger", "en", "crate_ledger", 4, "document", 1, "Hello {{2}}, your crate ledger with {{1}} from {{3}} to {{4}} is ready. Thank you")
-        InsertLocalTemplate("crateledger_hi", "Crate Ledger Hindi", "hi", "crate_ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका क्रेट लेजर तैयार है। धन्यवाद")
+        InsertLocalTemplate("crateledger_hi", "Crate Ledger Hindi", "hi", "crate_ledger", 4, "document", 1, "नमस्ते *{{2}}*, फर्म *{{1}}* में दिनांक *{{3}}* से *{{4}}* तक आपका क्रेट विवरण तैयार है। धन्यवाद")
         ExecNonQuery("Update PredefinedTemplates Set FooterText='" & SqlText(DefaultTemplateFooter) & "' Where (IfNull(Status,'')='LOCAL' Or IfNull(MetaStatus,'')='LOCAL') And IfNull(FooterText,'')=''")
-        ExecNonQuery("Update PredefinedTemplates Set FooterText='' Where Upper(IfNull(FooterText,''))='SENDED BY AADHAT SOFTWARE'")
-        ExecNonQuery("Update PredefinedTemplates Set FooterText='' Where Upper(IfNull(FooterText,''))='SENT BY AADHAT SOFTWARE'")
+        ExecNonQuery("Update PredefinedTemplates Set FooterText='" & SqlText(DefaultTemplateFooter) & "' Where (IfNull(Status,'')='LOCAL' Or IfNull(MetaStatus,'')='LOCAL') And Upper(IfNull(FooterText,''))='SENDED BY AADHAT SOFTWARE'")
+        ExecNonQuery("Update PredefinedTemplates Set FooterText='" & SqlText(DefaultTemplateFooter) & "' Where (IfNull(Status,'')='LOCAL' Or IfNull(MetaStatus,'')='LOCAL') And Upper(IfNull(FooterText,''))='SENT BY AADHAT SOFTWARE'")
         ExecNonQuery("Update PredefinedTemplates Set HeaderType='', SupportsFile=0 Where TemplateType='balance' And IfNull(SupportsFile,0)=0 And Lower(IfNull(HeaderType,''))='text' And Upper(IfNull(Status,'')) Not Like '%APPROVED%' And Upper(IfNull(MetaStatus,'')) Not Like '%APPROVED%'")
     End Sub
 
@@ -592,16 +635,16 @@ Public Class WhatsAppOfficialDb
     End Sub
 
     Private Shared Sub SeedDefaultTemplateMappings()
-        InsertTemplateMapping("PRINT_BILL_EN", "PRINT_BILL", "Print Bill English", "bill_en", "en", "BILL", "account_name,bill_date,company_name,bill_total")
-        InsertTemplateMapping("PRINT_BILL_HI", "PRINT_BILL", "Print Bill Regional", "bill_hi", "hi", "BILL", "account_name,bill_date,company_name,bill_total")
-        InsertTemplateMapping("PRINT_BILL_EN_PDF_ONLY", "PRINT_BILL", "Bill PDF English", "bill_en", "en", "PDF_ONLY", "account_name,bill_date,company_name,bill_total")
-        InsertTemplateMapping("PRINT_BILL_HI_PDF_ONLY", "PRINT_BILL", "Bill PDF Hindi", "bill_hi", "hi", "PDF_ONLY", "account_name,bill_date,company_name,bill_total")
-        InsertTemplateMapping("PRINT_BILL_EN_PDF_MESSAGE", "PRINT_BILL", "Bill PDF + Message English", "bill_en", "en", "PDF_MESSAGE", "account_name,bill_date,company_name,bill_total")
-        InsertTemplateMapping("PRINT_BILL_HI_PDF_MESSAGE", "PRINT_BILL", "Bill PDF + Message Hindi", "bill_hi", "hi", "PDF_MESSAGE", "account_name,bill_date,company_name,bill_total")
-        ExecNonQuery("Update TemplateMappings Set TemplateCode='bill_hi', LanguageCode='hi', ParameterFields='account_name,bill_date,company_name,bill_total' Where MappingKey In ('PRINT_BILL_HI','PRINT_BILL_HI_PDF_ONLY','PRINT_BILL_HI_PDF_MESSAGE') And (TemplateCode='bill_en' Or LanguageCode='en' Or ParameterFields='company_name,account_name,bill_date,bill_total')")
-        ExecNonQuery("Update TemplateMappings Set ParameterFields='account_name,bill_date,company_name,bill_total' Where ModuleName='PRINT_BILL' And LanguageCode='en' And Lower(TemplateCode) In ('bill_en','bill_en1','bill_en2') And ParameterFields='company_name,account_name,bill_date,bill_total'")
-        ExecNonQuery("Update TemplateMappings Set ParameterFields='account_name,bill_date,company_name,bill_total' Where ModuleName='PRINT_BILL' And IfNull(ParameterFields,'')=''")
-        ExecNonQuery("Update TemplateMappings Set ParameterFields='account_name,bill_date,company_name,bill_total' Where ModuleName='PRINT_BILL' And ParameterFields In ('account_name,bill_date,bill_total,pdf_link','account_name,bill_date,bill_total,pdf_link,message_text')")
+        InsertTemplateMapping("PRINT_BILL_EN", "PRINT_BILL", "Print Bill English", "bill_en", "en", "BILL", DefaultParameterFields("print_bill"))
+        InsertTemplateMapping("PRINT_BILL_HI", "PRINT_BILL", "Print Bill Regional", "bill_hi", "hi", "BILL", DefaultParameterFields("print_bill"))
+        InsertTemplateMapping("PRINT_BILL_EN_PDF_ONLY", "PRINT_BILL", "Bill PDF English", "bill_en", "en", "PDF_ONLY", DefaultParameterFields("print_bill"))
+        InsertTemplateMapping("PRINT_BILL_HI_PDF_ONLY", "PRINT_BILL", "Bill PDF Hindi", "bill_hi", "hi", "PDF_ONLY", DefaultParameterFields("print_bill"))
+        InsertTemplateMapping("PRINT_BILL_EN_PDF_MESSAGE", "PRINT_BILL", "Bill PDF + Message English", "bill_en", "en", "PDF_MESSAGE", DefaultParameterFields("print_bill"))
+        InsertTemplateMapping("PRINT_BILL_HI_PDF_MESSAGE", "PRINT_BILL", "Bill PDF + Message Hindi", "bill_hi", "hi", "PDF_MESSAGE", DefaultParameterFields("print_bill"))
+        ExecNonQuery("Update TemplateMappings Set TemplateCode='bill_hi', LanguageCode='hi', ParameterFields='" & SqlText(DefaultParameterFields("print_bill")) & "' Where MappingKey In ('PRINT_BILL_HI','PRINT_BILL_HI_PDF_ONLY','PRINT_BILL_HI_PDF_MESSAGE') And (TemplateCode='bill_en' Or LanguageCode='en' Or ParameterFields='company_name,account_name,bill_date,bill_total')")
+        ExecNonQuery("Update TemplateMappings Set ParameterFields='" & SqlText(DefaultParameterFields("print_bill")) & "' Where ModuleName='PRINT_BILL' And LanguageCode='en' And Lower(TemplateCode) In ('bill_en','bill_en1','bill_en2') And ParameterFields='company_name,account_name,bill_date,bill_total'")
+        ExecNonQuery("Update TemplateMappings Set ParameterFields='" & SqlText(DefaultParameterFields("print_bill")) & "' Where ModuleName='PRINT_BILL' And IfNull(ParameterFields,'')=''")
+        ExecNonQuery("Update TemplateMappings Set ParameterFields='" & SqlText(DefaultParameterFields("print_bill")) & "' Where ModuleName='PRINT_BILL' And ParameterFields In ('account_name,bill_date,bill_total,pdf_link','account_name,bill_date,bill_total,pdf_link,message_text')")
     End Sub
 
     Private Shared Sub InsertTemplateMapping(ByVal mappingKey As String, ByVal moduleName As String, ByVal displayName As String, ByVal templateCode As String, ByVal languageCode As String, ByVal messageMode As String, ByVal parameterFields As String)
@@ -609,13 +652,18 @@ Public Class WhatsAppOfficialDb
     End Sub
 
     Private Shared Sub NormalizeExistingTemplateTypes()
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='print_bill' Where IfNull(TemplateType,'') In ('','sale_bill') And (Lower(TemplateCode) Like 'bill%' Or Lower(TemplateCode) Like 'sb_%' Or Lower(TemplateName) Like '%bill%')")
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='receipt' Where IfNull(TemplateType,'') In ('','sale_bill') And (Lower(TemplateCode) Like 'rec%' Or Lower(TemplateName) Like '%receipt%')")
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='payment' Where IfNull(TemplateType,'') In ('','sale_bill') And (Lower(TemplateCode) Like 'pay%' Or Lower(TemplateName) Like '%payment%')")
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='balance' Where IfNull(TemplateType,'') In ('','sale_bill') And (Lower(TemplateCode) Like 'bal%' Or Lower(TemplateName) Like '%balance%')")
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='statement' Where IfNull(TemplateType,'') In ('','sale_bill') And (Lower(TemplateCode) Like 'stmt%' Or Lower(TemplateName) Like '%statement%')")
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='purchase' Where IfNull(TemplateType,'') In ('','sale_bill') And (Lower(TemplateCode) Like 'pur%' Or Lower(TemplateName) Like '%purchase%')")
-        ExecNonQuery("Update PredefinedTemplates Set TemplateType='crate_ledger' Where IfNull(TemplateType,'') In ('','sale_bill','print_bill') And (Lower(TemplateCode) Like 'crate%' Or Lower(TemplateName) Like '%crate%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='print_bill' Where IfNull(TemplateType,'')='sale_bill' And (Lower(TemplateCode) Like 'bill%' Or Lower(TemplateCode) Like 'sb_%' Or Lower(TemplateName) Like '%bill%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='receipt' Where IfNull(TemplateType,'')='sale_bill' And (Lower(TemplateCode) Like 'rec%' Or Lower(TemplateName) Like '%receipt%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='payment' Where IfNull(TemplateType,'')='sale_bill' And (Lower(TemplateCode) Like 'pay%' Or Lower(TemplateName) Like '%payment%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='balance' Where IfNull(TemplateType,'')='sale_bill' And (Lower(TemplateCode) Like 'bal%' Or Lower(TemplateName) Like '%balance%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='statement' Where IfNull(TemplateType,'')='sale_bill' And (Lower(TemplateCode) Like 'stmt%' Or Lower(TemplateName) Like '%statement%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='purchase' Where IfNull(TemplateType,'')='sale_bill' And (Lower(TemplateCode) Like 'pur%' Or Lower(TemplateName) Like '%purchase%')")
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='crate_ledger' Where IfNull(TemplateType,'') In ('sale_bill','print_bill') And (Lower(TemplateCode) Like 'crate%' Or Lower(TemplateName) Like '%crate%')")
+    End Sub
+
+    Private Shared Sub NormalizeMarketingTemplateTypes()
+        ExecNonQuery("Update PredefinedTemplates Set TemplateType='' Where Upper(IfNull(Category,''))='MARKETING' And IfNull(LocalTypeManual,0)=0")
+        ExecNonQuery("Delete From TemplateMappings Where TemplateCode In (Select TemplateCode From PredefinedTemplates Where Upper(IfNull(Category,''))='MARKETING' And IfNull(LocalTypeManual,0)=0)")
     End Sub
 
     Private Shared Sub EnsureDatabaseLight()
@@ -654,6 +702,18 @@ Public Class WhatsAppOfficialDb
         Return item(key).ToString()
     End Function
 
+    Private Shared Function ReadTemplateLanguageCode(ByVal item As Newtonsoft.Json.Linq.JObject) As String
+        Dim languageCode As String = ReadJson(item, "language_code")
+        If languageCode.Trim() = "" Then languageCode = ReadJson(item, "language")
+        If languageCode.Trim() = "" Then languageCode = ReadJson(item, "template_language")
+        If languageCode.Trim() <> "" Then Return NormalizeLanguageCode(languageCode)
+
+        Dim templateText As String = (ReadJson(item, "template_code") & " " & ReadJson(item, "title")).ToLower()
+        Dim inferredCode As String = InferIndianLanguageCodeFromTemplateText(templateText)
+        If inferredCode <> "" Then Return inferredCode
+        Return "en"
+    End Function
+
     Private Shared Function IsJsonTrue(ByVal value As String) As Boolean
         value = SafeValue(value).Trim().ToLower()
         Return value = "true" OrElse value = "1" OrElse value = "yes" OrElse value = "y"
@@ -669,9 +729,12 @@ Public Class WhatsAppOfficialDb
     Private Shared Function GetTemplateLanguageFilter(ByVal languageCode As String) As String
         languageCode = NormalizeLanguageCode(languageCode)
         If languageCode = "hi" Then
-            Return "(p.LanguageCode='hi' Or Lower(p.TemplateCode) Like '%hi%' Or Lower(p.TemplateName) Like '%hindi%' Or Lower(p.TemplateName) Like '% hi%')"
+            Return "(IfNull(p.LanguageCode,'')<>'' And p.LanguageCode<>'en' And p.LanguageCode<>'en_US')"
         End If
-        Return "(p.LanguageCode='en' And Lower(p.TemplateCode) Not Like '%hi%' And Lower(p.TemplateName) Not Like '%hindi%' And Lower(p.TemplateName) Not Like '% hi%')"
+        If IsSupportedIndianLanguageCode(languageCode) Then
+            Return "(p.LanguageCode='" & SqlText(languageCode) & "' Or Lower(p.TemplateCode) Like '%" & SqlText(languageCode) & "%' Or Lower(p.TemplateName) Like '% " & SqlText(languageCode) & "%')"
+        End If
+        Return "(p.LanguageCode='en' And Lower(p.TemplateCode) Not Like '%hi%' And Lower(p.TemplateName) Not Like '%hindi%' And Lower(p.TemplateName) Not Like '% hi%' And Lower(p.TemplateCode) Not Like '%gu%' And Lower(p.TemplateName) Not Like '%gujarati%' And Lower(p.TemplateName) Not Like '%gujrati%' And Lower(p.TemplateName) Not Like '% gu%')"
     End Function
 
     Private Shared Function GetTemplateLanguageOrder(ByVal languageCode As String) As String
@@ -679,23 +742,87 @@ Public Class WhatsAppOfficialDb
         If languageCode = "hi" Then
             Return "Case When p.LanguageCode='hi' Then 0 When Lower(p.TemplateCode) Like '%hi%' Or Lower(p.TemplateName) Like '%hindi%' Or Lower(p.TemplateName) Like '% hi%' Then 1 Else 2 End"
         End If
+        If IsSupportedIndianLanguageCode(languageCode) Then
+            Return "Case When p.LanguageCode='" & SqlText(languageCode) & "' Then 0 When Lower(p.TemplateCode) Like '%" & SqlText(languageCode) & "%' Or Lower(p.TemplateName) Like '% " & SqlText(languageCode) & "%' Then 1 Else 2 End"
+        End If
         Return "Case When p.LanguageCode='en' Then 0 Else 1 End"
     End Function
 
     Private Shared Function NormalizeLanguageCode(ByVal value As String) As String
-        value = SafeValue(value).ToLower()
-        If value.StartsWith("hi") Then Return "hi"
+        value = SafeValue(value).Trim().ToLower().Replace("-", "_")
+        If value = "" Then Return "en"
+        If value.StartsWith("en") OrElse value.Contains("english") Then Return "en"
+        Dim inferredCode As String = InferIndianLanguageCode(value)
+        If inferredCode <> "" Then Return inferredCode
+        If value.Contains("_") Then value = value.Split("_"c)(0)
+        If IsSupportedIndianLanguageCode(value) Then Return value
         Return "en"
     End Function
 
     Private Shared Function ResolveLanguageCode(ByVal languageType As String) As String
         Dim value As String = SafeValue(languageType).ToLower()
+        Dim inferredCode As String = InferIndianLanguageCode(value)
+        If inferredCode <> "" Then Return inferredCode
         If value.Contains("hindi") OrElse value.Contains("regional") OrElse value.StartsWith("hi") Then Return "hi"
         Return "en"
     End Function
 
+    Private Shared Function InferIndianLanguageCode(ByVal value As String) As String
+        value = SafeValue(value).Trim().ToLower().Replace("-", "_")
+        If value.Contains("bengali") OrElse value.Contains("bangla") OrElse value.StartsWith("bn") Then Return "bn"
+        If value.Contains("gujarati") OrElse value.Contains("gujrati") OrElse value.StartsWith("gu") Then Return "gu"
+        If value.Contains("hindi") OrElse value.StartsWith("hi") Then Return "hi"
+        If value.Contains("kannada") OrElse value.StartsWith("kn") Then Return "kn"
+        If value.Contains("malayalam") OrElse value.StartsWith("ml") Then Return "ml"
+        If value.Contains("marathi") OrElse value.StartsWith("mr") Then Return "mr"
+        If value.Contains("punjabi") OrElse value.Contains("panjabi") OrElse value.StartsWith("pa") Then Return "pa"
+        If value.Contains("tamil") OrElse value.StartsWith("ta") Then Return "ta"
+        If value.Contains("telugu") OrElse value.StartsWith("te") Then Return "te"
+        If value.Contains("urdu") OrElse value.StartsWith("ur") Then Return "ur"
+        Return ""
+    End Function
+
+    Private Shared Function InferIndianLanguageCodeFromTemplateText(ByVal value As String) As String
+        value = " " & SafeValue(value).Trim().ToLower().Replace("-", "_") & " "
+        If value.Contains("_bn") OrElse value.Contains(" bn") OrElse value.Contains("bengali") OrElse value.Contains("bangla") Then Return "bn"
+        If value.Contains("_gu") OrElse value.Contains(" gu") OrElse value.Contains("gujarati") OrElse value.Contains("gujrati") Then Return "gu"
+        If value.Contains("_hi") OrElse value.Contains(" hi") OrElse value.Contains("hindi") Then Return "hi"
+        If value.Contains("_kn") OrElse value.Contains(" kn") OrElse value.Contains("kannada") Then Return "kn"
+        If value.Contains("_ml") OrElse value.Contains(" ml") OrElse value.Contains("malayalam") Then Return "ml"
+        If value.Contains("_mr") OrElse value.Contains(" mr") OrElse value.Contains("marathi") Then Return "mr"
+        If value.Contains("_pa") OrElse value.Contains(" pa") OrElse value.Contains("punjabi") OrElse value.Contains("panjabi") Then Return "pa"
+        If value.Contains("_ta") OrElse value.Contains(" ta") OrElse value.Contains("tamil") Then Return "ta"
+        If value.Contains("_te") OrElse value.Contains(" te") OrElse value.Contains("telugu") Then Return "te"
+        If value.Contains("_ur") OrElse value.Contains(" ur") OrElse value.Contains("urdu") Then Return "ur"
+        Return ""
+    End Function
+
+    Private Shared Function IsSupportedIndianLanguageCode(ByVal languageCode As String) As Boolean
+        Select Case SafeValue(languageCode).Trim().ToLower()
+            Case "bn", "gu", "hi", "kn", "ml", "mr", "pa", "ta", "te", "ur"
+                Return True
+        End Select
+        Return False
+    End Function
+
+    Private Shared Function LanguageSuffix(ByVal languageCode As String) As String
+        Select Case NormalizeLanguageCode(languageCode)
+            Case "gu"
+                Return "GU"
+            Case "hi"
+                Return "HI"
+        End Select
+        Return "EN"
+    End Function
+
+    Private Shared Function LanguageDisplayName(ByVal languageCode As String) As String
+        If NormalizeLanguageCode(languageCode) = "en" Then Return "English"
+        Return "Regional"
+    End Function
+
     Private Shared Function NormalizeTemplateType(ByVal value As String) As String
         value = SafeValue(value).ToLower().Replace(" ", "_")
+        If value = "n/a" OrElse value = "na" OrElse value = "none" OrElse value = "no_type" OrElse value = "not_applicable" Then Return ""
         If value = "sale_bill" OrElse value = "print_bill_pdf_only" OrElse value = "print_bill_pdf_message" Then Return "print_bill"
         Return value
     End Function
@@ -745,11 +872,13 @@ Public Class WhatsAppOfficialDb
         Return "print_bill"
     End Function
 
-    Private Shared Function ResolveSyncedTemplateType(ByVal templateCode As String, ByVal serverTemplateType As String) As String
+    Private Shared Function ResolveSyncedTemplateType(ByVal templateCode As String, ByVal serverTemplateType As String, Optional ByVal category As String = "") As String
+        If SafeValue(category).Trim().ToUpper() = "MARKETING" Then Return ""
+        If SafeValue(serverTemplateType).Trim().ToUpper() = "MARKETING" Then Return ""
         Dim guessedType As String = GuessTemplateType(templateCode)
         Dim normalizedServerType As String = NormalizeTemplateType(serverTemplateType)
 
-        If normalizedServerType = "" Then Return guessedType
+        If normalizedServerType = "" Then Return ""
         If normalizedServerType = "print_bill" AndAlso guessedType <> "print_bill" Then Return guessedType
 
         Return normalizedServerType
@@ -759,17 +888,19 @@ Public Class WhatsAppOfficialDb
         templateType = NormalizeTemplateType(templateType)
         Select Case templateType
             Case "print_bill"
-                Return "account_name,bill_date,company_name,bill_total"
+                Return "account_name,bill_date,company_name,bill_total,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
+            Case "standard_sale", "purchase", "sellout_manual", "sellout_auto"
+                Return "company_name,account_name,bill_date,bill_total,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
             Case "balance"
                 Return "company_name,account_name,balance_date,balance_amount"
             Case "statement", "ledger", "settle_ledger", "sub_ledger", "purchase_register", "standard_sale_register", "super_sale_register", "crate_ledger"
-                Return "company_name,account_name,from_date,to_date"
+                Return "company_name,account_name,from_date,to_date,company_other_name,account_other_name,opening_balance,closing_balance"
             Case "crate_in", "crate_out"
                 Return "company_name,account_name,entry_date,crate_qty"
             Case "receipt", "payment"
-                Return "company_name,account_name,entry_date,amount"
+                Return "company_name,account_name,entry_date,amount,company_other_name,account_other_name,opening_balance,closing_balance"
         End Select
-        Return "account_name,bill_date,company_name,bill_total"
+        Return "account_name,bill_date,company_name,bill_total,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
     End Function
 
     Private Shared Function JoinJsonArray(ByVal item As Newtonsoft.Json.Linq.JObject, ByVal key As String) As String

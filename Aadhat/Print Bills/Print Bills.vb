@@ -519,11 +519,50 @@ Public Class Print_Bills
     Private Function GetAccountField(ByVal accountId As String, ByVal fieldName As String) As String
         Try
             Select Case fieldName.ToLower()
-                Case "city", "mobile1", "mobile2", "address", "state"
+                Case "city", "mobile1", "mobile2", "address", "state", "othername"
                 Case Else
                     Return ""
             End Select
             Return clsFun.ExecScalarStr("Select " & fieldName & " From Accounts Where ID='" & Val(accountId) & "'")
+        Catch
+            Return ""
+        End Try
+    End Function
+
+    Private Function GetCompanyOtherNameForOfficial() As String
+        Dim name As String = clsFun.ExecScalarStr("Select PrintOtherName From Company Limit 1")
+        If name.Trim() = "" Then name = compnameHindi
+        If name.Trim() = "" Then name = compname
+        Return name.Trim()
+    End Function
+
+    Private Function GetBillItemOtherNamesForAccount(ByVal accountId As String) As String
+        Try
+            Return clsFun.ExecScalarStr("Select group_concat(Distinct i.OtherName) From Transaction2 t Inner Join Items i On t.ItemID=i.ID Where IfNull(i.OtherName,'')<>'' And t.AccountID='" & Val(accountId) & "' and t.EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and t.TransType Not In('On Sale','Store Transfer')")
+        Catch
+            Return ""
+        End Try
+    End Function
+
+    Private Function GetBillItemNamesForAccount(ByVal accountId As String) As String
+        Try
+            Return clsFun.ExecScalarStr("Select group_concat(Distinct i.ItemName) From Transaction2 t Inner Join Items i On t.ItemID=i.ID Where IfNull(i.ItemName,'')<>'' And t.AccountID='" & Val(accountId) & "' and t.EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and t.TransType Not In('On Sale','Store Transfer')")
+        Catch
+            Return ""
+        End Try
+    End Function
+
+    Private Function GetAccountBalanceForOfficial(ByVal accountId As String, ByVal balanceDate As String, ByVal includeBalanceDate As Boolean) As String
+        Try
+            Dim sqlDate As String = CDate(balanceDate).ToString("yyyy-MM-dd")
+            Dim op As String = If(includeBalanceDate, "<=", "<")
+            Dim sql As String = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate " & op & "'" & sqlDate & "')" & _
+                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate " & op & "'" & sqlDate & "')) " & _
+                            " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate " & op & "'" & sqlDate & "')" & _
+                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate " & op & "'" & sqlDate & "'))  end),2) as Restbal from Accounts Where ID=" & Val(accountId)
+            Dim balance As Decimal = Val(clsFun.ExecScalarStr(sql))
+            If balance >= 0 Then Return Format(Math.Abs(balance), "0.00") & " Dr"
+            Return Format(Math.Abs(balance), "0.00") & " Cr"
         Catch
             Return ""
         End Try
@@ -534,7 +573,14 @@ Public Class Print_Bills
 
         Dim values As New Dictionary(Of String, String)
         values("company_name") = compname.Trim()
+        values("company_other_name") = GetCompanyOtherNameForOfficial()
+        values("company_hindi_name") = values("company_other_name")
         values("account_name") = accountName.Trim()
+        values("account_other_name") = GetAccountField(accountId, "OtherName")
+        values("account_hindi_name") = values("account_other_name")
+        values("item_name") = GetBillItemNamesForAccount(accountId)
+        values("item_other_name") = GetBillItemOtherNamesForAccount(accountId)
+        values("item_hindi_name") = values("item_other_name")
         values("mobile_no") = mobileNo.Trim()
         values("customer_mobile_no") = mobileNo.Trim()
         values("city") = GetAccountField(accountId, "City")
@@ -549,6 +595,8 @@ Public Class Print_Bills
         values("weight") = GetBillSumForAccount(accountId, "Weight")
         values("basic_amount") = GetBillSumForAccount(accountId, "Amount")
         values("charges") = GetBillSumForAccount(accountId, "Charges")
+        values("opening_balance") = GetAccountBalanceForOfficial(accountId, txtFromDate.Text, False)
+        values("closing_balance") = GetAccountBalanceForOfficial(accountId, txtToDate.Text, True)
         values("pdf_link") = fileUrl.Trim()
         values("message_text") = messageText.Trim()
 
@@ -572,8 +620,16 @@ Public Class Print_Bills
         Select Case key
             Case "firm_name"
                 Return "company_name"
+            Case "firm_hindi_name", "hindi_company_name", "company_hindi_name", "firm_other_name"
+                Return "company_other_name"
             Case "customer_name", "customer_account_name", "party_name"
                 Return "account_name"
+            Case "party_other_name", "customer_other_name"
+                Return "account_other_name"
+            Case "party_hindi_name", "customer_hindi_name", "account_hindi_name"
+                Return "account_other_name"
+            Case "item_hindi_name"
+                Return "item_other_name"
             Case "mobile_no", "mobile", "whatsapp_no", "customer_mobile", "account_mobile"
                 Return "customer_mobile_no"
             Case "city", "account_city"
@@ -603,7 +659,7 @@ Public Class Print_Bills
             If key <> "" Then fields.Add(key)
         Next
 
-        Dim fallbackFields() As String = {"company_name", "account_name", "bill_date", "bill_total", "nug", "weight", "basic_amount", "charges", "customer_city", "customer_mobile_no"}
+        Dim fallbackFields() As String = {"company_name", "account_name", "bill_date", "bill_total", "nug", "weight", "basic_amount", "charges", "customer_city", "customer_mobile_no", "company_other_name", "account_other_name", "item_other_name", "opening_balance", "closing_balance"}
         Dim requiredCount As Integer = GetTemplateParameterCount(templateBody, fields.Count)
         If fields.Count > requiredCount Then
             fields.RemoveRange(requiredCount, fields.Count - requiredCount)
@@ -622,7 +678,7 @@ Public Class Print_Bills
     End Function
 
     Private Function DefaultOfficialPrintBillParameterFields() As String
-        Return "account_name,bill_date,company_name,bill_total"
+        Return "account_name,bill_date,company_name,bill_total,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
     End Function
 
     Private Function CleanOfficialPrintBillParameterFields(ByVal parameterFields As String) As String
@@ -727,14 +783,9 @@ Public Class Print_Bills
         cbOfficialTemplate.Items.Clear()
 
         Dim preferredLanguage As String = If(RadioRegional.Checked, "hi", "en")
-        Dim alternateLanguage As String = If(preferredLanguage = "hi", "en", "hi")
         Dim preferredIndex As Integer = -1
         Dim dt As DataTable = WhatsAppOfficialDb.GetApprovedPrintBillDocumentTemplates(preferredLanguage)
         AddOfficialPrintBillTemplateRows(dt, preferredLanguage, preferredLanguage, preferredIndex)
-        dt.Dispose()
-
-        dt = WhatsAppOfficialDb.GetApprovedPrintBillDocumentTemplates(alternateLanguage)
-        AddOfficialPrintBillTemplateRows(dt, preferredLanguage, alternateLanguage, preferredIndex)
         dt.Dispose()
 
         If cbOfficialTemplate.Items.Count = 0 Then
@@ -969,7 +1020,7 @@ Public Class Print_Bills
                     officialLanguageCode,
                     fields,
                     apiResponse,
-                    "Bill.pdf",
+                    WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"),
                     officialBodyParamCount)
 
                 If sent Then

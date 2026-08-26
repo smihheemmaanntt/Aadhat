@@ -46,10 +46,304 @@
         dg1.Columns(14).Name = "BWeight" : dg1.Columns(14).Visible = False
     End Sub
 
+    Private Function DbText(ByVal row As DataRow, ByVal columnName As String) As String
+        If row Is Nothing OrElse row.Table.Columns.Contains(columnName) = False OrElse IsDBNull(row(columnName)) Then Return ""
+        Return row(columnName).ToString()
+    End Function
+
+    Private Function DbVal(ByVal row As DataRow, ByVal columnName As String) As Double
+        Return Val(DbText(row, columnName))
+    End Function
+
+    Private Function Format2(ByVal value As Double) As String
+        Return Format(value, "0.00")
+    End Function
+
+    Private Function FirstCsvNumber(ByVal value As String) As Integer
+        Return CInt(Val(value))
+    End Function
+
+    Private Function CsvToList(ByVal value As String) As System.Collections.Generic.List(Of Integer)
+        Dim result As New System.Collections.Generic.List(Of Integer)
+        If value Is Nothing OrElse value.Trim() = "" Then Return result
+
+        For Each part As String In value.Split(","c)
+            Dim id As Integer = CInt(Val(part))
+            If id > 0 AndAlso result.Contains(id) = False Then result.Add(id)
+        Next
+
+        Return result
+    End Function
+
+    Private Function IdListFromValues(ByVal values As System.Collections.Generic.IEnumerable(Of Integer)) As String
+        Dim ids As New System.Collections.Generic.List(Of String)
+        For Each id As Integer In values
+            If id > 0 AndAlso ids.Contains(id.ToString()) = False Then ids.Add(id.ToString())
+        Next
+
+        If ids.Count = 0 Then Return "0"
+        Return String.Join(",", ids.ToArray())
+    End Function
+
+    Private Function IdListFromRows(ByVal dt As DataTable, ByVal columnName As String) As String
+        Dim ids As New System.Collections.Generic.List(Of Integer)
+        For Each row As DataRow In dt.Rows
+            Dim id As Integer = CInt(Val(DbText(row, columnName)))
+            If id > 0 Then ids.Add(id)
+        Next
+
+        Return IdListFromValues(ids)
+    End Function
+
+    Private Function LoadRowsByKey(ByVal sql As String, ByVal keyColumn As String) As System.Collections.Generic.Dictionary(Of Integer, DataRow)
+        Dim result As New System.Collections.Generic.Dictionary(Of Integer, DataRow)
+        Dim data As DataTable = clsFun.ExecDataTable(sql)
+
+        For Each row As DataRow In data.Rows
+            Dim key As Integer = CInt(Val(DbText(row, keyColumn)))
+            If key > 0 AndAlso result.ContainsKey(key) = False Then result.Add(key, row)
+        Next
+
+        Return result
+    End Function
+
+    Private Function FindRow(ByVal rowsByKey As System.Collections.Generic.Dictionary(Of Integer, DataRow), ByVal key As Integer) As DataRow
+        If rowsByKey IsNot Nothing AndAlso rowsByKey.ContainsKey(key) Then Return rowsByKey(key)
+        Return Nothing
+    End Function
+
+    Private Function SumByOnSaleIds(ByVal amountByOnSaleId As System.Collections.Generic.Dictionary(Of Integer, DataRow), ByVal onSaleIds As String, ByVal columnName As String) As Double
+        Dim total As Double = 0
+        For Each onSaleId As Integer In CsvToList(onSaleIds)
+            total += DbVal(FindRow(amountByOnSaleId, onSaleId), columnName)
+        Next
+        Return total
+    End Function
+
+    Private Function SumReceiptBasic(ByVal receiptBasicByPurchaseId As System.Collections.Generic.Dictionary(Of Integer, DataRow), ByVal purchaseIds As String) As Double
+        Dim total As Double = 0
+        For Each purchaseId As Integer In CsvToList(purchaseIds)
+            total += DbVal(FindRow(receiptBasicByPurchaseId, purchaseId), "BasicAmountSum")
+        Next
+        Return total
+    End Function
+
+    Private Sub LoadProfitReport(Optional ByVal condtion As String = "", Optional ByVal includeCharges As Boolean = False, Optional ByVal oldMode As Integer = 0)
+        dg1.Rows.Clear()
+
+        Dim fromDate As String = CDate(txtFromDate.Text).ToString("yyyy-MM-dd")
+        Dim toDate As String = CDate(txttoDate.Text).ToString("yyyy-MM-dd")
+        ssql = "Select * From Purchase Where EntryDate between '" & fromDate & "' and '" & toDate & "' " & condtion & " Group by VoucherID"
+
+        Dim dt As DataTable = clsFun.ExecDataTable(ssql)
+        If dt.Rows.Count = 0 Then
+            calc() : lblCount.Text = "# :" & Val(dg1.RowCount)
+            Exit Sub
+        End If
+
+        Dim voucherIds As String = IdListFromRows(dt, "VoucherID")
+        Dim purchaseAgg As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select VoucherID, Sum(Nug) as PNug, Sum(Weight) as PWeight From Purchase Where VoucherID in (" & voucherIds & ") Group by VoucherID", "VoucherID")
+        Dim transAgg As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey(
+            "Select T.PurchaseID, Sum(T.Nug) as SNug, Sum(T.Weight) as SWeight, Sum(T.Amount) as AmountSum, Sum(T.TotalAmount) as TotalAmountSum, " &
+            "Sum(Case When T.TransType Not In ('On Sale') Then T.Amount Else 0 End) as NonOnSaleAmount, " &
+            "Sum(Case When T.TransType Not In ('Standard Sale','On Sale') Then T.Amount Else 0 End) as NonStandardOnSaleAmount, " &
+            "GROUP_CONCAT(Case When T.TransType='On Sale' Then T.VoucherID End) as OnSaleVoucherIDs, " &
+            "(Select TransType From Transaction2 T2 Where T2.PurchaseID=T.PurchaseID Limit 1) as FirstTransType, " &
+            "(Select SallerAmt From Transaction2 T2 Where T2.PurchaseID=T.PurchaseID Limit 1) as FirstSallerAmt " &
+            "From Transaction2 T Where T.PurchaseID in (" & voucherIds & ") Group by T.PurchaseID", "PurchaseID")
+
+        Dim lookupPurchaseIds As New System.Collections.Generic.List(Of Integer)
+        Dim onSalePurchaseIds As New System.Collections.Generic.List(Of Integer)
+        For Each idText As String In voucherIds.Split(","c)
+            Dim id As Integer = CInt(Val(idText))
+            If id > 0 Then lookupPurchaseIds.Add(id)
+        Next
+        For Each row As DataRow In transAgg.Values
+            For Each id As Integer In CsvToList(DbText(row, "OnSaleVoucherIDs"))
+                If lookupPurchaseIds.Contains(id) = False Then lookupPurchaseIds.Add(id)
+                If onSalePurchaseIds.Contains(id) = False Then onSalePurchaseIds.Add(id)
+            Next
+        Next
+
+        Dim transaction1LookupIds As String = IdListFromValues(lookupPurchaseIds)
+        Dim transaction1ByPurchase As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select PurchaseID, GROUP_CONCAT(OnSaleID) as OnSaleIDs, (Select VoucherID From Transaction1 T1B Where T1B.PurchaseID=T1.PurchaseID Limit 1) as FirstVoucherID From Transaction1 T1 Where PurchaseID in (" & transaction1LookupIds & ") Group by PurchaseID", "PurchaseID")
+
+        Dim ledgerVoucherIds As New System.Collections.Generic.List(Of Integer)
+        Dim voucherLookupIds As New System.Collections.Generic.List(Of Integer)
+        Dim onSaleIds As New System.Collections.Generic.List(Of Integer)
+        For Each row As DataRow In dt.Rows
+            Dim voucherId As Integer = CInt(Val(DbText(row, "VoucherID")))
+            If voucherId > 0 Then
+                voucherLookupIds.Add(voucherId)
+                ledgerVoucherIds.Add(voucherId)
+            End If
+
+            Dim chargeVoucherId As Integer = FirstCsvNumber(DbText(FindRow(transaction1ByPurchase, voucherId), "FirstVoucherID"))
+            If chargeVoucherId > 0 Then
+                voucherLookupIds.Add(chargeVoucherId)
+                ledgerVoucherIds.Add(chargeVoucherId)
+            End If
+        Next
+        For Each row As DataRow In transaction1ByPurchase.Values
+            For Each onSaleId As Integer In CsvToList(DbText(row, "OnSaleIDs"))
+                If onSaleIds.Contains(onSaleId) = False Then onSaleIds.Add(onSaleId)
+            Next
+        Next
+
+        Dim ledgerIds As String = IdListFromValues(ledgerVoucherIds)
+        Dim voucherLookupList As String = IdListFromValues(voucherLookupIds)
+        Dim onSaleIdList As String = IdListFromValues(onSaleIds)
+        Dim onSalePurchaseIdList As String = IdListFromValues(onSalePurchaseIds)
+        Dim ledger28 As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select VourchersID, Amount From Ledger Where AccountID=28 and VourchersID in (" & ledgerIds & ") Group by VourchersID", "VourchersID")
+        Dim ledger46 As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select VourchersID, Amount From Ledger Where AccountID=46 and VourchersID in (" & ledgerIds & ") Group by VourchersID", "VourchersID")
+        Dim vouchersById As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select ID, Sum(TotalAmount) as TotalAmountSum From Vouchers Where ID in (" & voucherLookupList & ") Group by ID", "ID")
+        Dim amountByOnSaleId As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select OnSaleID, Sum(Amount) as AmountSum From Transaction1 Where OnSaleID in (" & onSaleIdList & ") Group by OnSaleID", "OnSaleID")
+        Dim receiptBasicByPurchaseId As System.Collections.Generic.Dictionary(Of Integer, DataRow) = LoadRowsByKey("Select T1.PurchaseID, Sum(BasicAmount) as BasicAmountSum From Transaction1 AS T1 INNER JOIN Vouchers AS V ON T1.VoucherID = V.ID Where V.TransType=('On Sale Receipt') and T1.PurchaseID in (" & onSalePurchaseIdList & ") Group by T1.PurchaseID", "PurchaseID")
+
+        dg1.SuspendLayout()
+        Try
+            For Each row As DataRow In dt.Rows
+                Dim voucherId As Integer = CInt(Val(DbText(row, "VoucherID")))
+                Dim purchaseRow As DataRow = FindRow(purchaseAgg, voucherId)
+                Dim transRow As DataRow = FindRow(transAgg, voucherId)
+                Dim trans1Row As DataRow = FindRow(transaction1ByPurchase, voucherId)
+
+                Dim pNug As Double = DbVal(purchaseRow, "PNug")
+                Dim sNug As Double = DbVal(transRow, "SNug")
+                Dim pWeight As Double = DbVal(purchaseRow, "PWeight")
+                Dim sWeight As Double = DbVal(transRow, "SWeight")
+                Dim saleAmount As Double = 0
+                Dim purchaseAmount As Double = 0
+                Dim transType As String = DbText(transRow, "FirstTransType")
+                Dim onSaleVoucherIds As String = DbText(transRow, "OnSaleVoucherIDs")
+
+                If oldMode = 1 Then
+                    If transType = "Standard Sale" Then
+                        saleAmount = DbVal(transRow, "FirstSallerAmt")
+                    Else
+                        saleAmount = DbVal(transRow, "AmountSum")
+                    End If
+                ElseIf oldMode = 2 Then
+                    If transType = "Standard Sale" Then
+                        saleAmount = DbVal(transRow, "FirstSallerAmt")
+                    ElseIf includeCharges Then
+                        saleAmount = DbVal(transRow, "TotalAmountSum")
+                    Else
+                        saleAmount = DbVal(transRow, "AmountSum")
+                    End If
+                Else
+                    If radioboth.Checked = True Then
+                        If includeCharges Then
+                            saleAmount = DbVal(transRow, "AmountSum")
+                            saleAmount += SumReceiptBasic(receiptBasicByPurchaseId, onSaleVoucherIds)
+                        Else
+                            saleAmount = DbVal(transRow, "NonOnSaleAmount")
+                            Dim onSaleIdRow As DataRow = FindRow(transaction1ByPurchase, FirstCsvNumber(onSaleVoucherIds))
+                            Dim onSaleIdsForPurchase As String = DbText(onSaleIdRow, "OnSaleIDs")
+                            If FirstCsvNumber(onSaleIdsForPurchase) = voucherId Then
+                                saleAmount += SumByOnSaleIds(amountByOnSaleId, onSaleIdsForPurchase, "AmountSum")
+                            End If
+                        End If
+                    ElseIf radioOnSale.Checked = True Then
+                        If includeCharges Then
+                            saleAmount = SumReceiptBasic(receiptBasicByPurchaseId, onSaleVoucherIds)
+                        Else
+                            Dim onSaleIdRow As DataRow = FindRow(transaction1ByPurchase, FirstCsvNumber(onSaleVoucherIds))
+                            Dim onSaleIdsForPurchase As String = DbText(onSaleIdRow, "OnSaleIDs")
+                            If FirstCsvNumber(onSaleIdsForPurchase) = voucherId Then
+                                saleAmount += SumByOnSaleIds(amountByOnSaleId, onSaleIdsForPurchase, "AmountSum")
+                            End If
+                        End If
+                    ElseIf radioSale.Checked = True Then
+                        If includeCharges Then
+                            saleAmount = DbVal(transRow, "AmountSum")
+                        Else
+                            saleAmount = DbVal(transRow, "NonStandardOnSaleAmount")
+                        End If
+                    End If
+                End If
+
+                If DbText(row, "PurchaseTypeName") = "Purchase" Then
+                    If includeCharges Then
+                        purchaseAmount = DbVal(FindRow(vouchersById, voucherId), "TotalAmountSum")
+                    Else
+                        purchaseAmount = DbVal(FindRow(ledger28, voucherId), "Amount")
+                    End If
+                Else
+                    Dim chargeVoucherId As Integer = FirstCsvNumber(DbText(trans1Row, "FirstVoucherID"))
+                    If includeCharges Then
+                        purchaseAmount = DbVal(FindRow(vouchersById, chargeVoucherId), "TotalAmountSum")
+                    Else
+                        purchaseAmount = DbVal(FindRow(ledger46, chargeVoucherId), "Amount")
+                    End If
+                End If
+
+                Dim pnl As Object
+                If oldMode = 0 AndAlso includeCharges = False Then
+                    pnl = Format2(saleAmount - purchaseAmount)
+                ElseIf includeCharges Then
+                    If pNug = sNug Or pWeight = sWeight Then
+                        pnl = Format2(saleAmount - purchaseAmount)
+                    Else
+                        pnl = "Not Sold"
+                    End If
+                Else
+                    If pNug = sNug Then
+                        pnl = Format2(saleAmount - purchaseAmount)
+                    Else
+                        pnl = "Not Sold"
+                    End If
+                End If
+
+                dg1.Rows.Add(New Object() {
+                    voucherId,
+                    CDate(row("EntryDate")).ToString("dd-MM-yyyy"),
+                    DbText(row, "BillNo"),
+                    DbText(row, "VehicleNo"),
+                    DbText(row, "AccountName"),
+                    DbText(row, "PurchaseTypeName"),
+                    Format2(pNug),
+                    Format2(sNug),
+                    Format2(pNug - sNug),
+                    Format2(pWeight),
+                    Format2(sWeight),
+                    Format2(saleAmount),
+                    Format2(purchaseAmount),
+                    pnl,
+                    Format2(pWeight - sWeight)})
+            Next
+        Finally
+            dg1.ResumeLayout()
+        End Try
+
+        dg1.ClearSelection()
+        calc() : lblCount.Text = "# :" & Val(dg1.RowCount)
+    End Sub
+
+    Private Function SqlLikeText(ByVal value As String) As String
+        Return value.Trim().Replace("'", "''")
+    End Function
+
+    Private Function BuildFilterCondition() As String
+        Dim condition As String = ""
+
+        If txtSearch.Text.Trim() <> "" Then
+            condition &= " And AccountName Like '" & SqlLikeText(txtSearch.Text) & "%'"
+        End If
+
+        If txtType.Text.Trim() <> "" Then
+            condition &= " And PurchaseTypeName Like '" & SqlLikeText(txtType.Text) & "%'"
+        End If
+
+        Return condition
+    End Function
+
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
     Private Sub retrive1(Optional ByVal condtion As String = "")
+        LoadProfitReport(condtion, False, 1)
+        Exit Sub
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
@@ -102,6 +396,8 @@
     End Sub
 
     Private Sub RetriveChargeAlso1(Optional ByVal condtion As String = "")
+        LoadProfitReport(condtion, True, 1)
+        Exit Sub
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
@@ -162,6 +458,8 @@
 
 
     Private Sub retrive2(Optional ByVal condtion As String = "")
+        LoadProfitReport(condtion, False, 2)
+        Exit Sub
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
@@ -213,6 +511,8 @@
     End Sub
 
     Private Sub RetriveChargeAlso2(Optional ByVal condtion As String = "")
+        LoadProfitReport(condtion, True, 2)
+        Exit Sub
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
@@ -266,27 +566,29 @@
     End Sub
 
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
+        Dim filterCondition As String = BuildFilterCondition()
+
         If RadioOldMethod.Checked = True Then
             If ckExpAlso.Checked = True Then
-                RetriveChargeAlso1()
+                RetriveChargeAlso1(filterCondition)
             Else
-                retrive1()
+                retrive1(filterCondition)
             End If
 
             Exit Sub
         End If
         If RadioOldMethod2.Checked = True Then
             If ckExpAlso.Checked = True Then
-                RetriveChargeAlso2()
+                RetriveChargeAlso2(filterCondition)
             Else
-                retrive2()
+                retrive2(filterCondition)
             End If
             Exit Sub
         End If
         If ckExpAlso.Checked = True Then
-            RetriveChargeAlso()
+            RetriveChargeAlso(filterCondition)
         Else
-            retrive()
+            retrive(filterCondition)
         End If
         '  calc()
     End Sub
@@ -427,6 +729,8 @@
         txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
     End Sub
     Private Sub retrive(Optional ByVal condtion As String = "")
+        LoadProfitReport(condtion, False, 0)
+        Exit Sub
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
@@ -511,6 +815,8 @@
         calc() : lblCount.Text = "# :" & Val(dg1.RowCount)
     End Sub
     Private Sub RetriveChargeAlso(Optional ByVal condtion As String = "")
+        LoadProfitReport(condtion, True, 0)
+        Exit Sub
         dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim i As Integer
@@ -689,23 +995,9 @@
 
     End Sub
 
-    Private Sub txtSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtSearch.KeyUp
+    Private Sub txtSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtSearch.KeyUp, txtType.KeyUp
         If e.KeyCode = Keys.Enter Then
-            If txtSearch.Text.Trim() <> "" Then
-                'If RadioOldMethod.Checked = True AndAlso ckExpAlso.Checked = True Then RetriveChargeAlso1("And AccountName Like '" & txtSearch.Text.Trim() & "%'") : Exit Sub
-                'If RadioOldMethod.Checked = False AndAlso ckExpAlso.Checked = False Then retrive1("And AccountName Like '" & txtSearch.Text.Trim() & "%'") : Exit Sub
-                'If RadioOldMethod2.Checked = True AndAlso ckExpAlso.Checked = True Then RetriveChargeAlso2("And AccountName Like '" & txtSearch.Text.Trim() & "%'") : Exit Sub
-                'If RadioOldMethod2.Checked = False AndAlso ckExpAlso.Checked = False Then retrive2("And AccountName Like '" & txtSearch.Text.Trim() & "%'") : Exit Sub
-                If ckExpAlso.Checked = True Then
-                    RetriveChargeAlso("And AccountName Like '" & txtSearch.Text.Trim() & "%'")
-                End If
-
-                If ckExpAlso.Checked = False Then
-                    retrive("And AccountName Like '" & txtSearch.Text.Trim() & "%'")
-                End If
-
-            End If
-            If txtSearch.Text.Trim() = "" Then Exit Sub
+            btnShow.PerformClick()
         End If
     End Sub
 

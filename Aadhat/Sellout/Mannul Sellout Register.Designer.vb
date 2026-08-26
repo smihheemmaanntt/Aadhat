@@ -199,11 +199,16 @@ Partial Class Scrip_Register
         '
         'btnPnlVisHide
         '
+        Me.btnPnlVisHide.BackColor = System.Drawing.Color.Red
+        Me.btnPnlVisHide.FlatAppearance.BorderSize = 0
+        Me.btnPnlVisHide.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPnlVisHide.ForeColor = System.Drawing.Color.White
         Me.btnPnlVisHide.Location = New System.Drawing.Point(714, 4)
         Me.btnPnlVisHide.Name = "btnPnlVisHide"
         Me.btnPnlVisHide.Size = New System.Drawing.Size(38, 36)
         Me.btnPnlVisHide.TabIndex = 40266
-        Me.btnPnlVisHide.UseVisualStyleBackColor = True
+        Me.btnPnlVisHide.Text = "X"
+        Me.btnPnlVisHide.UseVisualStyleBackColor = False
         '
         'DgWhatsapp
         '

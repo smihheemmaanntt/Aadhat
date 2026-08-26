@@ -1,0 +1,66 @@
+============================================================
+Time: 03-08-2026 12:44:33
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Hello *PANKAJ FRUIT COMPANY*, your standard sale dated *1 - AADESH SOHAN PANDAT* from *03-08-2026* is ready. Total amount is *42030.00*. Thank you","template_name":"stdsale_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"1 - AADESH SOHAN PANDAT","field_3":"03-08-2026","field_4":"42030.00","body_param_count":4,"header_document":"https://msgz.in/ES54KZ","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-08-02 10:24:19","service_window_expires_at":"2026-08-03 10:24:19","log_uid":"0acd2eb1-5735-4dbf-bc33-d804ad054a17","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U4MkY2RkFGMDIzRjA5M0JGNzgA","status":"accepted"}}
+
+============================================================
+Time: 03-08-2026 13:31:54
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 152, Basic : 1292, Charges : 105.44, Total : 1397","template_name":"bill_en","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"13-07-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/562DLP","header_document_name":"AASHISH OMI MURARI-13-07-2026.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-08-03 07:26:04","service_window_expires_at":"2026-08-04 07:26:04","log_uid":"37219bd8-0f80-4335-9ff1-6b4d9924a0e9","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U0RUE0NTg1MDUyOTE3RjlFRDMA","status":"accepted"}}
+
+============================================================
+Time: 03-08-2026 13:31:57
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"Dear, ASHOK SAINI DIWANWADA,\r\nTodays Sale :  Nug : 1, Weight : 53, Basic : 450.5, Charges : 36.54, Total : 487","template_name":"bill_en","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"13-07-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"487.00","body_param_count":4,"header_document":"https://msgz.in/H5M4TK","header_document_name":"ASHOK SAINI DIWANWADA-13-07-2026.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-07-16 12:08:56","service_window_expires_at":"2026-07-17 12:08:56","log_uid":"98cd1ead-c85e-446a-b556-aca15d04fdec","contact_uid":"d3008e97-b9e1-40ac-acd6-5622bc3e74db","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgUQ0VFREE1NThDNUVEODlGQTc5QTEA","status":"accepted"}}
+
+============================================================
+Time: 03-08-2026 14:04:06
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 152, Basic : 1292, Charges : 105.44, Total : 1397","template_name":"bill_en","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"13-07-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/ZJESLA","header_document_name":"AASHISH OMI MURARI-13-07-2026.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-08-03 07:26:04","service_window_expires_at":"2026-08-04 07:26:04","log_uid":"67407dbd-c4b3-4a56-ad0e-3ae12a5136e4","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0UzRTdDNjczMzQ5QzNDQTFDNjEA","status":"accepted"}}
+
+============================================================
+Time: 03-08-2026 14:04:09
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"Dear, ASHOK SAINI DIWANWADA,\r\nTodays Sale :  Nug : 1, Weight : 53, Basic : 450.5, Charges : 36.54, Total : 487","template_name":"bill_en","template_language":"en_US","field_1":"ASHOK SAINI DIWANWADA","field_2":"13-07-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"487.00","body_param_count":4,"header_document":"https://msgz.in/4JQPRE","header_document_name":"ASHOK SAINI DIWANWADA-13-07-2026.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-07-16 12:08:56","service_window_expires_at":"2026-07-17 12:08:56","log_uid":"543766d4-95b2-4e57-b22d-16fed0e08be8","contact_uid":"d3008e97-b9e1-40ac-acd6-5622bc3e74db","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgUQ0U3MTBBN0Y1MjFDRkQ1MkYxQUEA","status":"accepted"}}
+
+============================================================
+Time: 03-08-2026 14:04:13
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"918441933933","message_body":"Dear, BABLU SAINI,\r\nTodays Sale :  Nug : 2, Weight : 58.5, Basic : 2003.5, Charges : 150.25, Total : 2154","template_name":"bill_en","template_language":"en_US","field_1":"BABLU SAINI","field_2":"13-07-2026","field_3":"PANKAJ FRUIT COMPANY","field_4":"2154.00","body_param_count":4,"header_document":"https://msgz.in/AXC8K5","header_document_name":"BABLU SAINI-13-07-2026.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":null,"service_window_expires_at":null,"log_uid":"17b8767e-cb4b-44cc-ad1c-32e624fd2266","contact_uid":"546c5502-7af5-4b55-94ef-9bf2080c0b0a","phone_number":"918441933933","wamid":"wamid.HBgMOTE4NDQxOTMzOTMzFQIAERgUQ0U2MzFDQjk0QkNGRTJEN0QwMDcA","status":"accepted"}}
+

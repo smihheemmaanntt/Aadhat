@@ -2753,7 +2753,7 @@ Public Class Purchase
         Dim fileUrl As String = ExportPurchasePdfForMobile()
         Dim apiResponse As String = ""
         Dim amountText As String = txtTotalNetAmount.Text
-        If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, txtAccount.Text, txtEntryDate.Text, amountText, fileUrl, "Purchase.pdf", apiResponse) Then
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, txtAccount.Text, txtEntryDate.Text, amountText, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Purchase.pdf"), apiResponse) Then
             MsgBox("Purchase sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
             pnlWhatsapp.Visible = False : txtEntryDate.Focus()
         Else

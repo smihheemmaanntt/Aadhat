@@ -650,7 +650,7 @@ Public Class Purchase_Register
     End Function
 
     Private Function ExportPurchaseRegisterPdfForMobile(ByVal row As DataGridViewRow) As String
-        GlobalData.PdfName = row.Cells(4).Value.ToString().Replace("/", "") & ".pdf"
+        GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(row.Cells(4).Value.ToString() & "(" & row.Cells(2).Value.ToString() & ")-" & txtFromDate.Text, "Purchase.pdf")
         retrive3(row.Cells(1).Value) : PrintBills()
         Pdf_Genrate.ExportReport("\Purchase.rpt")
         Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -708,7 +708,7 @@ Public Class Purchase_Register
                 End If
                 Dim fileUrl As String = ExportPurchaseRegisterPdfForMobile(row)
                 Dim apiResponse As String = ""
-                If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, Convert.ToString(.Cells(4).Value), txtFromDate.Text, "", fileUrl, "Purchase.pdf", apiResponse) Then
+                If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, Convert.ToString(.Cells(4).Value), txtFromDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Purchase.pdf"), apiResponse) Then
                     .Cells(5).Value = "Sent via Official API"
                 Else
                     .Cells(5).Value = apiResponse

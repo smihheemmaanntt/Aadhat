@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("AADHAT")>
-<Assembly: AssemblyDescription("Fruit & Vegetale Market Software")>
+<Assembly: AssemblyTitle("Aadhat")> 
+<Assembly: AssemblyDescription("Fruit & Vegetable Market Software")> 
 <Assembly: AssemblyCompany("SOFT MANAGEMENT INDIA")>
 <Assembly: AssemblyProduct("AADHAT")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
+<Assembly: AssemblyCopyright("Copyright ©  2026")> 
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,6 +31,6 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 '<Assembly: AssemblyVersion("25.0.*")> 
 
-<Assembly: AssemblyVersion("9.26.6.27")> 
+<Assembly: AssemblyVersion("9.26.8.3")> 
 '<Assembly: AssemblyFileVersion("25.1.0.0")> 
 <Assembly: NeutralResourcesLanguageAttribute("en-IN")>

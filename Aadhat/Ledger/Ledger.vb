@@ -1125,14 +1125,9 @@ Public Class Ledger
         cbOfficialTemplate.Items.Clear()
 
         Dim languageCode As String = GetPreferredOfficialLedgerLanguage()
-        Dim alternateLanguage As String = If(languageCode = "hi", "en", "hi")
         Dim preferredIndex As Integer = -1
         Dim dt As DataTable = WhatsAppOfficialDb.GetApprovedDocumentTemplates("ledger", languageCode)
         AddOfficialLedgerTemplateRows(dt, languageCode, languageCode, preferredIndex)
-        dt.Dispose()
-
-        dt = WhatsAppOfficialDb.GetApprovedDocumentTemplates("ledger", alternateLanguage)
-        AddOfficialLedgerTemplateRows(dt, languageCode, alternateLanguage, preferredIndex)
         dt.Dispose()
 
         If cbOfficialTemplate.Items.Count = 0 Then
@@ -1373,7 +1368,7 @@ Public Class Ledger
             selectedTemplate.LanguageCode,
             fields,
             apiResponse,
-            "Ledger.pdf")
+            WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Ledger.pdf"))
         If sent Then
             WhatsAppOfficialDb.AddMessageLog(mobile, selectedTemplate.TemplateCode, "LEDGER", "SUCCESS", apiResponse)
             MsgBox("Ledger sent via Official API." & vbCrLf & ShortStatusText(apiResponse, 220), MsgBoxStyle.Information, "Official API")

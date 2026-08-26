@@ -877,7 +877,7 @@ Public Class Super_Sale_Register
     End Function
 
     Private Function ExportSuperSaleRegisterPdfForMobile(ByVal row As DataGridViewRow) As String
-        GlobalData.PdfName = row.Cells(4).Value.ToString().Replace("/", "") & "-" & row.Cells(2).Value.ToString() & ".pdf"
+        GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(row.Cells(4).Value.ToString() & "(" & row.Cells(2).Value.ToString() & ")-" & txtFromDate.Text, "Bill.pdf")
         retrive3(row.Cells(1).Value) : PrintBills()
         Pdf_Genrate.ExportReport("\SuperSaleBeejak.rpt")
         Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -935,7 +935,7 @@ Public Class Super_Sale_Register
                 End If
                 Dim fileUrl As String = ExportSuperSaleRegisterPdfForMobile(row)
                 Dim apiResponse As String = ""
-                If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, Convert.ToString(.Cells(4).Value), txtFromDate.Text, "", fileUrl, "Bill.pdf", apiResponse) Then
+                If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, Convert.ToString(.Cells(4).Value), txtFromDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
                     .Cells(5).Value = "Sent via Official API"
                 Else
                     .Cells(5).Value = apiResponse

@@ -146,7 +146,7 @@ Partial Class WhatsAppTemplateEditor
         'cbLanguage
         '
         Me.cbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbLanguage.Items.AddRange(New Object() {"en_US", "en", "hi"})
+        Me.cbLanguage.Items.AddRange(New Object() {"en_US", "en", "hi", "bn", "gu", "kn", "ml", "mr", "pa", "ta", "te", "ur"})
         Me.cbLanguage.Location = New System.Drawing.Point(552, 98)
         Me.cbLanguage.Name = "cbLanguage"
         Me.cbLanguage.Size = New System.Drawing.Size(150, 27)

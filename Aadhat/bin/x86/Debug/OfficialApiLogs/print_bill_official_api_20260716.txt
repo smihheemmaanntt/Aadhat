@@ -1,0 +1,44 @@
+============================================================
+Time: 16-07-2026 15:36:24
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 152, Basic : 1292, Charges : 105.44, Total : 1397","template_name":"bill_gu","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"13-07-2026","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/JUR7MT","header_document_name":"Bill.pdf"}
+Parsed Response:
+Template for the selected language not found in the system, if you have created template recently on Facebook please sync templates again. | Data: [] | Template=bill_gu, Lang=en_US
+Raw Response:
+{"result":"failed","message":"Template for the selected language not found in the system, if you have created template recently on Facebook please sync templates again.","data":[]}
+
+============================================================
+Time: 16-07-2026 16:43:25
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी,\r\n नग : 3, वज़न : 152, बिक्री रकम : 1292, ख़र्चे : 105.44, कुल रकम : 1397","template_name":"bill_gu","template_language":"gu","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"13-07-2026","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/S4A6FB","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-07-15 06:02:35","service_window_expires_at":"2026-07-16 06:02:35","log_uid":"5a8e1160-0112-4261-b30b-cc4e11e02ad5","contact_uid":"d3008e97-b9e1-40ac-acd6-5622bc3e74db","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgUQ0UyRTJEODJBQTEyMzRGRjQ4NkYA","status":"accepted"}}
+
+============================================================
+Time: 16-07-2026 17:27:53
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी,\r\n नग : 3, वज़न : 152, बिक्री रकम : 1292, ख़र्चे : 105.44, कुल रकम : 1397","template_name":"bill_gu","template_language":"gu","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"13-07-2026","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/YW6PVS","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-07-15 06:02:35","service_window_expires_at":"2026-07-16 06:02:35","log_uid":"7ad39dbe-e6cb-4711-bf58-f17f0300e25c","contact_uid":"d3008e97-b9e1-40ac-acd6-5622bc3e74db","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgUQ0UyOTI3MzIzMDhGMUJGNzU0OEMA","status":"accepted"}}
+
+============================================================
+Time: 16-07-2026 17:39:12
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917737023933","message_body":"आशीष ओमी मुरारी,\r\n नग : 3, वज़न : 152, बिक्री रकम : 1292, ख़र्चे : 105.44, कुल रकम : 1397","template_name":"bill_gu","template_language":"gu","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"13-07-2026","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/TU45ML","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-16 12:08:56","service_window_expires_at":"2026-07-17 12:08:56","log_uid":"7525ecf9-1c62-459e-a7e6-f02c333a29bb","contact_uid":"d3008e97-b9e1-40ac-acd6-5622bc3e74db","phone_number":"917737023933","wamid":"wamid.HBgMOTE3NzM3MDIzOTMzFQIAERgUQ0UzREM4OUFDMjUxQTkxRTU4NDEA","status":"accepted"}}
+

@@ -2574,7 +2574,7 @@ Public Class Loose_Sale
             Exit Sub
         End If
         Dim apiResponse As String = ""
-        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("loose_sale", "LOOSE_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse)
+        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("loose_sale", "LOOSE_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse)
         If ok Then
             MsgBox("Loose Sale sent via Official API", vbInformation, "Official API")
             pnlWhatsapp.Visible = False : FootertextClear()

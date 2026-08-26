@@ -2445,7 +2445,7 @@ Public Class Sellout_Mannual
         End If
         Dim fileUrl As String = ExportSelloutManualPdfForOfficial()
         Dim apiResponse As String = ""
-        If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_manual", "SELLOUT_MANUAL", mobile, txtAccount.Text, txtEntryDate.Text, txttotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse) Then
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_manual", "SELLOUT_MANUAL", mobile, txtAccount.Text, txtEntryDate.Text, txttotalNetAmount.Text, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
             MsgBox("Sellout Manual sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
             pnlWhatsapp.Visible = False : txtEntryDate.Focus()
         Else

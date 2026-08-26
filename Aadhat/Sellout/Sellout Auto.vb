@@ -702,11 +702,11 @@ Public Class Sellout_Auto
             If dg1.SelectedRows.Count = 1 Then
                 dg1.SelectedRows(0).Cells(0).Value = txtItem.Text
                 dg1.SelectedRows(0).Cells(1).Value = txtLotNo.Text
-                dg1.SelectedRows(0).Cells(2).Value = Val(txtNug.Text)
-                dg1.SelectedRows(0).Cells(3).Value = Val(txtKg.Text)
-                dg1.SelectedRows(0).Cells(4).Value = Val(txtRate.Text)
+                dg1.SelectedRows(0).Cells(2).Value = Format(Val(txtNug.Text), "0.00")
+                dg1.SelectedRows(0).Cells(3).Value = Format(Val(txtKg.Text), "0.00")
+                dg1.SelectedRows(0).Cells(4).Value = Format(Val(txtRate.Text), "0.00")
                 dg1.SelectedRows(0).Cells(5).Value = Cbper.Text
-                dg1.SelectedRows(0).Cells(6).Value = txtTotAmount.Text
+                dg1.SelectedRows(0).Cells(6).Value = Format(Val(txtTotAmount.Text), "0.00")
                 dg1.SelectedRows(0).Cells(7).Value = Val(txtItemID.Text)
                 dg1.SelectedRows(0).Cells(8).Value = lblCrate.Text
                 dg1.SelectedRows(0).Cells(10).Value = Val(txtGrossWt.Text)
@@ -1678,7 +1678,7 @@ Public Class Sellout_Auto
             If ModifySellout <> "Y" Then MsgBox("You Don't Have Rights to Modify Sellout... " & vbNewLine & " Please Contact to Admin..Contact to Owner...", MsgBoxStyle.Critical, "Access Denied") : Exit Sub
             UpdateRecord() : txtid.Clear()
         End If
-        Dim res = MessageBox.Show("Do you want to Print Bill", "Print", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        Dim res = MessageBox.Show("Do you want to Print Bill", "Print", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
         If res = Windows.Forms.DialogResult.Yes Then
             btnPrint.Enabled = True : btnPrint.PerformClick()
             txtid.Clear()
@@ -2588,7 +2588,7 @@ Public Class Sellout_Auto
         End If
         Dim fileUrl As String = ExportSelloutAutoPdfForOfficial()
         Dim apiResponse As String = ""
-        If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_auto", "SELLOUT_AUTO", mobile, txtAccount.Text, txtEntryDate.Text, txttotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse) Then
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("sellout_auto", "SELLOUT_AUTO", mobile, txtAccount.Text, txtEntryDate.Text, txttotalNetAmount.Text, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
             MsgBox("Sellout Auto sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
             pnlWhatsapp.Visible = False : txtEntryDate.Focus()
         Else
@@ -2771,6 +2771,14 @@ Public Class Sellout_Auto
     End Sub
 
     Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
+
+    End Sub
+
+    Private Sub txtNug_TextChanged(sender As Object, e As EventArgs) Handles txtNug.TextChanged
+
+    End Sub
+
+    Private Sub txtTotAmount_TextChanged(sender As Object, e As EventArgs) Handles txtTotAmount.TextChanged
 
     End Sub
 End Class

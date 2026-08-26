@@ -1,0 +1,88 @@
+============================================================
+Time: 24-07-2026 11:53:19
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Hello *PANKAJ FRUIT COMPANY*, your standard sale dated *AADESH SOHAN PANDAT* from *24-07-2026* is ready. Total amount is *13340.00*. Thank you","template_name":"stdsale_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AADESH SOHAN PANDAT","field_3":"24-07-2026","field_4":"13340.00","body_param_count":4,"header_document":"https://msgz.in/4GVY5F","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed for WhatsApp contact. (template_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed for WhatsApp contact.","data":{"message_mode":"template_message","service_window_open":false,"last_incoming_message_at":"2026-07-21 06:32:05","service_window_expires_at":"2026-07-22 06:32:05","log_uid":"3e30be02-9ea3-4b21-8aa4-88fdc630013e","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U0QzU3RkVFQjZGQjVBRDc0RjMA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 11:54:49
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"नमस्ते *PANKAJ FRUIT COMPANY*, फर्म *आदेश सोहन पंडत जी* से दिनांक *24-07-2026* की स्टैंडर्ड सेल तैयार है। कुल रकम ** है। धन्यवाद","template_name":"stdsale_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"आदेश सोहन पंडत जी","field_3":"24-07-2026","field_4":"-","body_param_count":4,"header_document":"https://msgz.in/9CU4DG","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"8d33e684-1a61-4211-a9b1-867e7cf1849b","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U4NDFDMEJGRUQwREQxMEE0QTYA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 11:56:04
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Hello *PANKAJ FRUIT COMPANY*, your standard sale dated *1 - AADESH SOHAN PANDAT* from *24-07-2026* is ready. Total amount is **. Thank you","template_name":"stdsale_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"1 - AADESH SOHAN PANDAT","field_3":"24-07-2026","field_4":"-","body_param_count":4,"header_document":"https://msgz.in/BL6SF3","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"8657ac32-c83a-47d9-b422-b8419422d031","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U0QjMwRDczQ0M2RDMzRDcyOTkA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 12:13:47
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Hello *PANKAJ FRUIT COMPANY*, your standard sale dated *1 - AADESH SOHAN PANDAT* from *24-07-2026* is ready. Total amount is *13340.00*. Thank you","template_name":"stdsale_en","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"1 - AADESH SOHAN PANDAT","field_3":"24-07-2026","field_4":"13340.00","body_param_count":4,"header_document":"https://msgz.in/G968UB","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"c895e5f0-9299-437c-a07c-1b2b0175f6ef","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0VCNjY3NEU1NjE1MDI2NzExN0IA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 12:14:03
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"नमस्ते *PANKAJ FRUIT COMPANY*, फर्म *आदेश सोहन पंडत जी* से दिनांक *24-07-2026* की स्टैंडर्ड सेल तैयार है। कुल रकम *13340.00* है। धन्यवाद","template_name":"stdsale_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"आदेश सोहन पंडत जी","field_3":"24-07-2026","field_4":"13340.00","body_param_count":4,"header_document":"https://msgz.in/WDFH4N","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"f2e9d3fa-a50e-4db2-8200-f069290de2b1","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0U3NURCODA0NjQ2MDJGRkZEMTkA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 13:29:58
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 152, Basic : 1292, Charges : 105.44, Total : 1397","template_name":"aadhat","template_language":"en_US","field_1":"PANKAJ FRUIT COMPANY","field_2":"AASHISH OMI MURARI","field_3":"13-07-2026","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/XCPAVY","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"fda2f0e2-32a2-4ea7-bdd6-adee47ad8ef0","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0UzRTZBREI4MjIyQTI1MjM5RTgA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 13:30:11
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"Dear, AASHISH OMI MURARI,\r\nTodays Sale :  Nug : 3, Weight : 152, Basic : 1292, Charges : 105.44, Total : 1397","template_name":"bill_en","template_language":"en_US","field_1":"AASHISH OMI MURARI","field_2":"13-07-2026","field_3":"पंकज फ्रूट कम्पनी","field_4":"1397.00","body_param_count":4,"header_document":"https://msgz.in/2QTZAS","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"bbf82a43-b90b-48da-94dd-7d462e65b7ef","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0VCMzc3REUxOEUxMzhDNjZBOUUA","status":"accepted"}}
+
+============================================================
+Time: 24-07-2026 13:41:22
+VendorUid: 29f7...f54
+Endpoint: https://wahsoft.in/public/api/29f7...f54/contact/send-smart-message
+Payload:
+{"phone_number":"917891933933","message_body":"आशीष ओमी मुरारी,\r\n नग : 3, वज़न : 152, बिक्री रकम : 1292, ख़र्चे : 105.44, कुल रकम : 1397","template_name":"bill_hi","template_language":"hi","field_1":"PANKAJ FRUIT COMPANY","field_2":"आशीष ओमी मुरारी","field_3":"13-07-2026","field_4":"1397.00","field_5":"8915.00 Dr","body_param_count":5,"header_document":"https://msgz.in/XKF2G8","header_document_name":"Bill.pdf"}
+Parsed Response:
+Successful - Message processed (service_document_message) Status: accepted
+Raw Response:
+{"result":"success","message":"Message processed","data":{"message_mode":"service_document_message","service_window_open":true,"last_incoming_message_at":"2026-07-24 06:24:16","service_window_expires_at":"2026-07-25 06:24:16","log_uid":"b9c9c9a5-0e9a-4b88-a907-6707764653d5","contact_uid":"4e95b9ea-48a7-411d-b7ef-7f7dc1cbed8b","phone_number":"917891933933","wamid":"wamid.HBgMOTE3ODkxOTMzOTMzFQIAERgUQ0VFMkJEOTA2NEU3Nzg3Qjk4RTcA","status":"accepted"}}
+

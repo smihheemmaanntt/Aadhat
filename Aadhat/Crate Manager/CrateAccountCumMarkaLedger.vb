@@ -722,7 +722,7 @@ Public Class CrateCrateAccountCumMarkaLedger
             Exit Sub
         End If
         Dim apiResponse As String = ""
-        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("crate_ledger", "CRATE_LEDGER", mobile, txtAccount.Text, txtFromDate.Text, "", fileUrl, "Ledger.pdf", apiResponse, "", txtToDate.Text, SelectedOfficialTemplateCode())
+        Dim ok As Boolean = WhatsAppOfficialSendHelper.SendAadhatDocument("crate_ledger", "CRATE_LEDGER", mobile, txtAccount.Text, txtFromDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Ledger.pdf"), apiResponse, "", txtToDate.Text, SelectedOfficialTemplateCode())
         If ok Then
             MsgBox("Crate Ledger sent via Official API", vbInformation, "Official API")
             pnlWahtsappNo.Visible = False : txtAccount.Focus()

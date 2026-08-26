@@ -636,6 +636,58 @@ Public Class Standard_Sale_Register
             .Columns(79).Name = "GrandTotal" : .Columns(78).Width = 15
         End With
     End Sub
+
+    Private Function CsvIdsFromTable(ByVal dt As DataTable, ByVal columnName As String) As String
+        Dim ids As New Dictionary(Of String, Boolean)
+        Dim csv As String = String.Empty
+        For Each row As DataRow In dt.Rows
+            Dim id As String = Val(row(columnName).ToString()).ToString()
+            If id <> "0" AndAlso ids.ContainsKey(id) = False Then
+                ids.Add(id, True)
+                csv = csv & If(csv <> "", ",", "") & id
+            End If
+        Next
+        Return csv
+    End Function
+
+    Private Function LoadRowLookup(ByVal sql As String, ByVal keyColumn As String) As Dictionary(Of String, DataRow)
+        Dim lookup As New Dictionary(Of String, DataRow)
+        Dim dt As DataTable = clsFun.ExecDataTable(sql)
+        For Each row As DataRow In dt.Rows
+            Dim key As String = Val(row(keyColumn).ToString()).ToString()
+            If lookup.ContainsKey(key) = False Then lookup.Add(key, row)
+        Next
+        Return lookup
+    End Function
+
+    Private Function LoadChargesLookup(ByVal voucherIds As String) As Dictionary(Of String, List(Of DataRow))
+        Dim lookup As New Dictionary(Of String, List(Of DataRow))
+        If voucherIds = "" Then Return lookup
+        Dim dt As DataTable = clsFun.ExecDataTable("Select CT.*, C.PrintName FROM ChargesTrans CT LEFT JOIN Charges C ON C.ID=CT.ChargesID WHERE CT.VoucherID in (" & voucherIds & ")")
+        For Each row As DataRow In dt.Rows
+            Dim key As String = Val(row("VoucherID").ToString()).ToString()
+            If lookup.ContainsKey(key) = False Then lookup.Add(key, New List(Of DataRow))
+            lookup(key).Add(row)
+        Next
+        Return lookup
+    End Function
+
+    Private Function LookupText(ByVal lookup As Dictionary(Of String, DataRow), ByVal key As String, ByVal columnName As String) As String
+        If lookup.ContainsKey(key) = False Then Return ""
+        If lookup(key).IsNull(columnName) Then Return ""
+        Return lookup(key)(columnName).ToString()
+    End Function
+
+    Private Function CachedScalar(ByVal cache As Dictionary(Of String, String), ByVal key As String, ByVal sql As String) As String
+        If cache.ContainsKey(key) = False Then cache.Add(key, clsFun.ExecScalarStr(sql))
+        Return cache(key)
+    End Function
+
+    Private Function CachedDataTable(ByVal cache As Dictionary(Of String, DataTable), ByVal key As String, ByVal sql As String) As DataTable
+        If cache.ContainsKey(key) = False Then cache.Add(key, clsFun.ExecDataTable(sql))
+        Return cache(key)
+    End Function
+
     Public Sub retrive2(ByVal id As String, Optional ByVal condtion As String = "")
         Dim i, j As Integer
         Dim dt As New DataTable
@@ -660,43 +712,51 @@ Public Class Standard_Sale_Register
                                   & "Items.OtherName, Accounts.OtherName as AccountOtherName,Transaction2.Cratemarka as CrateMarka, Transaction2.CrateQty as CrateQty FROM ((Vouchers INNER JOIN Transaction2 ON Vouchers.ID = Transaction2.VoucherID)" _
                                   & "INNER JOIN Items ON Transaction2.ItemID = Items.ID) INNER JOIN Accounts ON Vouchers.AccountID = Accounts.ID  Where  Vouchers.EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & id & " " & condtion & "")
         If dt.Rows.Count = 0 Then Exit Sub
+        Dim voucherIds As String = CsvIdsFromTable(dt, "ID")
+        Dim transactionTotalLookup As Dictionary(Of String, DataRow) = LoadRowLookup("Select VoucherID, Sum(Nug) as Nug, Sum(Weight) as Weight, Sum(CommAmt) as CommAmt, Sum(Mamt) as Mamt, Sum(rdfAmt) as rdfAmt, Sum(tareamt) as tareamt, Sum(Labouramt) as Labouramt From Transaction2 Where VoucherID in (" & voucherIds & ") Group By VoucherID", "VoucherID")
+        Dim chargesLookup As Dictionary(Of String, List(Of DataRow)) = LoadChargesLookup(voucherIds)
+        Dim scalarCache As New Dictionary(Of String, String)
+        Dim dataTableCache As New Dictionary(Of String, DataTable)
         If dt.Rows.Count > 0 Then
             For i = 0 To dt.Rows.Count - 1
+                Dim voucherID As String = Val(dt.Rows(i)("ID").ToString()).ToString()
+                Dim accountID As String = Val(dt.Rows(i)("AccountID").ToString()).ToString()
+                Dim entryDateSql As String = CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd")
                 ''''''''''''''''''''' Opening Balance'''''''''''''''''''''''''''''''''''
-                opbal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "')" & _
-                                         "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "')) " & _
-                                         " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "')" & _
-                                         " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(dt.Rows(i)("AccountID").ToString()) & " Order by upper(AccountName) ;"))
+                opbal = Val(CachedScalar(scalarCache, "opbal|" & accountID & "|" & entryDateSql, "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & entryDateSql & "')" & _
+                                         "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & entryDateSql & "')) " & _
+                                         " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & entryDateSql & "')" & _
+                                         " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & entryDateSql & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & accountID & " Order by upper(AccountName) ;"))
 
                 ''''''''''''''''''''closing balance'''''''''''''''''''''''''
 
-                ClBal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "')" & _
-                                         "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "')) " & _
-                                         " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "')" & _
-                                         " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(dt.Rows(i)("AccountID").ToString()) & " Order by upper(AccountName) ;"))
+                ClBal = Val(CachedScalar(scalarCache, "clbal|" & accountID & "|" & entryDateSql, "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & entryDateSql & "')" & _
+                                         "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & entryDateSql & "')) " & _
+                                         " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & entryDateSql & "')" & _
+                                         " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & entryDateSql & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & accountID & " Order by upper(AccountName) ;"))
 
-                FixOpbal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                FixOpbal = Val(CachedScalar(scalarCache, "fixopbal|" & accountID, "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
                                         "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')) " & _
                                         " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                        " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(dt.Rows(i)("AccountID").ToString()) & " Order by upper(AccountName) ;"))
+                                        " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <'" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & accountID & " Order by upper(AccountName) ;"))
 
                 ''''''''''''''''''''closing balance'''''''''''''''''''''''''
 
-                FixClbal = Val(clsFun.ExecScalarStr("Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "')" & _
+                FixClbal = Val(CachedScalar(scalarCache, "fixclbal|" & accountID, "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "')" & _
                                          "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "')) " & _
                                          " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate <='" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "')" & _
-                                         " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & Val(dt.Rows(i)("AccountID").ToString()) & " Order by upper(AccountName) ;"))
+                                         " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate <='" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "'))  end),2) as  Restbal from Accounts Where RestBal<>0 and ID=" & accountID & " Order by upper(AccountName) ;"))
 
 
-                TodaysCredit = Val(clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and EntryDate = '" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "'"))
-                todaysDebit = Val(clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='D' and accountID=" & Val(dt.Rows(i)("AccountID").ToString()) & " and EntryDate = '" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "'"))
+                TodaysCredit = Val(CachedScalar(scalarCache, "todaycredit|" & accountID & "|" & entryDateSql, "Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & accountID & " and EntryDate = '" & entryDateSql & "'"))
+                todaysDebit = Val(CachedScalar(scalarCache, "todaydebit|" & accountID & "|" & entryDateSql, "Select sum(Amount) as tot from Ledger where Dc='D' and accountID=" & accountID & " and EntryDate = '" & entryDateSql & "'"))
                 If ClBal < 0 Then
                     lastbal = Format(Math.Abs(Val(Val(ClBal + todaysDebit) - TodaysCredit)), "0.00") & " Cr"
                 Else
                     lastbal = Format(Math.Abs(Val(Val(ClBal - todaysDebit))), "0.00") & " Dr"
                 End If
 
-                acID = Val(dt.Rows(i)("AccountID").ToString())
+                acID = Val(accountID)
                 ''''''Total Crates Show''''''
                 Dim U As Integer = 0
                 Dim cratebal As String = String.Empty
@@ -705,12 +765,12 @@ Public Class Standard_Sale_Register
                 Dim CQty As String = String.Empty
                 Dim SingleCrate As String = String.Empty
                 Dim dtcrate As New DataTable
-                dtcrate = clsFun.ExecDataTable("Select CrateName,CrateName ||':'||" & _
+                dtcrate = CachedDataTable(dataTableCache, "crate|" & accountID, "Select CrateName,CrateName ||':'||" & _
                 " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "') -" & _
                 " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "')) as Reciveable," & _
                             " ((Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID = ACG.ID and CV.CrateID = CrateID and CrateType='Crate Out' and EntryDate <= '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "') -" & _
                 " (Select ifnull(Sum(Qty),0) from CrateVoucher Where AccountID =  ACG.ID and CV.CrateID = CrateID and CrateType='Crate In' and EntryDate <= '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "')) as DueCrates " & _
-                " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and AccountID='" & Val(dt.Rows(i)("AccountID").ToString()) & "' Group by AccountID,CrateID Having DueCrates<>0 order by upper(ACG.AccountName);")
+                " FROM CrateVoucher as CV INNER JOIN Account_AcGrp AS ACG ON CV.AccountID = ACG.ID Where EntryDate <= '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and AccountID='" & accountID & "' Group by AccountID,CrateID Having DueCrates<>0 order by upper(ACG.AccountName);")
                 Try
                     If dtcrate.Rows.Count > 0 Then
                         For U = 0 To dtcrate.Rows.Count - 1
@@ -728,7 +788,7 @@ Public Class Standard_Sale_Register
                 End Try
                 If tmpgrid.RowCount = 0 Then TempRowColumn()
                 tmpgrid.Rows.Add()
-                Dim RectAmt = Val(clsFun.ExecScalarStr("Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & Val(dt.Rows(i)("AccountID")).ToString() & " and EntryDate = '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'"))
+                Dim RectAmt = Val(CachedScalar(scalarCache, "rectamt|" & accountID, "Select sum(Amount) as tot from Ledger where Dc='C' and accountID=" & accountID & " and EntryDate = '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "'"))
                 cnt = cnt + 1
                 With tmpgrid.Rows(cnt)
                     .Cells(1).Value = Format(dt.Rows(i)("EntryDate"), "dd-MM-yyyy")
@@ -762,13 +822,13 @@ Public Class Standard_Sale_Register
                     .Cells(36).Value = .Cells(36).Value & Format(Val(dt.Rows(i)("DiscountAmount").ToString()), "0.00")
                     .Cells(37).Value = .Cells(37).Value & Format(Val(dt.Rows(i)("SubTotal").ToString()), "0.00")
                     .Cells(38).Value = .Cells(38).Value & Format(Val(dt.Rows(i)("RoundOff").ToString()), "0.00")
-                    .Cells(39).Value = Val(clsFun.ExecScalarStr("Select Sum(Nug) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & ""))
-                    .Cells(40).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(Weight) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & "")), "0.00") 'Format(Val(dt.Compute("Sum(Weight)", "")), "0.00")
-                    .Cells(41).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(CommAmt) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & "")), "0.00") 'Format(Val(dt.Compute("Sum(CommAmt)", "")), "0.00")
-                    .Cells(42).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(Mamt) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & "")), "0.00") 'Format(Val(dt.Compute("Sum(Mamt)", "")), "0.00")
-                    .Cells(43).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(rdfAmt) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & "")), "0.00") 'Format(Val(dt.Compute("Sum(rdfAmt)", "")), "0.00")
-                    .Cells(44).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(tareamt) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & "")), "0.00") 'Format(Val(dt.Compute("Sum(tareamt)", "")), "0.00")
-                    .Cells(45).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(Labouramt) From Transaction2 Where VoucherID= " & Val(dt.Rows(i)("ID").ToString()) & "")), "0.00") 'Format(Val(dt.Compute("Sum(Labouramt)", "")), "0.00")
+                    .Cells(39).Value = Val(LookupText(transactionTotalLookup, voucherID, "Nug"))
+                    .Cells(40).Value = Format(Val(LookupText(transactionTotalLookup, voucherID, "Weight")), "0.00") 'Format(Val(dt.Compute("Sum(Weight)", "")), "0.00")
+                    .Cells(41).Value = Format(Val(LookupText(transactionTotalLookup, voucherID, "CommAmt")), "0.00") 'Format(Val(dt.Compute("Sum(CommAmt)", "")), "0.00")
+                    .Cells(42).Value = Format(Val(LookupText(transactionTotalLookup, voucherID, "Mamt")), "0.00") 'Format(Val(dt.Compute("Sum(Mamt)", "")), "0.00")
+                    .Cells(43).Value = Format(Val(LookupText(transactionTotalLookup, voucherID, "rdfAmt")), "0.00") 'Format(Val(dt.Compute("Sum(rdfAmt)", "")), "0.00")
+                    .Cells(44).Value = Format(Val(LookupText(transactionTotalLookup, voucherID, "tareamt")), "0.00") 'Format(Val(dt.Compute("Sum(tareamt)", "")), "0.00")
+                    .Cells(45).Value = Format(Val(LookupText(transactionTotalLookup, voucherID, "Labouramt")), "0.00") 'Format(Val(dt.Compute("Sum(Labouramt)", "")), "0.00")
                     .Cells(46).Value = dt.Rows(i)("T1").ToString()
                     .Cells(47).Value = dt.Rows(i)("T2").ToString()
                     .Cells(48).Value = dt.Rows(i)("T3").ToString()
@@ -792,24 +852,24 @@ Public Class Standard_Sale_Register
                     .Cells(67).Value = dt.Rows(i)("Mobile1").ToString()
                     .Cells(68).Value = dt.Rows(i)("Mobile2").ToString()
                     .Cells(71).Value = RectAmt 'dt.Rows(i)("Mobile2").ToString()
-                    .Cells(72).Value = clsFun.ExecScalarStr("Select  ('Last Receipt Rs. : '|| Sum(Vouchers.TotalAmount)  || ' Disc : '|| Sum(Vouchers.DiscountAmount) ||  ' On : '|| strftime('%d-%m-%Y', vouchers.Entrydate)) as lastReceipt,AccountID,TransType FROM Vouchers where TransType='Receipt' and Accountid=" & dt.Rows(i)(3) & " Group by EntryDate ORDER BY Vouchers.Entrydate DESC limit 1 ;")
-                    .Cells(73).Value = clsFun.ExecScalarStr("Select 'Total Amount Rec. Rs. :'||Sum(Amount) ||' of Todays Crate Rec. :'||Sum(Qty) as CrateRec  From CrateVoucher Where EntryDate ='" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "' and CrateType='Crate In' And Amount<>0 and AccountID=" & dt.Rows(i)(3) & "")
-                    .Cells(74).Value = clsFun.ExecScalarStr("Select  ('अंतिम जमा राशि:'|| Sum(Vouchers.TotalAmount)  || ' छूट : '|| Sum(Vouchers.DiscountAmount) ||  ' दिनांक : '|| strftime('%d-%m-%Y', vouchers.Entrydate)) as lastReceipt,AccountID,TransType FROM Vouchers where TransType='Receipt' and Accountid=" & dt.Rows(i)(3) & " Group by EntryDate ORDER BY Vouchers.Entrydate DESC limit 1 ;")
-                    .Cells(75).Value = clsFun.ExecScalarStr("Select 'आज केरेट जमा राशि:'||Sum(Amount) ||' आज जमा केरेट :'||Sum(Qty) as CrateRec  From CrateVoucher Where EntryDate ='" & CDate(dt.Rows(i)("EntryDate")).ToString("yyyy-MM-dd") & "' and CrateType='Crate In' And Amount<>0 and AccountID=" & dt.Rows(i)(3) & "")
+                    .Cells(72).Value = CachedScalar(scalarCache, "lastreceipt_en|" & accountID, "Select  ('Last Receipt Rs. : '|| Sum(Vouchers.TotalAmount)  || ' Disc : '|| Sum(Vouchers.DiscountAmount) ||  ' On : '|| strftime('%d-%m-%Y', vouchers.Entrydate)) as lastReceipt,AccountID,TransType FROM Vouchers where TransType='Receipt' and Accountid=" & accountID & " Group by EntryDate ORDER BY Vouchers.Entrydate DESC limit 1 ;")
+                    .Cells(73).Value = CachedScalar(scalarCache, "craterec_en|" & accountID & "|" & entryDateSql, "Select 'Total Amount Rec. Rs. :'||Sum(Amount) ||' of Todays Crate Rec. :'||Sum(Qty) as CrateRec  From CrateVoucher Where EntryDate ='" & entryDateSql & "' and CrateType='Crate In' And Amount<>0 and AccountID=" & accountID & "")
+                    .Cells(74).Value = CachedScalar(scalarCache, "lastreceipt_hi|" & accountID, "Select  ('अंतिम जमा राशि:'|| Sum(Vouchers.TotalAmount)  || ' छूट : '|| Sum(Vouchers.DiscountAmount) ||  ' दिनांक : '|| strftime('%d-%m-%Y', vouchers.Entrydate)) as lastReceipt,AccountID,TransType FROM Vouchers where TransType='Receipt' and Accountid=" & accountID & " Group by EntryDate ORDER BY Vouchers.Entrydate DESC limit 1 ;")
+                    .Cells(75).Value = CachedScalar(scalarCache, "craterec_hi|" & accountID & "|" & entryDateSql, "Select 'आज केरेट जमा राशि:'||Sum(Amount) ||' आज जमा केरेट :'||Sum(Qty) as CrateRec  From CrateVoucher Where EntryDate ='" & entryDateSql & "' and CrateType='Crate In' And Amount<>0 and AccountID=" & accountID & "")
                     .Cells(76).Value = If(Val(FixOpbal) >= 0, Format(Math.Abs(Val(FixOpbal)), "0.00") & " Dr", Format(Math.Abs(Val(FixOpbal)), "0.00") & " Cr")
                     .Cells(77).Value = If(Val(FixClbal) >= 0, Format(Math.Abs(Val(FixClbal)), "0.00") & " Dr", Format(Math.Abs(Val(FixClbal)), "0.00") & " Cr")
-                    .Cells(78).Value = clsFun.ExecScalarStr("Select  Sum(TotaLAmount) as lastReciept FROM Vouchers where TransType='Receipt' and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and Accountid=" & dt.Rows(i)(3) & " ;")
-                    .Cells(79).Value = Format(Val(clsFun.ExecScalarStr("Select Sum(TotalAmount) From Transaction2 Where EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and Accountid=" & dt.Rows(i)(3) & "")), "0.00")
-                    dt1 = clsFun.ExecDataTable("Select * FROM ChargesTrans WHERE VoucherID=" & dt.Rows(i)("ID").ToString() & "")
+                    .Cells(78).Value = CachedScalar(scalarCache, "totalreceipt|" & accountID, "Select  Sum(TotaLAmount) as lastReciept FROM Vouchers where TransType='Receipt' and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and Accountid=" & accountID & " ;")
+                    .Cells(79).Value = Format(Val(CachedScalar(scalarCache, "grandtotal|" & accountID, "Select Sum(TotalAmount) From Transaction2 Where EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' AND '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and Accountid=" & accountID & "")), "0.00")
+                    Dim chargeRows As List(Of DataRow) = Nothing
                     '  tmpgrid.Rows.Clear()
-                    If dt1.Rows.Count > 0 Then
-                        For j = 0 To dt1.Rows.Count - 1
-                            .Cells(13).Value = .Cells(13).Value & dt1.Rows(j)("ChargeName").ToString() & vbCrLf
-                            .Cells(14).Value = .Cells(14).Value & dt1.Rows(j)("OnValue").ToString() & vbCrLf
-                            .Cells(15).Value = .Cells(15).Value & dt1.Rows(j)("Calculate").ToString() & vbCrLf
-                            .Cells(16).Value = .Cells(16).Value & dt1.Rows(j)("ChargeType").ToString() & vbCrLf
-                            .Cells(17).Value = .Cells(17).Value & dt1.Rows(j)("Amount").ToString() & vbCrLf
-                            .Cells(63).Value = .Cells(63).Value & clsFun.ExecScalarStr("Select PrintName From Charges Where ID=" & Val(dt1.Rows(j)("ChargesID").ToString()) & "") & vbCrLf
+                    If chargesLookup.TryGetValue(voucherID, chargeRows) AndAlso chargeRows.Count > 0 Then
+                        For j = 0 To chargeRows.Count - 1
+                            .Cells(13).Value = .Cells(13).Value & chargeRows(j)("ChargeName").ToString() & vbCrLf
+                            .Cells(14).Value = .Cells(14).Value & chargeRows(j)("OnValue").ToString() & vbCrLf
+                            .Cells(15).Value = .Cells(15).Value & chargeRows(j)("Calculate").ToString() & vbCrLf
+                            .Cells(16).Value = .Cells(16).Value & chargeRows(j)("ChargeType").ToString() & vbCrLf
+                            .Cells(17).Value = .Cells(17).Value & chargeRows(j)("Amount").ToString() & vbCrLf
+                            .Cells(63).Value = .Cells(63).Value & chargeRows(j)("PrintName").ToString() & vbCrLf
                         Next
                     Else
                         .Cells(13).Value = ""
@@ -1093,12 +1153,13 @@ Public Class Standard_Sale_Register
                 End If
                 Dim accountName As String = If(btnRadioEnglish.Checked = True, Convert.ToString(.Cells(2).Value), Convert.ToString(.Cells(5).Value))
                 Dim messageText As String = If(btnRadioEnglish.Checked = True, Convert.ToString(.Cells(4).Value), Convert.ToString(.Cells(6).Value))
+                Dim totalAmount As String = Convert.ToString(.Cells(10).Value)
                 Dim apiResponse As String = ""
                 Dim ok As Boolean
                 If RadioMsgOnly.Checked = True Then
-                    ok = WhatsAppOfficialSendHelper.SendAadhatText("standard_sale", "STANDARD_SALE", mobile, accountName, txtFromDate.Text, "", messageText, apiResponse, If(RadioRegional.Checked, "hi", "en"))
+                    ok = WhatsAppOfficialSendHelper.SendAadhatText("standard_sale", "STANDARD_SALE", mobile, accountName, txtFromDate.Text, totalAmount, messageText, apiResponse, If(RadioRegional.Checked, "hi", "en"))
                 Else
-                    ok = WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, accountName, txtFromDate.Text, "", fileUrl, "Bill.pdf", apiResponse, If(RadioRegional.Checked, "hi", "en"))
+                    ok = WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, accountName, txtFromDate.Text, totalAmount, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse, If(RadioRegional.Checked, "hi", "en"))
                 End If
                 .Cells(7).Value = If(ok, "Sent via Official API", apiResponse)
             End With
@@ -1286,12 +1347,14 @@ Public Class Standard_Sale_Register
         End If
     End Sub
     Private Sub StartBackgroundTask(action As Action)
-        If Not bgWorker.IsBusy Then
-            bgWorker.RunWorkerAsync(action)
-            'MsgBox("A background task is running. you can Use your Task", MsgBoxStyle.Information, "Background Task")
-        Else
-            MsgBox("A background task is already running.", MsgBoxStyle.Information, "Background Task")
-        End If
+        If bgWorker.IsBusy OrElse isBackgroundWorkerRunning Then Exit Sub
+        isBackgroundWorkerRunning = True
+        Try
+            action.Invoke()
+        Finally
+            isBackgroundWorkerRunning = False
+            pnlWhatsapp.Visible = False
+        End Try
     End Sub
     Private Sub bgWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
         isBackgroundWorkerRunning = True
@@ -1309,11 +1372,11 @@ Public Class Standard_Sale_Register
         Dim dt As New DataTable
         Dim i As Integer
         Dim count As Integer = 0
-        ssql = "Select VoucherID,AccountID,(Select BIllNo From Vouchers Where ID=VoucherID) as BillNo, (Select AccountName From Accounts Where ID=Transaction2.AccountID) as AccountName, ' Nug : '||sum(nug)||', Weight : '|| sum(weight) ||', Basic : '|| " &
+        ssql = "Select VoucherID,AccountID,(Select BIllNo From Vouchers Where ID=VoucherID) as BillNo, (Select AccountName From Accounts Where ID=Transaction2.AccountID) as AccountName, IfNull((Select TotalAmount From Vouchers Where ID=VoucherID), sum(TotalAmount)) as BillTotal, ' Nug : '||sum(nug)||', Weight : '|| sum(weight) ||', Basic : '|| " &
                 "sum(amount)  ||' Charges : '|| sum(Charges) ||' Total : '|| sum(TotalAmount) as Msg, " &
                 "' नग : '||sum(nug)||', वज़न : '|| sum(weight) ||'बिक्री रकम : '|| sum(amount)  ||' ख़र्चे : '|| sum(Charges) ||' कुल रकम : '|| sum(TotalAmount) as Msg2, " &
                 "(Select OtherName From Accounts Where ID=Transaction2.AccountID) as OtherName from Transaction2 " &
-                " where AccountID<>7 and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " &
+                " where AccountID<>7 and EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' and '" & CDate(txttoDate.Text).ToString("yyyy-MM-dd") & "' " &
                 " and TransType='" & Me.Text & "'" & condtion & " Group by VoucherID order by accountName "
         dt = clsFun.ExecDataTable(ssql)
         If dt.Rows.Count > 0 Then
@@ -1327,6 +1390,7 @@ Public Class Standard_Sale_Register
                     .Cells(5).Value = dt.Rows(i)("OtherName").ToString()
                     .Cells(6).Value = "पिर्य " & dt.Rows(i)("OtherName").ToString() & "," & vbNewLine & " आज की खरीद :" & dt.Rows(i)("Msg2").ToString()
                     .Cells(9).Value = dt.Rows(i)("AccountID").ToString()
+                    .Cells(10).Value = Format(Val(dt.Rows(i)("BillTotal").ToString()), "0.00")
                     .Cells(1).ReadOnly = True : .Cells(2).ReadOnly = True
                     .Cells(0).Value = True
                 End With
@@ -1356,7 +1420,7 @@ Public Class Standard_Sale_Register
     End Sub
 
     Sub RowColumsWhatsapp()
-        DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 9
+        DgWhatsapp.Columns.Clear() : DgWhatsapp.ColumnCount = 10
         Dim headerCellLocation As Point = Me.dg1.GetCellDisplayRectangle(0, -1, True).Location
         'Place the Header CheckBox in the Location of the Header Cell.
         WhatsappCheckBox.Location = New Point(headerCellLocation.X + 10, headerCellLocation.Y + 2)
@@ -1379,6 +1443,7 @@ Public Class Standard_Sale_Register
         DgWhatsapp.Columns(7).Name = "Status" : DgWhatsapp.Columns(7).Width = 100
         DgWhatsapp.Columns(8).Name = "Path" : DgWhatsapp.Columns(8).Visible = False
         DgWhatsapp.Columns(9).Name = "AccountID" : DgWhatsapp.Columns(9).Visible = False
+        DgWhatsapp.Columns(10).Name = "TotalAmount" : DgWhatsapp.Columns(10).Visible = False
     End Sub
     Private Sub DgWhatsapp_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgWhatsapp.CellClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 1 Then

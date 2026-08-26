@@ -126,14 +126,9 @@ Public Class ReceiptForm
         cbOfficialTemplate.Items.Clear()
 
         Dim languageCode As String = If(RadioRegional.Checked, "hi", "en")
-        Dim alternateLanguage As String = If(languageCode = "hi", "en", "hi")
         Dim preferredIndex As Integer = -1
         Dim dt As DataTable = WhatsAppOfficialDb.GetApprovedTemplates("receipt", languageCode)
         AddOfficialReceiptTemplateRows(dt, languageCode, languageCode, preferredIndex)
-        dt.Dispose()
-
-        dt = WhatsAppOfficialDb.GetApprovedTemplates("receipt", alternateLanguage)
-        AddOfficialReceiptTemplateRows(dt, languageCode, alternateLanguage, preferredIndex)
         dt.Dispose()
 
         If cbOfficialTemplate.Items.Count = 0 Then
@@ -627,10 +622,13 @@ Public Class ReceiptForm
         calc() : dg1.ClearSelection()
     End Sub
 
-    Private Sub retrive2(VoucherID As Integer)
+    Private Sub retrive2(ByVal VoucherID As String)
         tmpgrid.Rows.Clear()
         Dim dt As New DataTable
-        dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE id='" & Val(VoucherID) & "'")
+        Dim voucherIds As String = VoucherID.Trim().Trim(","c)
+        Dim voucherCondition As String = "id='" & Val(voucherIds) & "'"
+        If voucherIds.Contains(",") Then voucherCondition = "id in (" & voucherIds & ")"
+        dt = clsFun.ExecDataTable("Select * FROM Vouchers WHERE " & voucherCondition & " and TransType='" & Me.Text & "' Order By ID")
         'dt = clsFun.ExecDataTable("Select * from Vouchers where TransType= '" & Me.Text & "'and EntryDate='" & txtEntryDate.Text & "'")
         tmpgrid.Rows.Clear()
         Try
@@ -1505,6 +1503,34 @@ Public Class ReceiptForm
 
 
 
+    Private Function SelectedWhatsappVoucherIds() As String
+        DgWhatsapp.EndEdit()
+        Dim selectedIds As String = String.Empty
+        Dim allIds As String = String.Empty
+        For Each row As DataGridViewRow In DgWhatsapp.Rows
+            Dim voucherId As String = Val(row.Cells(1).Value).ToString()
+            If voucherId = "0" Then Continue For
+            allIds = allIds & If(allIds <> "", ",", "") & voucherId
+            Dim isChecked As Boolean = False
+            If row.Cells(0).Value IsNot Nothing Then Boolean.TryParse(row.Cells(0).Value.ToString(), isChecked)
+            If isChecked Then selectedIds = selectedIds & If(selectedIds <> "", ",", "") & voucherId
+        Next
+        If selectedIds = "" Then selectedIds = allIds
+        Return selectedIds
+    End Function
+
+    Private Sub btnWhatsappPrintBills_Click(sender As Object, e As EventArgs) Handles btnWhatsappPrintBills.Click
+        Dim voucherIds As String = SelectedWhatsappVoucherIds()
+        If voucherIds = "" Then MsgBox("There is no bill to Print...", vbOKOnly, "Empty") : Exit Sub
+        retrive2(voucherIds)
+        If tmpgrid.RowCount = 0 Then MsgBox("There is no bill to Print...", vbOKOnly, "Empty") : Exit Sub
+        PrintReceipts()
+        Report_Viewer.printReport("\Trans.rpt")
+        Report_Viewer.MdiParent = MainScreenForm
+        Report_Viewer.Show()
+        If Not Report_Viewer Is Nothing Then Report_Viewer.BringToFront()
+    End Sub
+
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         Dim Remove As String = clsFun.ExecScalarStr("SELECT Remove FROM UserRights AS UR INNER JOIN Users AS U ON UR.UserTypeID = U.UserTypeID Where UserName='" & MainScreenPicture.lblUser.Text & "' and EntryType='Voucher'")
         If Remove <> "Y" Then MsgBox("You Don't Have Rights to  Save Voucher... " & vbNewLine & " Please Contact to Admin...Contact to Owner...", MsgBoxStyle.Critical, "Access Denied") : Exit Sub
@@ -1623,13 +1649,13 @@ Public Class ReceiptForm
                 If .Cells(0).Value = True Then
                     If btnRadioEnglish.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(.Cells(4).Value.ToString() & "(" & .Cells(2).Value.ToString() & ")-" & txtEntryDate.Text, "Receipt.pdf")
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(8).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(.Cells(4).Value.ToString() & "(" & .Cells(2).Value.ToString() & ")-" & txtEntryDate.Text, "Receipt.pdf")
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1640,13 +1666,13 @@ Public Class ReceiptForm
                         End If
                     ElseIf RadioRegional.Checked = True And .Cells(3).Value <> "" Then
                         If RadioPDFMsg.Checked = True Then
-                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(.Cells(4).Value.ToString() & "(" & .Cells(2).Value.ToString() & ")-" & txtEntryDate.Text, "Receipt.pdf")
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,Message1,AttachedFilepath) values  " & _
                              "('" & Val(.Cells(0).Value) & "','" & .Cells(4).Value & "','" & "91" & .Cells(3).Value & "','" & .Cells(9).Value & "','" & GlobalData.PdfPath & "');"
                         ElseIf RadioPdfOnly.Checked = True Then
-                            GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                            GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(.Cells(4).Value.ToString() & "(" & .Cells(2).Value.ToString() & ")-" & txtEntryDate.Text, "Receipt.pdf")
                             retrive2(.Cells(1).Value) : PrintReceipts()
                             Pdf_Genrate.ExportReport("\Trans.rpt")
                             sql = sql & "insert into SendingData(AccountID,AccountName,MobileNos,AttachedFilepath) values  " & _
@@ -1695,7 +1721,7 @@ Public Class ReceiptForm
                     Dim fileUrl As String = ""
 
                     If RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked Then
-                        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
+                        GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(.Cells(4).Value.ToString() & "(" & .Cells(2).Value.ToString() & ")-" & txtEntryDate.Text, "Receipt.pdf")
                         retrive2(.Cells(1).Value) : PrintReceipts()
                         Pdf_Genrate.ExportReport("\Trans.rpt")
                         fileUrl = PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
@@ -1729,11 +1755,39 @@ Public Class ReceiptForm
     Private Function CleanOfficialReceiptParameterFields(ByVal parameterFields As String) As String
         Dim cleanedFields As New List(Of String)()
         For Each fieldName As String In If(parameterFields, "").Split(","c)
-            Dim key As String = fieldName.Trim().ToLower()
+            Dim key As String = NormalizeOfficialReceiptParameterFieldKey(fieldName)
             If key <> "" Then cleanedFields.Add(key)
         Next
-        If cleanedFields.Count = 0 Then Return "company_name,account_name,entry_date,amount"
+        If cleanedFields.Count = 0 Then Return "company_name,account_name,entry_date,amount,company_other_name,account_other_name,opening_balance,closing_balance"
         Return String.Join(",", cleanedFields.ToArray())
+    End Function
+
+    Private Function NormalizeOfficialReceiptParameterFieldKey(ByVal fieldKey As String) As String
+        Dim key As String = If(fieldKey, "").Trim().ToLower().Replace(" ", "_").Replace("/", "_")
+        While key.Contains("__")
+            key = key.Replace("__", "_")
+        End While
+        Select Case key
+            Case "firm_name"
+                Return "company_name"
+            Case "firm_hindi_name", "hindi_company_name", "company_hindi_name", "firm_other_name"
+                Return "company_other_name"
+            Case "customer_name", "customer_account_name", "party_name"
+                Return "account_name"
+            Case "party_other_name", "customer_other_name"
+                Return "account_other_name"
+            Case "party_hindi_name", "customer_hindi_name", "account_hindi_name"
+                Return "account_other_name"
+            Case "item_hindi_name"
+                Return "item_other_name"
+            Case "mobile_no", "mobile", "whatsapp_no", "customer_mobile", "account_mobile"
+                Return "customer_mobile_no"
+            Case "city", "account_city"
+                Return "customer_city"
+            Case "receipt_amount", "payment_amount", "balance_amount", "total_amount"
+                Return "amount"
+        End Select
+        Return key
     End Function
 
     Private Function GetCellText(ByVal row As DataGridViewRow, ByVal index As Integer) As String
@@ -1750,10 +1804,33 @@ Public Class ReceiptForm
         End If
         Directory.CreateDirectory(directoryName)
 
-        GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(GetCellText(row, 4), "[\\\/\:\*\?\""<>\|]", "") & "(" & GetCellText(row, 1) & ")-" & txtEntryDate.Text & ".pdf"
+        GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(GetCellText(row, 4) & "(" & GetCellText(row, 2) & ")-" & txtEntryDate.Text, "Receipt.pdf")
         retrive2(Val(GetCellText(row, 1))) : PrintReceipts()
         Pdf_Genrate.ExportReport("\Trans.rpt")
         Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+    End Function
+
+    Private Function GetCompanyOtherNameForOfficial() As String
+        Dim name As String = clsFun.ExecScalarStr("Select PrintOtherName From Company Limit 1")
+        If name.Trim() = "" Then name = compnameHindi
+        If name.Trim() = "" Then name = compname
+        Return name.Trim()
+    End Function
+
+    Private Function GetAccountBalanceForOfficial(ByVal accountId As String, ByVal balanceDate As String, ByVal includeBalanceDate As Boolean) As String
+        Try
+            Dim sqlDate As String = CDate(balanceDate).ToString("yyyy-MM-dd")
+            Dim op As String = If(includeBalanceDate, "<=", "<")
+            Dim sql As String = "Select Round((Case When DC='Dr' then (ifnull(opbal,0)+(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate " & op & "'" & sqlDate & "')" & _
+                            "-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate " & op & "'" & sqlDate & "')) " & _
+                            " else (ifnull(-(opbal),0)+-(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='C' and Ledger.Entrydate " & op & "'" & sqlDate & "')" & _
+                            " +(Select ifnull(Round(Sum(Amount),2),0) From Ledger Where AccountID=Accounts.ID and DC='D' and Ledger.Entrydate " & op & "'" & sqlDate & "'))  end),2) as Restbal from Accounts Where ID=" & Val(accountId)
+            Dim balance As Decimal = Val(clsFun.ExecScalarStr(sql))
+            If balance >= 0 Then Return Format(Math.Abs(balance), "0.00") & " Dr"
+            Return Format(Math.Abs(balance), "0.00") & " Cr"
+        Catch
+            Return ""
+        End Try
     End Function
 
     Private Function BuildOfficialReceiptFields(ByVal row As DataGridViewRow, ByVal mobileNo As String, ByVal fileUrl As String, ByVal parameterFields As String) As List(Of String)
@@ -1763,9 +1840,18 @@ Public Class ReceiptForm
         Dim voucher As DataTable = clsFun.ExecDataTable("Select * From Vouchers Where ID='" & voucherId & "'")
         Dim values As New Dictionary(Of String, String)
         values("company_name") = compname.Trim()
+        values("company_other_name") = GetCompanyOtherNameForOfficial()
+        values("company_hindi_name") = values("company_other_name")
         values("account_name") = GetCellText(row, 4)
+        values("account_other_name") = clsFun.ExecScalarStr("Select OtherName From Accounts Where ID='" & Val(GetCellText(row, 10)) & "'")
+        values("account_hindi_name") = values("account_other_name")
+        values("item_name") = ""
+        values("item_other_name") = ""
+        values("item_hindi_name") = ""
         values("mobile_no") = mobileNo.Trim()
+        values("customer_mobile_no") = mobileNo.Trim()
         values("city") = clsFun.ExecScalarStr("Select City From Accounts Where ID='" & Val(GetCellText(row, 10)) & "'")
+        values("customer_city") = values("city")
         values("entry_date") = txtEntryDate.Text.Trim()
         values("receipt_date") = txtEntryDate.Text.Trim()
         values("receipt_no") = GetCellText(row, 2)
@@ -1776,6 +1862,8 @@ Public Class ReceiptForm
         values("discount_amount") = ""
         values("total_amount") = ""
         values("remark") = ""
+        values("opening_balance") = GetAccountBalanceForOfficial(GetCellText(row, 10), txtEntryDate.Text, False)
+        values("closing_balance") = GetAccountBalanceForOfficial(GetCellText(row, 10), txtEntryDate.Text, True)
         values("pdf_link") = fileUrl.Trim()
 
         If voucher.Rows.Count > 0 Then
@@ -1794,7 +1882,7 @@ Public Class ReceiptForm
 
         Dim fields As New List(Of String)
         For Each fieldName As String In parameterFields.Split(","c)
-            Dim key As String = fieldName.Trim().ToLower()
+            Dim key As String = NormalizeOfficialReceiptParameterFieldKey(fieldName)
             If key = "" Then Continue For
             If values.ContainsKey(key) Then
                 fields.Add(values(key))
@@ -1891,7 +1979,7 @@ Public Class ReceiptForm
                         selectedTemplate.LanguageCode,
                         fields,
                         apiResponse,
-                        "Receipt.pdf")
+                        WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Receipt.pdf"))
 
                     If sent Then
                         .Cells(5).Value = "Sent via Official API"

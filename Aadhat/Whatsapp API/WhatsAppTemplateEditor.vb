@@ -25,6 +25,7 @@ Public Class WhatsAppTemplateEditor
     Private Sub WhatsAppTemplateEditor_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         If Me.DesignMode OrElse LicenseManager.UsageMode = LicenseUsageMode.Designtime Then Exit Sub
         WhatsAppOfficialDb.EnsureDatabase()
+        FillLanguageAndFormatCombos()
         FillLocalTypeCombo()
         If cbLanguage.Items.Count > 0 Then cbLanguage.SelectedIndex = 0
         If cbTemplateFormat.Items.Count > 0 Then cbTemplateFormat.SelectedIndex = 0
@@ -37,8 +38,17 @@ Public Class WhatsAppTemplateEditor
         BuildSampleInputs()
     End Sub
 
+    Private Sub FillLanguageAndFormatCombos()
+        cbLanguage.Items.Clear()
+        cbLanguage.Items.AddRange(New Object() {"en_US", "en", "hi", "bn", "gu", "kn", "ml", "mr", "pa", "ta", "te", "ur"})
+
+        cbTemplateFormat.Items.Clear()
+        cbTemplateFormat.Items.AddRange(New Object() {"English", "Regional"})
+    End Sub
+
     Private Sub FillLocalTypeCombo()
         txtTemplateType.Items.Clear()
+        txtTemplateType.Items.Add("None")
         txtTemplateType.Items.Add("Print Bill")
         txtTemplateType.Items.Add("Receipt")
         txtTemplateType.Items.Add("Payment")
@@ -57,7 +67,7 @@ Public Class WhatsAppTemplateEditor
         txtTemplateType.Items.Add("Sellout Manual")
         txtTemplateType.Items.Add("Sellout Auto")
         txtTemplateType.Items.Add("Crate Ledger")
-        If txtTemplateType.Items.Count > 0 Then txtTemplateType.SelectedIndex = 0
+        If txtTemplateType.Items.Contains("Print Bill") Then txtTemplateType.Text = "Print Bill"
     End Sub
 
 
@@ -376,11 +386,79 @@ Public Class WhatsAppTemplateEditor
         LastTemplateSelectionStart = box.SelectionStart
     End Sub
 
+    Private Function TryGetParameterTokenRange(ByVal box As TextBox, ByVal caretPosition As Integer, ByRef tokenStart As Integer, ByRef tokenLength As Integer, Optional ByVal includeEdges As Boolean = False) As Boolean
+        tokenStart = -1
+        tokenLength = 0
+        If box Is Nothing Then Return False
+        caretPosition = Math.Max(0, Math.Min(caretPosition, box.TextLength))
+
+        For Each m As Match In Regex.Matches(box.Text, "\*?\{\{\d+\}\}\*?")
+            Dim matchStart As Integer = m.Index
+            Dim matchEnd As Integer = m.Index + m.Length
+            If includeEdges Then
+                If caretPosition >= matchStart AndAlso caretPosition <= matchEnd Then
+                    tokenStart = matchStart
+                    tokenLength = m.Length
+                    Return True
+                End If
+            ElseIf caretPosition > matchStart AndAlso caretPosition < matchEnd Then
+                tokenStart = matchStart
+                tokenLength = m.Length
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+    Private Function TrySelectParameterTokenAtCaret(ByVal box As TextBox, Optional ByVal includeEdges As Boolean = False) As Boolean
+        Dim tokenStart As Integer = 0
+        Dim tokenLength As Integer = 0
+        If TryGetParameterTokenRange(box, box.SelectionStart, tokenStart, tokenLength, includeEdges) = False Then Return False
+        box.SelectionStart = tokenStart
+        box.SelectionLength = tokenLength
+        RememberTemplateCaret(box)
+        Return True
+    End Function
+
+    Private Function TryDeleteParameterToken(ByVal box As TextBox, ByVal keyCode As Keys) As Boolean
+        If box Is Nothing Then Return False
+        Dim tokenStart As Integer = 0
+        Dim tokenLength As Integer = 0
+        Dim caretPosition As Integer = box.SelectionStart
+
+        If box.SelectionLength > 0 Then
+            If TryGetParameterTokenRange(box, box.SelectionStart, tokenStart, tokenLength, True) AndAlso box.SelectionStart = tokenStart AndAlso box.SelectionLength = tokenLength Then
+                box.SelectedText = ""
+                RememberTemplateCaret(box)
+                Return True
+            End If
+            Return False
+        End If
+
+        If TryGetParameterTokenRange(box, caretPosition, tokenStart, tokenLength, True) = False Then
+            If keyCode = Keys.Back AndAlso caretPosition > 0 Then
+                If TryGetParameterTokenRange(box, caretPosition - 1, tokenStart, tokenLength, True) = False Then Return False
+            ElseIf keyCode = Keys.Delete AndAlso caretPosition < box.TextLength Then
+                If TryGetParameterTokenRange(box, caretPosition + 1, tokenStart, tokenLength, True) = False Then Return False
+            Else
+                Return False
+            End If
+        End If
+
+        box.SelectionStart = tokenStart
+        box.SelectionLength = tokenLength
+        box.SelectedText = ""
+        RememberTemplateCaret(box)
+        Return True
+    End Function
+
     Private Sub txtBody_CaretChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtBody.Click, txtBody.KeyUp, txtBody.MouseUp, txtBody.Enter
+        If TypeOf sender Is TextBox Then TrySelectParameterTokenAtCaret(CType(sender, TextBox), TypeOf e Is MouseEventArgs)
         RememberTemplateCaret(txtBody)
     End Sub
 
     Private Sub txtFooter_CaretChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtFooter.Click, txtFooter.KeyUp, txtFooter.MouseUp, txtFooter.Enter
+        If TypeOf sender Is TextBox Then TrySelectParameterTokenAtCaret(CType(sender, TextBox), TypeOf e Is MouseEventArgs)
         RememberTemplateCaret(txtFooter)
     End Sub
 
@@ -422,7 +500,14 @@ Public Class WhatsAppTemplateEditor
     Private Function SampleValueForField(ByVal fieldName As String) As String
         Select Case NormalizeParameterFieldKey(fieldName)
             Case "company_name" : Return "Shree Balaji Traders"
+            Case "company_other_name" : Return "श्री बालाजी ट्रेडर्स"
+            Case "company_hindi_name" : Return "श्री बालाजी ट्रेडर्स"
             Case "account_name" : Return "Ramesh Ji"
+            Case "account_other_name" : Return "रमेश जी"
+            Case "account_hindi_name" : Return "रमेश जी"
+            Case "item_name" : Return "Apple"
+            Case "item_other_name" : Return "सेब"
+            Case "item_hindi_name" : Return "सेब"
             Case "customer_mobile_no" : Return "9876543210"
             Case "customer_city" : Return "Jaipur"
             Case "bill_no" : Return "B-1024"
@@ -567,6 +652,32 @@ Public Class WhatsAppTemplateEditor
         Return value.ToString()
     End Function
 
+    Private Function IsCurrentTemplateApproved() As Boolean
+        Dim templateCode As String = txtTemplateCode.Text.Trim().ToLower()
+        Dim languageCode As String = CurrentLanguageCode().Trim().ToLower()
+        Dim statusText As String = CellText("Status").Trim().ToUpper()
+        If statusText.Contains("APPROVED") Then Return True
+        If templateCode = "" OrElse dgvTemplates Is Nothing OrElse dgvTemplates.Columns.Contains("TemplateCode") = False OrElse dgvTemplates.Columns.Contains("Status") = False Then Return False
+
+        For Each row As DataGridViewRow In dgvTemplates.Rows
+            If row.IsNewRow OrElse row.Cells("TemplateCode").Value Is Nothing Then Continue For
+            If row.Cells("TemplateCode").Value.ToString().Trim().ToLower() <> templateCode Then Continue For
+            If dgvTemplates.Columns.Contains("LanguageCode") AndAlso languageCode <> "" AndAlso row.Cells("LanguageCode").Value IsNot Nothing Then
+                If row.Cells("LanguageCode").Value.ToString().Trim().ToLower() <> languageCode Then Continue For
+            End If
+            If row.Cells("Status").Value IsNot Nothing AndAlso row.Cells("Status").Value.ToString().Trim().ToUpper().Contains("APPROVED") Then Return True
+        Next
+        Return False
+    End Function
+
+    Private Function ConfirmApprovedTemplateMetaUpdate() As Boolean
+        If IsCurrentTemplateApproved() = False Then Return True
+        Dim message As String = "This template is already APPROVED on Meta." & vbCrLf & vbCrLf & _
+                                "Submitting again can update/modify the approved template and may send it for review again." & vbCrLf & vbCrLf & _
+                                "Do you want to continue?"
+        Return MsgBox(message, MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2, "Confirm Meta Update") = MsgBoxResult.Yes
+    End Function
+
     Private Sub SetHeaderTypeFromText(ByVal headerType As String, ByVal fileSupport As String)
         headerType = If(headerType, "").Trim().ToLower()
         If headerType = "" Then
@@ -594,7 +705,7 @@ Public Class WhatsAppTemplateEditor
         If cbHeaderType.Items.Count > 0 Then cbHeaderType.SelectedIndex = 0
         txtMediaFile.Text = ""
         txtBody.Text = ""
-        txtFooter.Text = ""
+        txtFooter.Text = WhatsAppOfficialDb.DefaultLocalTemplateFooter
         SetDefaultQuickReplyButtons()
         txtExamples.Text = ""
         LoadParameterFieldCombo()
@@ -709,6 +820,10 @@ Public Class WhatsAppTemplateEditor
             MsgBox("Vendor ID / Access Token is missing. Please save or validate it on the WhatsApp API screen first.", MsgBoxStyle.Critical, "Template Editor")
             Return False
         End If
+        If ConfirmApprovedTemplateMetaUpdate() = False Then
+            lblStatus.Text = "Meta update cancelled."
+            Return False
+        End If
         BuildSampleInputs()
         SyncExamplesText()
         WhatsAppOfficialDb.SaveLocalTemplate(txtTemplateCode.Text.Trim, txtTemplateTitle.Text.Trim, cbLanguage.Text.Trim, CurrentLocalTypeCode(), cbHeaderType.Text.Trim, txtBody.Text.Trim, txtFooter.Text.Trim, cbCategory.Text.Trim, txtExamples.Text.Trim, CurrentButtonsJson())
@@ -819,6 +934,8 @@ Public Class WhatsAppTemplateEditor
 
     Private Function CurrentLocalTypeCode() As String
         Select Case txtTemplateType.Text.Trim
+            Case "N/A", "None"
+                Return ""
             Case "Print Bill" : Return "print_bill"
             Case "Receipt" : Return "receipt"
             Case "Payment" : Return "payment"
@@ -843,7 +960,7 @@ Public Class WhatsAppTemplateEditor
 
     Private Sub SetLocalTypeFromCode(ByVal typeCode As String)
         Dim code As String = If(typeCode, "").Trim().ToLower()
-        Dim displayText As String = ""
+        Dim displayText As String = "None"
         Select Case code
             Case "sale_bill", "print_bill", "print_bill_pdf_only", "print_bill_pdf_message" : displayText = "Print Bill"
             Case "receipt" : displayText = "Receipt"
@@ -869,10 +986,10 @@ Public Class WhatsAppTemplateEditor
 
     Private Sub SetFormatFromLanguage(ByVal languageCode As String)
         Dim value As String = If(languageCode, "").Trim().ToLower()
-        If value.StartsWith("hi") OrElse value.Contains("regional") Then
-            cbTemplateFormat.Text = "Regional"
-        Else
+        If value = "" OrElse value.StartsWith("en") OrElse value.Contains("english") Then
             cbTemplateFormat.Text = "English"
+        Else
+            cbTemplateFormat.Text = "Regional"
         End If
     End Sub
 
@@ -882,7 +999,11 @@ Public Class WhatsAppTemplateEditor
         dt.Columns.Add("FieldKey")
 
         AddParameterField(dt, "Firm Name", "company_name")
+        AddParameterField(dt, "Firm Regional Name", "company_other_name")
         AddParameterField(dt, "Account Name", "account_name")
+        AddParameterField(dt, "Account Regional Name", "account_other_name")
+        AddParameterField(dt, "Item Name", "item_name")
+        AddParameterField(dt, "Item Regional Name", "item_other_name")
         AddParameterField(dt, "Customer Mobile No.", "customer_mobile_no")
         AddParameterField(dt, "Customer City", "customer_city")
 
@@ -895,6 +1016,8 @@ Public Class WhatsAppTemplateEditor
                 AddParameterField(dt, "Weight", "weight")
                 AddParameterField(dt, "Basic Amount", "basic_amount")
                 AddParameterField(dt, "Charges", "charges")
+                AddParameterField(dt, "Opening Balance", "opening_balance")
+                AddParameterField(dt, "Closing Balance", "closing_balance")
                 AddParameterField(dt, "PDF Link", "pdf_link")
                 AddParameterField(dt, "Message Text", "message_text")
             Case "receipt"
@@ -902,12 +1025,16 @@ Public Class WhatsAppTemplateEditor
                 AddParameterField(dt, "Receipt Date", "receipt_date")
                 AddParameterField(dt, "Amount", "amount")
                 AddParameterField(dt, "Payment Mode", "payment_mode")
+                AddParameterField(dt, "Opening Balance", "opening_balance")
+                AddParameterField(dt, "Closing Balance", "closing_balance")
                 AddParameterField(dt, "PDF Link", "pdf_link")
             Case "payment"
                 AddParameterField(dt, "Payment No.", "payment_no")
                 AddParameterField(dt, "Payment Date", "payment_date")
                 AddParameterField(dt, "Amount", "amount")
                 AddParameterField(dt, "Payment Mode", "payment_mode")
+                AddParameterField(dt, "Opening Balance", "opening_balance")
+                AddParameterField(dt, "Closing Balance", "closing_balance")
                 AddParameterField(dt, "PDF Link", "pdf_link")
             Case "balance"
                 AddParameterField(dt, "Balance Date", "balance_date")
@@ -933,6 +1060,8 @@ Public Class WhatsAppTemplateEditor
                 AddParameterField(dt, "To Date", "to_date")
                 AddParameterField(dt, "Total Count", "total_count")
                 AddParameterField(dt, "Total Amount", "bill_total")
+                AddParameterField(dt, "Opening Balance", "opening_balance")
+                AddParameterField(dt, "Closing Balance", "closing_balance")
                 AddParameterField(dt, "PDF Link", "pdf_link")
         End Select
 
@@ -940,8 +1069,7 @@ Public Class WhatsAppTemplateEditor
     End Function
 
     Private Sub AddParameterField(ByVal dt As DataTable, ByVal displayName As String, ByVal fieldKey As String)
-        Dim key As String = NormalizeParameterFieldKey(fieldKey)
-        dt.Rows.Add(key, key)
+        dt.Rows.Add(displayName, fieldKey)
     End Sub
 
     Private Function NormalizeParameterFieldKey(ByVal fieldKey As String) As String
@@ -950,8 +1078,16 @@ Public Class WhatsAppTemplateEditor
         Select Case key
             Case "firm_name"
                 Return "company_name"
+            Case "firm_hindi_name", "hindi_company_name", "company_hindi_name", "firm_other_name"
+                Return "company_other_name"
             Case "customer_name", "customer_account_name", "party_name"
                 Return "account_name"
+            Case "party_other_name", "customer_other_name"
+                Return "account_other_name"
+            Case "party_hindi_name", "customer_hindi_name", "account_hindi_name"
+                Return "account_other_name"
+            Case "item_hindi_name"
+                Return "item_other_name"
             Case "mobile_no", "mobile", "whatsapp_no", "customer_mobile", "account_mobile"
                 Return "customer_mobile_no"
             Case "city", "account_city"
@@ -984,7 +1120,7 @@ Public Class WhatsAppTemplateEditor
             selectedKey = NormalizeParameterFieldKey(selectedKey)
             For i As Integer = 0 To cbParameterField.Items.Count - 1
                 Dim row As DataRowView = TryCast(cbParameterField.Items(i), DataRowView)
-                If row IsNot Nothing AndAlso row("FieldKey").ToString() = selectedKey Then
+                If row IsNot Nothing AndAlso NormalizeParameterFieldKey(row("FieldKey").ToString()) = selectedKey Then
                     cbParameterField.SelectedIndex = i
                     Exit For
                 End If
@@ -1010,13 +1146,23 @@ Public Class WhatsAppTemplateEditor
 
     Private Function CurrentMappingKey() As String
         Dim moduleCode As String = CurrentLocalTypeCode().ToUpper()
-        Dim langCode As String = If(CurrentLanguageCode() = "hi", "HI", "EN")
+        Dim langCode As String = CurrentLanguageSuffix()
         Return moduleCode & "_" & langCode
     End Function
 
     Private Function CurrentLanguageCode() As String
+        Dim selectedLanguage As String = cbLanguage.Text.Trim().ToLower()
+        If selectedLanguage <> "" Then
+            If selectedLanguage.StartsWith("en") OrElse selectedLanguage.Contains("english") Then Return "en"
+            If selectedLanguage.Contains("_") Then selectedLanguage = selectedLanguage.Split("_"c)(0)
+            Return selectedLanguage
+        End If
         If cbTemplateFormat.Text.Trim = "Regional" Then Return "hi"
         Return "en"
+    End Function
+
+    Private Function CurrentLanguageSuffix() As String
+        Return CurrentLanguageCode().ToUpper()
     End Function
 
     Private Function CurrentParameterFields() As String
@@ -1046,11 +1192,11 @@ Public Class WhatsAppTemplateEditor
     Private Function DefaultParameterFieldsForCurrentType() As String
         Select Case CurrentLocalTypeCode()
             Case "print_bill"
-                Return "account_name,bill_date,company_name,bill_total,nug,weight,basic_amount,charges,customer_city,customer_mobile_no"
+                Return "account_name,bill_date,company_name,bill_total,nug,weight,basic_amount,charges,customer_city,customer_mobile_no,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
             Case "receipt"
-                Return "company_name,account_name,receipt_date,amount"
+                Return "company_name,account_name,receipt_date,amount,company_other_name,account_other_name,opening_balance,closing_balance"
             Case "payment"
-                Return "company_name,account_name,payment_date,amount"
+                Return "company_name,account_name,payment_date,amount,company_other_name,account_other_name,opening_balance,closing_balance"
             Case "balance"
                 Return "company_name,account_name,balance_date,balance_amount"
             Case "statement", "ledger", "settle_ledger", "sub_ledger", "crate_ledger"
@@ -1058,7 +1204,7 @@ Public Class WhatsAppTemplateEditor
             Case "crate_in", "crate_out"
                 Return "company_name,account_name,entry_date,crate_qty"
             Case "purchase", "purchase_register", "standard_sale", "standard_sale_register", "super_sale_register", "sellout_manual", "sellout_auto"
-                Return "company_name,account_name,bill_date,bill_total"
+                Return "company_name,account_name,bill_date,bill_total,company_other_name,account_other_name,item_other_name,opening_balance,closing_balance"
         End Select
         Return "company_name,account_name,entry_date,amount"
     End Function
@@ -1066,6 +1212,7 @@ Public Class WhatsAppTemplateEditor
     Private Sub SaveTemplateMappingForSelection()
         If txtTemplateCode.Text.Trim = "" Then Exit Sub
         Dim moduleCode As String = CurrentLocalTypeCode().ToUpper()
+        If moduleCode = "" Then Exit Sub
         Dim mappingKey As String = CurrentMappingKey() & "_" & txtTemplateCode.Text.Trim.ToUpper()
         WhatsAppOfficialDb.SaveTemplateMapping(mappingKey, moduleCode, txtTemplateType.Text.Trim & " " & cbTemplateFormat.Text.Trim, txtTemplateCode.Text.Trim, CurrentLanguageCode(), "BILL", CurrentParameterFields())
     End Sub
@@ -1153,7 +1300,8 @@ Public Class WhatsAppTemplateEditor
     Private Sub ApplyFormatDefaults()
         If LoadingTemplateSelection Then Exit Sub
         If cbTemplateFormat.Text.Trim = "Regional" Then
-            cbLanguage.Text = "hi"
+            Dim languageCode As String = cbLanguage.Text.Trim().ToLower()
+            If languageCode = "" OrElse languageCode.StartsWith("en") OrElse languageCode.Contains("english") Then cbLanguage.Text = "hi"
         Else
             cbLanguage.Text = "en_US"
         End If
@@ -1175,6 +1323,11 @@ Public Class WhatsAppTemplateEditor
     Private Sub LocalTypeOrFormatChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtTemplateType.SelectedIndexChanged, cbTemplateFormat.SelectedIndexChanged
         LoadParameterFieldCombo()
         ApplyFormatDefaults()
+    End Sub
+
+    Private Sub cbLanguage_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbLanguage.SelectedIndexChanged
+        If LoadingTemplateSelection Then Exit Sub
+        SetFormatFromLanguage(cbLanguage.Text)
     End Sub
 
     Private Function MetaLanguageCode() As String
@@ -1278,6 +1431,13 @@ Public Class WhatsAppTemplateEditor
 
 
     Private Sub TemplateEditor_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles txtTemplateCode.KeyDown, txtTemplateTitle.KeyDown, cbLanguage.KeyDown, cbCategory.KeyDown, cbHeaderType.KeyDown, txtTemplateType.KeyDown, cbTemplateFormat.KeyDown, txtMediaFile.KeyDown, txtBody.KeyDown, txtFooter.KeyDown, txtExamples.KeyDown, txtButton1.KeyDown, txtButton2.KeyDown, dgvTemplates.KeyDown
+        If (sender Is txtBody OrElse sender Is txtFooter) AndAlso (e.KeyCode = Keys.Back OrElse e.KeyCode = Keys.Delete) Then
+            If TryDeleteParameterToken(CType(sender, TextBox), e.KeyCode) Then
+                e.SuppressKeyPress = True
+                Return
+            End If
+        End If
+
         If e.KeyCode = Keys.Enter Then
             If sender Is txtBody OrElse sender Is txtFooter Then
                 Return

@@ -3236,7 +3236,7 @@ Public Class Standard_Sale
         End If
         Dim fileUrl As String = ExportStandardSalePdfForMobile()
         Dim apiResponse As String = ""
-        If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, "Bill.pdf", apiResponse) Then
+        If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
             MsgBox("Standard Sale sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")
             pnlWhatsapp.Visible = False : txtEntryDate.Focus()
         Else

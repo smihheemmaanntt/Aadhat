@@ -55,6 +55,8 @@ Partial Class Scrip_Profit_Report
         Me.lblCount = New System.Windows.Forms.Label()
         Me.txttoDate = New System.Windows.Forms.TextBox()
         Me.txtFromDate = New System.Windows.Forms.TextBox()
+        Me.txtType = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -213,9 +215,9 @@ Partial Class Scrip_Profit_Report
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtSearch.ForeColor = System.Drawing.Color.Red
-        Me.txtSearch.Location = New System.Drawing.Point(869, 77)
+        Me.txtSearch.Location = New System.Drawing.Point(851, 77)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(315, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(333, 26)
         Me.txtSearch.TabIndex = 6
         Me.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -226,7 +228,7 @@ Partial Class Scrip_Profit_Report
         Me.Label42.ForeColor = System.Drawing.Color.GhostWhite
         Me.Label42.Location = New System.Drawing.Point(719, 77)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(150, 27)
+        Me.Label42.Size = New System.Drawing.Size(132, 27)
         Me.Label42.TabIndex = 5
         Me.Label42.Text = "Account Name :"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -418,11 +420,37 @@ Partial Class Scrip_Profit_Report
         Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
         Me.txtFromDate.TabIndex = 0
         '
+        'txtType
+        '
+        Me.txtType.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtType.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.txtType.ForeColor = System.Drawing.Color.Red
+        Me.txtType.Location = New System.Drawing.Point(1035, 51)
+        Me.txtType.Name = "txtType"
+        Me.txtType.Size = New System.Drawing.Size(149, 26)
+        Me.txtType.TabIndex = 91317
+        Me.txtType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.Label5.ForeColor = System.Drawing.Color.GhostWhite
+        Me.Label5.Location = New System.Drawing.Point(903, 51)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(132, 27)
+        Me.Label5.TabIndex = 91316
+        Me.Label5.Text = "Trans Type : "
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Scrip_Profit_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.txtType)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
@@ -486,4 +514,6 @@ Partial Class Scrip_Profit_Report
     Friend WithEvents lblCount As System.Windows.Forms.Label
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
+    Friend WithEvents txtType As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 End Class
