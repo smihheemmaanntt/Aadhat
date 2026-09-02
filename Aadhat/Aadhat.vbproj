@@ -996,6 +996,12 @@
     <Compile Include="Tools\SpeedSaleDateCorrection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tools\OtherNameTranslator.Designer.vb">
+      <DependentUpon>OtherNameTranslator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\OtherNameTranslator.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Speed Sales\Speed Sale Register.Designer.vb">
       <DependentUpon>Speed Sale Register.vb</DependentUpon>
     </Compile>
@@ -1896,6 +1902,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\SpeedSaleDateCorrection.resx">
       <DependentUpon>SpeedSaleDateCorrection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\OtherNameTranslator.resx">
+      <DependentUpon>OtherNameTranslator.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ugrahi Register\Ugrahi Register Std.resx">
       <DependentUpon>Ugrahi Register Std.vb</DependentUpon>

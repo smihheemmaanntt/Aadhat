@@ -227,6 +227,7 @@ Partial Class MainScreenForm
         Me.CreateIndexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhatsappConfigrationUnofficialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SpeedSaleDateCorrectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OtherNameTranslatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoteSupportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TeamViewerQSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -1505,7 +1506,7 @@ Partial Class MainScreenForm
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilityToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.ToolStripSeparator35, Me.ChargesSettingToolStripMenuItem, Me.ToolStripSeparator25, Me.SMSTempletesToolStripMenuItem, Me.ToolStripSeparator26, Me.RunSqliteQueryToolStripMenuItem, Me.UpdateCompanyInfoOnServerToolStripMenuItem, Me.ToolStripSeparator27, Me.AuthorisedPersonOnlyToolStripMenuItem, Me.ToolStripSeparator28, Me.MergeAccountsToolStripMenuItem, Me.ToolStripSeparator29, Me.PartyWiseRateToolStripMenuItem, Me.SpeedSaleDateCorrectionToolStripMenuItem, Me.RerarangeInvoiceNoToolStripMenuItem, Me.CreateIndexToolStripMenuItem, Me.WhatsappConfigrationUnofficialToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilityToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.ToolStripSeparator35, Me.ChargesSettingToolStripMenuItem, Me.ToolStripSeparator25, Me.SMSTempletesToolStripMenuItem, Me.ToolStripSeparator26, Me.RunSqliteQueryToolStripMenuItem, Me.UpdateCompanyInfoOnServerToolStripMenuItem, Me.ToolStripSeparator27, Me.AuthorisedPersonOnlyToolStripMenuItem, Me.ToolStripSeparator28, Me.MergeAccountsToolStripMenuItem, Me.ToolStripSeparator29, Me.PartyWiseRateToolStripMenuItem, Me.OtherNameTranslatorToolStripMenuItem, Me.SpeedSaleDateCorrectionToolStripMenuItem, Me.RerarangeInvoiceNoToolStripMenuItem, Me.CreateIndexToolStripMenuItem, Me.WhatsappConfigrationUnofficialToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
@@ -1689,6 +1690,12 @@ Partial Class MainScreenForm
         Me.SpeedSaleDateCorrectionToolStripMenuItem.Name = "SpeedSaleDateCorrectionToolStripMenuItem"
         Me.SpeedSaleDateCorrectionToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
         Me.SpeedSaleDateCorrectionToolStripMenuItem.Text = "Speed Sale Date Correction"
+        '
+        'OtherNameTranslatorToolStripMenuItem
+        '
+        Me.OtherNameTranslatorToolStripMenuItem.Name = "OtherNameTranslatorToolStripMenuItem"
+        Me.OtherNameTranslatorToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.OtherNameTranslatorToolStripMenuItem.Text = "OtherName Translator"
         '
         'HelpToolStripMenuItem
         '
@@ -2604,6 +2611,7 @@ Partial Class MainScreenForm
     Friend WithEvents SettleLedgerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WhatsappConfigrationUnofficialToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SpeedSaleDateCorrectionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OtherNameTranslatorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DailyReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DayWiseSaleReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ItemSummaryToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem

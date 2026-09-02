@@ -129,6 +129,12 @@ Public Class MainScreenForm
         SpeedSaleDateCorrection.BringToFront()
     End Sub
 
+    Private Sub OtherNameTranslatorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OtherNameTranslatorToolStripMenuItem.Click
+        OtherNameTranslator.MdiParent = Me
+        OtherNameTranslator.Show()
+        OtherNameTranslator.BringToFront()
+    End Sub
+
     Private Sub btnLedger_Click(sender As Object, e As EventArgs) Handles btnSpeedRegister.Click
         Speed_Sale_Register.MdiParent = Me
         Speed_Sale_Register.Show()
