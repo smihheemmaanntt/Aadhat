@@ -1,0 +1,11 @@
+{
+  "Enabled": true,
+  "Role": "AdminServer",
+  "CustomerCode": "579574",
+  "AdminPcName": "INBOOK_X2_PLUS",
+  "AdminIpAddress": "192.168.1.11",
+  "ServerDataPath": "D:\\xampp82\\htdocs\\Aadhat_offical\\Aadhat\\AADHAT\\bin\\x86\\Debug\\Data\\Data2",
+  "ClientDataFile": null,
+  "AllowedPcCount": 5,
+  "SavedAt": "2026-09-07 15:47:24"
+}

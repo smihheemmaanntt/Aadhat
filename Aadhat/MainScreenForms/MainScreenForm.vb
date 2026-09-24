@@ -1,15 +1,143 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Management
 Imports System.Reflection
 'Imports ICSharpCode.SharpZipLib.Zip
 Imports Ionic.Zip
 Public Class MainScreenForm
+    Private hybridSettingsMenuItem As ToolStripMenuItem
+    Private hybridSettingsSeparator As ToolStripSeparator
+
     Public Sub New()
         Me.SetStyle(ControlStyles.DoubleBuffer Or ControlStyles.AllPaintingInWmPaint, True)
         Me.SetStyle(ControlStyles.UserPaint, True)
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
+        OrganizeReportsMenu()
+        AddHybridSettingsMenu()
+        Dim combinedReportsItem As New ToolStripMenuItem("Multi Company Ledger / Outstanding")
+        combinedReportsItem.Name = "MultiCompanyReportsToolStripMenuItem"
+        AddHandler combinedReportsItem.Click, AddressOf OpenMultiCompanyReports
+        ToolsToolStripMenuItem.DropDownItems.Add(combinedReportsItem)
+    End Sub
+
+    Private Sub OpenMultiCompanyReports(sender As Object, e As EventArgs)
+        For Each child As Form In Me.MdiChildren
+            If TypeOf child Is MultiCompanyReports Then
+                child.BringToFront()
+                Return
+            End If
+        Next
+        Dim reportForm As New MultiCompanyReports()
+        reportForm.MdiParent = Me
+        reportForm.Show()
+    End Sub
+
+    Private Sub AddHybridSettingsMenu()
+        For Each item As ToolStripItem In ToolsToolStripMenuItem.DropDownItems
+            If item.Name = "HybridSettingsToolStripMenuItem" Then Exit Sub
+        Next
+
+        Dim hybridItem As New ToolStripMenuItem("Local Multiuser Setup")
+        hybridItem.Name = "HybridSettingsToolStripMenuItem"
+        hybridItem.BackColor = SystemColors.Control
+        hybridItem.ForeColor = Color.Black
+        hybridItem.Font = New Font("Times New Roman", 10.0!)
+        hybridItem.Visible = False
+        AddHandler hybridItem.Click, AddressOf HybridSettingsToolStripMenuItem_Click
+        hybridSettingsMenuItem = hybridItem
+
+        hybridSettingsSeparator = New ToolStripSeparator()
+        hybridSettingsSeparator.Visible = False
+
+        ToolsToolStripMenuItem.DropDownItems.Insert(0, hybridItem)
+        ToolsToolStripMenuItem.DropDownItems.Insert(1, hybridSettingsSeparator)
+    End Sub
+
+    Public Sub ApplyHybridPermission(ByVal userType As String)
+        If hybridSettingsMenuItem Is Nothing Then Exit Sub
+        Dim allowed As Boolean = String.Equals(If(userType, "").Trim(), "Admin", StringComparison.OrdinalIgnoreCase)
+        hybridSettingsMenuItem.Visible = allowed
+        If hybridSettingsSeparator IsNot Nothing Then hybridSettingsSeparator.Visible = allowed
+    End Sub
+
+    Private Sub HybridSettingsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Using frm As New LocalMultiuserSetupForm()
+            frm.ShowDialog(Me)
+        End Using
+    End Sub
+
+    Private Sub OrganizeReportsMenu()
+        'Existing items are moved, so all click handlers and shortcuts remain intact.
+        'The hierarchy is deliberately limited to Reports > Category > Report.
+        ReportsToolStripMenuItem1.DropDownItems.Clear()
+
+        Dim financialMenu As ToolStripMenuItem = CreateReportGroup("Financial Statements")
+        financialMenu.DropDownItems.AddRange(New ToolStripItem() {BalanceSheetExpendedToolStripMenuItem, ProfitLossToolStripMenuItem1, TradingAccountToolStripMenuItem1, TrailBalanceToolStripMenuItem1, TrialBalanceGroupToolStripMenuItem})
+
+        Dim booksMenu As ToolStripMenuItem = CreateReportGroup("Books && Ledger Reports")
+        booksMenu.DropDownItems.AddRange(New ToolStripItem() {DayBookToolStripMenuItem1, LedgerToolStripMenuItem, SettleLedgerToolStripMenuItem1, SettleLedgerToolStripMenuItem2, GroupLedgwerToolStripMenuItem})
+
+        Dim cashBankMenu As ToolStripMenuItem = CreateReportGroup("Cash && Bank Reports")
+        cashBankMenu.DropDownItems.AddRange(New ToolStripItem() {CashBankBookToolStripMenuItem, CashBankBookGroupedToolStripMenuItem, CashBankBookPaymentDetailedToolStripMenuItem, CashBookBankBookToolStripMenuItem, DayBookCumCashBookToolStripMenuItem, CashBookCumBankBookToolStripMenuItem})
+
+        Dim collectionMenu As ToolStripMenuItem = CreateReportGroup("Collection Reports")
+        collectionMenu.DropDownItems.AddRange(New ToolStripItem() {UgrahiRegisterToolStripMenuItem, CollectionRegisterToolStripMenuItem, CollectionReportAllAccountsToolStripMenuItem})
+
+        Dim stockMenu As ToolStripMenuItem = CreateReportGroup("Stock Reports")
+        stockMenu.DropDownItems.AddRange(New ToolStripItem() {StockBalanceToolStripMenuItem1, LotWiseStockToolStripMenuItem1, VehicleWiseReportToolStripMenuItem})
+
+        Dim supplierMenu As ToolStripMenuItem = CreateReportGroup("Supplier && Sellout Reports")
+        supplierMenu.DropDownItems.AddRange(New ToolStripItem() {SelloutBillsValueReportToolStripMenuItem, SupplierStatementToolStripMenuItem, SellOutPendingBillsToolStripMenuItem})
+
+        Dim outstandingMenu As ToolStripMenuItem = CreateReportGroup("Outstanding Reports")
+        outstandingMenu.DropDownItems.AddRange(New ToolStripItem() {OutstandingAccountToolStripMenuItem, AbsentAccountsListToolStripMenuItem, OutstandingRecievableToolStripMenuItem, OutstandingPayableToolStripMenuItem, OutstandingDayWiseToolStripMenuItem, OutstandingSelectedAccountingToolStripMenuItem, OutstandingAmountToolStripMenuItem1})
+
+        Dim dailyMenu As ToolStripMenuItem = CreateReportGroup("Daily Reports")
+        dailyMenu.DropDownItems.AddRange(New ToolStripItem() {DayWiseSaleReportToolStripMenuItem, ItemSummaryToolStripMenuItem1, ITEMSUMMARYSelloutMannualToolStripMenuItem, DaySummaryToolStripMenuItem1, CustomerWiseSaleReportToolStripMenuItem1, SupplierVsItemSummaryToolStripMenuItem, DailyNakalToolStripMenuItem})
+
+        Dim monthlyMenu As ToolStripMenuItem = CreateReportGroup("Monthly Reports")
+        monthlyMenu.DropDownItems.Add(AccountMonthlySummaryToolStripMenuItem)
+        Dim monthlySalePurchaseItem As New ToolStripMenuItem("Monthly Sale / Purchase Report")
+        AddHandler monthlySalePurchaseItem.Click, AddressOf MonthlySalePurchaseItem_Click
+        monthlyMenu.DropDownItems.Add(monthlySalePurchaseItem)
+        Dim monthlyAccountItem As New ToolStripMenuItem("Monthly Account-wise Sale / Purchase")
+        AddHandler monthlyAccountItem.Click, AddressOf MonthlyAccountItem_Click
+        monthlyMenu.DropDownItems.Add(monthlyAccountItem)
+
+        Dim profitabilityMenu As ToolStripMenuItem = CreateReportGroup("Sale Profitability Reports")
+        profitabilityMenu.DropDownItems.AddRange(New ToolStripItem() {ScripProfitReportToolStripMenuItem1, OnSaleProfitReportToolStripMenuItem, LooseSaleReportToolStripMenuItem})
+
+        Dim otherReportsMenu As ToolStripMenuItem = CreateReportGroup("Fees && Other Reports")
+        otherReportsMenu.DropDownItems.AddRange(New ToolStripItem() {MarketFeesReportToolStripMenuItem, BIllOfSupplyProfitabilityToolStripMenuItem, StockSellerReportToolStripMenuItem})
+
+        ReportsToolStripMenuItem1.DropDownItems.AddRange(New ToolStripItem() {financialMenu, booksMenu, cashBankMenu, collectionMenu, stockMenu, supplierMenu, outstandingMenu, dailyMenu, monthlyMenu, profitabilityMenu, otherReportsMenu})
+    End Sub
+
+    Private Function CreateReportGroup(ByVal caption As String) As ToolStripMenuItem
+        Dim item As New ToolStripMenuItem(caption)
+        item.BackColor = SystemColors.Control
+        item.ForeColor = Color.Black
+        item.Font = New Font("Times New Roman", 10.0!)
+        Return item
+    End Function
+
+    Private Sub MonthlySalePurchaseItem_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim report As New Monthly_Sale_Purchase_Report()
+        report.MdiParent = Me
+        report.Show()
+        report.Left = 0
+        report.Top = 0
+        report.BringToFront()
+    End Sub
+
+    Private Sub MonthlyAccountItem_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim report As New Monthly_Account_Wise_Sale_Purchase()
+        report.MdiParent = Me
+        report.Show()
+        report.Left = 0
+        report.Top = 0
+        report.BringToFront()
     End Sub
     Dim rs As New Resizer
     Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "accent.dll"
@@ -728,7 +856,7 @@ Public Class MainScreenForm
     Private Sub OutstandingAmountToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OutstandingAmountToolStripMenuItem1.Click
         OutStanding_Amount_Only.MdiParent = Me
         OutStanding_Amount_Only.Show()
-            OutStanding_Amount_Only.BringToFront()
+        OutStanding_Amount_Only.BringToFront()
         OutStanding_Amount_Only.Left = 0 : OutStanding_Amount_Only.Top = 0
     End Sub
 
@@ -1041,6 +1169,9 @@ Public Class MainScreenForm
       "Drop Index if exists CrateAccountID;Create Index CrateAccountID on CrateVoucher(AccountID)"
         ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
         clsFun.ExecScalarStr(sql)
+        sql = ReportIndexSql()
+        clsFun.ExecScalarStr(sql)
+        ApplyReportIndexesToAllCompanyDatabases()
         sql = "Drop Index if exists AccountIDindex;Drop Index if exists AccountIndex;" &
            "Drop Index if exists SallerIndex;Drop Index if exists TransLotIdx;" &
             "Drop Index if exists VoucherIDIdx;Drop Index if exists TransItemID;" &
@@ -1048,7 +1179,8 @@ Public Class MainScreenForm
         sql = sql & "Drop Index if exists AccountGroupIDX;CREATE INDEX AccountGroupIDX ON AccountGroup ( ID ASC,UnderGroupID ASC, ParentID ASC);" &
                     "Drop Index if exists AccountsIDX;CREATE INDEX AccountsIDX ON Accounts (ID ASC,GroupID ASC);" &
                     "Drop Index if exists CrateVoucherIDX;CREATE INDEX CrateVoucherIDX ON CrateVoucher (ID ASC,VoucherID ASC,AccountID ASC,CrateID ASC);" &
-                    "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);"
+                    "Drop Index if exists LedgerIDX;CREATE INDEX LedgerIDX ON Ledger (AccountID ASC,VourchersID ASC);" &
+                    "CREATE INDEX IF NOT EXISTS ServerLedgerDateDCIdx ON Ledger(EntryDate,DC,TransType,VourchersID);"
 
         ' "Drop Index if exists PurcahseItemID;CREATE INDEX PurchaseItemID ON Purchase (ItemID);" & _
         If Val(ClsFunserver.ExecScalarStr(sql)) > 0 Then
@@ -1056,6 +1188,39 @@ Public Class MainScreenForm
         End If
         clsFun.ExecScalarStr("Vacuum;") : ClsFunserver.ExecScalarStr("Vacuum;")
         MsgBox("Boost Up Completed Successfully...", vbInformation, "Sucessful")
+    End Sub
+
+    Private Function ReportIndexSql() As String
+        Return "CREATE INDEX IF NOT EXISTS IDX_Ledger_DayBook ON Ledger(EntryDate,DC,TransType,VourchersID);" &
+               "CREATE INDEX IF NOT EXISTS IDX_Ledger_Account_Date_DC ON Ledger(AccountID,EntryDate,DC);" &
+               "CREATE INDEX IF NOT EXISTS IDX_Ledger_Type_Date_DC ON Ledger(TransType,EntryDate,DC);" &
+               "CREATE INDEX IF NOT EXISTS IDX_Vouchers_Type_Date_ID ON Vouchers(TransType,EntryDate,ID);" &
+               "CREATE INDEX IF NOT EXISTS IDX_Vouchers_ID_Type ON Vouchers(ID,TransType);" &
+               "CREATE INDEX IF NOT EXISTS IDX_T2_Type_Date_Page ON Transaction2(TransType,EntryDate,ManualPageNo);" &
+               "CREATE INDEX IF NOT EXISTS IDX_T2_Type_Date_Account_Item ON Transaction2(TransType,EntryDate,AccountID,ItemID);" &
+               "CREATE INDEX IF NOT EXISTS IDX_T2_Voucher_Type ON Transaction2(VoucherID,TransType);" &
+               "CREATE INDEX IF NOT EXISTS IDX_T2_Purchase_Type ON Transaction2(PurchaseID,TransType);" &
+               "CREATE INDEX IF NOT EXISTS IDX_Purchase_Type_Date_Voucher ON Purchase(TransType,EntryDate,VoucherID);"
+    End Function
+
+    Private Sub ApplyReportIndexesToAllCompanyDatabases()
+        Try
+            Dim dataRoot As String = Path.Combine(Application.StartupPath, "Data")
+            If Directory.Exists(dataRoot) = False Then Exit Sub
+            For Each dbPath As String In Directory.GetFiles(dataRoot, "Data.db", SearchOption.AllDirectories)
+                Try
+                    Using con As New SQLite.SQLiteConnection("Data Source=" & dbPath & ";Version=3;New=True;Compress=True;synchronous=ON;")
+                        con.Open()
+                        Using cmd As New SQLite.SQLiteCommand(ReportIndexSql(), con)
+                            cmd.CommandTimeout = 7000
+                            cmd.ExecuteNonQuery()
+                        End Using
+                    End Using
+                Catch ex As Exception
+                End Try
+            Next
+        Catch ex As Exception
+        End Try
     End Sub
 
     'Private Sub CreateIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateIndexToolStripMenuItem.Click

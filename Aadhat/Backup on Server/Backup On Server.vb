@@ -42,10 +42,22 @@ Public Class Backup_On_Server
     Private Sub CheckForUpdate()
         If CheckInternetConnection() = False Then Exit Sub
         Try
-            Dim wc As New WebClient()
+            Dim updateUrl As String = "https://softmanagementindia.in/updates/aadhat-update.info.txt"
             ' Server version (AssemblyVersion format)
-            Dim serverVersionString As String =
-                wc.DownloadString("http://softmanagementindia.in/updates/aadhat-update.info.txt").Trim()
+            Dim serverVersionString As String = ""
+            If AccentStorageHelper.UseLegacyHttpMode() Then
+                serverVersionString = WinHttpHelper.GetData(updateUrl).Trim()
+            Else
+                Try
+                    Dim wc As New WebClient()
+                    serverVersionString = wc.DownloadString(updateUrl).Trim()
+                Catch
+                    Throw
+                End Try
+            End If
+
+            If serverVersionString = "" Then Exit Sub
+
             ' Local version (Auto incremented AssemblyVersion)
             Dim localVersion As New Version(GetAssemblyVersion())
             Dim serverVersion As New Version(serverVersionString)
@@ -84,7 +96,7 @@ Public Class Backup_On_Server
         Try
             Dim folderPath As String = Path.Combine(Application.StartupPath, "Banners")
             Dim localFilePath As String = Path.Combine(folderPath, "Banner.jpg")
-            Dim bannerUrl As String = "http://softmanagementindia.in/banners/banner.jpg"
+            Dim bannerUrl As String = "https://softmanagementindia.in/banners/banner.jpg"
             ' Ensure folder exists
             If Not Directory.Exists(folderPath) Then
                 Directory.CreateDirectory(folderPath)
@@ -93,25 +105,39 @@ Public Class Backup_On_Server
             If CheckInternetConnection() Then
                 Application.DoEvents()
                 Dim needDownload As Boolean = True
-                ' Get server file last-modified time
-                Dim request As Net.HttpWebRequest = CType(Net.WebRequest.Create(bannerUrl), Net.HttpWebRequest)
-                request.Method = "HEAD"
-                Using response As Net.HttpWebResponse = CType(request.GetResponse(), Net.HttpWebResponse)
-                    Dim serverModified As DateTime = response.LastModified
-                    If File.Exists(localFilePath) Then
-                        Dim localModified As DateTime = File.GetLastWriteTime(localFilePath)
+                ' Get server file last-modified time. Use GET (not HEAD): some
+                ' carriers/CDNs allow the browser image GET but reject HEAD.
+                Try
+                    Dim request As Net.HttpWebRequest = CType(Net.WebRequest.Create(bannerUrl), Net.HttpWebRequest)
+                    request.Method = "GET"
+                    request.UserAgent = "Aadhat/1.0"
+                    request.Accept = "image/jpeg,image/*;q=0.8,*/*;q=0.5"
+                    request.Timeout = 20000
+                    request.ReadWriteTimeout = 20000
+                    Using response As Net.HttpWebResponse = CType(request.GetResponse(), Net.HttpWebResponse)
+                        Dim serverModified As DateTime = response.LastModified
+                        If File.Exists(localFilePath) Then
+                            Dim localModified As DateTime = File.GetLastWriteTime(localFilePath)
 
-                        ' Compare times
-                        If localModified >= serverModified Then
-                            needDownload = False
+                            ' Compare times
+                            If localModified >= serverModified Then
+                                needDownload = False
+                            End If
                         End If
+                    End Using
+                Catch
+                    If Not AccentStorageHelper.UseLegacyHttpMode() Then
+                        Throw
                     End If
-                End Using
+                End Try
 
                 ' Download only if server image is newer
                 If needDownload Then
-                    Dim client As New WebClient()
-                    client.DownloadFile(bannerUrl, localFilePath)
+                    Using client As New WebClient()
+                        client.Headers(HttpRequestHeader.UserAgent) = "Aadhat/1.0"
+                        client.Headers(HttpRequestHeader.Accept) = "image/jpeg,image/*;q=0.8,*/*;q=0.5"
+                        File.WriteAllBytes(localFilePath, client.DownloadData(bannerUrl))
+                    End Using
                 End If
 
                 ' Load image
@@ -121,18 +147,27 @@ Public Class Backup_On_Server
                 End If
             End If
         Catch ex As Exception
-            MessageBox.Show("Banner load error: " & ex.Message)
+            ' Banner is optional. Keep the application usable when a carrier/CDN
+            ' blocks the image request; a cached local image remains available.
+            If File.Exists(Path.Combine(Application.StartupPath, "Banners\Banner.jpg")) Then
+                Try
+                    If pb1.Image IsNot Nothing Then pb1.Image.Dispose()
+                    pb1.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Banners\Banner.jpg"))
+                Catch
+                End Try
+            End If
         End Try
     End Sub
 
     Private Function CheckInternetConnection() As Boolean
         Try
             Using client As New WebClient()
-                Using stream = client.OpenRead("http://www.google.com")
+                Using stream = client.OpenRead("https://www.google.com/generate_204")
                     Return True
                 End Using
             End Using
         Catch
+            If AccentStorageHelper.UseLegacyHttpMode() Then Return True
             Return False
         End Try
     End Function

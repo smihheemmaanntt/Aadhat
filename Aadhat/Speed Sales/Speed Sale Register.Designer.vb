@@ -85,6 +85,10 @@ Partial Class Speed_Sale_Register
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.txttoDate = New System.Windows.Forms.TextBox()
         Me.txtFromDate = New System.Windows.Forms.TextBox()
+        Me.lblManualPageSearch = New System.Windows.Forms.Label()
+        Me.btnPreviousManualPageSearch = New System.Windows.Forms.Button()
+        Me.txtManualPageSearch = New System.Windows.Forms.TextBox()
+        Me.btnNextManualPageSearch = New System.Windows.Forms.Button()
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlprint.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -848,12 +852,71 @@ Partial Class Speed_Sale_Register
         Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
         Me.txtFromDate.TabIndex = 0
         '
+        'lblManualPageSearch
+        '
+        Me.lblManualPageSearch.AutoSize = True
+        Me.lblManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lblManualPageSearch.ForeColor = System.Drawing.Color.Black
+        Me.lblManualPageSearch.Location = New System.Drawing.Point(334, 56)
+        Me.lblManualPageSearch.Name = "lblManualPageSearch"
+        Me.lblManualPageSearch.Size = New System.Drawing.Size(90, 19)
+        Me.lblManualPageSearch.TabIndex = 91380
+        Me.lblManualPageSearch.Text = "Manual Page"
+        '
+        'btnPreviousManualPageSearch
+        '
+        Me.btnPreviousManualPageSearch.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.btnPreviousManualPageSearch.FlatAppearance.BorderSize = 0
+        Me.btnPreviousManualPageSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPreviousManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPreviousManualPageSearch.ForeColor = System.Drawing.Color.White
+        Me.btnPreviousManualPageSearch.Location = New System.Drawing.Point(444, 52)
+        Me.btnPreviousManualPageSearch.Name = "btnPreviousManualPageSearch"
+        Me.btnPreviousManualPageSearch.Size = New System.Drawing.Size(25, 26)
+        Me.btnPreviousManualPageSearch.TabIndex = 91382
+        Me.btnPreviousManualPageSearch.Text = "<"
+        Me.btnPreviousManualPageSearch.UseVisualStyleBackColor = False
+        Me.btnPreviousManualPageSearch.Visible = False
+        '
+        'txtManualPageSearch
+        '
+        Me.txtManualPageSearch.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtManualPageSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.txtManualPageSearch.ForeColor = System.Drawing.Color.Navy
+        Me.txtManualPageSearch.Location = New System.Drawing.Point(470, 52)
+        Me.txtManualPageSearch.MaxLength = 6
+        Me.txtManualPageSearch.Name = "txtManualPageSearch"
+        Me.txtManualPageSearch.Size = New System.Drawing.Size(42, 26)
+        Me.txtManualPageSearch.TabIndex = 91381
+        Me.txtManualPageSearch.Text = "0"
+        Me.txtManualPageSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'btnNextManualPageSearch
+        '
+        Me.btnNextManualPageSearch.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.btnNextManualPageSearch.FlatAppearance.BorderSize = 0
+        Me.btnNextManualPageSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNextManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnNextManualPageSearch.ForeColor = System.Drawing.Color.White
+        Me.btnNextManualPageSearch.Location = New System.Drawing.Point(513, 52)
+        Me.btnNextManualPageSearch.Name = "btnNextManualPageSearch"
+        Me.btnNextManualPageSearch.Size = New System.Drawing.Size(26, 26)
+        Me.btnNextManualPageSearch.TabIndex = 91383
+        Me.btnNextManualPageSearch.Text = ">"
+        Me.btnNextManualPageSearch.UseVisualStyleBackColor = False
+        Me.btnNextManualPageSearch.Visible = False
+        '
         'Speed_Sale_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.btnNextManualPageSearch)
+        Me.Controls.Add(Me.btnPreviousManualPageSearch)
+        Me.Controls.Add(Me.txtManualPageSearch)
+        Me.Controls.Add(Me.lblManualPageSearch)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.pnlprint)
@@ -974,4 +1037,8 @@ Partial Class Speed_Sale_Register
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents txttoDate As System.Windows.Forms.TextBox
     Friend WithEvents txtFromDate As System.Windows.Forms.TextBox
+    Friend WithEvents lblManualPageSearch As System.Windows.Forms.Label
+    Friend WithEvents btnPreviousManualPageSearch As System.Windows.Forms.Button
+    Friend WithEvents txtManualPageSearch As System.Windows.Forms.TextBox
+    Friend WithEvents btnNextManualPageSearch As System.Windows.Forms.Button
 End Class

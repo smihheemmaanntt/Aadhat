@@ -1,5 +1,50 @@
 ﻿Public Class Speed_Sale_Register
     Private headerCheckBox As CheckBox = New CheckBox()
+
+    Private Sub EnsureManualPageSchema()
+        If clsFun.CheckIfColumnExists("Transaction2", "ManualPageNo") = False Then
+            clsFun.ExecNonQuery("ALTER TABLE Transaction2 ADD COLUMN ManualPageNo INTEGER NOT NULL DEFAULT 1;")
+        End If
+        clsFun.ExecNonQuery("CREATE INDEX IF NOT EXISTS idx_transaction2_speed_manual_page ON Transaction2(TransType,EntryDate,ManualPageNo);PRAGMA optimize;")
+    End Sub
+
+    Private Function ManualPageCondition() As String
+        Dim pageNo As Integer = Val(txtManualPageSearch.Text)
+        If pageNo < 1 Then Return ""
+        Return " And ifnull(ManualPageNo,1)=" & pageNo
+    End Function
+
+    Private Function IsSingleDateSearch() As Boolean
+        If IsDate(txtFromDate.Text) = False OrElse IsDate(txtToDate.Text) = False Then Return False
+        Return CDate(txtFromDate.Text).Date = CDate(txtToDate.Text).Date
+    End Function
+
+    Private Sub UpdateManualPageNavigation()
+        Dim showManualNavigation As Boolean = IsSingleDateSearch()
+        lblManualPageSearch.Visible = showManualNavigation
+        txtManualPageSearch.Visible = showManualNavigation
+        If showManualNavigation = False Then
+            txtManualPageSearch.Clear()
+            btnPreviousManualPageSearch.Visible = False
+            btnNextManualPageSearch.Visible = False
+            Exit Sub
+        End If
+
+        Dim pageNo As Integer = Val(txtManualPageSearch.Text)
+        If pageNo < 0 Then pageNo = 0
+        If txtManualPageSearch.Text.Trim() = "" OrElse Val(txtManualPageSearch.Text) < 0 Then txtManualPageSearch.Text = "0"
+        Dim entryDate As String = CDate(txtFromDate.Text).ToString("yyyy-MM-dd")
+        Dim lastPage As Integer = clsFun.ExecScalarInt("Select ifnull(Max(ifnull(ManualPageNo,1)),1) From Transaction2 Where TransType='Speed Sale' And EntryDate='" & entryDate & "'")
+        If lastPage < 1 Then lastPage = 1
+        btnPreviousManualPageSearch.Visible = (pageNo > 1)
+        btnNextManualPageSearch.Visible = (pageNo < lastPage)
+        If btnNextManualPageSearch.Visible Then btnNextManualPageSearch.BackColor = Color.LimeGreen
+    End Sub
+
+    Private Sub RefreshManualPageResult()
+        Offset = 0
+        If ckAll.Checked = True Then retriveAll(Primary, Secondary, third) Else retrive(Primary, Secondary, third)
+    End Sub
     Dim SearchText As String = "" : Dim TotalPages As Integer = 0
     Dim PageNumber As Integer = 0 : Dim RowCount As Integer = 20
     Dim Offset As Integer = 0 : Dim totNugs As Decimal = 0
@@ -31,13 +76,15 @@
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
-        Dim mindate As String = String.Empty : Dim maxdate As String = String.Empty
-        mindate = clsFun.ExecScalarStr("Select Max(EntryDate) as entrydate from transaction2 where transtype='" & Me.Text & "'")
-        maxdate = clsFun.ExecScalarStr("Select max(entrydate) as entrydate from transaction2 where transtype='" & Me.Text & "'")
-        txtFromDate.Text = IIf(mindate <> "", mindate, Date.Today.ToString("dd-MM-yyyy"))
-        txtToDate.Text = IIf(maxdate <> "", maxdate, Date.Today.ToString("dd-MM-yyyy"))
+        EnsureManualPageSchema()
+        Dim maxEntryDate As String = clsFun.ExecScalarStr("Select Max(EntryDate) From Vouchers Where TransType='Speed Sale'")
+        If maxEntryDate = "" Then maxEntryDate = clsFun.ExecScalarStr("Select Max(EntryDate) From Transaction2 Where TransType='Speed Sale'")
+        If maxEntryDate = "" Then maxEntryDate = Date.Today.ToString("yyyy-MM-dd")
+        txtFromDate.Text = maxEntryDate
+        txttoDate.Text = maxEntryDate
         txtFromDate.Text = SmartDate(txtFromDate.Text) : txttoDate.Text = SmartDate(txttoDate.Text, True, 2)
         rowColums()
+        UpdateManualPageNavigation()
     End Sub
 
     Private Sub HeaderCheckBox_Clicked(ByVal sender As Object, ByVal e As EventArgs)
@@ -66,7 +113,7 @@
     End Sub
 
     Private Sub rowColums()
-        dg1.ColumnCount = 15
+        dg1.ColumnCount = 16
         Dim headerCellLocation As Point = Me.dg1.GetCellDisplayRectangle(0, -1, True).Location
         'Place the Header CheckBox in the Location of the Header Cell.
         headerCheckBox.Location = New Point(headerCellLocation.X + 8, headerCellLocation.Y + 2)
@@ -118,7 +165,10 @@
         dg1.Columns(13).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight
         dg1.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         dg1.Columns(14).Name = "AccountID" : dg1.Columns(14).Width = 80
-        dg1.Columns(15).Name = "ItmID" : dg1.Columns(15).Width = 80
+        dg1.Columns(15).Name = "ItmID" : dg1.Columns(15).Visible = False
+        dg1.Columns(16).Name = "M. Page" : dg1.Columns(16).Visible = False
+        dg1.Columns(16).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        dg1.Columns(16).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
     End Sub
     Sub calc()
@@ -140,22 +190,24 @@
     End Sub
     Public Sub retrive(Optional ByVal condtion As String = "", Optional ByVal condtion1 As String = "", Optional ByVal condtion2 As String = "")
         dg1.Rows.Clear()
+        UpdateManualPageNavigation()
         Dim dt, dt1 As New DataTable
         '   Dim NewDate As DateTime
         ' Dim duration As TimeSpan
         Dim StartTime As DateTime = DateTime.Now
+        Dim pageCondition As String = ManualPageCondition()
         'Call the database here and execute your SQL statement
-        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
+        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition)
         TotalPages = Math.Ceiling(recordsCount / RowCount)
-        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & " LIMIT " + RowCount.ToString() + " OFFSET " + Offset.ToString())
+        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition & " LIMIT " + RowCount.ToString() + " OFFSET " + Offset.ToString())
         lblTotalRecord.Text = "Total Pages : " & TotalPages : lblTotalRecord.Visible = True
         lblPageNumber.Text = "Page No. : " & (Offset / RowCount) + 1 : lblPageNumber.Visible = True
-        totNugs = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Nug),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lbltotNug.Visible = True
-        totWeight = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Weight),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblTotalWeight.Visible = True
-        totBasic = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Amount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblBasic.Visible = True
-        totCharges = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Charges),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblCharges.Visible = True
-        Roundoff = Format(Val(clsFun.ExecScalarStr("Select ifnull(Sum(RoundOff),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")), "0.00") : lblRounfOff.Visible = True
-        totTotal = Format(clsFun.ExecScalarDec("Select ifnull(Sum(TotalAmount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & ""), "0.00") : lblTotal.Visible = True
+        totNugs = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Nug),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition), "0.00") : lbltotNug.Visible = True
+        totWeight = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Weight),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition), "0.00") : lblTotalWeight.Visible = True
+        totBasic = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Amount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition), "0.00") : lblBasic.Visible = True
+        totCharges = Format(clsFun.ExecScalarDec("Select ifnull(Sum(Charges),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition), "0.00") : lblCharges.Visible = True
+        Roundoff = Format(Val(clsFun.ExecScalarStr("Select ifnull(Sum(RoundOff),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition)), "0.00") : lblRounfOff.Visible = True
+        totTotal = Format(clsFun.ExecScalarDec("Select ifnull(Sum(TotalAmount),0) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition), "0.00") : lblTotal.Visible = True
         lbltotNug.Text = "Nug  : " & Format(Val(totNugs), "0.00") : lblTotalWeight.Text = "Weight : " & Format(Val(totWeight), "0.00")
         lblBasic.Text = "Basic : " & Format(Val(totBasic), "0.00") : lblCharges.Text = "Charges : " & Format(Val(totCharges), "0.00")
         lblTotal.Text = "Total : " & Format(Val(totTotal), "0.00") : lblRounfOff.Text = "R. Off : " & Format(Val(Roundoff), "0.00")
@@ -189,6 +241,7 @@
                         .Cells(13).Value = dt.Rows(i)("CrateQty").ToString()
                         .Cells(14).Value = dt.Rows(i)("AccountID").ToString()
                         .Cells(15).Value = dt.Rows(i)("ItemID").ToString()
+                        .Cells(16).Value = Math.Max(1, Val(dt.Rows(i)("ManualPageNo").ToString()))
 
                         'Dim percentage As Double = (i / dt.Rows.Count) * 100
                         'ProgressBar1.Value = Int32.Parse(Math.Truncate(percentage).ToString())
@@ -207,10 +260,12 @@
 
     Public Sub retriveAll(Optional ByVal condtion As String = "", Optional ByVal condtion1 As String = "", Optional ByVal condtion2 As String = "")
         dg1.Rows.Clear()
+        UpdateManualPageNavigation()
         Dim dt, dt1 As New DataTable
-        ' Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
+        Dim pageCondition As String = ManualPageCondition()
+        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition)
         TotalPages = Math.Ceiling(recordsCount / RowCount)
-        dt = clsFun.ExecDataTable("Select Voucherid,EntryDate,ItemName,AccountName,Nug,Weight,Rate,Per,Amount,Charges,RoundOff,TotalAmount,CrateQty,AccountID,ItemID FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & "")
+        dt = clsFun.ExecDataTable("Select Voucherid,EntryDate,ItemName,AccountName,Nug,Weight,Rate,Per,Amount,Charges,RoundOff,TotalAmount,CrateQty,AccountID,ItemID,ifnull(ManualPageNo,1) as ManualPageNo FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & condtion & "  " & condtion1 & "  " & condtion2 & pageCondition)
         Try
             If dt.Rows.Count > 0 Then
                 dg1.Rows.Clear()
@@ -233,6 +288,7 @@
                         .Cells(13).Value = dt.Rows(i)("CrateQty").ToString()
                         .Cells(14).Value = dt.Rows(i)("AccountID").ToString()
                         .Cells(15).Value = dt.Rows(i)("ItemID").ToString()
+                        .Cells(16).Value = Math.Max(1, Val(dt.Rows(i)("ManualPageNo").ToString()))
                         '.Cells(5).Style.Alignment = DataGridViewContentAlignment.MiddleRight
                         '.Cells(6).Style.Alignment = DataGridViewContentAlignment.MiddleRight
                         '.Cells(7).Style.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -249,6 +305,7 @@
             MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
         End Try
         '  lblTotalRecordCount.Text = "Total Record : " & recordsCount : lblTotalRecordCount.Visible = True
+        lblTotalRecordCount.Text = "Total Record : " & recordsCount : lblTotalRecordCount.Visible = True
         calc() : dg1.ClearSelection()
         ' lblCharges.Text = Format(Val(totCharges), "0.00")
     End Sub
@@ -326,7 +383,8 @@
         Dim cmd As New SQLite.SQLiteCommand
         Dim sql As String = ""
         ClsFunPrimary.ExecNonQuery("Delete from printing")
-        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & SearchText & "")
+        dt = clsFun.ExecDataTable("Select * FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate Between '" & CDate(Me.txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' " & SearchText & ManualPageCondition())
+        If dt.Rows.Count = 0 Then MsgBox("No record found for selected manual page.", vbInformation, "AADHAT") : Exit Sub
         ProgressBar1.Maximum = dt.Rows.Count - 1
         ProgressBar1.Visible = True
         For i = 0 To dt.Rows.Count - 1
@@ -364,6 +422,34 @@
         If e.KeyChar = "'"c Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub txtManualPageSearch_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtManualPageSearch.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar) OrElse Asc(e.KeyChar) = 8)
+    End Sub
+
+    Private Sub txtManualPageSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtManualPageSearch.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            RefreshManualPageResult()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Sub btnPreviousManualPageSearch_Click(sender As Object, e As EventArgs) Handles btnPreviousManualPageSearch.Click
+        Dim pageNo As Integer = Val(txtManualPageSearch.Text)
+        If pageNo <= 1 Then Exit Sub
+        txtManualPageSearch.Text = (pageNo - 1).ToString()
+        RefreshManualPageResult()
+    End Sub
+
+    Private Sub btnNextManualPageSearch_Click(sender As Object, e As EventArgs) Handles btnNextManualPageSearch.Click
+        If IsSingleDateSearch() = False Then Exit Sub
+        Dim entryDate As String = CDate(txtFromDate.Text).ToString("yyyy-MM-dd")
+        Dim lastPage As Integer = clsFun.ExecScalarInt("Select ifnull(Max(ifnull(ManualPageNo,1)),1) From Transaction2 Where TransType='Speed Sale' And EntryDate='" & entryDate & "'")
+        Dim pageNo As Integer = Math.Max(0, Val(txtManualPageSearch.Text))
+        If pageNo >= lastPage Then UpdateManualPageNavigation() : Exit Sub
+        If pageNo = 0 Then txtManualPageSearch.Text = "1" Else txtManualPageSearch.Text = (pageNo + 1).ToString()
+        RefreshManualPageResult()
     End Sub
 
     Private Sub txtCustomerSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPrimarySearch.KeyUp
@@ -596,7 +682,7 @@
         If e.KeyCode = Keys.Enter Then btnDelete.Focus()
     End Sub
 
-    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
-
+    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged, txttoDate.TextChanged
+        UpdateManualPageNavigation()
     End Sub
 End Class

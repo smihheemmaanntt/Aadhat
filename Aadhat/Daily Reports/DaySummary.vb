@@ -168,11 +168,15 @@
         txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
-    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+    Private Sub txttoDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txttoDate.Validating
         txttoDate.Text = SmartDate(txttoDate.Text)
     End Sub
 
-    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+    Private Sub txtFromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
         txtFromDate.Text = SmartDate(txtFromDate.Text)
+    End Sub
+
+    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
+
     End Sub
 End Class

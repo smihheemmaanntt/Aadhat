@@ -5,11 +5,11 @@ Imports System.Reflection
 Imports Microsoft.Win32
 
 Public Class clsFun
-    Public Shared ConStr As String = "Data Source=|DataDirectory|" & GlobalData.ConnectionPath & ";Version=3;New=True;Compress=True;synchronous=ON;cache_size = 100000;Page Size=2048;PRAGMA mmap_size = 268435456;"
+    Public Shared ConStr As String = "Data Source=|DataDirectory|" & GlobalData.ConnectionPath & ";Version=3;New=True;Compress=True;synchronous=ON;cache_size = 1000000;Page Size=2048;PRAGMA mmap_size = 268435456;"
     Public Shared con As New SQLiteConnection
 
     Public Sub New()
-        ConStr = "Data Source=|DataDirectory|" & GlobalData.ConnectionPath & ";Version=3;New=True;Compress=True;synchronous=ON;cache_size = 100000;Page Size=2048;PRAGMA mmap_size = 268435456;"
+        ConStr = "Data Source=|DataDirectory|" & GlobalData.ConnectionPath & ";Version=3;New=True;Compress=True;synchronous=ON;cache_size = 1000000;Page Size=2048;PRAGMA mmap_size = 268435456;"
     End Sub
 
     Public Function GenerateGUID() As String

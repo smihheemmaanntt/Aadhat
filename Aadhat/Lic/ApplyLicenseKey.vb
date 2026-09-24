@@ -157,7 +157,17 @@ Public Class ApplyLicenseKey
             }
 
             Dim response = AccentStorageHelper.SaveLicense(data)
-            Dim respObj = Newtonsoft.Json.JsonConvert.DeserializeObject(Of CustomerActivationResponse)(response)
+            Dim respObj As CustomerActivationResponse = Nothing
+
+            Try
+                respObj = Newtonsoft.Json.JsonConvert.DeserializeObject(Of CustomerActivationResponse)(response)
+            Catch
+            End Try
+
+            If respObj Is Nothing Then
+                MsgBox("License server se valid response nahi mila. Internet/TLS setting check karke dubara try karein.", vbCritical)
+                Exit Sub
+            End If
 
             MsgBox(respObj.message, If(respObj.status = "success", vbInformation, vbCritical))
 
@@ -181,12 +191,22 @@ Public Class ApplyLicenseKey
         }
 
         Dim AMCresponse = AccentStorageHelper.SaveAmc(amcData)
-        Dim amcRespObj = Newtonsoft.Json.JsonConvert.DeserializeObject(Of AmcActivationResponse)(AMCresponse)
+        Dim amcRespObj As AmcActivationResponse = Nothing
+
+        Try
+            amcRespObj = Newtonsoft.Json.JsonConvert.DeserializeObject(Of AmcActivationResponse)(AMCresponse)
+        Catch
+        End Try
+
+        If amcRespObj Is Nothing Then
+            MsgBox("AMC server se valid response nahi mila. Internet/TLS setting check karke dubara try karein.", vbCritical)
+            Exit Sub
+        End If
 
         MsgBox(amcRespObj.message, If(amcRespObj.status = "success", vbInformation, vbCritical))
 
         If amcRespObj.status = "success" Then Me.Close()
-        AccentStorageHelper.GetRemainingDays()
+        Dim daysLeft As Integer = AccentStorageHelper.GetRemainingDays()
         MainScreenForm.lblARC.Text =
             If(daysLeft > 0, "ARC Expire In Next " & daysLeft & " Days", "")
     End Sub

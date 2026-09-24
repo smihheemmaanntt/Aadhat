@@ -1,10 +1,42 @@
-﻿Imports System.Data.SqlClient
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text
 Imports Aadhat.HttpService
 
 
 Public Class Mobile_App
+    Private Function SafeSyncText(ByVal value As Object) As String
+        If value Is Nothing OrElse value Is DBNull.Value Then Return ""
+        Return value.ToString().Trim()
+    End Function
+
+    Private Function SafeSyncMobileValue(ByVal value As Object) As String
+        Dim mobileValue As String = SafeSyncText(value)
+        If mobileValue.Length > 15 Then mobileValue = mobileValue.Substring(0, 15)
+        Return mobileValue
+    End Function
+    Private Function RunMobileSync(ByVal fullSync As Boolean) As Boolean
+        Try
+            btnCustom.Enabled = False
+            If fullSync Then
+                saveUpdateInfo()
+            Else
+                CustomUpdate()
+            End If
+            Return True
+        Catch ex As Exception
+            MessageBox.Show("Mobile sync failed." & Environment.NewLine & ex.Message,
+                            "Mobile Sync", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        Finally
+            btnCustom.Enabled = True
+            btnCustom.Visible = True
+            ckFullSync.Visible = True
+            dataProgress.Visible = False
+            lblProgress.Visible = False
+        End Try
+    End Function
+
     Dim ClsCommon As CommonClass = New CommonClass()
     Dim fileName As String = AppDomain.CurrentDomain.BaseDirectory & "coreaccess.smx"
     Private Sub BtnIDGenrate_Click(sender As Object, e As EventArgs) Handles BtnIDGenrate.Click
@@ -33,32 +65,32 @@ Public Class Mobile_App
             For Each item As DataRow In compdt.Rows
                 Application.DoEvents()
                 lblProgress.Text = "Company Data..."
-                companyRequest.Address = item.Field(Of String)("Address")
-                companyRequest.City = item.Field(Of String)("City")
+                companyRequest.Address = SafeSyncText(item("Address"))
+                companyRequest.City = SafeSyncText(item("City"))
                 companyRequest.CompanyID = 0
-                companyRequest.CompanyName = item.Field(Of String)("CompanyName")
-                companyRequest.CompData = item.Field(Of String)("CompData")
-                companyRequest.DealsIN = item.Field(Of String)("DealsIN")
-                companyRequest.EmailID = item.Field(Of String)("EmailID")
-                companyRequest.FaxNo = item.Field(Of String)("FaxNo")
-                companyRequest.GSTN = item.Field(Of String)("GSTN")
+                companyRequest.CompanyName = SafeSyncText(item("CompanyName"))
+                companyRequest.CompData = SafeSyncText(item("CompData"))
+                companyRequest.DealsIN = SafeSyncText(item("DealsIN"))
+                companyRequest.EmailID = SafeSyncText(item("EmailID"))
+                companyRequest.FaxNo = SafeSyncText(item("FaxNo"))
+                companyRequest.GSTN = SafeSyncText(item("GSTN"))
                 companyRequest.IsActive = True
-                companyRequest.Marka = item.Field(Of String)("Marka")
-                companyRequest.MobileNo1 = item.Field(Of String)("MobileNo1")
-                companyRequest.MobileNo2 = item.Field(Of String)("MobileNo2")
+                companyRequest.Marka = SafeSyncText(item("Marka"))
+                companyRequest.MobileNo1 = SafeSyncMobileValue(item("MobileNo1"))
+                companyRequest.MobileNo2 = SafeSyncMobileValue(item("MobileNo2"))
                 companyRequest.OrganizationID = item.Field(Of Int64)("OrganizationID")
-                companyRequest.Other = item.Field(Of String)("Other")
-                companyRequest.PanNo = item.Field(Of String)("PanNO")
-                companyRequest.Password = item.Field(Of String)("Password")
-                companyRequest.PhoneNo = item.Field(Of String)("PhoneNo")
-                companyRequest.PrintOtheraddress = Utf8ToUnicode(item.Field(Of String)("PrintOtheraddress"))
-                companyRequest.PrintOtherCity = Utf8ToUnicode(item.Field(Of String)("PrintOtherCity"))
-                companyRequest.PrintOtherName = Utf8ToUnicode(item.Field(Of String)("PrintOtherName"))
-                companyRequest.PrintOtherState = Utf8ToUnicode(item.Field(Of String)("PrintOtherState"))
-                companyRequest.RegistrationNo = item.Field(Of String)("RegistrationNo")
-                companyRequest.State = item.Field(Of String)("State")
-                companyRequest.tag = item.Field(Of String)("tag")
-                companyRequest.Website = item.Field(Of String)("Website")
+                companyRequest.Other = SafeSyncText(item("Other"))
+                companyRequest.PanNo = SafeSyncText(item("PanNO"))
+                companyRequest.Password = SafeSyncText(item("Password"))
+                companyRequest.PhoneNo = SafeSyncText(item("PhoneNo"))
+                companyRequest.PrintOtheraddress = Utf8ToUnicode(SafeSyncText(item("PrintOtheraddress"))).Trim()
+                companyRequest.PrintOtherCity = Utf8ToUnicode(SafeSyncText(item("PrintOtherCity"))).Trim()
+                companyRequest.PrintOtherName = Utf8ToUnicode(SafeSyncText(item("PrintOtherName"))).Trim()
+                companyRequest.PrintOtherState = Utf8ToUnicode(SafeSyncText(item("PrintOtherState"))).Trim()
+                companyRequest.RegistrationNo = SafeSyncText(item("RegistrationNo"))
+                companyRequest.State = SafeSyncText(item("State"))
+                companyRequest.tag = SafeSyncText(item("tag"))
+                companyRequest.Website = SafeSyncText(item("Website"))
                 companyRequest.YearStart = CDate(item.Field(Of Date)("YearStart")).ToString("yyyy-MM-dd")
                 companyRequest.Yearend = CDate(item.Field(Of Date)("Yearend")).ToString("yyyy-MM-dd")
                 OrgID = item.Field(Of Int64)("OrganizationID")
@@ -78,33 +110,33 @@ Public Class Mobile_App
                 lblProgress.Text = "Accounts Data..."
                 Dim acc As AccountRequest = New AccountRequest()
                 acc.AccountId = item.Field(Of Int64)("ID")
-                acc.AccountName = item.Field(Of String)("AccountName").Trim
+                acc.AccountName = SafeSyncText(item("AccountName"))
                 acc.GroupID = item.Field(Of Int64)("GroupID")
                 'If item.Field(Of Int64)("GroupID") = 32 Then MsgBox("a")
-                acc.DC = item.Field(Of String)("DC")
-                acc.Tag = item.Field(Of String)("Tag")
+                acc.DC = SafeSyncText(item("DC"))
+                acc.Tag = SafeSyncText(item("Tag"))
                 acc.OpBal = item.Field(Of Decimal)("OpBal")
-                acc.OtherName = Utf8ToUnicode(item.Field(Of String)("OtherName"))
-                acc.Address = item.Field(Of String)("Address")
-                acc.LFNo = item.Field(Of String)("LFNo")
-                acc.Area = item.Field(Of String)("Area")
-                acc.City = item.Field(Of String)("City")
-                acc.AccNo = item.Field(Of String)("State")
-                acc.Phone = item.Field(Of String)("Phone")
-                acc.Contact = item.Field(Of String)("Contact")
-                acc.Mobile1 = item.Field(Of String)("Mobile1")
-                acc.Mobile2 = item.Field(Of String)("Mobile2")
-                acc.MailID = item.Field(Of String)("MailID")
-                acc.BankName = item.Field(Of String)("BankName")
-                acc.AccNo = item.Field(Of String)("AccNo")
-                acc.IFSC = item.Field(Of String)("IFSC")
-                acc.GName = item.Field(Of String)("GName")
-                acc.Gmobile1 = item.Field(Of String)("Gmobile1")
-                acc.Gmobile2 = item.Field(Of String)("Gmobile2")
-                acc.Gaddress = item.Field(Of String)("Gaddress")
-                acc.GCity = item.Field(Of String)("GCity")
-                acc.Gstate = item.Field(Of String)("Gstate")
-                acc.Limit = item.Field(Of String)("Limit")
+                acc.OtherName = Utf8ToUnicode(SafeSyncText(item("OtherName"))).Trim()
+                acc.Address = SafeSyncText(item("Address"))
+                acc.LFNo = SafeSyncText(item("LFNo"))
+                acc.Area = SafeSyncText(item("Area"))
+                acc.City = SafeSyncText(item("City"))
+                acc.State = SafeSyncText(item("State"))
+                acc.Phone = SafeSyncText(item("Phone"))
+                acc.Contact = SafeSyncText(item("Contact"))
+                acc.Mobile1 = SafeSyncMobileValue(item("Mobile1"))
+                acc.Mobile2 = SafeSyncMobileValue(item("Mobile2"))
+                acc.MailID = SafeSyncText(item("MailID"))
+                acc.BankName = SafeSyncText(item("BankName"))
+                acc.AccNo = SafeSyncText(item("AccNo"))
+                acc.IFSC = SafeSyncText(item("IFSC"))
+                acc.GName = SafeSyncText(item("GName"))
+                acc.Gmobile1 = SafeSyncMobileValue(item("Gmobile1"))
+                acc.Gmobile2 = SafeSyncMobileValue(item("Gmobile2"))
+                acc.Gaddress = SafeSyncText(item("Gaddress"))
+                acc.GCity = SafeSyncText(item("GCity"))
+                acc.Gstate = SafeSyncText(item("Gstate"))
+                acc.Limit = SafeSyncText(item("Limit"))
                 acc.AccountPhoto = ""
                 acc.Gphoto = ""
                 acc.OrganizationId = OrgID
@@ -157,32 +189,32 @@ Public Class Mobile_App
             '            lblProgress.Text = "Processing Accounts... " & processedRecords & ""
             '            Dim acc As New AccountRequest()
             '            acc.AccountId = item.Field(Of Int64)("ID")
-            '            acc.AccountName = item.Field(Of String)("AccountName").Trim
+            '            acc.AccountName = SafeSyncText(item("AccountName"))
             '            acc.GroupID = item.Field(Of Int64)("GroupID")
-            '            acc.DC = item.Field(Of String)("DC")
-            '            acc.Tag = item.Field(Of String)("Tag")
+            '            acc.DC = SafeSyncText(item("DC"))
+            '            acc.Tag = SafeSyncText(item("Tag"))
             '            acc.OpBal = item.Field(Of Decimal)("OpBal")
-            '            acc.OtherName = Utf8ToUnicode(item.Field(Of String)("OtherName")).Trim
-            '            acc.Address = item.Field(Of String)("Address")
-            '            acc.LFNo = item.Field(Of String)("LFNo")
-            '            acc.Area = item.Field(Of String)("Area")
-            '            acc.City = item.Field(Of String)("City")
+            '            acc.OtherName = Utf8ToUnicode(SafeSyncText(item("OtherName"))).Trim()
+            '            acc.Address = SafeSyncText(item("Address"))
+            '            acc.LFNo = SafeSyncText(item("LFNo"))
+            '            acc.Area = SafeSyncText(item("Area"))
+            '            acc.City = SafeSyncText(item("City"))
             '            acc.AccNo = item.Field(Of String)("State")
-            '            acc.Phone = item.Field(Of String)("Phone")
-            '            acc.Contact = item.Field(Of String)("Contact")
-            '            acc.Mobile1 = item.Field(Of String)("Mobile1")
-            '            acc.Mobile2 = item.Field(Of String)("Mobile2")
-            '            acc.MailID = item.Field(Of String)("MailID")
-            '            acc.BankName = item.Field(Of String)("BankName")
-            '            acc.AccNo = item.Field(Of String)("AccNo")
-            '            acc.IFSC = item.Field(Of String)("IFSC")
-            '            acc.GName = item.Field(Of String)("GName")
-            '            acc.Gmobile1 = item.Field(Of String)("Gmobile1")
-            '            acc.Gmobile2 = item.Field(Of String)("Gmobile2")
-            '            acc.Gaddress = item.Field(Of String)("Gaddress")
-            '            acc.GCity = item.Field(Of String)("GCity")
-            '            acc.Gstate = item.Field(Of String)("Gstate")
-            '            acc.Limit = item.Field(Of String)("Limit")
+            '            acc.Phone = SafeSyncText(item("Phone"))
+            '            acc.Contact = SafeSyncText(item("Contact"))
+            '            acc.Mobile1 = SafeSyncMobileValue(item("Mobile1"))
+            '            acc.Mobile2 = SafeSyncMobileValue(item("Mobile2"))
+            '            acc.MailID = SafeSyncText(item("MailID"))
+            '            acc.BankName = SafeSyncText(item("BankName"))
+            '            acc.AccNo = SafeSyncText(item("AccNo"))
+            '            acc.IFSC = SafeSyncText(item("IFSC"))
+            '            acc.GName = SafeSyncText(item("GName"))
+            '            acc.Gmobile1 = SafeSyncMobileValue(item("Gmobile1"))
+            '            acc.Gmobile2 = SafeSyncMobileValue(item("Gmobile2"))
+            '            acc.Gaddress = SafeSyncText(item("Gaddress"))
+            '            acc.GCity = SafeSyncText(item("GCity"))
+            '            acc.Gstate = SafeSyncText(item("Gstate"))
+            '            acc.Limit = SafeSyncText(item("Limit"))
             '            acc.AccountPhoto = ""
             '            acc.Gphoto = ""
             '            acc.OrganizationId = OrgID
@@ -211,12 +243,12 @@ Public Class Mobile_App
                 lblProgress.Text = "Groups Data..."
                 Dim accgrp As AccountGroupRequest = New AccountGroupRequest()
                 accgrp.GroupId = item.Field(Of Int64)("ID")
-                accgrp.GroupName = item.Field(Of String)("GroupName").Trim
+                accgrp.GroupName = SafeSyncText(item("GroupName"))
                 accgrp.UnderGroupID = item.Field(Of Int64)("UnderGroupID")
-                accgrp.UnderGroupName = item.Field(Of String)("UnderGroupName").Trim
-                accgrp.DC = item.Field(Of String)("DC")
-                accgrp.Primary2 = item.Field(Of String)("Primary2")
-                accgrp.Tag = item.Field(Of String)("Tag")
+                accgrp.UnderGroupName = SafeSyncText(item("UnderGroupName"))
+                accgrp.DC = SafeSyncText(item("DC"))
+                accgrp.Primary2 = SafeSyncText(item("Primary2"))
+                accgrp.Tag = SafeSyncText(item("Tag"))
                 accgrp.OrganizationId = OrgID 'item.Field(Of Int64)("OrganizationId")
                 AccgrpRqst.AccountGroups.Add(accgrp)
             Next
@@ -232,7 +264,7 @@ Public Class Mobile_App
                 lblProgress.Text = "Marka Data..."
                 Dim Crtgrp As CrateMarka = New CrateMarka()
                 Crtgrp.CrateID = item.Field(Of Int64)("ID")
-                Crtgrp.MarkaName = item.Field(Of String)("MarkaName").Trim
+                Crtgrp.MarkaName = SafeSyncText(item("MarkaName"))
                 Crtgrp.OpQty = item.Field(Of Decimal)("OpQty")
                 Crtgrp.Rate = item.Field(Of Decimal)("Rate")
                 Crtgrp.OrgID = OrgID
@@ -282,14 +314,14 @@ Public Class Mobile_App
                         ledger.AccountID = item.Field(Of Int64)("AccountID")
                         ledger.VourchersID = item.Field(Of Int64)("VourchersID")
                         ledger.EntryDate = item.Field(Of Date)("EntryDate")
-                        ledger.TransType = item.Field(Of String)("TransType")
-                        ledger.AccountName = item.Field(Of String)("AccountName").Trim
+                        ledger.TransType = SafeSyncText(item("TransType"))
+                        ledger.AccountName = SafeSyncText(item("AccountName"))
                         ledger.Amount = item.Field(Of Decimal)("Amount")
-                        ledger.DC = item.Field(Of String)("DC")
-                        ledger.Remark = Utf82Hebrew(item.Field(Of String)("Remark")).Trim
-                        ledger.Remark2 = Utf82Hebrew(IIf(item.Field(Of String)("RemarkHindi") = Nothing, "", item.Field(Of String)("RemarkHindi"))).Trim
+                        ledger.DC = SafeSyncText(item("DC"))
+                        ledger.Remark = Utf82Hebrew(SafeSyncText(item("Remark"))).Trim()
+                        ledger.Remark2 = Utf82Hebrew(SafeSyncText(item("RemarkHindi"))).Trim().Trim
                         ' ledger.Remark2 = IIf(item.Field(Of String)("RemarkHindi") Is Nothing, "", item.Field(Of String)("RemarkHindi")).Trim()
-                        ledger.Narration = Utf8ToUnicode(item.Field(Of String)("Narration")).Trim
+                        ledger.Narration = Utf8ToUnicode(SafeSyncText(item("Narration"))).Trim()
                         ledger.OrganizationId = OrgID 'item.Field(Of Int64)("OrganizationId")
 
                         ledgerRqst.Ledgers.Add(ledger)
@@ -343,22 +375,22 @@ Public Class Mobile_App
                         dataProgress.Value = i
                         Dim CrateV As SaveCrateVoucherRequest = New SaveCrateVoucherRequest()
                         CrateV.OrganizationId = txtCompanyID.Text
-                        CrateV.SlipNo = item.Field(Of String)("SlipNo")
+                        CrateV.SlipNo = SafeSyncText(item("SlipNo"))
                         CrateV.VoucherID = item.Field(Of Int64)("VoucherID")
                         CrateV.EntryDate = item.Field(Of Date)("EntryDate")
-                        CrateV.TransType = item.Field(Of String)("TransType")
+                        CrateV.TransType = SafeSyncText(item("TransType"))
                         CrateV.AccountID = Val(item.Field(Of Int64)("AccountID"))
-                        CrateV.AccountName = item.Field(Of String)("AccountName").Trim
-                        CrateV.CrateType = item.Field(Of String)("CrateType")
+                        CrateV.AccountName = SafeSyncText(item("AccountName")).Trim
+                        CrateV.CrateType = SafeSyncText(item("CrateType"))
                         CrateV.CrateID = item.Field(Of Int64)("CrateID")
-                        CrateV.CrateName = item.Field(Of String)("CrateName").Trim
+                        CrateV.CrateName = SafeSyncText(item("CrateName")).Trim
                         CrateV.Qty = item.Field(Of Int64)("Qty")
                         CrateV.Remark = Utf8ToUnicode(item.Field(Of String)("Remark")).Trim
                         ' CrateV.Rate = Convert.ToDecimal(Format(CrateV.Rate, "0.00"))
                         CrateV.Rate = item.Field(Of Decimal)("Rate")
                         'CrateV.Amount = Convert.ToDecimal(Format(CrateV.Amount, "0.00"))
                         CrateV.Amount = item.Field(Of Decimal)("Amount")
-                        CrateV.CashPaid = item.Field(Of String)("CashPaid")
+                        CrateV.CashPaid = SafeSyncText(item("CashPaid"))
                         'item.Field(Of Int64)("OrganizationId")
                         CratevReqst.CrateVouchers.Add(CrateV)
                     Next
@@ -420,32 +452,32 @@ Public Class Mobile_App
             For Each item As DataRow In compdt.Rows
                 Application.DoEvents()
                 lblProgress.Text = "Company Data..."
-                companyRequest.Address = item.Field(Of String)("Address")
-                companyRequest.City = item.Field(Of String)("City")
+                companyRequest.Address = SafeSyncText(item("Address"))
+                companyRequest.City = SafeSyncText(item("City"))
                 companyRequest.CompanyID = 0
-                companyRequest.CompanyName = item.Field(Of String)("CompanyName").Trim
-                companyRequest.CompData = item.Field(Of String)("CompData")
-                companyRequest.DealsIN = item.Field(Of String)("DealsIN")
-                companyRequest.EmailID = item.Field(Of String)("EmailID")
-                companyRequest.FaxNo = item.Field(Of String)("FaxNo")
-                companyRequest.GSTN = item.Field(Of String)("GSTN")
+                companyRequest.CompanyName = SafeSyncText(item("CompanyName")).Trim
+                companyRequest.CompData = SafeSyncText(item("CompData"))
+                companyRequest.DealsIN = SafeSyncText(item("DealsIN"))
+                companyRequest.EmailID = SafeSyncText(item("EmailID"))
+                companyRequest.FaxNo = SafeSyncText(item("FaxNo"))
+                companyRequest.GSTN = SafeSyncText(item("GSTN"))
                 companyRequest.IsActive = True
-                companyRequest.Marka = item.Field(Of String)("Marka")
-                companyRequest.MobileNo1 = item.Field(Of String)("MobileNo1")
-                companyRequest.MobileNo2 = item.Field(Of String)("MobileNo2")
+                companyRequest.Marka = SafeSyncText(item("Marka"))
+                companyRequest.MobileNo1 = SafeSyncMobileValue(item("MobileNo1"))
+                companyRequest.MobileNo2 = SafeSyncMobileValue(item("MobileNo2"))
                 companyRequest.OrganizationID = item.Field(Of Int64)("OrganizationID")
-                companyRequest.Other = item.Field(Of String)("Other")
-                companyRequest.PanNo = item.Field(Of String)("PanNO")
-                companyRequest.Password = item.Field(Of String)("Password")
-                companyRequest.PhoneNo = item.Field(Of String)("PhoneNo")
-                companyRequest.PrintOtheraddress = Utf8ToUnicode(item.Field(Of String)("PrintOtheraddress"))
-                companyRequest.PrintOtherCity = Utf8ToUnicode(item.Field(Of String)("PrintOtherCity"))
-                companyRequest.PrintOtherName = Utf8ToUnicode(item.Field(Of String)("PrintOtherName"))
-                companyRequest.PrintOtherState = Utf8ToUnicode(item.Field(Of String)("PrintOtherState"))
-                companyRequest.RegistrationNo = item.Field(Of String)("RegistrationNo")
-                companyRequest.State = item.Field(Of String)("State")
-                companyRequest.tag = item.Field(Of String)("tag")
-                companyRequest.Website = item.Field(Of String)("Website")
+                companyRequest.Other = SafeSyncText(item("Other"))
+                companyRequest.PanNo = SafeSyncText(item("PanNO"))
+                companyRequest.Password = SafeSyncText(item("Password"))
+                companyRequest.PhoneNo = SafeSyncText(item("PhoneNo"))
+                companyRequest.PrintOtheraddress = Utf8ToUnicode(SafeSyncText(item("PrintOtheraddress"))).Trim()
+                companyRequest.PrintOtherCity = Utf8ToUnicode(SafeSyncText(item("PrintOtherCity"))).Trim()
+                companyRequest.PrintOtherName = Utf8ToUnicode(SafeSyncText(item("PrintOtherName"))).Trim()
+                companyRequest.PrintOtherState = Utf8ToUnicode(SafeSyncText(item("PrintOtherState"))).Trim()
+                companyRequest.RegistrationNo = SafeSyncText(item("RegistrationNo"))
+                companyRequest.State = SafeSyncText(item("State"))
+                companyRequest.tag = SafeSyncText(item("tag"))
+                companyRequest.Website = SafeSyncText(item("Website"))
                 companyRequest.YearStart = CDate(item.Field(Of Date)("YearStart")).ToString("yyyy-MM-dd")
                 companyRequest.Yearend = CDate(item.Field(Of Date)("Yearend")).ToString("yyyy-MM-dd")
                 OrgID = item.Field(Of Int64)("OrganizationID")
@@ -468,30 +500,30 @@ Public Class Mobile_App
             '    acc.AccountName = item.Field(Of String)("AccountName")
             '    acc.GroupID = item.Field(Of Int64)("GroupID")
             '    If item.Field(Of Int64)("GroupID") = 32 Then MsgBox("a")
-            '    acc.DC = item.Field(Of String)("DC")
-            '    acc.Tag = item.Field(Of String)("Tag")
+            '    acc.DC = SafeSyncText(item("DC"))
+            '    acc.Tag = SafeSyncText(item("Tag"))
             '    acc.OpBal = item.Field(Of Decimal)("OpBal")
-            '    acc.OtherName = Utf8ToUnicode(item.Field(Of String)("OtherName"))
-            '    acc.Address = item.Field(Of String)("Address")
-            '    acc.LFNo = item.Field(Of String)("LFNo")
-            '    acc.Area = item.Field(Of String)("Area")
-            '    acc.City = item.Field(Of String)("City")
+            '    acc.OtherName = Utf8ToUnicode(SafeSyncText(item("OtherName"))).Trim()
+            '    acc.Address = SafeSyncText(item("Address"))
+            '    acc.LFNo = SafeSyncText(item("LFNo"))
+            '    acc.Area = SafeSyncText(item("Area"))
+            '    acc.City = SafeSyncText(item("City"))
             '    acc.AccNo = item.Field(Of String)("State")
-            '    acc.Phone = item.Field(Of String)("Phone")
-            '    acc.Contact = item.Field(Of String)("Contact")
-            '    acc.Mobile1 = item.Field(Of String)("Mobile1")
-            '    acc.Mobile2 = item.Field(Of String)("Mobile2")
-            '    acc.MailID = item.Field(Of String)("MailID")
-            '    acc.BankName = item.Field(Of String)("BankName")
-            '    acc.AccNo = item.Field(Of String)("AccNo")
-            '    acc.IFSC = item.Field(Of String)("IFSC")
-            '    acc.GName = item.Field(Of String)("GName")
-            '    acc.Gmobile1 = item.Field(Of String)("Gmobile1")
-            '    acc.Gmobile2 = item.Field(Of String)("Gmobile2")
-            '    acc.Gaddress = item.Field(Of String)("Gaddress")
-            '    acc.GCity = item.Field(Of String)("GCity")
-            '    acc.Gstate = item.Field(Of String)("Gstate")
-            '    acc.Limit = item.Field(Of String)("Limit")
+            '    acc.Phone = SafeSyncText(item("Phone"))
+            '    acc.Contact = SafeSyncText(item("Contact"))
+            '    acc.Mobile1 = SafeSyncMobileValue(item("Mobile1"))
+            '    acc.Mobile2 = SafeSyncMobileValue(item("Mobile2"))
+            '    acc.MailID = SafeSyncText(item("MailID"))
+            '    acc.BankName = SafeSyncText(item("BankName"))
+            '    acc.AccNo = SafeSyncText(item("AccNo"))
+            '    acc.IFSC = SafeSyncText(item("IFSC"))
+            '    acc.GName = SafeSyncText(item("GName"))
+            '    acc.Gmobile1 = SafeSyncMobileValue(item("Gmobile1"))
+            '    acc.Gmobile2 = SafeSyncMobileValue(item("Gmobile2"))
+            '    acc.Gaddress = SafeSyncText(item("Gaddress"))
+            '    acc.GCity = SafeSyncText(item("GCity"))
+            '    acc.Gstate = SafeSyncText(item("Gstate"))
+            '    acc.Limit = SafeSyncText(item("Limit"))
             '    acc.AccountPhoto = ""
             '    acc.Gphoto = ""
             '    acc.Type = 1
@@ -516,33 +548,33 @@ Public Class Mobile_App
                 lblProgress.Text = "Accounts Data..."
                 Dim acc As AccountRequest = New AccountRequest()
                 acc.AccountId = item.Field(Of Int64)("ID")
-                acc.AccountName = item.Field(Of String)("AccountName").Trim
+                acc.AccountName = SafeSyncText(item("AccountName"))
                 acc.GroupID = item.Field(Of Int64)("GroupID")
                 'If item.Field(Of Int64)("GroupID") = 32 Then MsgBox("a")
-                acc.DC = item.Field(Of String)("DC")
-                acc.Tag = item.Field(Of String)("Tag")
+                acc.DC = SafeSyncText(item("DC"))
+                acc.Tag = SafeSyncText(item("Tag"))
                 acc.OpBal = item.Field(Of Decimal)("OpBal")
-                acc.OtherName = Utf8ToUnicode(item.Field(Of String)("OtherName")).Trim
-                acc.Address = item.Field(Of String)("Address")
-                acc.LFNo = item.Field(Of String)("LFNo")
-                acc.Area = item.Field(Of String)("Area")
-                acc.City = item.Field(Of String)("City")
-                acc.AccNo = item.Field(Of String)("State")
-                acc.Phone = item.Field(Of String)("Phone")
-                acc.Contact = item.Field(Of String)("Contact")
-                acc.Mobile1 = item.Field(Of String)("Mobile1")
-                acc.Mobile2 = item.Field(Of String)("Mobile2")
-                acc.MailID = item.Field(Of String)("MailID")
-                acc.BankName = item.Field(Of String)("BankName")
-                acc.AccNo = item.Field(Of String)("AccNo")
-                acc.IFSC = item.Field(Of String)("IFSC")
-                acc.GName = item.Field(Of String)("GName")
-                acc.Gmobile1 = item.Field(Of String)("Gmobile1")
-                acc.Gmobile2 = item.Field(Of String)("Gmobile2")
-                acc.Gaddress = item.Field(Of String)("Gaddress")
-                acc.GCity = item.Field(Of String)("GCity")
-                acc.Gstate = item.Field(Of String)("Gstate")
-                acc.Limit = item.Field(Of String)("Limit")
+                acc.OtherName = Utf8ToUnicode(SafeSyncText(item("OtherName"))).Trim()
+                acc.Address = SafeSyncText(item("Address"))
+                acc.LFNo = SafeSyncText(item("LFNo"))
+                acc.Area = SafeSyncText(item("Area"))
+                acc.City = SafeSyncText(item("City"))
+                acc.State = SafeSyncText(item("State"))
+                acc.Phone = SafeSyncText(item("Phone"))
+                acc.Contact = SafeSyncText(item("Contact"))
+                acc.Mobile1 = SafeSyncMobileValue(item("Mobile1"))
+                acc.Mobile2 = SafeSyncMobileValue(item("Mobile2"))
+                acc.MailID = SafeSyncText(item("MailID"))
+                acc.BankName = SafeSyncText(item("BankName"))
+                acc.AccNo = SafeSyncText(item("AccNo"))
+                acc.IFSC = SafeSyncText(item("IFSC"))
+                acc.GName = SafeSyncText(item("GName"))
+                acc.Gmobile1 = SafeSyncMobileValue(item("Gmobile1"))
+                acc.Gmobile2 = SafeSyncMobileValue(item("Gmobile2"))
+                acc.Gaddress = SafeSyncText(item("Gaddress"))
+                acc.GCity = SafeSyncText(item("GCity"))
+                acc.Gstate = SafeSyncText(item("Gstate"))
+                acc.Limit = SafeSyncText(item("Limit"))
                 acc.AccountPhoto = ""
                 acc.Gphoto = ""
                 acc.OrganizationId = OrgID
@@ -560,12 +592,12 @@ Public Class Mobile_App
                 lblProgress.Text = "Groups Data..."
                 Dim accgrp As AccountGroupRequest = New AccountGroupRequest()
                 accgrp.GroupId = item.Field(Of Int64)("ID")
-                accgrp.GroupName = item.Field(Of String)("GroupName").Trim
+                accgrp.GroupName = SafeSyncText(item("GroupName"))
                 accgrp.UnderGroupID = item.Field(Of Int64)("UnderGroupID")
-                accgrp.UnderGroupName = item.Field(Of String)("UnderGroupName").Trim
-                accgrp.DC = item.Field(Of String)("DC")
-                accgrp.Primary2 = item.Field(Of String)("Primary2")
-                accgrp.Tag = item.Field(Of String)("Tag")
+                accgrp.UnderGroupName = SafeSyncText(item("UnderGroupName"))
+                accgrp.DC = SafeSyncText(item("DC"))
+                accgrp.Primary2 = SafeSyncText(item("Primary2"))
+                accgrp.Tag = SafeSyncText(item("Tag"))
                 accgrp.OrganizationId = OrgID 'item.Field(Of Int64)("OrganizationId")
 
                 ' accgrp.ServerTag = item.Field(Of Int64)("ServrTag")
@@ -585,7 +617,7 @@ Public Class Mobile_App
                 lblProgress.Text = "Marka Data..."
                 Dim Crtgrp As CrateMarka = New CrateMarka()
                 Crtgrp.CrateID = item.Field(Of Int64)("ID")
-                Crtgrp.MarkaName = item.Field(Of String)("MarkaName").Trim
+                Crtgrp.MarkaName = SafeSyncText(item("MarkaName"))
                 Crtgrp.OpQty = item.Field(Of Decimal)("OpQty")
                 Crtgrp.Rate = item.Field(Of Decimal)("Rate")
                 Crtgrp.OrgID = OrgID
@@ -641,13 +673,13 @@ Public Class Mobile_App
                         ledger.AccountID = item.Field(Of Int64)("AccountID")
                         ledger.VourchersID = item.Field(Of Int64)("VourchersID")
                         ledger.EntryDate = item.Field(Of Date)("EntryDate")
-                        ledger.TransType = item.Field(Of String)("TransType")
-                        ledger.AccountName = item.Field(Of String)("AccountName")
+                        ledger.TransType = SafeSyncText(item("TransType"))
+                        ledger.AccountName = SafeSyncText(item("AccountName"))
                         ledger.Amount = item.Field(Of Decimal)("Amount")
-                        ledger.DC = item.Field(Of String)("DC")
-                        ledger.Remark = Utf82Hebrew(item.Field(Of String)("Remark")).Trim
-                        ledger.Remark2 = Utf82Hebrew(IIf(item.Field(Of String)("RemarkHindi") = Nothing, "", item.Field(Of String)("RemarkHindi")))
-                        ledger.Narration = item.Field(Of String)("Narration")
+                        ledger.DC = SafeSyncText(item("DC"))
+                        ledger.Remark = Utf82Hebrew(SafeSyncText(item("Remark"))).Trim()
+                        ledger.Remark2 = Utf82Hebrew(SafeSyncText(item("RemarkHindi"))).Trim()
+                        ledger.Narration = SafeSyncText(item("Narration"))
                         ledger.OrganizationId = OrgID 'item.Field(Of Int64)("OrganizationId")
                         ledger.ServerTag = item.Field(Of Int64)("ServerTag")
                         ledgerRqst.Ledgers.Add(ledger)
@@ -706,22 +738,22 @@ Public Class Mobile_App
                         dataProgress.Value = i
                         Dim CrateV As SaveCrateVoucherRequest = New SaveCrateVoucherRequest()
                         CrateV.OrganizationId = txtCompanyID.Text
-                        CrateV.SlipNo = item.Field(Of String)("SlipNo")
+                        CrateV.SlipNo = SafeSyncText(item("SlipNo"))
                         CrateV.EntryDate = item.Field(Of Date)("EntryDate")
                         CrateV.VoucherID = item.Field(Of Int64)("VoucherID")
-                        CrateV.TransType = item.Field(Of String)("TransType")
+                        CrateV.TransType = SafeSyncText(item("TransType"))
                         CrateV.AccountID = item.Field(Of Int64)("AccountID")
-                        CrateV.AccountName = item.Field(Of String)("AccountName")
-                        CrateV.CrateType = item.Field(Of String)("CrateType")
+                        CrateV.AccountName = SafeSyncText(item("AccountName"))
+                        CrateV.CrateType = SafeSyncText(item("CrateType"))
                         CrateV.CrateID = item.Field(Of Int64)("CrateID")
-                        CrateV.CrateName = item.Field(Of String)("CrateName")
+                        CrateV.CrateName = SafeSyncText(item("CrateName"))
                         CrateV.Qty = item.Field(Of Int64)("Qty")
-                        CrateV.Remark = Utf82Hebrew(item.Field(Of String)("Remark")).Trim
+                        CrateV.Remark = Utf82Hebrew(SafeSyncText(item("Remark"))).Trim()
                         ' CrateV.Rate = Convert.ToDecimal(Format(CrateV.Rate, "0.00"))
                         CrateV.Rate = item.Field(Of Decimal)("Rate")
                         'CrateV.Amount = Convert.ToDecimal(Format(CrateV.Amount, "0.00"))
                         CrateV.Amount = item.Field(Of Decimal)("Amount")
-                        CrateV.CashPaid = item.Field(Of String)("CashPaid")
+                        CrateV.CashPaid = SafeSyncText(item("CashPaid"))
                         CrateV.ServerTag = item.Field(Of Int64)("ServerTag")
                         'item.Field(Of Int64)("OrganizationId")
                         CratevReqst.CrateVouchers.Add(CrateV)
@@ -830,28 +862,11 @@ Public Class Mobile_App
     '    End If
     'End Sub
     Public Function Utf82Hebrew(ByVal Str As String) As String
-        Dim ascii As System.Text.Encoding = System.Text.Encoding.GetEncoding("windows-1252")
-        Dim unicode As System.Text.Encoding = System.Text.Encoding.UTF8
-
-        ' Convert the string into a byte array. 
-        Dim unicodeBytes As Byte() = unicode.GetBytes(Str)
-
-        ' Perform the conversion from one encoding to the other. 
-        Dim asciiBytes As Byte() = System.Text.Encoding.Convert(unicode, Encoding.UTF8, unicodeBytes)
-
-        ' Convert the new byte array into a char array and then into a string. 
-        Dim asciiString As String = ascii.GetString(asciiBytes)
-
-        Utf82Hebrew = asciiString
+        ' Database strings are already Unicode; re-decoding UTF-8 as ANSI corrupts Hindi.
+        Return If(Str, String.Empty)
     End Function
     Public Function Utf8ToUnicode(ByVal str As String) As String
-        Dim utf8 As System.Text.Encoding = System.Text.Encoding.UTF8
-        Dim unicode As System.Text.Encoding = System.Text.Encoding.Unicode
-
-        Dim utf8Bytes As Byte() = utf8.GetBytes(str)
-        Dim unicodeBytes As Byte() = System.Text.Encoding.Convert(utf8, unicode, utf8Bytes)
-
-        Return unicode.GetString(unicodeBytes)
+        Return If(str, String.Empty)
     End Function
 
     Private Sub btnSync_Click(sender As Object, e As EventArgs)
@@ -861,7 +876,7 @@ Public Class Mobile_App
         If MessageBox.Show("Are Your Sure Want to Fully Sync on Server... " & vbNewLine & " It Can Take Time More than 5-10 minites, Be Patience.", "Sure", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             BtnIDGenrate.Visible = False
             OrgID = txtCompanyID.Text
-            saveUpdateInfo()
+            If Not RunMobileSync(True) Then Exit Sub
         End If
 
     End Sub
@@ -1026,13 +1041,13 @@ Public Class Mobile_App
                 BtnIDGenrate.Visible = False
                 OrgID = txtCompanyID.Text
                 ckFullSync.Visible = False
-                saveUpdateInfo()
+                If Not RunMobileSync(True) Then Exit Sub
                 ckFullSync.Visible = True
                 ckFullSync.Checked = False
             End If
         Else
             ckFullSync.Visible = False
-            CustomUpdate()
+            If Not RunMobileSync(False) Then Exit Sub
             ckFullSync.Visible = True
             ckFullSync.Checked = False
         End If

@@ -1,7 +1,11 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Data.SQLite
 
 Public Class CreateAccount
+    Private Function CleanText(ByVal value As Object) As String
+        If value Is Nothing Then Return ""
+        Return value.ToString().Trim()
+    End Function
     Dim CustImagePath As String = String.Empty
     Dim GurImagePath As String = String.Empty
     Dim tmpid As Integer = 0
@@ -229,22 +233,22 @@ Public Class CreateAccount
                 cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
                 cmd.Parameters.AddWithValue("@1", txtName.text.trim.Trim) : cmd.Parameters.AddWithValue("@2", Val(cbGroup.SelectedValue))
                 ' cmd.Parameters.AddWithValue("@3", cbGroup.Text)
-                cmd.Parameters.AddWithValue("@4", cbDrCr.Text) : cmd.Parameters.AddWithValue("@5", txtOPBal.Text)
+                cmd.Parameters.AddWithValue("@4", CleanText(cbDrCr.Text)) : cmd.Parameters.AddWithValue("@5", CleanText(txtOPBal.Text))
                 cmd.Parameters.AddWithValue("@6", txtOtherName.Text.Trim) : cmd.Parameters.AddWithValue("@7", txtAddress.Text.Trim)
-                cmd.Parameters.AddWithValue("@8", txtLf.Text) : cmd.Parameters.AddWithValue("@9", txtArea.Text.Trim)
+                cmd.Parameters.AddWithValue("@8", CleanText(txtLf.Text)) : cmd.Parameters.AddWithValue("@9", CleanText(txtArea.Text))
                 cmd.Parameters.AddWithValue("@10", txtCity.Text.Trim) : cmd.Parameters.AddWithValue("@11", txtState.Text.Trim)
-                cmd.Parameters.AddWithValue("@12", txtPhone.Text) : cmd.Parameters.AddWithValue("@13", txtContact.Text)
-                cmd.Parameters.AddWithValue("@14", txtMob1.Text) : cmd.Parameters.AddWithValue("@15", txtMob2.Text)
-                cmd.Parameters.AddWithValue("@16", txtMail.Text) : cmd.Parameters.AddWithValue("@17", txtBank.Text)
-                cmd.Parameters.AddWithValue("@18", txtACNo.Text) : cmd.Parameters.AddWithValue("@19", txtIfsc.Text)
-                cmd.Parameters.AddWithValue("@20", txtGName.Text) : cmd.Parameters.AddWithValue("@21", txtGmob.Text)
-                cmd.Parameters.AddWithValue("@22", txtGMob2.Text) : cmd.Parameters.AddWithValue("@23", TxtGAddress.Text)
-                cmd.Parameters.AddWithValue("@24", TxtGCity.Text) : cmd.Parameters.AddWithValue("@25", txtGState.Text)
+                cmd.Parameters.AddWithValue("@12", CleanText(txtPhone.Text)) : cmd.Parameters.AddWithValue("@13", CleanText(txtContact.Text))
+                cmd.Parameters.AddWithValue("@14", CleanText(txtMob1.Text)) : cmd.Parameters.AddWithValue("@15", CleanText(txtMob2.Text))
+                cmd.Parameters.AddWithValue("@16", CleanText(txtMail.Text)) : cmd.Parameters.AddWithValue("@17", CleanText(txtBank.Text))
+                cmd.Parameters.AddWithValue("@18", CleanText(txtACNo.Text)) : cmd.Parameters.AddWithValue("@19", CleanText(txtIfsc.Text))
+                cmd.Parameters.AddWithValue("@20", CleanText(txtGName.Text)) : cmd.Parameters.AddWithValue("@21", CleanText(txtGmob.Text))
+                cmd.Parameters.AddWithValue("@22", CleanText(txtGMob2.Text)) : cmd.Parameters.AddWithValue("@23", CleanText(TxtGAddress.Text))
+                cmd.Parameters.AddWithValue("@24", CleanText(TxtGCity.Text)) : cmd.Parameters.AddWithValue("@25", CleanText(txtGState.Text))
                 cmd.Parameters.AddWithValue("@27", 1) : cmd.Parameters.AddWithValue("@28", Val(txtCommPer.Text))
                 cmd.Parameters.AddWithValue("@29", Val(txtMPer.Text)) : cmd.Parameters.AddWithValue("@30", Val(txtRdfPer.Text))
                 cmd.Parameters.AddWithValue("@31", Val(txtTarePer.Text)) : cmd.Parameters.AddWithValue("@32", Val(txtLabourPer.Text))
                 cmd.Parameters.AddWithValue("@33", Deactivate) : cmd.Parameters.AddWithValue("@34", Val(txtPostingID.Text))
-                cmd.Parameters.AddWithValue("@35", txtAcPosting.Text) : cmd.Parameters.AddWithValue("@36", guid.ToString)
+                cmd.Parameters.AddWithValue("@35", CleanText(txtAcPosting.Text)) : cmd.Parameters.AddWithValue("@36", guid.ToString)
                 '''''  Update ServerDb'''''
                 If cmd.ExecuteNonQuery() > 0 Then
                     saveImage() : ServerDbAdd()
@@ -279,17 +283,17 @@ Public Class CreateAccount
         Try
             cmd1 = New SQLite.SQLiteCommand(ssql, ClsFunserver.GetConnection())
             cmd1.Parameters.AddWithValue("@1", txtName.text.trim) : cmd1.Parameters.AddWithValue("@2", Val(cbGroup.SelectedValue))
-            cmd1.Parameters.AddWithValue("@4", cbDrCr.Text) : cmd1.Parameters.AddWithValue("@5", txtOPBal.Text)
-            cmd1.Parameters.AddWithValue("@6", txtOtherName.Text) : cmd1.Parameters.AddWithValue("@7", txtAddress.Text)
-            cmd1.Parameters.AddWithValue("@8", txtLf.Text) : cmd1.Parameters.AddWithValue("@9", txtArea.Text)
-            cmd1.Parameters.AddWithValue("@10", txtCity.Text) : cmd1.Parameters.AddWithValue("@11", txtState.Text)
-            cmd1.Parameters.AddWithValue("@12", txtPhone.Text) : cmd1.Parameters.AddWithValue("@13", txtContact.Text)
-            cmd1.Parameters.AddWithValue("@14", txtMob1.Text) : cmd1.Parameters.AddWithValue("@15", txtMob2.Text)
-            cmd1.Parameters.AddWithValue("@16", txtMail.Text) : cmd1.Parameters.AddWithValue("@17", txtBank.Text)
-            cmd1.Parameters.AddWithValue("@18", txtACNo.Text) : cmd1.Parameters.AddWithValue("@19", txtIfsc.Text)
-            cmd1.Parameters.AddWithValue("@20", txtGName.Text) : cmd1.Parameters.AddWithValue("@21", txtGmob.Text)
-            cmd1.Parameters.AddWithValue("@22", txtGMob2.Text) : cmd1.Parameters.AddWithValue("@23", TxtGAddress.Text)
-            cmd1.Parameters.AddWithValue("@24", TxtGCity.Text) : cmd1.Parameters.AddWithValue("@25", txtGState.Text)
+            cmd1.Parameters.AddWithValue("@4", CleanText(cbDrCr.Text)) : cmd1.Parameters.AddWithValue("@5", CleanText(txtOPBal.Text))
+            cmd1.Parameters.AddWithValue("@6", CleanText(txtOtherName.Text)) : cmd1.Parameters.AddWithValue("@7", CleanText(txtAddress.Text))
+            cmd1.Parameters.AddWithValue("@8", CleanText(txtLf.Text)) : cmd1.Parameters.AddWithValue("@9", CleanText(txtArea.Text))
+            cmd1.Parameters.AddWithValue("@10", CleanText(txtCity.Text)) : cmd1.Parameters.AddWithValue("@11", CleanText(txtState.Text))
+            cmd1.Parameters.AddWithValue("@12", CleanText(txtPhone.Text)) : cmd1.Parameters.AddWithValue("@13", CleanText(txtContact.Text))
+            cmd1.Parameters.AddWithValue("@14", CleanText(txtMob1.Text)) : cmd1.Parameters.AddWithValue("@15", CleanText(txtMob2.Text))
+            cmd1.Parameters.AddWithValue("@16", CleanText(txtMail.Text)) : cmd1.Parameters.AddWithValue("@17", CleanText(txtBank.Text))
+            cmd1.Parameters.AddWithValue("@18", CleanText(txtACNo.Text)) : cmd1.Parameters.AddWithValue("@19", CleanText(txtIfsc.Text))
+            cmd1.Parameters.AddWithValue("@20", CleanText(txtGName.Text)) : cmd1.Parameters.AddWithValue("@21", CleanText(txtGmob.Text))
+            cmd1.Parameters.AddWithValue("@22", CleanText(txtGMob2.Text)) : cmd1.Parameters.AddWithValue("@23", CleanText(TxtGAddress.Text))
+            cmd1.Parameters.AddWithValue("@24", CleanText(TxtGCity.Text)) : cmd1.Parameters.AddWithValue("@25", CleanText(txtGState.Text))
             cmd1.Parameters.AddWithValue("@27", 1) : cmd1.Parameters.AddWithValue("@28", Val(txtCommPer.Text))
             cmd1.Parameters.AddWithValue("@29", Val(txtMPer.Text)) : cmd1.Parameters.AddWithValue("@30", Val(txtRdfPer.Text))
             cmd1.Parameters.AddWithValue("@31", Val(txtTarePer.Text)) : cmd1.Parameters.AddWithValue("@32", Val(txtLabourPer.Text))
@@ -409,14 +413,14 @@ Public Class CreateAccount
             MsgBox("Account Name is Blank. Please Fill Account Name... ", MsgBoxStyle.Critical, "Empty")
             txtName.Focus()
         Else
-            Dim sql As String = "Update Accounts SET AccountName='" & txtName.text.trim.Trim & "',GroupId=" & Val(cbGroup.SelectedValue) & ",DC='" & cbDrCr.Text & "'," _
-                                 & " Opbal='" & txtOPBal.Text & "',address='" & txtAddress.Text & "',LFNo='" & txtLf.Text & "',OtherName='" & txtOtherName.Text.Trim & "'," _
-                                 & " Area='" & txtArea.Text.Trim & "',city='" & txtCity.Text.Trim & "',State='" & txtState.Text.Trim & "',Phone='" & txtPhone.Text & "'," _
-                                 & " Mobile1='" & txtMob1.Text & "',Mobile2='" & txtMob2.Text & "',MailID='" & txtMail.Text & "',BankName='" & txtBank.Text & "'," _
-                                 & " AccNo='" & txtACNo.Text & "',IFSC='" & txtIfsc.Text & "',Gname='" & txtGName.Text & "'," _
-                                 & " GMobile1='" & txtGmob.Text & "',GMobile2='" & txtGMob2.Text & "',Gaddress='" & TxtGAddress.Text & "',GCity='" & TxtGCity.Text & "'," _
-                                 & " Gstate='" & txtGState.Text & "',CommPer='" & Val(txtCommPer.Text) & "',Mper='" & Val(txtMPer.Text) & "',RdfPer='" & Val(txtRdfPer.Text) & "' " _
-                                 & ",TarePer='" & Val(txtTarePer.Text) & "',LabourPer='" & Val(txtLabourPer.Text) & "',Deactivate='" & Deactivate & "',POSTINGID='" & Val(txtPostingID.Text) & "',PostingACName='" & txtAcPosting.Text & "'  WHERE ID=" & Val(txtID.Text) & ""
+            Dim sql As String = "Update Accounts SET AccountName='" & CleanText(txtName.Text) & "',GroupId=" & Val(cbGroup.SelectedValue) & ",DC='" & CleanText(cbDrCr.Text) & "'," _
+                                 & " Opbal='" & CleanText(txtOPBal.Text) & "',address='" & CleanText(txtAddress.Text) & "',LFNo='" & CleanText(txtLf.Text) & "',OtherName='" & CleanText(txtOtherName.Text) & "'," _
+                                 & " Area='" & CleanText(txtArea.Text) & "',city='" & CleanText(txtCity.Text) & "',State='" & CleanText(txtState.Text) & "',Phone='" & CleanText(txtPhone.Text) & "'," _
+                                 & " Mobile1='" & CleanText(txtMob1.Text) & "',Mobile2='" & CleanText(txtMob2.Text) & "',MailID='" & CleanText(txtMail.Text) & "',BankName='" & CleanText(txtBank.Text) & "'," _
+                                 & " AccNo='" & CleanText(txtACNo.Text) & "',IFSC='" & CleanText(txtIfsc.Text) & "',Gname='" & CleanText(txtGName.Text) & "'," _
+                                 & " GMobile1='" & CleanText(txtGmob.Text) & "',GMobile2='" & CleanText(txtGMob2.Text) & "',Gaddress='" & CleanText(TxtGAddress.Text) & "',GCity='" & CleanText(TxtGCity.Text) & "'," _
+                                 & " Gstate='" & CleanText(txtGState.Text) & "',CommPer='" & Val(txtCommPer.Text) & "',Mper='" & Val(txtMPer.Text) & "',RdfPer='" & Val(txtRdfPer.Text) & "' " _
+                                 & ",TarePer='" & Val(txtTarePer.Text) & "',LabourPer='" & Val(txtLabourPer.Text) & "',Deactivate='" & Deactivate & "',POSTINGID='" & Val(txtPostingID.Text) & "',PostingACName='" & CleanText(txtAcPosting.Text) & "'  WHERE ID=" & Val(txtID.Text) & ""
             Try
                 If clsFun.ExecNonQuery(sql) > 0 Then
                     ServerDbAdd()

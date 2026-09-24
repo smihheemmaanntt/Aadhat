@@ -11,3 +11,7 @@
 *.log
 *.tmp
 *.pdb
+
+# Hybrid mode local secrets
+aadhat-api/config/config.php
+hybrid.json

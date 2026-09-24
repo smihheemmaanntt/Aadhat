@@ -1,0 +1,8 @@
+{
+  "Enabled": false,
+  "ApiBaseUrl": "http://192.168.1.10/aadhat-api/public",
+  "ApiToken": "change-this-secret-token",
+  "AuthorizationKey": "",
+  "DeviceToken": "",
+  "LastCompanyCode": ""
+}

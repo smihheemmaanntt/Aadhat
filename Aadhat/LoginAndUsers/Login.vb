@@ -57,6 +57,28 @@ Public Class Login
             Exit Sub
         End If
 
+        If HybridRuntime.IsEnabled Then
+            Dim status As HybridCompanyStatus = HybridRuntime.CheckCompanyStatus(Val(sCompCode).ToString(), CbUserName.Text)
+            If status Is Nothing OrElse status.Success = False Then
+                MsgBox("Hybrid server company access failed. Local single-user mode is unchanged, but this company is marked for hybrid check." & vbCrLf & If(status Is Nothing, "", status.Message), vbCritical, "Hybrid Access")
+                Exit Sub
+            End If
+
+            Select Case status.ParsedMode()
+                Case HybridCompanyMode.LocalOnly
+                    'Continue with the existing local SQLite flow.
+                Case HybridCompanyMode.OnlineOnly
+                    MsgBox("This company is marked OnlineOnly on hybrid server. Online transaction modules are not enabled in this build yet.", vbInformation, "Hybrid Mode")
+                    Exit Sub
+                Case HybridCompanyMode.SyncingToOnline, HybridCompanyMode.SyncingToLocal
+                    MsgBox("This company is currently syncing. Please try again after sync completes.", vbInformation, "Hybrid Mode")
+                    Exit Sub
+                Case HybridCompanyMode.ReadOnlyArchive
+                    MsgBox("This company is available as read-only archive on hybrid server.", vbInformation, "Hybrid Mode")
+                    Exit Sub
+            End Select
+        End If
+
         ' ---------------- LICENSE / TRIAL CHECK ----------------
         Dim coreAccessPath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
         Dim hasCoreAccess As Boolean = File.Exists(coreAccessPath)
@@ -95,8 +117,11 @@ Public Class Login
         MainScreenPicture.lblUser.Text = CbUserName.Text
         MainScreenForm.Show()
 
-        If clsFun.ExecScalarStr(
-            "SELECT Usertype FROM Users WHERE ID='" & Val(CbUserName.SelectedValue) & "'") = "Operator" Then
+        Dim loggedInUserType As String = clsFun.ExecScalarStr(
+            "SELECT Usertype FROM Users WHERE ID='" & Val(CbUserName.SelectedValue) & "'")
+        MainScreenForm.ApplyHybridPermission(loggedInUserType)
+
+        If loggedInUserType = "Operator" Then
             MainScreenForm.UsersToolStripMenuItem1.Visible = False
         End If
 

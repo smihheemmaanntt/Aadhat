@@ -2723,3 +2723,8 @@ Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-04-27',Invoi
 StackTrace: PANKAJ FRUIT COMPANY
 Date/Time: 08-Jun-26 3:40:16 PM
 ===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Sep-26 6:15:14 PM
+===========================================================================================

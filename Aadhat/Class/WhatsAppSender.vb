@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json.Linq
@@ -101,3 +101,4 @@ Public Class WhatsAppSender
     End Function
    
 End Class
+

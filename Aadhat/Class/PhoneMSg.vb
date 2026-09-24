@@ -5,7 +5,6 @@ Imports System.Collections.Generic
 Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json.Linq
 Imports System.Windows.Forms
-
 Module PhoneMSg
 
     Private BASE_URL As String = "http://msgz.in"
@@ -41,8 +40,12 @@ Module PhoneMSg
                 CType(WebRequest.Create(url), HttpWebRequest)
 
             req.Method = "POST"
-            req.ContentType = "application/json"
+            req.ContentType = "application/json; charset=utf-8"
             req.Accept = "application/json"
+            req.UserAgent = "Aadhat/1.0"
+            req.Timeout = 60000
+            req.ReadWriteTimeout = 60000
+            req.KeepAlive = True
 
             If token <> "" Then
                 req.Headers.Add("Authorization", "Bearer " & token)
@@ -418,9 +421,10 @@ Module PhoneMSg
 
             ServicePointManager.Expect100Continue = False
             ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType) Or SecurityProtocolType.Tls
-
+            'ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
             Dim boundary As String = "----AccoBookUpload" & DateTime.Now.Ticks.ToString()
-            Dim uploadUrl As String = BASE_URL.TrimEnd("/"c) & "/upload.php"
+            ' Upload endpoint uses HTTPS so Airtel does not block the HTTP POST.
+            Dim uploadUrl As String = "http://msgz.in/upload.php"
             Dim fileName As String = Path.GetFileName(filePath)
             Dim fileBytes() As Byte = File.ReadAllBytes(filePath)
             Dim headerText As String =

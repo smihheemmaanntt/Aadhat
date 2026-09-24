@@ -41,6 +41,11 @@ Partial Class SpeedSale
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.txtSlipNo = New System.Windows.Forms.TextBox()
+        Me.lblManualPage = New System.Windows.Forms.Label()
+        Me.btnPreviousManualPage = New System.Windows.Forms.Button()
+        Me.txtManualPageNo = New System.Windows.Forms.TextBox()
+        Me.btnNextManualPage = New System.Windows.Forms.Button()
+        Me.lblManualPageEntries = New System.Windows.Forms.Label()
         Me.BtnRefresh = New System.Windows.Forms.Button()
         Me.lblTotCharges = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
@@ -254,10 +259,76 @@ Partial Class SpeedSale
         Me.txtSlipNo.Location = New System.Drawing.Point(25, 87)
         Me.txtSlipNo.Name = "txtSlipNo"
         Me.txtSlipNo.ReadOnly = True
-        Me.txtSlipNo.Size = New System.Drawing.Size(166, 26)
+        Me.txtSlipNo.Size = New System.Drawing.Size(90, 26)
         Me.txtSlipNo.TabIndex = 40027
         Me.txtSlipNo.TabStop = False
         Me.txtSlipNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblManualPage
+        '
+        Me.lblManualPage.AutoSize = True
+        Me.lblManualPage.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblManualPage.ForeColor = System.Drawing.Color.Black
+        Me.lblManualPage.Location = New System.Drawing.Point(121, 64)
+        Me.lblManualPage.Name = "lblManualPage"
+        Me.lblManualPage.Size = New System.Drawing.Size(70, 19)
+        Me.lblManualPage.TabIndex = 91380
+        Me.lblManualPage.Text = "M. Page"
+        '
+        'txtManualPageNo
+        '
+        Me.txtManualPageNo.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtManualPageNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtManualPageNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtManualPageNo.ForeColor = System.Drawing.Color.Navy
+        Me.txtManualPageNo.Location = New System.Drawing.Point(145, 87)
+        Me.txtManualPageNo.MaxLength = 6
+        Me.txtManualPageNo.Name = "txtManualPageNo"
+        Me.txtManualPageNo.Size = New System.Drawing.Size(30, 26)
+        Me.txtManualPageNo.TabIndex = 91381
+        Me.txtManualPageNo.Text = "1"
+        Me.txtManualPageNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'btnPreviousManualPage
+        '
+        Me.btnPreviousManualPage.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.btnPreviousManualPage.FlatAppearance.BorderSize = 0
+        Me.btnPreviousManualPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPreviousManualPage.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPreviousManualPage.ForeColor = System.Drawing.Color.White
+        Me.btnPreviousManualPage.Location = New System.Drawing.Point(120, 87)
+        Me.btnPreviousManualPage.Name = "btnPreviousManualPage"
+        Me.btnPreviousManualPage.Size = New System.Drawing.Size(24, 26)
+        Me.btnPreviousManualPage.TabIndex = 91384
+        Me.btnPreviousManualPage.Text = "<"
+        Me.btnPreviousManualPage.UseVisualStyleBackColor = False
+        Me.btnPreviousManualPage.Visible = False
+        '
+        'btnNextManualPage
+        '
+        Me.btnNextManualPage.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.btnNextManualPage.FlatAppearance.BorderSize = 0
+        Me.btnNextManualPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNextManualPage.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnNextManualPage.ForeColor = System.Drawing.Color.White
+        Me.btnNextManualPage.Location = New System.Drawing.Point(176, 87)
+        Me.btnNextManualPage.Name = "btnNextManualPage"
+        Me.btnNextManualPage.Size = New System.Drawing.Size(24, 26)
+        Me.btnNextManualPage.TabIndex = 91382
+        Me.btnNextManualPage.Text = ">"
+        Me.btnNextManualPage.UseVisualStyleBackColor = False
+        Me.btnNextManualPage.Visible = False
+        '
+        'lblManualPageEntries
+        '
+        Me.lblManualPageEntries.AutoSize = True
+        Me.lblManualPageEntries.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblManualPageEntries.ForeColor = System.Drawing.Color.Navy
+        Me.lblManualPageEntries.Location = New System.Drawing.Point(22, 119)
+        Me.lblManualPageEntries.Name = "lblManualPageEntries"
+        Me.lblManualPageEntries.Size = New System.Drawing.Size(65, 17)
+        Me.lblManualPageEntries.TabIndex = 91383
+        Me.lblManualPageEntries.Text = "Entries : 0"
         '
         'BtnRefresh
         '
@@ -1646,6 +1717,11 @@ Partial Class SpeedSale
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.Controls.Add(Me.lblManualPageEntries)
+        Me.Controls.Add(Me.btnPreviousManualPage)
+        Me.Controls.Add(Me.btnNextManualPage)
+        Me.Controls.Add(Me.txtManualPageNo)
+        Me.Controls.Add(Me.lblManualPage)
         Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.txtCut)
         Me.Controls.Add(Me.pnlGrossWeight)
@@ -1883,4 +1959,9 @@ Partial Class SpeedSale
     Friend WithEvents txtGrossWt As System.Windows.Forms.TextBox
     Friend WithEvents txtCut As System.Windows.Forms.TextBox
     Friend WithEvents txtEntryDate As System.Windows.Forms.TextBox
+    Friend WithEvents lblManualPage As System.Windows.Forms.Label
+    Friend WithEvents btnPreviousManualPage As System.Windows.Forms.Button
+    Friend WithEvents txtManualPageNo As System.Windows.Forms.TextBox
+    Friend WithEvents btnNextManualPage As System.Windows.Forms.Button
+    Friend WithEvents lblManualPageEntries As System.Windows.Forms.Label
 End Class

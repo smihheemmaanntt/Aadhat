@@ -1,6 +1,4 @@
-﻿Imports System.Data.SQLite
-
-Public Class Day_book
+﻿Public Class Day_book
     Dim rs As New Resizer
     Dim strSDate As String : Dim strEDate As String
     Dim dDate As DateTime : Dim mskstartDate As String
@@ -177,26 +175,53 @@ Public Class Day_book
     End Sub
 
     Private Sub PrintRecord()
-        Dim count As Integer = 0
-        Dim cmd As New SQLite.SQLiteCommand
-        Dim sql As String = ""
+        Dim AllRecord As Integer = Val(dg1.Rows.Count)
+        Dim BatchSize As Integer = 100
+        Dim maxRowCount As Decimal = Math.Ceiling(AllRecord / BatchSize)
+        Dim FastQuery As String = String.Empty
+        Dim sQL As String = String.Empty
+        Dim LastCount As Integer = 0
+        Dim TotalRecord As Integer = 0
+        Dim LastRecord As Integer = 0
         ClsFunPrimary.ExecNonQuery("Delete from printing")
-        For Each row As DataGridViewRow In dg1.Rows
+
+        For i As Integer = 0 To maxRowCount - 1
+            Application.DoEvents()
             If Application.OpenForms().OfType(Of Day_book).Any = False Then Exit Sub
-            With row
-                sql = "insert into Printing(D1,D2,M1,M2, P1, P2,P3, P4, P5, P6) values('" & txtFromDate.Text & "'," & _
-                    "'" & txttoDate.Text & "','" & txtDramt.Text & "','" & txtcrAmt.Text & "'," & _
-                    "'" & .Cells("Date").Value & "','" & .Cells("Type").Value & "','" & .Cells("Account Name").Value & "','" & .Cells("Description").Value & "'," & _
-                    "'" & Format(Val(.Cells("Debit").Value), "0.00") & "'," & Format(Val(.Cells("Credit").Value), "0.00") & ")"
-                Try
-                    ClsFunPrimary.ExecNonQuery(sql)
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                    ClsFunPrimary.CloseConnection()
-                End Try
-            End With
+            FastQuery = String.Empty : TotalRecord = (AllRecord - LastRecord)
+            For LastCount = 0 To IIf(i = (maxRowCount - 1), Val(TotalRecord - 1), BatchSize - 1)
+                With dg1.Rows(LastRecord)
+                    FastQuery = FastQuery & IIf(FastQuery <> "", " UNION ALL SELECT ", " SELECT ") & _
+                        SqlText(txtFromDate.Text) & "," & SqlText(txttoDate.Text) & "," & _
+                        SqlText(txtDramt.Text) & "," & SqlText(txtcrAmt.Text) & "," & _
+                        SqlText(.Cells("Date").Value) & "," & SqlText(.Cells("Type").Value) & "," & _
+                        SqlText(.Cells("Account Name").Value) & "," & SqlText(.Cells("Description").Value) & "," & _
+                        SqlText(AmountText(.Cells("Debit").Value)) & "," & _
+                        SqlText(AmountText(.Cells("Credit").Value))
+                End With
+                LastRecord = Val(LastRecord + 1)
+            Next
+            Try
+                If FastQuery = String.Empty Then Exit Sub
+                sQL = "insert into Printing(D1,D2,M1,M2, P1, P2,P3, P4, P5, P6) " & FastQuery & ""
+                ClsFunPrimary.ExecNonQuery(sQL, True)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                ClsFunPrimary.CloseConnection()
+                Exit Sub
+            End Try
         Next
     End Sub
+
+    Private Function SqlText(ByVal value As Object) As String
+        If value Is Nothing OrElse IsDBNull(value) Then Return "''"
+        Return "'" & Convert.ToString(value).Replace("'", "''") & "'"
+    End Function
+
+    Private Function AmountText(ByVal value As Object) As String
+        If value Is Nothing OrElse IsDBNull(value) Then Return "0.00"
+        Return Format(Val(Convert.ToString(value)), "0.00")
+    End Function
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
         PrintRecord()
         Report_Viewer.printReport("\DayBook.rpt")

@@ -44,39 +44,59 @@ Public Class CompanyList
             root = txtMainPath.Text
         End If
 
+        Dim loadedFiles As New List(Of String)()
         For Each sDir In Directory.GetDirectories(root, "Data", SearchOption.AllDirectories)
             For Each FilePath In Directory.GetFiles(sDir, "*data*.db", SearchOption.AllDirectories)
-                Application.DoEvents()
-                Dim detailedfile As New IO.FileInfo(FilePath)
-                Dim dt As New DataTable
-                Dim cmdText As String = "Select * from Company"
-                If txtMainPath.Text.ToUpper = ("Data").ToUpper Then
-                    Connectionstring = "Data Source=|DataDirectory|" & FilePath.ToString & ";Version=3;New=True;Compress=True;synchronous=ON;"
-                Else
-                    Connectionstring = "Data Source=" & FilePath.ToString & ";Version=3;New=True;Compress=True;synchronous=ON;"
-                End If
-
-                Dim con As New SQLite.SQLiteConnection(Connectionstring)
-                Dim ad As New SQLiteDataAdapter(cmdText, con)
-                ad.Fill(dt)
-                If dt.Rows.Count > 0 Then
-                    dg1.Rows.Add()
-                    With dg1.Rows(i - 1)
-                        .Cells(0).Value = dt.Rows(0)("id").ToString()
-                        .Cells(1).Value = dt.Rows(0)("CompanyName").ToString()
-                        .Cells(2).Value = dt.Rows(0)("Address").ToString()
-                        .Cells(3).Value = dt.Rows(0)("City").ToString()
-                        .Cells(6).Value = dt.Rows(0)("id").ToString()
-                        .Cells(4).Value = CDate(dt.Rows(0)("YearStart")).ToString("dd-MM-yyyy")
-                        .Cells(5).Value = CDate(dt.Rows(0)("YearEnd")).ToString("dd-MM-yyyy")
-                        .Cells(7).Value = FilePath.ToString
-                    End With
-                    i = i + 1
+                If Not loadedFiles.Contains(FilePath.ToString().ToUpper()) Then
+                    If AddCompanyFile(FilePath.ToString(), i, Connectionstring) Then i = i + 1
+                    loadedFiles.Add(FilePath.ToString().ToUpper())
                 End If
                 '  dg1.Rows.Add("", detailedfile.Name, FilePath)
             Next
         Next
+
+        If txtMainPath.Text.ToUpper <> ("Data").ToUpper AndAlso Directory.Exists(root) Then
+            For Each FilePath In Directory.GetFiles(root, "*data*.db", SearchOption.AllDirectories)
+                If Not loadedFiles.Contains(FilePath.ToString().ToUpper()) Then
+                    If AddCompanyFile(FilePath.ToString(), i, Connectionstring) Then i = i + 1
+                    loadedFiles.Add(FilePath.ToString().ToUpper())
+                End If
+            Next
+        End If
     End Sub
+
+    Private Function AddCompanyFile(ByVal filePath As String, ByVal rowIndex As Integer, ByRef connectionString As String) As Boolean
+        Try
+            Application.DoEvents()
+            Dim dt As New DataTable
+            Dim cmdText As String = "Select * from Company"
+            If txtMainPath.Text.ToUpper = ("Data").ToUpper Then
+                connectionString = "Data Source=|DataDirectory|" & filePath & ";Version=3;New=True;Compress=True;synchronous=ON;"
+            Else
+                connectionString = "Data Source=" & filePath & ";Version=3;New=True;Compress=True;synchronous=ON;"
+            End If
+
+            Dim con As New SQLite.SQLiteConnection(connectionString)
+            Dim ad As New SQLiteDataAdapter(cmdText, con)
+            ad.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                dg1.Rows.Add()
+                With dg1.Rows(rowIndex - 1)
+                    .Cells(0).Value = dt.Rows(0)("id").ToString()
+                    .Cells(1).Value = dt.Rows(0)("CompanyName").ToString()
+                    .Cells(2).Value = dt.Rows(0)("Address").ToString()
+                    .Cells(3).Value = dt.Rows(0)("City").ToString()
+                    .Cells(6).Value = dt.Rows(0)("id").ToString()
+                    .Cells(4).Value = CDate(dt.Rows(0)("YearStart")).ToString("dd-MM-yyyy")
+                    .Cells(5).Value = CDate(dt.Rows(0)("YearEnd")).ToString("dd-MM-yyyy")
+                    .Cells(7).Value = filePath
+                End With
+                Return True
+            End If
+        Catch
+        End Try
+        Return False
+    End Function
     Private Sub UpdateLoose()
         'LoosePurchase Table
         Dim sql As String = "CREATE TABLE if not exists PurchaseLoose (ID INTEGER PRIMARY KEY AUTOINCREMENT,EntryDate DATE,TransType TEXT, VoucherID INTEGER," &

@@ -178,4 +178,8 @@
             Report_Viewer.BringToFront()
         End If
     End Sub
+
+    Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
+
+    End Sub
 End Class

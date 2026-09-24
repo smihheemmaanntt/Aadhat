@@ -1,4 +1,36 @@
-﻿Public Class SpeedSale
+Public Class SpeedSale
+    Private manualPageReady As Boolean = False
+    Private selectingInitialDate As Boolean = True
+    Private initialDisplayComplete As Boolean = False
+
+    Private Sub EnsureManualPageSchema()
+        If clsFun.CheckIfColumnExists("Transaction2", "ManualPageNo") = False Then
+            clsFun.ExecNonQuery("ALTER TABLE Transaction2 ADD COLUMN ManualPageNo INTEGER NOT NULL DEFAULT 1;")
+        End If
+        clsFun.ExecNonQuery("CREATE INDEX IF NOT EXISTS idx_transaction2_speed_manual_page ON Transaction2(TransType,EntryDate,ManualPageNo);PRAGMA optimize;")
+    End Sub
+
+    Private Function CurrentManualPage() As Integer
+        Dim pageNo As Integer = Val(txtManualPageNo.Text)
+        If pageNo < 1 Then pageNo = 1
+        txtManualPageNo.Text = pageNo.ToString()
+        Return pageNo
+    End Function
+
+    Private Sub LoadManualPageForDate()
+        If txtEntryDate.Text.Trim() = "" OrElse IsDate(txtEntryDate.Text) = False Then Exit Sub
+        Dim entryDate As String = CDate(txtEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim pageNo As Integer = clsFun.ExecScalarInt("Select ifnull(Max(ifnull(ManualPageNo,1)),1) From Transaction2 Where TransType='Speed Sale' And EntryDate='" & entryDate & "'")
+        If pageNo < 1 Then pageNo = 1
+        txtManualPageNo.Text = pageNo.ToString()
+    End Sub
+
+    Private Sub UpdateManualPageNavigation(ByVal recordsCount As Integer)
+        btnPreviousManualPage.Visible = (CurrentManualPage() > 1)
+        btnNextManualPage.Visible = (recordsCount > 0)
+        If btnNextManualPage.Visible Then btnNextManualPage.BackColor = Color.LimeGreen
+    End Sub
+
     Dim VNo As Integer : Dim VchId As Integer
     Dim TotalPages As Integer = 0 : Dim PageNumber As Integer = 0
     Dim RowCount As Integer = 17 : Dim Offset As Integer = 0
@@ -16,6 +48,8 @@
 
 
     Private Sub txtEntryDate_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
+        If Not initialDisplayComplete Then Exit Sub
+        selectingInitialDate = False
         txtEntryDate.Text = SmartDate(txtEntryDate.Text) : txtEntryDate.TabStop = False : txtEntryDate.Enabled = False
         Dim BackDateEntry As String = clsFun.ExecScalarStr("SELECT DontAllowBack FROM UserRights AS UR INNER JOIN Users AS U ON UR.UserTypeID = U.UserTypeID Where UserName='" & MainScreenPicture.lblUser.Text & "' and EntryType='Other'")
         If BackDateEntry <> "N" Then
@@ -26,6 +60,16 @@
     End Sub
 
     Private Sub SpeedSale_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.Right Then
+            If btnNextManualPage.Visible AndAlso btnNextManualPage.Enabled Then btnNextManualPage.PerformClick()
+            e.Handled = True : e.SuppressKeyPress = True
+            Exit Sub
+        End If
+        If e.Control AndAlso e.KeyCode = Keys.Left Then
+            If btnPreviousManualPage.Visible AndAlso btnPreviousManualPage.Enabled Then btnPreviousManualPage.PerformClick()
+            e.Handled = True : e.SuppressKeyPress = True
+            Exit Sub
+        End If
         If e.KeyCode = Keys.Escape Then
             If btnClose.Enabled = False Then Exit Sub
             If DgAccountSearch.Visible = True Then
@@ -58,16 +102,28 @@
     End Sub
 
 
+    Private Sub SpeedSale_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        If selectingInitialDate Then
+            txtEntryDate.Enabled = True
+            txtEntryDate.TabStop = True
+            Me.ActiveControl = txtEntryDate
+            txtEntryDate.SelectAll()
+        End If
+        initialDisplayComplete = True
+    End Sub
+
     Private Sub SpeedSale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 'System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True
+        EnsureManualPageSchema()
         clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka Order by Upper(MarkaName)", "MarkaName", "Id", "")
         clsFun.FillDropDownList(cbAccountName, "Select ID,AccountName FROM Accounts  where GroupID in(16,17,32,33,11) order by AccountName ", "AccountName", "ID", "--N./A.--")
         txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy") : txtEntryDate.Text = SmartDate(txtEntryDate.Text)
         CbPer.SelectedIndex = 0 : pnlMarka.Visible = False : pnlGrossWeight.Visible = False
         rowColums() : FillSpeedSale() : VNumber()
+        manualPageReady = True : LoadManualPageForDate() : retrive()
         lblCommAmt.Text = ChrW(&H20B9) : lblMandiAmt.Text = ChrW(&H20B9)
         lblRdfAmt.Text = ChrW(&H20B9) : lblTareAmt.Text = ChrW(&H20B9)
         Label10.Text = ChrW(&H20B9)
@@ -300,6 +356,7 @@
         End If
     End Sub
     Public Sub FillContros(ByVal ID As Integer)
+        selectingInitialDate = False
         Dim sSql As String = String.Empty
         Dim Crate As String = String.Empty
         btnSave.BackColor = Color.Coral
@@ -347,7 +404,9 @@
             lblRoundOff.Text = Format(Val(ds.Tables("a").Rows(0)("RoundOff").ToString()), "0.00")
             txtCut.Text = Format(Val(ds.Tables("a").Rows(0)("Cut").ToString()), "0.00")
             txtGrossWt.Text = Format(Val(ds.Tables("a").Rows(0)("GrossWeight").ToString()), "0.00")
+            txtManualPageNo.Text = Math.Max(1, Val(ds.Tables("a").Rows(0)("ManualPageNo").ToString())).ToString()
         End If
+        Offset = 0 : retrive()
         SpeedCalculation()
     End Sub
 
@@ -428,21 +487,29 @@
 
     Private Sub retrive()
         ' Application.DoEvents()
-        dg1.Rows.Clear() : txtEntryDate.TabStop = False
+        dg1.Rows.Clear() : txtEntryDate.TabStop = selectingInitialDate
         Dim dt As New DataTable
-        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype = 'Speed Sale' and   EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' Order By  VoucherID")
+        Dim manualPage As Integer = CurrentManualPage()
+        Dim pageCondition As String = " and ifnull(ManualPageNo,1)=" & manualPage
+        Dim recordsCount As Integer = clsFun.ExecScalarInt("Select Count(*) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & pageCondition)
+        UpdateManualPageNavigation(recordsCount)
         TotalPages = Math.Ceiling(recordsCount / RowCount)
-        dt = clsFun.ExecDataTable("Select  * FROM Transaction2 where  EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "' Order By VoucherID Desc LIMIT " + RowCount.ToString() + " OFFSET " + Offset.ToString())
-        If recordsCount > 15 Then
+        dt = clsFun.ExecDataTable("Select * FROM Transaction2 where EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' and transtype='" & Me.Text & "'" & pageCondition & " Order By VoucherID Desc LIMIT " + RowCount.ToString() + " OFFSET " + Offset.ToString())
+        lblManualPageEntries.Text = "Entries : " & recordsCount
+        lbltotNug.Text = "Nug : " & Format(clsFun.ExecScalarDec("Select ifnull(Sum(Nug),0) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & pageCondition), "0.00") : lbltotNug.Visible = True
+        lblTotalWeight.Text = "Weight : " & Format(clsFun.ExecScalarDec("Select ifnull(Sum(Weight),0) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & pageCondition), "0.00") : lblTotalWeight.Visible = True
+        lblBasic.Text = "Basic : " & Format(clsFun.ExecScalarDec("Select ifnull(Sum(Amount),0) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & pageCondition), "0.00") : lblBasic.Visible = True
+        lblCharges.Text = "Charges : " & Format(clsFun.ExecScalarDec("Select ifnull(Sum(Charges),0) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & pageCondition), "0.00") : lblCharges.Visible = True
+        lblTotal.Text = "Total : " & Format(clsFun.ExecScalarDec("Select ifnull(Sum(TotalAmount),0) FROM Transaction2 WHERE transtype='Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'" & pageCondition), "0.00") : lblTotal.Visible = True
+        If recordsCount > RowCount Then
             btnFirst.Visible = True : btnLast.Visible = True
             btnNext.Visible = True : btnPrevious.Visible = True
             lblTotalRecord.Text = "Total Pages : " & TotalPages : lblTotalRecord.Visible = True
             lblPageNumber.Text = "Page No. : " & (Offset / RowCount) + 1 : lblPageNumber.Visible = True
-            lbltotNug.Text = "Nug : " & Format(clsFun.ExecScalarDec("Select Sum(Nug) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' "), "0.00") : lbltotNug.Visible = True
-            lblTotalWeight.Text = "Weight : " & Format(clsFun.ExecScalarDec("Select Sum(Weight) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'"), "0.00") : lblTotalWeight.Visible = True
-            lblBasic.Text = "Basic : " & Format(clsFun.ExecScalarDec("Select Sum(Amount) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' "), "0.00") : lblBasic.Visible = True
-            lblCharges.Text = "Charges : " & Format(clsFun.ExecScalarDec("Select Sum(Charges) FROM Transaction2 WHERE transtype = 'Speed Sale' and EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "'"), "0.00") : lblCharges.Visible = True
-            lblTotal.Text = "Total : " & Format(clsFun.ExecScalarDec("Select Sum(TotalAmount) FROM Transaction2 WHERE transtype = 'Speed Sale' and  EntryDate='" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "' "), "0.00") : lblTotal.Visible = True
+        Else
+            btnFirst.Visible = False : btnLast.Visible = False
+            btnNext.Visible = False : btnPrevious.Visible = False
+            lblTotalRecord.Visible = False : lblPageNumber.Visible = False
         End If
         Try
             If dt.Rows.Count > 0 Then
@@ -876,7 +943,7 @@
         sql = "insert into Transaction2(TransType, Entrydate, ItemID, ItemName, AccountID, AccountName, Nug, Weight, Rate, Per," _
                         & " Amount, TotalAmount, CommPer, CommAmt, MPer, MAmt, RdfPer, RdfAmt," _
                         & " Tare, TareAmt, Labour, LabourAmt, Charges, MaintainCrate, CrateMarka, " _
-                        & " CrateQty,CrateID, BillNo,VoucherID,CrateAccountID,CrateAccountName,RoundOff,Cut,OnWeight,GrossWeight)" _
+                        & " CrateQty,CrateID, BillNo,VoucherID,CrateAccountID,CrateAccountName,RoundOff,Cut,OnWeight,GrossWeight,ManualPageNo)" _
                         & " Select  '" & Me.Text & "', '" & CDate(txtEntryDate.Text).ToString("yyyy-MM-dd") & "', " & Val(txtItemID.Text) & ", " _
                         & "'" & txtItem.Text & "', " & Val(txtAccountID.Text) & ", '" & txtAccount.Text & "', " & Val(txtNug.Text) & ", " & Val(txtKg.Text) & ", " _
                         & "" & Val(txtrate.Text) & ", '" & CbPer.Text & "'," & Val(txtNet.Text) & ", " & Val(txtTotal.Text) & ", " & Val(txtComPer.Text) & ", " _
@@ -884,7 +951,7 @@
                         & "" & Val(txtTare.Text) & ", " & Val(txtTareAmt.Text) & "," & Val(txtLabour.Text) & ", " & Val(txtLaboutAmt.Text) & "," _
                         & "" & Val(lblTotCharges.Text) & ", '" & lblCrate.Text & "', '" & cbCrateMarka.Text & "'," & Val(txtCrateQty.Text) & ", " _
                         & "" & If(cbCrateMarka.Text <> "Y", Val(0), Val(cbCrateMarka.SelectedValue)) & ",'" & txtSlipNo.Text & "', " _
-                        & "" & Val(txtid.Text) & "," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "'," & Val(lblRoundOff.Text) & "," & Val(txtCut.Text) & ",'" & txtAddWeight.Text & "'," & Val(txtGrossWt.Text) & ""
+                        & "" & Val(txtid.Text) & "," & Val(cbAccountName.SelectedValue) & ",'" & cbAccountName.Text & "'," & Val(lblRoundOff.Text) & "," & Val(txtCut.Text) & ",'" & txtAddWeight.Text & "'," & Val(txtGrossWt.Text) & "," & CurrentManualPage() & ""
         Try
             If clsFun.ExecNonQuery(sql, True) > 0 Then
                 ' el.WriteToErrorLog(sql, "", "Speed Record")
@@ -1080,7 +1147,7 @@
                 sql = "Update Transaction2 SET TransType='" & Me.Text & "', BillNo='" & txtSlipNo.Text & "',Entrydate='" & SqliteEntryDate & "', ItemID=" & Val(txtItemID.Text) & ", ItemName= '" & txtItem.Text & "', AccountID=" & Val(txtAccountID.Text) & ", AccountName='" & txtAccount.Text & "', Nug=" & Val(txtNug.Text) & ", Weight=" & Val(txtKg.Text) & ", Rate=" & Val(txtrate.Text) & ", Per='" & CbPer.Text & "'," _
                           & " Amount=" & Val(txtNet.Text) & ", TotalAmount=" & Val(txtTotal.Text) & ", CommPer=" & Val(txtComPer.Text) & ", CommAmt= " & Val(txtComAmt.Text) & ", MPer=" & Val(txtMPer.Text) & ", MAmt= " & Val(txtMAmt.Text) & " , RdfPer= " & Val(txtRdfPer.Text) & ", RdfAmt= " & Val(txtRdfAmt.Text) & "," _
                           & " Tare=" & Val(txtTare.Text) & ", TareAmt= " & Val(txtTareAmt.Text) & ", Labour= " & Val(txtLabour.Text) & ", LabourAmt=" & Val(txtLaboutAmt.Text) & ", Charges=" & Val(lblTotCharges.Text) & ", MaintainCrate='" & lblCrate.Text & "', CrateID= " & Val(cbCrateMarka.SelectedValue) & ", " _
-                          & " CrateMarka= '" & cbCrateMarka.Text & "',CrateQty=" & Val(txtCrateQty.Text) & ",CrateAccountID=" & Val(cbAccountName.SelectedValue) & ",CrateAccountName='" & cbAccountName.Text & "',RoundOff='" & Val(lblRoundOff.Text) & "',cut=0,OnWeight='" & txtAddWeight.Text & "' where VoucherID =" & Val(txtid.Text) & ""
+                          & " CrateMarka= '" & cbCrateMarka.Text & "',CrateQty=" & Val(txtCrateQty.Text) & ",CrateAccountID=" & Val(cbAccountName.SelectedValue) & ",CrateAccountName='" & cbAccountName.Text & "',RoundOff='" & Val(lblRoundOff.Text) & "',cut=0,OnWeight='" & txtAddWeight.Text & "',ManualPageNo=" & CurrentManualPage() & " where VoucherID =" & Val(txtid.Text) & ""
                 clsFun.ExecNonQuery(sql)
                 ServerTag = 1 : InsertLedger() : CrateLedger() : ServerLedger() : ServerCrate()
                 MsgBox("Record Updated Successfully.", vbInformation + vbOKOnly, "Updated")
@@ -1589,7 +1656,10 @@
 
     Private Sub dg1_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dg1.RowStateChanged
         ' If btnSave.Text = "&Save" Then
-        If dg1.RowCount > 0 Then
+        If selectingInitialDate Then
+            txtEntryDate.Enabled = True
+            txtEntryDate.TabStop = True
+        ElseIf dg1.RowCount > 0 Then
             txtEntryDate.Enabled = False
             txtEntryDate.TabStop = False
         Else
@@ -1682,7 +1752,7 @@
                 sql = "Update Transaction2 SET TransType='" & Me.Text & "', BillNo='" & txtSlipNo.Text & "',Entrydate='" & SqliteEntryDate & "', ItemID=" & Val(txtItemID.Text) & ", ItemName= '" & txtItem.Text & "', AccountID=" & Val(txtAccountID.Text) & ", AccountName='" & txtAccount.Text & "', Nug=" & Val(txtNug.Text) & ", Weight=" & Val(txtKg.Text) & ", Rate=" & Val(txtrate.Text) & ", Per='" & CbPer.Text & "'," _
                           & " Amount=" & Val(txtNet.Text) & ", TotalAmount=" & Val(txtTotal.Text) & ", CommPer=" & Val(txtComPer.Text) & ", CommAmt= " & Val(txtComAmt.Text) & ", MPer=" & Val(txtMPer.Text) & ", MAmt= " & Val(txtMAmt.Text) & " , RdfPer= " & Val(txtRdfPer.Text) & ", RdfAmt= " & Val(txtRdfAmt.Text) & "," _
                           & " Tare=" & Val(txtTare.Text) & ", TareAmt= " & Val(txtTareAmt.Text) & ", Labour= " & Val(txtLabour.Text) & ", LabourAmt=" & Val(txtLaboutAmt.Text) & ", Charges=" & Val(lblTotCharges.Text) & ", MaintainCrate='" & lblCrate.Text & "', CrateID= " & Val(cbCrateMarka.SelectedValue) & ", " _
-                          & " CrateMarka= '" & cbCrateMarka.Text & "',CrateQty=" & Val(txtCrateQty.Text) & ",CrateAccountID=" & Val(cbAccountName.SelectedValue) & ",CrateAccountName='" & cbAccountName.Text & "',RoundOff='" & Val(lblRoundOff.Text) & "',cut=0,OnWeight='" & txtAddWeight.Text & "' where VoucherID =" & Val(txtid.Text) & ""
+                          & " CrateMarka= '" & cbCrateMarka.Text & "',CrateQty=" & Val(txtCrateQty.Text) & ",CrateAccountID=" & Val(cbAccountName.SelectedValue) & ",CrateAccountName='" & cbAccountName.Text & "',RoundOff='" & Val(lblRoundOff.Text) & "',cut=0,OnWeight='" & txtAddWeight.Text & "',ManualPageNo=" & CurrentManualPage() & " where VoucherID =" & Val(txtid.Text) & ""
                 clsFun.ExecNonQuery(sql)
 
                 '   Me.Alert("Success Alert", msgAlert.enmType.Update)
@@ -1916,6 +1986,40 @@
     End Sub
 
     Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
+        If manualPageReady = False OrElse txtEntryDate.Text.Trim().Length < 8 OrElse IsDate(txtEntryDate.Text) = False Then Exit Sub
+        Offset = 0 : LoadManualPageForDate() : retrive()
+    End Sub
 
+    Private Sub btnNextManualPage_Click(sender As Object, e As EventArgs) Handles btnNextManualPage.Click
+        Dim entryDate As String = CDate(txtEntryDate.Text).ToString("yyyy-MM-dd")
+        Dim currentPageEntries As Integer = clsFun.ExecScalarInt("Select Count(*) From Transaction2 Where TransType='Speed Sale' And EntryDate='" & entryDate & "' And ifnull(ManualPageNo,1)=" & CurrentManualPage())
+        If currentPageEntries = 0 Then
+            MsgBox("Current manual page is empty. Please save at least one entry before going to next page.", MsgBoxStyle.Information, "Manual Page")
+            txtItem.Focus()
+            Exit Sub
+        End If
+        txtManualPageNo.Text = (CurrentManualPage() + 1).ToString()
+        Offset = 0 : retrive() : txtItem.Focus()
+    End Sub
+
+    Private Sub btnPreviousManualPage_Click(sender As Object, e As EventArgs) Handles btnPreviousManualPage.Click
+        If CurrentManualPage() <= 1 Then Exit Sub
+        txtManualPageNo.Text = (CurrentManualPage() - 1).ToString()
+        Offset = 0 : retrive() : txtItem.Focus()
+    End Sub
+
+    Private Sub txtManualPageNo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtManualPageNo.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar) OrElse Asc(e.KeyChar) = 8)
+    End Sub
+
+    Private Sub txtManualPageNo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtManualPageNo.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Offset = 0 : CurrentManualPage() : retrive() : txtItem.Focus()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Sub txtManualPageNo_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtManualPageNo.Validating
+        CurrentManualPage()
     End Sub
 End Class

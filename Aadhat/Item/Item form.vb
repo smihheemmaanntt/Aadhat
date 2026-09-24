@@ -1,4 +1,8 @@
-﻿Public Class Item_form
+Public Class Item_form
+    Private Function CleanText(ByVal value As Object) As String
+        If value Is Nothing Then Return ""
+        Return value.ToString().Trim()
+    End Function
     Public ItemNameValue As String = ""
     Public ItemNameID As String = ""
     Public OpenedFromItems As Boolean = False
@@ -105,12 +109,12 @@
         End If
     End Sub
     Private Sub save()
-        If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & txtItemName.Text & "')") = 1 Then
+        If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & CleanText(txtItemName.Text) & "')") = 1 Then
             MsgBox("Item Already Exists...", vbOkOnly, "Access Denied") : txtItemName.Focus() : Exit Sub
         End If
         Dim guid As Guid = guid.NewGuid()
         Dim cmd As New SQLite.SQLiteCommand
-        If txtItemName.Text = "" Then
+        If CleanText(txtItemName.Text) = "" Then
             txtItemName.Focus()
             MsgBox("Please Fill Item Name... ", MsgBoxStyle.Exclamation, "Empty")
         Else
@@ -137,7 +141,7 @@
                 cmd.Parameters.AddWithValue("@12", cbTrackStock.Text.Trim)
                 cmd.Parameters.AddWithValue("@13", guid.ToString())
                 If cmd.ExecuteNonQuery() > 0 Then
-                    ItemNameValue = txtItemName.Text : ItemNameID = Val(txtid.Text)
+                    ItemNameValue = CleanText(txtItemName.Text) : ItemNameID = Val(txtid.Text)
                     Textclear() : If OpenedFromItems Then Me.Close()
                     Me.Alert("Success Alert", msgAlert.enmType.Success)
                 End If
@@ -192,7 +196,7 @@
     End Sub
 
     Private Sub UpdateItems()
-        If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & txtItemName.Text & "')") > 1 Then
+        If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & CleanText(txtItemName.Text) & "')") > 1 Then
             MsgBox("Item Already Exists...", vbOkOnly, "Access Denied") : txtItemName.Focus() : Exit Sub
         End If
         Dim cmd As New SQLite.SQLiteCommand
@@ -204,14 +208,14 @@
             If CBMaintainCrate.CheckState = CheckState.Checked Then Crate = "Y"
             If CBMaintainCrate.CheckState = CheckState.Unchecked Then Crate = "N"
             '  Dim sql As String = "Update AccountGroup SET GroupName='" & txtGroupName.Text & "',DC='" & lbldc.Text & "',UndergrpID=" & CbUnderGroup.SelectedValue & ",IsPrimary='" & primary & "',ISCHNGDEL=0 WHERE ID=" & Val(txtid.Text) & ""
-            Dim sql As String = "Update Items SET ItemName='" & txtItemName.Text.Trim & "',OtherName='" & txtOtherName.Text.Trim & "',CommisionPer=" & Val(txtCommission.Text) & ", " & _
+            Dim sql As String = "Update Items SET ItemName='" & CleanText(txtItemName.Text) & "',OtherName='" & CleanText(txtOtherName.Text) & "',CommisionPer=" & Val(CleanText(txtCommission.Text)) & ", " & _
                 "UserChargesPer=" & Val(txtuserCharges.Text.Trim) & ",Tare=" & Val(txtTare.Text.Trim) & ",Labour=" & Val(txtLabour.Text.Trim) & ",RDFPer=" & Val(txtRdf.Text.Trim) & ", " & _
-                "WeightPerNug=" & Val(txtWeightPerNug.Text.Trim) & ",CutPerNug=" & Val(txtcutPerNug.Text) & ",MaintainCrate='" & Crate & "',Rateas='" & CbRateas.Text & "',TrackStock='" & cbTrackStock.Text & "' WHERE ID=" & Val(txtid.Text) & ""
+                "WeightPerNug=" & Val(txtWeightPerNug.Text.Trim) & ",CutPerNug=" & Val(CleanText(txtcutPerNug.Text)) & ",MaintainCrate='" & Crate & "',Rateas='" & CleanText(CbRateas.Text) & "',TrackStock='" & CleanText(cbTrackStock.Text) & "' WHERE ID=" & Val(txtid.Text) & ""
             cmd = New SQLite.SQLiteCommand(sql, clsFun.GetConnection())
             Try
                 If clsFun.ExecNonQuery(sql) > 0 Then
-                    SyncItemNameToUsedRecords(Val(txtid.Text), txtItemName.Text.Trim)
-                    ItemNameValue = txtItemName.Text : ItemNameID = Val(txtid.Text)
+                    SyncItemNameToUsedRecords(Val(txtid.Text), CleanText(txtItemName.Text))
+                    ItemNameValue = CleanText(txtItemName.Text) : ItemNameID = Val(txtid.Text)
                     Textclear() : If OpenedFromItems Then Me.Close() : Exit Sub
                     Me.Alert("Updated Successful...", msgAlert.enmType.Update)
 
@@ -300,14 +304,14 @@
     End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If BtnSave.Text = "&Save" Then
-            If clsFun.ExecScalarStr("Select count(*)from Items where ItemName='" & txtItemName.Text.Trim & "'") = 1 Then
+            If clsFun.ExecScalarStr("Select count(*)from Items where ItemName='" & CleanText(txtItemName.Text) & "'") = 1 Then
                 MsgBox("Item Already Exists...", vbOkOnly, "Access Denied")
                 txtItemName.Focus() : Exit Sub
             End If
             save()
         Else
-            Dim CheckID As Integer = clsFun.ExecScalarInt("Select ID from Items where upper(ItemName)=upper('" & txtItemName.Text.Trim & "')")
-            If clsFun.ExecScalarStr("Select count(*) from items where upper(ItemName)=upper('" & txtItemName.Text.Trim & "') ") > 1 Then
+            Dim CheckID As Integer = clsFun.ExecScalarInt("Select ID from Items where upper(ItemName)=upper('" & CleanText(txtItemName.Text) & "')")
+            If clsFun.ExecScalarStr("Select count(*) from items where upper(ItemName)=upper('" & CleanText(txtItemName.Text) & "') ") > 1 Then
                 MsgBox("Item Name Already Exists...", vbOkOnly, "Access Denied") : txtItemName.Focus() : Exit Sub
             End If
             If Val(CheckID) = 0 Then
@@ -377,11 +381,11 @@
             txtItemName.Text = StrConv(txtItemName.Text, VbStrConv.ProperCase)
         End If
         If BtnSave.Text = "&Save" Then
-            If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & txtItemName.Text & "')") = 1 Then
+            If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & CleanText(txtItemName.Text) & "')") = 1 Then
                 MsgBox("Item Already Exists...", vbOkOnly, "Access Denied")
             End If
         Else
-            If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & txtItemName.Text & "')") > 1 Then
+            If clsFun.ExecScalarInt("Select count(*)from items where upper(itemName)=upper('" & CleanText(txtItemName.Text) & "')") > 1 Then
                 MsgBox("Item Already Exists...", vbOkOnly, "Access Denied")
             End If
         End If

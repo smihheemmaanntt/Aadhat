@@ -106,13 +106,54 @@ Public Class AccentStorageHelper
     Private Shared AES_IV As String = "1234567890123456"
     Public Shared LastLicenseError As String = ""
 
+    Private Const TLS12 As Integer = 3072
+    Private Const TLS11 As Integer = 768
+
+    Public Shared Function IsWindows7() As Boolean
+        Try
+            Dim v As Version = Environment.OSVersion.Version
+            Return v.Major = 6 AndAlso v.Minor = 1
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Public Shared Function UseLegacyHttpMode() As Boolean
+        Try
+            If IsWindows7() Then Return True
+            Return File.Exists(Path.Combine(Application.StartupPath, "force_win7_http.txt"))
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Public Shared Sub ConfigureSecureConnection()
+        Try
+            If Not UseLegacyHttpMode() Then Exit Sub
+            ServicePointManager.Expect100Continue = False
+            ServicePointManager.DefaultConnectionLimit = 20
+            ServicePointManager.SecurityProtocol =
+                CType(TLS12 Or TLS11, SecurityProtocolType) Or SecurityProtocolType.Tls
+        Catch
+        End Try
+    End Sub
+
+    Private Shared Function GetWindows7FallbackUrl(ByVal url As String) As String
+        If Not UseLegacyHttpMode() Then Return url
+        If url.StartsWith("https://", StringComparison.OrdinalIgnoreCase) Then
+            Return "http://" & url.Substring(8)
+        End If
+        Return url
+    End Function
+
     '=====================================================
     ' INTERNET CHECK (PING / HTTP)
     '=====================================================
     Public Shared Function IsInternetAvailable() As Boolean
         Try
-            ServicePointManager.Expect100Continue = False
-            ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType) Or SecurityProtocolType.Tls
+            If UseLegacyHttpMode() Then Return True
+
+            ConfigureSecureConnection()
 
             Dim pingUrl As String = BASE_URL.Trim().Replace("/api/", "/ping.txt")
             Dim req = CType(WebRequest.Create(pingUrl), HttpWebRequest)
@@ -147,12 +188,22 @@ Public Class AccentStorageHelper
     Public Shared Function CheckOnlineBlock(customerCode As String) As Boolean?
         Try
             If Not IsInternetAvailable() Then Return Nothing
+            ConfigureSecureConnection()
 
-            Dim url As String = BlockStatusUrl & _
+            Dim url As String = GetWindows7FallbackUrl(BlockStatusUrl) & _
                 "?customer_code=" & Uri.EscapeDataString(customerCode) & _
                 "&board_id=" & Uri.EscapeDataString(GetMotherboardID())
 
-            Dim json = New WebClient().DownloadString(url)
+            Dim json As String = ""
+            If UseLegacyHttpMode() Then
+                json = WinHttpHelper.GetData(url)
+            Else
+                Using wc As New WebClient()
+                    wc.Headers(HttpRequestHeader.UserAgent) = "Aadhat"
+                    json = wc.DownloadString(url)
+                End Using
+            End If
+
             Dim obj = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(json)
 
             If obj Is Nothing OrElse Not obj.ContainsKey("status") OrElse Convert.ToString(obj("status")).ToLower() <> "success" Then
@@ -167,6 +218,29 @@ Public Class AccentStorageHelper
 
             Return Nothing
         Catch
+            If UseLegacyHttpMode() Then
+                Try
+                    Dim url As String = GetWindows7FallbackUrl(BlockStatusUrl) & _
+                        "?customer_code=" & Uri.EscapeDataString(customerCode) & _
+                        "&board_id=" & Uri.EscapeDataString(GetMotherboardID())
+
+                    Dim json As String = WinHttpHelper.GetData(url)
+                    If String.IsNullOrEmpty(json) Then Return Nothing
+
+                    Dim obj = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(json)
+
+                    If obj Is Nothing OrElse Not obj.ContainsKey("status") OrElse Convert.ToString(obj("status")).ToLower() <> "success" Then
+                        Return Nothing
+                    End If
+
+                    If obj.ContainsKey("is_blocked") Then
+                        Dim apiBlocked As Boolean = Convert.ToBoolean(obj("is_blocked"))
+                        SetLocalBlock(apiBlocked)
+                        Return apiBlocked
+                    End If
+                Catch
+                End Try
+            End If
             Return Nothing
         End Try
     End Function
@@ -237,6 +311,22 @@ Public Class AccentStorageHelper
         File.WriteAllText(storePath, Encrypt(JsonConvert.SerializeObject(store, Formatting.Indented)))
     End Sub
 
+    Private Shared Function IsValidStoreFile(ByVal filePath As String) As Boolean
+        Try
+            If Not File.Exists(filePath) Then Return False
+            Dim fi As New FileInfo(filePath)
+            If fi.Length < 50 Then Return False
+
+            Dim json As String = Decrypt(File.ReadAllText(filePath))
+            If json = "" Then Return False
+
+            Dim store = JsonConvert.DeserializeObject(Of FinalStore)(json)
+            Return store IsNot Nothing AndAlso store.license_data IsNot Nothing AndAlso store.response_data IsNot Nothing
+        Catch
+            Return False
+        End Try
+    End Function
+
 
     Public Shared Event LicenceStatusChanged(ByVal IsExpired As Boolean)
 
@@ -290,10 +380,37 @@ Public Class AccentStorageHelper
     ' POST JSON
     '=====================================================
     Public Shared Function PostJson(url As String, obj As Object) As String
-        Using wc As New WebClient()
-            wc.Headers(HttpRequestHeader.ContentType) = "application/json"
-            Return wc.UploadString(url, "POST", JsonConvert.SerializeObject(obj))
-        End Using
+        ConfigureSecureConnection()
+
+        If UseLegacyHttpMode() Then
+            Dim legacyUrl As String = GetWindows7FallbackUrl(url)
+            Dim legacyResponse As String = WinHttpHelper.PostJson(legacyUrl, obj)
+            If Not String.IsNullOrEmpty(legacyResponse) Then Return legacyResponse
+        End If
+
+        Try
+            Using wc As New WebClient()
+                wc.Headers(HttpRequestHeader.ContentType) = "application/json"
+                wc.Headers(HttpRequestHeader.UserAgent) = "Aadhat"
+                Return wc.UploadString(url, "POST", JsonConvert.SerializeObject(obj))
+            End Using
+        Catch ex As Exception
+            If UseLegacyHttpMode() Then
+                Dim fallbackResponse As String = WinHttpHelper.PostJson(url, obj)
+                If Not String.IsNullOrEmpty(fallbackResponse) AndAlso Not fallbackResponse.Contains("secure channel") Then Return fallbackResponse
+
+                Dim fallbackUrl As String = GetWindows7FallbackUrl(url)
+                If fallbackUrl <> url Then
+                    fallbackResponse = WinHttpHelper.PostJson(fallbackUrl, obj)
+                    If Not String.IsNullOrEmpty(fallbackResponse) Then Return fallbackResponse
+                End If
+            End If
+
+            Return JsonConvert.SerializeObject(New With {
+                .status = "error",
+                .message = "Server se secure connection nahi ban pa raha. Windows 7 me TLS 1.2/SSL setting enable karke dubara try karein. Details: " & ex.Message
+            })
+        End Try
     End Function
 
     '    Public Shared Function PostJson(
@@ -311,7 +428,16 @@ Public Class AccentStorageHelper
     Public Shared Function SaveLicense(data As LicenseData) As String
 
         Dim res = PostJson(ValidateLicenseUrl, data)
-        Dim resp = JsonConvert.DeserializeObject(Of CustomerActivationResponse)(res)
+        Dim resp As CustomerActivationResponse = Nothing
+
+        Try
+            resp = JsonConvert.DeserializeObject(Of CustomerActivationResponse)(res)
+        Catch
+            Return JsonConvert.SerializeObject(New With {
+                .status = "error",
+                .message = "License server se valid response nahi mila."
+            })
+        End Try
 
         If resp Is Nothing OrElse resp.status <> "success" Then
             Return res
@@ -366,7 +492,18 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function SaveAmc(data As AmcData) As String
         Dim res = PostJson(ActivateAmcUrl, data)
-        Dim resp = JsonConvert.DeserializeObject(Of AmcActivationResponse)(res)
+        Dim resp As AmcActivationResponse = Nothing
+
+        Try
+            resp = JsonConvert.DeserializeObject(Of AmcActivationResponse)(res)
+        Catch
+            Return JsonConvert.SerializeObject(New With {
+                .status = "error",
+                .message = "AMC server se valid response nahi mila."
+            })
+        End Try
+
+        If resp Is Nothing Then Return res
         If resp.status <> "success" Then Return res
 
         Dim store = LoadStore()
@@ -411,11 +548,27 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function RetrieveLicense(customerCode As String) As Boolean
         Try
-            If Not IsInternetAvailable() Then Return False
-            Dim url As String = RetrieveLicenseUrl & _
+            If Not IsInternetAvailable() AndAlso Not UseLegacyHttpMode() Then Return False
+            ConfigureSecureConnection()
+
+            Dim url As String = GetWindows7FallbackUrl(RetrieveLicenseUrl) & _
                 "?customer_code=" & Uri.EscapeDataString(customerCode) & _
                 "&board_id=" & Uri.EscapeDataString(AccentStorageHelper.GetMotherboardID()) & _
                 "&pc_name=" & Uri.EscapeDataString(Environment.MachineName)
+
+            If UseLegacyHttpMode() Then
+                Dim tempPath As String = storePath & ".tmp"
+                If File.Exists(tempPath) Then File.Delete(tempPath)
+
+                If WinHttpHelper.DownloadFile(url, tempPath) AndAlso IsValidStoreFile(tempPath) Then
+                    If File.Exists(storePath) Then File.Delete(storePath)
+                    File.Move(tempPath, storePath)
+                    Return True
+                End If
+
+                If File.Exists(tempPath) Then File.Delete(tempPath)
+                Return False
+            End If
 
             Using wc As New WebClient()
                 wc.Headers(HttpRequestHeader.ContentType) = "application/octet-stream"
@@ -425,6 +578,26 @@ Public Class AccentStorageHelper
                 Return True
             End Using
         Catch
+            If UseLegacyHttpMode() Then
+                Try
+                    Dim url As String = GetWindows7FallbackUrl(RetrieveLicenseUrl) & _
+                        "?customer_code=" & Uri.EscapeDataString(customerCode) & _
+                        "&board_id=" & Uri.EscapeDataString(AccentStorageHelper.GetMotherboardID()) & _
+                        "&pc_name=" & Uri.EscapeDataString(Environment.MachineName)
+
+                    Dim tempPath As String = storePath & ".tmp"
+                    If File.Exists(tempPath) Then File.Delete(tempPath)
+
+                    If WinHttpHelper.DownloadFile(url, tempPath) AndAlso IsValidStoreFile(tempPath) Then
+                        If File.Exists(storePath) Then File.Delete(storePath)
+                        File.Move(tempPath, storePath)
+                        Return True
+                    End If
+
+                    If File.Exists(tempPath) Then File.Delete(tempPath)
+                Catch
+                End Try
+            End If
             Return False
         End Try
     End Function
