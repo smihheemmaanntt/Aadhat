@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Item_form
     Inherits System.Windows.Forms.Form
 
@@ -470,7 +470,7 @@ Partial Class Item_form
         Me.CbRateas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CbRateas.Font = New System.Drawing.Font("Times New Roman", 11.0!)
         Me.CbRateas.FormattingEnabled = True
-        Me.CbRateas.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
+        Me.CbRateas.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "42 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
         Me.CbRateas.Location = New System.Drawing.Point(1082, 86)
         Me.CbRateas.Name = "CbRateas"
         Me.CbRateas.Size = New System.Drawing.Size(81, 25)
@@ -530,6 +530,7 @@ Partial Class Item_form
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.cbTrackStock)

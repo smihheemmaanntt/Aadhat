@@ -1,4 +1,4 @@
-﻿Public Class CustomerWiseSaleSummary
+Public Class CustomerWiseSaleSummary
 
     Public Sub New()
         InitializeComponent()
@@ -193,4 +193,8 @@
         txtFromDate.Text = smartDate(txtFromDate.Text)
     End Sub
 
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

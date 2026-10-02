@@ -1,4 +1,4 @@
-﻿Public Class SP_Query_Maker
+Public Class SP_Query_Maker
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Dim sql As String = String.Empty
@@ -23,4 +23,8 @@
         If txtPassword.Text = "MUKESH" Then pnlLock.Visible = False : RtxtQuery.Enabled = True : RtxtQuery.Focus()
     End Sub
 
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

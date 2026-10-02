@@ -1,4 +1,4 @@
-﻿Public Class Seller_Day_Book
+Public Class Seller_Day_Book
 
     Private Sub Trail_Balance_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -351,5 +351,9 @@
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         mskFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         mskFromDate.Text = smartDate(mskFromDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

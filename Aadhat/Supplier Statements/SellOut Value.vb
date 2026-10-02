@@ -1,4 +1,4 @@
-﻿Public Class SellOUT_Value
+Public Class SellOUT_Value
 
     Private Sub Supplier_Statement_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -245,5 +245,9 @@
             e.SuppressKeyPress = True
         End If
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

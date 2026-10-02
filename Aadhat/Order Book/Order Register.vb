@@ -1,4 +1,4 @@
-﻿Public Class Order_Register
+Public Class Order_Register
 
     Private Sub Order_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -135,5 +135,9 @@
     End Sub
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

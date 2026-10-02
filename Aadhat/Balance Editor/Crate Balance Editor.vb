@@ -1,4 +1,4 @@
-﻿Imports System.Data.SQLite
+Imports System.Data.SQLite
 Imports System.IO
 
 Public Class Crate_Balance_Editor
@@ -274,5 +274,9 @@ Public Class Crate_Balance_Editor
         If MessageBox.Show(" Are you Sure Want to Update Balnaces From Other Database ??", "Update Balance", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.Yes Then
             BringBalances() : Pnlconfirmation.Visible = False
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

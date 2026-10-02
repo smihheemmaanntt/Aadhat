@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Public Class Whats_New
 
     Private Sub Whats_New_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,5 +10,9 @@ Public Class Whats_New
         Else
             Exit Sub
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

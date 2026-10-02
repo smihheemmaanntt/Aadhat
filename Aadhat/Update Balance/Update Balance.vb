@@ -1,4 +1,4 @@
-﻿Public Class Update_Balance
+Public Class Update_Balance
 
     Private Sub Update_Balance_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -77,5 +77,9 @@
         '    a1 = clsFun.ExecNonQuery(ssql, True)
         '    If a1 > 0 Then MsgBox("Financial Year Changed Successfully...") : CompanyList.BtnRetrive.PerformClick() : Me.Close()
         'End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

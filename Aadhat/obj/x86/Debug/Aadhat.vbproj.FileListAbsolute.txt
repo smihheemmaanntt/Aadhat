@@ -2214,7 +2214,6 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.PayMentform.
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.RcptRegister.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ReceiptForm.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Scrip_Profit_Report.resources
-D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSAPI.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Create_Company.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Item_form.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.UserForm.resources
@@ -2222,7 +2221,6 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.MainScreenFo
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Resources.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.ShowCompanies.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Sellout_Mannual.resources
-D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SMSTemplateRegister.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Speed_Sale_Register.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSale.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Splash.resources
@@ -2256,12 +2254,12 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallan.
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TempChallanRegister.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TermsAndConditions.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.TestForm.resources
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CloudBackupConfiguration.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.SpeedSaleDateCorrection.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.OtherNameTranslator.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Register_Std.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Ugrahi_Report.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Update_Balance.resources
-D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CheckUpdate.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Whats_New.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.WhatsAppTemplateEditor.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.WhatsApp_API.resources
@@ -2272,4 +2270,3 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.application
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.exe
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.xml
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.pdb
-D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.vbprojResolveAssemblyReference.cache

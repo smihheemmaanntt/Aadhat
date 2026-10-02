@@ -1,4 +1,4 @@
-﻿Public Class Options
+Public Class Options
 
     Private Sub Options_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -192,5 +192,9 @@
 
     Private Sub Panel8_Paint(sender As Object, e As PaintEventArgs) Handles Panel8.Paint
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

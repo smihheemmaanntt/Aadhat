@@ -1,4 +1,4 @@
-﻿Public Class Stock_Sale
+Public Class Stock_Sale
     Dim vno As Integer : Dim VchId As Integer
     Dim sql As String = String.Empty : Dim count As Integer = 0
     Dim MaxID As String = String.Empty : Dim itemBal As String = String.Empty
@@ -1027,7 +1027,7 @@
         If Val(txtPurchaseID.Text) = Val(0) Then MsgBox("Invallid Lot No.", MsgBoxStyle.Critical, "Invalid LOT No") : txtLot.Focus() : Exit Sub
         If Cbper.SelectedIndex = 0 Then
             If Val(txtNug.Text) = 0 Then MsgBox("please fill Nug...", MsgBoxStyle.Critical, "Access Denied") : txtNug.Focus() : Exit Sub
-        ElseIf Cbper.SelectedIndex = 14 Then
+        ElseIf Cbper.Text = "Crate" Then
             If lblCrate.Text = "Y" Then
                 pnlMarka.Visible = True : pnlMarka.BringToFront()
                 If Val(txtCrateQty.Text) = 0 Then MsgBox("please fill Crate Qty...", MsgBoxStyle.Critical, "Access Denied") : txtCrateQty.Focus() : Exit Sub
@@ -1115,19 +1115,18 @@
     Private Sub txtbasicAmt_KeyDown(sender As Object, e As KeyEventArgs) Handles txtbasicAmt.KeyDown
         If e.KeyCode = Keys.F10 Then
             Dim basic As Decimal = Math.Round(Val(txtbasicAmt.Text))
+            Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+            Dim calculatedRate As Decimal = 0D
             If Cbper.SelectedIndex = 0 Then
-                txtSallerRate.Text = Val(basic) / Val(txtKg.Text)
-                txtCustomerRate.Text = Val(basic) / Val(txtKg.Text)
-                txtTotalAmt.Focus()
-            ElseIf Cbper.SelectedIndex = 1 Then
-                txtSallerRate.Text = Val(basic) / Val(txtKg.Text)
-                txtCustomerRate.Text = Val(basic) / Val(txtKg.Text)
-                txtTotalAmt.Focus()
-            ElseIf Cbper.SelectedIndex = 2 Then
-                txtSallerRate.Text = Val(basic) / Val(txtKg.Text)
-                txtCustomerRate.Text = Val(basic) / Val(txtKg.Text)
-                txtTotalAmt.Focus()
+                If Val(txtNug.Text) <> 0 Then calculatedRate = basic / Val(txtNug.Text)
+            ElseIf perDivisor > 0 Then
+                If Val(txtKg.Text) <> 0 Then calculatedRate = basic * perDivisor / Val(txtKg.Text)
+            ElseIf Cbper.SelectedIndex = 17 Then
+                calculatedRate = Val(txtNug.Text) * basic
             End If
+            txtSallerRate.Text = Format(calculatedRate, "0.00")
+            txtCustomerRate.Text = Format(calculatedRate, "0.00")
+            txtTotalAmt.Focus()
             e.SuppressKeyPress = True
         End If
     End Sub
@@ -1253,37 +1252,44 @@
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 41 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 41 * Val(txtSallerRate.Text), "0.00")
             ElseIf Cbper.SelectedIndex = 7 Then
+                txtbasicAmt.Text = Format(Val(txtKg.Text) / 42 * Val(incRate), "0.00")
+                txtSallerAmout.Text = Format(Val(txtKg.Text) / 42 * Val(txtSallerRate.Text), "0.00")
+            ElseIf Cbper.SelectedIndex = 8 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 50 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 50 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 8 Then
+            ElseIf Cbper.SelectedIndex = 9 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 51 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 51 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 9 Then
+            ElseIf Cbper.SelectedIndex = 10 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 51.7 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 51.7 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 10 Then
-                txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.2 * Val(incRate), "0.00")
-                txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.5 * Val(txtSallerRate.Text), "0.00")
             ElseIf Cbper.SelectedIndex = 11 Then
+                txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.2 * Val(incRate), "0.00")
+                txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.2 * Val(txtSallerRate.Text), "0.00")
+            ElseIf Cbper.SelectedIndex = 12 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.3 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.3 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 12 Then
+            ElseIf Cbper.SelectedIndex = 13 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.5 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.5 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 13 Then
+            ElseIf Cbper.SelectedIndex = 14 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 53 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 53 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 14 Then
+            ElseIf Cbper.SelectedIndex = 15 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 80 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 80 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 15 Then
+            ElseIf Cbper.SelectedIndex = 16 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 100 * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 100 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 16 Then
+            ElseIf Cbper.SelectedIndex = 17 Then
                 txtbasicAmt.Text = Format(Val(txtNug.Text) * Val(incRate), "0.00")
                 txtSallerAmout.Text = Format(Val(txtNug.Text) * Val(txtSallerRate.Text), "0.00")
             End If
-            lblAvgWeight.Text = Format(Val(Val(txtKg.Text) / Val(txtNug.Text)), "0.00")
+            If Val(txtNug.Text) <> 0 Then
+                lblAvgWeight.Text = Format(Val(txtKg.Text) / Val(txtNug.Text), "0.00")
+            Else
+                lblAvgWeight.Text = "0.00"
+            End If
             If clsFun.ExecScalarStr("Select Octroi From Controls") = "Yes" Then
                 txtComAmt.Text = Format(Val(txtComPer.Text) * Val(Val(txtbasicAmt.Text) + Val(txtLaboutAmt.Text)) / 100, "0.00")
             Else
@@ -1328,37 +1334,44 @@
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 41 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 41 * Val(txtSallerRate.Text), "0.00")
             ElseIf Cbper.SelectedIndex = 7 Then
+                txtbasicAmt.Text = Format(Val(txtKg.Text) / 42 * Val(txtCustomerRate.Text), "0.00")
+                txtSallerAmout.Text = Format(Val(txtKg.Text) / 42 * Val(txtSallerRate.Text), "0.00")
+            ElseIf Cbper.SelectedIndex = 8 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 50 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 50 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 8 Then
+            ElseIf Cbper.SelectedIndex = 9 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 51 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 51 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 9 Then
+            ElseIf Cbper.SelectedIndex = 10 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 51.7 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 51.7 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 10 Then
+            ElseIf Cbper.SelectedIndex = 11 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.2 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.2 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 11 Then
+            ElseIf Cbper.SelectedIndex = 12 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.3 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.3 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 12 Then
+            ElseIf Cbper.SelectedIndex = 13 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 52.5 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 52.5 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 13 Then
+            ElseIf Cbper.SelectedIndex = 14 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 53 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 53 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 14 Then
+            ElseIf Cbper.SelectedIndex = 15 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 80 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 80 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 15 Then
+            ElseIf Cbper.SelectedIndex = 16 Then
                 txtbasicAmt.Text = Format(Val(txtKg.Text) / 100 * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtKg.Text) / 100 * Val(txtSallerRate.Text), "0.00")
-            ElseIf Cbper.SelectedIndex = 16 Then
+            ElseIf Cbper.SelectedIndex = 17 Then
                 txtbasicAmt.Text = Format(Val(txtNug.Text) * Val(txtCustomerRate.Text), "0.00")
                 txtSallerAmout.Text = Format(Val(txtNug.Text) * Val(txtSallerRate.Text), "0.00")
             End If
-            lblAvgWeight.Text = Format(Val(Val(txtKg.Text) / Val(txtNug.Text)), "0.00")
+            If Val(txtNug.Text) <> 0 Then
+                lblAvgWeight.Text = Format(Val(txtKg.Text) / Val(txtNug.Text), "0.00")
+            Else
+                lblAvgWeight.Text = "0.00"
+            End If
             If clsFun.ExecScalarStr("Select Octroi From Controls") = "Yes" Then
                 txtComAmt.Text = Format(Val(txtComPer.Text) * Val(Val(txtbasicAmt.Text) + Val(txtLaboutAmt.Text)) / 100, "0.00")
             Else
@@ -1381,6 +1394,7 @@
             lbltotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
             txtTotalAmt.Text = Format(Val(lbltotCharges.Text) + Val(txtbasicAmt.Text), "0.00")
         End If
+StockCalculationRoundOff:
         If clsFun.ExecScalarStr("Select ROEachItem From Controls") = "No" Then
             Dim tmpCustAmount As Double = Val(txtTotalAmt.Text)
             txtTotalAmt.Text = Math.Round(Val(tmpCustAmount), 0, MidpointRounding.AwayFromZero)
@@ -3265,34 +3279,19 @@
 
     Private Sub txtbasicAmt_KeyUp(sender As Object, e As KeyEventArgs) Handles txtbasicAmt.KeyUp
         If Cbper.SelectedIndex = 0 Then
-            txtCustomerRate.Text = Val(txtbasicAmt.Text) / Format(Val(txtNug.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtCustomerRate.Text = Val(txtbasicAmt.Text) / Format(Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 5 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 3 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 10 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 4 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 20 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 5 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 40 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 6 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 41 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 7 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 50 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 8 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 51 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 9 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 51.7 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 10 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 52.3 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 11 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 53 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 12 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 80 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 13 Then
-            txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * 100 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 14 Then
+            If Val(txtNug.Text) <> 0 Then
+                txtCustomerRate.Text = Val(txtbasicAmt.Text) / Format(Val(txtNug.Text), "0.00")
+            Else
+                txtCustomerRate.Text = ""
+            End If
+        ElseIf PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count) > 0 Then
+            Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+            If Val(txtKg.Text) <> 0 Then
+                txtCustomerRate.Text = Format(Val(txtbasicAmt.Text) * perDivisor / Val(txtKg.Text), "0.00")
+            Else
+                txtCustomerRate.Text = ""
+            End If
+        ElseIf Cbper.SelectedIndex = 17 Then
             txtCustomerRate.Text = Format(Val(txtNug.Text) * Val(txtbasicAmt.Text), "0.00")
         End If
         txtSallerAmout.Text = txtbasicAmt.Text
@@ -3340,5 +3339,9 @@
 
     Private Sub txtKg_TextChanged(sender As Object, e As EventArgs) Handles txtKg.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

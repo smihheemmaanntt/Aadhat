@@ -1,4 +1,4 @@
-﻿Public Class Lot_Wise_Stock_Report
+Public Class Lot_Wise_Stock_Report
     Public Sub New()
         InitializeComponent()
         clsFun.DoubleBuffered(dg1, True)
@@ -201,5 +201,9 @@
 
     Private Sub txtEntryDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

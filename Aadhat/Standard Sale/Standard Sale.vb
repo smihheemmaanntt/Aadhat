@@ -21,7 +21,9 @@ Public Class Standard_Sale
     Dim APIResposne As String
     Dim FilePath As String : Dim hostedFilePath As String
     Dim access_token As String = "6687c047a58e1"
-    Dim instance_id As String = ClsFunPrimary.ExecScalarStr("Select InstanceID From API")
+    ' The WhatsApp instance is needed only when a message is sent.  Loading it
+    ' here delayed opening every Standard Sale form unnecessarily.
+    Dim instance_id As String = String.Empty
     Private Const MobileSendingMethod As String = "From Mobile"
     'Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     'Private isBackgroundWorkerRunning As Boolean = False
@@ -112,16 +114,25 @@ Public Class Standard_Sale
     End Sub
 
     Private Sub Standard_Sale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        Me.Top = 0 : Me.Left = 0
-        Me.BackColor = Color.FromArgb(247, 220, 111)
-        txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
-        clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka", "MarkaName", "Id", "")
-        clsFun.FillDropDownList(cbAccountName, "Select ID,AccountName FROM Accounts  where GroupID in(16,17,32,33,11) order by AccountName ", "AccountName", "ID", "--N./A.--")
-        Cbper.SelectedIndex = 0 : clsFun.ExecScalarStr("Delete From Stock Where TransType ='" & Me.Text & "'")
-        txtEntryDate.Focus() : Me.KeyPreview = True
-        pnlMarka.Visible = False : BtnDelete.Enabled = False
-        VNumber() : rowColums() : FillstdSale()
+        Me.SuspendLayout()
+        dg1.SuspendLayout()
+        Dg2.SuspendLayout()
+        Try
+            Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+            Me.Top = 0 : Me.Left = 0
+            Me.BackColor = Color.FromArgb(247, 220, 111)
+            txtEntryDate.Text = Date.Today.ToString("dd-MM-yyyy")
+            clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka", "MarkaName", "Id", "")
+            clsFun.FillDropDownList(cbAccountName, "Select ID,AccountName FROM Accounts  where GroupID in(16,17,32,33,11) order by AccountName ", "AccountName", "ID", "--N./A.--")
+            Cbper.SelectedIndex = 0 : clsFun.ExecScalarStr("Delete From Stock Where TransType ='" & Me.Text & "'")
+            txtEntryDate.Focus() : Me.KeyPreview = True
+            pnlMarka.Visible = False : BtnDelete.Enabled = False
+            VNumber() : rowColums() : FillstdSale()
+        Finally
+            Dg2.ResumeLayout(False)
+            dg1.ResumeLayout(False)
+            Me.ResumeLayout(False)
+        End Try
     End Sub
     Public Sub FillstdSale()
         Dim dt As DataTable
@@ -1343,12 +1354,13 @@ Public Class Standard_Sale
     Private Sub VNumber()
         'vno = clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM Vouchers Where TransType='" & Me.Text & "'")
         'txtVoucherNo.Text = vno + 1
-        If vno = Val(clsFun.ExecScalarInt("Select Max(InvoiceID) AS NumberOfProducts FROM Vouchers Where TransType='" & Me.Text & "'")) <> 0 Then
+        Dim maxInvoiceID As Integer = Val(clsFun.ExecScalarInt("Select Max(InvoiceID) AS NumberOfProducts FROM Vouchers Where TransType='" & Me.Text & "'"))
+        If vno = maxInvoiceID AndAlso maxInvoiceID <> 0 Then
             vno = clsFun.ExecScalarInt("Select Count(ID) AS NumberOfProducts FROM Vouchers Where TransType='" & Me.Text & "'")
             txtVoucherNo.Text = vno + 1
             txtInvoiceID.Text = vno + 1
         Else
-            vno = clsFun.ExecScalarInt("Select Max(InvoiceID)  AS NumberOfProducts FROM Vouchers Where TransType='" & Me.Text & "'")
+            vno = maxInvoiceID
             txtVoucherNo.Text = vno + 1
             txtInvoiceID.Text = vno + 1
         End If
@@ -2018,40 +2030,11 @@ Public Class Standard_Sale
         End If
     End Sub
     Private Sub SpeedCalculation()
-        If Cbper.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If Cbper.SelectedIndex = 0 OrElse Cbper.SelectedIndex = 17 Then
             txtBasicAmount.Text = Format(Val(txtNug.Text) * Val(txtRate.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtBasicAmount.Text = Format(Val(txtKg.Text) * Val(txtRate.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 5 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 3 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 10 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 4 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 20 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 5 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 40 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 6 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 41 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 7 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 50 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 8 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 51 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 9 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 51.7 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 10 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 52.2 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 11 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 52.3 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 12 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 52.5 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 13 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 53 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 14 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 80 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 15 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 100 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 16 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) * Val(txtNug.Text), "0.00")
+        ElseIf perDivisor > 0 Then
+            txtBasicAmount.Text = Format(Val(txtRate.Text) / perDivisor * Val(txtKg.Text), "0.00")
         End If
         txtComAmt.Text = Format(Val(txtComPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
         txtMAmt.Text = Format(Val(txtMPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
@@ -2467,35 +2450,20 @@ Public Class Standard_Sale
     End Sub
 
     Private Sub txtBasicAmount_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBasicAmount.KeyUp
-        If Cbper.SelectedIndex = 0 Then
-            txtRate.Text = Val(txtBasicAmount.Text) / Format(Val(txtNug.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtRate.Text = Val(txtBasicAmount.Text) / Format(Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 5 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 3 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 10 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 4 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 20 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 5 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 40 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 6 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 41 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 7 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 50 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 8 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 51 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 9 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 51.7 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 10 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 52.3 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 11 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 53 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 12 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 80 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 13 Then
-            txtRate.Text = Format(Val(txtBasicAmount.Text) * 100 / Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 14 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If perDivisor > 0 Then
+            If Val(txtKg.Text) <> 0 Then
+                txtRate.Text = Format(Val(txtBasicAmount.Text) * perDivisor / Val(txtKg.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
+        ElseIf Cbper.SelectedIndex = 0 Then
+            If Val(txtNug.Text) <> 0 Then
+                txtRate.Text = Val(txtBasicAmount.Text) / Format(Val(txtNug.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
+        ElseIf Cbper.SelectedIndex = 17 Then
             txtRate.Text = Format(Val(txtNug.Text) * Val(txtBasicAmount.Text), "0.00")
         End If
         'txtSallerAmout.Text = txtBasicAmount.Text
@@ -2541,7 +2509,7 @@ Public Class Standard_Sale
         If e.KeyCode = Keys.Enter Then
             If Cbper.SelectedIndex = 0 Then
                 If Val(txtNug.Text) = 0 Then MsgBox("please fill Nug...", MsgBoxStyle.Critical, "Access Denied") : txtNug.Focus() : Exit Sub
-            ElseIf Cbper.SelectedIndex = 14 Then
+            ElseIf Cbper.SelectedIndex = 17 Then
                 If lblCrate.Text = "Y" Then
                     pnlMarka.Visible = True : pnlMarka.BringToFront()
                     If Val(txtCrateQty.Text) = 0 Then MsgBox("please fill Crate Qty...", MsgBoxStyle.Critical, "Access Denied") : txtCrateQty.Focus() : Exit Sub
@@ -3012,6 +2980,7 @@ Public Class Standard_Sale
     Private Sub SendWhatsAppFile(ByVal phoneNumber As String, ByVal message As String, ByVal pdfFilePath As String)
         'UplaodFile()
         pdfFilePath = FilePath
+        If instance_id = "" Then instance_id = ClsFunPrimary.ExecScalarStr("Select InstanceID From API")
         ' Dim base64Pdf As String = ConvertPdfToBase64(pdfFilePath)
         ' Dim url As String = "https://aadhat.cloud/send?phone=" & phoneNumber & "&text=" & Uri.EscapeDataString(message) & "&file=" & Uri.EscapeDataString(base64Pdf)
         Dim url As String = "http://aadhat.cloud/api/send?number=" & phoneNumber & "&type=text&message=" & Uri.EscapeDataString(message) & "&media_url=" & Uri.EscapeDataString(pdfFilePath) & "&instance_id=" & instance_id & "&access_token=" & access_token & ""
@@ -3357,5 +3326,9 @@ Public Class Standard_Sale
 
     Private Sub lbltotCom_Click(sender As Object, e As EventArgs) Handles lbltotCom.Click
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

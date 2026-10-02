@@ -1,0 +1,30 @@
+{
+  "Order": [
+    "btnAccount",
+    "btnItem",
+    "btnSpeedSale",
+    "btnSpeedRegister",
+    "btnSelloutMannual",
+    "BtnReceipt",
+    "BtnPayment",
+    "BtnBankEntry",
+    "btnSuperSale",
+    "btnSuperRegister",
+    "btnPurchase",
+    "btnPurchaseRegister",
+    "btnStockSale",
+    "btnStockSaleRegister",
+    "btnStandardSale",
+    "btnStdSaleRegister",
+    "btnSelloutAuto",
+    "btnCashBankBook",
+    "BtnDayBook",
+    "BtnLedger",
+    "BtnBillPrints",
+    "btnOutStanding"
+  ],
+  "Hidden": [],
+  "MenuOrders": {},
+  "HiddenMenus": [],
+  "MenuLayoutVersion": 2
+}

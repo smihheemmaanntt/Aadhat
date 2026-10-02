@@ -1,4 +1,4 @@
-﻿Public Class Account_cum_Marka_Outstanding
+Public Class Account_cum_Marka_Outstanding
 
     Private Sub CrateLedger_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -361,5 +361,9 @@
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         txtFromDate.Text = SmartDate(txtFromDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

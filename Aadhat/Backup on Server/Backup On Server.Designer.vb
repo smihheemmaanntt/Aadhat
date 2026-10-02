@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Backup_On_Server
     Inherits System.Windows.Forms.Form
 
@@ -51,9 +51,10 @@ Partial Class Backup_On_Server
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(740, 414)
+        Me.ProgressBar1.Location = New System.Drawing.Point(987, 510)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(280, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(373, 28)
         Me.ProgressBar1.TabIndex = 5
         Me.ProgressBar1.Visible = False
         '
@@ -66,9 +67,10 @@ Partial Class Backup_On_Server
         Me.btnUpdate.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnUpdate.Image = CType(resources.GetObject("btnUpdate.Image"), System.Drawing.Image)
         Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUpdate.Location = New System.Drawing.Point(740, 443)
+        Me.btnUpdate.Location = New System.Drawing.Point(987, 545)
+        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(137, 48)
+        Me.btnUpdate.Size = New System.Drawing.Size(183, 59)
         Me.btnUpdate.TabIndex = 10
         Me.btnUpdate.Text = "&Update " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Software"
         Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -77,27 +79,29 @@ Partial Class Backup_On_Server
         '
         'Button3
         '
-        Me.Button3.BackColor = System.Drawing.Color.SaddleBrown
+        Me.Button3.BackColor = System.Drawing.Color.Teal
         Me.Button3.FlatAppearance.BorderSize = 0
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(883, 443)
+        Me.Button3.Location = New System.Drawing.Point(1177, 545)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(137, 48)
+        Me.Button3.Size = New System.Drawing.Size(183, 59)
         Me.Button3.TabIndex = 11
-        Me.Button3.Text = "Backup " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "&Offline"
+        Me.Button3.Text = "Backup &&" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Sync Cloud"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = False
         '
         'pb1
         '
         Me.pb1.Image = CType(resources.GetObject("pb1.Image"), System.Drawing.Image)
-        Me.pb1.Location = New System.Drawing.Point(1, 180)
+        Me.pb1.Location = New System.Drawing.Point(1, 222)
+        Me.pb1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pb1.Name = "pb1"
-        Me.pb1.Size = New System.Drawing.Size(733, 311)
+        Me.pb1.Size = New System.Drawing.Size(977, 383)
         Me.pb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pb1.TabIndex = 12
         Me.pb1.TabStop = False
@@ -106,18 +110,20 @@ Partial Class Backup_On_Server
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label3.Location = New System.Drawing.Point(144, 146)
+        Me.Label3.Location = New System.Drawing.Point(192, 180)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(408, 24)
+        Me.Label3.Size = New System.Drawing.Size(533, 31)
         Me.Label3.TabIndex = 13
         Me.Label3.Text = "BEST SOFTWARE FOR YOUR BUSINESS"
         '
         'PictureBox2
         '
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(740, 118)
+        Me.PictureBox2.Location = New System.Drawing.Point(987, 145)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(280, 257)
+        Me.PictureBox2.Size = New System.Drawing.Size(373, 316)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 15
         Me.PictureBox2.TabStop = False
@@ -126,9 +132,10 @@ Partial Class Backup_On_Server
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label5.Location = New System.Drawing.Point(779, 91)
+        Me.Label5.Location = New System.Drawing.Point(1039, 112)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(164, 24)
+        Me.Label5.Size = New System.Drawing.Size(218, 31)
         Me.Label5.TabIndex = 16
         Me.Label5.Text = "Backup on Cloud"
         '
@@ -137,9 +144,10 @@ Partial Class Backup_On_Server
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(819, 499)
+        Me.Label16.Location = New System.Drawing.Point(1092, 614)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(201, 15)
+        Me.Label16.Size = New System.Drawing.Size(267, 19)
         Me.Label16.TabIndex = 52
         Me.Label16.Text = "Support  : +91 7891 933 933 (24x7)"
         '
@@ -148,9 +156,10 @@ Partial Class Backup_On_Server
         Me.lblMsg.AutoSize = True
         Me.lblMsg.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblMsg.ForeColor = System.Drawing.Color.OrangeRed
-        Me.lblMsg.Location = New System.Drawing.Point(12, 118)
+        Me.lblMsg.Location = New System.Drawing.Point(16, 145)
+        Me.lblMsg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMsg.Name = "lblMsg"
-        Me.lblMsg.Size = New System.Drawing.Size(240, 19)
+        Me.lblMsg.Size = New System.Drawing.Size(300, 23)
         Me.lblMsg.TabIndex = 54
         Me.lblMsg.Text = "Zip Backup Created Successfully..."
         Me.lblMsg.Visible = False
@@ -160,18 +169,20 @@ Partial Class Backup_On_Server
         Me.lblFilepath.AutoSize = True
         Me.lblFilepath.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFilepath.ForeColor = System.Drawing.Color.Black
-        Me.lblFilepath.Location = New System.Drawing.Point(12, 99)
+        Me.lblFilepath.Location = New System.Drawing.Point(16, 122)
+        Me.lblFilepath.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFilepath.Name = "lblFilepath"
-        Me.lblFilepath.Size = New System.Drawing.Size(58, 15)
+        Me.lblFilepath.Size = New System.Drawing.Size(75, 19)
         Me.lblFilepath.TabIndex = 56
         Me.lblFilepath.Text = "Zip Path :"
         '
         'PictureBox3
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(838, 54)
+        Me.PictureBox3.Location = New System.Drawing.Point(1117, 66)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(182, 37)
+        Me.PictureBox3.Size = New System.Drawing.Size(243, 46)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 57
         Me.PictureBox3.TabStop = False
@@ -181,9 +192,10 @@ Partial Class Backup_On_Server
         Me.lblOriginalPath.AutoSize = True
         Me.lblOriginalPath.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOriginalPath.ForeColor = System.Drawing.Color.Black
-        Me.lblOriginalPath.Location = New System.Drawing.Point(12, 76)
+        Me.lblOriginalPath.Location = New System.Drawing.Point(16, 94)
+        Me.lblOriginalPath.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOriginalPath.Name = "lblOriginalPath"
-        Me.lblOriginalPath.Size = New System.Drawing.Size(59, 15)
+        Me.lblOriginalPath.Size = New System.Drawing.Size(79, 19)
         Me.lblOriginalPath.TabIndex = 55
         Me.lblOriginalPath.Text = "File Path :"
         '
@@ -192,9 +204,10 @@ Partial Class Backup_On_Server
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 20.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Navy
-        Me.Label7.Location = New System.Drawing.Point(7, 9)
+        Me.Label7.Location = New System.Drawing.Point(9, 11)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(321, 31)
+        Me.Label7.Size = New System.Drawing.Size(402, 38)
         Me.Label7.TabIndex = 58
         Me.Label7.Text = "Automatic Backup System"
         '
@@ -203,9 +216,10 @@ Partial Class Backup_On_Server
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(740, 378)
+        Me.Label2.Location = New System.Drawing.Point(987, 465)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(55, 15)
+        Me.Label2.Size = New System.Drawing.Size(74, 19)
         Me.Label2.TabIndex = 59
         Me.Label2.Text = "Zip Size :"
         '
@@ -214,9 +228,10 @@ Partial Class Backup_On_Server
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(892, 378)
+        Me.Label1.Location = New System.Drawing.Point(1189, 465)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(65, 15)
+        Me.Label1.Size = New System.Drawing.Size(83, 19)
         Me.Label1.TabIndex = 60
         Me.Label1.Text = "Uploaded :"
         '
@@ -228,9 +243,10 @@ Partial Class Backup_On_Server
         Me.lblMsg2.AutoSize = True
         Me.lblMsg2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMsg2.ForeColor = System.Drawing.Color.OrangeRed
-        Me.lblMsg2.Location = New System.Drawing.Point(740, 396)
+        Me.lblMsg2.Location = New System.Drawing.Point(987, 487)
+        Me.lblMsg2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMsg2.Name = "lblMsg2"
-        Me.lblMsg2.Size = New System.Drawing.Size(55, 15)
+        Me.lblMsg2.Size = New System.Drawing.Size(74, 19)
         Me.lblMsg2.TabIndex = 61
         Me.lblMsg2.Text = "Zip Size :"
         Me.lblMsg2.Visible = False
@@ -240,9 +256,10 @@ Partial Class Backup_On_Server
         Me.lbllastbackup.AutoSize = True
         Me.lbllastbackup.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbllastbackup.ForeColor = System.Drawing.Color.Black
-        Me.lbllastbackup.Location = New System.Drawing.Point(11, 51)
+        Me.lbllastbackup.Location = New System.Drawing.Point(15, 63)
+        Me.lbllastbackup.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbllastbackup.Name = "lbllastbackup"
-        Me.lbllastbackup.Size = New System.Drawing.Size(108, 19)
+        Me.lbllastbackup.Size = New System.Drawing.Size(138, 22)
         Me.lbllastbackup.TabIndex = 62
         Me.lbllastbackup.Text = "last backup On :"
         '
@@ -252,9 +269,10 @@ Partial Class Backup_On_Server
         Me.LinkLabel1.Font = New System.Drawing.Font("Times New Roman", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.LinkLabel1.LinkVisited = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(207, 493)
+        Me.LinkLabel1.Location = New System.Drawing.Point(276, 607)
+        Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(268, 25)
+        Me.LinkLabel1.Size = New System.Drawing.Size(334, 31)
         Me.LinkLabel1.TabIndex = 63
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "www.softmanagementindia.in"
@@ -267,19 +285,20 @@ Partial Class Backup_On_Server
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.Location = New System.Drawing.Point(978, 1)
+        Me.btnClose.Location = New System.Drawing.Point(1304, 1)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(53, 47)
+        Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91119
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
         '
         'Backup_On_Server
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveCaption
-        Me.ClientSize = New System.Drawing.Size(1032, 529)
+        Me.ClientSize = New System.Drawing.Size(1376, 651)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.lbllastbackup)
@@ -300,6 +319,7 @@ Partial Class Backup_On_Server
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "Backup_On_Server"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

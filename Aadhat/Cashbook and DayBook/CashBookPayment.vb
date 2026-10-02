@@ -1,4 +1,4 @@
-﻿Public Class CashBookPayment
+Public Class CashBookPayment
     Private opbal As Decimal = 0.0
     Private Sub Cash_Bank_Book_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -660,5 +660,9 @@
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles ckDiscountAlso.CheckedChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

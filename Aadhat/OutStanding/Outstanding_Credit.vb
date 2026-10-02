@@ -1,4 +1,4 @@
-﻿Public Class Outstanding_Credit
+Public Class Outstanding_Credit
 
     Private Sub txtEntryDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEntryDate.KeyDown, btnShow.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -300,5 +300,9 @@
 
     Private Sub txtCustomerSearch_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerSearch.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

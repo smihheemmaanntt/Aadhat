@@ -1,4 +1,4 @@
-﻿Option Strict Off
+Option Strict Off
 Option Explicit On
 Imports System.Reflection
 Imports System.Runtime.InteropServices
@@ -110,7 +110,7 @@ Friend Class ShowCompanies
  
         ' 👉 Title me Customer Code [ ] me show
         Me.Text = "[Aadhat #" & customerCode & "] " & version.ToString() & " [" & CDate(fecha).ToString("yyMMddhhmm") & "]"
-        rs.FindAllControls(Me)
+        ' Legacy Resizer disabled; GenericResponsiveFormScaler handles this form.
         CompanyList.MdiParent = Me
         CompanyList.Show()
 
@@ -133,7 +133,7 @@ Friend Class ShowCompanies
         Dim screenWidth As Integer = Screen.PrimaryScreen.WorkingArea.Width
     End Sub
     Private Sub ShowCompanies_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        rs.ResizeAllControls(Me)
+        ' Legacy Resizer disabled; GenericResponsiveFormScaler handles this form.
     End Sub
     Private Sub CreateCompanyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateCompanyToolStripMenuItem.Click
         TermsAndConditions.MdiParent = Me
@@ -151,6 +151,7 @@ Friend Class ShowCompanies
     End Sub
 
     Private Sub ChangeFinacialYearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeFinacialYearToolStripMenuItem.Click
+        Change_Financial_Year.PrepareGridOverlay()
         Change_Financial_Year.MdiParent = Me
         Change_Financial_Year.Show()
         Change_Financial_Year.BringToFront()
@@ -198,5 +199,9 @@ Friend Class ShowCompanies
         frmUpdater.MdiParent = Me
         frmUpdater.Show()
         frmUpdater.BringToFront()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

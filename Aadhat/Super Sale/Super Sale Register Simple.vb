@@ -1,4 +1,4 @@
-﻿Public Class Super_Sale_Register_Simple
+Public Class Super_Sale_Register_Simple
     Dim strSDate As String
     Dim strEDate As String
     Dim dDate As DateTime
@@ -520,5 +520,9 @@
 
     Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

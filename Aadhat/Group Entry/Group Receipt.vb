@@ -1,4 +1,4 @@
-﻿Public Class Group_Receipt
+Public Class Group_Receipt
     Dim vno As Integer : Dim ServerTag As Integer
     Private Sub PayMentform_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
@@ -801,5 +801,9 @@
 
     Private Sub txtEntryDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

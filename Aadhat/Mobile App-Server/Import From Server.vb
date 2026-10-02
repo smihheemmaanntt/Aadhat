@@ -1,4 +1,4 @@
-﻿Public Class Import_From_Server
+Public Class Import_From_Server
     Dim VchId As String = String.Empty
 
     'Public Function GetConnectionstring() As SqlConnection
@@ -414,5 +414,9 @@
             retrive2()
         End If
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Speed_Sale_Register
     Inherits System.Windows.Forms.Form
 
@@ -98,7 +98,7 @@ Partial Class Speed_Sale_Register
         '
         'btnClose
         '
-        Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.btnClose.FlatAppearance.BorderSize = 0
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -859,7 +859,7 @@ Partial Class Speed_Sale_Register
         Me.lblManualPageSearch.ForeColor = System.Drawing.Color.Black
         Me.lblManualPageSearch.Location = New System.Drawing.Point(334, 56)
         Me.lblManualPageSearch.Name = "lblManualPageSearch"
-        Me.lblManualPageSearch.Size = New System.Drawing.Size(90, 19)
+        Me.lblManualPageSearch.Size = New System.Drawing.Size(88, 19)
         Me.lblManualPageSearch.TabIndex = 91380
         Me.lblManualPageSearch.Text = "Manual Page"
         '
@@ -911,7 +911,7 @@ Partial Class Speed_Sale_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1196, 653)
         Me.Controls.Add(Me.btnNextManualPageSearch)
         Me.Controls.Add(Me.btnPreviousManualPageSearch)

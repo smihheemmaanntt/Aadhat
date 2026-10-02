@@ -1,4 +1,4 @@
-﻿Public Class Profit_and_Loss
+Public Class Profit_and_Loss
     Dim tmpdt As New DataTable
     Private Sub Profit_and_Loss_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -503,5 +503,9 @@
         If mskEntryDate.Enabled = False Then Exit Sub
         mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         mskEntryDate.Text = smartDate(mskEntryDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,10 +1,11 @@
-﻿Public Class Users_Register
+Public Class Users_Register
 
     Private Sub Users_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
     Private Sub Users_Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not MainScreenForm.CanManageUsers() Then Me.Close() : Exit Sub
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         rowColums()
@@ -82,5 +83,9 @@
             End If
             e.SuppressKeyPress = True
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

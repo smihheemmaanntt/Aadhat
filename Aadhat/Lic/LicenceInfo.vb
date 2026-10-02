@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Collections
 
 Public Class LicenceInfo
@@ -170,4 +170,8 @@ Public Class LicenceInfo
         Return s.Trim()
     End Function
 
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

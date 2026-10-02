@@ -9,7 +9,6 @@ Public Class CreateAccount
     Dim CustImagePath As String = String.Empty
     Dim GurImagePath As String = String.Empty
     Dim tmpid As Integer = 0
-    Dim rs As New Resizer
     Public FrmName As Form
     Public AccountNameValue As String = ""
     Public AccountID As String = ""
@@ -594,7 +593,7 @@ Public Class CreateAccount
     End Sub
 
     Private Sub CreateAccount_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        rs.ResizeAllControls(Me)
+        'rs.ResizeAllControls(Me)
     End Sub
 
     Private Sub btnCustSelect_Click(sender As Object, e As EventArgs) Handles btnCustSelect.Click
@@ -783,7 +782,7 @@ Public Class CreateAccount
         e.Handled = Not (Char.IsDigit(e.KeyChar) Or Asc(e.KeyChar) = 8 Or ((e.KeyChar = ".") And (sender.Text.IndexOf(".") = -1)))
     End Sub
 
-    Private Sub txtArea_TextChanged(sender As Object, e As EventArgs) Handles txtArea.TextChanged
-
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

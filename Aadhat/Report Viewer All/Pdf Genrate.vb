@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
@@ -201,5 +201,9 @@ Public Class Pdf_Genrate
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         ExportReport(reportName)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

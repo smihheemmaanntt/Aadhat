@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Authorised_Person_Only
     Inherits System.Windows.Forms.Form
 
@@ -508,6 +508,7 @@ Partial Class Authorised_Person_Only
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(808, 582)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.GBPassword)
         Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.Button2)

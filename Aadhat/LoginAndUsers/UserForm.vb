@@ -1,4 +1,4 @@
-﻿Public Class UserForm
+Public Class UserForm
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
@@ -55,6 +55,7 @@
     End Sub
 
     Private Sub UserForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not MainScreenForm.CanManageUsers() Then Me.Close() : Exit Sub
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True : CbUserType.SelectedIndex = 0
         clsFun.FillDropDownList(CbUserType, "Select UserTypeID,UserTypeName FROM userRights Group by UserTypeID ", "UserTypeName", "UserTypeID", "")
@@ -168,5 +169,9 @@
         Else
             ckActive.Text = "Inactive User"
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

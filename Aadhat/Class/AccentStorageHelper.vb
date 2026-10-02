@@ -151,31 +151,10 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function IsInternetAvailable() As Boolean
         Try
-            If UseLegacyHttpMode() Then Return True
-
             ConfigureSecureConnection()
-
             Dim pingUrl As String = BASE_URL.Trim().Replace("/api/", "/ping.txt")
-            Dim req = CType(WebRequest.Create(pingUrl), HttpWebRequest)
-            req.Method = "GET"
-            req.Timeout = 10000
-            req.ReadWriteTimeout = 4000
-            req.UserAgent = "AccoBook"
-            req.KeepAlive = False
-            req.Proxy = Nothing
-            req.CachePolicy = New System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore)
-
-            Using resp = CType(req.GetResponse(), HttpWebResponse)
-                Return (resp.StatusCode = HttpStatusCode.OK)
-            End Using
-
-        Catch ex As WebException
-            Try
-                Dim httpResp = TryCast(ex.Response, HttpWebResponse)
-                If httpResp IsNot Nothing Then Return (httpResp.StatusCode = HttpStatusCode.OK)
-            Catch
-            End Try
-            Return False
+            pingUrl = GetWindows7FallbackUrl(pingUrl)
+            Return WinHttpHelper.IsUrlResponding(pingUrl, True)
         Catch
             Return False
         End Try
@@ -187,22 +166,17 @@ Public Class AccentStorageHelper
     '=====================================================
     Public Shared Function CheckOnlineBlock(customerCode As String) As Boolean?
         Try
-            If Not IsInternetAvailable() Then Return Nothing
+            If String.IsNullOrEmpty(customerCode) OrElse customerCode.Trim() = "" Then Return Nothing
             ConfigureSecureConnection()
 
             Dim url As String = GetWindows7FallbackUrl(BlockStatusUrl) & _
                 "?customer_code=" & Uri.EscapeDataString(customerCode) & _
                 "&board_id=" & Uri.EscapeDataString(GetMotherboardID())
 
-            Dim json As String = ""
-            If UseLegacyHttpMode() Then
-                json = WinHttpHelper.GetData(url)
-            Else
-                Using wc As New WebClient()
-                    wc.Headers(HttpRequestHeader.UserAgent) = "Aadhat"
-                    json = wc.DownloadString(url)
-                End Using
-            End If
+            ' The local license is authoritative when the server is unreachable.
+            ' Use one short request only; no long internet probe or slow retry here.
+            Dim json As String = WinHttpHelper.GetData(url, True)
+            If String.IsNullOrEmpty(json) Then Return Nothing
 
             Dim obj = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(json)
 
@@ -218,29 +192,6 @@ Public Class AccentStorageHelper
 
             Return Nothing
         Catch
-            If UseLegacyHttpMode() Then
-                Try
-                    Dim url As String = GetWindows7FallbackUrl(BlockStatusUrl) & _
-                        "?customer_code=" & Uri.EscapeDataString(customerCode) & _
-                        "&board_id=" & Uri.EscapeDataString(GetMotherboardID())
-
-                    Dim json As String = WinHttpHelper.GetData(url)
-                    If String.IsNullOrEmpty(json) Then Return Nothing
-
-                    Dim obj = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(json)
-
-                    If obj Is Nothing OrElse Not obj.ContainsKey("status") OrElse Convert.ToString(obj("status")).ToLower() <> "success" Then
-                        Return Nothing
-                    End If
-
-                    If obj.ContainsKey("is_blocked") Then
-                        Dim apiBlocked As Boolean = Convert.ToBoolean(obj("is_blocked"))
-                        SetLocalBlock(apiBlocked)
-                        Return apiBlocked
-                    End If
-                Catch
-                End Try
-            End If
             Return Nothing
         End Try
     End Function
@@ -732,17 +683,15 @@ Public Class AccentStorageHelper
             Return True
         End If
 
-        ' Online hone par sirf block status check hota hai.
-        Dim onlineBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
-        If onlineBlock.HasValue AndAlso onlineBlock.Value = True Then
-            LastLicenseError = "blocked"
-            Return False
-        End If
-
-        ' Local block
-        If IsLocallyBlocked() Then
-            LastLicenseError = "blocked"
-            Return False
+        ' A locally blocked license may be unblocked by a successful server refresh.
+        ' If the server cannot be reached quickly, keep honoring the local block.
+        Dim localBlocked As Boolean = IsLocallyBlocked()
+        If localBlocked Then
+            Dim refreshedBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
+            If Not refreshedBlock.HasValue OrElse refreshedBlock.Value Then
+                LastLicenseError = "blocked"
+                Return False
+            End If
         End If
 
         ' Board authorization hamesha local coreaccess.smx file se hota hai.
@@ -759,6 +708,16 @@ Public Class AccentStorageHelper
             End If
             If LastLicenseError = "" Then LastLicenseError = "expired"
             Return False
+        End If
+
+        ' Refresh server block status only after the local license has passed.
+        ' A missing/slow network response leaves the verified local result intact.
+        If Not localBlocked Then
+            Dim onlineBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
+            If onlineBlock.HasValue AndAlso onlineBlock.Value = True Then
+                LastLicenseError = "blocked"
+                Return False
+            End If
         End If
 
         LastLicenseError = ""

@@ -1,4 +1,4 @@
-﻿Public Class Absent_Account_List_Day_Wise
+Public Class Absent_Account_List_Day_Wise
 
     Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
         txtEntryDate.Text = SmartDate(txtEntryDate.Text, True, 2)
@@ -308,5 +308,9 @@
 
     Private Sub txtCustomerSearch_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerSearch.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

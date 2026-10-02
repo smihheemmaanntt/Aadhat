@@ -70,6 +70,13 @@ Public Class WinHttpHelper
     Public Shared Function GetData(
         ByVal url As String
     ) As String
+        Return GetData(url, False)
+    End Function
+
+    Public Shared Function GetData(
+        ByVal url As String,
+        ByVal fastFail As Boolean
+    ) As String
 
         Try
 
@@ -84,7 +91,12 @@ Public Class WinHttpHelper
 
             http.Open("GET", url, False)
 
-            http.SetTimeouts(10000, 15000, 30000, 30000)
+            If fastFail Then
+                ' Login license refresh is best-effort; do not stall offline startup.
+                http.SetTimeouts(500, 500, 500, 500)
+            Else
+                http.SetTimeouts(10000, 15000, 30000, 30000)
+            End If
             http.SetRequestHeader("User-Agent", "Aadhat/1.0")
             http.SetRequestHeader("Accept", "application/json")
 
@@ -98,6 +110,31 @@ Public Class WinHttpHelper
 
         End Try
 
+    End Function
+
+    Public Shared Function IsUrlResponding(
+        ByVal url As String,
+        ByVal fastFail As Boolean
+    ) As Boolean
+        Try
+            Dim http As Object = CreateObject("WinHttp.WinHttpRequest.5.1")
+            http.Option(4) = 13056
+            ApplySecureProtocolFallback(http)
+            http.Open("GET", url, False)
+
+            If fastFail Then
+                http.SetTimeouts(500, 500, 500, 500)
+            Else
+                http.SetTimeouts(10000, 15000, 30000, 30000)
+            End If
+
+            http.SetRequestHeader("User-Agent", "Aadhat/1.0")
+            http.SetRequestHeader("Accept", "*/*")
+            http.Send()
+            Return CInt(http.Status) >= 200 AndAlso CInt(http.Status) < 300
+        Catch
+            Return False
+        End Try
     End Function
 
     Public Shared Function DownloadFile(

@@ -1595,11 +1595,8 @@ Public Class WhatsAppTemplateEditor
     Private Sub btnP6_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnP6.Click
         InsertParameter("*{{6}}*")
     End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class
-
-
-
-
-
-
-

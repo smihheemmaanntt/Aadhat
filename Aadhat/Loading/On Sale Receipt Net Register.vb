@@ -1,4 +1,4 @@
-﻿Public Class On_Sale_Receipt_Net_Register
+Public Class On_Sale_Receipt_Net_Register
 
     Private Sub dtp2_GotFocus(sender As Object, e As EventArgs) Handles dtp2.GotFocus
         txttoDate.Focus()
@@ -151,5 +151,9 @@
                 e.Handled = True
                 btnShow.Focus()
         End Select
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

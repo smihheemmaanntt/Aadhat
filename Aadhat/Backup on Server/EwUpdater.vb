@@ -1,4 +1,4 @@
-﻿Imports System.Net
+Imports System.Net
 Imports System.IO
 
 Public Class frmUpdater
@@ -68,4 +68,8 @@ Public Class frmUpdater
 
     End Sub
 
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

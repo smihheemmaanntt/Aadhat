@@ -1,4 +1,4 @@
-﻿Public Class CashBookPaymentDayWise
+Public Class CashBookPaymentDayWise
     Private opbal As Decimal = 0.0
     Private Sub Cash_Bank_Book_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -307,5 +307,9 @@
         If Not Report_Viewer Is Nothing Then
             Report_Viewer.BringToFront()
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

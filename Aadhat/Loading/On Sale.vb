@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Public Class On_Sale
     Dim vno As Integer : Dim VchId As Integer
@@ -150,15 +150,13 @@ Public Class On_Sale
         dg1.Columns(16).Name = "CrateQty" : dg1.Columns(16).Visible = False
     End Sub
     Private Sub Calculation()
-        If CbPer.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(CbPer.SelectedIndex, CbPer.Items.Count)
+        If CbPer.SelectedIndex = 0 OrElse CbPer.SelectedIndex = 17 Then
             If String.IsNullOrEmpty(txtNug.Text) OrElse String.IsNullOrEmpty(txtRate.Text) Then Exit Sub
             txtAmount.Text = Format(CDbl(txtNug.Text) * CDbl(txtRate.Text), "0.00")
-        ElseIf CbPer.SelectedIndex = 1 Then
+        ElseIf perDivisor > 0 Then
             If String.IsNullOrEmpty(txtWeight.Text) OrElse String.IsNullOrEmpty(txtRate.Text) Then Exit Sub
-            txtAmount.Text = Format(CDbl(txtWeight.Text) * CDbl(txtRate.Text), "0.00")
-        ElseIf CbPer.SelectedIndex = 2 Then
-            If String.IsNullOrEmpty(txtWeight.Text) OrElse String.IsNullOrEmpty(txtRate.Text) Then Exit Sub
-            txtAmount.Text = Format(CDbl(txtRate.Text) / 40 * CDbl(txtWeight.Text), "0.00")
+            txtAmount.Text = Format(CDbl(txtWeight.Text) / perDivisor * CDbl(txtRate.Text), "0.00")
         End If
     End Sub
 
@@ -2293,16 +2291,22 @@ Public Class On_Sale
     End Sub
 
     Private Sub txtAmount_TextChanged(sender As Object, e As EventArgs) Handles txtAmount.TextChanged
-        If CbPer.SelectedIndex = 0 Then
-            txtRate.Text = Format(Val(txtAmount.Text) / Val(txtNug.Text), "0.00")
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(CbPer.SelectedIndex, CbPer.Items.Count)
+        If perDivisor > 0 Then
+            If Val(txtWeight.Text) <> 0 Then
+                txtRate.Text = Format(Val(txtAmount.Text) * perDivisor / Val(txtWeight.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
             txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
-        ElseIf CbPer.SelectedIndex = 1 Then
-            txtRate.Text = Format(Val(txtAmount.Text) / Val(txtWeight.Text), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
-        ElseIf CbPer.SelectedIndex = 2 Then
-            txtRate.Text = Format(Val(txtAmount.Text) / 40 * Val(txtWeight.Text), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
+        ElseIf CbPer.SelectedIndex = 0 OrElse CbPer.SelectedIndex = 17 Then
+            If Val(txtNug.Text) <> 0 Then
+                txtRate.Text = Format(Val(txtAmount.Text) / Val(txtNug.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
         End If
+        txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
         If txtRate.Text = "NAN" Then txtRate.Text = ""
     End Sub
 
@@ -2431,5 +2435,9 @@ Public Class On_Sale
 
     Private Sub txtTotTotal_Leave(sender As Object, e As EventArgs) Handles txtTotTotal.Leave
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

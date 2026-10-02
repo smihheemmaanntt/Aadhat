@@ -1,4 +1,4 @@
-﻿Imports System.Globalization
+Imports System.Globalization
 Imports System.IO
 Imports System.Net
 Imports Ionic.Zip
@@ -8,6 +8,7 @@ Public Class Backup_On_Server
     Dim zipPath As String
     Dim OringinalPath As String
     Dim ClsCommon As CommonClass = New CommonClass()
+    Private isClosingForBackup As Boolean = False
 
     Private Sub ButtonControl()
         For Each b As Button In Me.Controls.OfType(Of Button)()
@@ -20,9 +21,13 @@ Public Class Backup_On_Server
     End Sub
 
     Private Sub Backup_On_Server_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If isClosingForBackup Then Exit Sub
+        isClosingForBackup = True
         btnClose.Image = Nothing
         btnClose.Text = "Wait."
-        ZipBackup() : Application.Exit()
+        ZipBackup()
+        SyncCloudBackup(False)
+        Application.Exit()
     End Sub
 
     Private Sub Backup_On_Server_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -30,6 +35,10 @@ Public Class Backup_On_Server
     End Sub
 
     Private Sub Backup_On_Server_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Capture and apply this form's responsive layout before any work that
+        ' can delay Load (such as the online update check).  This prevents the
+        ' visible late right-to-left layout jump without changing other forms.
+        'GenericResponsiveFormScaler.Bind(Me)
         ' System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
@@ -174,7 +183,7 @@ Public Class Backup_On_Server
 
     Private Function GetFileHash(filePath As String) As String
         Using stream As FileStream = File.OpenRead(filePath)
-            Using md5 As MD5 = MD5.Create()
+            Using md5 As MD5 = md5.Create()
                 Dim hashBytes As Byte() = md5.ComputeHash(stream)
                 Return BitConverter.ToString(hashBytes).Replace("-", "").ToLower()
             End Using
@@ -257,8 +266,8 @@ Public Class Backup_On_Server
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        ZipBackup() : MsgBox("Offline Zip Backup Created Successfully ....", MsgBoxStyle.Information, "Offline Backup Successful")
-        Application.Exit()
+        ZipBackup()
+        SyncCloudBackup(True)
     End Sub
 
     Public Sub ZipBackup()
@@ -282,6 +291,43 @@ Public Class Backup_On_Server
         End Try
     End Sub
 
+    Private Sub SyncCloudBackup(ByVal forceSync As Boolean)
+        Try
+            Dim settings As CloudBackupSettings = CloudBackupManager.Load()
+            If Not settings.GoogleEnabled AndAlso Not settings.OneDriveEnabled Then Exit Sub
+            If Not forceSync AndAlso (Not settings.SyncOnClose OrElse Not CloudBackupManager.IsDue(settings)) Then Exit Sub
+
+            ProgressBar1.Visible = True
+            ProgressBar1.Value = 0
+            If settings.OneDriveEnabled Then
+                CloudBackupManager.SyncOneDriveFolder(Path.Combine(Application.StartupPath, "BackupGoogle"), settings, AddressOf ShowCloudProgress)
+            End If
+            If settings.GoogleEnabled Then
+                GoogleDriveBackup.UploadFolder(Path.Combine(Application.StartupPath, "BackupGoogle"), AddressOf ShowCloudProgress)
+                lblMsg.Visible = True
+                lblMsg.Text = "BackupGoogle uploaded to Google Drive."
+            Else
+                lblMsg.Visible = True
+                lblMsg.Text = "BackupGoogle synced to OneDrive."
+            End If
+        Catch ex As Exception
+            lblMsg.Visible = True
+            lblMsg.Text = "Cloud sync failed: " & ex.Message
+            If forceSync Then MessageBox.Show(ex.Message, "Cloud Backup", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Finally
+            ProgressBar1.Visible = False
+        End Try
+    End Sub
+
+    Private Sub ShowCloudProgress(ByVal percent As Integer, ByVal message As String)
+        If percent < ProgressBar1.Minimum Then percent = ProgressBar1.Minimum
+        If percent > ProgressBar1.Maximum Then percent = ProgressBar1.Maximum
+        ProgressBar1.Value = percent
+        lblMsg.Visible = True
+        lblMsg.Text = message
+        Application.DoEvents()
+    End Sub
+
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim sec As Integer = CDate(Format(TimeOfDay, "hh:mm:ss")).Second
@@ -296,6 +342,7 @@ Public Class Backup_On_Server
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        ZipBackup() : Application.Exit()
+        Me.Close()
     End Sub
+
 End Class

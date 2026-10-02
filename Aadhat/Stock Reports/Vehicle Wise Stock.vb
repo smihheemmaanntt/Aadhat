@@ -1,4 +1,4 @@
-﻿Public Class Vehicle_Wise_Stock
+Public Class Vehicle_Wise_Stock
 
     Public Sub New()
         InitializeComponent()
@@ -181,5 +181,9 @@
 
     Private Sub txtItemSearch_TextChanged(sender As Object, e As EventArgs) Handles txtItemSearch.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

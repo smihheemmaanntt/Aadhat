@@ -70,6 +70,7 @@ Public Class CommonClass
         If Convert.ToInt32(Daysdiff) > Convert.ToInt32(DaysRemain) Then
             MsgBox("Your License is expired", MsgBoxStyle.Critical, "Expired")
             ApplyLicenseKey.MdiParent = ShowCompanies
+            ApplyLicenseKey.PrepareGridOverlay()
             ApplyLicenseKey.Show()
             ApplyLicenseKey.BringToFront()
             Return False

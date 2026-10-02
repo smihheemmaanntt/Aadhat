@@ -11,7 +11,8 @@
     Public Property Type As Integer
 End Class
 Public Class SaveCrateVoucherRequest
-    Public Property SlipNo As String = ""
+    'The server contract is Int32; this makes JSON emit a number rather than a string.
+    Public Property SlipNo As Integer = 0
     Public Property EntryDate As Date
     Public Property TransType As String = ""
     Public Property AccountID As Integer = 0
@@ -28,6 +29,18 @@ Public Class SaveCrateVoucherRequest
     Public Property OrganizationId As Integer
     Public Property Type As Integer
     Public Property ServerTag As Integer
+    Public Shared Function ParseSlipNo(ByVal value As Object, Optional ByVal recordId As Object = Nothing) As Integer
+        Dim rawValue As String = If(value Is Nothing OrElse value Is DBNull.Value, String.Empty, Convert.ToString(value, Globalization.CultureInfo.InvariantCulture).Trim())
+        Dim slipNumber As Decimal
+        If rawValue Is Nothing OrElse rawValue.Trim().Length = 0 OrElse
+           Not Decimal.TryParse(rawValue, Globalization.NumberStyles.Number, Globalization.CultureInfo.InvariantCulture, slipNumber) OrElse
+           Decimal.Truncate(slipNumber) <> slipNumber OrElse
+           slipNumber < Integer.MinValue OrElse slipNumber > Integer.MaxValue Then
+            Dim rowDescription As String = If(recordId Is Nothing OrElse recordId Is DBNull.Value, String.Empty, " in CrateVoucher row " & Convert.ToString(recordId, Globalization.CultureInfo.InvariantCulture))
+            Throw New InvalidOperationException("SlipNo" & rowDescription & " must be a whole number within the Int32 range. Found: '" & rawValue & "'.")
+        End If
+        Return Decimal.ToInt32(slipNumber)
+    End Function
 End Class
 Public Class SaveCrateVoucherResponse
     Inherits Response

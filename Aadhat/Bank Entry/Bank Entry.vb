@@ -1,4 +1,4 @@
-﻿Public Class Bank_Entry
+Public Class Bank_Entry
     Dim VchId As Integer : Dim bankcharges As String
     Dim ServerTag As Integer
     Private Sub Bank_Entry_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -817,5 +817,9 @@
         If txtEntryDate.Enabled = False Then Exit Sub
         txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         txtEntryDate.Text = SmartDate(txtEntryDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

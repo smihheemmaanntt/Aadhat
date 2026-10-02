@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -242,6 +242,11 @@
     <Reference Include="System.Xml.Linq">
       <Private>True</Private>
     </Reference>
+    <Compile Include="Class\GenericResponsiveFormScaler.vb" />
+    <Compile Include="Class\HotKeySettingsManager.vb" />
+    <Compile Include="Class\CloudBackupManager.vb" />
+    <Compile Include="Class\GoogleDriveBackup.vb" />
+    <Compile Include="Class\PerUnitCalculator.vb" />
     <Compile Include="Whatsapp API\WhatsApp_API.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -995,14 +1000,26 @@
     <Compile Include="Sellout\Mannul Sellout Register Detailed.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SMS Api\SMSTemplateRegister.Designer.vb">
-      <DependentUpon>SMSTemplateRegister.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SMS Api\SMSTemplateRegister.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tools\SpeedSaleDateCorrection.Designer.vb">
       <DependentUpon>SpeedSaleDateCorrection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\HotKeys.Designer.vb">
+      <DependentUpon>HotKeys.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\HotKeys.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\CloudBackupConfiguration.Designer.vb">
+      <DependentUpon>CloudBackupConfiguration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\CloudBackupConfiguration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\DbpViewer.Designer.vb">
+      <DependentUpon>DbpViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\DbpViewer.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tools\SpeedSaleDateCorrection.vb">
       <SubType>Form</SubType>
@@ -1255,12 +1272,6 @@
     </Compile>
     <Compile Include="Class\Resizer.vb" />
     <Compile Include="Class\SecurityManager.vb" />
-    <Compile Include="SMS Api\SMSAPI.Designer.vb">
-      <DependentUpon>SMSAPI.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SMS Api\SMSAPI.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Class\clsFun.vb" />
     <Compile Include="Class\Constants.vb" />
     <Compile Include="Class\ConString.vb" />
@@ -1386,12 +1397,6 @@
       <DependentUpon>Update Balance.vb</DependentUpon>
     </Compile>
     <Compile Include="Update Balance\Update Balance.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Updates\CheckUpdate.Designer.vb">
-      <DependentUpon>CheckUpdate.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Updates\CheckUpdate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Whats New.Designer.vb">
@@ -1782,9 +1787,6 @@
     <EmbeddedResource Include="Seller Profit Report\Seller Profit Report.resx">
       <DependentUpon>Seller Profit Report.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SMS Api\SMSAPI.resx">
-      <DependentUpon>SMSAPI.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Company forms\Create Company.resx">
       <DependentUpon>Create Company.vb</DependentUpon>
     </EmbeddedResource>
@@ -1808,9 +1810,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sellout\Sellout Mannual.resx">
       <DependentUpon>Sellout Mannual.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SMS Api\SMSTemplateRegister.resx">
-      <DependentUpon>SMSTemplateRegister.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Speed Sales\Speed Sale Register.resx">
       <DependentUpon>Speed Sale Register.vb</DependentUpon>
@@ -1911,6 +1910,9 @@
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tools\CloudBackupConfiguration.resx">
+      <DependentUpon>CloudBackupConfiguration.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\SpeedSaleDateCorrection.resx">
       <DependentUpon>SpeedSaleDateCorrection.vb</DependentUpon>
     </EmbeddedResource>
@@ -1925,9 +1927,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Update Balance\Update Balance.resx">
       <DependentUpon>Update Balance.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Updates\CheckUpdate.resx">
-      <DependentUpon>CheckUpdate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Whats New.resx">
       <DependentUpon>Whats New.vb</DependentUpon>
@@ -2194,7 +2193,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tools\MultiCompanyReports.vb"><SubType>Form</SubType></Compile>
+    <Compile Include="Tools\MultiCompanyReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

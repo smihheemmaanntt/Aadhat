@@ -1,4 +1,4 @@
-﻿Public Class msgAlert
+Public Class msgAlert
     Dim action As msgAlert.enmAction
     Dim x, y As Integer
     Public Enum enmAction
@@ -95,8 +95,8 @@
         Me.Timer1.Interval = 1
         Me.Timer1.Start()
     End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class
-
-
-
-

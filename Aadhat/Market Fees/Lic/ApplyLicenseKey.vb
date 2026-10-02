@@ -1,4 +1,4 @@
-﻿Imports System.Net
+Imports System.Net
 Imports System.Management
 Imports System.Data.SqlClient
 Imports System.IO
@@ -117,5 +117,9 @@ Public Class ApplyLicenseKey
         SystemInfo.MdiParent = ShowCompanies
         SystemInfo.Show()
         SystemInfo.BringToFront()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

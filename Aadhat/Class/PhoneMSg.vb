@@ -423,7 +423,8 @@ Module PhoneMSg
             ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType) Or SecurityProtocolType.Tls
             'ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
             Dim boundary As String = "----AccoBookUpload" & DateTime.Now.Ticks.ToString()
-            ' Upload endpoint uses HTTPS so Airtel does not block the HTTP POST.
+            ' Meta document headers require an HTTPS public URL.  Keep both the
+            ' upload request and the returned short URL on HTTPS.
             Dim uploadUrl As String = "http://msgz.in/upload.php"
             Dim fileName As String = Path.GetFileName(filePath)
             Dim fileBytes() As Byte = File.ReadAllBytes(filePath)
@@ -467,7 +468,7 @@ Module PhoneMSg
                 Try
                     Dim obj As JObject = JObject.Parse(response)
                     If obj("short_url") IsNot Nothing Then
-                        Return obj("short_url").ToString()
+                        Return NormalizeUploadedPdfUrl(obj("short_url").ToString())
                     End If
                 Catch
                 End Try
@@ -495,6 +496,22 @@ Module PhoneMSg
             Return ex.Message
         End Try
 
+    End Function
+
+    Private Function NormalizeUploadedPdfUrl(ByVal uploadedUrl As String) As String
+        Dim value As String = If(uploadedUrl, "").Trim().Trim(""""c)
+        If value.StartsWith("http://", StringComparison.OrdinalIgnoreCase) Then
+            value = "https://" & value.Substring("http://".Length)
+        End If
+
+        Dim parsedUrl As Uri = Nothing
+        If Uri.TryCreate(value, UriKind.Absolute, parsedUrl) = False OrElse
+           parsedUrl.Scheme <> Uri.UriSchemeHttps OrElse
+           parsedUrl.Host = "" Then
+            Return "INVALID PDF URL - " & value
+        End If
+
+        Return parsedUrl.AbsoluteUri
     End Function
 
 End Module

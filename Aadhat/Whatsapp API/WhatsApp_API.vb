@@ -767,7 +767,8 @@ Public Class WhatsApp_API
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         SaveDefault()
     End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class
-
-
-

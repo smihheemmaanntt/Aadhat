@@ -1,4 +1,4 @@
-﻿Public Class Total_sale_Report
+Public Class Total_sale_Report
     Dim SearchText As String = "" : Dim TotalPages As Integer = 0
     Dim PageNumber As Integer = 0 : Dim RowCount As Integer = 20
     Dim Offset As Integer = 0 : Dim totNugs As Integer = 0
@@ -416,5 +416,9 @@
 
     Private Sub txtCustomerSearch_TextChanged(sender As Object, e As EventArgs) Handles txtPrimarySearch.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

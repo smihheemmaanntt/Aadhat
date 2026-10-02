@@ -223,11 +223,11 @@ Partial Class MainScreenForm
         Me.MergeAccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator29 = New System.Windows.Forms.ToolStripSeparator()
         Me.PartyWiseRateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OtherNameTranslatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SpeedSaleDateCorrectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RerarangeInvoiceNoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CreateIndexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhatsappConfigrationUnofficialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SpeedSaleDateCorrectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OtherNameTranslatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoteSupportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TeamViewerQSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -276,7 +276,9 @@ Partial Class MainScreenForm
         Me.btnItem = New System.Windows.Forms.Button()
         Me.lblARC = New System.Windows.Forms.Label()
         Me.blinkTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.RightDockPanel = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
+        Me.RightDockPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -284,10 +286,11 @@ Partial Class MainScreenForm
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.MenuStrip1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.EntryToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ReportsToolStripMenuItem1, Me.CrateManagerToolStripMenuItem1, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.MobileAppToolStripMenuItem, Me.ImportFromServerToolStripMenuItem, Me.ComplaintsToolStripMenuItem, Me.SMSConfigrationToolStripMenuItem, Me.CheckForUpdateToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.EntryToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ReportsToolStripMenuItem1, Me.CrateManagerToolStripMenuItem1, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.MobileAppToolStripMenuItem, Me.ImportFromServerToolStripMenuItem, Me.ComplaintsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1370, 48)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1598, 59)
         Me.MenuStrip1.TabIndex = 57
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -297,7 +300,7 @@ Partial Class MainScreenForm
         Me.MasterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MasterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
-        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(64, 44)
+        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(77, 55)
         Me.MasterToolStripMenuItem.Text = "&Master"
         '
         'AccountMasterToolStripMenuItem
@@ -306,32 +309,32 @@ Partial Class MainScreenForm
         Me.AccountMasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewAccountToolStripMenuItem, Me.AccountListToolStripMenuItem})
         Me.AccountMasterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.AccountMasterToolStripMenuItem.Name = "AccountMasterToolStripMenuItem"
-        Me.AccountMasterToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.AccountMasterToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.AccountMasterToolStripMenuItem.Text = "&Account Master"
         '
         'NewAccountToolStripMenuItem
         '
         Me.NewAccountToolStripMenuItem.Name = "NewAccountToolStripMenuItem"
         Me.NewAccountToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.NewAccountToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.NewAccountToolStripMenuItem.Size = New System.Drawing.Size(249, 26)
         Me.NewAccountToolStripMenuItem.Text = "&Add Account"
         '
         'AccountListToolStripMenuItem
         '
         Me.AccountListToolStripMenuItem.Name = "AccountListToolStripMenuItem"
-        Me.AccountListToolStripMenuItem.Size = New System.Drawing.Size(211, 24)
+        Me.AccountListToolStripMenuItem.Size = New System.Drawing.Size(249, 26)
         Me.AccountListToolStripMenuItem.Text = "&List Account"
         '
         'OpeningBalanceEditorToolStripMenuItem
         '
         Me.OpeningBalanceEditorToolStripMenuItem.Name = "OpeningBalanceEditorToolStripMenuItem"
-        Me.OpeningBalanceEditorToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.OpeningBalanceEditorToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.OpeningBalanceEditorToolStripMenuItem.Text = "Opening Balance Editor"
         '
         'OpeningCrateEditorToolStripMenuItem1
         '
         Me.OpeningCrateEditorToolStripMenuItem1.Name = "OpeningCrateEditorToolStripMenuItem1"
-        Me.OpeningCrateEditorToolStripMenuItem1.Size = New System.Drawing.Size(222, 24)
+        Me.OpeningCrateEditorToolStripMenuItem1.Size = New System.Drawing.Size(270, 26)
         Me.OpeningCrateEditorToolStripMenuItem1.Text = "Opening Crate Editor"
         '
         'AccountGroupToolStripMenuItem
@@ -340,19 +343,19 @@ Partial Class MainScreenForm
         Me.AccountGroupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddGroupToolStripMenuItem, Me.ListGroupToolStripMenuItem})
         Me.AccountGroupToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.AccountGroupToolStripMenuItem.Name = "AccountGroupToolStripMenuItem"
-        Me.AccountGroupToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.AccountGroupToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.AccountGroupToolStripMenuItem.Text = "&Account Group"
         '
         'AddGroupToolStripMenuItem
         '
         Me.AddGroupToolStripMenuItem.Name = "AddGroupToolStripMenuItem"
-        Me.AddGroupToolStripMenuItem.Size = New System.Drawing.Size(148, 24)
+        Me.AddGroupToolStripMenuItem.Size = New System.Drawing.Size(170, 26)
         Me.AddGroupToolStripMenuItem.Text = "&Add Group"
         '
         'ListGroupToolStripMenuItem
         '
         Me.ListGroupToolStripMenuItem.Name = "ListGroupToolStripMenuItem"
-        Me.ListGroupToolStripMenuItem.Size = New System.Drawing.Size(148, 24)
+        Me.ListGroupToolStripMenuItem.Size = New System.Drawing.Size(170, 26)
         Me.ListGroupToolStripMenuItem.Text = "&List Group "
         '
         'GroupMasterToolStripMenuItem
@@ -361,7 +364,7 @@ Partial Class MainScreenForm
         Me.GroupMasterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.GroupMasterToolStripMenuItem.Name = "GroupMasterToolStripMenuItem"
         Me.GroupMasterToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
-        Me.GroupMasterToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.GroupMasterToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.GroupMasterToolStripMenuItem.Text = "&items"
         '
         'StorageToolStripMenuItem
@@ -370,19 +373,19 @@ Partial Class MainScreenForm
         Me.StorageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateStorageToolStripMenuItem, Me.StorageRegisterToolStripMenuItem})
         Me.StorageToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.StorageToolStripMenuItem.Name = "StorageToolStripMenuItem"
-        Me.StorageToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.StorageToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.StorageToolStripMenuItem.Text = "Storage"
         '
         'CreateStorageToolStripMenuItem
         '
         Me.CreateStorageToolStripMenuItem.Name = "CreateStorageToolStripMenuItem"
-        Me.CreateStorageToolStripMenuItem.Size = New System.Drawing.Size(178, 24)
+        Me.CreateStorageToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.CreateStorageToolStripMenuItem.Text = "Create Storage"
         '
         'StorageRegisterToolStripMenuItem
         '
         Me.StorageRegisterToolStripMenuItem.Name = "StorageRegisterToolStripMenuItem"
-        Me.StorageRegisterToolStripMenuItem.Size = New System.Drawing.Size(178, 24)
+        Me.StorageRegisterToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.StorageRegisterToolStripMenuItem.Text = "Storage Register"
         '
         'ChargesToolStripMenuItem
@@ -390,7 +393,7 @@ Partial Class MainScreenForm
         Me.ChargesToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.ChargesToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ChargesToolStripMenuItem.Name = "ChargesToolStripMenuItem"
-        Me.ChargesToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.ChargesToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.ChargesToolStripMenuItem.Text = "Charges"
         '
         'LoanTypeToolStripMenuItem
@@ -399,19 +402,19 @@ Partial Class MainScreenForm
         Me.LoanTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewMarkaToolStripMenuItem, Me.MarkaListToolStripMenuItem})
         Me.LoanTypeToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.LoanTypeToolStripMenuItem.Name = "LoanTypeToolStripMenuItem"
-        Me.LoanTypeToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.LoanTypeToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.LoanTypeToolStripMenuItem.Text = "Mar&ka"
         '
         'NewMarkaToolStripMenuItem
         '
         Me.NewMarkaToolStripMenuItem.Name = "NewMarkaToolStripMenuItem"
-        Me.NewMarkaToolStripMenuItem.Size = New System.Drawing.Size(153, 24)
+        Me.NewMarkaToolStripMenuItem.Size = New System.Drawing.Size(174, 26)
         Me.NewMarkaToolStripMenuItem.Text = "New Marka"
         '
         'MarkaListToolStripMenuItem
         '
         Me.MarkaListToolStripMenuItem.Name = "MarkaListToolStripMenuItem"
-        Me.MarkaListToolStripMenuItem.Size = New System.Drawing.Size(153, 24)
+        Me.MarkaListToolStripMenuItem.Size = New System.Drawing.Size(174, 26)
         Me.MarkaListToolStripMenuItem.Text = "Marka List"
         '
         'UsersToolStripMenuItem
@@ -419,31 +422,31 @@ Partial Class MainScreenForm
         Me.UsersToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.UsersToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(219, 6)
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(267, 6)
         '
         'UsersToolStripMenuItem1
         '
         Me.UsersToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewUserToolStripMenuItem, Me.UserRegisterToolStripMenuItem, Me.UserRightsToolStripMenuItem})
         Me.UsersToolStripMenuItem1.Name = "UsersToolStripMenuItem1"
-        Me.UsersToolStripMenuItem1.Size = New System.Drawing.Size(222, 24)
+        Me.UsersToolStripMenuItem1.Size = New System.Drawing.Size(270, 26)
         Me.UsersToolStripMenuItem1.Text = "Users"
         '
         'NewUserToolStripMenuItem
         '
         Me.NewUserToolStripMenuItem.Name = "NewUserToolStripMenuItem"
-        Me.NewUserToolStripMenuItem.Size = New System.Drawing.Size(160, 24)
+        Me.NewUserToolStripMenuItem.Size = New System.Drawing.Size(188, 26)
         Me.NewUserToolStripMenuItem.Text = "New user"
         '
         'UserRegisterToolStripMenuItem
         '
         Me.UserRegisterToolStripMenuItem.Name = "UserRegisterToolStripMenuItem"
-        Me.UserRegisterToolStripMenuItem.Size = New System.Drawing.Size(160, 24)
+        Me.UserRegisterToolStripMenuItem.Size = New System.Drawing.Size(188, 26)
         Me.UserRegisterToolStripMenuItem.Text = "User Register"
         '
         'UserRightsToolStripMenuItem
         '
         Me.UserRightsToolStripMenuItem.Name = "UserRightsToolStripMenuItem"
-        Me.UserRightsToolStripMenuItem.Size = New System.Drawing.Size(160, 24)
+        Me.UserRightsToolStripMenuItem.Size = New System.Drawing.Size(188, 26)
         Me.UserRightsToolStripMenuItem.Text = "User Rights"
         '
         'LogoutToolStripMenuItem
@@ -452,7 +455,7 @@ Partial Class MainScreenForm
         Me.LogoutToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.LogoutToolStripMenuItem.Image = CType(resources.GetObject("LogoutToolStripMenuItem.Image"), System.Drawing.Image)
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
         Me.LogoutToolStripMenuItem.Text = "Log &Off"
         '
         'EntryToolStripMenuItem
@@ -461,7 +464,7 @@ Partial Class MainScreenForm
         Me.EntryToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.EntryToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.EntryToolStripMenuItem.Name = "EntryToolStripMenuItem"
-        Me.EntryToolStripMenuItem.Size = New System.Drawing.Size(53, 44)
+        Me.EntryToolStripMenuItem.Size = New System.Drawing.Size(64, 55)
         Me.EntryToolStripMenuItem.Text = "&Entry"
         '
         'NewCaseToolStripMenuItem
@@ -470,7 +473,7 @@ Partial Class MainScreenForm
         Me.NewCaseToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.NewCaseToolStripMenuItem.Name = "NewCaseToolStripMenuItem"
         Me.NewCaseToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.NewCaseToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.NewCaseToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.NewCaseToolStripMenuItem.Text = "Speed Sale"
         '
         'SuperSaleToolStripMenuItem
@@ -479,7 +482,7 @@ Partial Class MainScreenForm
         Me.SuperSaleToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SuperSaleToolStripMenuItem.Name = "SuperSaleToolStripMenuItem"
         Me.SuperSaleToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
-        Me.SuperSaleToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.SuperSaleToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.SuperSaleToolStripMenuItem.Text = "Super Sale"
         '
         'StandardSaleToolStripMenuItem
@@ -488,7 +491,7 @@ Partial Class MainScreenForm
         Me.StandardSaleToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.StandardSaleToolStripMenuItem.Name = "StandardSaleToolStripMenuItem"
         Me.StandardSaleToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
-        Me.StandardSaleToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.StandardSaleToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.StandardSaleToolStripMenuItem.Text = "Standard Sale"
         '
         'StockSaleToolStripMenuItem
@@ -497,13 +500,13 @@ Partial Class MainScreenForm
         Me.StockSaleToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.StockSaleToolStripMenuItem.Name = "StockSaleToolStripMenuItem"
         Me.StockSaleToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
-        Me.StockSaleToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.StockSaleToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.StockSaleToolStripMenuItem.Text = "Stock sale"
         '
         'ToolStripSeparator31
         '
         Me.ToolStripSeparator31.Name = "ToolStripSeparator31"
-        Me.ToolStripSeparator31.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator31.Size = New System.Drawing.Size(335, 6)
         '
         'PurchseStockInToolStripMenuItem
         '
@@ -511,38 +514,38 @@ Partial Class MainScreenForm
         Me.PurchseStockInToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.PurchseStockInToolStripMenuItem.Name = "PurchseStockInToolStripMenuItem"
         Me.PurchseStockInToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.K), System.Windows.Forms.Keys)
-        Me.PurchseStockInToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.PurchseStockInToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.PurchseStockInToolStripMenuItem.Text = "Purchse / Stock In"
         '
         'ToolStripSeparator16
         '
         Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
-        Me.ToolStripSeparator16.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator16.Size = New System.Drawing.Size(335, 6)
         '
         'LoosePurchaseToolStripMenuItem
         '
         Me.LoosePurchaseToolStripMenuItem.Name = "LoosePurchaseToolStripMenuItem"
         Me.LoosePurchaseToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.K), System.Windows.Forms.Keys)
-        Me.LoosePurchaseToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.LoosePurchaseToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.LoosePurchaseToolStripMenuItem.Text = "Loose Purchase"
         '
         'LosseSaleToolStripMenuItem
         '
         Me.LosseSaleToolStripMenuItem.Name = "LosseSaleToolStripMenuItem"
         Me.LosseSaleToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.LosseSaleToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.LosseSaleToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.LosseSaleToolStripMenuItem.Text = "Losse Sale"
         '
         'SaleChallanToolStripMenuItem
         '
         Me.SaleChallanToolStripMenuItem.Name = "SaleChallanToolStripMenuItem"
-        Me.SaleChallanToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.SaleChallanToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.SaleChallanToolStripMenuItem.Text = "Sale Challan"
         '
         'ToolStripSeparator33
         '
         Me.ToolStripSeparator33.Name = "ToolStripSeparator33"
-        Me.ToolStripSeparator33.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator33.Size = New System.Drawing.Size(335, 6)
         '
         'ReceiptVoucherToolStripMenuItem
         '
@@ -550,7 +553,7 @@ Partial Class MainScreenForm
         Me.ReceiptVoucherToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ReceiptVoucherToolStripMenuItem.Name = "ReceiptVoucherToolStripMenuItem"
         Me.ReceiptVoucherToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7
-        Me.ReceiptVoucherToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.ReceiptVoucherToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.ReceiptVoucherToolStripMenuItem.Text = "Receipt Voucher"
         '
         'PaymentVoucherToolStripMenuItem
@@ -559,13 +562,13 @@ Partial Class MainScreenForm
         Me.PaymentVoucherToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.PaymentVoucherToolStripMenuItem.Name = "PaymentVoucherToolStripMenuItem"
         Me.PaymentVoucherToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8
-        Me.PaymentVoucherToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.PaymentVoucherToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.PaymentVoucherToolStripMenuItem.Text = "Payment Voucher"
         '
         'ToolStripSeparator17
         '
         Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(335, 6)
         '
         'BankEntryToolStripMenuItem
         '
@@ -573,7 +576,7 @@ Partial Class MainScreenForm
         Me.BankEntryToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.BankEntryToolStripMenuItem.Name = "BankEntryToolStripMenuItem"
         Me.BankEntryToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
-        Me.BankEntryToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.BankEntryToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.BankEntryToolStripMenuItem.Text = "Bank Entry"
         '
         'JournalEntryToolStripMenuItem
@@ -582,24 +585,24 @@ Partial Class MainScreenForm
         Me.JournalEntryToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.JournalEntryToolStripMenuItem.Name = "JournalEntryToolStripMenuItem"
         Me.JournalEntryToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.J), System.Windows.Forms.Keys)
-        Me.JournalEntryToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.JournalEntryToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.JournalEntryToolStripMenuItem.Text = "Journal Entry"
         '
         'ToolStripSeparator18
         '
         Me.ToolStripSeparator18.Name = "ToolStripSeparator18"
-        Me.ToolStripSeparator18.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator18.Size = New System.Drawing.Size(335, 6)
         '
         'StoreTransferToolStripMenuItem
         '
         Me.StoreTransferToolStripMenuItem.Name = "StoreTransferToolStripMenuItem"
-        Me.StoreTransferToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.StoreTransferToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.StoreTransferToolStripMenuItem.Text = "Store Transfer"
         '
         'ToolStripSeparator32
         '
         Me.ToolStripSeparator32.Name = "ToolStripSeparator32"
-        Me.ToolStripSeparator32.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator32.Size = New System.Drawing.Size(335, 6)
         '
         'ScripBeejakToolStripMenuItem
         '
@@ -607,20 +610,20 @@ Partial Class MainScreenForm
         Me.ScripBeejakToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ScripBeejakToolStripMenuItem.Name = "ScripBeejakToolStripMenuItem"
         Me.ScripBeejakToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.ScripBeejakToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.ScripBeejakToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.ScripBeejakToolStripMenuItem.Text = "Sell Out Mannual"
         '
         'SellOutAutoToolStripMenuItem
         '
         Me.SellOutAutoToolStripMenuItem.Name = "SellOutAutoToolStripMenuItem"
         Me.SellOutAutoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.SellOutAutoToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.SellOutAutoToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.SellOutAutoToolStripMenuItem.Text = "Sell Out Auto"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(335, 6)
         '
         'CrateOutToolStripMenuItem
         '
@@ -628,7 +631,7 @@ Partial Class MainScreenForm
         Me.CrateOutToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateOutToolStripMenuItem.Name = "CrateOutToolStripMenuItem"
         Me.CrateOutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D4), System.Windows.Forms.Keys)
-        Me.CrateOutToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.CrateOutToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.CrateOutToolStripMenuItem.Text = "Crate Out ( Issue )"
         '
         'CrateInToolStripMenuItem1
@@ -637,13 +640,13 @@ Partial Class MainScreenForm
         Me.CrateInToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.CrateInToolStripMenuItem1.Name = "CrateInToolStripMenuItem1"
         Me.CrateInToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D5), System.Windows.Forms.Keys)
-        Me.CrateInToolStripMenuItem1.Size = New System.Drawing.Size(277, 24)
+        Me.CrateInToolStripMenuItem1.Size = New System.Drawing.Size(338, 26)
         Me.CrateInToolStripMenuItem1.Text = "Crate In  ( Recieve )"
         '
         'ToolStripSeparator19
         '
         Me.ToolStripSeparator19.Name = "ToolStripSeparator19"
-        Me.ToolStripSeparator19.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator19.Size = New System.Drawing.Size(335, 6)
         '
         'StockTransterToolStripMenuItem
         '
@@ -651,27 +654,27 @@ Partial Class MainScreenForm
         Me.StockTransterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.StockTransterToolStripMenuItem.Name = "StockTransterToolStripMenuItem"
         Me.StockTransterToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.StockTransterToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.StockTransterToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.StockTransterToolStripMenuItem.Text = "On Sale / Transfer Entry"
         '
         'OnSaleReceiptToolStripMenuItem1
         '
         Me.OnSaleReceiptToolStripMenuItem1.Name = "OnSaleReceiptToolStripMenuItem1"
         Me.OnSaleReceiptToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.OnSaleReceiptToolStripMenuItem1.Size = New System.Drawing.Size(277, 24)
+        Me.OnSaleReceiptToolStripMenuItem1.Size = New System.Drawing.Size(338, 26)
         Me.OnSaleReceiptToolStripMenuItem1.Text = "On Sale Receipt"
         '
         'NetRecieptToolStripMenuItem
         '
         Me.NetRecieptToolStripMenuItem.Name = "NetRecieptToolStripMenuItem"
         Me.NetRecieptToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
-        Me.NetRecieptToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.NetRecieptToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.NetRecieptToolStripMenuItem.Text = "Net Reciept"
         '
         'ToolStripSeparator20
         '
         Me.ToolStripSeparator20.Name = "ToolStripSeparator20"
-        Me.ToolStripSeparator20.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator20.Size = New System.Drawing.Size(335, 6)
         '
         'OrderBookToolStripMenuItem
         '
@@ -679,38 +682,38 @@ Partial Class MainScreenForm
         Me.OrderBookToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OrderEntryToolStripMenuItem, Me.OrderBookToolStripMenuItem1})
         Me.OrderBookToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.OrderBookToolStripMenuItem.Name = "OrderBookToolStripMenuItem"
-        Me.OrderBookToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.OrderBookToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.OrderBookToolStripMenuItem.Text = "Order Book"
         '
         'OrderEntryToolStripMenuItem
         '
         Me.OrderEntryToolStripMenuItem.Name = "OrderEntryToolStripMenuItem"
-        Me.OrderEntryToolStripMenuItem.Size = New System.Drawing.Size(153, 24)
+        Me.OrderEntryToolStripMenuItem.Size = New System.Drawing.Size(174, 26)
         Me.OrderEntryToolStripMenuItem.Text = "Order Entry"
         '
         'OrderBookToolStripMenuItem1
         '
         Me.OrderBookToolStripMenuItem1.Name = "OrderBookToolStripMenuItem1"
-        Me.OrderBookToolStripMenuItem1.Size = New System.Drawing.Size(153, 24)
+        Me.OrderBookToolStripMenuItem1.Size = New System.Drawing.Size(174, 26)
         Me.OrderBookToolStripMenuItem1.Text = "Order Book"
         '
         'GroupToolStripMenuItem
         '
         Me.GroupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GroupReceiptToolStripMenuItem, Me.GroupPaymmentToolStripMenuItem})
         Me.GroupToolStripMenuItem.Name = "GroupToolStripMenuItem"
-        Me.GroupToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.GroupToolStripMenuItem.Size = New System.Drawing.Size(338, 26)
         Me.GroupToolStripMenuItem.Text = "Group Voucher"
         '
         'GroupReceiptToolStripMenuItem
         '
         Me.GroupReceiptToolStripMenuItem.Name = "GroupReceiptToolStripMenuItem"
-        Me.GroupReceiptToolStripMenuItem.Size = New System.Drawing.Size(184, 24)
+        Me.GroupReceiptToolStripMenuItem.Size = New System.Drawing.Size(215, 26)
         Me.GroupReceiptToolStripMenuItem.Text = "Group Receipt"
         '
         'GroupPaymmentToolStripMenuItem
         '
         Me.GroupPaymmentToolStripMenuItem.Name = "GroupPaymmentToolStripMenuItem"
-        Me.GroupPaymmentToolStripMenuItem.Size = New System.Drawing.Size(184, 24)
+        Me.GroupPaymmentToolStripMenuItem.Size = New System.Drawing.Size(215, 26)
         Me.GroupPaymmentToolStripMenuItem.Text = "Group Paymment"
         '
         'ReportsToolStripMenuItem
@@ -719,7 +722,7 @@ Partial Class MainScreenForm
         Me.ReportsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReportsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(76, 44)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(96, 55)
         Me.ReportsToolStripMenuItem.Text = "&Registers"
         '
         'ToolStripMenuItem1
@@ -730,13 +733,13 @@ Partial Class MainScreenForm
         Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.ShowShortcutKeys = False
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(314, 24)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(389, 26)
         Me.ToolStripMenuItem1.Text = "Speed Sale Reports"
         '
         'SpeedSaleRegisterToolStripMenuItem1
         '
         Me.SpeedSaleRegisterToolStripMenuItem1.Name = "SpeedSaleRegisterToolStripMenuItem1"
-        Me.SpeedSaleRegisterToolStripMenuItem1.Size = New System.Drawing.Size(200, 24)
+        Me.SpeedSaleRegisterToolStripMenuItem1.Size = New System.Drawing.Size(240, 26)
         Me.SpeedSaleRegisterToolStripMenuItem1.Text = "Speed Sale Register"
         '
         'SpeedSaleRegisterToolStripMenuItem
@@ -746,25 +749,25 @@ Partial Class MainScreenForm
         Me.SpeedSaleRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SpeedSaleRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SpeedSaleRegisterToolStripMenuItem.Name = "SpeedSaleRegisterToolStripMenuItem"
-        Me.SpeedSaleRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.SpeedSaleRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.SpeedSaleRegisterToolStripMenuItem.Text = "Super Sale Reports"
         '
         'SuperSaleRegisterSimpleToolStripMenuItem
         '
         Me.SuperSaleRegisterSimpleToolStripMenuItem.Name = "SuperSaleRegisterSimpleToolStripMenuItem"
-        Me.SuperSaleRegisterSimpleToolStripMenuItem.Size = New System.Drawing.Size(290, 24)
+        Me.SuperSaleRegisterSimpleToolStripMenuItem.Size = New System.Drawing.Size(368, 26)
         Me.SuperSaleRegisterSimpleToolStripMenuItem.Text = "Super Sale Register (Supplier Bills)"
         '
         'SuperSaleRegisterToolStripMenuItem1
         '
         Me.SuperSaleRegisterToolStripMenuItem1.Name = "SuperSaleRegisterToolStripMenuItem1"
-        Me.SuperSaleRegisterToolStripMenuItem1.Size = New System.Drawing.Size(290, 24)
+        Me.SuperSaleRegisterToolStripMenuItem1.Size = New System.Drawing.Size(368, 26)
         Me.SuperSaleRegisterToolStripMenuItem1.Text = "Super Sale Register (Detailed)"
         '
         'SuperSaleSupplierWiseToolStripMenuItem
         '
         Me.SuperSaleSupplierWiseToolStripMenuItem.Name = "SuperSaleSupplierWiseToolStripMenuItem"
-        Me.SuperSaleSupplierWiseToolStripMenuItem.Size = New System.Drawing.Size(290, 24)
+        Me.SuperSaleSupplierWiseToolStripMenuItem.Size = New System.Drawing.Size(368, 26)
         Me.SuperSaleSupplierWiseToolStripMenuItem.Text = "Super Sale Supplier Wise"
         '
         'SuperSaleRegisterToolStripMenuItem
@@ -774,13 +777,13 @@ Partial Class MainScreenForm
         Me.SuperSaleRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperSaleRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SuperSaleRegisterToolStripMenuItem.Name = "SuperSaleRegisterToolStripMenuItem"
-        Me.SuperSaleRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.SuperSaleRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.SuperSaleRegisterToolStripMenuItem.Text = "Stock Sale Reports"
         '
         'StockSaleRegisterToolStripMenuItem1
         '
         Me.StockSaleRegisterToolStripMenuItem1.Name = "StockSaleRegisterToolStripMenuItem1"
-        Me.StockSaleRegisterToolStripMenuItem1.Size = New System.Drawing.Size(197, 24)
+        Me.StockSaleRegisterToolStripMenuItem1.Size = New System.Drawing.Size(235, 26)
         Me.StockSaleRegisterToolStripMenuItem1.Text = "Stock Sale Register"
         '
         'StandardSaleToolStripMenuItem1
@@ -788,7 +791,7 @@ Partial Class MainScreenForm
         Me.StandardSaleToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StandardSaleToolStripMenuItem1.Name = "StandardSaleToolStripMenuItem1"
         Me.StandardSaleToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.StandardSaleToolStripMenuItem1.Size = New System.Drawing.Size(314, 24)
+        Me.StandardSaleToolStripMenuItem1.Size = New System.Drawing.Size(389, 26)
         Me.StandardSaleToolStripMenuItem1.Text = "Standard Sale Report"
         '
         'ToolStripSeparator3
@@ -797,49 +800,49 @@ Partial Class MainScreenForm
         Me.ToolStripSeparator3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ToolStripSeparator3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(386, 6)
         '
         'PurchaseStockInRegisterToolStripMenuItem
         '
         Me.PurchaseStockInRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PurchaseStockInRegisterToolStripMenuItem.Name = "PurchaseStockInRegisterToolStripMenuItem"
-        Me.PurchaseStockInRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.PurchaseStockInRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.PurchaseStockInRegisterToolStripMenuItem.Text = "Purchase / Stock In Register"
         '
         'PurchaseStockInRegisterDetailedToolStripMenuItem
         '
         Me.PurchaseStockInRegisterDetailedToolStripMenuItem.Name = "PurchaseStockInRegisterDetailedToolStripMenuItem"
-        Me.PurchaseStockInRegisterDetailedToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.PurchaseStockInRegisterDetailedToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.PurchaseStockInRegisterDetailedToolStripMenuItem.Text = "Purchase / Stock In Register (Detailed)"
         '
         'LoosePurchaseToolStripMenuItem1
         '
         Me.LoosePurchaseToolStripMenuItem1.Name = "LoosePurchaseToolStripMenuItem1"
-        Me.LoosePurchaseToolStripMenuItem1.Size = New System.Drawing.Size(314, 24)
+        Me.LoosePurchaseToolStripMenuItem1.Size = New System.Drawing.Size(389, 26)
         Me.LoosePurchaseToolStripMenuItem1.Text = "Purchase (Loose) Register"
         '
         'ToolStripSeparator34
         '
         Me.ToolStripSeparator34.Name = "ToolStripSeparator34"
-        Me.ToolStripSeparator34.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator34.Size = New System.Drawing.Size(386, 6)
         '
         'SaleLooseRegisterToolStripMenuItem
         '
         Me.SaleLooseRegisterToolStripMenuItem.Name = "SaleLooseRegisterToolStripMenuItem"
-        Me.SaleLooseRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.SaleLooseRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.SaleLooseRegisterToolStripMenuItem.Text = "Sale (Loose) Register"
         '
         'SaleChallanRegisterToolStripMenuItem
         '
         Me.SaleChallanRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SaleChallanRegisterToolStripMenuItem.Name = "SaleChallanRegisterToolStripMenuItem"
-        Me.SaleChallanRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.SaleChallanRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.SaleChallanRegisterToolStripMenuItem.Text = "Sale Challan Register"
         '
         'ToolStripSeparator30
         '
         Me.ToolStripSeparator30.Name = "ToolStripSeparator30"
-        Me.ToolStripSeparator30.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator30.Size = New System.Drawing.Size(386, 6)
         '
         'PaymentRegisterToolStripMenuItem
         '
@@ -847,7 +850,7 @@ Partial Class MainScreenForm
         Me.PaymentRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PaymentRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.PaymentRegisterToolStripMenuItem.Name = "PaymentRegisterToolStripMenuItem"
-        Me.PaymentRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.PaymentRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.PaymentRegisterToolStripMenuItem.Text = "Payment Register"
         '
         'ReceiptRegisterToolStripMenuItem
@@ -858,13 +861,13 @@ Partial Class MainScreenForm
         Me.ReceiptRegisterToolStripMenuItem.Name = "ReceiptRegisterToolStripMenuItem"
         Me.ReceiptRegisterToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
             Or System.Windows.Forms.Keys.F7), System.Windows.Forms.Keys)
-        Me.ReceiptRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.ReceiptRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.ReceiptRegisterToolStripMenuItem.Text = "Receipt Register"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(386, 6)
         '
         'ScripBeejakRegisterToolStripMenuItem
         '
@@ -873,31 +876,31 @@ Partial Class MainScreenForm
         Me.ScripBeejakRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ScripBeejakRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ScripBeejakRegisterToolStripMenuItem.Name = "ScripBeejakRegisterToolStripMenuItem"
-        Me.ScripBeejakRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.ScripBeejakRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.ScripBeejakRegisterToolStripMenuItem.Text = "Sell Out Register"
         '
         'MannuaBeejakToolStripMenuItem
         '
         Me.MannuaBeejakToolStripMenuItem.Name = "MannuaBeejakToolStripMenuItem"
-        Me.MannuaBeejakToolStripMenuItem.Size = New System.Drawing.Size(292, 24)
+        Me.MannuaBeejakToolStripMenuItem.Size = New System.Drawing.Size(367, 26)
         Me.MannuaBeejakToolStripMenuItem.Text = "Mannual Sell Out Register"
         '
         'MannualSelloutRegisterDetialedToolStripMenuItem
         '
         Me.MannualSelloutRegisterDetialedToolStripMenuItem.Name = "MannualSelloutRegisterDetialedToolStripMenuItem"
-        Me.MannualSelloutRegisterDetialedToolStripMenuItem.Size = New System.Drawing.Size(292, 24)
+        Me.MannualSelloutRegisterDetialedToolStripMenuItem.Size = New System.Drawing.Size(367, 26)
         Me.MannualSelloutRegisterDetialedToolStripMenuItem.Text = "Mannual Sellout Register (Detailed)"
         '
         'AutoBeejakToolStripMenuItem
         '
         Me.AutoBeejakToolStripMenuItem.Name = "AutoBeejakToolStripMenuItem"
-        Me.AutoBeejakToolStripMenuItem.Size = New System.Drawing.Size(292, 24)
+        Me.AutoBeejakToolStripMenuItem.Size = New System.Drawing.Size(367, 26)
         Me.AutoBeejakToolStripMenuItem.Text = "Auto Sell Out Register"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(386, 6)
         '
         'BankEntryRegisterToolStripMenuItem1
         '
@@ -905,7 +908,7 @@ Partial Class MainScreenForm
         Me.BankEntryRegisterToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BankEntryRegisterToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.BankEntryRegisterToolStripMenuItem1.Name = "BankEntryRegisterToolStripMenuItem1"
-        Me.BankEntryRegisterToolStripMenuItem1.Size = New System.Drawing.Size(314, 24)
+        Me.BankEntryRegisterToolStripMenuItem1.Size = New System.Drawing.Size(389, 26)
         Me.BankEntryRegisterToolStripMenuItem1.Text = "Bank Entry Register"
         '
         'JournalEntryRegisterToolStripMenuItem
@@ -914,39 +917,39 @@ Partial Class MainScreenForm
         Me.JournalEntryRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JournalEntryRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.JournalEntryRegisterToolStripMenuItem.Name = "JournalEntryRegisterToolStripMenuItem"
-        Me.JournalEntryRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.JournalEntryRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.JournalEntryRegisterToolStripMenuItem.Text = "Journal Entry Register"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(386, 6)
         '
         'OnSaleTransferRegisterToolStripMenuItem
         '
         Me.OnSaleTransferRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OnSaleTransferRegisterToolStripMenuItem.Name = "OnSaleTransferRegisterToolStripMenuItem"
-        Me.OnSaleTransferRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.OnSaleTransferRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.OnSaleTransferRegisterToolStripMenuItem.Text = "On Sale / Transfer Register"
         '
         'OnSaleReceiptToolStripMenuItem
         '
         Me.OnSaleReceiptToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OnSaleReceiptToolStripMenuItem.Name = "OnSaleReceiptToolStripMenuItem"
-        Me.OnSaleReceiptToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.OnSaleReceiptToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.OnSaleReceiptToolStripMenuItem.Text = "On Sale Receipt Register"
         '
         'ReceiptNetRegisterToolStripMenuItem
         '
         Me.ReceiptNetRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReceiptNetRegisterToolStripMenuItem.Name = "ReceiptNetRegisterToolStripMenuItem"
-        Me.ReceiptNetRegisterToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.ReceiptNetRegisterToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.ReceiptNetRegisterToolStripMenuItem.Text = "Receipt Net Register"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(311, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(386, 6)
         '
         'PrintBillsToolStripMenuItem
         '
@@ -955,7 +958,7 @@ Partial Class MainScreenForm
         Me.PrintBillsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.PrintBillsToolStripMenuItem.Name = "PrintBillsToolStripMenuItem"
         Me.PrintBillsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.PrintBillsToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.PrintBillsToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.PrintBillsToolStripMenuItem.Text = "Print Bills"
         '
         'GroupVouchersToolStripMenuItem
@@ -963,26 +966,26 @@ Partial Class MainScreenForm
         Me.GroupVouchersToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GroupReceiptRegisterToolStripMenuItem, Me.GroupPaymentToolStripMenuItem})
         Me.GroupVouchersToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupVouchersToolStripMenuItem.Name = "GroupVouchersToolStripMenuItem"
-        Me.GroupVouchersToolStripMenuItem.Size = New System.Drawing.Size(314, 24)
+        Me.GroupVouchersToolStripMenuItem.Size = New System.Drawing.Size(389, 26)
         Me.GroupVouchersToolStripMenuItem.Text = "Group Vouchers"
         '
         'GroupReceiptRegisterToolStripMenuItem
         '
         Me.GroupReceiptRegisterToolStripMenuItem.Name = "GroupReceiptRegisterToolStripMenuItem"
-        Me.GroupReceiptRegisterToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.GroupReceiptRegisterToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
         Me.GroupReceiptRegisterToolStripMenuItem.Text = "Group Receipt Register"
         '
         'GroupPaymentToolStripMenuItem
         '
         Me.GroupPaymentToolStripMenuItem.Name = "GroupPaymentToolStripMenuItem"
-        Me.GroupPaymentToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.GroupPaymentToolStripMenuItem.Size = New System.Drawing.Size(272, 26)
         Me.GroupPaymentToolStripMenuItem.Text = "Group Payment Register"
         '
         'StoreTransferToolStripMenuItem1
         '
         Me.StoreTransferToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StoreTransferToolStripMenuItem1.Name = "StoreTransferToolStripMenuItem1"
-        Me.StoreTransferToolStripMenuItem1.Size = New System.Drawing.Size(314, 24)
+        Me.StoreTransferToolStripMenuItem1.Size = New System.Drawing.Size(389, 26)
         Me.StoreTransferToolStripMenuItem1.Text = "Store Transfer Register"
         '
         'ReportsToolStripMenuItem1
@@ -991,13 +994,13 @@ Partial Class MainScreenForm
         Me.ReportsToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReportsToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.ReportsToolStripMenuItem1.Name = "ReportsToolStripMenuItem1"
-        Me.ReportsToolStripMenuItem1.Size = New System.Drawing.Size(69, 44)
+        Me.ReportsToolStripMenuItem1.Size = New System.Drawing.Size(84, 55)
         Me.ReportsToolStripMenuItem1.Text = "Reports"
         '
         'BalanceSheetExpendedToolStripMenuItem
         '
         Me.BalanceSheetExpendedToolStripMenuItem.Name = "BalanceSheetExpendedToolStripMenuItem"
-        Me.BalanceSheetExpendedToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.BalanceSheetExpendedToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.BalanceSheetExpendedToolStripMenuItem.Text = "Balance Sheet"
         '
         'ProfitLossToolStripMenuItem1
@@ -1005,7 +1008,7 @@ Partial Class MainScreenForm
         Me.ProfitLossToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control
         Me.ProfitLossToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.ProfitLossToolStripMenuItem1.Name = "ProfitLossToolStripMenuItem1"
-        Me.ProfitLossToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.ProfitLossToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.ProfitLossToolStripMenuItem1.Text = "Profit && Loss"
         '
         'TradingAccountToolStripMenuItem1
@@ -1013,7 +1016,7 @@ Partial Class MainScreenForm
         Me.TradingAccountToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control
         Me.TradingAccountToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.TradingAccountToolStripMenuItem1.Name = "TradingAccountToolStripMenuItem1"
-        Me.TradingAccountToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.TradingAccountToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.TradingAccountToolStripMenuItem1.Text = "Trading Account"
         '
         'TrailBalanceToolStripMenuItem1
@@ -1021,20 +1024,20 @@ Partial Class MainScreenForm
         Me.TrailBalanceToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control
         Me.TrailBalanceToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.TrailBalanceToolStripMenuItem1.Name = "TrailBalanceToolStripMenuItem1"
-        Me.TrailBalanceToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.TrailBalanceToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.TrailBalanceToolStripMenuItem1.Text = "Trial Balance"
         '
         'TrialBalanceGroupToolStripMenuItem
         '
         Me.TrialBalanceGroupToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.TrialBalanceGroupToolStripMenuItem.Name = "TrialBalanceGroupToolStripMenuItem"
-        Me.TrialBalanceGroupToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.TrialBalanceGroupToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.TrialBalanceGroupToolStripMenuItem.Text = "Trial Balance - Group"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(304, 6)
         '
         'DayBookToolStripMenuItem1
         '
@@ -1043,7 +1046,7 @@ Partial Class MainScreenForm
         Me.DayBookToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.DayBookToolStripMenuItem1.Name = "DayBookToolStripMenuItem1"
         Me.DayBookToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
-        Me.DayBookToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.DayBookToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.DayBookToolStripMenuItem1.Text = "Day Book"
         '
         'LedgerToolStripMenuItem
@@ -1053,14 +1056,14 @@ Partial Class MainScreenForm
         Me.LedgerToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.LedgerToolStripMenuItem.Name = "LedgerToolStripMenuItem"
         Me.LedgerToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.LedgerToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.LedgerToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.LedgerToolStripMenuItem.Text = "Ledger"
         '
         'SettleLedgerToolStripMenuItem1
         '
         Me.SettleLedgerToolStripMenuItem1.Name = "SettleLedgerToolStripMenuItem1"
         Me.SettleLedgerToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.SettleLedgerToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.SettleLedgerToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.SettleLedgerToolStripMenuItem1.Text = "Sub Ledger"
         '
         'SettleLedgerToolStripMenuItem2
@@ -1068,7 +1071,7 @@ Partial Class MainScreenForm
         Me.SettleLedgerToolStripMenuItem2.Name = "SettleLedgerToolStripMenuItem2"
         Me.SettleLedgerToolStripMenuItem2.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
             Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.SettleLedgerToolStripMenuItem2.Size = New System.Drawing.Size(261, 24)
+        Me.SettleLedgerToolStripMenuItem2.Size = New System.Drawing.Size(307, 26)
         Me.SettleLedgerToolStripMenuItem2.Text = "Settle Ledger"
         '
         'GroupLedgwerToolStripMenuItem
@@ -1076,7 +1079,7 @@ Partial Class MainScreenForm
         Me.GroupLedgwerToolStripMenuItem.Name = "GroupLedgwerToolStripMenuItem"
         Me.GroupLedgwerToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
             Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
-        Me.GroupLedgwerToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.GroupLedgwerToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.GroupLedgwerToolStripMenuItem.Text = "Group Ledger"
         '
         'CashBookReportToolStripMenuItem
@@ -1086,49 +1089,49 @@ Partial Class MainScreenForm
         Me.CashBookReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.CashBookReportToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CashBookReportToolStripMenuItem.Name = "CashBookReportToolStripMenuItem"
-        Me.CashBookReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.CashBookReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.CashBookReportToolStripMenuItem.Text = "Cash / Bank Book Report"
         '
         'CashBankBookToolStripMenuItem
         '
         Me.CashBankBookToolStripMenuItem.Name = "CashBankBookToolStripMenuItem"
-        Me.CashBankBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBankBookToolStripMenuItem.Size = New System.Drawing.Size(324, 24)
         Me.CashBankBookToolStripMenuItem.Text = "Cash / Bank Book"
         '
         'CashBankBookGroupedToolStripMenuItem
         '
         Me.CashBankBookGroupedToolStripMenuItem.Name = "CashBankBookGroupedToolStripMenuItem"
-        Me.CashBankBookGroupedToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBankBookGroupedToolStripMenuItem.Size = New System.Drawing.Size(324, 24)
         Me.CashBankBookGroupedToolStripMenuItem.Text = "Cash / Bank Book Grouped"
         '
         'CashBankBookPaymentDetailedToolStripMenuItem
         '
         Me.CashBankBookPaymentDetailedToolStripMenuItem.Name = "CashBankBookPaymentDetailedToolStripMenuItem"
-        Me.CashBankBookPaymentDetailedToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBankBookPaymentDetailedToolStripMenuItem.Size = New System.Drawing.Size(324, 24)
         Me.CashBankBookPaymentDetailedToolStripMenuItem.Text = "Cash / Bank Book Payment Detailed"
         '
         'CashBookBankBookToolStripMenuItem
         '
         Me.CashBookBankBookToolStripMenuItem.Name = "CashBookBankBookToolStripMenuItem"
-        Me.CashBookBankBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBookBankBookToolStripMenuItem.Size = New System.Drawing.Size(324, 24)
         Me.CashBookBankBookToolStripMenuItem.Text = "Cash Book / Bank Book (Day Wise)"
         '
         'DayBookCumCashBookToolStripMenuItem
         '
         Me.DayBookCumCashBookToolStripMenuItem.Name = "DayBookCumCashBookToolStripMenuItem"
-        Me.DayBookCumCashBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.DayBookCumCashBookToolStripMenuItem.Size = New System.Drawing.Size(324, 24)
         Me.DayBookCumCashBookToolStripMenuItem.Text = "Day Book cum Cash Book"
         '
         'CashBookCumBankBookToolStripMenuItem
         '
         Me.CashBookCumBankBookToolStripMenuItem.Name = "CashBookCumBankBookToolStripMenuItem"
-        Me.CashBookCumBankBookToolStripMenuItem.Size = New System.Drawing.Size(279, 22)
+        Me.CashBookCumBankBookToolStripMenuItem.Size = New System.Drawing.Size(324, 24)
         Me.CashBookCumBankBookToolStripMenuItem.Text = "Cash Book Cum Bank Book"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(304, 6)
         '
         'UgrahiRegisterToolStripMenuItem
         '
@@ -1138,7 +1141,7 @@ Partial Class MainScreenForm
         Me.UgrahiRegisterToolStripMenuItem.Name = "UgrahiRegisterToolStripMenuItem"
         Me.UgrahiRegisterToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
-        Me.UgrahiRegisterToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.UgrahiRegisterToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.UgrahiRegisterToolStripMenuItem.Text = "&Ugrahi Report"
         '
         'CollectionRegisterToolStripMenuItem
@@ -1147,20 +1150,20 @@ Partial Class MainScreenForm
         Me.CollectionRegisterToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.CollectionRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CollectionRegisterToolStripMenuItem.Name = "CollectionRegisterToolStripMenuItem"
-        Me.CollectionRegisterToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.CollectionRegisterToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.CollectionRegisterToolStripMenuItem.Text = "Collection Report"
         '
         'CollectionReportAllAccountsToolStripMenuItem
         '
         Me.CollectionReportAllAccountsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.CollectionReportAllAccountsToolStripMenuItem.Name = "CollectionReportAllAccountsToolStripMenuItem"
-        Me.CollectionReportAllAccountsToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.CollectionReportAllAccountsToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.CollectionReportAllAccountsToolStripMenuItem.Text = "Collection Report (All Accounts)"
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
-        Me.ToolStripSeparator9.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator9.Size = New System.Drawing.Size(304, 6)
         '
         'StockReportToolStripMenuItem1
         '
@@ -1169,57 +1172,57 @@ Partial Class MainScreenForm
         Me.StockReportToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.StockReportToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.StockReportToolStripMenuItem1.Name = "StockReportToolStripMenuItem1"
-        Me.StockReportToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.StockReportToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.StockReportToolStripMenuItem1.Text = "Stock Report"
         '
         'StockBalanceToolStripMenuItem1
         '
         Me.StockBalanceToolStripMenuItem1.Name = "StockBalanceToolStripMenuItem1"
-        Me.StockBalanceToolStripMenuItem1.Size = New System.Drawing.Size(214, 22)
+        Me.StockBalanceToolStripMenuItem1.Size = New System.Drawing.Size(243, 24)
         Me.StockBalanceToolStripMenuItem1.Text = "Stock Balance"
         '
         'LotWiseStockToolStripMenuItem1
         '
         Me.LotWiseStockToolStripMenuItem1.Name = "LotWiseStockToolStripMenuItem1"
-        Me.LotWiseStockToolStripMenuItem1.Size = New System.Drawing.Size(214, 22)
+        Me.LotWiseStockToolStripMenuItem1.Size = New System.Drawing.Size(243, 24)
         Me.LotWiseStockToolStripMenuItem1.Text = "Lot vs Store Wise Stock"
         '
         'VehicleWiseReportToolStripMenuItem
         '
         Me.VehicleWiseReportToolStripMenuItem.Name = "VehicleWiseReportToolStripMenuItem"
-        Me.VehicleWiseReportToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.VehicleWiseReportToolStripMenuItem.Size = New System.Drawing.Size(243, 24)
         Me.VehicleWiseReportToolStripMenuItem.Text = "Vehicle Wise Report"
         '
         'ToolStripSeparator10
         '
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(304, 6)
         '
         'SelloutBillsValueReportToolStripMenuItem
         '
         Me.SelloutBillsValueReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.SelloutBillsValueReportToolStripMenuItem.Name = "SelloutBillsValueReportToolStripMenuItem"
-        Me.SelloutBillsValueReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.SelloutBillsValueReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.SelloutBillsValueReportToolStripMenuItem.Text = "Sellout Bills Value Report"
         '
         'SupplierStatementToolStripMenuItem
         '
         Me.SupplierStatementToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.SupplierStatementToolStripMenuItem.Name = "SupplierStatementToolStripMenuItem"
-        Me.SupplierStatementToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.SupplierStatementToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.SupplierStatementToolStripMenuItem.Text = "Supplier Statement"
         '
         'SellOutPendingBillsToolStripMenuItem
         '
         Me.SellOutPendingBillsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.SellOutPendingBillsToolStripMenuItem.Name = "SellOutPendingBillsToolStripMenuItem"
-        Me.SellOutPendingBillsToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.SellOutPendingBillsToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.SellOutPendingBillsToolStripMenuItem.Text = "Sell Out Pending Bills"
         '
         'ToolStripSeparator11
         '
         Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
-        Me.ToolStripSeparator11.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator11.Size = New System.Drawing.Size(304, 6)
         '
         'OutstandingReportToolStripMenuItem
         '
@@ -1228,72 +1231,72 @@ Partial Class MainScreenForm
         Me.OutstandingReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.OutstandingReportToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.OutstandingReportToolStripMenuItem.Name = "OutstandingReportToolStripMenuItem"
-        Me.OutstandingReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.OutstandingReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.OutstandingReportToolStripMenuItem.Text = "Outstanding Report"
         '
         'OutstandingAccountToolStripMenuItem
         '
         Me.OutstandingAccountToolStripMenuItem.Name = "OutstandingAccountToolStripMenuItem"
         Me.OutstandingAccountToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.OutstandingAccountToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingAccountToolStripMenuItem.Size = New System.Drawing.Size(301, 24)
         Me.OutstandingAccountToolStripMenuItem.Text = "Outstanding Summary"
         '
         'AbsentAccountsListToolStripMenuItem
         '
         Me.AbsentAccountsListToolStripMenuItem.Name = "AbsentAccountsListToolStripMenuItem"
-        Me.AbsentAccountsListToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.AbsentAccountsListToolStripMenuItem.Size = New System.Drawing.Size(301, 24)
         Me.AbsentAccountsListToolStripMenuItem.Text = "Absent Accounts List"
         '
         'OutstandingRecievableToolStripMenuItem
         '
         Me.OutstandingRecievableToolStripMenuItem.Name = "OutstandingRecievableToolStripMenuItem"
         Me.OutstandingRecievableToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D1), System.Windows.Forms.Keys)
-        Me.OutstandingRecievableToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingRecievableToolStripMenuItem.Size = New System.Drawing.Size(301, 24)
         Me.OutstandingRecievableToolStripMenuItem.Text = "Outstanding (Recievable)"
         '
         'OutstandingPayableToolStripMenuItem
         '
         Me.OutstandingPayableToolStripMenuItem.Name = "OutstandingPayableToolStripMenuItem"
         Me.OutstandingPayableToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.D2), System.Windows.Forms.Keys)
-        Me.OutstandingPayableToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingPayableToolStripMenuItem.Size = New System.Drawing.Size(301, 24)
         Me.OutstandingPayableToolStripMenuItem.Text = "Outstanding (Payable)"
         '
         'OutstandingDayWiseToolStripMenuItem
         '
         Me.OutstandingDayWiseToolStripMenuItem.Name = "OutstandingDayWiseToolStripMenuItem"
-        Me.OutstandingDayWiseToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingDayWiseToolStripMenuItem.Size = New System.Drawing.Size(301, 24)
         Me.OutstandingDayWiseToolStripMenuItem.Text = "Outstanding (Day Wise)"
         '
         'OutstandingSelectedAccountingToolStripMenuItem
         '
         Me.OutstandingSelectedAccountingToolStripMenuItem.Name = "OutstandingSelectedAccountingToolStripMenuItem"
-        Me.OutstandingSelectedAccountingToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingSelectedAccountingToolStripMenuItem.Size = New System.Drawing.Size(301, 24)
         Me.OutstandingSelectedAccountingToolStripMenuItem.Text = "Outstanding (Selected Accounts)"
         '
         'OutstandingAmountToolStripMenuItem1
         '
         Me.OutstandingAmountToolStripMenuItem1.Name = "OutstandingAmountToolStripMenuItem1"
         Me.OutstandingAmountToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.OutstandingAmountToolStripMenuItem1.Size = New System.Drawing.Size(262, 22)
+        Me.OutstandingAmountToolStripMenuItem1.Size = New System.Drawing.Size(301, 24)
         Me.OutstandingAmountToolStripMenuItem1.Text = "Outstanding"
         '
         'ToolStripSeparator12
         '
         Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
-        Me.ToolStripSeparator12.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator12.Size = New System.Drawing.Size(304, 6)
         '
         'DailyReportsToolStripMenuItem
         '
         Me.DailyReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DayWiseSaleReportToolStripMenuItem, Me.ItemSummaryToolStripMenuItem1, Me.ITEMSUMMARYSelloutMannualToolStripMenuItem, Me.DaySummaryToolStripMenuItem1, Me.CustomerWiseSaleReportToolStripMenuItem1, Me.SupplierVsItemSummaryToolStripMenuItem, Me.DailyNakalToolStripMenuItem})
         Me.DailyReportsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.DailyReportsToolStripMenuItem.Name = "DailyReportsToolStripMenuItem"
-        Me.DailyReportsToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.DailyReportsToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.DailyReportsToolStripMenuItem.Text = "Daily Reports"
         '
         'DayWiseSaleReportToolStripMenuItem
         '
         Me.DayWiseSaleReportToolStripMenuItem.Name = "DayWiseSaleReportToolStripMenuItem"
-        Me.DayWiseSaleReportToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.DayWiseSaleReportToolStripMenuItem.Size = New System.Drawing.Size(304, 24)
         Me.DayWiseSaleReportToolStripMenuItem.Text = "Day Wise Sale Report"
         '
         'ItemSummaryToolStripMenuItem1
@@ -1301,13 +1304,13 @@ Partial Class MainScreenForm
         Me.ItemSummaryToolStripMenuItem1.Name = "ItemSummaryToolStripMenuItem1"
         Me.ItemSummaryToolStripMenuItem1.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
-        Me.ItemSummaryToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
+        Me.ItemSummaryToolStripMenuItem1.Size = New System.Drawing.Size(304, 24)
         Me.ItemSummaryToolStripMenuItem1.Text = "Item Summary"
         '
         'ITEMSUMMARYSelloutMannualToolStripMenuItem
         '
         Me.ITEMSUMMARYSelloutMannualToolStripMenuItem.Name = "ITEMSUMMARYSelloutMannualToolStripMenuItem"
-        Me.ITEMSUMMARYSelloutMannualToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.ITEMSUMMARYSelloutMannualToolStripMenuItem.Size = New System.Drawing.Size(304, 24)
         Me.ITEMSUMMARYSelloutMannualToolStripMenuItem.Text = "Item Summary (Sellout Mannual)"
         '
         'DaySummaryToolStripMenuItem1
@@ -1315,37 +1318,37 @@ Partial Class MainScreenForm
         Me.DaySummaryToolStripMenuItem1.Name = "DaySummaryToolStripMenuItem1"
         Me.DaySummaryToolStripMenuItem1.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.DaySummaryToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
+        Me.DaySummaryToolStripMenuItem1.Size = New System.Drawing.Size(304, 24)
         Me.DaySummaryToolStripMenuItem1.Text = "Day Summary"
         '
         'CustomerWiseSaleReportToolStripMenuItem1
         '
         Me.CustomerWiseSaleReportToolStripMenuItem1.Name = "CustomerWiseSaleReportToolStripMenuItem1"
-        Me.CustomerWiseSaleReportToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
+        Me.CustomerWiseSaleReportToolStripMenuItem1.Size = New System.Drawing.Size(304, 24)
         Me.CustomerWiseSaleReportToolStripMenuItem1.Text = "Customer Wise Sale Report"
         '
         'SupplierVsItemSummaryToolStripMenuItem
         '
         Me.SupplierVsItemSummaryToolStripMenuItem.Name = "SupplierVsItemSummaryToolStripMenuItem"
-        Me.SupplierVsItemSummaryToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.SupplierVsItemSummaryToolStripMenuItem.Size = New System.Drawing.Size(304, 24)
         Me.SupplierVsItemSummaryToolStripMenuItem.Text = "Supplier V/s Item Summary"
         '
         'DailyNakalToolStripMenuItem
         '
         Me.DailyNakalToolStripMenuItem.Name = "DailyNakalToolStripMenuItem"
         Me.DailyNakalToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F2), System.Windows.Forms.Keys)
-        Me.DailyNakalToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.DailyNakalToolStripMenuItem.Size = New System.Drawing.Size(304, 24)
         Me.DailyNakalToolStripMenuItem.Text = "Daily Nakal"
         '
         'ToolStripSeparator14
         '
         Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
-        Me.ToolStripSeparator14.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(304, 6)
         '
         'AccountMonthlySummaryToolStripMenuItem
         '
         Me.AccountMonthlySummaryToolStripMenuItem.Name = "AccountMonthlySummaryToolStripMenuItem"
-        Me.AccountMonthlySummaryToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.AccountMonthlySummaryToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.AccountMonthlySummaryToolStripMenuItem.Text = "Account Monthly Summary"
         '
         'ScripProfitReportToolStripMenuItem1
@@ -1354,47 +1357,47 @@ Partial Class MainScreenForm
         Me.ScripProfitReportToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.ScripProfitReportToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.ScripProfitReportToolStripMenuItem1.Name = "ScripProfitReportToolStripMenuItem1"
-        Me.ScripProfitReportToolStripMenuItem1.Size = New System.Drawing.Size(261, 24)
+        Me.ScripProfitReportToolStripMenuItem1.Size = New System.Drawing.Size(307, 26)
         Me.ScripProfitReportToolStripMenuItem1.Text = "Sellout profitability Report"
         '
         'OnSaleProfitReportToolStripMenuItem
         '
         Me.OnSaleProfitReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.OnSaleProfitReportToolStripMenuItem.Name = "OnSaleProfitReportToolStripMenuItem"
-        Me.OnSaleProfitReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.OnSaleProfitReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.OnSaleProfitReportToolStripMenuItem.Text = "On Sale profitability Report"
         '
         'LooseSaleReportToolStripMenuItem
         '
         Me.LooseSaleReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.LooseSaleReportToolStripMenuItem.Name = "LooseSaleReportToolStripMenuItem"
-        Me.LooseSaleReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.LooseSaleReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.LooseSaleReportToolStripMenuItem.Text = "Loose Sale profitability Report"
         '
         'ToolStripSeparator13
         '
         Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(258, 6)
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(304, 6)
         '
         'MarketFeesReportToolStripMenuItem
         '
         Me.MarketFeesReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.MarketFeesReportToolStripMenuItem.Name = "MarketFeesReportToolStripMenuItem"
-        Me.MarketFeesReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.MarketFeesReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.MarketFeesReportToolStripMenuItem.Text = "Market Fees Report"
         '
         'BIllOfSupplyProfitabilityToolStripMenuItem
         '
         Me.BIllOfSupplyProfitabilityToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.BIllOfSupplyProfitabilityToolStripMenuItem.Name = "BIllOfSupplyProfitabilityToolStripMenuItem"
-        Me.BIllOfSupplyProfitabilityToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.BIllOfSupplyProfitabilityToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.BIllOfSupplyProfitabilityToolStripMenuItem.Text = "BIll of Supply Profitability"
         '
         'StockSellerReportToolStripMenuItem
         '
         Me.StockSellerReportToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.StockSellerReportToolStripMenuItem.Name = "StockSellerReportToolStripMenuItem"
-        Me.StockSellerReportToolStripMenuItem.Size = New System.Drawing.Size(261, 24)
+        Me.StockSellerReportToolStripMenuItem.Size = New System.Drawing.Size(307, 26)
         Me.StockSellerReportToolStripMenuItem.Text = "Seller Day Book"
         '
         'CrateManagerToolStripMenuItem1
@@ -1403,7 +1406,7 @@ Partial Class MainScreenForm
         Me.CrateManagerToolStripMenuItem1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CrateManagerToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.CrateManagerToolStripMenuItem1.Name = "CrateManagerToolStripMenuItem1"
-        Me.CrateManagerToolStripMenuItem1.Size = New System.Drawing.Size(113, 44)
+        Me.CrateManagerToolStripMenuItem1.Size = New System.Drawing.Size(139, 55)
         Me.CrateManagerToolStripMenuItem1.Text = "Crate Manager"
         '
         'CrateOutRegisterToolStripMenuItem1
@@ -1411,7 +1414,7 @@ Partial Class MainScreenForm
         Me.CrateOutRegisterToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control
         Me.CrateOutRegisterToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.CrateOutRegisterToolStripMenuItem1.Name = "CrateOutRegisterToolStripMenuItem1"
-        Me.CrateOutRegisterToolStripMenuItem1.Size = New System.Drawing.Size(353, 24)
+        Me.CrateOutRegisterToolStripMenuItem1.Size = New System.Drawing.Size(440, 26)
         Me.CrateOutRegisterToolStripMenuItem1.Text = "Crate Out (Receivable) Register"
         '
         'CrateInRecievedRegisterToolStripMenuItem
@@ -1419,20 +1422,20 @@ Partial Class MainScreenForm
         Me.CrateInRecievedRegisterToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.CrateInRecievedRegisterToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateInRecievedRegisterToolStripMenuItem.Name = "CrateInRecievedRegisterToolStripMenuItem"
-        Me.CrateInRecievedRegisterToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CrateInRecievedRegisterToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CrateInRecievedRegisterToolStripMenuItem.Text = "Crate In ( Received ) Register"
         '
         'ToolStripSeparator21
         '
         Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
-        Me.ToolStripSeparator21.Size = New System.Drawing.Size(350, 6)
+        Me.ToolStripSeparator21.Size = New System.Drawing.Size(437, 6)
         '
         'CrateLedgerAccountWiseToolStripMenuItem
         '
         Me.CrateLedgerAccountWiseToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.CrateLedgerAccountWiseToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateLedgerAccountWiseToolStripMenuItem.Name = "CrateLedgerAccountWiseToolStripMenuItem"
-        Me.CrateLedgerAccountWiseToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CrateLedgerAccountWiseToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CrateLedgerAccountWiseToolStripMenuItem.Text = "Crate Ledger (Account Wise)"
         '
         'CrateMarkaLedgerToolStripMenuItem
@@ -1440,13 +1443,13 @@ Partial Class MainScreenForm
         Me.CrateMarkaLedgerToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.CrateMarkaLedgerToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateMarkaLedgerToolStripMenuItem.Name = "CrateMarkaLedgerToolStripMenuItem"
-        Me.CrateMarkaLedgerToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CrateMarkaLedgerToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CrateMarkaLedgerToolStripMenuItem.Text = "Crate Ledger (Marka Wise)"
         '
         'ToolStripSeparator22
         '
         Me.ToolStripSeparator22.Name = "ToolStripSeparator22"
-        Me.ToolStripSeparator22.Size = New System.Drawing.Size(350, 6)
+        Me.ToolStripSeparator22.Size = New System.Drawing.Size(437, 6)
         '
         'CrateReciveableTotalToolStripMenuItem1
         '
@@ -1454,38 +1457,38 @@ Partial Class MainScreenForm
         Me.CrateReciveableTotalToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.CrateReciveableTotalToolStripMenuItem1.Name = "CrateReciveableTotalToolStripMenuItem1"
         Me.CrateReciveableTotalToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.F12), System.Windows.Forms.Keys)
-        Me.CrateReciveableTotalToolStripMenuItem1.Size = New System.Drawing.Size(353, 24)
+        Me.CrateReciveableTotalToolStripMenuItem1.Size = New System.Drawing.Size(440, 26)
         Me.CrateReciveableTotalToolStripMenuItem1.Text = "Crate Reciveable Total (To Be In)"
         '
         'CratePayableTotalToolStripMenuItem
         '
         Me.CratePayableTotalToolStripMenuItem.Name = "CratePayableTotalToolStripMenuItem"
-        Me.CratePayableTotalToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CratePayableTotalToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CratePayableTotalToolStripMenuItem.Text = "Crate Payable Total (To Be Out)"
         '
         'ToolStripSeparator23
         '
         Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
-        Me.ToolStripSeparator23.Size = New System.Drawing.Size(350, 6)
+        Me.ToolStripSeparator23.Size = New System.Drawing.Size(437, 6)
         '
         'CrateOutstandingToolStripMenuItem1
         '
         Me.CrateOutstandingToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control
         Me.CrateOutstandingToolStripMenuItem1.ForeColor = System.Drawing.Color.Black
         Me.CrateOutstandingToolStripMenuItem1.Name = "CrateOutstandingToolStripMenuItem1"
-        Me.CrateOutstandingToolStripMenuItem1.Size = New System.Drawing.Size(353, 24)
+        Me.CrateOutstandingToolStripMenuItem1.Size = New System.Drawing.Size(440, 26)
         Me.CrateOutstandingToolStripMenuItem1.Text = "Crate Outstanding"
         '
         'CrateWiseOutstandingToolStripMenuItem
         '
         Me.CrateWiseOutstandingToolStripMenuItem.Name = "CrateWiseOutstandingToolStripMenuItem"
-        Me.CrateWiseOutstandingToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CrateWiseOutstandingToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CrateWiseOutstandingToolStripMenuItem.Text = "Crate Wise Outstanding"
         '
         'ToolStripSeparator24
         '
         Me.ToolStripSeparator24.Name = "ToolStripSeparator24"
-        Me.ToolStripSeparator24.Size = New System.Drawing.Size(350, 6)
+        Me.ToolStripSeparator24.Size = New System.Drawing.Size(437, 6)
         '
         'CrateAccountCumMarkaLedgerToolStripMenuItem
         '
@@ -1493,7 +1496,7 @@ Partial Class MainScreenForm
         Me.CrateAccountCumMarkaLedgerToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateAccountCumMarkaLedgerToolStripMenuItem.Name = "CrateAccountCumMarkaLedgerToolStripMenuItem"
         Me.CrateAccountCumMarkaLedgerToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
-        Me.CrateAccountCumMarkaLedgerToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CrateAccountCumMarkaLedgerToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CrateAccountCumMarkaLedgerToolStripMenuItem.Text = "Crate Account Cum Marka Ledger"
         '
         'CrateSummaryToolStripMenuItem
@@ -1501,16 +1504,16 @@ Partial Class MainScreenForm
         Me.CrateSummaryToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.CrateSummaryToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CrateSummaryToolStripMenuItem.Name = "CrateSummaryToolStripMenuItem"
-        Me.CrateSummaryToolStripMenuItem.Size = New System.Drawing.Size(353, 24)
+        Me.CrateSummaryToolStripMenuItem.Size = New System.Drawing.Size(440, 26)
         Me.CrateSummaryToolStripMenuItem.Text = "Crate Summary"
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilityToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.ToolStripSeparator35, Me.ChargesSettingToolStripMenuItem, Me.ToolStripSeparator25, Me.SMSTempletesToolStripMenuItem, Me.ToolStripSeparator26, Me.RunSqliteQueryToolStripMenuItem, Me.UpdateCompanyInfoOnServerToolStripMenuItem, Me.ToolStripSeparator27, Me.AuthorisedPersonOnlyToolStripMenuItem, Me.ToolStripSeparator28, Me.MergeAccountsToolStripMenuItem, Me.ToolStripSeparator29, Me.PartyWiseRateToolStripMenuItem, Me.OtherNameTranslatorToolStripMenuItem, Me.SpeedSaleDateCorrectionToolStripMenuItem, Me.RerarangeInvoiceNoToolStripMenuItem, Me.CreateIndexToolStripMenuItem, Me.WhatsappConfigrationUnofficialToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UtilityToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.ToolStripSeparator35, Me.ChargesSettingToolStripMenuItem, Me.ToolStripSeparator25, Me.ToolStripSeparator26, Me.RunSqliteQueryToolStripMenuItem, Me.UpdateCompanyInfoOnServerToolStripMenuItem, Me.ToolStripSeparator27, Me.AuthorisedPersonOnlyToolStripMenuItem, Me.ToolStripSeparator28, Me.MergeAccountsToolStripMenuItem, Me.ToolStripSeparator29, Me.PartyWiseRateToolStripMenuItem, Me.OtherNameTranslatorToolStripMenuItem, Me.SpeedSaleDateCorrectionToolStripMenuItem, Me.RerarangeInvoiceNoToolStripMenuItem, Me.CreateIndexToolStripMenuItem, Me.WhatsappConfigrationUnofficialToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(54, 44)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(67, 55)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'UtilityToolStripMenuItem
@@ -1519,67 +1522,67 @@ Partial Class MainScreenForm
         Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateCutEntriesToolStripMenuItem, Me.UpdateStorageInTransToolStripMenuItem, Me.UpdateJoinBillOptionToolStripMenuItem, Me.TestSelloutToolStripMenuItem, Me.UpdateViewsAndPrintingTableToolStripMenuItem, Me.TestBalanceToolStripMenuItem, Me.TestCashBookToolStripMenuItem, Me.TestCombineReportsToolStripMenuItem, Me.SettleLedgerToolStripMenuItem, Me.TestAccountsToolStripMenuItem})
         Me.UtilityToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.UtilityToolStripMenuItem.Name = "UtilityToolStripMenuItem"
-        Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.UtilityToolStripMenuItem.Text = "Utility"
         '
         'UpdateCutEntriesToolStripMenuItem
         '
         Me.UpdateCutEntriesToolStripMenuItem.Name = "UpdateCutEntriesToolStripMenuItem"
-        Me.UpdateCutEntriesToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.UpdateCutEntriesToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.UpdateCutEntriesToolStripMenuItem.Text = "Update Cut Entries"
         '
         'UpdateStorageInTransToolStripMenuItem
         '
         Me.UpdateStorageInTransToolStripMenuItem.Name = "UpdateStorageInTransToolStripMenuItem"
-        Me.UpdateStorageInTransToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.UpdateStorageInTransToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.UpdateStorageInTransToolStripMenuItem.Text = "Update Storage in Trans"
         '
         'UpdateJoinBillOptionToolStripMenuItem
         '
         Me.UpdateJoinBillOptionToolStripMenuItem.Name = "UpdateJoinBillOptionToolStripMenuItem"
-        Me.UpdateJoinBillOptionToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.UpdateJoinBillOptionToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.UpdateJoinBillOptionToolStripMenuItem.Text = "Update Join Rate Option"
         '
         'TestSelloutToolStripMenuItem
         '
         Me.TestSelloutToolStripMenuItem.Name = "TestSelloutToolStripMenuItem"
-        Me.TestSelloutToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.TestSelloutToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.TestSelloutToolStripMenuItem.Text = "Test Sellout"
         '
         'UpdateViewsAndPrintingTableToolStripMenuItem
         '
         Me.UpdateViewsAndPrintingTableToolStripMenuItem.Name = "UpdateViewsAndPrintingTableToolStripMenuItem"
-        Me.UpdateViewsAndPrintingTableToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.UpdateViewsAndPrintingTableToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.UpdateViewsAndPrintingTableToolStripMenuItem.Text = "Update Views And Printing Table "
         '
         'TestBalanceToolStripMenuItem
         '
         Me.TestBalanceToolStripMenuItem.Name = "TestBalanceToolStripMenuItem"
-        Me.TestBalanceToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.TestBalanceToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.TestBalanceToolStripMenuItem.Text = "Test Balance"
         '
         'TestCashBookToolStripMenuItem
         '
         Me.TestCashBookToolStripMenuItem.Name = "TestCashBookToolStripMenuItem"
-        Me.TestCashBookToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.TestCashBookToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.TestCashBookToolStripMenuItem.Text = "Test Cash Book"
         '
         'TestCombineReportsToolStripMenuItem
         '
         Me.TestCombineReportsToolStripMenuItem.Name = "TestCombineReportsToolStripMenuItem"
-        Me.TestCombineReportsToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.TestCombineReportsToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.TestCombineReportsToolStripMenuItem.Text = "Test Combine Reports"
         '
         'SettleLedgerToolStripMenuItem
         '
         Me.SettleLedgerToolStripMenuItem.Name = "SettleLedgerToolStripMenuItem"
-        Me.SettleLedgerToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.SettleLedgerToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.SettleLedgerToolStripMenuItem.Text = "Settle Ledger"
         '
         'TestAccountsToolStripMenuItem
         '
         Me.TestAccountsToolStripMenuItem.Name = "TestAccountsToolStripMenuItem"
-        Me.TestAccountsToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.TestAccountsToolStripMenuItem.Size = New System.Drawing.Size(350, 26)
         Me.TestAccountsToolStripMenuItem.Text = "Test Accounts"
         '
         'OptionsToolStripMenuItem
@@ -1588,114 +1591,114 @@ Partial Class MainScreenForm
         Me.OptionsToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
         Me.OptionsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'ToolStripSeparator35
         '
         Me.ToolStripSeparator35.Name = "ToolStripSeparator35"
-        Me.ToolStripSeparator35.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator35.Size = New System.Drawing.Size(330, 6)
         '
         'ChargesSettingToolStripMenuItem
         '
         Me.ChargesSettingToolStripMenuItem.Name = "ChargesSettingToolStripMenuItem"
-        Me.ChargesSettingToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.ChargesSettingToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.ChargesSettingToolStripMenuItem.Text = "Charges Setting"
         '
         'ToolStripSeparator25
         '
         Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
-        Me.ToolStripSeparator25.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator25.Size = New System.Drawing.Size(330, 6)
         '
         'SMSTempletesToolStripMenuItem
         '
         Me.SMSTempletesToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.SMSTempletesToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SMSTempletesToolStripMenuItem.Name = "SMSTempletesToolStripMenuItem"
-        Me.SMSTempletesToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.SMSTempletesToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.SMSTempletesToolStripMenuItem.Text = "SMS Templetes"
         '
         'ToolStripSeparator26
         '
         Me.ToolStripSeparator26.Name = "ToolStripSeparator26"
-        Me.ToolStripSeparator26.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator26.Size = New System.Drawing.Size(330, 6)
         '
         'RunSqliteQueryToolStripMenuItem
         '
         Me.RunSqliteQueryToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.RunSqliteQueryToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.RunSqliteQueryToolStripMenuItem.Name = "RunSqliteQueryToolStripMenuItem"
-        Me.RunSqliteQueryToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.RunSqliteQueryToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.RunSqliteQueryToolStripMenuItem.Text = "Run Sqlite Query"
         '
         'UpdateCompanyInfoOnServerToolStripMenuItem
         '
         Me.UpdateCompanyInfoOnServerToolStripMenuItem.Name = "UpdateCompanyInfoOnServerToolStripMenuItem"
-        Me.UpdateCompanyInfoOnServerToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.UpdateCompanyInfoOnServerToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.UpdateCompanyInfoOnServerToolStripMenuItem.Text = "Update Company Info on Server"
         '
         'ToolStripSeparator27
         '
         Me.ToolStripSeparator27.Name = "ToolStripSeparator27"
-        Me.ToolStripSeparator27.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator27.Size = New System.Drawing.Size(330, 6)
         '
         'AuthorisedPersonOnlyToolStripMenuItem
         '
         Me.AuthorisedPersonOnlyToolStripMenuItem.Name = "AuthorisedPersonOnlyToolStripMenuItem"
-        Me.AuthorisedPersonOnlyToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.AuthorisedPersonOnlyToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.AuthorisedPersonOnlyToolStripMenuItem.Text = "Authorised Person Only"
         '
         'ToolStripSeparator28
         '
         Me.ToolStripSeparator28.Name = "ToolStripSeparator28"
-        Me.ToolStripSeparator28.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator28.Size = New System.Drawing.Size(330, 6)
         '
         'MergeAccountsToolStripMenuItem
         '
         Me.MergeAccountsToolStripMenuItem.Name = "MergeAccountsToolStripMenuItem"
-        Me.MergeAccountsToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.MergeAccountsToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.MergeAccountsToolStripMenuItem.Text = "Merge Accounts"
         '
         'ToolStripSeparator29
         '
         Me.ToolStripSeparator29.Name = "ToolStripSeparator29"
-        Me.ToolStripSeparator29.Size = New System.Drawing.Size(274, 6)
+        Me.ToolStripSeparator29.Size = New System.Drawing.Size(330, 6)
         '
         'PartyWiseRateToolStripMenuItem
         '
         Me.PartyWiseRateToolStripMenuItem.Name = "PartyWiseRateToolStripMenuItem"
-        Me.PartyWiseRateToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.PartyWiseRateToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.PartyWiseRateToolStripMenuItem.Text = "Account Wise Rate"
+        '
+        'OtherNameTranslatorToolStripMenuItem
+        '
+        Me.OtherNameTranslatorToolStripMenuItem.Name = "OtherNameTranslatorToolStripMenuItem"
+        Me.OtherNameTranslatorToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
+        Me.OtherNameTranslatorToolStripMenuItem.Text = "OtherName Translator"
+        '
+        'SpeedSaleDateCorrectionToolStripMenuItem
+        '
+        Me.SpeedSaleDateCorrectionToolStripMenuItem.Name = "SpeedSaleDateCorrectionToolStripMenuItem"
+        Me.SpeedSaleDateCorrectionToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
+        Me.SpeedSaleDateCorrectionToolStripMenuItem.Text = "Speed Sale Date Correction"
         '
         'RerarangeInvoiceNoToolStripMenuItem
         '
         Me.RerarangeInvoiceNoToolStripMenuItem.Name = "RerarangeInvoiceNoToolStripMenuItem"
-        Me.RerarangeInvoiceNoToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.RerarangeInvoiceNoToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.RerarangeInvoiceNoToolStripMenuItem.Text = "Rerarange Invoice Numbers"
         '
         'CreateIndexToolStripMenuItem
         '
         Me.CreateIndexToolStripMenuItem.Name = "CreateIndexToolStripMenuItem"
-        Me.CreateIndexToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.CreateIndexToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.CreateIndexToolStripMenuItem.Text = "Boost Up"
         '
         'WhatsappConfigrationUnofficialToolStripMenuItem
         '
         Me.WhatsappConfigrationUnofficialToolStripMenuItem.Name = "WhatsappConfigrationUnofficialToolStripMenuItem"
-        Me.WhatsappConfigrationUnofficialToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
+        Me.WhatsappConfigrationUnofficialToolStripMenuItem.Size = New System.Drawing.Size(333, 26)
         Me.WhatsappConfigrationUnofficialToolStripMenuItem.Text = "Whatsapp Configration"
-        '
-        'SpeedSaleDateCorrectionToolStripMenuItem
-        '
-        Me.SpeedSaleDateCorrectionToolStripMenuItem.Name = "SpeedSaleDateCorrectionToolStripMenuItem"
-        Me.SpeedSaleDateCorrectionToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
-        Me.SpeedSaleDateCorrectionToolStripMenuItem.Text = "Speed Sale Date Correction"
-        '
-        'OtherNameTranslatorToolStripMenuItem
-        '
-        Me.OtherNameTranslatorToolStripMenuItem.Name = "OtherNameTranslatorToolStripMenuItem"
-        Me.OtherNameTranslatorToolStripMenuItem.Size = New System.Drawing.Size(277, 24)
-        Me.OtherNameTranslatorToolStripMenuItem.Text = "OtherName Translator"
         '
         'HelpToolStripMenuItem
         '
@@ -1703,7 +1706,7 @@ Partial Class MainScreenForm
         Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HelpToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(50, 44)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(61, 55)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'RemoteSupportToolStripMenuItem
@@ -1712,26 +1715,26 @@ Partial Class MainScreenForm
         Me.RemoteSupportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TeamViewerQSToolStripMenuItem, Me.AnyDeskToolStripMenuItem, Me.AmmyAdminToolStripMenuItem})
         Me.RemoteSupportToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.RemoteSupportToolStripMenuItem.Name = "RemoteSupportToolStripMenuItem"
-        Me.RemoteSupportToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.RemoteSupportToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.RemoteSupportToolStripMenuItem.Text = "&Remote Support"
         '
         'TeamViewerQSToolStripMenuItem
         '
         Me.TeamViewerQSToolStripMenuItem.Name = "TeamViewerQSToolStripMenuItem"
         Me.TeamViewerQSToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11
-        Me.TeamViewerQSToolStripMenuItem.Size = New System.Drawing.Size(213, 24)
+        Me.TeamViewerQSToolStripMenuItem.Size = New System.Drawing.Size(253, 26)
         Me.TeamViewerQSToolStripMenuItem.Text = "&Team Viewer Qs"
         '
         'AnyDeskToolStripMenuItem
         '
         Me.AnyDeskToolStripMenuItem.Name = "AnyDeskToolStripMenuItem"
-        Me.AnyDeskToolStripMenuItem.Size = New System.Drawing.Size(213, 24)
+        Me.AnyDeskToolStripMenuItem.Size = New System.Drawing.Size(253, 26)
         Me.AnyDeskToolStripMenuItem.Text = "&Any Desk"
         '
         'AmmyAdminToolStripMenuItem
         '
         Me.AmmyAdminToolStripMenuItem.Name = "AmmyAdminToolStripMenuItem"
-        Me.AmmyAdminToolStripMenuItem.Size = New System.Drawing.Size(213, 24)
+        Me.AmmyAdminToolStripMenuItem.Size = New System.Drawing.Size(253, 26)
         Me.AmmyAdminToolStripMenuItem.Text = "A&mmy Admin"
         '
         'CalculatorToolStripMenuItem
@@ -1740,37 +1743,37 @@ Partial Class MainScreenForm
         Me.CalculatorToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CalculatorToolStripMenuItem.Name = "CalculatorToolStripMenuItem"
         Me.CalculatorToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12
-        Me.CalculatorToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.CalculatorToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.CalculatorToolStripMenuItem.Text = "Calculator"
         '
         'RegistrationRevokeToolStripMenuItem
         '
         Me.RegistrationRevokeToolStripMenuItem.Name = "RegistrationRevokeToolStripMenuItem"
-        Me.RegistrationRevokeToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.RegistrationRevokeToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.RegistrationRevokeToolStripMenuItem.Text = "Registration / Revoke"
         '
         'TestBalanceSheetToolStripMenuItem
         '
         Me.TestBalanceSheetToolStripMenuItem.Name = "TestBalanceSheetToolStripMenuItem"
-        Me.TestBalanceSheetToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.TestBalanceSheetToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.TestBalanceSheetToolStripMenuItem.Text = "Test Balance Sheet"
         '
         'SystemInfoToolStripMenuItem
         '
         Me.SystemInfoToolStripMenuItem.Name = "SystemInfoToolStripMenuItem"
-        Me.SystemInfoToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.SystemInfoToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.SystemInfoToolStripMenuItem.Text = "System Info"
         '
         'LicenceInfoToolStripMenuItem
         '
         Me.LicenceInfoToolStripMenuItem.Name = "LicenceInfoToolStripMenuItem"
-        Me.LicenceInfoToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.LicenceInfoToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.LicenceInfoToolStripMenuItem.Text = "Licence Info"
         '
         'UpdateEasyWhatsappToolStripMenuItem
         '
         Me.UpdateEasyWhatsappToolStripMenuItem.Name = "UpdateEasyWhatsappToolStripMenuItem"
-        Me.UpdateEasyWhatsappToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
+        Me.UpdateEasyWhatsappToolStripMenuItem.Size = New System.Drawing.Size(262, 26)
         Me.UpdateEasyWhatsappToolStripMenuItem.Text = "Update Easy Whatsapp"
         '
         'MobileAppToolStripMenuItem
@@ -1778,7 +1781,7 @@ Partial Class MainScreenForm
         Me.MobileAppToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MobileAppToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.MobileAppToolStripMenuItem.Name = "MobileAppToolStripMenuItem"
-        Me.MobileAppToolStripMenuItem.Size = New System.Drawing.Size(94, 44)
+        Me.MobileAppToolStripMenuItem.Size = New System.Drawing.Size(118, 55)
         Me.MobileAppToolStripMenuItem.Text = "Mobile App"
         Me.MobileAppToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         '
@@ -1786,7 +1789,7 @@ Partial Class MainScreenForm
         '
         Me.ImportFromServerToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ImportFromServerToolStripMenuItem.Name = "ImportFromServerToolStripMenuItem"
-        Me.ImportFromServerToolStripMenuItem.Size = New System.Drawing.Size(176, 44)
+        Me.ImportFromServerToolStripMenuItem.Size = New System.Drawing.Size(222, 55)
         Me.ImportFromServerToolStripMenuItem.Text = "Import From Mobile App"
         Me.ImportFromServerToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         '
@@ -1795,19 +1798,19 @@ Partial Class MainScreenForm
         Me.ComplaintsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddComplaintToolStripMenuItem, Me.ComplaintListToolStripMenuItem})
         Me.ComplaintsToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComplaintsToolStripMenuItem.Name = "ComplaintsToolStripMenuItem"
-        Me.ComplaintsToolStripMenuItem.Size = New System.Drawing.Size(127, 44)
+        Me.ComplaintsToolStripMenuItem.Size = New System.Drawing.Size(161, 55)
         Me.ComplaintsToolStripMenuItem.Text = "Complaint (New)"
         '
         'AddComplaintToolStripMenuItem
         '
         Me.AddComplaintToolStripMenuItem.Name = "AddComplaintToolStripMenuItem"
-        Me.AddComplaintToolStripMenuItem.Size = New System.Drawing.Size(171, 24)
+        Me.AddComplaintToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.AddComplaintToolStripMenuItem.Text = "Add Complaint"
         '
         'ComplaintListToolStripMenuItem
         '
         Me.ComplaintListToolStripMenuItem.Name = "ComplaintListToolStripMenuItem"
-        Me.ComplaintListToolStripMenuItem.Size = New System.Drawing.Size(171, 24)
+        Me.ComplaintListToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.ComplaintListToolStripMenuItem.Text = "Complaint List"
         '
         'SMSConfigrationToolStripMenuItem
@@ -1815,7 +1818,7 @@ Partial Class MainScreenForm
         Me.SMSConfigrationToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SMSConfigrationToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SMSConfigrationToolStripMenuItem.Name = "SMSConfigrationToolStripMenuItem"
-        Me.SMSConfigrationToolStripMenuItem.Size = New System.Drawing.Size(119, 44)
+        Me.SMSConfigrationToolStripMenuItem.Size = New System.Drawing.Size(155, 55)
         Me.SMSConfigrationToolStripMenuItem.Text = "SMS Configration"
         Me.SMSConfigrationToolStripMenuItem.Visible = False
         '
@@ -1823,7 +1826,7 @@ Partial Class MainScreenForm
         '
         Me.CheckForUpdateToolStripMenuItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.CheckForUpdateToolStripMenuItem.Name = "CheckForUpdateToolStripMenuItem"
-        Me.CheckForUpdateToolStripMenuItem.Size = New System.Drawing.Size(136, 44)
+        Me.CheckForUpdateToolStripMenuItem.Size = New System.Drawing.Size(165, 55)
         Me.CheckForUpdateToolStripMenuItem.Text = "Check For Update"
         Me.CheckForUpdateToolStripMenuItem.Visible = False
         '
@@ -1834,13 +1837,13 @@ Partial Class MainScreenForm
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.Label1.Font = New System.Drawing.Font("BlackChancery", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(1172, -1)
+        Me.Label1.Location = New System.Drawing.Point(0, -1)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(133, 47)
+        Me.Label1.Size = New System.Drawing.Size(229, 61)
         Me.Label1.TabIndex = 87
         Me.Label1.Text = "Aadhat"
         '
@@ -1850,9 +1853,10 @@ Partial Class MainScreenForm
         Me.lblBuildVersion.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.lblBuildVersion.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblBuildVersion.ForeColor = System.Drawing.Color.White
-        Me.lblBuildVersion.Location = New System.Drawing.Point(1295, 0)
+        Me.lblBuildVersion.Location = New System.Drawing.Point(149, 0)
+        Me.lblBuildVersion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBuildVersion.Name = "lblBuildVersion"
-        Me.lblBuildVersion.Size = New System.Drawing.Size(37, 14)
+        Me.lblBuildVersion.Size = New System.Drawing.Size(44, 16)
         Me.lblBuildVersion.TabIndex = 88
         Me.lblBuildVersion.Text = "26.0.0"
         '
@@ -1865,9 +1869,10 @@ Partial Class MainScreenForm
         Me.Button23.ForeColor = System.Drawing.Color.Red
         Me.Button23.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button23.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Button23.Location = New System.Drawing.Point(1198, 685)
+        Me.Button23.Location = New System.Drawing.Point(0, 843)
+        Me.Button23.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button23.Name = "Button23"
-        Me.Button23.Size = New System.Drawing.Size(171, 26)
+        Me.Button23.Size = New System.Drawing.Size(228, 32)
         Me.Button23.TabIndex = 85
         Me.Button23.Text = "Exit"
         Me.Button23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1879,9 +1884,10 @@ Partial Class MainScreenForm
         Me.Label21.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.Label21.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(1277, 31)
+        Me.Label21.Location = New System.Drawing.Point(73, 41)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(66, 15)
+        Me.Label21.Size = New System.Drawing.Size(85, 19)
         Me.Label21.TabIndex = 89
         Me.Label21.Text = "Let's Easy.."
         '
@@ -1897,9 +1903,10 @@ Partial Class MainScreenForm
         Me.btnStdSaleRegister.ForeColor = System.Drawing.Color.Black
         Me.btnStdSaleRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnStdSaleRegister.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnStdSaleRegister.Location = New System.Drawing.Point(1198, 484)
+        Me.btnStdSaleRegister.Location = New System.Drawing.Point(0, 596)
+        Me.btnStdSaleRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnStdSaleRegister.Name = "btnStdSaleRegister"
-        Me.btnStdSaleRegister.Size = New System.Drawing.Size(171, 30)
+        Me.btnStdSaleRegister.Size = New System.Drawing.Size(228, 37)
         Me.btnStdSaleRegister.TabIndex = 92
         Me.btnStdSaleRegister.Text = "Std Sale Register"
         Me.btnStdSaleRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1917,9 +1924,10 @@ Partial Class MainScreenForm
         Me.btnStandardSale.ForeColor = System.Drawing.Color.Black
         Me.btnStandardSale.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnStandardSale.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnStandardSale.Location = New System.Drawing.Point(1198, 455)
+        Me.btnStandardSale.Location = New System.Drawing.Point(0, 560)
+        Me.btnStandardSale.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnStandardSale.Name = "btnStandardSale"
-        Me.btnStandardSale.Size = New System.Drawing.Size(171, 30)
+        Me.btnStandardSale.Size = New System.Drawing.Size(228, 37)
         Me.btnStandardSale.TabIndex = 91
         Me.btnStandardSale.Text = "Std Sale [Ctrl+T]"
         Me.btnStandardSale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1937,9 +1945,10 @@ Partial Class MainScreenForm
         Me.btnOutStanding.ForeColor = System.Drawing.Color.Black
         Me.btnOutStanding.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnOutStanding.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnOutStanding.Location = New System.Drawing.Point(1198, 656)
+        Me.btnOutStanding.Location = New System.Drawing.Point(0, 807)
+        Me.btnOutStanding.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnOutStanding.Name = "btnOutStanding"
-        Me.btnOutStanding.Size = New System.Drawing.Size(171, 30)
+        Me.btnOutStanding.Size = New System.Drawing.Size(228, 37)
         Me.btnOutStanding.TabIndex = 84
         Me.btnOutStanding.Text = "Outstanding [Ctrl+Y]"
         Me.btnOutStanding.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1957,9 +1966,10 @@ Partial Class MainScreenForm
         Me.BtnBillPrints.ForeColor = System.Drawing.Color.Black
         Me.BtnBillPrints.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnBillPrints.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnBillPrints.Location = New System.Drawing.Point(1198, 627)
+        Me.BtnBillPrints.Location = New System.Drawing.Point(0, 772)
+        Me.BtnBillPrints.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnBillPrints.Name = "BtnBillPrints"
-        Me.BtnBillPrints.Size = New System.Drawing.Size(171, 30)
+        Me.BtnBillPrints.Size = New System.Drawing.Size(228, 37)
         Me.BtnBillPrints.TabIndex = 82
         Me.BtnBillPrints.Text = "Bill Prints [Ctrl+P]"
         Me.BtnBillPrints.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1977,9 +1987,10 @@ Partial Class MainScreenForm
         Me.BtnLedger.ForeColor = System.Drawing.Color.Black
         Me.BtnLedger.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnLedger.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnLedger.Location = New System.Drawing.Point(1198, 599)
+        Me.BtnLedger.Location = New System.Drawing.Point(0, 737)
+        Me.BtnLedger.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnLedger.Name = "BtnLedger"
-        Me.BtnLedger.Size = New System.Drawing.Size(171, 30)
+        Me.BtnLedger.Size = New System.Drawing.Size(228, 37)
         Me.BtnLedger.TabIndex = 81
         Me.BtnLedger.Text = "Ledger [Ctrl+L]"
         Me.BtnLedger.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1997,9 +2008,10 @@ Partial Class MainScreenForm
         Me.BtnDayBook.ForeColor = System.Drawing.Color.Black
         Me.BtnDayBook.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnDayBook.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnDayBook.Location = New System.Drawing.Point(1198, 570)
+        Me.BtnDayBook.Location = New System.Drawing.Point(0, 702)
+        Me.BtnDayBook.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnDayBook.Name = "BtnDayBook"
-        Me.BtnDayBook.Size = New System.Drawing.Size(171, 30)
+        Me.BtnDayBook.Size = New System.Drawing.Size(228, 37)
         Me.BtnDayBook.TabIndex = 80
         Me.BtnDayBook.Text = "Day Book [Ctrl+D]"
         Me.BtnDayBook.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2017,9 +2029,10 @@ Partial Class MainScreenForm
         Me.btnCashBankBook.ForeColor = System.Drawing.Color.Black
         Me.btnCashBankBook.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCashBankBook.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnCashBankBook.Location = New System.Drawing.Point(1198, 541)
+        Me.btnCashBankBook.Location = New System.Drawing.Point(0, 666)
+        Me.btnCashBankBook.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCashBankBook.Name = "btnCashBankBook"
-        Me.btnCashBankBook.Size = New System.Drawing.Size(171, 30)
+        Me.btnCashBankBook.Size = New System.Drawing.Size(228, 37)
         Me.btnCashBankBook.TabIndex = 79
         Me.btnCashBankBook.Text = "Cash / Bank Book"
         Me.btnCashBankBook.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2037,9 +2050,10 @@ Partial Class MainScreenForm
         Me.btnAccount.ForeColor = System.Drawing.Color.Black
         Me.btnAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAccount.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnAccount.Location = New System.Drawing.Point(1198, 49)
+        Me.btnAccount.Location = New System.Drawing.Point(0, 60)
+        Me.btnAccount.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAccount.Name = "btnAccount"
-        Me.btnAccount.Size = New System.Drawing.Size(171, 30)
+        Me.btnAccount.Size = New System.Drawing.Size(228, 37)
         Me.btnAccount.TabIndex = 60
         Me.btnAccount.Text = "Account [Ctrl +A]"
         Me.btnAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2057,9 +2071,10 @@ Partial Class MainScreenForm
         Me.btnSelloutAuto.ForeColor = System.Drawing.Color.Black
         Me.btnSelloutAuto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSelloutAuto.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnSelloutAuto.Location = New System.Drawing.Point(1198, 513)
+        Me.btnSelloutAuto.Location = New System.Drawing.Point(0, 631)
+        Me.btnSelloutAuto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSelloutAuto.Name = "btnSelloutAuto"
-        Me.btnSelloutAuto.Size = New System.Drawing.Size(171, 30)
+        Me.btnSelloutAuto.Size = New System.Drawing.Size(228, 37)
         Me.btnSelloutAuto.TabIndex = 76
         Me.btnSelloutAuto.Text = "Sellout Auto [Ctrl+F]"
         Me.btnSelloutAuto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2077,9 +2092,10 @@ Partial Class MainScreenForm
         Me.btnStockSaleRegister.ForeColor = System.Drawing.Color.Black
         Me.btnStockSaleRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnStockSaleRegister.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnStockSaleRegister.Location = New System.Drawing.Point(1198, 426)
+        Me.btnStockSaleRegister.Location = New System.Drawing.Point(0, 524)
+        Me.btnStockSaleRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnStockSaleRegister.Name = "btnStockSaleRegister"
-        Me.btnStockSaleRegister.Size = New System.Drawing.Size(171, 30)
+        Me.btnStockSaleRegister.Size = New System.Drawing.Size(228, 37)
         Me.btnStockSaleRegister.TabIndex = 75
         Me.btnStockSaleRegister.Text = "Stock Sale Register"
         Me.btnStockSaleRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2097,9 +2113,10 @@ Partial Class MainScreenForm
         Me.btnStockSale.ForeColor = System.Drawing.Color.Black
         Me.btnStockSale.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnStockSale.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnStockSale.Location = New System.Drawing.Point(1198, 397)
+        Me.btnStockSale.Location = New System.Drawing.Point(0, 489)
+        Me.btnStockSale.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnStockSale.Name = "btnStockSale"
-        Me.btnStockSale.Size = New System.Drawing.Size(171, 30)
+        Me.btnStockSale.Size = New System.Drawing.Size(228, 37)
         Me.btnStockSale.TabIndex = 74
         Me.btnStockSale.Text = "Stock Sale [Ctrl+H]"
         Me.btnStockSale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2117,9 +2134,10 @@ Partial Class MainScreenForm
         Me.btnPurchaseRegister.ForeColor = System.Drawing.Color.Black
         Me.btnPurchaseRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPurchaseRegister.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnPurchaseRegister.Location = New System.Drawing.Point(1198, 368)
+        Me.btnPurchaseRegister.Location = New System.Drawing.Point(0, 453)
+        Me.btnPurchaseRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPurchaseRegister.Name = "btnPurchaseRegister"
-        Me.btnPurchaseRegister.Size = New System.Drawing.Size(171, 30)
+        Me.btnPurchaseRegister.Size = New System.Drawing.Size(228, 37)
         Me.btnPurchaseRegister.TabIndex = 73
         Me.btnPurchaseRegister.Text = "Purchase Register"
         Me.btnPurchaseRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2137,9 +2155,10 @@ Partial Class MainScreenForm
         Me.btnPurchase.ForeColor = System.Drawing.Color.Black
         Me.btnPurchase.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPurchase.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnPurchase.Location = New System.Drawing.Point(1198, 339)
+        Me.btnPurchase.Location = New System.Drawing.Point(0, 417)
+        Me.btnPurchase.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPurchase.Name = "btnPurchase"
-        Me.btnPurchase.Size = New System.Drawing.Size(171, 30)
+        Me.btnPurchase.Size = New System.Drawing.Size(228, 37)
         Me.btnPurchase.TabIndex = 72
         Me.btnPurchase.Text = "Purchase [Ctrl+K]"
         Me.btnPurchase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2157,9 +2176,10 @@ Partial Class MainScreenForm
         Me.btnSuperRegister.ForeColor = System.Drawing.Color.Black
         Me.btnSuperRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSuperRegister.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnSuperRegister.Location = New System.Drawing.Point(1198, 310)
+        Me.btnSuperRegister.Location = New System.Drawing.Point(0, 382)
+        Me.btnSuperRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSuperRegister.Name = "btnSuperRegister"
-        Me.btnSuperRegister.Size = New System.Drawing.Size(171, 30)
+        Me.btnSuperRegister.Size = New System.Drawing.Size(228, 37)
         Me.btnSuperRegister.TabIndex = 71
         Me.btnSuperRegister.Text = "Super Sale Register"
         Me.btnSuperRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2177,9 +2197,10 @@ Partial Class MainScreenForm
         Me.btnSuperSale.ForeColor = System.Drawing.Color.Black
         Me.btnSuperSale.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSuperSale.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnSuperSale.Location = New System.Drawing.Point(1198, 281)
+        Me.btnSuperSale.Location = New System.Drawing.Point(0, 346)
+        Me.btnSuperSale.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSuperSale.Name = "btnSuperSale"
-        Me.btnSuperSale.Size = New System.Drawing.Size(171, 30)
+        Me.btnSuperSale.Size = New System.Drawing.Size(228, 37)
         Me.btnSuperSale.TabIndex = 70
         Me.btnSuperSale.Text = "Super Sale [Ctrl+U]"
         Me.btnSuperSale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2197,9 +2218,10 @@ Partial Class MainScreenForm
         Me.BtnBankEntry.ForeColor = System.Drawing.Color.Black
         Me.BtnBankEntry.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnBankEntry.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnBankEntry.Location = New System.Drawing.Point(1198, 252)
+        Me.BtnBankEntry.Location = New System.Drawing.Point(0, 310)
+        Me.BtnBankEntry.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnBankEntry.Name = "BtnBankEntry"
-        Me.BtnBankEntry.Size = New System.Drawing.Size(171, 30)
+        Me.BtnBankEntry.Size = New System.Drawing.Size(228, 37)
         Me.BtnBankEntry.TabIndex = 69
         Me.BtnBankEntry.Text = "Bank Entry [Ctrl+B]"
         Me.BtnBankEntry.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2217,9 +2239,10 @@ Partial Class MainScreenForm
         Me.btnSelloutMannual.ForeColor = System.Drawing.Color.Black
         Me.btnSelloutMannual.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSelloutMannual.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnSelloutMannual.Location = New System.Drawing.Point(1198, 165)
+        Me.btnSelloutMannual.Location = New System.Drawing.Point(0, 203)
+        Me.btnSelloutMannual.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSelloutMannual.Name = "btnSelloutMannual"
-        Me.btnSelloutMannual.Size = New System.Drawing.Size(171, 30)
+        Me.btnSelloutMannual.Size = New System.Drawing.Size(228, 37)
         Me.btnSelloutMannual.TabIndex = 66
         Me.btnSelloutMannual.Text = "Sellout Man. [Ctrl+E]"
         Me.btnSelloutMannual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2237,9 +2260,10 @@ Partial Class MainScreenForm
         Me.BtnPayment.ForeColor = System.Drawing.Color.Black
         Me.BtnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnPayment.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnPayment.Location = New System.Drawing.Point(1198, 223)
+        Me.BtnPayment.Location = New System.Drawing.Point(0, 274)
+        Me.BtnPayment.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnPayment.Name = "BtnPayment"
-        Me.BtnPayment.Size = New System.Drawing.Size(171, 30)
+        Me.BtnPayment.Size = New System.Drawing.Size(228, 37)
         Me.BtnPayment.TabIndex = 65
         Me.BtnPayment.Text = "Payment [F8]"
         Me.BtnPayment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2257,9 +2281,10 @@ Partial Class MainScreenForm
         Me.BtnReceipt.ForeColor = System.Drawing.Color.Black
         Me.BtnReceipt.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnReceipt.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnReceipt.Location = New System.Drawing.Point(1198, 194)
+        Me.BtnReceipt.Location = New System.Drawing.Point(0, 239)
+        Me.BtnReceipt.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnReceipt.Name = "BtnReceipt"
-        Me.BtnReceipt.Size = New System.Drawing.Size(171, 30)
+        Me.BtnReceipt.Size = New System.Drawing.Size(228, 37)
         Me.BtnReceipt.TabIndex = 64
         Me.BtnReceipt.Text = "Receipt [F7]"
         Me.BtnReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2277,9 +2302,10 @@ Partial Class MainScreenForm
         Me.btnSpeedRegister.ForeColor = System.Drawing.Color.Black
         Me.btnSpeedRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSpeedRegister.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnSpeedRegister.Location = New System.Drawing.Point(1198, 136)
+        Me.btnSpeedRegister.Location = New System.Drawing.Point(0, 167)
+        Me.btnSpeedRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSpeedRegister.Name = "btnSpeedRegister"
-        Me.btnSpeedRegister.Size = New System.Drawing.Size(171, 30)
+        Me.btnSpeedRegister.Size = New System.Drawing.Size(228, 37)
         Me.btnSpeedRegister.TabIndex = 63
         Me.btnSpeedRegister.Text = "Speed Sale Register"
         Me.btnSpeedRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2297,9 +2323,10 @@ Partial Class MainScreenForm
         Me.btnSpeedSale.ForeColor = System.Drawing.Color.Black
         Me.btnSpeedSale.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSpeedSale.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnSpeedSale.Location = New System.Drawing.Point(1198, 107)
+        Me.btnSpeedSale.Location = New System.Drawing.Point(0, 132)
+        Me.btnSpeedSale.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSpeedSale.Name = "btnSpeedSale"
-        Me.btnSpeedSale.Size = New System.Drawing.Size(171, 30)
+        Me.btnSpeedSale.Size = New System.Drawing.Size(228, 37)
         Me.btnSpeedSale.TabIndex = 62
         Me.btnSpeedSale.Text = "Speed Sale [Ctrl+S]"
         Me.btnSpeedSale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2317,9 +2344,10 @@ Partial Class MainScreenForm
         Me.btnItem.ForeColor = System.Drawing.Color.Black
         Me.btnItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnItem.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnItem.Location = New System.Drawing.Point(1198, 78)
+        Me.btnItem.Location = New System.Drawing.Point(0, 96)
+        Me.btnItem.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnItem.Name = "btnItem"
-        Me.btnItem.Size = New System.Drawing.Size(171, 30)
+        Me.btnItem.Size = New System.Drawing.Size(228, 37)
         Me.btnItem.TabIndex = 61
         Me.btnItem.Text = "Item [Ctrl +I]"
         Me.btnItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2331,52 +2359,65 @@ Partial Class MainScreenForm
         Me.lblARC.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(13, Byte), Integer))
         Me.lblARC.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblARC.ForeColor = System.Drawing.Color.White
-        Me.lblARC.Location = New System.Drawing.Point(936, 26)
+        Me.lblARC.Location = New System.Drawing.Point(1248, 32)
+        Me.lblARC.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblARC.Name = "lblARC"
-        Me.lblARC.Size = New System.Drawing.Size(120, 19)
+        Me.lblARC.Size = New System.Drawing.Size(160, 22)
         Me.lblARC.TabIndex = 94
         Me.lblARC.Text = "Evaluation Version"
         '
         'blinkTimer
         '
         '
+        'RightDockPanel
+        '
+        Me.RightDockPanel.BackColor = System.Drawing.SystemColors.Control
+        Me.RightDockPanel.Controls.Add(Me.Label21)
+        Me.RightDockPanel.Controls.Add(Me.lblBuildVersion)
+        Me.RightDockPanel.Controls.Add(Me.Label1)
+        Me.RightDockPanel.Controls.Add(Me.Button23)
+        Me.RightDockPanel.Controls.Add(Me.btnOutStanding)
+        Me.RightDockPanel.Controls.Add(Me.BtnBillPrints)
+        Me.RightDockPanel.Controls.Add(Me.BtnLedger)
+        Me.RightDockPanel.Controls.Add(Me.BtnDayBook)
+        Me.RightDockPanel.Controls.Add(Me.btnCashBankBook)
+        Me.RightDockPanel.Controls.Add(Me.btnSelloutAuto)
+        Me.RightDockPanel.Controls.Add(Me.btnStdSaleRegister)
+        Me.RightDockPanel.Controls.Add(Me.btnStandardSale)
+        Me.RightDockPanel.Controls.Add(Me.btnStockSaleRegister)
+        Me.RightDockPanel.Controls.Add(Me.btnStockSale)
+        Me.RightDockPanel.Controls.Add(Me.btnPurchaseRegister)
+        Me.RightDockPanel.Controls.Add(Me.btnPurchase)
+        Me.RightDockPanel.Controls.Add(Me.btnSuperRegister)
+        Me.RightDockPanel.Controls.Add(Me.btnSuperSale)
+        Me.RightDockPanel.Controls.Add(Me.BtnBankEntry)
+        Me.RightDockPanel.Controls.Add(Me.BtnPayment)
+        Me.RightDockPanel.Controls.Add(Me.BtnReceipt)
+        Me.RightDockPanel.Controls.Add(Me.btnSelloutMannual)
+        Me.RightDockPanel.Controls.Add(Me.btnSpeedRegister)
+        Me.RightDockPanel.Controls.Add(Me.btnSpeedSale)
+        Me.RightDockPanel.Controls.Add(Me.btnItem)
+        Me.RightDockPanel.Controls.Add(Me.btnAccount)
+        Me.RightDockPanel.Dock = System.Windows.Forms.DockStyle.Right
+        Me.RightDockPanel.Location = New System.Drawing.Point(1598, 0)
+        Me.RightDockPanel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RightDockPanel.Name = "RightDockPanel"
+        Me.RightDockPanel.Size = New System.Drawing.Size(229, 870)
+        Me.RightDockPanel.TabIndex = 95
+        '
         'MainScreenForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1370, 707)
+        Me.ClientSize = New System.Drawing.Size(1827, 870)
         Me.Controls.Add(Me.lblARC)
-        Me.Controls.Add(Me.btnStdSaleRegister)
-        Me.Controls.Add(Me.btnStandardSale)
-        Me.Controls.Add(Me.Label21)
-        Me.Controls.Add(Me.lblBuildVersion)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnOutStanding)
-        Me.Controls.Add(Me.BtnBillPrints)
-        Me.Controls.Add(Me.BtnLedger)
-        Me.Controls.Add(Me.BtnDayBook)
-        Me.Controls.Add(Me.btnCashBankBook)
-        Me.Controls.Add(Me.btnAccount)
-        Me.Controls.Add(Me.Button23)
-        Me.Controls.Add(Me.btnSelloutAuto)
-        Me.Controls.Add(Me.btnStockSaleRegister)
-        Me.Controls.Add(Me.btnStockSale)
-        Me.Controls.Add(Me.btnPurchaseRegister)
-        Me.Controls.Add(Me.btnPurchase)
-        Me.Controls.Add(Me.btnSuperRegister)
-        Me.Controls.Add(Me.btnSuperSale)
-        Me.Controls.Add(Me.BtnBankEntry)
-        Me.Controls.Add(Me.btnSelloutMannual)
-        Me.Controls.Add(Me.BtnPayment)
-        Me.Controls.Add(Me.BtnReceipt)
-        Me.Controls.Add(Me.btnSpeedRegister)
-        Me.Controls.Add(Me.btnSpeedSale)
-        Me.Controls.Add(Me.btnItem)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.RightDockPanel)
         Me.ForeColor = System.Drawing.Color.Teal
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "MainScreenForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -2385,6 +2426,8 @@ Partial Class MainScreenForm
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.RightDockPanel.ResumeLayout(False)
+        Me.RightDockPanel.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2527,6 +2570,7 @@ Partial Class MainScreenForm
     Friend WithEvents CrateWiseOutstandingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents btnStandardSale As System.Windows.Forms.Button
     Friend WithEvents btnStdSaleRegister As System.Windows.Forms.Button
+    Friend WithEvents RightDockPanel As System.Windows.Forms.Panel
     Friend WithEvents OnSaleProfitReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator

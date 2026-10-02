@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Imports System.Collections.Generic
 
@@ -1865,40 +1865,12 @@ Public Class Purchase
         txtPlusMinus.Clear() : txtchargesAmount.Clear()
     End Sub
     Private Sub SpeedCalculation()
-        If cbPer.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(cbPer.SelectedIndex, cbPer.Items.Count)
+        If cbPer.SelectedIndex = 0 OrElse cbPer.SelectedIndex = 17 Then
             txtAmount.Text = Format(Math.Round(Val(txtNug.Text) * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 1 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 2 Then
-            txtAmount.Text = Format(Math.Round(Val(txtRate.Text) / 5 * Val(txtWeight.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 3 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 10 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 4 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 20 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 5 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 40 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 6 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 41 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 7 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 50 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 8 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 51 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 9 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 51.7 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 10 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 52.2 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 11 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 52.3 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 12 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 52.5 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 13 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 53 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 14 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 80 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 15 Then
-            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / 100 * Val(txtRate.Text), 2), "0.00")
-        ElseIf cbPer.SelectedIndex = 16 Then
-            txtAmount.Text = Format(Math.Round(Val(txtNug.Text) * Val(txtRate.Text), 2), "0.00")
+            txtAmount.Text = Format(Math.Round(Val(txtAmount.Text), 0), "0.00")
+        ElseIf perDivisor > 0 Then
+            txtAmount.Text = Format(Math.Round(Val(txtWeight.Text) / perDivisor * Val(txtRate.Text), 2), "0.00")
         End If
         txtAmount.Text = Format(Math.Round(Val(txtAmount.Text), 0), "0.00")
         'txtTotalNetAmount.Text = Format(Val(txtbasicTotal.Text) + Val(txttotalCharges.Text), "0.00")
@@ -2510,35 +2482,20 @@ Public Class Purchase
 
     Private Sub txtPurchaseTotAmount_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAmount.KeyUp
         If CbpurchaseType.SelectedIndex = 0 Then txtAmount.Text = "0.00" : Exit Sub
-        If cbPer.SelectedIndex = 0 Then
-            txtRate.Text = Val(txtAmount.Text) / Format(Val(txtNug.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 1 Then
-            txtRate.Text = Val(txtAmount.Text) / Format(Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 2 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 5 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 3 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 10 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 4 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 20 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 5 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 40 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 6 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 41 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 7 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 50 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 8 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 51 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 9 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 51.7 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 10 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 52.3 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 11 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 53 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 12 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 80 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 13 Then
-            txtRate.Text = Format(Val(txtAmount.Text) * 100 / Val(txtWeight.Text), "0.00")
-        ElseIf cbPer.SelectedIndex = 14 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(cbPer.SelectedIndex, cbPer.Items.Count)
+        If perDivisor > 0 Then
+            If Val(txtWeight.Text) <> 0 Then
+                txtRate.Text = Format(Val(txtAmount.Text) * perDivisor / Val(txtWeight.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
+        ElseIf cbPer.SelectedIndex = 0 Then
+            If Val(txtNug.Text) <> 0 Then
+                txtRate.Text = Val(txtAmount.Text) / Format(Val(txtNug.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
+        ElseIf cbPer.SelectedIndex = 17 Then
             txtRate.Text = Format(Val(txtNug.Text) * Val(txtAmount.Text), "0.00")
         End If
         txtRate.Text = Format(Math.Round(Val(txtRate.Text), 2), "0.00")
@@ -2852,5 +2809,9 @@ Public Class Purchase
 
     Private Sub txtEntryDate_TextChanged(sender As Object, e As EventArgs) Handles txtEntryDate.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

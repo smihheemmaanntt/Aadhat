@@ -375,7 +375,7 @@ Public Class Mobile_App
                         dataProgress.Value = i
                         Dim CrateV As SaveCrateVoucherRequest = New SaveCrateVoucherRequest()
                         CrateV.OrganizationId = txtCompanyID.Text
-                        CrateV.SlipNo = SafeSyncText(item("SlipNo"))
+                        CrateV.SlipNo = SaveCrateVoucherRequest.ParseSlipNo(item("SlipNo"), item("ID"))
                         CrateV.VoucherID = item.Field(Of Int64)("VoucherID")
                         CrateV.EntryDate = item.Field(Of Date)("EntryDate")
                         CrateV.TransType = SafeSyncText(item("TransType"))
@@ -738,7 +738,7 @@ Public Class Mobile_App
                         dataProgress.Value = i
                         Dim CrateV As SaveCrateVoucherRequest = New SaveCrateVoucherRequest()
                         CrateV.OrganizationId = txtCompanyID.Text
-                        CrateV.SlipNo = SafeSyncText(item("SlipNo"))
+                        CrateV.SlipNo = SaveCrateVoucherRequest.ParseSlipNo(item("SlipNo"), item("ID"))
                         CrateV.EntryDate = item.Field(Of Date)("EntryDate")
                         CrateV.VoucherID = item.Field(Of Int64)("VoucherID")
                         CrateV.TransType = SafeSyncText(item("TransType"))
@@ -1111,5 +1111,9 @@ Public Class Mobile_App
 
     Private Sub pnlLock_Paint(sender As Object, e As PaintEventArgs) Handles pnlLock.Paint
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

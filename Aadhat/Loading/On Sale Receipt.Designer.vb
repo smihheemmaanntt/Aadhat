@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class On_Sale_Receipt
     Inherits System.Windows.Forms.Form
 
@@ -486,7 +486,7 @@ Partial Class On_Sale_Receipt
         Me.Cbper.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Cbper.ForeColor = System.Drawing.Color.Black
         Me.Cbper.FormattingEnabled = True
-        Me.Cbper.Items.AddRange(New Object() {"Nug", "Kg", "40 Kg"})
+        Me.Cbper.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "42 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
         Me.Cbper.Location = New System.Drawing.Point(941, 137)
         Me.Cbper.Name = "Cbper"
         Me.Cbper.Size = New System.Drawing.Size(99, 25)
@@ -1183,6 +1183,7 @@ Partial Class On_Sale_Receipt
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.txtOnSaleID)
         Me.Controls.Add(Me.tmpgrid)

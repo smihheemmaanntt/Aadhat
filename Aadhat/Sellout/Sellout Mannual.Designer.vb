@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Sellout_Mannual
     Inherits System.Windows.Forms.Form
 
@@ -185,9 +185,10 @@ Partial Class Sellout_Mannual
         Me.lblAcBal.AutoSize = True
         Me.lblAcBal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblAcBal.ForeColor = System.Drawing.Color.Navy
-        Me.lblAcBal.Location = New System.Drawing.Point(496, 72)
+        Me.lblAcBal.Location = New System.Drawing.Point(661, 89)
+        Me.lblAcBal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAcBal.Name = "lblAcBal"
-        Me.lblAcBal.Size = New System.Drawing.Size(29, 19)
+        Me.lblAcBal.Size = New System.Drawing.Size(38, 22)
         Me.lblAcBal.TabIndex = 91118
         Me.lblAcBal.Text = "Bal"
         Me.lblAcBal.Visible = False
@@ -200,9 +201,10 @@ Partial Class Sellout_Mannual
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.Location = New System.Drawing.Point(1143, 0)
+        Me.btnClose.Location = New System.Drawing.Point(1524, 0)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(53, 47)
+        Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91117
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
@@ -214,9 +216,10 @@ Partial Class Sellout_Mannual
         Me.txtChargeID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtChargeID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtChargeID.ForeColor = System.Drawing.Color.Teal
-        Me.txtChargeID.Location = New System.Drawing.Point(184, 3)
+        Me.txtChargeID.Location = New System.Drawing.Point(245, 4)
+        Me.txtChargeID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtChargeID.Name = "txtChargeID"
-        Me.txtChargeID.Size = New System.Drawing.Size(61, 26)
+        Me.txtChargeID.Size = New System.Drawing.Size(81, 30)
         Me.txtChargeID.TabIndex = 40186
         Me.txtChargeID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtChargeID.Visible = False
@@ -228,9 +231,10 @@ Partial Class Sellout_Mannual
         Me.txtAccountID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtAccountID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAccountID.ForeColor = System.Drawing.Color.Teal
-        Me.txtAccountID.Location = New System.Drawing.Point(124, 3)
+        Me.txtAccountID.Location = New System.Drawing.Point(165, 4)
+        Me.txtAccountID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAccountID.Name = "txtAccountID"
-        Me.txtAccountID.Size = New System.Drawing.Size(61, 26)
+        Me.txtAccountID.Size = New System.Drawing.Size(81, 30)
         Me.txtAccountID.TabIndex = 40185
         Me.txtAccountID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtAccountID.Visible = False
@@ -242,9 +246,10 @@ Partial Class Sellout_Mannual
         Me.txtItemID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtItemID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtItemID.ForeColor = System.Drawing.Color.Teal
-        Me.txtItemID.Location = New System.Drawing.Point(64, 3)
+        Me.txtItemID.Location = New System.Drawing.Point(85, 4)
+        Me.txtItemID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtItemID.Name = "txtItemID"
-        Me.txtItemID.Size = New System.Drawing.Size(61, 26)
+        Me.txtItemID.Size = New System.Drawing.Size(81, 30)
         Me.txtItemID.TabIndex = 40184
         Me.txtItemID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtItemID.Visible = False
@@ -255,9 +260,10 @@ Partial Class Sellout_Mannual
         Me.txtid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtid.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtid.ForeColor = System.Drawing.Color.Teal
-        Me.txtid.Location = New System.Drawing.Point(2, 3)
+        Me.txtid.Location = New System.Drawing.Point(3, 4)
+        Me.txtid.Margin = New System.Windows.Forms.Padding(4)
         Me.txtid.Name = "txtid"
-        Me.txtid.Size = New System.Drawing.Size(63, 26)
+        Me.txtid.Size = New System.Drawing.Size(83, 30)
         Me.txtid.TabIndex = 40054
         Me.txtid.TabStop = False
         Me.txtid.Visible = False
@@ -267,18 +273,20 @@ Partial Class Sellout_Mannual
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Bodoni Bk BT", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(416, 9)
+        Me.Label1.Location = New System.Drawing.Point(555, 11)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(396, 48)
+        Me.Label1.Size = New System.Drawing.Size(495, 59)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "MANNUAL - SELLOUT"
         '
         'tmpgrid
         '
         Me.tmpgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tmpgrid.Location = New System.Drawing.Point(988, 12)
+        Me.tmpgrid.Location = New System.Drawing.Point(1317, 15)
+        Me.tmpgrid.Margin = New System.Windows.Forms.Padding(4)
         Me.tmpgrid.Name = "tmpgrid"
-        Me.tmpgrid.Size = New System.Drawing.Size(44, 37)
+        Me.tmpgrid.Size = New System.Drawing.Size(59, 46)
         Me.tmpgrid.TabIndex = 40110
         Me.tmpgrid.Visible = False
         '
@@ -289,9 +297,10 @@ Partial Class Sellout_Mannual
         Me.txtVoucherNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtVoucherNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtVoucherNo.ForeColor = System.Drawing.Color.Black
-        Me.txtVoucherNo.Location = New System.Drawing.Point(121, 112)
+        Me.txtVoucherNo.Location = New System.Drawing.Point(161, 138)
+        Me.txtVoucherNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtVoucherNo.Name = "txtVoucherNo"
-        Me.txtVoucherNo.Size = New System.Drawing.Size(102, 26)
+        Me.txtVoucherNo.Size = New System.Drawing.Size(135, 30)
         Me.txtVoucherNo.TabIndex = 1
         Me.txtVoucherNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -300,9 +309,10 @@ Partial Class Sellout_Mannual
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label25.ForeColor = System.Drawing.Color.Black
-        Me.Label25.Location = New System.Drawing.Point(8, 88)
+        Me.Label25.Location = New System.Drawing.Point(11, 108)
+        Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(38, 19)
+        Me.Label25.Size = New System.Drawing.Size(47, 22)
         Me.Label25.TabIndex = 35
         Me.Label25.Text = "Date"
         '
@@ -311,9 +321,10 @@ Partial Class Sellout_Mannual
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(119, 88)
+        Me.Label2.Location = New System.Drawing.Point(159, 108)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(87, 19)
+        Me.Label2.Size = New System.Drawing.Size(107, 22)
         Me.Label2.TabIndex = 37
         Me.Label2.Text = "Voucher No."
         '
@@ -324,9 +335,10 @@ Partial Class Sellout_Mannual
         Me.txtVehicleNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtVehicleNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtVehicleNo.ForeColor = System.Drawing.Color.Black
-        Me.txtVehicleNo.Location = New System.Drawing.Point(222, 112)
+        Me.txtVehicleNo.Location = New System.Drawing.Point(296, 138)
+        Me.txtVehicleNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtVehicleNo.Name = "txtVehicleNo"
-        Me.txtVehicleNo.Size = New System.Drawing.Size(138, 26)
+        Me.txtVehicleNo.Size = New System.Drawing.Size(183, 30)
         Me.txtVehicleNo.TabIndex = 2
         Me.txtVehicleNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -335,9 +347,10 @@ Partial Class Sellout_Mannual
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(231, 88)
+        Me.Label3.Location = New System.Drawing.Point(308, 108)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(80, 19)
+        Me.Label3.Size = New System.Drawing.Size(103, 22)
         Me.Label3.TabIndex = 39
         Me.Label3.Text = "Vehicle No."
         '
@@ -346,9 +359,10 @@ Partial Class Sellout_Mannual
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(473, 88)
+        Me.Label4.Location = New System.Drawing.Point(631, 108)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(174, 19)
+        Me.Label4.Size = New System.Drawing.Size(222, 22)
         Me.Label4.TabIndex = 40
         Me.Label4.Text = "Consignor / Account Name"
         '
@@ -357,9 +371,10 @@ Partial Class Sellout_Mannual
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(20, 144)
+        Me.Label5.Location = New System.Drawing.Point(27, 177)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 19)
+        Me.Label5.Size = New System.Drawing.Size(95, 22)
         Me.Label5.TabIndex = 42
         Me.Label5.Text = "Item Name"
         '
@@ -370,9 +385,10 @@ Partial Class Sellout_Mannual
         Me.txtLotNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtLotNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtLotNo.ForeColor = System.Drawing.Color.Black
-        Me.txtLotNo.Location = New System.Drawing.Point(411, 167)
+        Me.txtLotNo.Location = New System.Drawing.Point(548, 206)
+        Me.txtLotNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtLotNo.Name = "txtLotNo"
-        Me.txtLotNo.Size = New System.Drawing.Size(199, 26)
+        Me.txtLotNo.Size = New System.Drawing.Size(265, 30)
         Me.txtLotNo.TabIndex = 6
         Me.txtLotNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -381,9 +397,10 @@ Partial Class Sellout_Mannual
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(413, 148)
+        Me.Label6.Location = New System.Drawing.Point(551, 182)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(58, 19)
+        Me.Label6.Size = New System.Drawing.Size(70, 22)
         Me.Label6.TabIndex = 44
         Me.Label6.Text = "Lot No."
         '
@@ -392,9 +409,10 @@ Partial Class Sellout_Mannual
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(678, 144)
+        Me.Label7.Location = New System.Drawing.Point(904, 177)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(35, 19)
+        Me.Label7.Size = New System.Drawing.Size(42, 22)
         Me.Label7.TabIndex = 46
         Me.Label7.Text = "Nug"
         '
@@ -405,9 +423,10 @@ Partial Class Sellout_Mannual
         Me.txtNug.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtNug.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtNug.ForeColor = System.Drawing.Color.Black
-        Me.txtNug.Location = New System.Drawing.Point(609, 167)
+        Me.txtNug.Location = New System.Drawing.Point(812, 206)
+        Me.txtNug.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNug.Name = "txtNug"
-        Me.txtNug.Size = New System.Drawing.Size(115, 26)
+        Me.txtNug.Size = New System.Drawing.Size(153, 30)
         Me.txtNug.TabIndex = 7
         Me.txtNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -416,9 +435,10 @@ Partial Class Sellout_Mannual
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(771, 143)
+        Me.Label8.Location = New System.Drawing.Point(1028, 176)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(51, 19)
+        Me.Label8.Size = New System.Drawing.Size(64, 22)
         Me.Label8.TabIndex = 48
         Me.Label8.Text = "Weight"
         '
@@ -429,9 +449,10 @@ Partial Class Sellout_Mannual
         Me.txtKg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtKg.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtKg.ForeColor = System.Drawing.Color.Black
-        Me.txtKg.Location = New System.Drawing.Point(723, 167)
+        Me.txtKg.Location = New System.Drawing.Point(964, 206)
+        Me.txtKg.Margin = New System.Windows.Forms.Padding(4)
         Me.txtKg.Name = "txtKg"
-        Me.txtKg.Size = New System.Drawing.Size(115, 26)
+        Me.txtKg.Size = New System.Drawing.Size(153, 30)
         Me.txtKg.TabIndex = 9
         Me.txtKg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -440,9 +461,10 @@ Partial Class Sellout_Mannual
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(904, 144)
+        Me.Label9.Location = New System.Drawing.Point(1205, 177)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(37, 19)
+        Me.Label9.Size = New System.Drawing.Size(46, 22)
         Me.Label9.TabIndex = 50
         Me.Label9.Text = "Rate"
         '
@@ -453,9 +475,10 @@ Partial Class Sellout_Mannual
         Me.txtRate.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtRate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtRate.ForeColor = System.Drawing.Color.Black
-        Me.txtRate.Location = New System.Drawing.Point(837, 167)
+        Me.txtRate.Location = New System.Drawing.Point(1116, 206)
+        Me.txtRate.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRate.Name = "txtRate"
-        Me.txtRate.Size = New System.Drawing.Size(115, 26)
+        Me.txtRate.Size = New System.Drawing.Size(153, 30)
         Me.txtRate.TabIndex = 10
         Me.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -464,9 +487,10 @@ Partial Class Sellout_Mannual
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(1107, 143)
+        Me.Label10.Location = New System.Drawing.Point(1476, 176)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(57, 19)
+        Me.Label10.Size = New System.Drawing.Size(71, 22)
         Me.Label10.TabIndex = 52
         Me.Label10.Text = "Amount"
         '
@@ -477,9 +501,10 @@ Partial Class Sellout_Mannual
         Me.txtTotAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotAmount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotAmount.ForeColor = System.Drawing.Color.Black
-        Me.txtTotAmount.Location = New System.Drawing.Point(1041, 167)
+        Me.txtTotAmount.Location = New System.Drawing.Point(1388, 206)
+        Me.txtTotAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotAmount.Name = "txtTotAmount"
-        Me.txtTotAmount.Size = New System.Drawing.Size(143, 26)
+        Me.txtTotAmount.Size = New System.Drawing.Size(190, 30)
         Me.txtTotAmount.TabIndex = 12
         Me.txtTotAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -488,9 +513,10 @@ Partial Class Sellout_Mannual
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(1008, 143)
+        Me.Label11.Location = New System.Drawing.Point(1344, 176)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(30, 19)
+        Me.Label11.Size = New System.Drawing.Size(37, 22)
         Me.Label11.TabIndex = 54
         Me.Label11.Text = "Per"
         '
@@ -521,7 +547,8 @@ Partial Class Sellout_Mannual
         Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
-        Me.dg1.Location = New System.Drawing.Point(12, 192)
+        Me.dg1.Location = New System.Drawing.Point(16, 236)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4)
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
         Me.dg1.RowHeadersVisible = False
@@ -530,7 +557,7 @@ Partial Class Sellout_Mannual
         Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1172, 253)
+        Me.dg1.Size = New System.Drawing.Size(1563, 311)
         Me.dg1.TabIndex = 40026
         '
         'txtchargesAmount
@@ -540,9 +567,10 @@ Partial Class Sellout_Mannual
         Me.txtchargesAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtchargesAmount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtchargesAmount.ForeColor = System.Drawing.Color.Black
-        Me.txtchargesAmount.Location = New System.Drawing.Point(613, 480)
+        Me.txtchargesAmount.Location = New System.Drawing.Point(817, 591)
+        Me.txtchargesAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.txtchargesAmount.Name = "txtchargesAmount"
-        Me.txtchargesAmount.Size = New System.Drawing.Size(115, 26)
+        Me.txtchargesAmount.Size = New System.Drawing.Size(153, 30)
         Me.txtchargesAmount.TabIndex = 17
         Me.txtchargesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -553,9 +581,10 @@ Partial Class Sellout_Mannual
         Me.txtCalculatePer.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCalculatePer.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtCalculatePer.ForeColor = System.Drawing.Color.Black
-        Me.txtCalculatePer.Location = New System.Drawing.Point(385, 480)
+        Me.txtCalculatePer.Location = New System.Drawing.Point(513, 591)
+        Me.txtCalculatePer.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCalculatePer.Name = "txtCalculatePer"
-        Me.txtCalculatePer.Size = New System.Drawing.Size(115, 26)
+        Me.txtCalculatePer.Size = New System.Drawing.Size(153, 30)
         Me.txtCalculatePer.TabIndex = 15
         Me.txtCalculatePer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -566,9 +595,10 @@ Partial Class Sellout_Mannual
         Me.txtOnValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtOnValue.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtOnValue.ForeColor = System.Drawing.Color.Black
-        Me.txtOnValue.Location = New System.Drawing.Point(271, 480)
+        Me.txtOnValue.Location = New System.Drawing.Point(361, 591)
+        Me.txtOnValue.Margin = New System.Windows.Forms.Padding(4)
         Me.txtOnValue.Name = "txtOnValue"
-        Me.txtOnValue.Size = New System.Drawing.Size(115, 26)
+        Me.txtOnValue.Size = New System.Drawing.Size(153, 30)
         Me.txtOnValue.TabIndex = 14
         Me.txtOnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -599,7 +629,8 @@ Partial Class Sellout_Mannual
         Me.Dg2.DefaultCellStyle = DataGridViewCellStyle5
         Me.Dg2.EnableHeadersVisualStyles = False
         Me.Dg2.GridColor = System.Drawing.Color.Crimson
-        Me.Dg2.Location = New System.Drawing.Point(12, 505)
+        Me.Dg2.Location = New System.Drawing.Point(16, 622)
+        Me.Dg2.Margin = New System.Windows.Forms.Padding(4)
         Me.Dg2.Name = "Dg2"
         Me.Dg2.ReadOnly = True
         Me.Dg2.RowHeadersVisible = False
@@ -608,7 +639,7 @@ Partial Class Sellout_Mannual
         Me.Dg2.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.Dg2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.Dg2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dg2.Size = New System.Drawing.Size(716, 120)
+        Me.Dg2.Size = New System.Drawing.Size(955, 148)
         Me.Dg2.TabIndex = 40032
         '
         'Label12
@@ -616,9 +647,10 @@ Partial Class Sellout_Mannual
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(11, 456)
+        Me.Label12.Location = New System.Drawing.Point(15, 561)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(139, 19)
+        Me.Label12.Size = New System.Drawing.Size(174, 22)
         Me.Label12.TabIndex = 40033
         Me.Label12.Text = "Other Charges Name"
         '
@@ -627,9 +659,10 @@ Partial Class Sellout_Mannual
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(286, 457)
+        Me.Label13.Location = New System.Drawing.Point(381, 562)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(65, 19)
+        Me.Label13.Size = New System.Drawing.Size(82, 22)
         Me.Label13.TabIndex = 40034
         Me.Label13.Text = "On Value"
         '
@@ -638,9 +671,10 @@ Partial Class Sellout_Mannual
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(429, 456)
+        Me.Label14.Location = New System.Drawing.Point(572, 561)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(24, 19)
+        Me.Label14.Size = New System.Drawing.Size(28, 22)
         Me.Label14.TabIndex = 40035
         Me.Label14.Text = "@"
         '
@@ -649,9 +683,10 @@ Partial Class Sellout_Mannual
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(542, 457)
+        Me.Label15.Location = New System.Drawing.Point(723, 562)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(28, 19)
+        Me.Label15.Size = New System.Drawing.Size(34, 22)
         Me.Label15.TabIndex = 40036
         Me.Label15.Text = "+/-"
         '
@@ -660,9 +695,10 @@ Partial Class Sellout_Mannual
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(653, 456)
+        Me.Label16.Location = New System.Drawing.Point(871, 561)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(57, 19)
+        Me.Label16.Size = New System.Drawing.Size(71, 22)
         Me.Label16.TabIndex = 40037
         Me.Label16.Text = "Amount"
         '
@@ -673,10 +709,11 @@ Partial Class Sellout_Mannual
         Me.txtbasicTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtbasicTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtbasicTotal.ForeColor = System.Drawing.Color.Navy
-        Me.txtbasicTotal.Location = New System.Drawing.Point(1063, 526)
+        Me.txtbasicTotal.Location = New System.Drawing.Point(1417, 645)
+        Me.txtbasicTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtbasicTotal.Name = "txtbasicTotal"
         Me.txtbasicTotal.ReadOnly = True
-        Me.txtbasicTotal.Size = New System.Drawing.Size(120, 26)
+        Me.txtbasicTotal.Size = New System.Drawing.Size(159, 30)
         Me.txtbasicTotal.TabIndex = 40038
         Me.txtbasicTotal.TabStop = False
         Me.txtbasicTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -686,9 +723,10 @@ Partial Class Sellout_Mannual
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(952, 529)
+        Me.Label17.Location = New System.Drawing.Point(1266, 649)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(110, 19)
+        Me.Label17.Size = New System.Drawing.Size(137, 23)
         Me.Label17.TabIndex = 40039
         Me.Label17.Text = "Basic Amount :"
         '
@@ -697,9 +735,10 @@ Partial Class Sellout_Mannual
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.Black
-        Me.Label18.Location = New System.Drawing.Point(988, 555)
+        Me.Label18.Location = New System.Drawing.Point(1311, 679)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(74, 19)
+        Me.Label18.Size = New System.Drawing.Size(92, 23)
         Me.Label18.TabIndex = 40041
         Me.Label18.Text = "Charges :"
         '
@@ -710,10 +749,11 @@ Partial Class Sellout_Mannual
         Me.txttotalCharges.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txttotalCharges.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txttotalCharges.ForeColor = System.Drawing.Color.Navy
-        Me.txttotalCharges.Location = New System.Drawing.Point(1063, 551)
+        Me.txttotalCharges.Location = New System.Drawing.Point(1417, 674)
+        Me.txttotalCharges.Margin = New System.Windows.Forms.Padding(4)
         Me.txttotalCharges.Name = "txttotalCharges"
         Me.txttotalCharges.ReadOnly = True
-        Me.txttotalCharges.Size = New System.Drawing.Size(120, 26)
+        Me.txttotalCharges.Size = New System.Drawing.Size(159, 30)
         Me.txttotalCharges.TabIndex = 40040
         Me.txttotalCharges.TabStop = False
         Me.txttotalCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -723,9 +763,10 @@ Partial Class Sellout_Mannual
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.Black
-        Me.Label19.Location = New System.Drawing.Point(978, 579)
+        Me.Label19.Location = New System.Drawing.Point(1298, 708)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(84, 19)
+        Me.Label19.Size = New System.Drawing.Size(105, 23)
         Me.Label19.TabIndex = 40043
         Me.Label19.Text = "Round off :"
         '
@@ -736,10 +777,11 @@ Partial Class Sellout_Mannual
         Me.txtroundoff.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtroundoff.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtroundoff.ForeColor = System.Drawing.Color.Navy
-        Me.txtroundoff.Location = New System.Drawing.Point(1063, 576)
+        Me.txtroundoff.Location = New System.Drawing.Point(1417, 703)
+        Me.txtroundoff.Margin = New System.Windows.Forms.Padding(4)
         Me.txtroundoff.Name = "txtroundoff"
         Me.txtroundoff.ReadOnly = True
-        Me.txtroundoff.Size = New System.Drawing.Size(120, 26)
+        Me.txtroundoff.Size = New System.Drawing.Size(159, 30)
         Me.txtroundoff.TabIndex = 40042
         Me.txtroundoff.TabStop = False
         Me.txtroundoff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -749,9 +791,10 @@ Partial Class Sellout_Mannual
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.Black
-        Me.Label20.Location = New System.Drawing.Point(955, 604)
+        Me.Label20.Location = New System.Drawing.Point(1268, 737)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(107, 19)
+        Me.Label20.Size = New System.Drawing.Size(135, 23)
         Me.Label20.TabIndex = 40045
         Me.Label20.Text = "Total Amount :"
         '
@@ -762,10 +805,11 @@ Partial Class Sellout_Mannual
         Me.txttotalNetAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txttotalNetAmount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txttotalNetAmount.ForeColor = System.Drawing.Color.Navy
-        Me.txttotalNetAmount.Location = New System.Drawing.Point(1063, 601)
+        Me.txttotalNetAmount.Location = New System.Drawing.Point(1417, 732)
+        Me.txttotalNetAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.txttotalNetAmount.Name = "txttotalNetAmount"
         Me.txttotalNetAmount.ReadOnly = True
-        Me.txttotalNetAmount.Size = New System.Drawing.Size(120, 26)
+        Me.txttotalNetAmount.Size = New System.Drawing.Size(159, 30)
         Me.txttotalNetAmount.TabIndex = 40044
         Me.txttotalNetAmount.TabStop = False
         Me.txttotalNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -775,9 +819,10 @@ Partial Class Sellout_Mannual
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.Black
-        Me.Label21.Location = New System.Drawing.Point(978, 480)
+        Me.Label21.Location = New System.Drawing.Point(1299, 591)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(84, 19)
+        Me.Label21.Size = New System.Drawing.Size(104, 23)
         Me.Label21.TabIndex = 40047
         Me.Label21.Text = "Total Nug :"
         '
@@ -788,10 +833,11 @@ Partial Class Sellout_Mannual
         Me.txtTotalNug.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalNug.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotalNug.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalNug.Location = New System.Drawing.Point(1063, 477)
+        Me.txtTotalNug.Location = New System.Drawing.Point(1417, 587)
+        Me.txtTotalNug.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalNug.Name = "txtTotalNug"
         Me.txtTotalNug.ReadOnly = True
-        Me.txtTotalNug.Size = New System.Drawing.Size(120, 26)
+        Me.txtTotalNug.Size = New System.Drawing.Size(159, 30)
         Me.txtTotalNug.TabIndex = 40046
         Me.txtTotalNug.TabStop = False
         Me.txtTotalNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -803,10 +849,11 @@ Partial Class Sellout_Mannual
         Me.txttotalWeight.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txttotalWeight.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txttotalWeight.ForeColor = System.Drawing.Color.Navy
-        Me.txttotalWeight.Location = New System.Drawing.Point(1063, 502)
+        Me.txttotalWeight.Location = New System.Drawing.Point(1417, 616)
+        Me.txttotalWeight.Margin = New System.Windows.Forms.Padding(4)
         Me.txttotalWeight.Name = "txttotalWeight"
         Me.txttotalWeight.ReadOnly = True
-        Me.txttotalWeight.Size = New System.Drawing.Size(120, 26)
+        Me.txttotalWeight.Size = New System.Drawing.Size(159, 30)
         Me.txttotalWeight.TabIndex = 40048
         Me.txttotalWeight.TabStop = False
         Me.txttotalWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -816,9 +863,10 @@ Partial Class Sellout_Mannual
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label22.ForeColor = System.Drawing.Color.Black
-        Me.Label22.Location = New System.Drawing.Point(959, 506)
+        Me.Label22.Location = New System.Drawing.Point(1273, 621)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(103, 19)
+        Me.Label22.Size = New System.Drawing.Size(130, 23)
         Me.Label22.TabIndex = 40049
         Me.Label22.Text = "Total Weight :"
         '
@@ -831,9 +879,10 @@ Partial Class Sellout_Mannual
         Me.BtnSave.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnSave.Image = CType(resources.GetObject("BtnSave.Image"), System.Drawing.Image)
         Me.BtnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnSave.Location = New System.Drawing.Point(1067, 92)
+        Me.BtnSave.Location = New System.Drawing.Point(1423, 113)
+        Me.BtnSave.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(117, 49)
+        Me.BtnSave.Size = New System.Drawing.Size(156, 60)
         Me.BtnSave.TabIndex = 40050
         Me.BtnSave.Text = "&Save"
         Me.BtnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -848,9 +897,10 @@ Partial Class Sellout_Mannual
         Me.BtnDelete.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnDelete.Image = CType(resources.GetObject("BtnDelete.Image"), System.Drawing.Image)
         Me.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnDelete.Location = New System.Drawing.Point(867, 92)
+        Me.BtnDelete.Location = New System.Drawing.Point(1156, 113)
+        Me.BtnDelete.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnDelete.Name = "BtnDelete"
-        Me.BtnDelete.Size = New System.Drawing.Size(92, 49)
+        Me.BtnDelete.Size = New System.Drawing.Size(123, 60)
         Me.BtnDelete.TabIndex = 40051
         Me.BtnDelete.Text = "&Delete"
         Me.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -865,9 +915,10 @@ Partial Class Sellout_Mannual
         Me.btnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnPrint.Image = CType(resources.GetObject("btnPrint.Image"), System.Drawing.Image)
         Me.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPrint.Location = New System.Drawing.Point(959, 92)
+        Me.btnPrint.Location = New System.Drawing.Point(1279, 113)
+        Me.btnPrint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(108, 49)
+        Me.btnPrint.Size = New System.Drawing.Size(144, 60)
         Me.btnPrint.TabIndex = 40052
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -883,10 +934,11 @@ Partial Class Sellout_Mannual
         Me.Cbper.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Cbper.ForeColor = System.Drawing.Color.Black
         Me.Cbper.FormattingEnabled = True
-        Me.Cbper.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.300 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
-        Me.Cbper.Location = New System.Drawing.Point(952, 167)
+        Me.Cbper.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "42 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
+        Me.Cbper.Location = New System.Drawing.Point(1269, 206)
+        Me.Cbper.Margin = New System.Windows.Forms.Padding(4)
         Me.Cbper.Name = "Cbper"
-        Me.Cbper.Size = New System.Drawing.Size(89, 27)
+        Me.Cbper.Size = New System.Drawing.Size(117, 30)
         Me.Cbper.TabIndex = 11
         '
         'txtAccount
@@ -895,9 +947,10 @@ Partial Class Sellout_Mannual
         Me.txtAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAccount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtAccount.ForeColor = System.Drawing.Color.Black
-        Me.txtAccount.Location = New System.Drawing.Point(477, 112)
+        Me.txtAccount.Location = New System.Drawing.Point(636, 138)
+        Me.txtAccount.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAccount.Name = "txtAccount"
-        Me.txtAccount.Size = New System.Drawing.Size(384, 26)
+        Me.txtAccount.Size = New System.Drawing.Size(511, 30)
         Me.txtAccount.TabIndex = 4
         Me.txtAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -930,7 +983,8 @@ Partial Class Sellout_Mannual
         DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DgAccountSearch.DefaultCellStyle = DataGridViewCellStyle8
         Me.DgAccountSearch.GridColor = System.Drawing.Color.Gray
-        Me.DgAccountSearch.Location = New System.Drawing.Point(477, 138)
+        Me.DgAccountSearch.Location = New System.Drawing.Point(636, 170)
+        Me.DgAccountSearch.Margin = New System.Windows.Forms.Padding(4)
         Me.DgAccountSearch.MultiSelect = False
         Me.DgAccountSearch.Name = "DgAccountSearch"
         Me.DgAccountSearch.ReadOnly = True
@@ -949,7 +1003,7 @@ Partial Class Sellout_Mannual
         Me.DgAccountSearch.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.DgAccountSearch.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.DgAccountSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgAccountSearch.Size = New System.Drawing.Size(384, 246)
+        Me.DgAccountSearch.Size = New System.Drawing.Size(512, 303)
         Me.DgAccountSearch.TabIndex = 40113
         Me.DgAccountSearch.TabStop = False
         Me.DgAccountSearch.Visible = False
@@ -960,9 +1014,10 @@ Partial Class Sellout_Mannual
         Me.txtItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtItem.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtItem.ForeColor = System.Drawing.Color.Black
-        Me.txtItem.Location = New System.Drawing.Point(12, 167)
+        Me.txtItem.Location = New System.Drawing.Point(16, 206)
+        Me.txtItem.Margin = New System.Windows.Forms.Padding(4)
         Me.txtItem.Name = "txtItem"
-        Me.txtItem.Size = New System.Drawing.Size(400, 26)
+        Me.txtItem.Size = New System.Drawing.Size(533, 30)
         Me.txtItem.TabIndex = 5
         Me.txtItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -995,7 +1050,8 @@ Partial Class Sellout_Mannual
         DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgItemSearch.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgItemSearch.GridColor = System.Drawing.Color.Gray
-        Me.dgItemSearch.Location = New System.Drawing.Point(12, 193)
+        Me.dgItemSearch.Location = New System.Drawing.Point(16, 238)
+        Me.dgItemSearch.Margin = New System.Windows.Forms.Padding(4)
         Me.dgItemSearch.MultiSelect = False
         Me.dgItemSearch.Name = "dgItemSearch"
         Me.dgItemSearch.ReadOnly = True
@@ -1013,7 +1069,7 @@ Partial Class Sellout_Mannual
         Me.dgItemSearch.RowsDefaultCellStyle = DataGridViewCellStyle14
         Me.dgItemSearch.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.dgItemSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgItemSearch.Size = New System.Drawing.Size(400, 246)
+        Me.dgItemSearch.Size = New System.Drawing.Size(533, 303)
         Me.dgItemSearch.TabIndex = 40115
         Me.dgItemSearch.TabStop = False
         Me.dgItemSearch.Visible = False
@@ -1024,9 +1080,10 @@ Partial Class Sellout_Mannual
         Me.txtCharges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCharges.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtCharges.ForeColor = System.Drawing.Color.Black
-        Me.txtCharges.Location = New System.Drawing.Point(12, 480)
+        Me.txtCharges.Location = New System.Drawing.Point(16, 591)
+        Me.txtCharges.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCharges.Name = "txtCharges"
-        Me.txtCharges.Size = New System.Drawing.Size(260, 26)
+        Me.txtCharges.Size = New System.Drawing.Size(346, 30)
         Me.txtCharges.TabIndex = 13
         Me.txtCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1058,7 +1115,8 @@ Partial Class Sellout_Mannual
         DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgCharges.DefaultCellStyle = DataGridViewCellStyle16
         Me.dgCharges.GridColor = System.Drawing.Color.Gray
-        Me.dgCharges.Location = New System.Drawing.Point(12, 505)
+        Me.dgCharges.Location = New System.Drawing.Point(16, 622)
+        Me.dgCharges.Margin = New System.Windows.Forms.Padding(4)
         Me.dgCharges.MultiSelect = False
         Me.dgCharges.Name = "dgCharges"
         Me.dgCharges.ReadOnly = True
@@ -1079,7 +1137,7 @@ Partial Class Sellout_Mannual
         Me.dgCharges.RowsDefaultCellStyle = DataGridViewCellStyle18
         Me.dgCharges.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.dgCharges.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCharges.Size = New System.Drawing.Size(260, 120)
+        Me.dgCharges.Size = New System.Drawing.Size(347, 148)
         Me.dgCharges.TabIndex = 40117
         Me.dgCharges.TabStop = False
         Me.dgCharges.Visible = False
@@ -1089,9 +1147,10 @@ Partial Class Sellout_Mannual
         Me.ckShowCustomer.AutoSize = True
         Me.ckShowCustomer.Font = New System.Drawing.Font("Times New Roman", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckShowCustomer.ForeColor = System.Drawing.Color.Red
-        Me.ckShowCustomer.Location = New System.Drawing.Point(788, 94)
+        Me.ckShowCustomer.Location = New System.Drawing.Point(1051, 116)
+        Me.ckShowCustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.ckShowCustomer.Name = "ckShowCustomer"
-        Me.ckShowCustomer.Size = New System.Drawing.Size(64, 16)
+        Me.ckShowCustomer.Size = New System.Drawing.Size(81, 19)
         Me.ckShowCustomer.TabIndex = 40154
         Me.ckShowCustomer.Text = "Customers"
         Me.ckShowCustomer.UseVisualStyleBackColor = True
@@ -1099,9 +1158,10 @@ Partial Class Sellout_Mannual
         'lblInword
         '
         Me.lblInword.AutoSize = True
-        Me.lblInword.Location = New System.Drawing.Point(242, 447)
+        Me.lblInword.Location = New System.Drawing.Point(323, 550)
+        Me.lblInword.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInword.Name = "lblInword"
-        Me.lblInword.Size = New System.Drawing.Size(38, 13)
+        Me.lblInword.Size = New System.Drawing.Size(49, 17)
         Me.lblInword.TabIndex = 40155
         Me.lblInword.Text = "inword"
         Me.lblInword.Visible = False
@@ -1111,9 +1171,10 @@ Partial Class Sellout_Mannual
         Me.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFirst.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnFirst.ForeColor = System.Drawing.Color.Navy
-        Me.btnFirst.Location = New System.Drawing.Point(1011, 449)
+        Me.btnFirst.Location = New System.Drawing.Point(1348, 553)
+        Me.btnFirst.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFirst.Name = "btnFirst"
-        Me.btnFirst.Size = New System.Drawing.Size(44, 23)
+        Me.btnFirst.Size = New System.Drawing.Size(59, 28)
         Me.btnFirst.TabIndex = 40286
         Me.btnFirst.TabStop = False
         Me.btnFirst.Text = "|<"
@@ -1124,9 +1185,10 @@ Partial Class Sellout_Mannual
         Me.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLast.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnLast.ForeColor = System.Drawing.Color.Navy
-        Me.btnLast.Location = New System.Drawing.Point(1140, 449)
+        Me.btnLast.Location = New System.Drawing.Point(1520, 553)
+        Me.btnLast.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLast.Name = "btnLast"
-        Me.btnLast.Size = New System.Drawing.Size(44, 23)
+        Me.btnLast.Size = New System.Drawing.Size(59, 28)
         Me.btnLast.TabIndex = 40285
         Me.btnLast.TabStop = False
         Me.btnLast.Text = ">|"
@@ -1137,9 +1199,10 @@ Partial Class Sellout_Mannual
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNext.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnNext.ForeColor = System.Drawing.Color.Navy
-        Me.btnNext.Location = New System.Drawing.Point(1097, 449)
+        Me.btnNext.Location = New System.Drawing.Point(1463, 553)
+        Me.btnNext.Margin = New System.Windows.Forms.Padding(4)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(44, 23)
+        Me.btnNext.Size = New System.Drawing.Size(59, 28)
         Me.btnNext.TabIndex = 40284
         Me.btnNext.TabStop = False
         Me.btnNext.Text = ">>"
@@ -1150,9 +1213,10 @@ Partial Class Sellout_Mannual
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPrevious.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnPrevious.ForeColor = System.Drawing.Color.Navy
-        Me.btnPrevious.Location = New System.Drawing.Point(1054, 449)
+        Me.btnPrevious.Location = New System.Drawing.Point(1405, 553)
+        Me.btnPrevious.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(44, 23)
+        Me.btnPrevious.Size = New System.Drawing.Size(59, 28)
         Me.btnPrevious.TabIndex = 40283
         Me.btnPrevious.TabStop = False
         Me.btnPrevious.Text = "<<"
@@ -1161,7 +1225,8 @@ Partial Class Sellout_Mannual
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(360, 7)
+        Me.PictureBox1.Location = New System.Drawing.Point(480, 9)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1172,9 +1237,10 @@ Partial Class Sellout_Mannual
         '
         Me.pnlInvoiceID.Controls.Add(Me.Label56)
         Me.pnlInvoiceID.Controls.Add(Me.txtInvoiceID)
-        Me.pnlInvoiceID.Location = New System.Drawing.Point(121, 138)
+        Me.pnlInvoiceID.Location = New System.Drawing.Point(161, 170)
+        Me.pnlInvoiceID.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlInvoiceID.Name = "pnlInvoiceID"
-        Me.pnlInvoiceID.Size = New System.Drawing.Size(176, 74)
+        Me.pnlInvoiceID.Size = New System.Drawing.Size(235, 91)
         Me.pnlInvoiceID.TabIndex = 91251
         Me.pnlInvoiceID.Visible = False
         '
@@ -1183,9 +1249,10 @@ Partial Class Sellout_Mannual
         Me.Label56.AutoSize = True
         Me.Label56.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label56.ForeColor = System.Drawing.Color.Black
-        Me.Label56.Location = New System.Drawing.Point(3, 10)
+        Me.Label56.Location = New System.Drawing.Point(4, 12)
+        Me.Label56.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(73, 19)
+        Me.Label56.Size = New System.Drawing.Size(94, 22)
         Me.Label56.TabIndex = 40073
         Me.Label56.Text = "Invoice ID"
         '
@@ -1196,26 +1263,29 @@ Partial Class Sellout_Mannual
         Me.txtInvoiceID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtInvoiceID.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtInvoiceID.ForeColor = System.Drawing.Color.Black
-        Me.txtInvoiceID.Location = New System.Drawing.Point(2, 37)
+        Me.txtInvoiceID.Location = New System.Drawing.Point(3, 46)
+        Me.txtInvoiceID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtInvoiceID.Name = "txtInvoiceID"
-        Me.txtInvoiceID.Size = New System.Drawing.Size(171, 26)
+        Me.txtInvoiceID.Size = New System.Drawing.Size(227, 30)
         Me.txtInvoiceID.TabIndex = 2
         Me.txtInvoiceID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp1.Location = New System.Drawing.Point(13, 112)
+        Me.dtp1.Location = New System.Drawing.Point(17, 138)
+        Me.dtp1.Margin = New System.Windows.Forms.Padding(4)
         Me.dtp1.Name = "dtp1"
-        Me.dtp1.Size = New System.Drawing.Size(109, 26)
+        Me.dtp1.Size = New System.Drawing.Size(144, 30)
         Me.dtp1.TabIndex = 91252
         '
         'btnMultiUpdate
         '
         Me.btnMultiUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMultiUpdate.Location = New System.Drawing.Point(1040, 23)
+        Me.btnMultiUpdate.Location = New System.Drawing.Point(1387, 28)
+        Me.btnMultiUpdate.Margin = New System.Windows.Forms.Padding(4)
         Me.btnMultiUpdate.Name = "btnMultiUpdate"
-        Me.btnMultiUpdate.Size = New System.Drawing.Size(91, 26)
+        Me.btnMultiUpdate.Size = New System.Drawing.Size(121, 32)
         Me.btnMultiUpdate.TabIndex = 91253
         Me.btnMultiUpdate.Text = "MultiUpdate"
         Me.btnMultiUpdate.UseVisualStyleBackColor = True
@@ -1236,9 +1306,10 @@ Partial Class Sellout_Mannual
         Me.pnlWhatsapp.Controls.Add(Me.txtWhatsappNo)
         Me.pnlWhatsapp.Controls.Add(Me.Button5)
         Me.pnlWhatsapp.Controls.Add(Me.Button1)
-        Me.pnlWhatsapp.Location = New System.Drawing.Point(867, 138)
+        Me.pnlWhatsapp.Location = New System.Drawing.Point(1156, 170)
+        Me.pnlWhatsapp.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlWhatsapp.Name = "pnlWhatsapp"
-        Me.pnlWhatsapp.Size = New System.Drawing.Size(317, 202)
+        Me.pnlWhatsapp.Size = New System.Drawing.Size(423, 249)
         Me.pnlWhatsapp.TabIndex = 120
         Me.pnlWhatsapp.Visible = False
         '
@@ -1247,9 +1318,10 @@ Partial Class Sellout_Mannual
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Red
-        Me.Label23.Location = New System.Drawing.Point(32, 9)
+        Me.Label23.Location = New System.Drawing.Point(43, 11)
+        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(86, 21)
+        Me.Label23.Size = New System.Drawing.Size(109, 27)
         Me.Label23.TabIndex = 91234
         Me.Label23.Text = "Send Via :"
         '
@@ -1264,9 +1336,10 @@ Partial Class Sellout_Mannual
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
         Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
-        Me.cbType.Location = New System.Drawing.Point(151, 9)
+        Me.cbType.Location = New System.Drawing.Point(201, 11)
+        Me.cbType.Margin = New System.Windows.Forms.Padding(4)
         Me.cbType.Name = "cbType"
-        Me.cbType.Size = New System.Drawing.Size(146, 23)
+        Me.cbType.Size = New System.Drawing.Size(193, 27)
         Me.cbType.TabIndex = 91233
         '
         'lblSim
@@ -1274,9 +1347,10 @@ Partial Class Sellout_Mannual
         Me.lblSim.AutoSize = True
         Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblSim.ForeColor = System.Drawing.Color.Red
-        Me.lblSim.Location = New System.Drawing.Point(76, 39)
+        Me.lblSim.Location = New System.Drawing.Point(101, 48)
+        Me.lblSim.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSim.Name = "lblSim"
-        Me.lblSim.Size = New System.Drawing.Size(39, 19)
+        Me.lblSim.Size = New System.Drawing.Size(55, 22)
         Me.lblSim.TabIndex = 91235
         Me.lblSim.Text = "SIM :"
         Me.lblSim.Visible = False
@@ -1288,18 +1362,20 @@ Partial Class Sellout_Mannual
         Me.cbSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!)
         Me.cbSim.FormattingEnabled = True
-        Me.cbSim.Location = New System.Drawing.Point(124, 37)
+        Me.cbSim.Location = New System.Drawing.Point(165, 46)
+        Me.cbSim.Margin = New System.Windows.Forms.Padding(4)
         Me.cbSim.Name = "cbSim"
-        Me.cbSim.Size = New System.Drawing.Size(173, 23)
+        Me.cbSim.Size = New System.Drawing.Size(229, 27)
         Me.cbSim.TabIndex = 91236
         Me.cbSim.Visible = False
         '
         'RadioPrint2
         '
         Me.RadioPrint2.AutoSize = True
-        Me.RadioPrint2.Location = New System.Drawing.Point(66, 174)
+        Me.RadioPrint2.Location = New System.Drawing.Point(88, 214)
+        Me.RadioPrint2.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioPrint2.Name = "RadioPrint2"
-        Me.RadioPrint2.Size = New System.Drawing.Size(52, 17)
+        Me.RadioPrint2.Size = New System.Drawing.Size(66, 21)
         Me.RadioPrint2.TabIndex = 91224
         Me.RadioPrint2.TabStop = True
         Me.RadioPrint2.Text = "Print&2"
@@ -1308,9 +1384,10 @@ Partial Class Sellout_Mannual
         'RadioPrint1
         '
         Me.RadioPrint1.AutoSize = True
-        Me.RadioPrint1.Location = New System.Drawing.Point(14, 174)
+        Me.RadioPrint1.Location = New System.Drawing.Point(19, 214)
+        Me.RadioPrint1.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioPrint1.Name = "RadioPrint1"
-        Me.RadioPrint1.Size = New System.Drawing.Size(52, 17)
+        Me.RadioPrint1.Size = New System.Drawing.Size(66, 21)
         Me.RadioPrint1.TabIndex = 91223
         Me.RadioPrint1.TabStop = True
         Me.RadioPrint1.Text = "Print&1"
@@ -1321,9 +1398,10 @@ Partial Class Sellout_Mannual
         Me.Label57.AutoSize = True
         Me.Label57.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label57.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label57.Location = New System.Drawing.Point(67, 39)
+        Me.Label57.Location = New System.Drawing.Point(89, 48)
+        Me.Label57.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(197, 19)
+        Me.Label57.Size = New System.Drawing.Size(256, 22)
         Me.Label57.TabIndex = 91222
         Me.Label57.Text = "Print And Preview /  Whatsapp"
         '
@@ -1336,9 +1414,10 @@ Partial Class Sellout_Mannual
         Me.Button2.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(14, 63)
+        Me.Button2.Location = New System.Drawing.Point(19, 78)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(104, 58)
+        Me.Button2.Size = New System.Drawing.Size(139, 71)
         Me.Button2.TabIndex = 91221
         Me.Button2.Text = "&Print"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1349,9 +1428,10 @@ Partial Class Sellout_Mannual
         Me.Label58.BackColor = System.Drawing.Color.CadetBlue
         Me.Label58.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label58.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label58.Location = New System.Drawing.Point(124, 63)
+        Me.Label58.Location = New System.Drawing.Point(165, 78)
+        Me.Label58.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(173, 32)
+        Me.Label58.Size = New System.Drawing.Size(231, 39)
         Me.Label58.TabIndex = 0
         Me.Label58.Text = "Enter Whatsapp No. "
         Me.Label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1362,9 +1442,10 @@ Partial Class Sellout_Mannual
         Me.txtWhatsappNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtWhatsappNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtWhatsappNo.ForeColor = System.Drawing.Color.Black
-        Me.txtWhatsappNo.Location = New System.Drawing.Point(124, 95)
+        Me.txtWhatsappNo.Location = New System.Drawing.Point(165, 117)
+        Me.txtWhatsappNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtWhatsappNo.Name = "txtWhatsappNo"
-        Me.txtWhatsappNo.Size = New System.Drawing.Size(173, 26)
+        Me.txtWhatsappNo.Size = New System.Drawing.Size(230, 30)
         Me.txtWhatsappNo.TabIndex = 91219
         Me.txtWhatsappNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1377,9 +1458,10 @@ Partial Class Sellout_Mannual
         Me.Button5.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(124, 120)
+        Me.Button5.Location = New System.Drawing.Point(165, 148)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(173, 49)
+        Me.Button5.Size = New System.Drawing.Size(231, 60)
         Me.Button5.TabIndex = 91218
         Me.Button5.Text = "Send &Whatsapp"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1394,9 +1476,10 @@ Partial Class Sellout_Mannual
         Me.Button1.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(14, 119)
+        Me.Button1.Location = New System.Drawing.Point(19, 146)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 51)
+        Me.Button1.Size = New System.Drawing.Size(139, 63)
         Me.Button1.TabIndex = 21
         Me.Button1.Text = "Pre&view"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1413,9 +1496,10 @@ Partial Class Sellout_Mannual
         Me.pnlMarka.Controls.Add(Me.txtCrateQty)
         Me.pnlMarka.Controls.Add(Me.Label39)
         Me.pnlMarka.Controls.Add(Me.cbCrateMarka)
-        Me.pnlMarka.Location = New System.Drawing.Point(411, 193)
+        Me.pnlMarka.Location = New System.Drawing.Point(548, 238)
+        Me.pnlMarka.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlMarka.Name = "pnlMarka"
-        Me.pnlMarka.Size = New System.Drawing.Size(450, 130)
+        Me.pnlMarka.Size = New System.Drawing.Size(600, 160)
         Me.pnlMarka.TabIndex = 8
         Me.pnlMarka.Visible = False
         '
@@ -1424,9 +1508,10 @@ Partial Class Sellout_Mannual
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label30.Location = New System.Drawing.Point(343, 59)
+        Me.Label30.Location = New System.Drawing.Point(457, 73)
+        Me.Label30.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(76, 19)
+        Me.Label30.Size = New System.Drawing.Size(98, 22)
         Me.Label30.TabIndex = 40
         Me.Label30.Text = "Trans Type"
         '
@@ -1440,9 +1525,10 @@ Partial Class Sellout_Mannual
         Me.cbCrateTrans.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbCrateTrans.FormattingEnabled = True
         Me.cbCrateTrans.Items.AddRange(New Object() {"Crate Out", "Crate In"})
-        Me.cbCrateTrans.Location = New System.Drawing.Point(335, 85)
+        Me.cbCrateTrans.Location = New System.Drawing.Point(447, 105)
+        Me.cbCrateTrans.Margin = New System.Windows.Forms.Padding(4)
         Me.cbCrateTrans.Name = "cbCrateTrans"
-        Me.cbCrateTrans.Size = New System.Drawing.Size(99, 23)
+        Me.cbCrateTrans.Size = New System.Drawing.Size(131, 27)
         Me.cbCrateTrans.TabIndex = 3
         '
         'Label37
@@ -1450,9 +1536,10 @@ Partial Class Sellout_Mannual
         Me.Label37.AutoSize = True
         Me.Label37.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label37.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label37.Location = New System.Drawing.Point(135, 8)
+        Me.Label37.Location = New System.Drawing.Point(180, 10)
+        Me.Label37.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(105, 19)
+        Me.Label37.Size = New System.Drawing.Size(131, 22)
         Me.Label37.TabIndex = 38
         Me.Label37.Text = "Account Name "
         '
@@ -1465,9 +1552,10 @@ Partial Class Sellout_Mannual
         Me.cbAccountName.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbAccountName.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbAccountName.FormattingEnabled = True
-        Me.cbAccountName.Location = New System.Drawing.Point(18, 32)
+        Me.cbAccountName.Location = New System.Drawing.Point(24, 39)
+        Me.cbAccountName.Margin = New System.Windows.Forms.Padding(4)
         Me.cbAccountName.Name = "cbAccountName"
-        Me.cbAccountName.Size = New System.Drawing.Size(416, 23)
+        Me.cbAccountName.Size = New System.Drawing.Size(553, 27)
         Me.cbAccountName.TabIndex = 0
         '
         'Label38
@@ -1475,9 +1563,10 @@ Partial Class Sellout_Mannual
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label38.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label38.Location = New System.Drawing.Point(287, 60)
+        Me.Label38.Location = New System.Drawing.Point(383, 74)
+        Me.Label38.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(32, 19)
+        Me.Label38.Size = New System.Drawing.Size(38, 22)
         Me.Label38.TabIndex = 29
         Me.Label38.Text = "Qty"
         '
@@ -1488,9 +1577,10 @@ Partial Class Sellout_Mannual
         Me.txtCrateQty.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCrateQty.Font = New System.Drawing.Font("Times New Roman", 11.5!)
         Me.txtCrateQty.ForeColor = System.Drawing.Color.Black
-        Me.txtCrateQty.Location = New System.Drawing.Point(271, 84)
+        Me.txtCrateQty.Location = New System.Drawing.Point(361, 103)
+        Me.txtCrateQty.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCrateQty.Name = "txtCrateQty"
-        Me.txtCrateQty.Size = New System.Drawing.Size(64, 25)
+        Me.txtCrateQty.Size = New System.Drawing.Size(85, 30)
         Me.txtCrateQty.TabIndex = 2
         Me.txtCrateQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1499,9 +1589,10 @@ Partial Class Sellout_Mannual
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label39.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label39.Location = New System.Drawing.Point(83, 60)
+        Me.Label39.Location = New System.Drawing.Point(111, 74)
+        Me.Label39.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(88, 19)
+        Me.Label39.Size = New System.Drawing.Size(109, 22)
         Me.Label39.TabIndex = 28
         Me.Label39.Text = "Crate Marka"
         '
@@ -1514,9 +1605,10 @@ Partial Class Sellout_Mannual
         Me.cbCrateMarka.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbCrateMarka.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.cbCrateMarka.FormattingEnabled = True
-        Me.cbCrateMarka.Location = New System.Drawing.Point(18, 85)
+        Me.cbCrateMarka.Location = New System.Drawing.Point(24, 105)
+        Me.cbCrateMarka.Margin = New System.Windows.Forms.Padding(4)
         Me.cbCrateMarka.Name = "cbCrateMarka"
-        Me.cbCrateMarka.Size = New System.Drawing.Size(253, 23)
+        Me.cbCrateMarka.Size = New System.Drawing.Size(336, 27)
         Me.cbCrateMarka.TabIndex = 1
         '
         'lblCrate
@@ -1524,9 +1616,10 @@ Partial Class Sellout_Mannual
         Me.lblCrate.AutoSize = True
         Me.lblCrate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCrate.ForeColor = System.Drawing.Color.Red
-        Me.lblCrate.Location = New System.Drawing.Point(8, 53)
+        Me.lblCrate.Location = New System.Drawing.Point(11, 65)
+        Me.lblCrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCrate.Name = "lblCrate"
-        Me.lblCrate.Size = New System.Drawing.Size(35, 20)
+        Me.lblCrate.Size = New System.Drawing.Size(45, 25)
         Me.lblCrate.TabIndex = 91254
         Me.lblCrate.Text = "Y/N"
         Me.lblCrate.Visible = False
@@ -1555,9 +1648,10 @@ Partial Class Sellout_Mannual
         Me.pnlSendingDetails.Controls.Add(Me.Label53)
         Me.pnlSendingDetails.Controls.Add(Me.Label52)
         Me.pnlSendingDetails.Controls.Add(Me.txtDriverName)
-        Me.pnlSendingDetails.Location = New System.Drawing.Point(300, 138)
+        Me.pnlSendingDetails.Location = New System.Drawing.Point(400, 170)
+        Me.pnlSendingDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlSendingDetails.Name = "pnlSendingDetails"
-        Me.pnlSendingDetails.Size = New System.Drawing.Size(527, 307)
+        Me.pnlSendingDetails.Size = New System.Drawing.Size(703, 378)
         Me.pnlSendingDetails.TabIndex = 91255
         Me.pnlSendingDetails.Visible = False
         '
@@ -1566,9 +1660,10 @@ Partial Class Sellout_Mannual
         Me.Label63.AutoSize = True
         Me.Label63.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label63.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label63.Location = New System.Drawing.Point(138, 211)
+        Me.Label63.Location = New System.Drawing.Point(184, 260)
+        Me.Label63.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(88, 19)
+        Me.Label63.Size = New System.Drawing.Size(109, 23)
         Me.Label63.TabIndex = 40093
         Me.Label63.Text = "Gr/RR No :"
         '
@@ -1579,9 +1674,10 @@ Partial Class Sellout_Mannual
         Me.txtGrNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtGrNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGrNo.ForeColor = System.Drawing.Color.Teal
-        Me.txtGrNo.Location = New System.Drawing.Point(230, 209)
+        Me.txtGrNo.Location = New System.Drawing.Point(307, 257)
+        Me.txtGrNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtGrNo.Name = "txtGrNo"
-        Me.txtGrNo.Size = New System.Drawing.Size(283, 26)
+        Me.txtGrNo.Size = New System.Drawing.Size(377, 30)
         Me.txtGrNo.TabIndex = 6
         Me.txtGrNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1590,9 +1686,10 @@ Partial Class Sellout_Mannual
         Me.Label62.AutoSize = True
         Me.Label62.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label62.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label62.Location = New System.Drawing.Point(99, 154)
+        Me.Label62.Location = New System.Drawing.Point(132, 190)
+        Me.Label62.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(127, 19)
+        Me.Label62.Size = New System.Drawing.Size(159, 23)
         Me.Label62.TabIndex = 40091
         Me.Label62.Text = "Transport Name :"
         '
@@ -1603,9 +1700,10 @@ Partial Class Sellout_Mannual
         Me.txtTransPort.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTransPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTransPort.ForeColor = System.Drawing.Color.Teal
-        Me.txtTransPort.Location = New System.Drawing.Point(230, 151)
+        Me.txtTransPort.Location = New System.Drawing.Point(307, 186)
+        Me.txtTransPort.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTransPort.Name = "txtTransPort"
-        Me.txtTransPort.Size = New System.Drawing.Size(283, 26)
+        Me.txtTransPort.Size = New System.Drawing.Size(377, 30)
         Me.txtTransPort.TabIndex = 4
         Me.txtTransPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1614,9 +1712,10 @@ Partial Class Sellout_Mannual
         Me.Label61.AutoSize = True
         Me.Label61.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label61.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label61.Location = New System.Drawing.Point(128, 8)
+        Me.Label61.Location = New System.Drawing.Point(171, 10)
+        Me.Label61.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label61.Name = "Label61"
-        Me.Label61.Size = New System.Drawing.Size(98, 19)
+        Me.Label61.Size = New System.Drawing.Size(123, 23)
         Me.Label61.TabIndex = 40089
         Me.Label61.Text = "Party Name :"
         '
@@ -1627,9 +1726,10 @@ Partial Class Sellout_Mannual
         Me.txtCustName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCustName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCustName.ForeColor = System.Drawing.Color.Teal
-        Me.txtCustName.Location = New System.Drawing.Point(230, 5)
+        Me.txtCustName.Location = New System.Drawing.Point(307, 6)
+        Me.txtCustName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustName.Name = "txtCustName"
-        Me.txtCustName.Size = New System.Drawing.Size(283, 26)
+        Me.txtCustName.Size = New System.Drawing.Size(377, 30)
         Me.txtCustName.TabIndex = 0
         Me.txtCustName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1638,9 +1738,10 @@ Partial Class Sellout_Mannual
         Me.Label60.AutoSize = True
         Me.Label60.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label60.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label60.Location = New System.Drawing.Point(108, 124)
+        Me.Label60.Location = New System.Drawing.Point(144, 153)
+        Me.Label60.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(118, 19)
+        Me.Label60.Size = New System.Drawing.Size(145, 23)
         Me.Label60.TabIndex = 40087
         Me.Label60.Text = "Broker Mobile :"
         '
@@ -1651,9 +1752,10 @@ Partial Class Sellout_Mannual
         Me.txtBrokerMob.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtBrokerMob.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBrokerMob.ForeColor = System.Drawing.Color.Teal
-        Me.txtBrokerMob.Location = New System.Drawing.Point(230, 122)
+        Me.txtBrokerMob.Location = New System.Drawing.Point(307, 150)
+        Me.txtBrokerMob.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBrokerMob.Name = "txtBrokerMob"
-        Me.txtBrokerMob.Size = New System.Drawing.Size(283, 26)
+        Me.txtBrokerMob.Size = New System.Drawing.Size(377, 30)
         Me.txtBrokerMob.TabIndex = 3
         Me.txtBrokerMob.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1662,9 +1764,10 @@ Partial Class Sellout_Mannual
         Me.Label59.AutoSize = True
         Me.Label59.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label59.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label59.Location = New System.Drawing.Point(116, 92)
+        Me.Label59.Location = New System.Drawing.Point(155, 113)
+        Me.Label59.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(110, 19)
+        Me.Label59.Size = New System.Drawing.Size(136, 23)
         Me.Label59.TabIndex = 40085
         Me.Label59.Text = "Broker Name :"
         '
@@ -1675,9 +1778,10 @@ Partial Class Sellout_Mannual
         Me.txtBrokerName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtBrokerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBrokerName.ForeColor = System.Drawing.Color.Teal
-        Me.txtBrokerName.Location = New System.Drawing.Point(230, 93)
+        Me.txtBrokerName.Location = New System.Drawing.Point(307, 114)
+        Me.txtBrokerName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBrokerName.Name = "txtBrokerName"
-        Me.txtBrokerName.Size = New System.Drawing.Size(283, 26)
+        Me.txtBrokerName.Size = New System.Drawing.Size(377, 30)
         Me.txtBrokerName.TabIndex = 2
         Me.txtBrokerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1686,9 +1790,10 @@ Partial Class Sellout_Mannual
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label31.Location = New System.Drawing.Point(92, 37)
+        Me.Label31.Location = New System.Drawing.Point(123, 46)
+        Me.Label31.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(134, 19)
+        Me.Label31.Size = New System.Drawing.Size(166, 23)
         Me.Label31.TabIndex = 40083
         Me.Label31.Text = "Party Mobile No. :"
         '
@@ -1699,9 +1804,10 @@ Partial Class Sellout_Mannual
         Me.txtCustMobile.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtCustMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCustMobile.ForeColor = System.Drawing.Color.Teal
-        Me.txtCustMobile.Location = New System.Drawing.Point(230, 34)
+        Me.txtCustMobile.Location = New System.Drawing.Point(307, 42)
+        Me.txtCustMobile.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustMobile.Name = "txtCustMobile"
-        Me.txtCustMobile.Size = New System.Drawing.Size(283, 26)
+        Me.txtCustMobile.Size = New System.Drawing.Size(377, 30)
         Me.txtCustMobile.TabIndex = 0
         Me.txtCustMobile.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1710,9 +1816,10 @@ Partial Class Sellout_Mannual
         Me.Label32.AutoSize = True
         Me.Label32.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label32.Location = New System.Drawing.Point(104, 62)
+        Me.Label32.Location = New System.Drawing.Point(139, 76)
+        Me.Label32.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(122, 19)
+        Me.Label32.Size = New System.Drawing.Size(153, 23)
         Me.Label32.TabIndex = 40081
         Me.Label32.Text = "Payment Terms :"
         '
@@ -1723,9 +1830,10 @@ Partial Class Sellout_Mannual
         Me.txtPaymentTerm.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPaymentTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPaymentTerm.ForeColor = System.Drawing.Color.Teal
-        Me.txtPaymentTerm.Location = New System.Drawing.Point(230, 63)
+        Me.txtPaymentTerm.Location = New System.Drawing.Point(307, 78)
+        Me.txtPaymentTerm.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPaymentTerm.Name = "txtPaymentTerm"
-        Me.txtPaymentTerm.Size = New System.Drawing.Size(283, 26)
+        Me.txtPaymentTerm.Size = New System.Drawing.Size(377, 30)
         Me.txtPaymentTerm.TabIndex = 1
         Me.txtPaymentTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1735,9 +1843,10 @@ Partial Class Sellout_Mannual
         Me.Label55.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
                 Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label55.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label55.Location = New System.Drawing.Point(4, 3)
+        Me.Label55.Location = New System.Drawing.Point(5, 4)
+        Me.Label55.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(95, 16)
+        Me.Label55.Size = New System.Drawing.Size(124, 20)
         Me.Label55.TabIndex = 40079
         Me.Label55.Text = "Sender Details :"
         '
@@ -1746,9 +1855,10 @@ Partial Class Sellout_Mannual
         Me.Label54.AutoSize = True
         Me.Label54.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label54.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label54.Location = New System.Drawing.Point(86, 268)
+        Me.Label54.Location = New System.Drawing.Point(115, 330)
+        Me.Label54.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(140, 19)
+        Me.Label54.Size = New System.Drawing.Size(174, 23)
         Me.Label54.TabIndex = 40078
         Me.Label54.Text = "Address / Remark :"
         '
@@ -1759,9 +1869,10 @@ Partial Class Sellout_Mannual
         Me.txtRemark.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtRemark.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRemark.ForeColor = System.Drawing.Color.Teal
-        Me.txtRemark.Location = New System.Drawing.Point(230, 268)
+        Me.txtRemark.Location = New System.Drawing.Point(307, 330)
+        Me.txtRemark.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRemark.Name = "txtRemark"
-        Me.txtRemark.Size = New System.Drawing.Size(283, 26)
+        Me.txtRemark.Size = New System.Drawing.Size(377, 30)
         Me.txtRemark.TabIndex = 8
         Me.txtRemark.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1772,9 +1883,10 @@ Partial Class Sellout_Mannual
         Me.txtDriverMobile.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtDriverMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDriverMobile.ForeColor = System.Drawing.Color.Teal
-        Me.txtDriverMobile.Location = New System.Drawing.Point(230, 238)
+        Me.txtDriverMobile.Location = New System.Drawing.Point(307, 293)
+        Me.txtDriverMobile.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDriverMobile.Name = "txtDriverMobile"
-        Me.txtDriverMobile.Size = New System.Drawing.Size(283, 26)
+        Me.txtDriverMobile.Size = New System.Drawing.Size(377, 30)
         Me.txtDriverMobile.TabIndex = 7
         Me.txtDriverMobile.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1783,9 +1895,10 @@ Partial Class Sellout_Mannual
         Me.Label53.AutoSize = True
         Me.Label53.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label53.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label53.Location = New System.Drawing.Point(112, 241)
+        Me.Label53.Location = New System.Drawing.Point(149, 297)
+        Me.Label53.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(114, 19)
+        Me.Label53.Size = New System.Drawing.Size(140, 23)
         Me.Label53.TabIndex = 40075
         Me.Label53.Text = "Driver Mobile :"
         '
@@ -1794,9 +1907,10 @@ Partial Class Sellout_Mannual
         Me.Label52.AutoSize = True
         Me.Label52.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label52.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label52.Location = New System.Drawing.Point(120, 183)
+        Me.Label52.Location = New System.Drawing.Point(160, 225)
+        Me.Label52.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(106, 19)
+        Me.Label52.Size = New System.Drawing.Size(131, 23)
         Me.Label52.TabIndex = 40074
         Me.Label52.Text = "Driver Name :"
         '
@@ -1807,9 +1921,10 @@ Partial Class Sellout_Mannual
         Me.txtDriverName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtDriverName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDriverName.ForeColor = System.Drawing.Color.Teal
-        Me.txtDriverName.Location = New System.Drawing.Point(230, 180)
+        Me.txtDriverName.Location = New System.Drawing.Point(307, 222)
+        Me.txtDriverName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDriverName.Name = "txtDriverName"
-        Me.txtDriverName.Size = New System.Drawing.Size(283, 26)
+        Me.txtDriverName.Size = New System.Drawing.Size(377, 30)
         Me.txtDriverName.TabIndex = 5
         Me.txtDriverName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1818,9 +1933,10 @@ Partial Class Sellout_Mannual
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.Black
-        Me.Label33.Location = New System.Drawing.Point(361, 88)
+        Me.Label33.Location = New System.Drawing.Point(481, 108)
+        Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(71, 19)
+        Me.Label33.Size = New System.Drawing.Size(92, 22)
         Me.Label33.TabIndex = 91257
         Me.Label33.Text = "Builty No."
         '
@@ -1831,9 +1947,10 @@ Partial Class Sellout_Mannual
         Me.txtBuiltyNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtBuiltyNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtBuiltyNo.ForeColor = System.Drawing.Color.Black
-        Me.txtBuiltyNo.Location = New System.Drawing.Point(359, 112)
+        Me.txtBuiltyNo.Location = New System.Drawing.Point(479, 138)
+        Me.txtBuiltyNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBuiltyNo.Name = "txtBuiltyNo"
-        Me.txtBuiltyNo.Size = New System.Drawing.Size(119, 26)
+        Me.txtBuiltyNo.Size = New System.Drawing.Size(158, 30)
         Me.txtBuiltyNo.TabIndex = 3
         Me.txtBuiltyNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1842,9 +1959,10 @@ Partial Class Sellout_Mannual
         Me.lblStatus.AutoSize = True
         Me.lblStatus.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatus.ForeColor = System.Drawing.Color.Green
-        Me.lblStatus.Location = New System.Drawing.Point(863, 69)
+        Me.lblStatus.Location = New System.Drawing.Point(1151, 85)
+        Me.lblStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(56, 21)
+        Me.lblStatus.Size = New System.Drawing.Size(70, 27)
         Me.lblStatus.TabIndex = 91258
         Me.lblStatus.Text = "Status"
         Me.lblStatus.Visible = False
@@ -1853,9 +1971,10 @@ Partial Class Sellout_Mannual
         '
         Me.pnlAddWeight.Controls.Add(Me.Label24)
         Me.pnlAddWeight.Controls.Add(Me.txtAddWeight)
-        Me.pnlAddWeight.Location = New System.Drawing.Point(394, 192)
+        Me.pnlAddWeight.Location = New System.Drawing.Point(525, 236)
+        Me.pnlAddWeight.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlAddWeight.Name = "pnlAddWeight"
-        Me.pnlAddWeight.Size = New System.Drawing.Size(408, 86)
+        Me.pnlAddWeight.Size = New System.Drawing.Size(544, 106)
         Me.pnlAddWeight.TabIndex = 91259
         Me.pnlAddWeight.Visible = False
         '
@@ -1864,9 +1983,10 @@ Partial Class Sellout_Mannual
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(18, 10)
+        Me.Label24.Location = New System.Drawing.Point(24, 12)
+        Me.Label24.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(82, 19)
+        Me.Label24.Size = New System.Drawing.Size(103, 22)
         Me.Label24.TabIndex = 91256
         Me.Label24.Text = "Add Weight"
         '
@@ -1876,9 +1996,10 @@ Partial Class Sellout_Mannual
         Me.txtAddWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAddWeight.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtAddWeight.ForeColor = System.Drawing.Color.Black
-        Me.txtAddWeight.Location = New System.Drawing.Point(16, 34)
+        Me.txtAddWeight.Location = New System.Drawing.Point(21, 42)
+        Me.txtAddWeight.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAddWeight.Name = "txtAddWeight"
-        Me.txtAddWeight.Size = New System.Drawing.Size(370, 26)
+        Me.txtAddWeight.Size = New System.Drawing.Size(493, 30)
         Me.txtAddWeight.TabIndex = 4
         Me.txtAddWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1886,9 +2007,10 @@ Partial Class Sellout_Mannual
         '
         Me.lblAddWeight.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblAddWeight.ForeColor = System.Drawing.Color.Navy
-        Me.lblAddWeight.Location = New System.Drawing.Point(743, 451)
+        Me.lblAddWeight.Location = New System.Drawing.Point(991, 555)
+        Me.lblAddWeight.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAddWeight.Name = "lblAddWeight"
-        Me.lblAddWeight.Size = New System.Drawing.Size(210, 97)
+        Me.lblAddWeight.Size = New System.Drawing.Size(280, 119)
         Me.lblAddWeight.TabIndex = 91260
         Me.lblAddWeight.Text = "Cut"
         Me.lblAddWeight.Visible = False
@@ -1898,9 +2020,10 @@ Partial Class Sellout_Mannual
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Times New Roman", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Navy
-        Me.Label26.Location = New System.Drawing.Point(721, 144)
+        Me.Label26.Location = New System.Drawing.Point(961, 177)
+        Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(51, 19)
+        Me.Label26.Size = New System.Drawing.Size(63, 23)
         Me.Label26.TabIndex = 91261
         Me.Label26.Text = "+ (F3)"
         '
@@ -1911,10 +2034,11 @@ Partial Class Sellout_Mannual
         Me.txtPlusMinus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPlusMinus.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtPlusMinus.ForeColor = System.Drawing.Color.Black
-        Me.txtPlusMinus.Location = New System.Drawing.Point(499, 480)
+        Me.txtPlusMinus.Location = New System.Drawing.Point(665, 591)
+        Me.txtPlusMinus.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPlusMinus.Name = "txtPlusMinus"
         Me.txtPlusMinus.ReadOnly = True
-        Me.txtPlusMinus.Size = New System.Drawing.Size(115, 26)
+        Me.txtPlusMinus.Size = New System.Drawing.Size(153, 30)
         Me.txtPlusMinus.TabIndex = 16
         Me.txtPlusMinus.TabStop = False
         Me.txtPlusMinus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1923,16 +2047,17 @@ Partial Class Sellout_Mannual
         '
         Me.txtEntryDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtEntryDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEntryDate.Location = New System.Drawing.Point(12, 112)
+        Me.txtEntryDate.Location = New System.Drawing.Point(16, 138)
+        Me.txtEntryDate.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEntryDate.Name = "txtEntryDate"
-        Me.txtEntryDate.Size = New System.Drawing.Size(95, 26)
+        Me.txtEntryDate.Size = New System.Drawing.Size(126, 30)
         Me.txtEntryDate.TabIndex = 0
         '
         'Sellout_Mannual
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.ClientSize = New System.Drawing.Size(1595, 804)
         Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.lblAddWeight)
@@ -2014,6 +2139,7 @@ Partial Class Sellout_Mannual
         Me.Controls.Add(Me.pnlSendingDetails)
         Me.Controls.Add(Me.dg1)
         Me.KeyPreview = True
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Sellout_Mannual"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Beejak"

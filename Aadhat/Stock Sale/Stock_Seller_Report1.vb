@@ -1,4 +1,4 @@
-﻿Public Class Stock_Seller_Report1
+Public Class Stock_Seller_Report1
     Dim Primary, Secondary As String
     Private Sub Stock_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -333,5 +333,9 @@
     Private Sub dtp2_ValueChanged(sender As Object, e As EventArgs) Handles dtp2.ValueChanged
         MsktoDate.Text = dtp2.Value.ToString("dd-MM-yyyy")
         MsktoDate.Text = smartDate(MsktoDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

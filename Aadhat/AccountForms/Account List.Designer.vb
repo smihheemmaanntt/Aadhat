@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Account_List
     Inherits System.Windows.Forms.Form
 
@@ -84,9 +84,10 @@ Partial Class Account_List
         Me.Label41.AutoSize = True
         Me.Label41.Font = New System.Drawing.Font("Bodoni Bk BT", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label41.ForeColor = System.Drawing.Color.Black
-        Me.Label41.Location = New System.Drawing.Point(471, 9)
+        Me.Label41.Location = New System.Drawing.Point(628, 11)
+        Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(280, 48)
+        Me.Label41.Size = New System.Drawing.Size(350, 59)
         Me.Label41.TabIndex = 101
         Me.Label41.Text = "ACCOUNT LIST"
         '
@@ -117,7 +118,8 @@ Partial Class Account_List
         Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
-        Me.dg1.Location = New System.Drawing.Point(12, 102)
+        Me.dg1.Location = New System.Drawing.Point(16, 124)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
@@ -129,7 +131,7 @@ Partial Class Account_List
         Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1172, 468)
+        Me.dg1.Size = New System.Drawing.Size(1563, 576)
         Me.dg1.TabIndex = 1
         '
         'Label11
@@ -137,9 +139,10 @@ Partial Class Account_List
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(886, 620)
+        Me.Label11.Location = New System.Drawing.Point(1181, 763)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(102, 19)
+        Me.Label11.Size = New System.Drawing.Size(136, 22)
         Me.Label11.TabIndex = 40120
         Me.Label11.Text = "Total Balance : "
         '
@@ -149,10 +152,11 @@ Partial Class Account_List
         Me.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotal.ForeColor = System.Drawing.Color.Red
-        Me.txtTotal.Location = New System.Drawing.Point(994, 616)
+        Me.txtTotal.Location = New System.Drawing.Point(1325, 758)
+        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
-        Me.txtTotal.Size = New System.Drawing.Size(190, 26)
+        Me.txtTotal.Size = New System.Drawing.Size(253, 30)
         Me.txtTotal.TabIndex = 40119
         Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -162,9 +166,10 @@ Partial Class Account_List
         Me.txtSearcGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearcGroup.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtSearcGroup.ForeColor = System.Drawing.Color.Red
-        Me.txtSearcGroup.Location = New System.Drawing.Point(372, 76)
+        Me.txtSearcGroup.Location = New System.Drawing.Point(496, 94)
+        Me.txtSearcGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearcGroup.Name = "txtSearcGroup"
-        Me.txtSearcGroup.Size = New System.Drawing.Size(216, 26)
+        Me.txtSearcGroup.Size = New System.Drawing.Size(287, 30)
         Me.txtSearcGroup.TabIndex = 40124
         '
         'Label1
@@ -172,9 +177,10 @@ Partial Class Account_List
         Me.Label1.BackColor = System.Drawing.Color.CadetBlue
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label1.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label1.Location = New System.Drawing.Point(295, 76)
+        Me.Label1.Location = New System.Drawing.Point(393, 94)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(77, 26)
+        Me.Label1.Size = New System.Drawing.Size(103, 32)
         Me.Label1.TabIndex = 40125
         Me.Label1.Text = "Group :"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -185,9 +191,10 @@ Partial Class Account_List
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtSearch.ForeColor = System.Drawing.Color.Red
-        Me.txtSearch.Location = New System.Drawing.Point(78, 76)
+        Me.txtSearch.Location = New System.Drawing.Point(104, 94)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(218, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(290, 30)
         Me.txtSearch.TabIndex = 40122
         '
         'Label42
@@ -195,9 +202,10 @@ Partial Class Account_List
         Me.Label42.BackColor = System.Drawing.Color.CadetBlue
         Me.Label42.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label42.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label42.Location = New System.Drawing.Point(12, 76)
+        Me.Label42.Location = New System.Drawing.Point(16, 94)
+        Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(68, 26)
+        Me.Label42.Size = New System.Drawing.Size(91, 32)
         Me.Label42.TabIndex = 40123
         Me.Label42.Text = " Name :"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -215,9 +223,10 @@ Partial Class Account_List
         Me.PnlImport.Controls.Add(Me.btnSelectFile)
         Me.PnlImport.Controls.Add(Me.txtpath)
         Me.PnlImport.Controls.Add(Me.Label2)
-        Me.PnlImport.Location = New System.Drawing.Point(360, 284)
+        Me.PnlImport.Location = New System.Drawing.Point(480, 350)
+        Me.PnlImport.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PnlImport.Name = "PnlImport"
-        Me.PnlImport.Size = New System.Drawing.Size(487, 212)
+        Me.PnlImport.Size = New System.Drawing.Size(649, 261)
         Me.PnlImport.TabIndex = 40128
         Me.PnlImport.Visible = False
         '
@@ -227,8 +236,9 @@ Partial Class Account_List
         Me.btnImportClose.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImportClose.ForeColor = System.Drawing.Color.Teal
         Me.btnImportClose.Location = New System.Drawing.Point(0, 0)
+        Me.btnImportClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnImportClose.Name = "btnImportClose"
-        Me.btnImportClose.Size = New System.Drawing.Size(41, 35)
+        Me.btnImportClose.Size = New System.Drawing.Size(55, 43)
         Me.btnImportClose.TabIndex = 40138
         Me.btnImportClose.Text = "X"
         Me.btnImportClose.UseVisualStyleBackColor = False
@@ -238,17 +248,19 @@ Partial Class Account_List
         Me.lblMSg.AutoSize = True
         Me.lblMSg.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMSg.ForeColor = System.Drawing.Color.Green
-        Me.lblMSg.Location = New System.Drawing.Point(41, 186)
+        Me.lblMSg.Location = New System.Drawing.Point(55, 229)
+        Me.lblMSg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMSg.Name = "lblMSg"
-        Me.lblMSg.Size = New System.Drawing.Size(0, 19)
+        Me.lblMSg.Size = New System.Drawing.Size(0, 22)
         Me.lblMSg.TabIndex = 40137
         Me.lblMSg.Visible = False
         '
         'pbImport
         '
-        Me.pbImport.Location = New System.Drawing.Point(269, 184)
+        Me.pbImport.Location = New System.Drawing.Point(359, 226)
+        Me.pbImport.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pbImport.Name = "pbImport"
-        Me.pbImport.Size = New System.Drawing.Size(215, 23)
+        Me.pbImport.Size = New System.Drawing.Size(287, 28)
         Me.pbImport.TabIndex = 40136
         '
         'Label4
@@ -256,9 +268,10 @@ Partial Class Account_List
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Green
-        Me.Label4.Location = New System.Drawing.Point(37, 125)
+        Me.Label4.Location = New System.Drawing.Point(49, 154)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(262, 19)
+        Me.Label4.Size = New System.Drawing.Size(331, 22)
         Me.Label4.TabIndex = 40135
         Me.Label4.Text = "If want to Import Some Record type No. "
         Me.Label4.Visible = False
@@ -268,9 +281,10 @@ Partial Class Account_List
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Green
-        Me.Label3.Location = New System.Drawing.Point(37, 62)
+        Me.Label3.Location = New System.Drawing.Point(49, 76)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(302, 19)
+        Me.Label3.Size = New System.Drawing.Size(394, 22)
         Me.Label3.TabIndex = 40134
         Me.Label3.Text = "Path Should Be Shown in Below Given Text box"
         '
@@ -280,9 +294,10 @@ Partial Class Account_List
         Me.btnimportcont.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnimportcont.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnimportcont.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnimportcont.Location = New System.Drawing.Point(269, 148)
+        Me.btnimportcont.Location = New System.Drawing.Point(359, 182)
+        Me.btnimportcont.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnimportcont.Name = "btnimportcont"
-        Me.btnimportcont.Size = New System.Drawing.Size(179, 33)
+        Me.btnimportcont.Size = New System.Drawing.Size(239, 41)
         Me.btnimportcont.TabIndex = 40133
         Me.btnimportcont.Text = "&Import exports"
         Me.btnimportcont.UseVisualStyleBackColor = False
@@ -293,9 +308,10 @@ Partial Class Account_List
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.ForeColor = System.Drawing.Color.Red
-        Me.TextBox2.Location = New System.Drawing.Point(41, 151)
+        Me.TextBox2.Location = New System.Drawing.Point(55, 186)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(216, 26)
+        Me.TextBox2.Size = New System.Drawing.Size(287, 30)
         Me.TextBox2.TabIndex = 40132
         Me.TextBox2.Visible = False
         '
@@ -304,9 +320,10 @@ Partial Class Account_List
         Me.btnSelectFile.BackColor = System.Drawing.Color.Blue
         Me.btnSelectFile.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSelectFile.ForeColor = System.Drawing.Color.Teal
-        Me.btnSelectFile.Location = New System.Drawing.Point(269, 29)
+        Me.btnSelectFile.Location = New System.Drawing.Point(359, 36)
+        Me.btnSelectFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSelectFile.Name = "btnSelectFile"
-        Me.btnSelectFile.Size = New System.Drawing.Size(179, 33)
+        Me.btnSelectFile.Size = New System.Drawing.Size(239, 41)
         Me.btnSelectFile.TabIndex = 40131
         Me.btnSelectFile.Text = "&Select Excel File "
         Me.btnSelectFile.UseVisualStyleBackColor = False
@@ -316,9 +333,10 @@ Partial Class Account_List
         Me.txtpath.BackColor = System.Drawing.Color.AliceBlue
         Me.txtpath.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpath.ForeColor = System.Drawing.Color.Red
-        Me.txtpath.Location = New System.Drawing.Point(41, 85)
+        Me.txtpath.Location = New System.Drawing.Point(55, 105)
+        Me.txtpath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtpath.Name = "txtpath"
-        Me.txtpath.Size = New System.Drawing.Size(407, 26)
+        Me.txtpath.Size = New System.Drawing.Size(541, 30)
         Me.txtpath.TabIndex = 40130
         Me.txtpath.Text = "Path Should Be Shown Here"
         '
@@ -327,9 +345,10 @@ Partial Class Account_List
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Monotype Corsiva", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Teal
-        Me.Label2.Location = New System.Drawing.Point(36, 29)
+        Me.Label2.Location = New System.Drawing.Point(48, 36)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(171, 28)
+        Me.Label2.Size = New System.Drawing.Size(212, 37)
         Me.Label2.TabIndex = 40129
         Me.Label2.Text = "Import Accounts"
         '
@@ -342,9 +361,10 @@ Partial Class Account_List
         Me.PnlExport.Controls.Add(Me.RadioExportDebtors)
         Me.PnlExport.Controls.Add(Me.radioExportAll)
         Me.PnlExport.Controls.Add(Me.Label7)
-        Me.PnlExport.Location = New System.Drawing.Point(360, 285)
+        Me.PnlExport.Location = New System.Drawing.Point(480, 351)
+        Me.PnlExport.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PnlExport.Name = "PnlExport"
-        Me.PnlExport.Size = New System.Drawing.Size(487, 125)
+        Me.PnlExport.Size = New System.Drawing.Size(649, 154)
         Me.PnlExport.TabIndex = 40136
         Me.PnlExport.Visible = False
         '
@@ -355,8 +375,9 @@ Partial Class Account_List
         Me.btnExportClose.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportClose.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnExportClose.Location = New System.Drawing.Point(0, 0)
+        Me.btnExportClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnExportClose.Name = "btnExportClose"
-        Me.btnExportClose.Size = New System.Drawing.Size(41, 35)
+        Me.btnExportClose.Size = New System.Drawing.Size(55, 43)
         Me.btnExportClose.TabIndex = 40139
         Me.btnExportClose.Text = "X"
         Me.btnExportClose.UseVisualStyleBackColor = False
@@ -367,9 +388,10 @@ Partial Class Account_List
         Me.btnExportAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExportAccounts.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportAccounts.ForeColor = System.Drawing.Color.GhostWhite
-        Me.btnExportAccounts.Location = New System.Drawing.Point(269, 24)
+        Me.btnExportAccounts.Location = New System.Drawing.Point(359, 30)
+        Me.btnExportAccounts.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnExportAccounts.Name = "btnExportAccounts"
-        Me.btnExportAccounts.Size = New System.Drawing.Size(179, 33)
+        Me.btnExportAccounts.Size = New System.Drawing.Size(239, 41)
         Me.btnExportAccounts.TabIndex = 40134
         Me.btnExportAccounts.Text = "&Export Accounts"
         Me.btnExportAccounts.UseVisualStyleBackColor = False
@@ -377,9 +399,10 @@ Partial Class Account_List
         'RadioExportCrediors
         '
         Me.RadioExportCrediors.AutoSize = True
-        Me.RadioExportCrediors.Location = New System.Drawing.Point(312, 74)
+        Me.RadioExportCrediors.Location = New System.Drawing.Point(416, 91)
+        Me.RadioExportCrediors.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.RadioExportCrediors.Name = "RadioExportCrediors"
-        Me.RadioExportCrediors.Size = New System.Drawing.Size(99, 17)
+        Me.RadioExportCrediors.Size = New System.Drawing.Size(130, 21)
         Me.RadioExportCrediors.TabIndex = 40132
         Me.RadioExportCrediors.TabStop = True
         Me.RadioExportCrediors.Text = "Export Creditors"
@@ -388,9 +411,10 @@ Partial Class Account_List
         'RadioExportDebtors
         '
         Me.RadioExportDebtors.AutoSize = True
-        Me.RadioExportDebtors.Location = New System.Drawing.Point(187, 74)
+        Me.RadioExportDebtors.Location = New System.Drawing.Point(249, 91)
+        Me.RadioExportDebtors.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.RadioExportDebtors.Name = "RadioExportDebtors"
-        Me.RadioExportDebtors.Size = New System.Drawing.Size(95, 17)
+        Me.RadioExportDebtors.Size = New System.Drawing.Size(123, 21)
         Me.RadioExportDebtors.TabIndex = 40131
         Me.RadioExportDebtors.TabStop = True
         Me.RadioExportDebtors.Text = "Export Debtors"
@@ -399,9 +423,10 @@ Partial Class Account_List
         'radioExportAll
         '
         Me.radioExportAll.AutoSize = True
-        Me.radioExportAll.Location = New System.Drawing.Point(42, 74)
+        Me.radioExportAll.Location = New System.Drawing.Point(56, 91)
+        Me.radioExportAll.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.radioExportAll.Name = "radioExportAll"
-        Me.radioExportAll.Size = New System.Drawing.Size(116, 17)
+        Me.radioExportAll.Size = New System.Drawing.Size(149, 21)
         Me.radioExportAll.TabIndex = 40130
         Me.radioExportAll.TabStop = True
         Me.radioExportAll.Text = "Export all Accounts"
@@ -412,9 +437,10 @@ Partial Class Account_List
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Monotype Corsiva", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Teal
-        Me.Label7.Location = New System.Drawing.Point(36, 29)
+        Me.Label7.Location = New System.Drawing.Point(48, 36)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(171, 28)
+        Me.Label7.Size = New System.Drawing.Size(214, 37)
         Me.Label7.TabIndex = 40129
         Me.Label7.Text = "Export Accounts"
         '
@@ -423,9 +449,10 @@ Partial Class Account_List
         Me.lblTotalCount.AutoSize = True
         Me.lblTotalCount.Font = New System.Drawing.Font("Century", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblTotalCount.ForeColor = System.Drawing.Color.Black
-        Me.lblTotalCount.Location = New System.Drawing.Point(871, 571)
+        Me.lblTotalCount.Location = New System.Drawing.Point(1161, 703)
+        Me.lblTotalCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalCount.Name = "lblTotalCount"
-        Me.lblTotalCount.Size = New System.Drawing.Size(69, 16)
+        Me.lblTotalCount.Size = New System.Drawing.Size(91, 21)
         Me.lblTotalCount.TabIndex = 40137
         Me.lblTotalCount.Text = "RowCount"
         '
@@ -441,9 +468,10 @@ Partial Class Account_List
         Me.cbMoreSearch.FormattingEnabled = True
         Me.cbMoreSearch.IntegralHeight = False
         Me.cbMoreSearch.Items.AddRange(New Object() {"Area", "City", "State", "Mobile No. 1", "Mobile No. 2", "Opening Balance", "DR/Cr", "Tag"})
-        Me.cbMoreSearch.Location = New System.Drawing.Point(716, 75)
+        Me.cbMoreSearch.Location = New System.Drawing.Point(955, 94)
+        Me.cbMoreSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbMoreSearch.Name = "cbMoreSearch"
-        Me.cbMoreSearch.Size = New System.Drawing.Size(170, 27)
+        Me.cbMoreSearch.Size = New System.Drawing.Size(225, 30)
         Me.cbMoreSearch.TabIndex = 40239
         '
         'txtMoreSearch
@@ -452,18 +480,20 @@ Partial Class Account_List
         Me.txtMoreSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtMoreSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtMoreSearch.ForeColor = System.Drawing.Color.Red
-        Me.txtMoreSearch.Location = New System.Drawing.Point(887, 76)
+        Me.txtMoreSearch.Location = New System.Drawing.Point(1180, 94)
+        Me.txtMoreSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMoreSearch.Name = "txtMoreSearch"
-        Me.txtMoreSearch.Size = New System.Drawing.Size(297, 26)
+        Me.txtMoreSearch.Size = New System.Drawing.Size(399, 30)
         Me.txtMoreSearch.TabIndex = 40240
         '
         'ckShowAllAccounts
         '
         Me.ckShowAllAccounts.AutoSize = True
         Me.ckShowAllAccounts.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ckShowAllAccounts.Location = New System.Drawing.Point(1075, 49)
+        Me.ckShowAllAccounts.Location = New System.Drawing.Point(1433, 60)
+        Me.ckShowAllAccounts.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckShowAllAccounts.Name = "ckShowAllAccounts"
-        Me.ckShowAllAccounts.Size = New System.Drawing.Size(105, 23)
+        Me.ckShowAllAccounts.Size = New System.Drawing.Size(135, 26)
         Me.ckShowAllAccounts.TabIndex = 40241
         Me.ckShowAllAccounts.Text = "&All Accounts"
         Me.ckShowAllAccounts.UseVisualStyleBackColor = True
@@ -473,9 +503,10 @@ Partial Class Account_List
         Me.Label5.BackColor = System.Drawing.Color.CadetBlue
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(588, 76)
+        Me.Label5.Location = New System.Drawing.Point(784, 94)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(127, 26)
+        Me.Label5.Size = New System.Drawing.Size(169, 32)
         Me.Label5.TabIndex = 40242
         Me.Label5.Text = "Search More :"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -487,9 +518,10 @@ Partial Class Account_List
         Me.btnRetrive.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRetrive.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRetrive.ForeColor = System.Drawing.Color.Red
-        Me.btnRetrive.Location = New System.Drawing.Point(1073, 19)
+        Me.btnRetrive.Location = New System.Drawing.Point(1431, 23)
+        Me.btnRetrive.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnRetrive.Name = "btnRetrive"
-        Me.btnRetrive.Size = New System.Drawing.Size(53, 31)
+        Me.btnRetrive.Size = New System.Drawing.Size(71, 38)
         Me.btnRetrive.TabIndex = 91116
         Me.btnRetrive.TabStop = False
         Me.btnRetrive.Text = "Retrive"
@@ -499,7 +531,8 @@ Partial Class Account_List
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(415, 9)
+        Me.PictureBox1.Location = New System.Drawing.Point(553, 11)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -514,9 +547,10 @@ Partial Class Account_List
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.Location = New System.Drawing.Point(1143, 0)
+        Me.btnClose.Location = New System.Drawing.Point(1524, 0)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(53, 47)
+        Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91114
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
@@ -530,9 +564,10 @@ Partial Class Account_List
         Me.btnExport.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnExport.Image = CType(resources.GetObject("btnExport.Image"), System.Drawing.Image)
         Me.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExport.Location = New System.Drawing.Point(159, 587)
+        Me.btnExport.Location = New System.Drawing.Point(212, 722)
+        Me.btnExport.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnExport.Name = "btnExport"
-        Me.btnExport.Size = New System.Drawing.Size(151, 49)
+        Me.btnExport.Size = New System.Drawing.Size(201, 60)
         Me.btnExport.TabIndex = 40127
         Me.btnExport.Text = "&Export Accounts "
         Me.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -547,9 +582,10 @@ Partial Class Account_List
         Me.btnImport.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnImport.Image = CType(resources.GetObject("btnImport.Image"), System.Drawing.Image)
         Me.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnImport.Location = New System.Drawing.Point(12, 587)
+        Me.btnImport.Location = New System.Drawing.Point(16, 722)
+        Me.btnImport.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnImport.Name = "btnImport"
-        Me.btnImport.Size = New System.Drawing.Size(147, 49)
+        Me.btnImport.Size = New System.Drawing.Size(196, 60)
         Me.btnImport.TabIndex = 40126
         Me.btnImport.Text = "&Import Accounts "
         Me.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -564,9 +600,10 @@ Partial Class Account_List
         Me.Button1.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(310, 587)
+        Me.Button1.Location = New System.Drawing.Point(413, 722)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(140, 49)
+        Me.Button1.Size = New System.Drawing.Size(187, 60)
         Me.Button1.TabIndex = 40121
         Me.Button1.Text = "&Create Account "
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -581,9 +618,10 @@ Partial Class Account_List
         Me.btnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnPrint.Image = CType(resources.GetObject("btnPrint.Image"), System.Drawing.Image)
         Me.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPrint.Location = New System.Drawing.Point(450, 587)
+        Me.btnPrint.Location = New System.Drawing.Point(600, 722)
+        Me.btnPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(85, 49)
+        Me.btnPrint.Size = New System.Drawing.Size(113, 60)
         Me.btnPrint.TabIndex = 40053
         Me.btnPrint.Text = "&Print"
         Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -594,9 +632,10 @@ Partial Class Account_List
         Me.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFirst.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnFirst.ForeColor = System.Drawing.Color.Navy
-        Me.btnFirst.Location = New System.Drawing.Point(646, 617)
+        Me.btnFirst.Location = New System.Drawing.Point(861, 759)
+        Me.btnFirst.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFirst.Name = "btnFirst"
-        Me.btnFirst.Size = New System.Drawing.Size(44, 23)
+        Me.btnFirst.Size = New System.Drawing.Size(59, 28)
         Me.btnFirst.TabIndex = 91120
         Me.btnFirst.TabStop = False
         Me.btnFirst.Text = "|<"
@@ -607,9 +646,10 @@ Partial Class Account_List
         Me.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLast.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnLast.ForeColor = System.Drawing.Color.Navy
-        Me.btnLast.Location = New System.Drawing.Point(796, 617)
+        Me.btnLast.Location = New System.Drawing.Point(1061, 759)
+        Me.btnLast.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnLast.Name = "btnLast"
-        Me.btnLast.Size = New System.Drawing.Size(44, 23)
+        Me.btnLast.Size = New System.Drawing.Size(59, 28)
         Me.btnLast.TabIndex = 91119
         Me.btnLast.TabStop = False
         Me.btnLast.Text = ">|"
@@ -620,9 +660,10 @@ Partial Class Account_List
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNext.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnNext.ForeColor = System.Drawing.Color.Navy
-        Me.btnNext.Location = New System.Drawing.Point(746, 617)
+        Me.btnNext.Location = New System.Drawing.Point(995, 759)
+        Me.btnNext.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(44, 23)
+        Me.btnNext.Size = New System.Drawing.Size(59, 28)
         Me.btnNext.TabIndex = 91118
         Me.btnNext.TabStop = False
         Me.btnNext.Text = ">>"
@@ -633,9 +674,10 @@ Partial Class Account_List
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPrevious.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnPrevious.ForeColor = System.Drawing.Color.Navy
-        Me.btnPrevious.Location = New System.Drawing.Point(696, 617)
+        Me.btnPrevious.Location = New System.Drawing.Point(928, 759)
+        Me.btnPrevious.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(44, 23)
+        Me.btnPrevious.Size = New System.Drawing.Size(59, 28)
         Me.btnPrevious.TabIndex = 91117
         Me.btnPrevious.TabStop = False
         Me.btnPrevious.Text = "<<"
@@ -646,9 +688,10 @@ Partial Class Account_List
         Me.lblTotalAccounts.AutoSize = True
         Me.lblTotalAccounts.Font = New System.Drawing.Font("Century", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblTotalAccounts.ForeColor = System.Drawing.Color.Black
-        Me.lblTotalAccounts.Location = New System.Drawing.Point(1070, 570)
+        Me.lblTotalAccounts.Location = New System.Drawing.Point(1427, 702)
+        Me.lblTotalAccounts.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalAccounts.Name = "lblTotalAccounts"
-        Me.lblTotalAccounts.Size = New System.Drawing.Size(75, 16)
+        Me.lblTotalAccounts.Size = New System.Drawing.Size(99, 21)
         Me.lblTotalAccounts.TabIndex = 91121
         Me.lblTotalAccounts.Text = "TotalCount"
         Me.lblTotalAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -658,9 +701,10 @@ Partial Class Account_List
         Me.lblCurrentpage.AutoSize = True
         Me.lblCurrentpage.Font = New System.Drawing.Font("Century", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblCurrentpage.ForeColor = System.Drawing.Color.Black
-        Me.lblCurrentpage.Location = New System.Drawing.Point(643, 570)
+        Me.lblCurrentpage.Location = New System.Drawing.Point(857, 702)
+        Me.lblCurrentpage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCurrentpage.Name = "lblCurrentpage"
-        Me.lblCurrentpage.Size = New System.Drawing.Size(75, 16)
+        Me.lblCurrentpage.Size = New System.Drawing.Size(99, 21)
         Me.lblCurrentpage.TabIndex = 91122
         Me.lblCurrentpage.Text = "TotalCount"
         '
@@ -669,9 +713,10 @@ Partial Class Account_List
         Me.lblTotalPage.AutoSize = True
         Me.lblTotalPage.Font = New System.Drawing.Font("Century", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblTotalPage.ForeColor = System.Drawing.Color.Black
-        Me.lblTotalPage.Location = New System.Drawing.Point(643, 586)
+        Me.lblTotalPage.Location = New System.Drawing.Point(857, 721)
+        Me.lblTotalPage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalPage.Name = "lblTotalPage"
-        Me.lblTotalPage.Size = New System.Drawing.Size(75, 16)
+        Me.lblTotalPage.Size = New System.Drawing.Size(99, 21)
         Me.lblTotalPage.TabIndex = 91123
         Me.lblTotalPage.Text = "TotalCount"
         '
@@ -681,10 +726,11 @@ Partial Class Account_List
         Me.txtpagebal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtpagebal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtpagebal.ForeColor = System.Drawing.Color.Red
-        Me.txtpagebal.Location = New System.Drawing.Point(994, 589)
+        Me.txtpagebal.Location = New System.Drawing.Point(1325, 725)
+        Me.txtpagebal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtpagebal.Name = "txtpagebal"
         Me.txtpagebal.ReadOnly = True
-        Me.txtpagebal.Size = New System.Drawing.Size(190, 26)
+        Me.txtpagebal.Size = New System.Drawing.Size(253, 30)
         Me.txtpagebal.TabIndex = 91124
         Me.txtpagebal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -693,18 +739,19 @@ Partial Class Account_List
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(890, 593)
+        Me.Label6.Location = New System.Drawing.Point(1187, 730)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(98, 19)
+        Me.Label6.Size = New System.Drawing.Size(128, 22)
         Me.Label6.TabIndex = 91125
         Me.Label6.Text = "Page Balance :"
         '
         'Account_List
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.ClientSize = New System.Drawing.Size(1595, 804)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtpagebal)
         Me.Controls.Add(Me.lblTotalPage)
@@ -728,15 +775,16 @@ Partial Class Account_List
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.btnPrint)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.cbMoreSearch)
         Me.Controls.Add(Me.txtSearcGroup)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtSearch)
-        Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.txtMoreSearch)
         Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label42)
         Me.KeyPreview = True
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Account_List"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Account_List"

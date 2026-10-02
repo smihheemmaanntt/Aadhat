@@ -1,4 +1,4 @@
-﻿Public Class Speed_Sale_Register
+Public Class Speed_Sale_Register
     Private headerCheckBox As CheckBox = New CheckBox()
 
     Private Sub EnsureManualPageSchema()
@@ -73,7 +73,7 @@
     Private Sub Speed_Sale_Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Control.CheckForIllegalCrossThreadCalls = False
         Me.Top = 0 : Me.Left = 0
-        Me.BackColor = Color.FromArgb(247, 220, 111)
+        Me.BackColor = Color.FromArgb(255, 236, 231)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         EnsureManualPageSchema()
@@ -684,5 +684,9 @@
 
     Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged, txttoDate.TextChanged
         UpdateManualPageNavigation()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Imports System.Data.SQLite
+Imports System.Data.SQLite
 Imports System.IO
 
 Public Class Account_Balance_Editor
@@ -246,5 +246,9 @@ Public Class Account_Balance_Editor
 
     Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,0 +1,235 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class CompanyList
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CompanyList))
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BtnRefress = New System.Windows.Forms.PictureBox()
+        Me.dg1 = New System.Windows.Forms.DataGridView()
+        Me.BtnRetrive = New System.Windows.Forms.Button()
+        Me.btnPath = New System.Windows.Forms.Button()
+        Me.txtPath = New System.Windows.Forms.TextBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.txtMainPath = New System.Windows.Forms.TextBox()
+        Me.Panel1.SuspendLayout()
+        CType(Me.BtnRefress, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dg1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.MediumAquamarine
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Location = New System.Drawing.Point(-8, -1)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1433, 60)
+        Me.Panel1.TabIndex = 164
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.GhostWhite
+        Me.Label1.Location = New System.Drawing.Point(497, 10)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(344, 39)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "LIST OF COMPANIES"
+        '
+        'BtnRefress
+        '
+        Me.BtnRefress.Enabled = False
+        Me.BtnRefress.Image = CType(resources.GetObject("BtnRefress.Image"), System.Drawing.Image)
+        Me.BtnRefress.Location = New System.Drawing.Point(1417, -1)
+        Me.BtnRefress.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnRefress.Name = "BtnRefress"
+        Me.BtnRefress.Size = New System.Drawing.Size(396, 779)
+        Me.BtnRefress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnRefress.TabIndex = 166
+        Me.BtnRefress.TabStop = False
+        '
+        'dg1
+        '
+        Me.dg1.AllowUserToAddRows = False
+        Me.dg1.AllowUserToDeleteRows = False
+        Me.dg1.AllowUserToOrderColumns = True
+        Me.dg1.AllowUserToResizeColumns = False
+        Me.dg1.AllowUserToResizeRows = False
+        Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
+        Me.dg1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dg1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle37.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle37.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle37
+        Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg1.ColumnHeadersVisible = False
+        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle38.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle38.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.Orange
+        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle38
+        Me.dg1.GridColor = System.Drawing.Color.Gray
+        Me.dg1.Location = New System.Drawing.Point(112, 160)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dg1.MultiSelect = False
+        Me.dg1.Name = "dg1"
+        Me.dg1.ReadOnly = True
+        Me.dg1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle39.Font = New System.Drawing.Font("Times New Roman", 7.0!)
+        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle39
+        Me.dg1.RowHeadersVisible = False
+        DataGridViewCellStyle40.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle40
+        Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dg1.Size = New System.Drawing.Size(1151, 480)
+        Me.dg1.TabIndex = 165
+        '
+        'BtnRetrive
+        '
+        Me.BtnRetrive.BackColor = System.Drawing.Color.Teal
+        Me.BtnRetrive.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnRetrive.ForeColor = System.Drawing.Color.Teal
+        Me.BtnRetrive.Location = New System.Drawing.Point(1392, 2)
+        Me.BtnRetrive.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnRetrive.Name = "BtnRetrive"
+        Me.BtnRetrive.Size = New System.Drawing.Size(100, 33)
+        Me.BtnRetrive.TabIndex = 167
+        Me.BtnRetrive.Text = "&Retrive"
+        Me.BtnRetrive.UseVisualStyleBackColor = False
+        '
+        'btnPath
+        '
+        Me.btnPath.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPath.Font = New System.Drawing.Font("Times New Roman", 14.0!)
+        Me.btnPath.ForeColor = System.Drawing.Color.Black
+        Me.btnPath.Location = New System.Drawing.Point(112, 679)
+        Me.btnPath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnPath.Name = "btnPath"
+        Me.btnPath.Size = New System.Drawing.Size(153, 43)
+        Me.btnPath.TabIndex = 168
+        Me.btnPath.Text = "Select &Path"
+        Me.btnPath.UseVisualStyleBackColor = False
+        Me.btnPath.Visible = False
+        '
+        'txtPath
+        '
+        Me.txtPath.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPath.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.txtPath.ForeColor = System.Drawing.Color.Navy
+        Me.txtPath.Location = New System.Drawing.Point(112, 647)
+        Me.txtPath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtPath.Name = "txtPath"
+        Me.txtPath.ReadOnly = True
+        Me.txtPath.Size = New System.Drawing.Size(1150, 27)
+        Me.txtPath.TabIndex = 170
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 59)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(1421, 718)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 172
+        Me.PictureBox2.TabStop = False
+        '
+        'txtMainPath
+        '
+        Me.txtMainPath.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtMainPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtMainPath.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.txtMainPath.ForeColor = System.Drawing.Color.Teal
+        Me.txtMainPath.Location = New System.Drawing.Point(273, 689)
+        Me.txtMainPath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtMainPath.Name = "txtMainPath"
+        Me.txtMainPath.ReadOnly = True
+        Me.txtMainPath.Size = New System.Drawing.Size(989, 27)
+        Me.txtMainPath.TabIndex = 173
+        Me.txtMainPath.Visible = False
+        '
+        'CompanyList
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.GhostWhite
+        Me.ClientSize = New System.Drawing.Size(1815, 766)
+        Me.Controls.Add(Me.txtMainPath)
+        Me.Controls.Add(Me.txtPath)
+        Me.Controls.Add(Me.btnPath)
+        Me.Controls.Add(Me.BtnRefress)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.dg1)
+        Me.Controls.Add(Me.BtnRetrive)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Name = "CompanyList"
+        Me.Text = "CompanyList"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.BtnRefress, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents BtnRefress As System.Windows.Forms.PictureBox
+    Friend WithEvents dg1 As System.Windows.Forms.DataGridView
+    Friend WithEvents BtnRetrive As System.Windows.Forms.Button
+    Friend WithEvents btnPath As System.Windows.Forms.Button
+    Friend WithEvents txtPath As System.Windows.Forms.TextBox
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
+    Friend WithEvents txtMainPath As System.Windows.Forms.TextBox
+End Class

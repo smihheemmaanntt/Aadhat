@@ -1,4 +1,4 @@
-﻿Public Class Stock_Balance
+Public Class Stock_Balance
     Public Sub New()
         InitializeComponent()
         clsFun.DoubleBuffered(dg1, True)
@@ -220,5 +220,9 @@
         If txtEntryDate.Enabled = False Then Exit Sub
         txtEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         txtEntryDate.Text = smartDate(txtEntryDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

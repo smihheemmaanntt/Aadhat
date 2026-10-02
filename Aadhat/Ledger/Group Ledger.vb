@@ -1,4 +1,4 @@
-﻿Public Class Group_Ledger
+Public Class Group_Ledger
     Private headerCheckBox As CheckBox = New CheckBox()
     Public Sub New()
         InitializeComponent()
@@ -988,5 +988,9 @@
             e.Handled = True
             'End If
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

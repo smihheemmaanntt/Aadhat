@@ -1,4 +1,4 @@
-﻿Imports System.Data.SQLite
+Imports System.Data.SQLite
 Imports System.IO
 Public Class Combine_Reports
     Dim root As String = Application.StartupPath
@@ -125,5 +125,9 @@ Public Class Combine_Reports
         btnLedgers.Text = "Get Ledgers"
         Show_Accounts.BringToFront()
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

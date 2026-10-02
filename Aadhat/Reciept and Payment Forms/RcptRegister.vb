@@ -1,4 +1,4 @@
-﻿Public Class RcptRegister
+Public Class RcptRegister
     Private headerCheckBox As CheckBox = New CheckBox()
     Dim ID As String
     Private Sub RcptRegisterForm_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -391,5 +391,9 @@
         If txtRectNo.Text.Trim() = "" Then
             retrive()
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -202,17 +202,19 @@ Partial Class MainScreenPicture
         Me.Panel1.Controls.Add(Me.lblPurchaseAmt)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(904, 52)
+        Me.Panel1.Location = New System.Drawing.Point(1205, 64)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(281, 100)
+        Me.Panel1.Size = New System.Drawing.Size(375, 123)
         Me.Panel1.TabIndex = 0
         '
         'PictureBox10
         '
         Me.PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), System.Drawing.Image)
-        Me.PictureBox10.Location = New System.Drawing.Point(58, 45)
+        Me.PictureBox10.Location = New System.Drawing.Point(77, 55)
+        Me.PictureBox10.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox10.Name = "PictureBox10"
-        Me.PictureBox10.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox10.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox10.TabIndex = 10
         Me.PictureBox10.TabStop = False
@@ -220,9 +222,10 @@ Partial Class MainScreenPicture
         'PictureBox15
         '
         Me.PictureBox15.Image = CType(resources.GetObject("PictureBox15.Image"), System.Drawing.Image)
-        Me.PictureBox15.Location = New System.Drawing.Point(58, 73)
+        Me.PictureBox15.Location = New System.Drawing.Point(77, 90)
+        Me.PictureBox15.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox15.Name = "PictureBox15"
-        Me.PictureBox15.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox15.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox15.TabIndex = 9
         Me.PictureBox15.TabStop = False
@@ -231,9 +234,10 @@ Partial Class MainScreenPicture
         '
         Me.lblPurchaseTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblPurchaseTotal.ForeColor = System.Drawing.Color.Black
-        Me.lblPurchaseTotal.Location = New System.Drawing.Point(84, 45)
+        Me.lblPurchaseTotal.Location = New System.Drawing.Point(112, 55)
+        Me.lblPurchaseTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPurchaseTotal.Name = "lblPurchaseTotal"
-        Me.lblPurchaseTotal.Size = New System.Drawing.Size(194, 24)
+        Me.lblPurchaseTotal.Size = New System.Drawing.Size(259, 30)
         Me.lblPurchaseTotal.TabIndex = 8
         Me.lblPurchaseTotal.Text = "0"
         Me.lblPurchaseTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -242,9 +246,10 @@ Partial Class MainScreenPicture
         '
         Me.lblPurchaseAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblPurchaseAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblPurchaseAmt.Location = New System.Drawing.Point(84, 73)
+        Me.lblPurchaseAmt.Location = New System.Drawing.Point(112, 90)
+        Me.lblPurchaseAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPurchaseAmt.Name = "lblPurchaseAmt"
-        Me.lblPurchaseAmt.Size = New System.Drawing.Size(194, 24)
+        Me.lblPurchaseAmt.Size = New System.Drawing.Size(259, 30)
         Me.lblPurchaseAmt.TabIndex = 6
         Me.lblPurchaseAmt.Text = "0.00"
         Me.lblPurchaseAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -252,7 +257,8 @@ Partial Class MainScreenPicture
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 47)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 58)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -264,9 +270,10 @@ Partial Class MainScreenPicture
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(3, 21)
+        Me.Label1.Location = New System.Drawing.Point(4, 26)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 15)
+        Me.Label1.Size = New System.Drawing.Size(125, 19)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Today's Purchase"
         '
@@ -279,18 +286,20 @@ Partial Class MainScreenPicture
         Me.Panel2.Controls.Add(Me.PictureBox6)
         Me.Panel2.Controls.Add(Me.PictureBox2)
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(12, 52)
+        Me.Panel2.Location = New System.Drawing.Point(16, 64)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(268, 100)
+        Me.Panel2.Size = New System.Drawing.Size(357, 123)
         Me.Panel2.TabIndex = 1
         '
         'lblSpeedTotal
         '
         Me.lblSpeedTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblSpeedTotal.ForeColor = System.Drawing.Color.Black
-        Me.lblSpeedTotal.Location = New System.Drawing.Point(84, 47)
+        Me.lblSpeedTotal.Location = New System.Drawing.Point(112, 58)
+        Me.lblSpeedTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSpeedTotal.Name = "lblSpeedTotal"
-        Me.lblSpeedTotal.Size = New System.Drawing.Size(179, 24)
+        Me.lblSpeedTotal.Size = New System.Drawing.Size(239, 30)
         Me.lblSpeedTotal.TabIndex = 7
         Me.lblSpeedTotal.Text = "0"
         Me.lblSpeedTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -298,9 +307,10 @@ Partial Class MainScreenPicture
         'PictureBox11
         '
         Me.PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), System.Drawing.Image)
-        Me.PictureBox11.Location = New System.Drawing.Point(59, 47)
+        Me.PictureBox11.Location = New System.Drawing.Point(79, 58)
+        Me.PictureBox11.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox11.Name = "PictureBox11"
-        Me.PictureBox11.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox11.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox11.TabIndex = 5
         Me.PictureBox11.TabStop = False
@@ -309,9 +319,10 @@ Partial Class MainScreenPicture
         '
         Me.lblSpeedAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblSpeedAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblSpeedAmt.Location = New System.Drawing.Point(84, 73)
+        Me.lblSpeedAmt.Location = New System.Drawing.Point(112, 90)
+        Me.lblSpeedAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSpeedAmt.Name = "lblSpeedAmt"
-        Me.lblSpeedAmt.Size = New System.Drawing.Size(179, 24)
+        Me.lblSpeedAmt.Size = New System.Drawing.Size(239, 30)
         Me.lblSpeedAmt.TabIndex = 4
         Me.lblSpeedAmt.Text = "0.00"
         Me.lblSpeedAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -319,9 +330,10 @@ Partial Class MainScreenPicture
         'PictureBox6
         '
         Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(59, 75)
+        Me.PictureBox6.Location = New System.Drawing.Point(79, 92)
+        Me.PictureBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox6.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox6.TabIndex = 3
         Me.PictureBox6.TabStop = False
@@ -329,7 +341,8 @@ Partial Class MainScreenPicture
         'PictureBox2
         '
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(3, 50)
+        Me.PictureBox2.Location = New System.Drawing.Point(4, 62)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -341,9 +354,10 @@ Partial Class MainScreenPicture
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(5, 21)
+        Me.Label2.Location = New System.Drawing.Point(7, 26)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(110, 15)
+        Me.Label2.Size = New System.Drawing.Size(137, 19)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Today's Speed Sale"
         '
@@ -356,17 +370,19 @@ Partial Class MainScreenPicture
         Me.Panel3.Controls.Add(Me.lblSuperAmt)
         Me.Panel3.Controls.Add(Me.PictureBox3)
         Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Location = New System.Drawing.Point(286, 52)
+        Me.Panel3.Location = New System.Drawing.Point(381, 64)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(200, 100)
+        Me.Panel3.Size = New System.Drawing.Size(267, 123)
         Me.Panel3.TabIndex = 1
         '
         'PictureBox7
         '
         Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
-        Me.PictureBox7.Location = New System.Drawing.Point(56, 47)
+        Me.PictureBox7.Location = New System.Drawing.Point(75, 58)
+        Me.PictureBox7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox7.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox7.TabIndex = 9
         Me.PictureBox7.TabStop = False
@@ -374,9 +390,10 @@ Partial Class MainScreenPicture
         'PictureBox12
         '
         Me.PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), System.Drawing.Image)
-        Me.PictureBox12.Location = New System.Drawing.Point(56, 75)
+        Me.PictureBox12.Location = New System.Drawing.Point(75, 92)
+        Me.PictureBox12.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox12.Name = "PictureBox12"
-        Me.PictureBox12.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox12.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox12.TabIndex = 8
         Me.PictureBox12.TabStop = False
@@ -385,9 +402,10 @@ Partial Class MainScreenPicture
         '
         Me.lblSuperTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblSuperTotal.ForeColor = System.Drawing.Color.Black
-        Me.lblSuperTotal.Location = New System.Drawing.Point(87, 45)
+        Me.lblSuperTotal.Location = New System.Drawing.Point(116, 55)
+        Me.lblSuperTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSuperTotal.Name = "lblSuperTotal"
-        Me.lblSuperTotal.Size = New System.Drawing.Size(110, 24)
+        Me.lblSuperTotal.Size = New System.Drawing.Size(147, 30)
         Me.lblSuperTotal.TabIndex = 7
         Me.lblSuperTotal.Text = "0"
         Me.lblSuperTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -396,9 +414,10 @@ Partial Class MainScreenPicture
         '
         Me.lblSuperAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblSuperAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblSuperAmt.Location = New System.Drawing.Point(87, 73)
+        Me.lblSuperAmt.Location = New System.Drawing.Point(116, 90)
+        Me.lblSuperAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSuperAmt.Name = "lblSuperAmt"
-        Me.lblSuperAmt.Size = New System.Drawing.Size(110, 24)
+        Me.lblSuperAmt.Size = New System.Drawing.Size(147, 30)
         Me.lblSuperAmt.TabIndex = 6
         Me.lblSuperAmt.Text = "0.00"
         Me.lblSuperAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -406,7 +425,8 @@ Partial Class MainScreenPicture
         'PictureBox3
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(0, 50)
+        Me.PictureBox3.Location = New System.Drawing.Point(0, 62)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -418,9 +438,10 @@ Partial Class MainScreenPicture
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(3, 21)
+        Me.Label3.Location = New System.Drawing.Point(4, 26)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(108, 15)
+        Me.Label3.Size = New System.Drawing.Size(135, 19)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Today's Super Sale"
         '
@@ -433,17 +454,19 @@ Partial Class MainScreenPicture
         Me.Panel4.Controls.Add(Me.lblStockAmt)
         Me.Panel4.Controls.Add(Me.PictureBox4)
         Me.Panel4.Controls.Add(Me.Label4)
-        Me.Panel4.Location = New System.Drawing.Point(492, 52)
+        Me.Panel4.Location = New System.Drawing.Point(656, 64)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(200, 100)
+        Me.Panel4.Size = New System.Drawing.Size(267, 123)
         Me.Panel4.TabIndex = 1
         '
         'PictureBox8
         '
         Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
-        Me.PictureBox8.Location = New System.Drawing.Point(56, 47)
+        Me.PictureBox8.Location = New System.Drawing.Point(75, 58)
+        Me.PictureBox8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox8.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox8.TabIndex = 10
         Me.PictureBox8.TabStop = False
@@ -451,9 +474,10 @@ Partial Class MainScreenPicture
         'PictureBox13
         '
         Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
-        Me.PictureBox13.Location = New System.Drawing.Point(56, 75)
+        Me.PictureBox13.Location = New System.Drawing.Point(75, 92)
+        Me.PictureBox13.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox13.Name = "PictureBox13"
-        Me.PictureBox13.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox13.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox13.TabIndex = 9
         Me.PictureBox13.TabStop = False
@@ -462,9 +486,10 @@ Partial Class MainScreenPicture
         '
         Me.LblStockTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.LblStockTotal.ForeColor = System.Drawing.Color.Black
-        Me.LblStockTotal.Location = New System.Drawing.Point(84, 44)
+        Me.LblStockTotal.Location = New System.Drawing.Point(112, 54)
+        Me.LblStockTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LblStockTotal.Name = "LblStockTotal"
-        Me.LblStockTotal.Size = New System.Drawing.Size(113, 24)
+        Me.LblStockTotal.Size = New System.Drawing.Size(151, 30)
         Me.LblStockTotal.TabIndex = 8
         Me.LblStockTotal.Text = "0"
         Me.LblStockTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -473,9 +498,10 @@ Partial Class MainScreenPicture
         '
         Me.lblStockAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblStockAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblStockAmt.Location = New System.Drawing.Point(84, 73)
+        Me.lblStockAmt.Location = New System.Drawing.Point(112, 90)
+        Me.lblStockAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStockAmt.Name = "lblStockAmt"
-        Me.lblStockAmt.Size = New System.Drawing.Size(113, 24)
+        Me.lblStockAmt.Size = New System.Drawing.Size(151, 30)
         Me.lblStockAmt.TabIndex = 6
         Me.lblStockAmt.Text = "0.00"
         Me.lblStockAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -483,7 +509,8 @@ Partial Class MainScreenPicture
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(0, 47)
+        Me.PictureBox4.Location = New System.Drawing.Point(0, 58)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -495,9 +522,10 @@ Partial Class MainScreenPicture
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(3, 21)
+        Me.Label4.Location = New System.Drawing.Point(4, 26)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(107, 15)
+        Me.Label4.Size = New System.Drawing.Size(135, 19)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Today's Stock Sale"
         '
@@ -510,17 +538,19 @@ Partial Class MainScreenPicture
         Me.Panel5.Controls.Add(Me.lblStdAmt)
         Me.Panel5.Controls.Add(Me.PictureBox5)
         Me.Panel5.Controls.Add(Me.Label5)
-        Me.Panel5.Location = New System.Drawing.Point(698, 52)
+        Me.Panel5.Location = New System.Drawing.Point(931, 64)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(200, 100)
+        Me.Panel5.Size = New System.Drawing.Size(267, 123)
         Me.Panel5.TabIndex = 1
         '
         'PictureBox9
         '
         Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
-        Me.PictureBox9.Location = New System.Drawing.Point(59, 45)
+        Me.PictureBox9.Location = New System.Drawing.Point(79, 55)
+        Me.PictureBox9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox9.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox9.TabIndex = 11
         Me.PictureBox9.TabStop = False
@@ -528,9 +558,10 @@ Partial Class MainScreenPicture
         'PictureBox14
         '
         Me.PictureBox14.Image = CType(resources.GetObject("PictureBox14.Image"), System.Drawing.Image)
-        Me.PictureBox14.Location = New System.Drawing.Point(59, 73)
+        Me.PictureBox14.Location = New System.Drawing.Point(79, 90)
+        Me.PictureBox14.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox14.Name = "PictureBox14"
-        Me.PictureBox14.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox14.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox14.TabIndex = 10
         Me.PictureBox14.TabStop = False
@@ -539,9 +570,10 @@ Partial Class MainScreenPicture
         '
         Me.lblStdTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblStdTotal.ForeColor = System.Drawing.Color.Black
-        Me.lblStdTotal.Location = New System.Drawing.Point(84, 44)
+        Me.lblStdTotal.Location = New System.Drawing.Point(112, 54)
+        Me.lblStdTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStdTotal.Name = "lblStdTotal"
-        Me.lblStdTotal.Size = New System.Drawing.Size(113, 24)
+        Me.lblStdTotal.Size = New System.Drawing.Size(151, 30)
         Me.lblStdTotal.TabIndex = 9
         Me.lblStdTotal.Text = "0"
         Me.lblStdTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -550,9 +582,10 @@ Partial Class MainScreenPicture
         '
         Me.lblStdAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblStdAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblStdAmt.Location = New System.Drawing.Point(84, 73)
+        Me.lblStdAmt.Location = New System.Drawing.Point(112, 90)
+        Me.lblStdAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStdAmt.Name = "lblStdAmt"
-        Me.lblStdAmt.Size = New System.Drawing.Size(113, 24)
+        Me.lblStdAmt.Size = New System.Drawing.Size(151, 30)
         Me.lblStdAmt.TabIndex = 7
         Me.lblStdAmt.Text = "0.00"
         Me.lblStdAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -560,7 +593,8 @@ Partial Class MainScreenPicture
         'PictureBox5
         '
         Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(0, 47)
+        Me.PictureBox5.Location = New System.Drawing.Point(0, 58)
+        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -572,9 +606,10 @@ Partial Class MainScreenPicture
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(3, 21)
+        Me.Label5.Location = New System.Drawing.Point(4, 26)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(125, 15)
+        Me.Label5.Size = New System.Drawing.Size(154, 19)
         Me.Label5.TabIndex = 2
         Me.Label5.Text = "Today's Standard Sale"
         '
@@ -582,9 +617,10 @@ Partial Class MainScreenPicture
         '
         Me.lblDay.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDay.ForeColor = System.Drawing.Color.Black
-        Me.lblDay.Location = New System.Drawing.Point(1049, 158)
+        Me.lblDay.Location = New System.Drawing.Point(1399, 194)
+        Me.lblDay.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDay.Name = "lblDay"
-        Me.lblDay.Size = New System.Drawing.Size(98, 20)
+        Me.lblDay.Size = New System.Drawing.Size(131, 25)
         Me.lblDay.TabIndex = 30
         Me.lblDay.Text = "Day"
         Me.lblDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -593,9 +629,10 @@ Partial Class MainScreenPicture
         '
         Me.lblDate.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDate.ForeColor = System.Drawing.Color.Black
-        Me.lblDate.Location = New System.Drawing.Point(1072, 188)
+        Me.lblDate.Location = New System.Drawing.Point(1429, 231)
+        Me.lblDate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(75, 20)
+        Me.lblDate.Size = New System.Drawing.Size(100, 25)
         Me.lblDate.TabIndex = 29
         Me.lblDate.Text = "dd-MM-yyyy"
         Me.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -604,9 +641,10 @@ Partial Class MainScreenPicture
         '
         Me.lbltime.Font = New System.Drawing.Font("Monotype Corsiva", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltime.ForeColor = System.Drawing.Color.Black
-        Me.lbltime.Location = New System.Drawing.Point(1072, 215)
+        Me.lbltime.Location = New System.Drawing.Point(1429, 265)
+        Me.lbltime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbltime.Name = "lbltime"
-        Me.lbltime.Size = New System.Drawing.Size(75, 20)
+        Me.lbltime.Size = New System.Drawing.Size(100, 25)
         Me.lbltime.TabIndex = 28
         Me.lbltime.Text = "00:00:00"
         Me.lbltime.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -615,9 +653,10 @@ Partial Class MainScreenPicture
         '
         Me.lblCity.Font = New System.Drawing.Font("Times New Roman", 15.0!)
         Me.lblCity.ForeColor = System.Drawing.Color.Black
-        Me.lblCity.Location = New System.Drawing.Point(506, 190)
+        Me.lblCity.Location = New System.Drawing.Point(675, 234)
+        Me.lblCity.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCity.Name = "lblCity"
-        Me.lblCity.Size = New System.Drawing.Size(419, 23)
+        Me.lblCity.Size = New System.Drawing.Size(559, 28)
         Me.lblCity.TabIndex = 40
         Me.lblCity.Text = "City"
         Me.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -627,9 +666,10 @@ Partial Class MainScreenPicture
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Black
-        Me.Label23.Location = New System.Drawing.Point(512, 170)
+        Me.Label23.Location = New System.Drawing.Point(683, 209)
+        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(29, 15)
+        Me.Label23.Size = New System.Drawing.Size(38, 19)
         Me.Label23.TabIndex = 39
         Me.Label23.Text = "City"
         '
@@ -637,9 +677,10 @@ Partial Class MainScreenPicture
         '
         Me.lblFinYear.Font = New System.Drawing.Font("Times New Roman", 15.0!)
         Me.lblFinYear.ForeColor = System.Drawing.Color.Black
-        Me.lblFinYear.Location = New System.Drawing.Point(371, 191)
+        Me.lblFinYear.Location = New System.Drawing.Point(495, 235)
+        Me.lblFinYear.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFinYear.Name = "lblFinYear"
-        Me.lblFinYear.Size = New System.Drawing.Size(124, 23)
+        Me.lblFinYear.Size = New System.Drawing.Size(165, 28)
         Me.lblFinYear.TabIndex = 38
         Me.lblFinYear.Text = "0000-0000"
         Me.lblFinYear.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -649,9 +690,10 @@ Partial Class MainScreenPicture
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label22.ForeColor = System.Drawing.Color.Black
-        Me.Label22.Location = New System.Drawing.Point(398, 170)
+        Me.Label22.Location = New System.Drawing.Point(531, 209)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(81, 15)
+        Me.Label22.Size = New System.Drawing.Size(104, 19)
         Me.Label22.TabIndex = 37
         Me.Label22.Text = "Financial Year"
         '
@@ -660,9 +702,10 @@ Partial Class MainScreenPicture
         Me.lblUser.AutoSize = True
         Me.lblUser.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblUser.ForeColor = System.Drawing.Color.Black
-        Me.lblUser.Location = New System.Drawing.Point(76, 190)
+        Me.lblUser.Location = New System.Drawing.Point(101, 234)
+        Me.lblUser.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUser.Name = "lblUser"
-        Me.lblUser.Size = New System.Drawing.Size(67, 15)
+        Me.lblUser.Size = New System.Drawing.Size(90, 19)
         Me.lblUser.TabIndex = 36
         Me.lblUser.Text = "User Name"
         '
@@ -671,9 +714,10 @@ Partial Class MainScreenPicture
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.Black
-        Me.Label19.Location = New System.Drawing.Point(76, 163)
+        Me.Label19.Location = New System.Drawing.Point(101, 201)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(32, 15)
+        Me.Label19.Size = New System.Drawing.Size(42, 19)
         Me.Label19.TabIndex = 35
         Me.Label19.Text = "User"
         '
@@ -682,9 +726,10 @@ Partial Class MainScreenPicture
         Me.lblOrgName.AutoSize = True
         Me.lblOrgName.Font = New System.Drawing.Font("Times New Roman", 15.0!)
         Me.lblOrgName.ForeColor = System.Drawing.Color.Black
-        Me.lblOrgName.Location = New System.Drawing.Point(12, 26)
+        Me.lblOrgName.Location = New System.Drawing.Point(16, 32)
+        Me.lblOrgName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOrgName.Name = "lblOrgName"
-        Me.lblOrgName.Size = New System.Drawing.Size(219, 22)
+        Me.lblOrgName.Size = New System.Drawing.Size(281, 29)
         Me.lblOrgName.TabIndex = 42
         Me.lblOrgName.Text = "HOTEL MIRAGE PLACE"
         Me.lblOrgName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -694,9 +739,10 @@ Partial Class MainScreenPicture
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(13, 6)
+        Me.Label17.Location = New System.Drawing.Point(17, 7)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(108, 15)
+        Me.Label17.Size = New System.Drawing.Size(140, 19)
         Me.Label17.TabIndex = 41
         Me.Label17.Text = "Organization Name"
         '
@@ -705,9 +751,10 @@ Partial Class MainScreenPicture
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.Black
-        Me.Label21.Location = New System.Drawing.Point(147, 590)
+        Me.Label21.Location = New System.Drawing.Point(196, 726)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(66, 15)
+        Me.Label21.Size = New System.Drawing.Size(85, 19)
         Me.Label21.TabIndex = 46
         Me.Label21.Text = "Let's Easy.."
         '
@@ -716,9 +763,10 @@ Partial Class MainScreenPicture
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("BlackChancery", 30.0!)
         Me.Label20.ForeColor = System.Drawing.Color.Black
-        Me.Label20.Location = New System.Drawing.Point(21, 570)
+        Me.Label20.Location = New System.Drawing.Point(28, 702)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(133, 47)
+        Me.Label20.Size = New System.Drawing.Size(168, 60)
         Me.Label20.TabIndex = 45
         Me.Label20.Text = "Aadhat"
         '
@@ -727,9 +775,10 @@ Partial Class MainScreenPicture
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(926, 572)
+        Me.Label16.Location = New System.Drawing.Point(1235, 704)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(222, 15)
+        Me.Label16.Size = New System.Drawing.Size(309, 19)
         Me.Label16.TabIndex = 44
         Me.Label16.Text = "Handcrafted By : +91 7891 933 933 (24x7)"
         '
@@ -738,9 +787,10 @@ Partial Class MainScreenPicture
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Times New Roman", 15.0!)
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(910, 589)
+        Me.Label15.Location = New System.Drawing.Point(1213, 725)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(262, 22)
+        Me.Label15.Size = New System.Drawing.Size(333, 29)
         Me.Label15.TabIndex = 43
         Me.Label15.Text = "SOFT MANAGEMENT INDIA"
         '
@@ -753,17 +803,19 @@ Partial Class MainScreenPicture
         Me.Panel6.Controls.Add(Me.lblTotReceiptamt)
         Me.Panel6.Controls.Add(Me.PictureBox21)
         Me.Panel6.Controls.Add(Me.Label8)
-        Me.Panel6.Location = New System.Drawing.Point(395, 327)
+        Me.Panel6.Location = New System.Drawing.Point(527, 402)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(206, 120)
+        Me.Panel6.Size = New System.Drawing.Size(275, 148)
         Me.Panel6.TabIndex = 8
         '
         'PictureBox19
         '
         Me.PictureBox19.Image = CType(resources.GetObject("PictureBox19.Image"), System.Drawing.Image)
-        Me.PictureBox19.Location = New System.Drawing.Point(56, 69)
+        Me.PictureBox19.Location = New System.Drawing.Point(75, 85)
+        Me.PictureBox19.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox19.Name = "PictureBox19"
-        Me.PictureBox19.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox19.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox19.TabIndex = 9
         Me.PictureBox19.TabStop = False
@@ -771,9 +823,10 @@ Partial Class MainScreenPicture
         'PictureBox20
         '
         Me.PictureBox20.Image = CType(resources.GetObject("PictureBox20.Image"), System.Drawing.Image)
-        Me.PictureBox20.Location = New System.Drawing.Point(57, 93)
+        Me.PictureBox20.Location = New System.Drawing.Point(76, 114)
+        Me.PictureBox20.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox20.Name = "PictureBox20"
-        Me.PictureBox20.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox20.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox20.TabIndex = 8
         Me.PictureBox20.TabStop = False
@@ -782,9 +835,10 @@ Partial Class MainScreenPicture
         '
         Me.lblTotReceipt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblTotReceipt.ForeColor = System.Drawing.Color.Black
-        Me.lblTotReceipt.Location = New System.Drawing.Point(82, 69)
+        Me.lblTotReceipt.Location = New System.Drawing.Point(109, 85)
+        Me.lblTotReceipt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotReceipt.Name = "lblTotReceipt"
-        Me.lblTotReceipt.Size = New System.Drawing.Size(117, 24)
+        Me.lblTotReceipt.Size = New System.Drawing.Size(156, 30)
         Me.lblTotReceipt.TabIndex = 7
         Me.lblTotReceipt.Text = "0"
         Me.lblTotReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -793,9 +847,10 @@ Partial Class MainScreenPicture
         '
         Me.lblTotReceiptamt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblTotReceiptamt.ForeColor = System.Drawing.Color.Black
-        Me.lblTotReceiptamt.Location = New System.Drawing.Point(89, 96)
+        Me.lblTotReceiptamt.Location = New System.Drawing.Point(119, 118)
+        Me.lblTotReceiptamt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotReceiptamt.Name = "lblTotReceiptamt"
-        Me.lblTotReceiptamt.Size = New System.Drawing.Size(110, 24)
+        Me.lblTotReceiptamt.Size = New System.Drawing.Size(147, 30)
         Me.lblTotReceiptamt.TabIndex = 6
         Me.lblTotReceiptamt.Text = "0.00"
         Me.lblTotReceiptamt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -803,7 +858,8 @@ Partial Class MainScreenPicture
         'PictureBox21
         '
         Me.PictureBox21.Image = CType(resources.GetObject("PictureBox21.Image"), System.Drawing.Image)
-        Me.PictureBox21.Location = New System.Drawing.Point(0, 70)
+        Me.PictureBox21.Location = New System.Drawing.Point(0, 86)
+        Me.PictureBox21.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox21.Name = "PictureBox21"
         Me.PictureBox21.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -815,9 +871,10 @@ Partial Class MainScreenPicture
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(3, 6)
+        Me.Label8.Location = New System.Drawing.Point(4, 7)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(92, 15)
+        Me.Label8.Size = New System.Drawing.Size(116, 19)
         Me.Label8.TabIndex = 2
         Me.Label8.Text = "Today's Receipt"
         '
@@ -830,18 +887,20 @@ Partial Class MainScreenPicture
         Me.Panel7.Controls.Add(Me.lblAutoReceipt)
         Me.Panel7.Controls.Add(Me.PictureBox24)
         Me.Panel7.Controls.Add(Me.Label11)
-        Me.Panel7.Location = New System.Drawing.Point(600, 327)
+        Me.Panel7.Location = New System.Drawing.Point(800, 402)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(200, 120)
+        Me.Panel7.Size = New System.Drawing.Size(267, 148)
         Me.Panel7.TabIndex = 9
         '
         'lblAuto
         '
         Me.lblAuto.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblAuto.ForeColor = System.Drawing.Color.Black
-        Me.lblAuto.Location = New System.Drawing.Point(81, 69)
+        Me.lblAuto.Location = New System.Drawing.Point(108, 85)
+        Me.lblAuto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAuto.Name = "lblAuto"
-        Me.lblAuto.Size = New System.Drawing.Size(116, 24)
+        Me.lblAuto.Size = New System.Drawing.Size(155, 30)
         Me.lblAuto.TabIndex = 7
         Me.lblAuto.Text = "0"
         Me.lblAuto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -849,9 +908,10 @@ Partial Class MainScreenPicture
         'PictureBox22
         '
         Me.PictureBox22.Image = CType(resources.GetObject("PictureBox22.Image"), System.Drawing.Image)
-        Me.PictureBox22.Location = New System.Drawing.Point(56, 69)
+        Me.PictureBox22.Location = New System.Drawing.Point(75, 85)
+        Me.PictureBox22.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox22.Name = "PictureBox22"
-        Me.PictureBox22.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox22.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox22.TabIndex = 9
         Me.PictureBox22.TabStop = False
@@ -859,9 +919,10 @@ Partial Class MainScreenPicture
         'PictureBox23
         '
         Me.PictureBox23.Image = CType(resources.GetObject("PictureBox23.Image"), System.Drawing.Image)
-        Me.PictureBox23.Location = New System.Drawing.Point(56, 93)
+        Me.PictureBox23.Location = New System.Drawing.Point(75, 114)
+        Me.PictureBox23.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox23.Name = "PictureBox23"
-        Me.PictureBox23.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox23.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox23.TabIndex = 8
         Me.PictureBox23.TabStop = False
@@ -870,9 +931,10 @@ Partial Class MainScreenPicture
         '
         Me.lblAutoReceipt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblAutoReceipt.ForeColor = System.Drawing.Color.Black
-        Me.lblAutoReceipt.Location = New System.Drawing.Point(81, 93)
+        Me.lblAutoReceipt.Location = New System.Drawing.Point(108, 114)
+        Me.lblAutoReceipt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAutoReceipt.Name = "lblAutoReceipt"
-        Me.lblAutoReceipt.Size = New System.Drawing.Size(116, 24)
+        Me.lblAutoReceipt.Size = New System.Drawing.Size(155, 30)
         Me.lblAutoReceipt.TabIndex = 6
         Me.lblAutoReceipt.Text = "0.00"
         Me.lblAutoReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -880,7 +942,8 @@ Partial Class MainScreenPicture
         'PictureBox24
         '
         Me.PictureBox24.Image = CType(resources.GetObject("PictureBox24.Image"), System.Drawing.Image)
-        Me.PictureBox24.Location = New System.Drawing.Point(0, 78)
+        Me.PictureBox24.Location = New System.Drawing.Point(0, 96)
+        Me.PictureBox24.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox24.Name = "PictureBox24"
         Me.PictureBox24.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -892,9 +955,10 @@ Partial Class MainScreenPicture
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(3, 6)
+        Me.Label11.Location = New System.Drawing.Point(4, 7)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(124, 15)
+        Me.Label11.Size = New System.Drawing.Size(155, 19)
         Me.Label11.TabIndex = 2
         Me.Label11.Text = "Today's Sell Out Auto"
         '
@@ -907,17 +971,19 @@ Partial Class MainScreenPicture
         Me.Panel8.Controls.Add(Me.lblMannualAmt)
         Me.Panel8.Controls.Add(Me.PictureBox27)
         Me.Panel8.Controls.Add(Me.Label14)
-        Me.Panel8.Location = New System.Drawing.Point(395, 447)
+        Me.Panel8.Location = New System.Drawing.Point(527, 550)
+        Me.Panel8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(205, 120)
+        Me.Panel8.Size = New System.Drawing.Size(273, 148)
         Me.Panel8.TabIndex = 9
         '
         'PictureBox25
         '
         Me.PictureBox25.Image = CType(resources.GetObject("PictureBox25.Image"), System.Drawing.Image)
-        Me.PictureBox25.Location = New System.Drawing.Point(58, 64)
+        Me.PictureBox25.Location = New System.Drawing.Point(77, 79)
+        Me.PictureBox25.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox25.Name = "PictureBox25"
-        Me.PictureBox25.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox25.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox25.TabIndex = 9
         Me.PictureBox25.TabStop = False
@@ -925,9 +991,10 @@ Partial Class MainScreenPicture
         'PictureBox26
         '
         Me.PictureBox26.Image = CType(resources.GetObject("PictureBox26.Image"), System.Drawing.Image)
-        Me.PictureBox26.Location = New System.Drawing.Point(58, 93)
+        Me.PictureBox26.Location = New System.Drawing.Point(77, 114)
+        Me.PictureBox26.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox26.Name = "PictureBox26"
-        Me.PictureBox26.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox26.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox26.TabIndex = 8
         Me.PictureBox26.TabStop = False
@@ -936,9 +1003,10 @@ Partial Class MainScreenPicture
         '
         Me.lblMannual.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblMannual.ForeColor = System.Drawing.Color.Black
-        Me.lblMannual.Location = New System.Drawing.Point(80, 64)
+        Me.lblMannual.Location = New System.Drawing.Point(107, 79)
+        Me.lblMannual.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMannual.Name = "lblMannual"
-        Me.lblMannual.Size = New System.Drawing.Size(119, 24)
+        Me.lblMannual.Size = New System.Drawing.Size(159, 30)
         Me.lblMannual.TabIndex = 7
         Me.lblMannual.Text = "0"
         Me.lblMannual.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -947,9 +1015,10 @@ Partial Class MainScreenPicture
         '
         Me.lblMannualAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblMannualAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblMannualAmt.Location = New System.Drawing.Point(89, 93)
+        Me.lblMannualAmt.Location = New System.Drawing.Point(119, 114)
+        Me.lblMannualAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMannualAmt.Name = "lblMannualAmt"
-        Me.lblMannualAmt.Size = New System.Drawing.Size(110, 24)
+        Me.lblMannualAmt.Size = New System.Drawing.Size(147, 30)
         Me.lblMannualAmt.TabIndex = 6
         Me.lblMannualAmt.Text = "0.00"
         Me.lblMannualAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -957,7 +1026,8 @@ Partial Class MainScreenPicture
         'PictureBox27
         '
         Me.PictureBox27.Image = CType(resources.GetObject("PictureBox27.Image"), System.Drawing.Image)
-        Me.PictureBox27.Location = New System.Drawing.Point(2, 67)
+        Me.PictureBox27.Location = New System.Drawing.Point(3, 82)
+        Me.PictureBox27.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox27.Name = "PictureBox27"
         Me.PictureBox27.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -969,9 +1039,10 @@ Partial Class MainScreenPicture
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(3, 6)
+        Me.Label14.Location = New System.Drawing.Point(4, 7)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(145, 15)
+        Me.Label14.Size = New System.Drawing.Size(181, 19)
         Me.Label14.TabIndex = 2
         Me.Label14.Text = "Today's Sell Out Mannual"
         '
@@ -984,17 +1055,19 @@ Partial Class MainScreenPicture
         Me.Panel9.Controls.Add(Me.lblPaymentAmt)
         Me.Panel9.Controls.Add(Me.PictureBox30)
         Me.Panel9.Controls.Add(Me.Label25)
-        Me.Panel9.Location = New System.Drawing.Point(600, 447)
+        Me.Panel9.Location = New System.Drawing.Point(800, 550)
+        Me.Panel9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(200, 120)
+        Me.Panel9.Size = New System.Drawing.Size(267, 148)
         Me.Panel9.TabIndex = 47
         '
         'PictureBox28
         '
         Me.PictureBox28.Image = CType(resources.GetObject("PictureBox28.Image"), System.Drawing.Image)
-        Me.PictureBox28.Location = New System.Drawing.Point(62, 64)
+        Me.PictureBox28.Location = New System.Drawing.Point(83, 79)
+        Me.PictureBox28.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox28.Name = "PictureBox28"
-        Me.PictureBox28.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox28.Size = New System.Drawing.Size(27, 25)
         Me.PictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox28.TabIndex = 9
         Me.PictureBox28.TabStop = False
@@ -1002,9 +1075,10 @@ Partial Class MainScreenPicture
         'PictureBox29
         '
         Me.PictureBox29.Image = CType(resources.GetObject("PictureBox29.Image"), System.Drawing.Image)
-        Me.PictureBox29.Location = New System.Drawing.Point(62, 92)
+        Me.PictureBox29.Location = New System.Drawing.Point(83, 113)
+        Me.PictureBox29.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox29.Name = "PictureBox29"
-        Me.PictureBox29.Size = New System.Drawing.Size(19, 25)
+        Me.PictureBox29.Size = New System.Drawing.Size(25, 31)
         Me.PictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox29.TabIndex = 8
         Me.PictureBox29.TabStop = False
@@ -1013,9 +1087,10 @@ Partial Class MainScreenPicture
         '
         Me.lblPayment.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblPayment.ForeColor = System.Drawing.Color.Black
-        Me.lblPayment.Location = New System.Drawing.Point(87, 65)
+        Me.lblPayment.Location = New System.Drawing.Point(116, 80)
+        Me.lblPayment.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPayment.Name = "lblPayment"
-        Me.lblPayment.Size = New System.Drawing.Size(110, 24)
+        Me.lblPayment.Size = New System.Drawing.Size(147, 30)
         Me.lblPayment.TabIndex = 7
         Me.lblPayment.Text = "0"
         Me.lblPayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1024,9 +1099,10 @@ Partial Class MainScreenPicture
         '
         Me.lblPaymentAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!)
         Me.lblPaymentAmt.ForeColor = System.Drawing.Color.Black
-        Me.lblPaymentAmt.Location = New System.Drawing.Point(87, 93)
+        Me.lblPaymentAmt.Location = New System.Drawing.Point(116, 114)
+        Me.lblPaymentAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPaymentAmt.Name = "lblPaymentAmt"
-        Me.lblPaymentAmt.Size = New System.Drawing.Size(110, 24)
+        Me.lblPaymentAmt.Size = New System.Drawing.Size(147, 30)
         Me.lblPaymentAmt.TabIndex = 6
         Me.lblPaymentAmt.Text = "0.00"
         Me.lblPaymentAmt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1034,7 +1110,8 @@ Partial Class MainScreenPicture
         'PictureBox30
         '
         Me.PictureBox30.Image = CType(resources.GetObject("PictureBox30.Image"), System.Drawing.Image)
-        Me.PictureBox30.Location = New System.Drawing.Point(3, 67)
+        Me.PictureBox30.Location = New System.Drawing.Point(4, 82)
+        Me.PictureBox30.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox30.Name = "PictureBox30"
         Me.PictureBox30.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1046,9 +1123,10 @@ Partial Class MainScreenPicture
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label25.ForeColor = System.Drawing.Color.Black
-        Me.Label25.Location = New System.Drawing.Point(3, 6)
+        Me.Label25.Location = New System.Drawing.Point(4, 7)
+        Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(101, 15)
+        Me.Label25.Size = New System.Drawing.Size(126, 19)
         Me.Label25.TabIndex = 2
         Me.Label25.Text = "Today's  Payment"
         '
@@ -1056,9 +1134,10 @@ Partial Class MainScreenPicture
         '
         Me.pnlSale.Controls.Add(Me.dg1)
         Me.pnlSale.Controls.Add(Me.Label26)
-        Me.pnlSale.Location = New System.Drawing.Point(20, 280)
+        Me.pnlSale.Location = New System.Drawing.Point(27, 345)
+        Me.pnlSale.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlSale.Name = "pnlSale"
-        Me.pnlSale.Size = New System.Drawing.Size(369, 287)
+        Me.pnlSale.Size = New System.Drawing.Size(492, 353)
         Me.pnlSale.TabIndex = 48
         Me.pnlSale.Visible = False
         '
@@ -1090,7 +1169,8 @@ Partial Class MainScreenPicture
         Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
-        Me.dg1.Location = New System.Drawing.Point(3, 26)
+        Me.dg1.Location = New System.Drawing.Point(4, 32)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
@@ -1106,7 +1186,7 @@ Partial Class MainScreenPicture
         Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(363, 258)
+        Me.dg1.Size = New System.Drawing.Size(484, 318)
         Me.dg1.TabIndex = 40026
         Me.dg1.TabStop = False
         '
@@ -1115,9 +1195,10 @@ Partial Class MainScreenPicture
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(3, 6)
+        Me.Label26.Location = New System.Drawing.Point(4, 7)
+        Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(134, 15)
+        Me.Label26.Size = New System.Drawing.Size(172, 19)
         Me.Label26.TabIndex = 36
         Me.Label26.Text = "Last 10 Inventry Entries"
         '
@@ -1126,9 +1207,10 @@ Partial Class MainScreenPicture
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(3, 6)
+        Me.Label27.Location = New System.Drawing.Point(4, 7)
+        Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(118, 15)
+        Me.Label27.Size = New System.Drawing.Size(149, 19)
         Me.Label27.TabIndex = 36
         Me.Label27.Text = "Last 10 Transactions"
         '
@@ -1160,7 +1242,8 @@ Partial Class MainScreenPicture
         Me.dg2.DefaultCellStyle = DataGridViewCellStyle6
         Me.dg2.EnableHeadersVisualStyles = False
         Me.dg2.GridColor = System.Drawing.Color.CadetBlue
-        Me.dg2.Location = New System.Drawing.Point(2, 28)
+        Me.dg2.Location = New System.Drawing.Point(3, 34)
+        Me.dg2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dg2.MultiSelect = False
         Me.dg2.Name = "dg2"
         Me.dg2.ReadOnly = True
@@ -1177,7 +1260,7 @@ Partial Class MainScreenPicture
         Me.dg2.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.dg2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg2.Size = New System.Drawing.Size(363, 258)
+        Me.dg2.Size = New System.Drawing.Size(484, 318)
         Me.dg2.TabIndex = 40027
         Me.dg2.TabStop = False
         '
@@ -1185,9 +1268,10 @@ Partial Class MainScreenPicture
         '
         Me.Panel10.Controls.Add(Me.dg2)
         Me.Panel10.Controls.Add(Me.Label27)
-        Me.Panel10.Location = New System.Drawing.Point(806, 282)
+        Me.Panel10.Location = New System.Drawing.Point(1075, 347)
+        Me.Panel10.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(369, 287)
+        Me.Panel10.Size = New System.Drawing.Size(492, 353)
         Me.Panel10.TabIndex = 49
         Me.Panel10.Visible = False
         '
@@ -1196,9 +1280,10 @@ Partial Class MainScreenPicture
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.Black
-        Me.Label28.Location = New System.Drawing.Point(970, 612)
+        Me.Label28.Location = New System.Drawing.Point(1293, 753)
+        Me.Label28.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(163, 15)
+        Me.Label28.Size = New System.Drawing.Size(207, 19)
         Me.Label28.TabIndex = 50
         Me.Label28.Text = "www.softmanagementindia.in"
         '
@@ -1207,9 +1292,10 @@ Partial Class MainScreenPicture
         Me.lblPath.AutoSize = True
         Me.lblPath.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblPath.ForeColor = System.Drawing.Color.Black
-        Me.lblPath.Location = New System.Drawing.Point(26, 617)
+        Me.lblPath.Location = New System.Drawing.Point(35, 767)
+        Me.lblPath.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPath.Name = "lblPath"
-        Me.lblPath.Size = New System.Drawing.Size(31, 15)
+        Me.lblPath.Size = New System.Drawing.Size(39, 19)
         Me.lblPath.TabIndex = 51
         Me.lblPath.Text = "Path"
         '
@@ -1223,16 +1309,18 @@ Partial Class MainScreenPicture
         Me.pnlpartnerDetails.Controls.Add(Me.lblMobile)
         Me.pnlpartnerDetails.Controls.Add(Me.Label6)
         Me.pnlpartnerDetails.Controls.Add(Me.lblpartnerName)
-        Me.pnlpartnerDetails.Location = New System.Drawing.Point(20, 238)
+        Me.pnlpartnerDetails.Location = New System.Drawing.Point(27, 293)
+        Me.pnlpartnerDetails.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlpartnerDetails.Name = "pnlpartnerDetails"
-        Me.pnlpartnerDetails.Size = New System.Drawing.Size(1156, 45)
+        Me.pnlpartnerDetails.Size = New System.Drawing.Size(1541, 55)
         Me.pnlpartnerDetails.TabIndex = 60
         Me.pnlpartnerDetails.Visible = False
         '
         'PictureBox37
         '
         Me.PictureBox37.Image = CType(resources.GetObject("PictureBox37.Image"), System.Drawing.Image)
-        Me.PictureBox37.Location = New System.Drawing.Point(789, 16)
+        Me.PictureBox37.Location = New System.Drawing.Point(1052, 20)
+        Me.PictureBox37.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox37.Name = "PictureBox37"
         Me.PictureBox37.Size = New System.Drawing.Size(24, 24)
         Me.PictureBox37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1242,7 +1330,8 @@ Partial Class MainScreenPicture
         'PictureBox35
         '
         Me.PictureBox35.Image = CType(resources.GetObject("PictureBox35.Image"), System.Drawing.Image)
-        Me.PictureBox35.Location = New System.Drawing.Point(374, 18)
+        Me.PictureBox35.Location = New System.Drawing.Point(499, 22)
+        Me.PictureBox35.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox35.Name = "PictureBox35"
         Me.PictureBox35.Size = New System.Drawing.Size(24, 24)
         Me.PictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1252,7 +1341,8 @@ Partial Class MainScreenPicture
         'PictureBox34
         '
         Me.PictureBox34.Image = CType(resources.GetObject("PictureBox34.Image"), System.Drawing.Image)
-        Me.PictureBox34.Location = New System.Drawing.Point(11, 16)
+        Me.PictureBox34.Location = New System.Drawing.Point(15, 20)
+        Me.PictureBox34.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox34.Name = "PictureBox34"
         Me.PictureBox34.Size = New System.Drawing.Size(24, 24)
         Me.PictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1263,9 +1353,10 @@ Partial Class MainScreenPicture
         '
         Me.lblWeb.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblWeb.ForeColor = System.Drawing.Color.Black
-        Me.lblWeb.Location = New System.Drawing.Point(818, 23)
+        Me.lblWeb.Location = New System.Drawing.Point(1091, 28)
+        Me.lblWeb.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblWeb.Name = "lblWeb"
-        Me.lblWeb.Size = New System.Drawing.Size(337, 17)
+        Me.lblWeb.Size = New System.Drawing.Size(449, 21)
         Me.lblWeb.TabIndex = 61
         Me.lblWeb.Text = "Web :"
         '
@@ -1273,9 +1364,10 @@ Partial Class MainScreenPicture
         '
         Me.lblMobile.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblMobile.ForeColor = System.Drawing.Color.Black
-        Me.lblMobile.Location = New System.Drawing.Point(404, 23)
+        Me.lblMobile.Location = New System.Drawing.Point(539, 28)
+        Me.lblMobile.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMobile.Name = "lblMobile"
-        Me.lblMobile.Size = New System.Drawing.Size(377, 17)
+        Me.lblMobile.Size = New System.Drawing.Size(503, 21)
         Me.lblMobile.TabIndex = 60
         Me.lblMobile.Text = "Support No.: +917891933933"
         '
@@ -1284,9 +1376,10 @@ Partial Class MainScreenPicture
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Red
-        Me.Label6.Location = New System.Drawing.Point(8, 1)
+        Me.Label6.Location = New System.Drawing.Point(11, 1)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(123, 15)
+        Me.Label6.Size = New System.Drawing.Size(158, 19)
         Me.Label6.TabIndex = 58
         Me.Label6.Text = "Auth. Partner / Dealer"
         '
@@ -1294,16 +1387,18 @@ Partial Class MainScreenPicture
         '
         Me.lblpartnerName.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblpartnerName.ForeColor = System.Drawing.Color.Black
-        Me.lblpartnerName.Location = New System.Drawing.Point(41, 23)
+        Me.lblpartnerName.Location = New System.Drawing.Point(55, 28)
+        Me.lblpartnerName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblpartnerName.Name = "lblpartnerName"
-        Me.lblpartnerName.Size = New System.Drawing.Size(332, 17)
+        Me.lblpartnerName.Size = New System.Drawing.Size(443, 21)
         Me.lblpartnerName.TabIndex = 56
         Me.lblpartnerName.Text = "Hemant Saini"
         '
         'pbWait
         '
         Me.pbWait.Image = CType(resources.GetObject("pbWait.Image"), System.Drawing.Image)
-        Me.pbWait.Location = New System.Drawing.Point(441, 360)
+        Me.pbWait.Location = New System.Drawing.Point(588, 443)
+        Me.pbWait.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pbWait.Name = "pbWait"
         Me.pbWait.Size = New System.Drawing.Size(308, 176)
         Me.pbWait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1314,7 +1409,8 @@ Partial Class MainScreenPicture
         'PictureBox18
         '
         Me.PictureBox18.Image = CType(resources.GetObject("PictureBox18.Image"), System.Drawing.Image)
-        Me.PictureBox18.Location = New System.Drawing.Point(20, 158)
+        Me.PictureBox18.Location = New System.Drawing.Point(27, 194)
+        Me.PictureBox18.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox18.Name = "PictureBox18"
         Me.PictureBox18.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1324,7 +1420,8 @@ Partial Class MainScreenPicture
         'PictureBox16
         '
         Me.PictureBox16.Image = CType(resources.GetObject("PictureBox16.Image"), System.Drawing.Image)
-        Me.PictureBox16.Location = New System.Drawing.Point(1023, 158)
+        Me.PictureBox16.Location = New System.Drawing.Point(1364, 194)
+        Me.PictureBox16.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox16.Name = "PictureBox16"
         Me.PictureBox16.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1334,7 +1431,8 @@ Partial Class MainScreenPicture
         'PictureBox17
         '
         Me.PictureBox17.Image = CType(resources.GetObject("PictureBox17.Image"), System.Drawing.Image)
-        Me.PictureBox17.Location = New System.Drawing.Point(1023, 188)
+        Me.PictureBox17.Location = New System.Drawing.Point(1364, 231)
+        Me.PictureBox17.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox17.Name = "PictureBox17"
         Me.PictureBox17.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1344,7 +1442,8 @@ Partial Class MainScreenPicture
         'pbtime
         '
         Me.pbtime.Image = Global.Aadhat.My.Resources.Resources.icons8_sand_watch_20px
-        Me.pbtime.Location = New System.Drawing.Point(1023, 215)
+        Me.pbtime.Location = New System.Drawing.Point(1364, 265)
+        Me.pbtime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pbtime.Name = "pbtime"
         Me.pbtime.Size = New System.Drawing.Size(20, 20)
         Me.pbtime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1354,9 +1453,10 @@ Partial Class MainScreenPicture
         'PictureBox32
         '
         Me.PictureBox32.Image = CType(resources.GetObject("PictureBox32.Image"), System.Drawing.Image)
-        Me.PictureBox32.Location = New System.Drawing.Point(818, 390)
+        Me.PictureBox32.Location = New System.Drawing.Point(1091, 480)
+        Me.PictureBox32.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox32.Name = "PictureBox32"
-        Me.PictureBox32.Size = New System.Drawing.Size(346, 79)
+        Me.PictureBox32.Size = New System.Drawing.Size(461, 97)
         Me.PictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox32.TabIndex = 53
         Me.PictureBox32.TabStop = False
@@ -1367,9 +1467,10 @@ Partial Class MainScreenPicture
         Me.pnlFirm.Controls.Add(Me.lblFirmName)
         Me.pnlFirm.Controls.Add(Me.PictureBox38)
         Me.pnlFirm.Controls.Add(Me.Label7)
-        Me.pnlFirm.Location = New System.Drawing.Point(395, 283)
+        Me.pnlFirm.Location = New System.Drawing.Point(527, 348)
+        Me.pnlFirm.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlFirm.Name = "pnlFirm"
-        Me.pnlFirm.Size = New System.Drawing.Size(405, 45)
+        Me.pnlFirm.Size = New System.Drawing.Size(540, 55)
         Me.pnlFirm.TabIndex = 67
         Me.pnlFirm.Visible = False
         '
@@ -1377,9 +1478,10 @@ Partial Class MainScreenPicture
         '
         Me.lblFirmName.Font = New System.Drawing.Font("Times New Roman", 15.0!)
         Me.lblFirmName.ForeColor = System.Drawing.Color.Black
-        Me.lblFirmName.Location = New System.Drawing.Point(2, 11)
+        Me.lblFirmName.Location = New System.Drawing.Point(3, 14)
+        Me.lblFirmName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFirmName.Name = "lblFirmName"
-        Me.lblFirmName.Size = New System.Drawing.Size(402, 23)
+        Me.lblFirmName.Size = New System.Drawing.Size(536, 28)
         Me.lblFirmName.TabIndex = 68
         Me.lblFirmName.Text = "SOFT MANAGEMENT INDIA"
         Me.lblFirmName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1387,7 +1489,8 @@ Partial Class MainScreenPicture
         'PictureBox38
         '
         Me.PictureBox38.Image = CType(resources.GetObject("PictureBox38.Image"), System.Drawing.Image)
-        Me.PictureBox38.Location = New System.Drawing.Point(903, 19)
+        Me.PictureBox38.Location = New System.Drawing.Point(1204, 23)
+        Me.PictureBox38.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox38.Name = "PictureBox38"
         Me.PictureBox38.Size = New System.Drawing.Size(16, 16)
         Me.PictureBox38.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1399,18 +1502,20 @@ Partial Class MainScreenPicture
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(925, 17)
+        Me.Label7.Location = New System.Drawing.Point(1233, 21)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(38, 15)
+        Me.Label7.Size = New System.Drawing.Size(49, 19)
         Me.Label7.TabIndex = 61
         Me.Label7.Text = "Web :"
         '
         'pbAadhat
         '
         Me.pbAadhat.Image = CType(resources.GetObject("pbAadhat.Image"), System.Drawing.Image)
-        Me.pbAadhat.Location = New System.Drawing.Point(43, 306)
+        Me.pbAadhat.Location = New System.Drawing.Point(57, 377)
+        Me.pbAadhat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pbAadhat.Name = "pbAadhat"
-        Me.pbAadhat.Size = New System.Drawing.Size(295, 260)
+        Me.pbAadhat.Size = New System.Drawing.Size(393, 320)
         Me.pbAadhat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbAadhat.TabIndex = 69
         Me.pbAadhat.TabStop = False
@@ -1420,9 +1525,10 @@ Partial Class MainScreenPicture
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Arial Unicode MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Red
-        Me.Label9.Location = New System.Drawing.Point(439, 572)
+        Me.Label9.Location = New System.Drawing.Point(585, 704)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(298, 50)
+        Me.Label9.Size = New System.Drawing.Size(388, 66)
         Me.Label9.TabIndex = 70
         Me.Label9.Text = "सुरक्षित बैकअप" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "आपके व्यवसाय की सबसे भरोसेमंद सुरक्षा।"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1432,18 +1538,19 @@ Partial Class MainScreenPicture
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Navy
-        Me.Label10.Location = New System.Drawing.Point(1005, 627)
+        Me.Label10.Location = New System.Drawing.Point(1340, 772)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(104, 15)
+        Me.Label10.Size = New System.Drawing.Size(138, 19)
         Me.Label10.TabIndex = 71
         Me.Label10.Text = "Copyright ©  2026"
         '
         'MainScreenPicture
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(1197, 653)
+        Me.ClientSize = New System.Drawing.Size(1596, 804)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.pnlSale)
         Me.Controls.Add(Me.Label9)
@@ -1483,6 +1590,8 @@ Partial Class MainScreenPicture
         Me.Controls.Add(Me.pbWait)
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.PictureBox32)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "MainScreenPicture"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "MainScreenPicture"

@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Account_Balance_Editor
     Inherits System.Windows.Forms.Form
 
@@ -410,6 +410,7 @@ Partial Class Account_Balance_Editor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.Pnlconfirmation)
         Me.Controls.Add(Me.lbllinkedfy)
         Me.Controls.Add(Me.Label3)

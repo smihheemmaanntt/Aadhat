@@ -1,12 +1,18 @@
-﻿Imports System.Configuration
+Imports System.Configuration
 Imports System.IO
 Imports System.Text
 Imports System.Xml
 'Imports System.Threading.task
 Public Class Change_Financial_Year
     Dim data As String = String.Empty
+    Private overlayTracking As Boolean
 
     Private Sub Change_Financial_Year_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If overlayTracking Then
+            RemoveHandler CompanyList.Resize, AddressOf CompanyGridBoundsChanged
+            RemoveHandler CompanyList.dg1.Resize, AddressOf CompanyGridBoundsChanged
+            overlayTracking = False
+        End If
         CompanyList.Enabled = True
     End Sub
     Private Sub Change_Financial_Year_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -15,9 +21,9 @@ Public Class Change_Financial_Year
 
     Private Sub Change_Financial_Year_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Control.CheckForIllegalCrossThreadCalls = False
-        Me.Top = 130 : Me.Left = 84
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.GhostWhite
+        FitOverCompanyGrid()
         txtAccountID.Text = Val(CompanyList.dg1.SelectedRows(0).Cells(0).Value)
         txtAccount.Text = CompanyList.dg1.SelectedRows(0).Cells(1).Value
         mskCurrFromDate.Text = CompanyList.dg1.SelectedRows(0).Cells(4).Value
@@ -27,6 +33,39 @@ Public Class Change_Financial_Year
         mskNewtoDate.Text = CDate(MskCurrToDate.Text).AddYears(1).ToString("dd-MM-yyyy")
         mskNewFromDate.Focus() : Me.KeyPreview = True
         CompanyList.Enabled = False
+    End Sub
+
+    ' Uses the same CompanyList.dg1 workspace as Login without changing the
+    ' designer layout.  Capture happens before the MDI child is shown so the
+    ' responsive scaler has the form's original design dimensions.
+    Public Sub PrepareGridOverlay()
+        Me.Tag = "ResponsiveOverlay"
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+        Me.ControlBox = False
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.StartPosition = FormStartPosition.Manual
+        Dim scaler As GenericResponsiveFormScaler = GenericResponsiveFormScaler.Bind(Me)
+        'scaler.PrepareForFirstShow()
+        FitOverCompanyGrid()
+        If Not overlayTracking Then
+            AddHandler CompanyList.Resize, AddressOf CompanyGridBoundsChanged
+            AddHandler CompanyList.dg1.Resize, AddressOf CompanyGridBoundsChanged
+            overlayTracking = True
+        End If
+    End Sub
+
+    Private Sub CompanyGridBoundsChanged(sender As Object, e As EventArgs)
+        FitOverCompanyGrid()
+    End Sub
+
+    Private Sub FitOverCompanyGrid()
+        If CompanyList Is Nothing OrElse CompanyList.IsDisposed OrElse CompanyList.dg1 Is Nothing Then Return
+        Dim gridBounds As New Rectangle(CompanyList.Left + CompanyList.dg1.Left,
+                                        CompanyList.Top + CompanyList.dg1.Top,
+                                        CompanyList.dg1.Width,
+                                        CompanyList.dg1.Height)
+        If gridBounds.Width > 0 AndAlso gridBounds.Height > 0 Then Me.Bounds = gridBounds
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -675,5 +714,9 @@ Public Class Change_Financial_Year
                 e.Handled = True
                 btnChangeYear.Focus()
         End Select
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

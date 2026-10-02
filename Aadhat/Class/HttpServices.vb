@@ -4,6 +4,23 @@ Imports System.Collections.Specialized
 Imports System.Text
 Imports System.IO
 
+Public Class WebClientWithTimeout
+    Inherits WebClient
+    Public Property Timeout As Integer
+
+    Public Sub New()
+        Timeout = 60000 ' Default to 60 seconds
+    End Sub
+
+    Protected Overrides Function GetWebRequest(ByVal address As Uri) As WebRequest
+        Dim request As WebRequest = MyBase.GetWebRequest(address)
+        If request IsNot Nothing Then
+            request.Timeout = Timeout
+        End If
+        Return request
+    End Function
+End Class
+
 Public Class HttpService
     Private Function PostSyncJson(Of T As Class)(ByVal endpoint As String, ByVal json As String, ByVal authToken As String) As T
         Try
@@ -414,23 +431,5 @@ Public Class UpdateLastDataSyncDateTimeResponse
     Public Property Message As String
     ' Add other properties as per the response
 End Class
-
-Public Class WebClientWithTimeout
-    Inherits WebClient
-    Public Property Timeout As Integer
-
-    Public Sub New()
-        Timeout = 60000 ' Default to 60 seconds
-    End Sub
-
-    Protected Overrides Function GetWebRequest(ByVal address As Uri) As WebRequest
-        Dim request As WebRequest = MyBase.GetWebRequest(address)
-        If request IsNot Nothing Then
-            request.Timeout = Timeout
-        End If
-        Return request
-    End Function
-End Class
-
 
 

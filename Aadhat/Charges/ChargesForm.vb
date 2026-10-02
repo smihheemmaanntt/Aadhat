@@ -1,4 +1,4 @@
-﻿Public Class ChargesForm
+Public Class ChargesForm
     Private Sub ChargesForm_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
@@ -361,5 +361,9 @@
 
     Private Sub cbApply_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbApply.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

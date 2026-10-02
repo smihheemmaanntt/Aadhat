@@ -177,4 +177,8 @@ Public Partial Class ComplaintListForm
     Private Sub lblStatus_Click(sender As Object, e As EventArgs) Handles lblStatus.Click
 
     End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

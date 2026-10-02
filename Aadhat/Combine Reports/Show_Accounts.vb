@@ -1,4 +1,4 @@
-﻿Imports System.Data.SQLite
+Imports System.Data.SQLite
 Public Class Show_Accounts
 
     Private Sub Show_Accounts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -362,5 +362,9 @@ Public Class Show_Accounts
 
     Private Sub btnShow_Click(sender As Object, e As EventArgs) Handles btnShow.Click
         Retrive()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

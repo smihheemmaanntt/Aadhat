@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class SpeedSale
     Inherits System.Windows.Forms.Form
 
@@ -271,23 +271,9 @@ Partial Class SpeedSale
         Me.lblManualPage.ForeColor = System.Drawing.Color.Black
         Me.lblManualPage.Location = New System.Drawing.Point(121, 64)
         Me.lblManualPage.Name = "lblManualPage"
-        Me.lblManualPage.Size = New System.Drawing.Size(70, 19)
+        Me.lblManualPage.Size = New System.Drawing.Size(61, 19)
         Me.lblManualPage.TabIndex = 91380
         Me.lblManualPage.Text = "M. Page"
-        '
-        'txtManualPageNo
-        '
-        Me.txtManualPageNo.BackColor = System.Drawing.Color.GhostWhite
-        Me.txtManualPageNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtManualPageNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtManualPageNo.ForeColor = System.Drawing.Color.Navy
-        Me.txtManualPageNo.Location = New System.Drawing.Point(145, 87)
-        Me.txtManualPageNo.MaxLength = 6
-        Me.txtManualPageNo.Name = "txtManualPageNo"
-        Me.txtManualPageNo.Size = New System.Drawing.Size(30, 26)
-        Me.txtManualPageNo.TabIndex = 91381
-        Me.txtManualPageNo.Text = "1"
-        Me.txtManualPageNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnPreviousManualPage
         '
@@ -303,6 +289,20 @@ Partial Class SpeedSale
         Me.btnPreviousManualPage.Text = "<"
         Me.btnPreviousManualPage.UseVisualStyleBackColor = False
         Me.btnPreviousManualPage.Visible = False
+        '
+        'txtManualPageNo
+        '
+        Me.txtManualPageNo.BackColor = System.Drawing.Color.GhostWhite
+        Me.txtManualPageNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtManualPageNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtManualPageNo.ForeColor = System.Drawing.Color.Navy
+        Me.txtManualPageNo.Location = New System.Drawing.Point(145, 87)
+        Me.txtManualPageNo.MaxLength = 6
+        Me.txtManualPageNo.Name = "txtManualPageNo"
+        Me.txtManualPageNo.Size = New System.Drawing.Size(30, 26)
+        Me.txtManualPageNo.TabIndex = 91381
+        Me.txtManualPageNo.Text = "1"
+        Me.txtManualPageNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnNextManualPage
         '
@@ -326,7 +326,7 @@ Partial Class SpeedSale
         Me.lblManualPageEntries.ForeColor = System.Drawing.Color.Navy
         Me.lblManualPageEntries.Location = New System.Drawing.Point(22, 119)
         Me.lblManualPageEntries.Name = "lblManualPageEntries"
-        Me.lblManualPageEntries.Size = New System.Drawing.Size(65, 17)
+        Me.lblManualPageEntries.Size = New System.Drawing.Size(72, 17)
         Me.lblManualPageEntries.TabIndex = 91383
         Me.lblManualPageEntries.Text = "Entries : 0"
         '
@@ -524,7 +524,7 @@ Partial Class SpeedSale
         '
         'txtLaboutAmt
         '
-        Me.txtLaboutAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtLaboutAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtLaboutAmt.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtLaboutAmt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtLaboutAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -536,7 +536,7 @@ Partial Class SpeedSale
         '
         'txtLabour
         '
-        Me.txtLabour.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtLabour.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtLabour.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtLabour.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtLabour.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -549,7 +549,7 @@ Partial Class SpeedSale
         '
         'txtTareAmt
         '
-        Me.txtTareAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtTareAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtTareAmt.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtTareAmt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTareAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -561,7 +561,7 @@ Partial Class SpeedSale
         '
         'txtTare
         '
-        Me.txtTare.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtTare.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtTare.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtTare.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTare.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -574,7 +574,7 @@ Partial Class SpeedSale
         '
         'txtRdfAmt
         '
-        Me.txtRdfAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtRdfAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtRdfAmt.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtRdfAmt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtRdfAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -586,7 +586,7 @@ Partial Class SpeedSale
         '
         'txtRdfPer
         '
-        Me.txtRdfPer.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtRdfPer.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtRdfPer.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtRdfPer.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtRdfPer.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -599,7 +599,7 @@ Partial Class SpeedSale
         '
         'txtMAmt
         '
-        Me.txtMAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtMAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtMAmt.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtMAmt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtMAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -611,7 +611,7 @@ Partial Class SpeedSale
         '
         'txtMPer
         '
-        Me.txtMPer.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtMPer.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtMPer.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtMPer.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtMPer.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -624,7 +624,7 @@ Partial Class SpeedSale
         '
         'txtComAmt
         '
-        Me.txtComAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtComAmt.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtComAmt.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtComAmt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtComAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -636,7 +636,7 @@ Partial Class SpeedSale
         '
         'txtComPer
         '
-        Me.txtComPer.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.txtComPer.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.txtComPer.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtComPer.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtComPer.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
@@ -699,15 +699,15 @@ Partial Class SpeedSale
         '
         'txtTotalNugs
         '
-        Me.txtTotalNugs.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.txtTotalNugs.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTotalNugs.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.txtTotalNugs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalNugs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalNugs.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotalNugs.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalNugs.Location = New System.Drawing.Point(138, 595)
+        Me.txtTotalNugs.Location = New System.Drawing.Point(135, 589)
         Me.txtTotalNugs.Name = "txtTotalNugs"
         Me.txtTotalNugs.ReadOnly = True
-        Me.txtTotalNugs.Size = New System.Drawing.Size(100, 19)
+        Me.txtTotalNugs.Size = New System.Drawing.Size(100, 26)
         Me.txtTotalNugs.TabIndex = 23
         Me.txtTotalNugs.TabStop = False
         Me.txtTotalNugs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -726,14 +726,14 @@ Partial Class SpeedSale
         '
         'txtTotalWeights
         '
-        Me.txtTotalWeights.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.txtTotalWeights.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTotalWeights.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.txtTotalWeights.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalWeights.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalWeights.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotalWeights.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalWeights.Location = New System.Drawing.Point(317, 595)
+        Me.txtTotalWeights.Location = New System.Drawing.Point(314, 589)
         Me.txtTotalWeights.Name = "txtTotalWeights"
-        Me.txtTotalWeights.Size = New System.Drawing.Size(100, 19)
+        Me.txtTotalWeights.Size = New System.Drawing.Size(100, 26)
         Me.txtTotalWeights.TabIndex = 24
         Me.txtTotalWeights.TabStop = False
         Me.txtTotalWeights.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -752,14 +752,14 @@ Partial Class SpeedSale
         '
         'txtNetAmount
         '
-        Me.txtNetAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.txtNetAmount.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtNetAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.txtNetAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtNetAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtNetAmount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtNetAmount.ForeColor = System.Drawing.Color.Navy
-        Me.txtNetAmount.Location = New System.Drawing.Point(485, 595)
+        Me.txtNetAmount.Location = New System.Drawing.Point(482, 589)
         Me.txtNetAmount.Name = "txtNetAmount"
-        Me.txtNetAmount.Size = New System.Drawing.Size(135, 19)
+        Me.txtNetAmount.Size = New System.Drawing.Size(135, 26)
         Me.txtNetAmount.TabIndex = 25
         Me.txtNetAmount.TabStop = False
         Me.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -778,14 +778,14 @@ Partial Class SpeedSale
         '
         'txtTotalCharges
         '
-        Me.txtTotalCharges.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.txtTotalCharges.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTotalCharges.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.txtTotalCharges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalCharges.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalCharges.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotalCharges.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalCharges.Location = New System.Drawing.Point(722, 595)
+        Me.txtTotalCharges.Location = New System.Drawing.Point(719, 589)
         Me.txtTotalCharges.Name = "txtTotalCharges"
-        Me.txtTotalCharges.Size = New System.Drawing.Size(79, 19)
+        Me.txtTotalCharges.Size = New System.Drawing.Size(79, 26)
         Me.txtTotalCharges.TabIndex = 26
         Me.txtTotalCharges.TabStop = False
         Me.txtTotalCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -804,15 +804,15 @@ Partial Class SpeedSale
         '
         'txtTotalAmount
         '
-        Me.txtTotalAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.txtTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTotalAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.txtTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalAmount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotalAmount.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalAmount.Location = New System.Drawing.Point(1045, 596)
+        Me.txtTotalAmount.Location = New System.Drawing.Point(1042, 589)
         Me.txtTotalAmount.Name = "txtTotalAmount"
         Me.txtTotalAmount.ReadOnly = True
-        Me.txtTotalAmount.Size = New System.Drawing.Size(135, 19)
+        Me.txtTotalAmount.Size = New System.Drawing.Size(138, 26)
         Me.txtTotalAmount.TabIndex = 27
         Me.txtTotalAmount.TabStop = False
         Me.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -942,7 +942,7 @@ Partial Class SpeedSale
         Me.CbPer.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.CbPer.ForeColor = System.Drawing.Color.Black
         Me.CbPer.FormattingEnabled = True
-        Me.CbPer.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
+        Me.CbPer.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "42 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
         Me.CbPer.Location = New System.Drawing.Point(815, 165)
         Me.CbPer.Name = "CbPer"
         Me.CbPer.Size = New System.Drawing.Size(77, 23)
@@ -1174,7 +1174,7 @@ Partial Class SpeedSale
         Me.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFirst.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnFirst.ForeColor = System.Drawing.Color.Red
-        Me.btnFirst.Location = New System.Drawing.Point(1009, 616)
+        Me.btnFirst.Location = New System.Drawing.Point(1007, 616)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(44, 23)
         Me.btnFirst.TabIndex = 40282
@@ -1188,7 +1188,7 @@ Partial Class SpeedSale
         Me.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLast.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnLast.ForeColor = System.Drawing.Color.Red
-        Me.btnLast.Location = New System.Drawing.Point(1138, 616)
+        Me.btnLast.Location = New System.Drawing.Point(1136, 616)
         Me.btnLast.Name = "btnLast"
         Me.btnLast.Size = New System.Drawing.Size(44, 23)
         Me.btnLast.TabIndex = 40281
@@ -1202,7 +1202,7 @@ Partial Class SpeedSale
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNext.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnNext.ForeColor = System.Drawing.Color.Red
-        Me.btnNext.Location = New System.Drawing.Point(1095, 616)
+        Me.btnNext.Location = New System.Drawing.Point(1093, 616)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(44, 23)
         Me.btnNext.TabIndex = 40280
@@ -1216,7 +1216,7 @@ Partial Class SpeedSale
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPrevious.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnPrevious.ForeColor = System.Drawing.Color.Red
-        Me.btnPrevious.Location = New System.Drawing.Point(1052, 616)
+        Me.btnPrevious.Location = New System.Drawing.Point(1050, 616)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(44, 23)
         Me.btnPrevious.TabIndex = 40279
@@ -1304,14 +1304,14 @@ Partial Class SpeedSale
         '
         'txtTotalRoff
         '
-        Me.txtTotalRoff.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.txtTotalRoff.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTotalRoff.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.txtTotalRoff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalRoff.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalRoff.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotalRoff.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalRoff.Location = New System.Drawing.Point(901, 595)
+        Me.txtTotalRoff.Location = New System.Drawing.Point(898, 589)
         Me.txtTotalRoff.Name = "txtTotalRoff"
-        Me.txtTotalRoff.Size = New System.Drawing.Size(79, 19)
+        Me.txtTotalRoff.Size = New System.Drawing.Size(79, 26)
         Me.txtTotalRoff.TabIndex = 91115
         Me.txtTotalRoff.TabStop = False
         Me.txtTotalRoff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1330,7 +1330,7 @@ Partial Class SpeedSale
         '
         'btnClose
         '
-        Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.btnClose.FlatAppearance.BorderSize = 0
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1441,7 +1441,7 @@ Partial Class SpeedSale
         'ckTaxPaid
         '
         Me.ckTaxPaid.AutoSize = True
-        Me.ckTaxPaid.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.ckTaxPaid.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(231, Byte), Integer))
         Me.ckTaxPaid.Font = New System.Drawing.Font("Times New Roman", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckTaxPaid.ForeColor = System.Drawing.Color.Black
         Me.ckTaxPaid.Location = New System.Drawing.Point(716, 146)

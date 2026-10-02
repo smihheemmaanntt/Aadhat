@@ -1,4 +1,4 @@
-﻿Public Class Group_Payment
+Public Class Group_Payment
     Dim vno As Integer : Dim ServerTag As Integer
     Private Sub PayMentform_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
@@ -792,5 +792,9 @@
             dg1.Rows.Add(Val(txtAccountID.Text), txtAccount.Text, Format(Val(txtReciveAmount.Text), "0.00"), TxtRemark.Text)
             txtAccount.Focus() : calc() : txtReciveAmount.Clear() : TxtRemark.Clear()
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class Group_Summary
+Public Class Group_Summary
     Dim RecordDate As String
     Public Sub New()
         InitializeComponent()
@@ -180,5 +180,9 @@
         If Not Report_Viewer Is Nothing Then
             Report_Viewer.BringToFront()
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

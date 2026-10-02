@@ -1,10 +1,11 @@
-﻿Public Class User_Rights
+Public Class User_Rights
 
     Private Sub User_Rights_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 
     Private Sub User_Rights_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not MainScreenForm.CanManageUsers() Then Me.Close() : Exit Sub
         Me.Top = 0 : Me.Left = 0
         Me.KeyPreview = True
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
@@ -358,5 +359,9 @@
                 retrive() : txtID.Text = "" : txtFullName.Text = ""
             End If
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

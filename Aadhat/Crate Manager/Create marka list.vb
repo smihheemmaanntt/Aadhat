@@ -1,4 +1,4 @@
-﻿Public Class Create_marka_list
+Public Class Create_marka_list
 
     Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 
@@ -95,5 +95,9 @@
 
     Private Sub RectangleShape1_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

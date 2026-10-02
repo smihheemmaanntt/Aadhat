@@ -1,4 +1,4 @@
-﻿Public Class Payment_Register
+Public Class Payment_Register
     Private headerCheckBox As CheckBox = New CheckBox()
     Dim ID As String
     Private Sub Payment_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -314,5 +314,9 @@
 
     Private Sub txttoDate_TextChanged(sender As Object, e As EventArgs) Handles txttoDate.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

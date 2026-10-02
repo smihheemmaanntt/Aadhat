@@ -1,4 +1,4 @@
-﻿Public Class Sell_Out_Pending_Bills
+Public Class Sell_Out_Pending_Bills
 
     Private Sub Supplier_Statement_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -181,5 +181,9 @@
             If Not Sellout_Auto Is Nothing Then Sellout_Auto.BringToFront()
             e.SuppressKeyPress = True
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

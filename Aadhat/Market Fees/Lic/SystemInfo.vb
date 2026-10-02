@@ -1,4 +1,4 @@
-﻿Public Class SystemInfo
+Public Class SystemInfo
     Dim ClsCommon As CommonClass = New CommonClass()
 
     Private Sub SystemInfo_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -24,5 +24,9 @@
         'MsgBox("F")
         txtHardDiskSerial.Text = ClsCommon.HardDiskSerialNumber()
         'MsgBox("G")
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

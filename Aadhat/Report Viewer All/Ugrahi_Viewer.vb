@@ -1,4 +1,4 @@
-﻿Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Public Class Ugrahi_Viewer
 
@@ -170,4 +170,8 @@ Public Class Ugrahi_Viewer
     End Sub
 
   
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

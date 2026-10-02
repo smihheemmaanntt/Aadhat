@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Public Class TermsAndConditions
     Private Sub SaveToLicenseAgreementFile()
         Try
@@ -72,5 +72,9 @@ Public Class TermsAndConditions
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         MsgBox("Bye-Bye,See you Later", MsgBoxStyle.Information, "Good Bye")
         Application.Exit()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

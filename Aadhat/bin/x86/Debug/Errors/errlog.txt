@@ -2728,3 +2728,288 @@ Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,Entry
 StackTrace: DURUKUMAR ROOPCHAND
 Date/Time: 02-Sep-26 6:15:14 PM
 ===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='605',  billNo='29',ModifiedByID='1',ModifiedTime='2026-09-24 15:26:56'  where ID =209
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 3:26:56 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='603',  billNo='27',ModifiedByID='1',ModifiedTime='2026-09-24 15:27:06'  where ID =207
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 3:27:06 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='605',  billNo='29',ModifiedByID='1',ModifiedTime='2026-09-24 15:27:15'  where ID =209
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 3:27:15 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='605',  billNo='29',ModifiedByID='1',ModifiedTime='2026-09-24 15:27:21'  where ID =209
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 3:27:21 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='603',  billNo='27',ModifiedByID='1',ModifiedTime='2026-09-24 15:27:25'  where ID =207
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 3:27:25 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='605',  billNo='29',ModifiedByID='1',ModifiedTime='2026-09-24 15:27:29'  where ID =209
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 3:27:29 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='603',  billNo='27',ModifiedByID='1',ModifiedTime='2026-09-24 16:45:59'  where ID =207
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 4:45:59 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 6:16:57 PM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=16324;DELETE from Vouchers WHERE ID=16324; DELETE from Transaction2 WHERE VoucherID=16324;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=16324
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 24-Sep-26 6:17:04 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-06-01',InvoiceID='542',  billNo='28',ModifiedByID='1',ModifiedTime='2026-09-26 13:21:52'  where ID =178
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 26-Sep-26 1:21:52 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 26-Sep-26 1:22:24 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 29-Sep-26 3:40:53 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2026-09-29','Stock Sale','Stock in',3132,1101,'Deepak MP', '3','Shop','14','AMRUD PAID','0', '51','1','50', 'Nug',0
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 9:50:41 PM
+===========================================================================================
+Title: Updated
+Message: DELETE from Ledger WHERE vourchersID=3171;DELETE from Vouchers WHERE ID=3171; DELETE from Transaction2 WHERE VoucherID=3171;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:01:54 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2026-09-29','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','50', 'Nug',0
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:02:23 PM
+===========================================================================================
+Title: Stock Sale Saved
+Message: insert into Vouchers(TransType,BillNo, Entrydate, SallerID, SallerName, Nug, kg,BasicAmount, TotalAmount,TotalCharges,StorageID,Storagename,InvoiceID,UserID,EntryTime)values (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,@11,@12,@13,@14,@15)
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:02:25 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2026-09-29','1028',3176, 'Stock Sale','1135','Aasha Mandi',37,'PAPITA PAID','47',  '1','50','0','45', '45','Nug','45','0', '45','0', '0','0','0', '0','0','0', '0','0','0', '0','','0','N','Stock in',1401,'WG JI','3170','45','0' ,'0','','3','Shop','','0'
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:02:25 PM
+===========================================================================================
+Title: Updated
+Message: DELETE from Ledger WHERE vourchersID=3176;DELETE from Vouchers WHERE ID=3176; DELETE from Transaction2 WHERE VoucherID=3176;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=3176
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:02:40 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','10', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:24 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','20', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:28 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '3','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','17.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:32 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '4','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','17.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:36 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '5','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','2','37.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:40 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '6','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','2','39.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:43 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '7','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','19.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:48 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '8','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','20.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:52 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '9','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','3','44.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:28:56 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '10','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','2','36.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:29:00 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '11','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','13.5', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:29:04 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '12','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','11', 'Kg',3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:29:09 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='1027', Entrydate='2026-09-28',  SallerID='1401', SallerName='WG JI',  Nug='17', kg='287.5',BasicAmount='12712.5',  TotalAmount='12717',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='1027',  ModifiedByID='1',ModifiedTime='2026-09-29 22:29:11' where ID =3174
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:29:11 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','10','0','50', '50','Kg','500','0', '500.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','500','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','20','0','45', '45','Kg','900','0', '900.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','900','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','17.5','0','45', '45','Kg','787.5','0', '788.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','787.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','1404','NARESH KAKA',37,'PAPITA PAID','47',  '1','17.5','0','45', '45','Kg','787.5','0', '788.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','787.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','1125','Kala Mohini',37,'PAPITA PAID','47',  '2','37.5','0','45', '45','Kg','1687.5','0', '1688.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1687.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '2','39.5','0','45', '45','Kg','1777.5','0', '1778.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1777.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','1061','Parshotam Diggi Bazar',37,'PAPITA PAID','47',  '1','19.5','0','45', '45','Kg','877.5','0', '878.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','877.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','1142','Mera Tilok',37,'PAPITA PAID','47',  '1','20.5','0','45', '45','Kg','922.5','0', '923.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','922.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','1030','Kali NF',37,'PAPITA PAID','47',  '3','44.5','0','45', '45','Kg','2002.5','0', '2003.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','2002.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '2','36.5','0','45', '45','Kg','1642.5','0', '1643.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1642.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','13.5','0','45', '45','Kg','607.5','0', '608.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','607.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1027',3174, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','11','0','20', '20','Kg','220','0', '220.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','220','0' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 10:29:11 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '1','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','3','42.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:42:55 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '2','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','5','72', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:01 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '3','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','3','44.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:05 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '4','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','3','45.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:09 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '5','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','13.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:13 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '6','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','2','35', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:17 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '7','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','2','26.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:21 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '8','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','8.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:25 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '9','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','12.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:29 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Stock(ID,ENTRYDATE,TRANSTYPE,PURCHASETYPENAME,PurchaseID,SELLERID,SELLERNAME,STORAGEID,StorageName, ITEMID,ITEMNAME,CUT,LOT,NUG,WEIGHT,PER,TransID)  SELECT '10','2026-09-28','Stock Sale','Stock in',3170,1401,'WG JI', '3','Shop','37','PAPITA PAID','0', '47','1','18.5', 'Kg',3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:33 PM
+===========================================================================================
+Title: Stock Sale Updated
+Message: Update Vouchers Set TransType='Stock Sale',BillNo='1024', Entrydate='2026-09-28',  SallerID='1401', SallerName='WG JI',  Nug='22', kg='319',BasicAmount='13636.5',  TotalAmount='13640',TotalCharges='0', StorageID='3',Storagename='Shop',InvoiceID='1024',  ModifiedByID='1',ModifiedTime='2026-09-29 23:43:35' where ID =3171
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:35 PM
+===========================================================================================
+Title: Stock Sale Record
+Message: insert into Transaction2(EntryDate,BillNo,VoucherID,TransType,AccountID,AccountName,ItemID,ItemName,Lot,Nug,Weight,  Cut,Rate,SRate, Per,Amount,Charges,TotalAmount,CommPer,CommAmt,MPer,MAmt,RdfPer,RdfAmt,Tare,TareAmt,Labour, LabourAmt,CrateID,Cratemarka,CrateQty, MaintainCrate,PurchaseTypename,SallerID,SallerName,PurchaseID, SallerAmt,RoundOff,CrateAccountID,CrateAccountName,StorageID,StorageName,OnWeight,GrossWeight) SELECT '2026-09-28','1024',3171, 'Stock Sale','1030','Kali NF',37,'PAPITA PAID','47',  '3','42.5','0','45', '45','Kg','1912.5','0', '1913.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1912.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1068','Rajesh Jadga',37,'PAPITA PAID','47',  '5','72','0','45', '45','Kg','3240','0', '3240.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','3240','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1399','RINKU SHASTRI NAGAR',37,'PAPITA PAID','47',  '3','44.5','0','45', '45','Kg','2002.5','0', '2003.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','2002.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1177','Laxmi Sn',37,'PAPITA PAID','47',  '3','45.5','0','43', '43','Kg','1956.5','0', '1957.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1956.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','13.5','0','43', '43','Kg','580.5','0', '581.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','580.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1366','Durga Manju',37,'PAPITA PAID','47',  '2','35','0','44', '44','Kg','1540','0', '1540.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1540','0' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1130','Kachru Kj',37,'PAPITA PAID','47',  '2','26.5','0','43', '43','Kg','1139.5','0', '1140.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','1139.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1086','Terth Adarsh Nagar',37,'PAPITA PAID','47',  '1','8.5','0','45', '45','Kg','382.5','0', '383.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','382.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','7','Cash',37,'PAPITA PAID','47',  '1','12.5','0','41', '41','Kg','512.5','0', '513.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','512.5','0.5' ,'0','--N./A.--','3','Shop','','0' UNION ALL SELECT '2026-09-28','1024',3171, 'Stock Sale','1246','Kalavati',37,'PAPITA PAID','47',  '1','18.5','0','20', '20','Kg','370','0', '370.00','0', '0.00','0','0', '0','0','0', '0.00','0','0', '','','0','N','Stock in',1401,'WG JI','3170','370','0' ,'0','--N./A.--','3','Shop','','0'
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 29-Sep-26 11:43:35 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: GANPATI FRUIT COMPANY
+Date/Time: 30-Sep-26 2:14:09 AM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:38:56 AM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=16328;DELETE from Vouchers WHERE ID=16328; DELETE from Transaction2 WHERE VoucherID=16328;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=16328
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:39:02 AM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:40:52 AM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=16329;DELETE from Vouchers WHERE ID=16329; DELETE from Transaction2 WHERE VoucherID=16329;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=16329
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:40:58 AM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:41:02 AM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:41:45 AM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=16331;DELETE from Vouchers WHERE ID=16331; DELETE from Transaction2 WHERE VoucherID=16331;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=16331
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:42:27 AM
+===========================================================================================
+Title: Speed Sale Deleted
+Message: DELETE from Ledger WHERE vourchersID=16330;DELETE from Vouchers WHERE ID=16330; DELETE from Transaction2 WHERE VoucherID=16330;DELETE from CrateVoucher WHERE TransType<>'Op Bal' and  VoucherID=16330
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 01-Oct-26 11:42:31 AM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-05-30',InvoiceID='13',  billNo='0',ModifiedByID='1',ModifiedTime='2026-10-02 17:46:40'  where ID =66
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Oct-26 5:46:41 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Oct-26 6:02:18 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Oct-26 6:02:35 PM
+===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Oct-26 6:02:50 PM
+===========================================================================================

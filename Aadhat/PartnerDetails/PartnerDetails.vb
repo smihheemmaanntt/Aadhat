@@ -1,4 +1,4 @@
-﻿Public Class PartnerDetails
+Public Class PartnerDetails
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         SaveDetails()
@@ -40,5 +40,9 @@
             txtMail.Text = ds.Tables("a").Rows(0)("D4").ToString()
             If ds.Tables("a").Rows(0)("YN").ToString() = "Y" Then ckEnable.Checked = True Else ckEnable.Checked = False
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -276,6 +276,22 @@ Public Module WhatsAppOfficialApi
         Return name
     End Function
 
+    Private Function NormalizeDocumentHeaderUrl(ByVal documentUrl As String) As String
+        Dim value As String = SafeTrim(documentUrl).Trim(""""c)
+        If value.StartsWith("http://", StringComparison.OrdinalIgnoreCase) Then
+            value = "https://" & value.Substring("http://".Length)
+        End If
+
+        Dim parsedUrl As Uri = Nothing
+        If Uri.TryCreate(value, UriKind.Absolute, parsedUrl) = False OrElse
+           parsedUrl.Scheme <> Uri.UriSchemeHttps OrElse
+           parsedUrl.Host = "" Then
+            Return ""
+        End If
+
+        Return parsedUrl.AbsoluteUri
+    End Function
+
     Public Function SendSmartMessage(ByVal vendorUid As String, ByVal accessToken As String, ByVal phoneNumber As String, ByVal messageBody As String, ByVal pdfUrl As String, ByVal templateName As String, ByVal templateLanguage As String, ByVal fields As List(Of String), ByRef apiResponse As String, Optional ByVal documentName As String = "Bill.pdf", Optional ByVal bodyParamCount As Integer = -1) As Boolean
         Try
             vendorUid = SafeTrim(vendorUid)
@@ -310,7 +326,13 @@ Public Module WhatsAppOfficialApi
                     WriteSendLog(vendorUid, payload, "", apiResponse)
                     Return False
                 End If
-                payload("header_document") = New JValue(SafeTrim(pdfUrl))
+                Dim documentUrl As String = NormalizeDocumentHeaderUrl(pdfUrl)
+                If documentUrl = "" Then
+                    apiResponse = "PDF upload did not return a valid HTTPS document URL. Please try sending again."
+                    WriteSendLog(vendorUid, payload, "", apiResponse)
+                    Return False
+                End If
+                payload("header_document") = New JValue(documentUrl)
                 payload("header_document_name") = New JValue(CleanDocumentName(documentName, "Bill.pdf"))
             End If
 

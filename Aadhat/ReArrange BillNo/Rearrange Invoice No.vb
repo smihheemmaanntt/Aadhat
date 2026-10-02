@@ -1,4 +1,4 @@
-﻿Public Class Rearrange_Invoice_No
+Public Class Rearrange_Invoice_No
 
     Private Sub Rearrange_Invoice_No_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clsFun.FillDropDownList(Cbper, "Select ID,TransType FROM Vouchers  Group by TransType", "TransType", "ID", "")
@@ -60,5 +60,9 @@
             Next
         End If
         MsgBox("Invoice Number Updated Successfully.", vbInformation + vbOKOnly, "Updated")
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

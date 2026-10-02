@@ -1,4 +1,4 @@
-﻿Imports System.Runtime.InteropServices
+Imports System.Runtime.InteropServices
 
 Public Class Absent_Account_List
     <DllImport("kernel32.dll", SetLastError:=True, ExactSpelling:=True)>
@@ -213,5 +213,9 @@ Public Class Absent_Account_List
 
     Private Sub txtEntryDate_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs)
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

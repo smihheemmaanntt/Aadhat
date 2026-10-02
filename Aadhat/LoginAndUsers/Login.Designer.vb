@@ -240,9 +240,10 @@ Partial Class Login
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnLogin)
         Me.Controls.Add(Me.txtPassword)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = "ResponsiveOverlay"
         Me.Text = "Login"
         Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel1.ResumeLayout(False)

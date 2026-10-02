@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Net
 Imports Newtonsoft.Json
@@ -659,36 +659,11 @@ Public Class Sellout_Auto
         End If
     End Sub
     Private Sub SpeedCalculation()
-        If Cbper.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If Cbper.SelectedIndex = 0 OrElse Cbper.SelectedIndex = 17 Then
             txtTotAmount.Text = Format(Val(txtNug.Text) * Val(txtRate.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtTotAmount.Text = Format(Val(txtKg.Text) * Val(txtRate.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 5 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 3 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 10 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 4 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 20 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 5 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 40 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 6 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 41 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 7 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 50 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 8 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 51 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 9 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 51.7 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 10 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 52.3 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 11 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 53 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 12 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 80 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 13 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 100 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 14 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) * Val(txtNug.Text), "0.00")
+        ElseIf perDivisor > 0 Then
+            txtTotAmount.Text = Format(Val(txtRate.Text) / perDivisor * Val(txtKg.Text), "0.00")
         End If
         txtTotAmount.Text = Format(Math.Round(Val(txtTotAmount.Text), 2), "0.00")
     End Sub
@@ -2780,5 +2755,9 @@ Public Class Sellout_Auto
 
     Private Sub txtTotAmount_TextChanged(sender As Object, e As EventArgs) Handles txtTotAmount.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

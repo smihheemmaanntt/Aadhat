@@ -1,4 +1,4 @@
-﻿Imports System.Data.SQLite
+Imports System.Data.SQLite
 Public Class TestForm
     Private headerCheckBox As New CheckBox
     Dim connectionString1 As String = "Data Source=" & GlobalData.PrvPath & ";Version=3;"
@@ -358,5 +358,9 @@ Public Class TestForm
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         InsertMissingAccounts(connectionString1, connectionString2)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

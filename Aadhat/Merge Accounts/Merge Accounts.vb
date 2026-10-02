@@ -1,4 +1,4 @@
-﻿Public Class Merge_Accounts
+Public Class Merge_Accounts
 
     Private Sub Merge_Accounts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clsFun.FillDropDownList(cbSelectAccount, "Select ID,AccountName FROM Accounts Order by AccountName ", "AccountName", "ID", "")
@@ -15,5 +15,9 @@
         clsFun.ExecScalarStr("Update Transaction2 Set AccountID='" & Val(cbDestination.SelectedValue) & "', AccountName='" & cbDestination.Text & "' Where AccountID='" & Val(cbSelectAccount.SelectedValue) & "'")
         clsFun.ExecScalarStr("Update Ledger Set AccountID='" & Val(cbDestination.SelectedValue) & "', AccountName='" & cbDestination.Text & "' Where AccountID='" & Val(cbSelectAccount.SelectedValue) & "'")
         MsgBox("Account Merge Seccessfully....", vbInformation, "Successful")
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

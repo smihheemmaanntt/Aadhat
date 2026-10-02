@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Public Class LicenceInfo
     Dim ClsCommon As CommonClass = New CommonClass()
 
@@ -48,5 +48,9 @@ Public Class LicenceInfo
         'txtInternetCheck.Text = ClsCommon.IsInternetConnect()
         'txtMotherBoard.Text = ClsCommon.MotherboardSerialNumber()
         'txtHardDiskSerial.Text = ClsCommon.HardDiskSerialNumber()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

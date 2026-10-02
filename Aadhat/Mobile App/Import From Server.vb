@@ -1,4 +1,4 @@
-﻿Imports System.Net
+Imports System.Net
 
 Public Class Import_From_Server
     Dim VchId As String = String.Empty
@@ -494,5 +494,9 @@ Public Class Import_From_Server
 
     Private Sub dg2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg2.CellContentClick
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class Purchase_RegisterDetailed
+Public Class Purchase_RegisterDetailed
     Dim strSDate As String
     Dim strEDate As String
     Dim dDate As DateTime
@@ -276,5 +276,9 @@
 
     Private Sub txtFromDate_TextChanged(sender As Object, e As EventArgs) Handles txtFromDate.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

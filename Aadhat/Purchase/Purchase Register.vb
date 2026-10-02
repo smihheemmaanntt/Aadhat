@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Imports System.Collections.Generic
 
@@ -786,5 +786,9 @@ Public Class Purchase_Register
 
     Private Sub txtAccountName_TextChanged(sender As Object, e As EventArgs) Handles txtAccountName.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

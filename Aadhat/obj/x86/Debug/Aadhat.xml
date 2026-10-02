@@ -123,6 +123,71 @@ Aadhat
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="T:Aadhat.GenericResponsiveFormScaler.ControlSnapshot">
+	<summary>
+ Snapshot of a control's designer metrics.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.#ctor(System.Windows.Forms.Form,System.Int32,System.Int32,System.Boolean)">
+	<summary>
+ Constructs a new GenericResponsiveFormScaler for the given Form.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.Bind(System.Windows.Forms.Form,System.Int32,System.Int32)">
+	<summary>
+ Universal one-line binder for any Form in any project.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.FillMdiWorkspace">
+	<summary>
+ Makes an MDI child occupy the complete available MDI workspace while
+ preserving its captured designer dimensions as the scaling reference.
+ Use this for full-page overlays such as the company login screen.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.FitMdiBounds(System.Drawing.Rectangle)">
+	<summary>
+ Fits an MDI child to a specific rectangle in MDI-client coordinates.
+ The controls continue to use their designer size as their responsive base.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.Attach(System.Windows.Forms.Form,System.Int32,System.Int32)">
+	<summary>
+ Backwards-compatible alias for Bind.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.SetControlDesignSize(System.Windows.Forms.Form,System.Windows.Forms.Control,System.Int32,System.Int32)">
+	<summary>
+ Changes the design-time size of a control that is intentionally resized
+ by application code after the initial snapshot (for example, a runtime
+ discount panel with a variable number of rows).  The supplied dimensions
+ are always in the form's designer coordinate system, so the same code
+ produces the correct size at every resolution.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.MDI(System.Windows.Forms.Form,System.Int32,System.Int32)">
+	<summary>
+ Binds only the MDI host chrome (menus, docked panels and their controls).
+ The MdiClient is deliberately excluded while taking the snapshot, therefore
+ none of the MDI child forms are captured, resized or otherwise altered.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.ApplyMdiAfterLoad(System.Windows.Forms.Form,System.Int32,System.Int32)">
+	<summary>
+ Applies MDI-host scaling after the form's Load handlers finish, matching
+ the MDI-only startup flow used by the shipped AccoBook executable.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.ApplyMdiImmediately(System.Windows.Forms.Form,System.Int32,System.Int32)">
+	<summary>
+ Applies a MainScreen MDI host's initial chrome layout synchronously,
+ before its maximized dashboard child is shown. This prevents a second
+ MDI-client resize from relaying out the child immediately after startup.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.Unbind(System.Windows.Forms.Form)">
+	<summary>
+ Removes a previously registered scaler.  This provides a single, safe
+ rollback point if an MDI host needs to return to its existing behaviour.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.CaptureState">
+	<summary>
+ Captures unscaled designer dimensions, bounds, and fonts once.
+ </summary>
+</member><member name="M:Aadhat.GenericResponsiveFormScaler.ApplyScale(System.Boolean)">
+	<summary>
+ Pure mathematical scaling pass. Runs in &lt; 3ms without flicker.
+ </summary>
 </member><member name="T:Aadhat.Transaction.PrintingDataTable">
 	<summary>
 Represents the strongly named DataTable class.

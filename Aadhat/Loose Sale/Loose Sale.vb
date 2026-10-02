@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Net
 Imports Newtonsoft.Json
@@ -1633,40 +1633,11 @@ Public Class Loose_Sale
         End If
     End Sub
     Private Sub SpeedCalculation()
-        If Cbper.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If Cbper.SelectedIndex = 0 OrElse Cbper.SelectedIndex = 17 Then
             txtBasicAmount.Text = Format(Val(txtNug.Text) * Val(txtRate.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtBasicAmount.Text = Format(Val(txtKg.Text) * Val(txtRate.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 5 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 3 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 10 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 4 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 20 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 5 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 40 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 6 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 41 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 7 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 50 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 8 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 51 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 9 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 51.7 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 10 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 52.2 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 11 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 52.3 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 12 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 52.5 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 13 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 53 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 14 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 80 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 15 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 100 * Val(txtKg.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 16 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) * Val(txtNug.Text), "0.00")
+        ElseIf perDivisor > 0 Then
+            txtBasicAmount.Text = Format(Val(txtRate.Text) / perDivisor * Val(txtKg.Text), "0.00")
         End If
         txtComAmt.Text = Format(Val(txtComPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
         txtMAmt.Text = Format(Val(txtMPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
@@ -1994,7 +1965,7 @@ Public Class Loose_Sale
         If e.KeyCode = Keys.Enter Then
             If Cbper.SelectedIndex = 0 Then
                 If Val(txtNug.Text) = 0 Then MsgBox("please fill Nug...", MsgBoxStyle.Critical, "Access Denied") : txtNug.Focus() : Exit Sub
-            ElseIf Cbper.SelectedIndex = 14 Then
+            ElseIf Cbper.Text = "Crate" Then
                 If lblCrate.Text = "Y" Then
                     pnlMarka.Visible = True : pnlMarka.BringToFront()
                     If Val(txtCrateQty.Text) = 0 Then MsgBox("please fill Crate Qty...", MsgBoxStyle.Critical, "Access Denied") : txtCrateQty.Focus() : Exit Sub
@@ -2736,5 +2707,9 @@ Public Class Loose_Sale
 
     Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

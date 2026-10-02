@@ -1,4 +1,4 @@
-﻿Public Class TempChallan
+Public Class TempChallan
     Dim vno As Integer
     Dim VchId As Integer
     Dim sql As String = String.Empty
@@ -960,35 +960,19 @@
         End If
     End Sub
     Private Sub SpeedCalculation()
-        If Cbper.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If Cbper.SelectedIndex = 0 OrElse Cbper.SelectedIndex = 17 Then
             txtBasicAmount.Text = Format(Val(txtNug.Text) * Val(txtRate.Text), "0.00")
-            txtComAmt.Text = Format(Val(txtComPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtMAmt.Text = Format(Val(txtMPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtRdfAmt.Text = Format(Val(txtRdfPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtNug.Text), "0.00")
-            txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
-            lblTotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
-            txtTotal.Text = Val(lblTotCharges.Text) + Val(txtBasicAmount.Text)
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtBasicAmount.Text = Format(Val(txtKg.Text) * Val(txtRate.Text), "0.00")
-            txtComAmt.Text = Format(Val(txtComPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtMAmt.Text = Format(Val(txtMPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtRdfAmt.Text = Format(Val(txtRdfPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtNug.Text), "0.00")
-            txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
-            lblTotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
-            txtTotal.Text = Format(Val(lblTotCharges.Text) + Val(txtBasicAmount.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtBasicAmount.Text = Format(Val(txtRate.Text) / 40 * Val(txtKg.Text), "0.00")
-            txtComAmt.Text = Format(Val(txtComPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtMAmt.Text = Format(Val(txtMPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtRdfAmt.Text = Format(Val(txtRdfPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
-            txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtNug.Text), "0.00")
-            txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
-            lblTotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
-            txtTotal.Text = Format(Val(lblTotCharges.Text) + Val(txtBasicAmount.Text), "0.00")
-
+        ElseIf perDivisor > 0 Then
+            txtBasicAmount.Text = Format(Val(txtRate.Text) / perDivisor * Val(txtKg.Text), "0.00")
         End If
+        txtComAmt.Text = Format(Val(txtComPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
+        txtMAmt.Text = Format(Val(txtMPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
+        txtRdfAmt.Text = Format(Val(txtRdfPer.Text) * Val(txtBasicAmount.Text) / 100, "0.00")
+        txtTareAmt.Text = Format(Val(txtTare.Text) * Val(txtNug.Text), "0.00")
+        txtLaboutAmt.Text = Format(Val(txtLabour.Text) * Val(txtNug.Text), "0.00")
+        lblTotCharges.Text = Format(Val(txtComAmt.Text) + Val(txtMAmt.Text) + Val(txtRdfAmt.Text) + Val(txtTareAmt.Text) + Val(txtLaboutAmt.Text), "0.00")
+        txtTotal.Text = Format(Val(lblTotCharges.Text) + Val(txtBasicAmount.Text), "0.00")
     End Sub
 
 
@@ -1467,5 +1451,9 @@
 
     Private Sub txtVehicleNo_TextChanged(sender As Object, e As EventArgs) Handles txtVehicleNo.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

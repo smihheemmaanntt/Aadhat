@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Imports System.Collections.Generic
 
@@ -1084,5 +1084,9 @@ Public Class Selected_Outsanting
 
     Private Sub ckAreaWise_CheckedChanged(sender As Object, e As EventArgs) Handles ckAreaWise.CheckedChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

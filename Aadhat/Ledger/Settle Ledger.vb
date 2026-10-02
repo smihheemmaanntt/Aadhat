@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Net
 Imports Newtonsoft.Json
@@ -1111,4 +1111,8 @@ Public Class Settle_Ledger
         pnlWahtsappNo.Visible = False : cbAccountName.Focus()
     End Sub
 
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

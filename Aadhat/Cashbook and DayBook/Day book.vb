@@ -1,4 +1,4 @@
-﻿Public Class Day_book
+Public Class Day_book
     Dim rs As New Resizer
     Dim strSDate As String : Dim strEDate As String
     Dim dDate As DateTime : Dim mskstartDate As String
@@ -159,7 +159,7 @@
         calc() : dg1.ClearSelection() : pbWait.Visible = False
     End Sub
     Private Sub Day_book_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        rs.ResizeAllControls(Me)
+        ' Legacy Resizer disabled; GenericResponsiveFormScaler handles this form.
     End Sub
 
     Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, Cbper.KeyDown
@@ -554,5 +554,9 @@
     Private Sub dtp1_ValueChanged(sender As Object, e As EventArgs) Handles dtp1.ValueChanged
         txtFromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         txtFromDate.Text = SmartDate(txtFromDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

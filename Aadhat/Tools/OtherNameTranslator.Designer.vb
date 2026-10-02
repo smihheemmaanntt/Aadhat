@@ -361,6 +361,7 @@ Partial Class OtherNameTranslator
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.dgNames)
         Me.Controls.Add(Me.pbProgress)
         Me.Controls.Add(Me.lblSummary)

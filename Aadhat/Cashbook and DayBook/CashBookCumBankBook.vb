@@ -1,4 +1,4 @@
-﻿Public Class CashBookCumBankBook
+Public Class CashBookCumBankBook
     Private opbal As Decimal = 0.0
 
     Public Sub New()
@@ -554,5 +554,9 @@
 
     Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

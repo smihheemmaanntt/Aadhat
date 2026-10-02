@@ -61,6 +61,15 @@ Public Class MainScreenForm
         If hybridSettingsSeparator IsNot Nothing Then hybridSettingsSeparator.Visible = allowed
     End Sub
 
+    ' Visibility is not authorization: validate every user-management entry point.
+    Public Function CanManageUsers(Optional ByVal showMessage As Boolean = True) As Boolean
+        Dim userName As String = If(MainScreenPicture Is Nothing, "", MainScreenPicture.lblUser.Text).Trim().Replace("'", "''")
+        Dim userType As String = clsFun.ExecScalarStr("SELECT UserType FROM Users WHERE UserName='" & userName & "'").Trim()
+        Dim allowed As Boolean = Not String.Equals(userType, "Operator", StringComparison.OrdinalIgnoreCase)
+        If Not allowed AndAlso showMessage Then MsgBox("Operator users are not allowed to manage users or user rights.", MsgBoxStyle.Critical, "Access Denied")
+        Return allowed
+    End Function
+
     Private Sub HybridSettingsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         Using frm As New LocalMultiuserSetupForm()
             frm.ShowDialog(Me)
@@ -358,6 +367,9 @@ Public Class MainScreenForm
     End Sub
 
     Private Sub MainScreenForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HotKeySettingsManager.LoadAndApply(RightDockPanel)
+        HotKeySettingsManager.ApplyMenus(MenuStrip1, HotKeySettingsManager.Load(RightDockPanel))
+        AddHotKeysTool()
         Dim fecha As Date = IO.File.GetCreationTime(Assembly.GetExecutingAssembly().Location)
         Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
         Dim storePath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
@@ -376,20 +388,28 @@ Public Class MainScreenForm
             customerCode = " Trail "
             ComplaintsToolStripMenuItem.Visible = False
         End If
+        GenericResponsiveFormScaler.ApplyMdiImmediately(Me, 1369, 707)
         MainScreenPicture.MdiParent = Me
+        GenericResponsiveFormScaler.Bind(MainScreenPicture)
         MainScreenPicture.Show()
-        Dim q As New SelectQuery("Win32_bios")
-        Dim search As New ManagementObjectSearcher(q)
-        Dim info As New ManagementObject
-        For Each info In search.Get
-            FinYearStart = clsFun.ExecScalarStr("Select YearStart from Company")
-            FinYearEnd = clsFun.ExecScalarStr("Select Yearend from Company")
-            'Me.Text = "[Aadhat 26.0.0 # " & customerCode & " " & version &" & CDate(fecha).ToString("yyMMdd") & "] [#" & AccName & "]" & " [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
-            Me.Text = "[Aadhat #" & customerCode.Trim & "] [#" & compname.Trim & "] [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
-        Next
+        ' The BIOS WMI query previously wrapped this title update but its
+        ' result was never used. Avoiding it keeps the UI thread responsive.
+        'MainScreenPicture loads the company row once for its header and exposes
+        'the same fiscal year values for the main window caption.
+        FinYearStart = MainScreenPicture.FinYearStartValue
+        FinYearEnd = MainScreenPicture.FinYearEndValue
+        'Me.Text = "[Aadhat 26.0.0 # " & customerCode & " " & version &" & CDate(fecha).ToString("yyMMdd") & "] [#" & AccName & "]" & " [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
+        Me.Text = "[Aadhat #" & customerCode.Trim & "] [#" & compname.Trim & "] [" & CDate(FinYearStart).ToString("dd-MM-yy") & " To " & CDate(FinYearEnd).ToString("dd-MM-yy") & "]"
 
         'If Not File.Exists(fileName) Then RegistrationToolStripMenuItem.Visible = True
         lblBuildVersion.Text = version.ToString()
+    End Sub
+
+    Private Sub MainScreenForm_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        ' Start dashboard reads only after the main workspace has been painted.
+        If MainScreenPicture IsNot Nothing AndAlso Not MainScreenPicture.IsDisposed Then
+            MainScreenPicture.QueueDashboardLoad()
+        End If
     End Sub
 
     Private Function Safe(s As String) As String
@@ -642,11 +662,6 @@ Public Class MainScreenForm
         Options.MdiParent = Me
         Options.Show()
         Options.BringToFront()
-    End Sub
-    Private Sub SMSTempletesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SMSTempletesToolStripMenuItem.Click
-        SMSAPI.MdiParent = Me
-        SMSAPI.Show()
-        SMSAPI.BringToFront()
     End Sub
     Private Sub Button23_Click(sender As Object, e As EventArgs) Handles Button23.Click
         If Directory.Exists(Application.StartupPath & "\Backup") = False Then
@@ -992,13 +1007,6 @@ Public Class MainScreenForm
         End If
     End Sub
 
-    Private Sub SMSConfigrationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SMSConfigrationToolStripMenuItem.Click
-        SMSTemplateRegister.MdiParent = Me
-        SMSTemplateRegister.Show()
-        If Not SMSTemplateRegister Is Nothing Then
-            SMSTemplateRegister.BringToFront()
-        End If
-    End Sub
 
     Private Sub MobileAppToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MobileAppToolStripMenuItem.Click
         Mobile_App.MdiParent = Me
@@ -1031,6 +1039,7 @@ Public Class MainScreenForm
 
     Private Sub RegistrationToolStripMenuItem_Click(sender As Object, e As EventArgs)
         ApplyLicenseKey.MdiParent = Me
+        ApplyLicenseKey.PrepareGridOverlay()
         ApplyLicenseKey.Show()
         ApplyLicenseKey.StartPosition = FormStartPosition.CenterParent
         If Not ApplyLicenseKey Is Nothing Then ApplyLicenseKey.BringToFront()
@@ -1041,6 +1050,7 @@ Public Class MainScreenForm
     End Sub
 
     Private Sub NewUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewUserToolStripMenuItem.Click
+        If Not CanManageUsers() Then Exit Sub
         UserForm.MdiParent = Me
         UserForm.Show()
         UserForm.StartPosition = FormStartPosition.CenterParent
@@ -1048,6 +1058,7 @@ Public Class MainScreenForm
     End Sub
 
     Private Sub UserRegisterToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles UserRegisterToolStripMenuItem.Click
+        If Not CanManageUsers() Then Exit Sub
         Users_Register.MdiParent = Me
         Users_Register.Show()
         Users_Register.StartPosition = FormStartPosition.CenterParent
@@ -1188,6 +1199,42 @@ Public Class MainScreenForm
         End If
         clsFun.ExecScalarStr("Vacuum;") : ClsFunserver.ExecScalarStr("Vacuum;")
         MsgBox("Boost Up Completed Successfully...", vbInformation, "Sucessful")
+    End Sub
+
+    Private Sub AddHotKeysTool()
+        Dim menuItem As New ToolStripMenuItem("Hot Keys")
+        menuItem.Name = "HotKeysToolStripMenuItem"
+        AddHandler menuItem.Click, AddressOf HotKeysTool_Click
+        ToolsToolStripMenuItem.DropDownItems.Add(menuItem)
+        Dim cloudBackupItem As New ToolStripMenuItem("Cloud Backup Configuration")
+        cloudBackupItem.Name = "CloudBackupConfigurationToolStripMenuItem"
+        AddHandler cloudBackupItem.Click, AddressOf CloudBackupConfigurationTool_Click
+        ToolsToolStripMenuItem.DropDownItems.Add(cloudBackupItem)
+        Dim dbpViewerItem As New ToolStripMenuItem("Dbp Viewer")
+        dbpViewerItem.Name = "DbpViewerToolStripMenuItem"
+        AddHandler dbpViewerItem.Click, AddressOf DbpViewerTool_Click
+        HelpToolStripMenuItem.DropDownItems.Add(dbpViewerItem)
+    End Sub
+
+    Private Sub DbpViewerTool_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim viewer As New DbpViewer()
+        viewer.MdiParent = Me
+        viewer.Show()
+        viewer.BringToFront()
+    End Sub
+
+    Private Sub CloudBackupConfigurationTool_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim configuration As New CloudBackupConfiguration()
+        configuration.MdiParent = Me
+        configuration.Show()
+        configuration.BringToFront()
+    End Sub
+
+    Private Sub HotKeysTool_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim editor As New HotKeys()
+        editor.MdiParent = Me
+        editor.Show()
+        editor.BringToFront()
     End Sub
 
     Private Function ReportIndexSql() As String
@@ -1432,6 +1479,7 @@ Public Class MainScreenForm
     End Sub
 
     Private Sub UserRightsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserRightsToolStripMenuItem.Click
+        If Not CanManageUsers() Then Exit Sub
         User_Rights.MdiParent = Me
         User_Rights.Show()
         User_Rights.BringToFront()
@@ -1882,11 +1930,6 @@ Public Class MainScreenForm
         Settle_Ledger.BringToFront()
     End Sub
 
-    Private Sub CheckForUpdateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdateToolStripMenuItem.Click
-        CheckUpdate.MdiParent = Me
-        CheckUpdate.Show()
-        CheckUpdate.BringToFront()
-    End Sub
 
     Private Sub DailyNakalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DailyNakalToolStripMenuItem.Click
         Daily_Nakal.MdiParent = Me
@@ -1914,6 +1957,7 @@ Public Class MainScreenForm
 
     Private Sub RegistrationRevokeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrationRevokeToolStripMenuItem.Click
         ApplyLicenseKey.MdiParent = Me
+        ApplyLicenseKey.PrepareGridOverlay()
         ApplyLicenseKey.Show()
         ApplyLicenseKey.StartPosition = FormStartPosition.CenterParent
         If Not ApplyLicenseKey Is Nothing Then ApplyLicenseKey.BringToFront()
@@ -1935,5 +1979,9 @@ Public Class MainScreenForm
         ComplaintListForm.MdiParent = Me
         ComplaintListForm.Show()
         ComplaintListForm.BringToFront()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        'GenericResponsiveFormScaler.BindMdiParent(Me, RightDockPanel)
     End Sub
 End Class

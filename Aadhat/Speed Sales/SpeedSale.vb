@@ -115,7 +115,7 @@ Public Class SpeedSale
     Private Sub SpeedSale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 'System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        Me.BackColor = Color.FromArgb(247, 220, 111)
+        Me.BackColor = Color.FromArgb(255, 236, 231)
         Me.KeyPreview = True
         EnsureManualPageSchema()
         clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka Order by Upper(MarkaName)", "MarkaName", "Id", "")
@@ -439,7 +439,9 @@ Public Class SpeedSale
     Private Sub dg1_KeyDown(sender As Object, e As KeyEventArgs) Handles dg1.KeyDown
         If e.KeyCode = Keys.Enter Then
             If dg1.SelectedRows.Count = 0 Then Exit Sub
-            FillContros(dg1.SelectedRows(0).Cells(0).Value)
+            Dim selectedVoucherId As Integer = Val(dg1.SelectedRows(0).Cells(0).Value)
+            FillContros(selectedVoucherId)
+            RestoreSelectedVoucherRow(selectedVoucherId)
             txtEntryDate.TabStop = True : txtEntryDate.Enabled = True
             txtEntryDate.Focus() : e.SuppressKeyPress = True
         End If
@@ -594,82 +596,22 @@ Public Class SpeedSale
 
 
     Private Sub SpeedCalculation()
-        If ckTaxPaid.Checked = True Then
-            Dim TotTaxPer As Decimal = Format(Val(txtComPer.Text) + Val(txtMPer.Text) + Val(txtRdfPer.Text) + 100, "0.00")
-            Dim incRate As Decimal = Val(txtNetRate.Text) * (100 / TotTaxPer)
-            txtrate.Text = Format(Val(incRate), "0.00")
-            If CbPer.SelectedIndex = 0 Then
-                txtNet.Text = Format(Val(txtNug.Text) * Val(incRate), "0.00")
-            ElseIf CbPer.SelectedIndex = 1 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate), "0.00")
-            ElseIf CbPer.SelectedIndex = 2 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate) / 5, "0.00")
-            ElseIf CbPer.SelectedIndex = 3 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate) / 10, "0.00")
-            ElseIf CbPer.SelectedIndex = 4 Then
-                txtNet.Text = Format(Val(incRate) / 20 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 5 Then
-                txtNet.Text = Format(Val(incRate) / 40 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 6 Then
-                txtNet.Text = Format(Val(incRate) / 41 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 7 Then
-                txtNet.Text = Format(Val(incRate) / 50 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 8 Then
-                txtNet.Text = Format(Val(incRate) / 51 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 9 Then
-                txtNet.Text = Format(Val(incRate) / 51.7 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 10 Then
-                txtNet.Text = Format(Val(incRate) / 52.2 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 11 Then
-                txtNet.Text = Format(Val(incRate) / 52.3 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 12 Then
-                txtNet.Text = Format(Val(incRate) / 52.5 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 13 Then
-                txtNet.Text = Format(Val(incRate) / 53 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 14 Then
-                txtNet.Text = Format(Val(incRate) / 80 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 15 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate) / 100, "0.00")
-            ElseIf CbPer.SelectedIndex = 16 Then
-                txtNet.Text = Format(Val(incRate) * Val(txtNug.Text), "0.00")
-            End If
-
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(CbPer.SelectedIndex, CbPer.Items.Count)
+        Dim rate As Decimal
+        If ckTaxPaid.Checked Then
+            Dim totalTaxPercent As Decimal = Val(txtComPer.Text) + Val(txtMPer.Text) + Val(txtRdfPer.Text) + 100D
+            rate = Val(txtNetRate.Text) * 100D / totalTaxPercent
+            txtrate.Text = Format(rate, "0.00")
         Else
-            If CbPer.SelectedIndex = 0 Then
-                txtNet.Text = Format(Val(txtNug.Text) * Val(txtrate.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 1 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 2 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text) / 5, "0.00")
-            ElseIf CbPer.SelectedIndex = 3 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text) / 10, "0.00")
-            ElseIf CbPer.SelectedIndex = 4 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 20 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 5 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 40 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 6 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 41 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 7 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 50 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 8 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 51 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 9 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 51.7 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 10 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 52.2 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 11 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 52.3 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 12 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 52.5 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 13 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 53 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 14 Then
-                txtNet.Text = Format(Val(txtrate.Text) / 80 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 15 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text) / 100, "0.00")
-            ElseIf CbPer.SelectedIndex = 16 Then
-                txtNet.Text = Format(Val(txtrate.Text) * Val(txtNug.Text), "0.00")
-            End If
+            rate = Val(txtrate.Text)
+        End If
+
+        If CbPer.SelectedIndex = 0 Then
+            txtNet.Text = Format(Val(txtNug.Text) * rate, "0.00")
+        ElseIf perDivisor > 0 Then
+            txtNet.Text = Format(Val(txtKg.Text) * rate / perDivisor, "0.00")
+        ElseIf CbPer.SelectedIndex = 17 Then
+            txtNet.Text = Format(Val(txtNug.Text) * rate, "0.00")
         End If
         If Octroi = "Yes" Then
             txtComAmt.Text = Format(Val(txtComPer.Text) * Val(Val(txtNet.Text) + Val(txtLaboutAmt.Text)) / 100, "0.00")
@@ -872,7 +814,7 @@ Public Class SpeedSale
 
         If CbPer.SelectedIndex = 0 Then
             If Val(txtNug.Text) = 0 Then MsgBox("please fill Nug...", MsgBoxStyle.Critical, "Access Denied") : txtNug.Focus() : Exit Sub
-        ElseIf CbPer.SelectedIndex = 14 Then
+        ElseIf CbPer.Text = "Crate" Then
             If lblCrate.Text = "Y" Then
                 pnlMarka.Visible = True : pnlMarka.BringToFront()
                 If Val(txtCrateQty.Text) = 0 Then MsgBox("please fill Crate Qty...", MsgBoxStyle.Critical, "Access Denied") : txtCrateQty.Focus() : Exit Sub
@@ -1510,13 +1452,26 @@ Public Class SpeedSale
         End If
     End Sub
     Private Sub dg1_MouseClick(sender As Object, e As MouseEventArgs) Handles dg1.MouseClick
-        dg1.ClearSelection()
+        ' Keep the clicked row selected; MouseClick also fires before a double-click.
     End Sub
     Private Sub dg1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dg1.MouseDoubleClick
         txtEntryDate.Enabled = True : txtEntryDate.TabStop = True
         If dg1.SelectedRows.Count = 0 Then Exit Sub
-        FillContros(dg1.SelectedRows(0).Cells(0).Value)
+        Dim selectedVoucherId As Integer = Val(dg1.SelectedRows(0).Cells(0).Value)
+        FillContros(selectedVoucherId)
+        RestoreSelectedVoucherRow(selectedVoucherId)
         'txtEntryDate.Focus()
+    End Sub
+
+    Private Sub RestoreSelectedVoucherRow(ByVal voucherId As Integer)
+        For Each row As DataGridViewRow In dg1.Rows
+            If Val(row.Cells(0).Value) = voucherId Then
+                dg1.ClearSelection()
+                row.Selected = True
+                dg1.CurrentCell = row.Cells(Math.Min(1, row.Cells.Count - 1))
+                Exit For
+            End If
+        Next
     End Sub
 
     Private Sub cbCrateMarka_KeyDown(sender As Object, e As KeyEventArgs) Handles cbCrateMarka.KeyDown
@@ -1806,99 +1761,36 @@ Public Class SpeedSale
         End If
     End Sub
     Private Sub SpeedCalculation2()
-        If ckTaxPaid.Checked = True Then
-            Dim TotTaxPer As Decimal = Format(Val(txtComPer.Text) + Val(txtMPer.Text) + Val(txtRdfPer.Text) + 100, "0.00")
-            Dim incRate As Decimal = Val(txtNetRate.Text) * (100 / TotTaxPer)
-            txtrate.Text = Format(Val(incRate), "0.00")
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(CbPer.SelectedIndex, CbPer.Items.Count)
+        If ckTaxPaid.Checked Then
+            Dim totalTaxPercent As Decimal = Val(txtComPer.Text) + Val(txtMPer.Text) + Val(txtRdfPer.Text) + 100D
+            Dim inclusiveRate As Decimal = Val(txtNetRate.Text) * 100D / totalTaxPercent
+            txtrate.Text = Format(inclusiveRate, "0.00")
             If CbPer.SelectedIndex = 0 Then
-                txtNet.Text = Format(Val(txtNug.Text) * Val(incRate), "0.00")
-            ElseIf CbPer.SelectedIndex = 1 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate), "0.00")
-            ElseIf CbPer.SelectedIndex = 2 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate) / 5, "0.00")
-            ElseIf CbPer.SelectedIndex = 3 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate) / 10, "0.00")
-            ElseIf CbPer.SelectedIndex = 4 Then
-                txtNet.Text = Format(Val(incRate) / 20 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 5 Then
-                txtNet.Text = Format(Val(incRate) / 40 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 6 Then
-                txtNet.Text = Format(Val(incRate) / 41 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 7 Then
-                txtNet.Text = Format(Val(incRate) / 50 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 8 Then
-                txtNet.Text = Format(Val(incRate) / 51 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 9 Then
-                txtNet.Text = Format(Val(incRate) / 51.7 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 10 Then
-                txtNet.Text = Format(Val(incRate) / 52.2 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 11 Then
-                txtNet.Text = Format(Val(incRate) / 52.3 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 12 Then
-                txtNet.Text = Format(Val(incRate) / 52.5 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 13 Then
-                txtNet.Text = Format(Val(incRate) / 53 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 14 Then
-                txtNet.Text = Format(Val(incRate) / 80 * Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 15 Then
-                txtNet.Text = Format(Val(txtKg.Text) * Val(incRate) / 100, "0.00")
-            ElseIf CbPer.SelectedIndex = 16 Then
-                txtNet.Text = Format(Val(incRate) * Val(txtNug.Text), "0.00")
+                txtNet.Text = Format(Val(txtNug.Text) * inclusiveRate, "0.00")
+            ElseIf perDivisor > 0 Then
+                txtNet.Text = Format(Val(txtKg.Text) * inclusiveRate / perDivisor, "0.00")
+            ElseIf CbPer.SelectedIndex = 17 Then
+                txtNet.Text = Format(Val(txtNug.Text) * inclusiveRate, "0.00")
             End If
-
-        Else
-            If CbPer.SelectedIndex = 0 Then
+        ElseIf CbPer.SelectedIndex = 0 Then
+            If Val(txtNug.Text) <> 0 Then
                 txtrate.Text = Format(Val(txtNet.Text) / Val(txtNug.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 1 Then
-                '                txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 2 Then
-                '          txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text) / 5, "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 5 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 3 Then
-                '      txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text) / 10, "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 10 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 4 Then
-                '  txtNet.Text = Format(Val(txtrate.Text) / 20 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 20 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 5 Then
-                ' txtNet.Text = Format(Val(txtrate.Text) / 40 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 40 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 6 Then
-                '        txtNet.Text = Format(Val(txtrate.Text) / 41 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 41 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 7 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 50 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 50 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 8 Then
-                '  txtNet.Text = Format(Val(txtrate.Text) / 50 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 51 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 9 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 51.7 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 51.7 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 10 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 52.2 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 52.2 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 11 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 52.3 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 52.3 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 12 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 52.5 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 52.5 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 13 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 53 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 53 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 14 Then
-                'txtNet.Text = Format(Val(txtrate.Text) / 80 * Val(txtKg.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 80 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 15 Then
-                'txtNet.Text = Format(Val(txtKg.Text) * Val(txtrate.Text) / 100, "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) * 100 / Val(txtKg.Text), "0.00")
-            ElseIf CbPer.SelectedIndex = 16 Then
-                '    txtNet.Text = Format(Val(txtrate.Text) * Val(txtCrateQty.Text), "0.00")
-                txtrate.Text = Format(Val(txtNet.Text) / Val(txtCrateQty.Text), "0.00")
+            Else
+                txtrate.Text = ""
             End If
-
+        ElseIf perDivisor > 0 Then
+            If Val(txtKg.Text) <> 0 Then
+                txtrate.Text = Format(Val(txtNet.Text) * perDivisor / Val(txtKg.Text), "0.00")
+            Else
+                txtrate.Text = ""
+            End If
+        ElseIf CbPer.SelectedIndex = 17 Then
+            If Val(txtNug.Text) <> 0 Then
+                txtrate.Text = Format(Val(txtNet.Text) / Val(txtNug.Text), "0.00")
+            Else
+                txtrate.Text = ""
+            End If
         End If
         If Octroi = "Yes" Then
             txtComAmt.Text = Format(Val(txtComPer.Text) * Val(Val(txtNet.Text) + Val(txtLaboutAmt.Text)) / 100, "0.00")
@@ -2021,5 +1913,9 @@ Public Class SpeedSale
 
     Private Sub txtManualPageNo_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtManualPageNo.Validating
         CurrentManualPage()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

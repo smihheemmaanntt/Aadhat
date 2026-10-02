@@ -215,6 +215,7 @@ Partial Class SpeedSaleDateCorrection
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.dgEntries)
         Me.Controls.Add(Me.lblSummary)
         Me.Controls.Add(Me.chkSelectAll)

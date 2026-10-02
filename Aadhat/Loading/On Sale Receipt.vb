@@ -1,4 +1,4 @@
-﻿Public Class On_Sale_Receipt
+Public Class On_Sale_Receipt
     Dim vno As Integer : Dim VchId As Integer
     Dim sql As String = String.Empty : Dim count As Integer = 0
     Dim MaxID As String = String.Empty : Dim itemBal As String = String.Empty
@@ -79,16 +79,13 @@
         txtLot.SelectionStart = 0 : txtLot.SelectionLength = Len(txtLot.Text)
     End Sub
     Private Sub SpeedCalculation()
-        If CbPer.SelectedIndex = 0 Then
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If perDivisor > 0 Then
+            txtTotAmount.Text = Format(Val(txtRate.Text) / perDivisor * Val(txtKg.Text), "0.00")
+        ElseIf CbPer.SelectedIndex = 0 OrElse CbPer.SelectedIndex = 17 Then
             txtTotAmount.Text = Format(Math.Round(Val(txtNug.Text) * Val(txtRate.Text), 0), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtTotAmount.Text = Format(Math.Round(Val(txtKg.Text) * Val(txtRate.Text), 0), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 40 * Val(txtKg.Text), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
         End If
+        txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
     End Sub
 
     Private Sub txtNug_GotFocus(sender As Object, e As EventArgs) Handles txtNug.GotFocus
@@ -1721,16 +1718,21 @@
     End Sub
 
     Private Sub txtTotAmount_TextChanged(sender As Object, e As EventArgs) Handles txtTotAmount.TextChanged
-        If Cbper.SelectedIndex = 0 Then
-            txtRate.Text = Format(Val(txtTotAmount.Text) / Val(txtNug.Text), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 1 Then
-            txtRate.Text = Format(Val(txtTotAmount.Text) / Val(txtKg.Text), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
-        ElseIf Cbper.SelectedIndex = 2 Then
-            txtTotAmount.Text = Format(Val(txtRate.Text) / 40 * Val(txtKg.Text), "0.00")
-            txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
+        Dim perDivisor As Decimal = PerUnitCalculator.KgDivisor(Cbper.SelectedIndex, Cbper.Items.Count)
+        If perDivisor > 0 Then
+            If Val(txtKg.Text) <> 0 Then
+                txtRate.Text = Format(Val(txtTotAmount.Text) * perDivisor / Val(txtKg.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
+        ElseIf Cbper.SelectedIndex = 0 OrElse Cbper.SelectedIndex = 17 Then
+            If Val(txtNug.Text) <> 0 Then
+                txtRate.Text = Format(Val(txtTotAmount.Text) / Val(txtNug.Text), "0.00")
+            Else
+                txtRate.Text = ""
+            End If
         End If
+        txtTotTotal.Text = Format(Val(txtTotbasic.Text) + Val(txtTotCharges.Text), "0.00")
         If txtRate.Text = "NAN" Then txtRate.Text = ""
     End Sub
 
@@ -1742,5 +1744,8 @@
     Private Sub txtEntryDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtEntryDate.Validating
         txtEntryDate.Text = SmartDate(txtEntryDate.Text)
     End Sub
-End Class
 
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
+End Class

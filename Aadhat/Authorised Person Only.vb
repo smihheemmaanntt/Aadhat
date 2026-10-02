@@ -1,4 +1,4 @@
-﻿Public Class Authorised_Person_Only
+Public Class Authorised_Person_Only
 
     Private Sub btnUpdateSuperSale_Click(sender As Object, e As EventArgs) Handles btnUpdateSuperSale.Click
         Dim sql As String = String.Empty
@@ -302,5 +302,9 @@
 
     Private Sub txtPassword_TextChanged(sender As Object, e As EventArgs) Handles txtPassword.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

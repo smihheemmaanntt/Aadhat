@@ -1,12 +1,19 @@
-﻿Imports System.IO
+Imports System.IO
+Imports System.ComponentModel
 
 Public Class ApplyLicenseKey
-    Dim ClsCommon As New CommonClass()
+
+    Private Sub ApplyLicenseKey_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        RemoveHandler CompanyList.Resize, AddressOf CompanyGridBoundsChanged
+        RemoveHandler CompanyList.dg1.Resize, AddressOf CompanyGridBoundsChanged
+    End Sub
 
     Private Sub ApplyLicenseKey_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Top = 130
-        Me.Left = 84
+        If LicenseManager.UsageMode = LicenseUsageMode.Designtime Then Return
         Me.FormBorderStyle = FormBorderStyle.None
+        FitOverCompanyGrid()
+        AddHandler CompanyList.Resize, AddressOf CompanyGridBoundsChanged
+        AddHandler CompanyList.dg1.Resize, AddressOf CompanyGridBoundsChanged
         Me.KeyPreview = True
         Dim filePath As String = Path.Combine(Application.StartupPath, "coreaccess.smx")
         ' ======================================
@@ -72,6 +79,41 @@ Public Class ApplyLicenseKey
             txtEmail.Text = Email
         End If
     End Sub
+
+    Private Sub CompanyGridBoundsChanged(sender As Object, e As EventArgs)
+        FitOverCompanyGrid()
+    End Sub
+
+    Private Sub FitOverCompanyGrid()
+        Dim gridBounds As Rectangle = CompanyGridBounds()
+        If gridBounds.Width < 1 OrElse gridBounds.Height < 1 Then Return
+        Me.Bounds = gridBounds
+    End Sub
+
+    ' Called before Show() from CompanyList/login flows to prevent a normal-size frame.
+    Public Sub PrepareGridOverlay()
+        ' Capture the designer canvas before the form is fitted over the
+        ' CompanyList grid. Without this marker/capture, the shared scaler
+        ' interprets the grid-sized overlay as a full MDI workspace form.
+        Me.Tag = "ResponsiveOverlay"
+        Me.FormBorderStyle = FormBorderStyle.None
+        Me.ControlBox = False
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Dim scaler As GenericResponsiveFormScaler = GenericResponsiveFormScaler.Bind(Me)
+        'scaler.PrepareForFirstShow()
+        Me.StartPosition = FormStartPosition.Manual
+        FitOverCompanyGrid()
+    End Sub
+
+    Private Function CompanyGridBounds() As Rectangle
+        If CompanyList Is Nothing OrElse CompanyList.IsDisposed OrElse CompanyList.dg1 Is Nothing Then Return Rectangle.Empty
+
+        Return New Rectangle(CompanyList.Left + CompanyList.dg1.Left,
+                             CompanyList.Top + CompanyList.dg1.Top,
+                             CompanyList.dg1.Width,
+                             CompanyList.dg1.Height)
+    End Function
 
     Private Function IsCustomerCode(input As String) As Boolean
         Return System.Text.RegularExpressions.Regex.IsMatch(input, "^\d{6}$")
@@ -294,5 +336,10 @@ Public Class ApplyLicenseKey
         End If
 
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        If LicenseManager.UsageMode = LicenseUsageMode.Designtime Then Return
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

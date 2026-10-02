@@ -1,4 +1,4 @@
-﻿Imports System.Configuration
+Imports System.Configuration
 Imports System.IO
 Imports System.Text
 Imports System.Xml
@@ -362,7 +362,7 @@ Public Class Create_Company
     End Sub
 
     Private Sub Create_Company_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        rs.ResizeAllControls(Me)
+        ' Legacy Resizer disabled; GenericResponsiveFormScaler handles this form.
     End Sub
 
     Private Sub btnClose_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -387,5 +387,9 @@ Public Class Create_Company
 
     Private Sub mskFYStart_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFYStart.MaskInputRejected
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

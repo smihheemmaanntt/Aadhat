@@ -529,4 +529,8 @@ Public Class Item_form
     Private Sub txtcutPerNug_TextChanged(sender As Object, e As EventArgs) Handles txtcutPerNug.TextChanged
 
     End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class

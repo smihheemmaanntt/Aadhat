@@ -1,4 +1,4 @@
-﻿Public Class Ugrahi_Report
+Public Class Ugrahi_Report
     Dim Date1 As String
     Dim Coldate As String
     Private Sub txtfromDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtFromDate.Validating
@@ -483,5 +483,9 @@
         If txtfromDate.Enabled = False Then Exit Sub
         txtfromDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         txtfromDate.Text = smartDate(txtfromDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class Balance_Sheet_Expended
+Public Class Balance_Sheet_Expended
     Dim tmpdt As New DataTable
 
     Private Sub Balance_Sheet_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -1373,5 +1373,9 @@
         If mskEntryDate.Enabled = False Then Exit Sub
         mskEntryDate.Text = dtp1.Value.ToString("dd-MM-yyyy")
         mskEntryDate.Text = smartDate(mskEntryDate.Text)
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Imports System.Data.SQLite
+Imports System.Data.SQLite
 Imports System.IO
 
 Public Class CompanyList
@@ -11,7 +11,7 @@ Public Class CompanyList
         EnsureWhatsAppOfficialLocalUpdate()
         txtMainPath.Text = ClsFunPrimary.ExecScalarStr("Select DefaultPath From Path")
         rowColums() : getCompanies()
-        rs.FindAllControls(Me)
+        ' Legacy Resizer disabled; GenericResponsiveFormScaler handles this form.
     End Sub
 
     Private Sub EnsureWhatsAppOfficialLocalUpdate()
@@ -67,7 +67,8 @@ Public Class CompanyList
 
     Private Function AddCompanyFile(ByVal filePath As String, ByVal rowIndex As Integer, ByRef connectionString As String) As Boolean
         Try
-            Application.DoEvents()
+            ' Keep the message queue paused until the company grid has a
+            ' complete row; otherwise low-powered PCs paint partial frames.
             Dim dt As New DataTable
             Dim cmdText As String = "Select * from Company"
             If txtMainPath.Text.ToUpper = ("Data").ToUpper Then
@@ -131,6 +132,7 @@ Public Class CompanyList
         UpdateVoucherTbl() : CreateOptions() : Transaction1() : UpdateAccountGroups()
         UserRights() : UpdateView() : DbpFile() : ServerDb() : UpdateLoose()
         CompanyInfo() : OptionsControl()
+        Login.PrepareGridOverlay()
         Login.MdiParent = ShowCompanies
         Login.Show()
         If Not Login Is Nothing Then
@@ -380,6 +382,7 @@ Public Class CompanyList
             End If
             CreateOptions() : DbpFile() : UserRights() : UpdateView() : ServerDb()
             CompanyInfo() : OptionsControl() : UpdateLoose()
+            Login.PrepareGridOverlay()
             Login.MdiParent = ShowCompanies
             Login.Show()
             If Not Login Is Nothing Then
@@ -1134,7 +1137,7 @@ Public Class CompanyList
     End Sub
 
     Private Sub CompanyList_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        rs.ResizeAllControls(Me)
+        ' Legacy Resizer disabled; GenericResponsiveFormScaler handles this form.
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnPath.Click
@@ -1149,9 +1152,11 @@ Public Class CompanyList
     Private Sub txtMainPath_TextChanged(sender As Object, e As EventArgs) Handles txtMainPath.TextChanged
 
     End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
+    End Sub
 End Class
-
-
 '    Private Sub dg1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellClick
 '        If dg1.RowCount = 0 Then Exit Sub
 '    End Sub

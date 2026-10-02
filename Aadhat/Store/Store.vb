@@ -1,4 +1,4 @@
-﻿Public Class Store
+Public Class Store
     Private Sub Store_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
@@ -108,5 +108,9 @@
         If txtStoreName.Text <> txtStoreName.Text.ToUpper Then
             txtStoreName.Text = StrConv(txtStoreName.Text, VbStrConv.ProperCase)
         End If
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

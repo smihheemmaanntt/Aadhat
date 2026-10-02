@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
@@ -198,58 +198,90 @@ Public Class Report_Viewer
         '' rep.PrintOptions.DissociatePageSizeAndPrinterPaperSize = True
         'rep.PrintOptions.CopyFrom(printerSettings, pSettings)
     End Sub
-    Sub ExportReport(ByRef reportName As String)
-        '       Dim Rpt As New ReportDocument
-        Dim cryRpt As New ReportDocument
-        Dim CrTables As Tables
-        Dim crtableLogoninfo As New TableLogOnInfo
-        Dim crConnectionInfo As New ConnectionInfo
-        If Not File.Exists(Application.StartupPath & reportName) Then MsgBox("Report : " & reportName & " Not Exists.... Please Contact to Service Provider...", MsgBoxStyle.Critical, "Not Found...") : Me.Close() : Exit Sub
-        Rpt.Load(Application.StartupPath & reportName)
-        CrystalReportViewer1.ReportSource = cryRpt
-        CrTables = Rpt.Database.Tables
-        For Each CrTable In CrTables
-            crtableLogoninfo = CrTable.LogOnInfo
-            crtableLogoninfo.ConnectionInfo = crConnectionInfo
-            CrTable.ApplyLogOnInfo(crtableLogoninfo)
-        Next
-        Dim dsCustomers As DataSet = GetData()
-        Rpt.SetDataSource(dsCustomers.Tables("Printing"))
-        Rpt.SetParameterValue("CompName", compname)
-        Rpt.SetParameterValue("Mob1", Mob1)
-        Rpt.SetParameterValue("Mob2", Mob2)
-        Rpt.SetParameterValue("Address", Address)
-        Rpt.SetParameterValue("City", City)
-        Rpt.SetParameterValue("State", State)
-        Rpt.SetParameterValue("AddressHindi", AddressHindi)
-        Rpt.SetParameterValue("CityHindi", CityHindi)
-        Rpt.SetParameterValue("StateHindi", StateHindi)
-        Rpt.SetParameterValue("HindiCompanyName", compnameHindi)
-        '  Rpt.ParameterFields.Add("HindiCompanyName1")
+    Sub ExportReport(ByRef reportName As String, Optional exportFormat As String = "PDF")
+        If reportName Is Nothing OrElse reportName.Trim() = String.Empty Then
+            MsgBox("Report is not ready for export.", MsgBoxStyle.Exclamation, "Export Report")
+            Exit Sub
+        End If
+
+        Dim exportReport As New ReportDocument
+        Dim CrTables As Tables = Nothing
         Try
-            Dim CrExportOptions As ExportOptions
-            Dim CrDiskFileDestinationOptions As New  _
-            DiskFileDestinationOptions()
-            Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
-            CrDiskFileDestinationOptions.DiskFileName =
-                                        "D:\crystalExport.pdf"
-            CrExportOptions = Rpt.ExportOptions
-
-            Dim dialog1 As SaveFileDialog = New SaveFileDialog()
-            dialog1.Title = "Select PDFFile"
-            dialog1.Filter = "PDF(*.pdf)|*.pdf"
-            If dialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-
+            If Not File.Exists(Application.StartupPath & reportName) Then
+                MsgBox("Report : " & reportName & " Not Exists.... Please Contact to Service Provider...", MsgBoxStyle.Critical, "Not Found...")
+                Exit Sub
             End If
-            With CrExportOptions
-                .ExportDestinationType = ExportDestinationType.DiskFile
-                .ExportFormatType = ExportFormatType.PortableDocFormat
-                .DestinationOptions = CrDiskFileDestinationOptions
-                .FormatOptions = CrFormatTypeOptions
-            End With
-            Rpt.Export()
+
+            exportReport.Load(Application.StartupPath & reportName)
+            CrTables = exportReport.Database.Tables
+            Dim crConnectionInfo As New ConnectionInfo
+            For Each CrTable In CrTables
+                Dim crtableLogoninfo As TableLogOnInfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+
+            Dim dsCustomers As DataSet = GetData()
+            exportReport.SetDataSource(dsCustomers.Tables("Printing"))
+            exportReport.SetParameterValue("CompName", compname)
+            exportReport.SetParameterValue("Mob1", Mob1)
+            exportReport.SetParameterValue("Mob2", Mob2)
+            exportReport.SetParameterValue("Address", Address)
+            exportReport.SetParameterValue("City", City)
+            exportReport.SetParameterValue("State", State)
+            exportReport.SetParameterValue("AddressHindi", AddressHindi)
+            exportReport.SetParameterValue("CityHindi", CityHindi)
+            exportReport.SetParameterValue("StateHindi", StateHindi)
+            exportReport.SetParameterValue("HindiCompanyName", compnameHindi)
+
+            Dim normalizedFormat As String = exportFormat.Trim().ToUpperInvariant()
+            Dim extension As String = If(normalizedFormat = "EXCEL", "xlsx", If(normalizedFormat = "CSV", "csv", "pdf"))
+            Using saveDialog As New SaveFileDialog()
+                saveDialog.Title = "Export Report - " & normalizedFormat
+                saveDialog.Filter = If(normalizedFormat = "EXCEL", "Excel Workbook (*.xlsx)|*.xlsx", If(normalizedFormat = "CSV", "CSV File (*.csv)|*.csv", "PDF Document (*.pdf)|*.pdf"))
+                saveDialog.DefaultExt = extension
+                saveDialog.AddExtension = True
+                saveDialog.FileName = Path.GetFileNameWithoutExtension(reportName) & "_" & DateTime.Now.ToString("yyyyMMdd_HHmm") & "." & extension
+                If saveDialog.ShowDialog(Me) <> DialogResult.OK Then Exit Sub
+
+                Dim destinationOptions As New DiskFileDestinationOptions With {.DiskFileName = saveDialog.FileName}
+                With exportReport.ExportOptions
+                    .ExportDestinationType = ExportDestinationType.DiskFile
+                    .DestinationOptions = destinationOptions
+                    If normalizedFormat = "EXCEL" Then
+                        .ExportFormatType = ExportFormatType.ExcelWorkbook
+                        .FormatOptions = New ExcelFormatOptions()
+                    ElseIf normalizedFormat = "CSV" Then
+                        .ExportFormatType = ExportFormatType.CharacterSeparatedValues
+                        .FormatOptions = New CharacterSeparatedValuesFormatOptions()
+                    Else
+                        .ExportFormatType = ExportFormatType.PortableDocFormat
+                        .FormatOptions = New PdfRtfWordFormatOptions()
+                    End If
+                End With
+                exportReport.Export()
+
+                If Not File.Exists(saveDialog.FileName) Then
+                    MsgBox("Export unsuccessful. The file could not be created.", MsgBoxStyle.Critical, "Export Report")
+                    Exit Sub
+                End If
+
+                If MsgBox(normalizedFormat & " export successful." & vbCrLf & vbCrLf &
+                          saveDialog.FileName & vbCrLf & vbCrLf &
+                          "Do you want to open this file now?", MsgBoxStyle.Information Or MsgBoxStyle.YesNo, "Export Report") = MsgBoxResult.Yes Then
+                    Try
+                        Process.Start(saveDialog.FileName)
+                    Catch ex As Exception
+                        MsgBox("File was exported successfully, but could not be opened." & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, "Export Report")
+                    End Try
+                End If
+            End Using
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox("Export failed: " & ex.Message, MsgBoxStyle.Critical, "Export Report")
+        Finally
+            If CrTables IsNot Nothing Then CrTables.Dispose()
+            exportReport.Close()
+            exportReport.Dispose()
         End Try
     End Sub
 
@@ -275,19 +307,27 @@ Public Class Report_Viewer
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        ExportReport(reportName)
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        ExportReport(RptName, "PDF")
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        ExportReport(reportName)
+    Private Sub ButtonPrint_Click(sender As Object, e As EventArgs) Handles ButtonPrint.Click
+        PrintDirect(RptName)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ExportReport(RptName, "EXCEL")
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        ExportReport(RptName, "CSV")
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
         '  PrintDialog1.ShowDialog()
         PrintDirect(RptName)
     End Sub
@@ -298,5 +338,9 @@ Public Class Report_Viewer
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         CrystalReportViewer1.Refresh()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

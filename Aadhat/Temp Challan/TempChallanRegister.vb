@@ -1,4 +1,4 @@
-﻿Public Class TempChallanRegister
+Public Class TempChallanRegister
     Private headerCheckBox As CheckBox = New CheckBox()
     Private Sub Standard_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then Me.Close()
@@ -464,5 +464,9 @@
 
     Private Sub txtTotweight_TextChanged(sender As Object, e As EventArgs) Handles txtTotweight.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

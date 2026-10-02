@@ -1,4 +1,4 @@
-﻿Public Class Account_Group
+Public Class Account_Group
     Dim tmpid As Integer = 0
     Public bUpdate As Boolean
     Private Sub Account_Group_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -8,6 +8,7 @@
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.Top = 179 : Me.Left = 450 : Me.BackColor = Color.GhostWhite
         Me.KeyPreview = True
+        'NonModalFormFrontGuard.Enable(Me)
         'clsFun.FillDropDownList(CbUnderGroup, "Select ID, GroupName   FROM AccountGroup where UnderGroupID not in (0) UNION all Select ID,UnderGroup   FROM UnderGroup ", "GroupName", "Id", "")
         clsFun.FillDropDownList(CbUnderGroup, "Select ID, GroupName   FROM AccountGroup ", "GroupName", "Id", "")
         BtnDelete.Visible = False
@@ -252,5 +253,9 @@
 
     Private Sub txtGroupName_TextChanged(sender As Object, e As EventArgs) Handles txtGroupName.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

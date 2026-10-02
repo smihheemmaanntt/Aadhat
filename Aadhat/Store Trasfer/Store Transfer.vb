@@ -1,4 +1,4 @@
-﻿
+
 Public Class Store_Transfer
     Dim LotBal As String = String.Empty
     Private Sub Store_Transfer_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -528,5 +528,9 @@ Public Class Store_Transfer
 
     Private Sub txtVoucherNo_TextChanged(sender As Object, e As EventArgs) Handles txtVoucherNo.TextChanged
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

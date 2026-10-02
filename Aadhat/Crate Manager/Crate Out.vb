@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Imports System.Collections.Generic
 
@@ -255,7 +255,7 @@ Public Class Crate_Out
         Else
             UpdateRecord()
         End If
-        If Application.OpenForms().OfType(Of Report_Viewer).Any = True Then Report_Viewer.btnPrint.Focus()
+        If Application.OpenForms().OfType(Of Report_Viewer).Any = True Then Report_Viewer.ButtonPrint.Focus()
     End Sub
     Private Sub PrintRecord()
         Dim count As Integer = 0
@@ -1510,5 +1510,9 @@ Public Class Crate_Out
 
     Private Sub OfficialTemplateOptions_Changed(sender As Object, e As EventArgs) Handles btnRadioEnglish.CheckedChanged, RadioRegional.CheckedChanged, RadioPdfOnly.CheckedChanged, RadioMsgOnly.CheckedChanged, RadioPDFMsg.CheckedChanged
         If cbType.Text = "WhatsApp Official API" Then LoadOfficialTemplateCombo()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

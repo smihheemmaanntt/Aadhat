@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Threading
 Imports System.Collections.Generic
 
@@ -1034,7 +1034,7 @@ Public Class PayMentform
                 txtclear()
                 MainScreenPicture.lblTotReceiptamt.Text = Format(Val(clsFun.ExecScalarStr("Select Sum(TotalAmount) from Vouchers Where TransType='Payment' And EntryDate='" & CDate(Date.Now).ToString("yyyy-MM-dd") & "'")), "0.00")
                 MainScreenPicture.lblTotReceipt.Text = Val(clsFun.ExecScalarStr("Select Count(*) from Vouchers Where TransType='Payment' And EntryDate='" & CDate(Date.Now).ToString("yyyy-MM-dd") & "'"))
-                MainScreenPicture.Dashboard() : If Application.OpenForms().OfType(Of Report_Viewer).Any = True Then Report_Viewer.btnPrint.Focus()
+                MainScreenPicture.Dashboard() : If Application.OpenForms().OfType(Of Report_Viewer).Any = True Then Report_Viewer.ButtonPrint.Focus()
                 If Application.OpenForms().OfType(Of Payment_Register).Any = True Then Payment_Register.btnShow.PerformClick()
                 If Application.OpenForms().OfType(Of Ledger).Any = True Then Ledger.btnShow.PerformClick()
                 If Application.OpenForms().OfType(Of OutStanding_Amount_Only).Any = True Then OutStanding_Amount_Only.btnShow.PerformClick()
@@ -1214,7 +1214,7 @@ Public Class PayMentform
         End If
         MainScreenPicture.lblPaymentAmt.Text = Format(Val(clsFun.ExecScalarStr("Select Sum(TotalAmount) from Vouchers Where TransType='Payment' And EntryDate='" & CDate(Date.Now).ToString("yyyy-MM-dd") & "'")), "0.00")
         MainScreenPicture.lblPayment.Text = Val(clsFun.ExecScalarStr("Select Count(*) FROM Vouchers Where TransType='Payment' and EntryDate='" & CDate(Date.Now).ToString("yyyy-MM-dd") & "'"))
-        MainScreenPicture.Dashboard() : If Application.OpenForms().OfType(Of Report_Viewer).Any = True Then Report_Viewer.btnPrint.Focus()
+        MainScreenPicture.Dashboard() : If Application.OpenForms().OfType(Of Report_Viewer).Any = True Then Report_Viewer.ButtonPrint.Focus()
         If Application.OpenForms().OfType(Of Payment_Register).Any = True Then Payment_Register.btnShow.PerformClick()
         If Application.OpenForms().OfType(Of Ledger).Any = True Then Ledger.btnShow.PerformClick()
         If Application.OpenForms().OfType(Of OutStanding_Amount_Only).Any = True Then OutStanding_Amount_Only.btnShow.PerformClick()
@@ -2240,5 +2240,9 @@ Public Class PayMentform
 
     Private Sub OfficialTemplateLanguage_CheckedChanged(sender As Object, e As EventArgs) Handles btnRadioEnglish.CheckedChanged, RadioRegional.CheckedChanged
         If cbType.Text = "WhatsApp Official API" Then LoadOfficialPaymentTemplates()
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

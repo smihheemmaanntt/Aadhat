@@ -1,4 +1,4 @@
-﻿Imports System.Data.OleDb
+Imports System.Data.OleDb
 
 Public Class Account_List
     Dim TotalPages As Integer = 0 : Dim PageNumber As Integer = 0
@@ -18,8 +18,7 @@ Public Class Account_List
     End Sub
 
     Private Sub Account_List_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Top = 0
-        Me.Left = 0
+        Me.Top = 0 : Me.Left = 0
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True : txtSearch.Focus()
@@ -585,5 +584,9 @@ Public Class Account_List
 
     Private Sub dg1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dg1.CellContentClick
 
+    End Sub
+
+    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.Bind(Me)
     End Sub
 End Class

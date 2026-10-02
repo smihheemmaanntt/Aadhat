@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Loose_Purchase
     Inherits System.Windows.Forms.Form
 
@@ -782,7 +782,7 @@ Partial Class Loose_Purchase
         Me.cbPer.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.cbPer.ForeColor = System.Drawing.Color.Black
         Me.cbPer.FormattingEnabled = True
-        Me.cbPer.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
+        Me.cbPer.Items.AddRange(New Object() {"Nug", "Kg", "5 Kg", "10 kg", "20 Kg", "40 Kg", "41 Kg", "42 Kg", "50 Kg", "51 Kg", "51.700 Kg", "52.200 Kg", "52.300 Kg", "52.500 Kg", "53 Kg", "80 Kg", "Qntl", "Crate"})
         Me.cbPer.Location = New System.Drawing.Point(902, 161)
         Me.cbPer.Name = "cbPer"
         Me.cbPer.Size = New System.Drawing.Size(118, 23)
@@ -1297,6 +1297,7 @@ Partial Class Loose_Purchase
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.txtEntryDate)
         Me.Controls.Add(Me.lblInword)
         Me.Controls.Add(Me.tmpgrid)
