@@ -8,7 +8,11 @@ Public Class Login
     Private ReadOnly _loginControlLayout As New Dictionary(Of Control, LoginControlLayout)
     Private _loginLayoutCaptured As Boolean
     Private _lastLoginHorizontalOffset As Integer = Integer.MinValue
+    Private _lastLoginAppliedClientHeight As Integer = Integer.MinValue
+    Private _lastLoginAppliedPanelWidth As Integer = Integer.MinValue
+    Private _loginPanelWidthCorrectionQueued As Boolean
     Private Const Login100PercentScale As Single = 1.15F
+    Private Const LoginDesignerPanelWidth As Integer = 338
 
     Private Structure LoginControlLayout
         Public Bounds As Rectangle
@@ -265,10 +269,25 @@ Public Class Login
     End Sub
     Private Sub ApplyResponsiveLoginLayout()
         If Not _loginLayoutCaptured OrElse Me.IsDisposed OrElse Panel1 Is Nothing Then Return
-        ' Preserve the existing 125% layout exactly. At 100%, make the login
-        ' controls modestly larger while keeping the group centered in the cyan area.
-        If GetLoginDpiX() > 96.0F Then Return
+        ' Keep the existing login-control scaler behavior at 125%. The branding
+        ' panel uses the designer width at the matching DPI ratio; at 100% the
+        ' login controls receive their established modest size increase.
+        Dim dpiScale As Single = GetLoginDpiX() / 96.0F
+        Dim panelScale As Single = If(dpiScale <= 1.0F, Login100PercentScale, dpiScale)
+
+        ' Keep the brand column based on its actual designer width. At 100% it
+        ' shares the login controls' modest 15% increase; at 125% it uses exactly
+        ' the DPI ratio, rather than the larger overlay/form-width ratio.
+        Dim targetPanelWidth As Integer = Math.Max(1, CInt(Math.Round(LoginDesignerPanelWidth * panelScale)))
+        If Panel1.Width <> targetPanelWidth Then Panel1.Width = targetPanelWidth
+        CenterLoginBrandingControls()
+        QueueLoginPanelWidthCorrection()
+
+        ' The 125% path leaves all login controls to the existing form scaler.
+        If dpiScale > 1.0F Then Return
+
         Dim targetCenterX As Single = Panel1.Width + (Me.ClientSize.Width - Panel1.Width) / 2.0F
+        Dim targetCenterY As Single = Me.ClientSize.Height / 2.0F
         Dim groupLeft As Integer = Integer.MaxValue
         Dim groupRight As Integer = Integer.MinValue
         Dim groupTop As Integer = Integer.MaxValue
@@ -284,7 +303,9 @@ Public Class Login
         Dim groupCenterX As Single = (groupLeft + groupRight) / 2.0F
         Dim groupCenterY As Single = (groupTop + groupBottom) / 2.0F
         Dim horizontalOffset As Integer = CInt(Math.Round(targetCenterX - groupCenterX))
-        If horizontalOffset = _lastLoginHorizontalOffset Then Return
+        If horizontalOffset = _lastLoginHorizontalOffset AndAlso
+           Me.ClientSize.Height = _lastLoginAppliedClientHeight AndAlso
+           Panel1.Width = _lastLoginAppliedPanelWidth Then Return
         For Each layoutEntry As KeyValuePair(Of Control, LoginControlLayout) In _loginControlLayout
             Dim control As Control = layoutEntry.Key
             If control Is Nothing OrElse control.IsDisposed Then Continue For
@@ -298,7 +319,7 @@ Public Class Login
             Dim scaledWidth As Integer = Math.Max(1, CInt(Math.Round(original.Bounds.Width * controlWidthScale)))
             Dim scaledHeight As Integer = Math.Max(1, CInt(Math.Round(original.Bounds.Height * controlHeightScale)))
             Dim centerX As Single = targetCenterX + (original.Bounds.Left + original.Bounds.Width / 2.0F - groupCenterX) * Login100PercentScale
-            Dim centerY As Single = groupCenterY + (original.Bounds.Top + original.Bounds.Height / 2.0F - groupCenterY) * Login100PercentScale
+            Dim centerY As Single = targetCenterY + (original.Bounds.Top + original.Bounds.Height / 2.0F - groupCenterY) * Login100PercentScale
             control.SetBounds(CInt(Math.Round(centerX - scaledWidth / 2.0F)),
                               CInt(Math.Round(centerY - scaledHeight / 2.0F)),
                               scaledWidth,
@@ -314,6 +335,40 @@ Public Class Login
             End If
         Next
         _lastLoginHorizontalOffset = horizontalOffset
+        _lastLoginAppliedClientHeight = Me.ClientSize.Height
+        _lastLoginAppliedPanelWidth = Panel1.Width
+    End Sub
+
+    Private Sub CenterLoginBrandingControls()
+        If Panel1 Is Nothing OrElse Panel1.IsDisposed Then Return
+        For Each control As Control In Panel1.Controls
+            If control Is Nothing OrElse control.IsDisposed Then Continue For
+            Dim centeredLeft As Integer = Math.Max(0, (Panel1.ClientSize.Width - control.Width) \ 2)
+            If control.Left <> centeredLeft Then control.Left = centeredLeft
+        Next
+    End Sub
+
+    ' Login's normal resize handler runs before the responsive scaler's handler.
+    ' Reapply the DPI-based designer width on the next UI turn so the scaler's
+    ' wider overlay ratio cannot stretch this branding panel at 125%.
+    Private Sub QueueLoginPanelWidthCorrection()
+        If _loginPanelWidthCorrectionQueued OrElse Not IsHandleCreated OrElse IsDisposed Then Return
+        _loginPanelWidthCorrectionQueued = True
+        Try
+            BeginInvoke(New MethodInvoker(AddressOf ApplyLoginPanelWidthCorrection))
+        Catch
+            _loginPanelWidthCorrectionQueued = False
+        End Try
+    End Sub
+
+    Private Sub ApplyLoginPanelWidthCorrection()
+        _loginPanelWidthCorrectionQueued = False
+        If IsDisposed OrElse Panel1 Is Nothing OrElse Panel1.IsDisposed Then Return
+        Dim dpiScale As Single = GetLoginDpiX() / 96.0F
+        Dim panelScale As Single = If(dpiScale <= 1.0F, Login100PercentScale, dpiScale)
+        Dim targetPanelWidth As Integer = Math.Max(1, CInt(Math.Round(LoginDesignerPanelWidth * panelScale)))
+        If Panel1.Width <> targetPanelWidth Then Panel1.Width = targetPanelWidth
+        CenterLoginBrandingControls()
     End Sub
 
     Private Function GetLoginDpiX() As Single

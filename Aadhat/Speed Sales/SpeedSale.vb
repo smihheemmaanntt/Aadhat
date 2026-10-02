@@ -115,7 +115,7 @@ Public Class SpeedSale
     Private Sub SpeedSale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 'System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        Me.BackColor = Color.FromArgb(255, 236, 231)
+        Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.KeyPreview = True
         EnsureManualPageSchema()
         clsFun.FillDropDownList(cbCrateMarka, "Select * From CrateMarka Order by Upper(MarkaName)", "MarkaName", "Id", "")

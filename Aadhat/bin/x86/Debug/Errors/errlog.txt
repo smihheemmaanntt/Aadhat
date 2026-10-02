@@ -3013,3 +3013,13 @@ Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,Entry
 StackTrace: DURUKUMAR ROOPCHAND
 Date/Time: 02-Oct-26 6:02:50 PM
 ===========================================================================================
+Title: Saved
+Message: Insert Into Vouchers(Transtype, EntryDate,billNo,InvoiceID,UserID,EntryTime) Values (@1,@2,@3,@4,@5,@6)
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Oct-26 7:13:44 PM
+===========================================================================================
+Title: Speed Sale Updated
+Message: Update Vouchers SET TransType='Speed Sale',Entrydate='2026-05-30',InvoiceID='10',  billNo='0',ModifiedByID='1',ModifiedTime='2026-10-02 21:18:45'  where ID =63
+StackTrace: DURUKUMAR ROOPCHAND
+Date/Time: 02-Oct-26 9:18:45 PM
+===========================================================================================

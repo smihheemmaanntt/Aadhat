@@ -73,7 +73,7 @@ Public Class Speed_Sale_Register
     Private Sub Speed_Sale_Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Control.CheckForIllegalCrossThreadCalls = False
         Me.Top = 0 : Me.Left = 0
-        Me.BackColor = Color.FromArgb(255, 236, 231)
+        Me.BackColor = Color.FromArgb(247, 220, 111)
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True
         EnsureManualPageSchema()

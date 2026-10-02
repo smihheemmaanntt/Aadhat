@@ -560,7 +560,6 @@ Partial Class Super_Sale
         '
         Me.txtPlusMinus.BackColor = System.Drawing.Color.GhostWhite
         Me.txtPlusMinus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPlusMinus.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtPlusMinus.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPlusMinus.ForeColor = System.Drawing.Color.Black
         Me.txtPlusMinus.Location = New System.Drawing.Point(499, 462)

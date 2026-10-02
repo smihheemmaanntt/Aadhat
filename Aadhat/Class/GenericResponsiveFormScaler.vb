@@ -121,8 +121,10 @@ Public Class GenericResponsiveFormScaler
         Public Property DgvRowHeight As Integer
         Public Property DgvHeaderFont As Font
         Public Property DgvCellFont As Font
+        Public Property DgvRowsFont As Font
         Public Property PreserveRuntimeGridWidths As Boolean
         Public Property RuntimeGridWidthsAreDesignSpace As Boolean
+        Public Property HasRuntimeGridWidthBaseline As Boolean
         Public Property IsComboBox As Boolean
         Public Property CbItemHeight As Integer
     End Class
@@ -698,6 +700,8 @@ Public Class GenericResponsiveFormScaler
                 ' Use dgv.Font as fallback when no explicit header/cell font is set in designer.
                 snap.DgvHeaderFont = If(dgv.ColumnHeadersDefaultCellStyle.Font, dgv.Font)
                 snap.DgvCellFont = If(dgv.DefaultCellStyle.Font, dgv.Font)
+                snap.DgvRowsFont = If(dgv.RowsDefaultCellStyle.Font,
+                                     If(dgv.DefaultCellStyle.Font, dgv.Font))
                 For i As Integer = 0 To dgv.Columns.Count - 1
                     snap.DgvColWidths.Add(Math.Max(10, dgv.Columns(i).Width))
                 Next
@@ -756,7 +760,19 @@ Public Class GenericResponsiveFormScaler
     End Sub
 
     Private Sub OnRuntimeGridColumnAdded(ByVal sender As Object, ByVal e As DataGridViewColumnEventArgs)
-        QueueRuntimeGridRefresh(TryCast(sender, DataGridView))
+        Dim dgv As DataGridView = TryCast(sender, DataGridView)
+        If IsSearchOrChargeLookupGrid(dgv) Then
+            Dim snap As ControlSnapshot = Nothing
+            If _controlMap.TryGetValue(dgv, snap) Then
+                ' Lookup grids are created after the form is shown. Their code
+                ' assigns explicit design widths after ColumnAdded, so retain
+                ' those widths as design metrics when the deferred batch runs.
+                snap.PreserveRuntimeGridWidths = True
+                snap.RuntimeGridWidthsAreDesignSpace = True
+                snap.HasRuntimeGridWidthBaseline = False
+            End If
+        End If
+        QueueRuntimeGridRefresh(dgv)
     End Sub
 
     Private Sub OnRuntimeGridRowsAdded(ByVal sender As Object, ByVal e As DataGridViewRowsAddedEventArgs)
@@ -782,9 +798,12 @@ Public Class GenericResponsiveFormScaler
             If _controlMap.TryGetValue(dgv, snap) Then
                 snap.PreserveRuntimeGridWidths = True
                 ' Widths assigned while a form is building its runtime grid are
-                ' design dimensions. Widths changed after first display are live
-                ' pixels and must be converted back to the design scale.
-                snap.RuntimeGridWidthsAreDesignSpace = Not _hasBeenShown
+                ' design dimensions. Lookup grids create their columns on demand
+                ' after the form is shown, but their code-assigned widths are still
+                ' design dimensions and must scale with the form.
+                Dim isLookupGrid As Boolean = IsSearchOrChargeLookupGrid(dgv)
+                snap.RuntimeGridWidthsAreDesignSpace = Not _hasBeenShown OrElse isLookupGrid
+                snap.HasRuntimeGridWidthBaseline = False
             End If
         End If
         QueueRuntimeGridRefresh(dgv)
@@ -837,10 +856,23 @@ Public Class GenericResponsiveFormScaler
                 snap.DgvColWidths.Add(Math.Max(10, dgv.Columns(snap.DgvColWidths.Count).Width))
             End While
 
-            ' Normalize each runtime column width to design coordinates by dividing
-            ' out the current scaleX. This ensures that ApplyScale's proportional
-            ' multiplication (baseColW × scaleX) gives the correct resolution-based
-            ' width — no double-scaling, no viewport-fill, purely responsive.
+            ' A lookup grid can first be created after the form is already at a
+            ' scaled size. Capture its finished code-assigned width only after
+            ' ColumnAdded has unwound (the queued batch), never at default 100px.
+            If IsSearchOrChargeLookupGrid(dgv) AndAlso
+               snap.RuntimeGridWidthsAreDesignSpace AndAlso
+               Not snap.HasRuntimeGridWidthBaseline Then
+                For columnIndex As Integer = 0 To dgv.Columns.Count - 1
+                    If dgv.Columns(columnIndex).Visible Then
+                        snap.DgvColWidths(columnIndex) = Math.Max(10, dgv.Columns(columnIndex).Width)
+                    End If
+                Next
+                snap.HasRuntimeGridWidthBaseline = True
+            End If
+
+            ' Normalize post-show edits to existing columns back to design
+            ' coordinates. Explicit lookup widths and initial runtime widths are
+            ' already in design coordinates and must not be divided by scaleX.
             Dim currentScaleX As Double = If(_baseWidth > 0, CDbl(_targetForm.ClientSize.Width) / CDbl(_baseWidth), 1.0)
             If currentScaleX < 0.01 Then currentScaleX = 1.0
             For columnIndex As Integer = 0 To dgv.Columns.Count - 1
@@ -1459,6 +1491,14 @@ Public Class GenericResponsiveFormScaler
                             End If
                         Next
 
+                        ' CompanyList's visible columns should stay inside this
+                        ' grid's viewport at every scale. Other grids preserve their
+                        ' own horizontal scrolling and column visibility behavior.
+                        If String.Equals(_targetForm.Name, "CompanyList", StringComparison.OrdinalIgnoreCase) AndAlso
+                           String.Equals(dgv.Name, "dg1", StringComparison.OrdinalIgnoreCase) Then
+                            FitVisibleGridColumnsToViewport(dgv, snap, scaleX, isNeutral)
+                        End If
+
                         If snap.DgvHeaderHeight > 0 Then
                             Dim targetHeaderH As Integer = If(isNeutral, snap.DgvHeaderHeight, Math.Max(18, CInt(Math.Round(snap.DgvHeaderHeight * scaleY))))
                             If dgv.ColumnHeadersHeight <> targetHeaderH Then dgv.ColumnHeadersHeight = targetHeaderH
@@ -1487,6 +1527,22 @@ Public Class GenericResponsiveFormScaler
                             Dim targetCFont = GetCachedFont(snap.DgvCellFont.FontFamily, targetCellSize, snap.DgvCellFont.Style)
                             If Not Object.ReferenceEquals(dgv.DefaultCellStyle.Font, targetCFont) Then
                                 dgv.DefaultCellStyle.Font = targetCFont
+                            End If
+                        End If
+
+                        ' Search popup grids set an explicit RowsDefaultCellStyle.Font
+                        ' in the designer. That style takes precedence over
+                        ' DefaultCellStyle.Font, so scale it independently to keep
+                        ' lookup row text responsive too.
+                        If IsSearchOrChargeLookupGrid(dgv) AndAlso
+                           snap.DgvRowsFont IsNot Nothing Then
+                            Dim targetRowsSize As Single = If(isNeutral, snap.DgvRowsFont.Size,
+                                Math.Max(6.5!, CSng(Math.Round(snap.DgvRowsFont.Size * fontScale, 1))))
+                            Dim targetRowsFont = GetCachedFont(snap.DgvRowsFont.FontFamily,
+                                                               targetRowsSize,
+                                                               snap.DgvRowsFont.Style)
+                            If Not Object.ReferenceEquals(dgv.RowsDefaultCellStyle.Font, targetRowsFont) Then
+                                dgv.RowsDefaultCellStyle.Font = targetRowsFont
                             End If
                         End If
                     End If
@@ -1642,6 +1698,12 @@ Public Class GenericResponsiveFormScaler
         Return False
     End Function
 
+    Private Shared Function IsSearchOrChargeLookupGrid(ByVal dgv As DataGridView) As Boolean
+        If dgv Is Nothing Then Return False
+        Return dgv.Name.IndexOf("Search", StringComparison.OrdinalIgnoreCase) >= 0 OrElse
+               String.Equals(dgv.Name, "dgCharges", StringComparison.OrdinalIgnoreCase)
+    End Function
+
     Private Sub ApplyAdditionalFieldVisibility(ByVal ctl As Control)
         Dim popup As Control = ctl
         While popup IsNot Nothing AndAlso
@@ -1723,10 +1785,9 @@ Public Class GenericResponsiveFormScaler
         End If
         If viewportWidth <= 0 Then Return
 
-        ' Give visible columns a small optical increase over the exact viewport
-        ' fit. DataGridView will show its horizontal scrollbar only when this
-        ' extra proportional width cannot fit; otherwise there is no scrollbar.
-        Dim proportionalViewportWidth As Integer = Math.Max(viewportWidth, CInt(Math.Ceiling(viewportWidth * 1.02R)))
+        ' Use the full viewport without exceeding it so the final visible
+        ' CompanyList column is not clipped at the right edge.
+        Dim proportionalViewportWidth As Integer = viewportWidth
 
         Dim remainingWidth As Integer = proportionalViewportWidth
         Dim remainingColumns As Integer = visibleCount
@@ -1802,6 +1863,3 @@ Public Class GenericResponsiveFormScaler
         End If
     End Sub
 End Class
-
-
-
