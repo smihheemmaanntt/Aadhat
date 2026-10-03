@@ -108,6 +108,10 @@ End Class
 Public Class GenericResponsiveFormScaler
     Implements IDisposable
 
+    <DllImport("user32.dll", EntryPoint:="GetDpiForWindow", ExactSpelling:=True)>
+    Private Shared Function GetDpiForWindowNative(ByVal hwnd As IntPtr) As UInteger
+    End Function
+
     ''' <summary>
     ''' Snapshot of a control's designer metrics.
     ''' </summary>
@@ -1608,9 +1612,16 @@ Public Class GenericResponsiveFormScaler
     Private Sub AlignDateTimePickerHeights()
         If _targetForm Is Nothing Then Return
 
+        ' Many forms intentionally overlay a date TextBox on a DateTimePicker,
+        ' leaving only the picker drop-down visible. At standard DPI, preserve
+        ' that native drop-down strip while the form resolution scales the input.
+        Dim restoreOverlayPickerWidth As Boolean = IsAtStandardDpi()
+
         For Each kvp In _controlMap
             Dim picker As DateTimePicker = TryCast(kvp.Key, DateTimePicker)
             If picker Is Nothing OrElse picker.IsDisposed OrElse Not picker.Visible OrElse picker.Parent Is Nothing Then Continue For
+
+            Dim pickerSnapshot As ControlSnapshot = kvp.Value
 
             Dim matchingTextBox As TextBox = Nothing
             Dim bestVerticalDistance As Integer = Integer.MaxValue
@@ -1633,11 +1644,69 @@ Public Class GenericResponsiveFormScaler
             Next
 
             If matchingTextBox Is Nothing Then Continue For
+            Dim textBoxSnapshot As ControlSnapshot = Nothing
+            Dim pickerSnapshotBounds As Rectangle = pickerSnapshot.Bounds
+            Dim textBoxSnapshotBounds As Rectangle = Rectangle.Empty
+            Dim hasTextBoxSnapshot As Boolean = _controlMap.TryGetValue(matchingTextBox, textBoxSnapshot)
+            If hasTextBoxSnapshot Then textBoxSnapshotBounds = textBoxSnapshot.Bounds
+
             If picker.AutoSize Then picker.AutoSize = False
             If Not Object.ReferenceEquals(picker.Font, matchingTextBox.Font) Then picker.Font = matchingTextBox.Font
             If picker.Height <> matchingTextBox.Height Then picker.Height = matchingTextBox.Height
+
+            If restoreOverlayPickerWidth AndAlso hasTextBoxSnapshot AndAlso
+               IsDatePickerOverlayPair(pickerSnapshotBounds, textBoxSnapshotBounds) Then
+                ' Match the designer's overlay order explicitly: the editable
+                ' TextBox is above the native picker, whose right-side button
+                ' remains outside the TextBox bounds and clickable.
+                matchingTextBox.BringToFront()
+
+                ' At standard DPI the TextBox scales with the form's resolution,
+                ' but the native drop-down button does not. Keep the measured
+                ' designer overhang (picker right edge minus TextBox right edge)
+                ' at its native width instead of multiplying it by scaleX.
+                Dim buttonStrip As Integer = pickerSnapshotBounds.Right - textBoxSnapshotBounds.Right
+                Dim targetWidth As Integer = Math.Max(1, matchingTextBox.Right - picker.Left + buttonStrip)
+                If picker.Width <> targetWidth Then picker.Width = targetWidth
+            End If
         Next
     End Sub
+
+    Private Function IsAtStandardDpi() As Boolean
+        Try
+            If _targetForm.IsHandleCreated Then
+                Dim windowDpi As UInteger = GetDpiForWindowNative(_targetForm.Handle)
+                If windowDpi > 0 Then Return windowDpi <= 96UI
+            End If
+        Catch ex As EntryPointNotFoundException
+            ' Older Windows versions do not expose GetDpiForWindow.
+        Catch ex As DllNotFoundException
+            ' Fall back to WinForms graphics DPI below.
+        Catch
+            ' Fall back to WinForms graphics DPI below.
+        End Try
+
+        Try
+            Using graphics As Graphics = _targetForm.CreateGraphics()
+                Return graphics.DpiX <= 96.0F
+            End Using
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Private Shared Function IsDatePickerOverlayPair(ByVal pickerBounds As Rectangle,
+                                                     ByVal textBoxBounds As Rectangle) As Boolean
+        If pickerBounds.Width <= textBoxBounds.Width OrElse pickerBounds.Right <= textBoxBounds.Right OrElse
+           pickerBounds.Height <= 0 OrElse textBoxBounds.Height <= 0 Then Return False
+        If Math.Abs(pickerBounds.Left - textBoxBounds.Left) > 8 Then Return False
+        If Math.Abs(pickerBounds.Top - textBoxBounds.Top) > 3 Then Return False
+
+        Dim horizontalOverlap As Integer = Math.Max(0, Math.Min(pickerBounds.Right, textBoxBounds.Right) -
+                                                       Math.Max(pickerBounds.Left, textBoxBounds.Left))
+        Dim smallerWidth As Integer = Math.Min(pickerBounds.Width, textBoxBounds.Width)
+        Return smallerWidth > 0 AndAlso horizontalOverlap >= CInt(Math.Ceiling(smallerWidth * 0.9))
+    End Function
 
     ' MainScreenForm's navigation buttons are individually positioned in the
     ' designer. At taller aspect ratios that fixed stack leaves a blank block

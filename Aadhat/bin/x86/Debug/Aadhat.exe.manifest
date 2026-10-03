@@ -4,7 +4,7 @@
   <description asmv2:iconFile="aadhat_Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Aadhat" version="9.26.10.1" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="Aadhat" version="9.26.10.3" language="neutral" processorArchitecture="x86" />
     <commandLine file="Aadhat.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -153,14 +153,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aadhat.exe" size="11300352">
-      <assemblyIdentity name="Aadhat" version="9.26.10.1" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aadhat.exe" size="11300864">
+      <assemblyIdentity name="Aadhat" version="9.26.10.3" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>XjbT8G3lKeUd/CkWYWQIDKMMvxk=</dsig:DigestValue>
+        <dsig:DigestValue>MpX3u8VHZpn2mi3hGQkT/EDPQUU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -110,7 +110,48 @@ Public Class SpeedSale
             txtEntryDate.SelectAll()
         End If
         initialDisplayComplete = True
+        QueueStandardDpiEntryDateAlignment()
     End Sub
+
+    Private _entryDateAlignmentQueued As Boolean
+
+    Private Sub SpeedSale_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        QueueStandardDpiEntryDateAlignment()
+    End Sub
+
+    Private Sub QueueStandardDpiEntryDateAlignment()
+        If _entryDateAlignmentQueued OrElse IsDisposed OrElse Not IsHandleCreated Then Return
+        _entryDateAlignmentQueued = True
+        Try
+            BeginInvoke(New MethodInvoker(AddressOf ApplyStandardDpiEntryDateAlignment))
+        Catch
+            _entryDateAlignmentQueued = False
+        End Try
+    End Sub
+
+    Private Sub ApplyStandardDpiEntryDateAlignment()
+        _entryDateAlignmentQueued = False
+        If IsDisposed OrElse txtEntryDate Is Nothing OrElse dtp1 Is Nothing OrElse txtItem Is Nothing Then Return
+        If GetCurrentDpiX() > 96.0F Then Return
+
+        ' The shared scaler trims single-line textboxes slightly. Restore 2px
+        ' only for this date input at 100% DPI, using its neighboring row input
+        ' as the responsive height baseline so repeated resizes never accumulate.
+        Dim targetHeight As Integer = Math.Max(1, txtItem.Height + 2)
+        If txtEntryDate.Height <> targetHeight Then txtEntryDate.Height = targetHeight
+        If dtp1.AutoSize Then dtp1.AutoSize = False
+        If dtp1.Height <> targetHeight Then dtp1.Height = targetHeight
+    End Sub
+
+    Private Function GetCurrentDpiX() As Single
+        Try
+            Using graphics As Graphics = Me.CreateGraphics()
+                Return graphics.DpiX
+            End Using
+        Catch
+            Return 120.0F
+        End Try
+    End Function
 
     Private Sub SpeedSale_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Top = 0 : Me.Left = 0 'System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
