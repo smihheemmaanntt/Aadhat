@@ -351,6 +351,10 @@ Public Class ReceiptForm
         dgMode.ColumnCount = 2
         dgMode.Columns(0).Name = "ID" : dgMode.Columns(0).Visible = False
         dgMode.Columns(1).Name = "Mode Name" : dgMode.Columns(1).Width = 262
+        ' Match the live responsive metrics used by the account lookup grid.
+        dgMode.DefaultCellStyle.Font = DgAccountSearch.DefaultCellStyle.Font
+        dgMode.RowsDefaultCellStyle.Font = DgAccountSearch.RowsDefaultCellStyle.Font
+        dgMode.RowTemplate.Height = DgAccountSearch.RowTemplate.Height
         RetriveMode()
     End Sub
 
@@ -1807,7 +1811,7 @@ Public Class ReceiptForm
         GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(GetCellText(row, 4) & "(" & GetCellText(row, 2) & ")-" & txtEntryDate.Text, "Receipt.pdf")
         retrive2(Val(GetCellText(row, 1))) : PrintReceipts()
         Pdf_Genrate.ExportReport("\Trans.rpt")
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
     End Function
 
     Private Function GetCompanyOtherNameForOfficial() As String

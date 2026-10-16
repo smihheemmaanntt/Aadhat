@@ -1,4 +1,4 @@
-Imports System
+﻿Imports System
 Imports System.Data
 Imports System.Collections.Generic
 Imports Newtonsoft.Json.Linq
@@ -292,7 +292,42 @@ Public Module WhatsAppOfficialApi
         Return parsedUrl.AbsoluteUri
     End Function
 
-    Public Function SendSmartMessage(ByVal vendorUid As String, ByVal accessToken As String, ByVal phoneNumber As String, ByVal messageBody As String, ByVal pdfUrl As String, ByVal templateName As String, ByVal templateLanguage As String, ByVal fields As List(Of String), ByRef apiResponse As String, Optional ByVal documentName As String = "Bill.pdf", Optional ByVal bodyParamCount As Integer = -1) As Boolean
+    Private Const UploadedMediaReferenceHost As String = "wa-media-id.invalid"
+
+    Public Function BuildUploadedMediaIdReference(ByVal mediaId As String, Optional ByVal traceId As String = "") As String
+        Dim value As String = SafeTrim(mediaId)
+        If value = "" Then Return ""
+        Dim reference As String = "https://" & UploadedMediaReferenceHost & "/" & Uri.EscapeDataString(value)
+        traceId = SafeTrim(traceId)
+        If traceId <> "" Then reference &= "?trace_id=" & Uri.EscapeDataString(traceId)
+        Return reference
+    End Function
+
+    Public Function GetUploadedMediaIdFromReference(ByVal documentReference As String) As String
+        Dim parsedUrl As Uri = Nothing
+        If Uri.TryCreate(SafeTrim(documentReference), UriKind.Absolute, parsedUrl) = False OrElse
+           parsedUrl.Scheme <> Uri.UriSchemeHttps OrElse
+           String.Equals(parsedUrl.Host, UploadedMediaReferenceHost, StringComparison.OrdinalIgnoreCase) = False Then Return ""
+        Dim mediaId As String = Uri.UnescapeDataString(parsedUrl.AbsolutePath.Trim("/"c))
+        If mediaId.Contains("/") OrElse mediaId.Contains("?") OrElse mediaId.Contains("#") Then Return ""
+        Return mediaId.Trim()
+    End Function
+
+    Public Function GetUploadTraceIdFromReference(ByVal documentReference As String) As String
+        Dim parsedUrl As Uri = Nothing
+        If Uri.TryCreate(SafeTrim(documentReference), UriKind.Absolute, parsedUrl) = False OrElse
+           parsedUrl.Scheme <> Uri.UriSchemeHttps OrElse
+           String.Equals(parsedUrl.Host, UploadedMediaReferenceHost, StringComparison.OrdinalIgnoreCase) = False Then Return ""
+        For Each queryPart As String In parsedUrl.Query.TrimStart("?"c).Split("&"c)
+            Dim pair As String() = queryPart.Split(New Char() {"="c}, 2)
+            If pair.Length = 2 AndAlso String.Equals(Uri.UnescapeDataString(pair(0)), "trace_id", StringComparison.OrdinalIgnoreCase) Then
+                Return Uri.UnescapeDataString(pair(1))
+            End If
+        Next
+        Return ""
+    End Function
+
+    Public Function SendSmartMessage(ByVal vendorUid As String, ByVal accessToken As String, ByVal phoneNumber As String, ByVal messageBody As String, ByVal pdfUrl As String, ByVal templateName As String, ByVal templateLanguage As String, ByVal fields As List(Of String), ByRef apiResponse As String, Optional ByVal documentName As String = "Bill.pdf", Optional ByVal bodyParamCount As Integer = -1, Optional ByVal documentMediaId As String = "", Optional ByVal clientTraceId As String = "") As Boolean
         Try
             vendorUid = SafeTrim(vendorUid)
             accessToken = SafeTrim(accessToken)
@@ -306,33 +341,39 @@ Public Module WhatsAppOfficialApi
             If bodyParamCount >= 0 Then sendCount = bodyParamCount
             If sendCount < 0 Then sendCount = 0
 
+            ' Print Bills and older screens pass the upload result through pdfUrl.
+            ' Detect our internal media-ID reference here so it is never sent to Meta as a link.
+            If SafeTrim(clientTraceId) = "" Then clientTraceId = WhatsAppOfficialApi.GetUploadTraceIdFromReference(pdfUrl)
+            documentMediaId = SafeTrim(documentMediaId)
+            If documentMediaId = "" AndAlso SafeTrim(pdfUrl) <> "" Then
+                documentMediaId = WhatsAppOfficialApi.GetUploadedMediaIdFromReference(pdfUrl)
+            End If
+            If documentMediaId <> "" Then pdfUrl = ""
+            If SafeTrim(pdfUrl) <> "" AndAlso documentMediaId = "" Then
+                apiResponse = "PDF was not uploaded to WhatsApp Cloud API. No media ID was returned, so the public URL was not sent."
+                WriteSendLog(vendorUid, Nothing, "", apiResponse)
+                Return False
+            End If
+
             Dim url As String = BaseUrl & vendorUid & "/contact/send-smart-message?token=" & Uri.EscapeDataString(accessToken)
+            If SafeTrim(clientTraceId) <> "" Then url &= "&client_trace_id=" & Uri.EscapeDataString(SafeTrim(clientTraceId))
             Dim payload As New JObject()
             payload("phone_number") = New JValue(NormalizeMobile(phoneNumber))
             payload("message_body") = New JValue(BuildRequiredMessageBody(messageBody, fields, templateName))
             payload("template_name") = New JValue(templateName)
             payload("template_language") = New JValue(NormalizeTemplateLanguage(templateLanguage))
+            If SafeTrim(clientTraceId) <> "" Then payload("client_trace_id") = New JValue(SafeTrim(clientTraceId))
             For i As Integer = 1 To sendCount
                 Dim fieldValue As String = ""
                 If fields.Count >= i Then fieldValue = fields(i - 1)
                 If SafeTrim(fieldValue) = "" Then fieldValue = "-"
+                If WhatsAppOfficialApi.GetUploadedMediaIdFromReference(fieldValue) <> "" Then fieldValue = "PDF attached"
                 payload("field_" & i.ToString()) = New JValue(fieldValue)
             Next
             payload("body_param_count") = New JValue(sendCount)
 
-            If SafeTrim(pdfUrl) <> "" Then
-                If IsTemplateSamplePdfUrl(pdfUrl) Then
-                    apiResponse = "Sample PDF is only for template approval. Please generate/upload the real Aadhat PDF before sending."
-                    WriteSendLog(vendorUid, payload, "", apiResponse)
-                    Return False
-                End If
-                Dim documentUrl As String = NormalizeDocumentHeaderUrl(pdfUrl)
-                If documentUrl = "" Then
-                    apiResponse = "PDF upload did not return a valid HTTPS document URL. Please try sending again."
-                    WriteSendLog(vendorUid, payload, "", apiResponse)
-                    Return False
-                End If
-                payload("header_document") = New JValue(documentUrl)
+            If documentMediaId <> "" Then
+                payload("header_document_media_id") = New JValue(documentMediaId)
                 payload("header_document_name") = New JValue(CleanDocumentName(documentName, "Bill.pdf"))
             End If
 
@@ -626,6 +667,162 @@ Public Module WhatsAppOfficialSendHelper
         End Function
     End Class
 
+    ' Upload the PDF through Wahsoft's authenticated API; Wahsoft uploads it to Meta and returns a media ID.
+    Public Function UploadTemporaryDocument(ByVal filePath As String) As String
+        Dim uploadWatch As New System.Diagnostics.Stopwatch()
+        Dim uploadTraceId As String = Guid.NewGuid().ToString("N")
+        Dim uploadFileName As String = ""
+        Dim uploadBytes As Long = 0
+        Dim uploadMediaIdFingerprint As String = ""
+        Dim uploadResult As String = "FAILED"
+        Try
+            If filePath Is Nothing OrElse filePath.Trim() = "" OrElse System.IO.File.Exists(filePath) = False Then
+                uploadResult = "FAILED: local PDF file missing"
+                Return "WhatsApp PDF upload failed: local PDF file was not found."
+            End If
+
+            Dim fileInfo As New System.IO.FileInfo(filePath)
+            uploadFileName = fileInfo.Name
+            uploadBytes = fileInfo.Length
+            uploadWatch.Start()
+            If fileInfo.Length > 100L * 1024L * 1024L Then
+                uploadResult = "FAILED: PDF exceeds 100 MB limit"
+                Return "WhatsApp PDF upload failed: PDF exceeds WhatsApp's 100 MB document limit."
+            End If
+            Dim vendorUid As String = WhatsAppOfficialDb.GetSetting("VendorUid").Trim()
+            Dim accessToken As String = WhatsAppOfficialDb.GetSetting("AccessToken").Trim()
+            If vendorUid = "" OrElse accessToken = "" Then
+                uploadResult = "FAILED: API credentials missing"
+                Return "WhatsApp PDF upload failed: Official API Vendor ID / Token is missing."
+            End If
+
+            Dim boundary As String = "----AadhatWhatsAppMedia" & DateTime.UtcNow.Ticks.ToString()
+            Dim fileName As String = System.IO.Path.GetFileName(filePath).Replace("""", "").Replace(vbCr, "").Replace(vbLf, "")
+            Dim encoding As System.Text.Encoding = System.Text.Encoding.UTF8
+            Dim headerBytes As Byte() = encoding.GetBytes("--" & boundary & vbCrLf &
+                "Content-Disposition: form-data; name=""file""; filename=""" & fileName & """" & vbCrLf &
+                "Content-Type: application/pdf" & vbCrLf & vbCrLf)
+            Dim footerBytes As Byte() = encoding.GetBytes(vbCrLf & "--" & boundary & "--" & vbCrLf)
+            Dim endpoint As String = WhatsAppOfficialApi.BaseUrl & Uri.EscapeDataString(vendorUid) & "/whatsapp/media/upload?token=" & Uri.EscapeDataString(accessToken) & "&client_trace_id=" & Uri.EscapeDataString(uploadTraceId)
+            System.Net.ServicePointManager.Expect100Continue = False
+            System.Net.ServicePointManager.SecurityProtocol = CType(3072, System.Net.SecurityProtocolType)
+            Dim request As System.Net.HttpWebRequest = CType(System.Net.WebRequest.Create(endpoint), System.Net.HttpWebRequest)
+            request.Method = "POST"
+            request.Headers.Add("X-Aadhat-Trace-Id", uploadTraceId)
+            request.ContentType = "multipart/form-data; boundary=" & boundary
+            request.Accept = "application/json"
+            request.UserAgent = "Aadhat-WhatsApp-Official/2.0"
+            request.KeepAlive = True
+            request.AllowWriteStreamBuffering = False
+            request.ServicePoint.Expect100Continue = False
+            request.Timeout = 180000
+            request.ReadWriteTimeout = 180000
+            request.ContentLength = CLng(headerBytes.Length) + fileInfo.Length + CLng(footerBytes.Length)
+
+            Using requestStream As System.IO.Stream = request.GetRequestStream()
+                requestStream.Write(headerBytes, 0, headerBytes.Length)
+                Using fileStream As New System.IO.FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read)
+                    Dim buffer(262143) As Byte
+                    Dim bytesRead As Integer = fileStream.Read(buffer, 0, buffer.Length)
+                    While bytesRead > 0
+                        requestStream.Write(buffer, 0, bytesRead)
+                        bytesRead = fileStream.Read(buffer, 0, buffer.Length)
+                    End While
+                End Using
+                requestStream.Write(footerBytes, 0, footerBytes.Length)
+            End Using
+
+            Dim responseText As String = ""
+            Using response As System.Net.HttpWebResponse = CType(request.GetResponse(), System.Net.HttpWebResponse)
+                Using responseStream As System.IO.Stream = response.GetResponseStream()
+                    Using reader As New System.IO.StreamReader(responseStream, encoding)
+                        responseText = reader.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+            If IsTemporaryJsonResponse(responseText) = False Then
+                uploadResult = "FAILED: Wahsoft returned non-JSON response"
+                Return "WhatsApp PDF upload failed: Wahsoft API returned a non-JSON response."
+            End If
+
+            Dim responseJson As JObject = JObject.Parse(responseText)
+            If responseJson("result") Is Nothing OrElse responseJson("result").ToString().ToLowerInvariant() <> "success" Then
+                uploadResult = "FAILED: Wahsoft API returned failure"
+                If responseJson("message") IsNot Nothing Then Return "WhatsApp PDF upload failed: " & responseJson("message").ToString()
+                Return "WhatsApp PDF upload failed: " & responseText
+            End If
+            Dim dataToken As JToken = responseJson("data")
+            Dim mediaIdToken As JToken = Nothing
+            If TypeOf dataToken Is JObject Then mediaIdToken = CType(dataToken, JObject)("media_id")
+            If mediaIdToken Is Nothing OrElse mediaIdToken.ToString().Trim() = "" Then
+                uploadResult = "FAILED: Graph media ID missing from response"
+                Return "WhatsApp PDF upload failed: Wahsoft did not return a WhatsApp media ID."
+            End If
+            Using sha As New System.Security.Cryptography.SHA256Managed()
+                Dim fingerprintBytes As Byte() = sha.ComputeHash(encoding.GetBytes(mediaIdToken.ToString()))
+                uploadMediaIdFingerprint = BitConverter.ToString(fingerprintBytes).Replace("-", "").Substring(0, 12).ToLowerInvariant()
+            End Using
+            uploadResult = "SUCCESS: Meta media ID received"
+            Return WhatsAppOfficialApi.BuildUploadedMediaIdReference(mediaIdToken.ToString(), uploadTraceId)
+        Catch ex As System.Net.WebException
+            Dim responseStatus As String = ""
+            Try
+                Dim httpResponse As System.Net.HttpWebResponse = TryCast(ex.Response, System.Net.HttpWebResponse)
+                If httpResponse IsNot Nothing Then responseStatus = " HTTP " & CInt(httpResponse.StatusCode).ToString()
+            Catch
+            End Try
+            uploadResult = "FAILED: " & ex.Status.ToString() & responseStatus
+            Dim detail As String = ex.Message
+            Try
+                If ex.Response IsNot Nothing Then
+                    Using responseStream As System.IO.Stream = ex.Response.GetResponseStream()
+                        If responseStream IsNot Nothing Then
+                            Using reader As New System.IO.StreamReader(responseStream)
+                                detail &= " - " & reader.ReadToEnd()
+                            End Using
+                        End If
+                    End Using
+                End If
+            Catch
+            End Try
+            Return "WhatsApp PDF upload failed: " & detail
+        Catch ex As Exception
+            uploadResult = "FAILED: " & ex.GetType().Name
+            Return "WhatsApp PDF upload failed: " & ex.Message
+        Finally
+            Try
+                Dim logDir As String = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "OfficialApiLogs")
+                If System.IO.Directory.Exists(logDir) = False Then System.IO.Directory.CreateDirectory(logDir)
+                Dim logFile As String = System.IO.Path.Combine(logDir, "print_bill_official_api_" & DateTime.Now.ToString("yyyyMMdd") & ".txt")
+                Dim diagnostic As String = "UPLOAD " & DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") &
+                    " | TraceId=" & uploadTraceId &
+                    " | File=" & uploadFileName &
+                    " | Bytes=" & uploadBytes.ToString() &
+                    " | DurationMs=" & uploadWatch.ElapsedMilliseconds.ToString() &
+                    " | MediaIdFingerprint=" & uploadMediaIdFingerprint &
+                    " | Result=" & uploadResult & Environment.NewLine
+                System.IO.File.AppendAllText(logFile, diagnostic)
+            Catch
+            End Try
+        End Try
+    End Function
+
+    ' Temporary upload for WhatsApp Official API documents. From Mobile flows do not call this helper.
+    Public Function UploadTemporaryOfficialDocument(ByVal filePath As String) As String
+        Return UploadTemporaryDocument(filePath)
+    End Function
+
+    ' Compatibility alias for existing invoice screens; the PDF is uploaded to Meta through Wahsoft.
+    Public Function UploadDocumentToWahsoft(ByVal filePath As String) As String
+        Return UploadTemporaryDocument(filePath)
+    End Function
+
+    Private Function IsTemporaryJsonResponse(ByVal responseString As String) As Boolean
+        If responseString Is Nothing Then Return False
+        Dim trimmed As String = responseString.Trim()
+        Return trimmed.StartsWith("{") OrElse trimmed.StartsWith("[")
+    End Function
+
     Public Sub LoadOfficialTemplateCombo(ByVal combo As System.Windows.Forms.ComboBox, ByVal label As System.Windows.Forms.Label, ByVal localType As String, ByVal preferredLanguage As String, Optional ByVal documentOnly As Boolean = True)
         If combo Is Nothing Then Exit Sub
         combo.Items.Clear()
@@ -698,7 +895,8 @@ Public Module WhatsAppOfficialSendHelper
             Return False
         End If
 
-        If pdfUrl.Trim() <> "" AndAlso pdfUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
+        Dim documentMediaId As String = WhatsAppOfficialApi.GetUploadedMediaIdFromReference(pdfUrl)
+        If pdfUrl.Trim() <> "" AndAlso documentMediaId = "" AndAlso pdfUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
             apiResponse = "PDF upload failed: " & pdfUrl
             Return False
         End If
@@ -719,7 +917,8 @@ Public Module WhatsAppOfficialSendHelper
         If sendCount <= 0 Then sendCount = templateParamCount
         If sendCount <= 0 Then sendCount = 1
 
-        Dim fields As List(Of String) = BuildFields(localType, parameterFields, accountName, entryDate, amount, pdfUrl, extraValue, mobile)
+        Dim pdfFieldValue As String = If(documentMediaId = "", pdfUrl, "PDF attached")
+        Dim fields As List(Of String) = BuildFields(localType, parameterFields, accountName, entryDate, amount, pdfFieldValue, extraValue, mobile)
         While fields.Count < sendCount
             fields.Add("-")
         End While
@@ -727,7 +926,7 @@ Public Module WhatsAppOfficialSendHelper
 
         Dim serviceMessage As String = ExpandTemplateBody(templateBody, fields)
         If serviceMessage.Trim() = "" Then serviceMessage = accountName
-        Return WhatsAppOfficialApi.SendSmartMessage(vendorUid, accessToken, mobile, serviceMessage, pdfUrl, templateCode, templateLanguage, fields, apiResponse, If(documentName.Trim() = "", DefaultDocumentName(localType), documentName), sendCount)
+        Return WhatsAppOfficialApi.SendSmartMessage(vendorUid, accessToken, mobile, serviceMessage, If(documentMediaId = "", pdfUrl, ""), templateCode, templateLanguage, fields, apiResponse, If(documentName.Trim() = "", DefaultDocumentName(localType), documentName), sendCount, documentMediaId, WhatsAppOfficialApi.GetUploadTraceIdFromReference(pdfUrl))
     End Function
 
     Public Function SendAadhatText(ByVal localType As String, ByVal moduleName As String, ByVal mobileNo As String, ByVal accountName As String, ByVal entryDate As String, ByVal amount As String, ByVal messageText As String, ByRef apiResponse As String, Optional ByVal preferredLanguage As String = "", Optional ByVal extraValue As String = "") As Boolean

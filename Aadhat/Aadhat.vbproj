@@ -723,6 +723,12 @@
     <Compile Include="Final Accounting\Trial Balance Grouped.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Final Accounting\Trial Balance Movement.Designer.vb">
+      <DependentUpon>Trial Balance Movement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Final Accounting\Trial Balance Movement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Final Accounting\Group Summary.Designer.vb">
       <DependentUpon>Group Summary.vb</DependentUpon>
     </Compile>
@@ -1603,6 +1609,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Final Accounting\Trial Balance Grouped.resx">
       <DependentUpon>Trial Balance Grouped.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Final Accounting\Trial Balance Movement.resx">
+      <DependentUpon>Trial Balance Movement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Final Accounting\Group Summary.resx">
       <DependentUpon>Group Summary.vb</DependentUpon>

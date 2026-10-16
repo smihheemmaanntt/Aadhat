@@ -675,7 +675,7 @@ Public Class CrateCrateAccountCumMarkaLedger
         Return "91" & mobile
     End Function
 
-    Private Function ExportCrateLedgerPdfForMobile() As String
+    Private Function ExportCrateLedgerPdfForMobile(Optional ByVal officialApi As Boolean = False) As String
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         If Directory.Exists(directoryName) Then
             For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
@@ -686,7 +686,9 @@ Public Class CrateCrateAccountCumMarkaLedger
         GlobalData.PdfName = txtAccount.Text & " Crate Ledger" & "-" & txtFromDate.Text & ".pdf"
         PrintRecord()
         Pdf_Genrate.ExportReport("\AccountWiseCrate.rpt")
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Sub SendPhoneMsgzData()
@@ -716,7 +718,7 @@ Public Class CrateCrateAccountCumMarkaLedger
             MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             Exit Sub
         End If
-        Dim fileUrl As String = ExportCrateLedgerPdfForMobile()
+        Dim fileUrl As String = ExportCrateLedgerPdfForMobile(True)
         If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
             MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Official API")
             Exit Sub

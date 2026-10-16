@@ -1,4 +1,5 @@
 Imports System.IO
+Imports System.Drawing.Printing
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
@@ -56,15 +57,26 @@ Public Class Report_Viewer
         End Try
     End Sub
     Sub PrintDirect(ByRef reportName As String)
-
+        Dim printReportDocument As ReportDocument = Nothing
         Try
-            Dim Rpt As New ReportDocument()   ' ✅ ALWAYS NEW OBJECT
+            If String.IsNullOrEmpty(reportName) OrElse reportName.Trim() = String.Empty Then
+                MsgBox("Report is not ready for printing.", MsgBoxStyle.Exclamation, "Print Report")
+                Exit Sub
+            End If
 
-            Rpt.Load(Application.StartupPath & reportName)
+            Dim reportPath As String = Path.Combine(Application.StartupPath, reportName.TrimStart("\"c, "/"c))
+            If Not File.Exists(reportPath) Then
+                MsgBox("Report file not found: " & reportPath, MsgBoxStyle.Critical, "Print Report")
+                Exit Sub
+            End If
+
+            'Use a separate document for printing so the preview's report stays alive.
+            printReportDocument = New ReportDocument()
+            printReportDocument.Load(reportPath)
 
             '==== CONNECTION ====
             Dim crConnectionInfo As New ConnectionInfo()
-            Dim CrTables As Tables = Rpt.Database.Tables
+            Dim CrTables As Tables = printReportDocument.Database.Tables
 
             For Each CrTable As Table In CrTables
                 Dim crtableLogoninfo As TableLogOnInfo = CrTable.LogOnInfo
@@ -80,24 +92,24 @@ Public Class Report_Viewer
                 Exit Sub
             End If
 
-            Rpt.SetDataSource(dsCustomers.Tables("Printing"))
+            printReportDocument.SetDataSource(dsCustomers.Tables("Printing"))
 
             '==== PARAMETERS ====
-            Rpt.SetParameterValue("CompName", compname)
-            Rpt.SetParameterValue("Mob1", Mob1)
-            Rpt.SetParameterValue("Mob2", Mob2)
-            Rpt.SetParameterValue("Address", Address)
-            Rpt.SetParameterValue("City", City)
-            Rpt.SetParameterValue("State", State)
-            Rpt.SetParameterValue("AddressHindi", AddressHindi)
-            Rpt.SetParameterValue("CityHindi", CityHindi)
-            Rpt.SetParameterValue("StateHindi", StateHindi)
-            Rpt.SetParameterValue("HindiCompanyName", compnameHindi)
+            printReportDocument.SetParameterValue("CompName", compname)
+            printReportDocument.SetParameterValue("Mob1", Mob1)
+            printReportDocument.SetParameterValue("Mob2", Mob2)
+            printReportDocument.SetParameterValue("Address", Address)
+            printReportDocument.SetParameterValue("City", City)
+            printReportDocument.SetParameterValue("State", State)
+            printReportDocument.SetParameterValue("AddressHindi", AddressHindi)
+            printReportDocument.SetParameterValue("CityHindi", CityHindi)
+            printReportDocument.SetParameterValue("StateHindi", StateHindi)
+            printReportDocument.SetParameterValue("HindiCompanyName", compnameHindi)
 
             '==== FONT SCALE ====
             Dim fontScaleFactor As Single = 1.0
 
-            For Each section As Section In Rpt.ReportDefinition.Sections
+            For Each section As Section In printReportDocument.ReportDefinition.Sections
                 For Each obj As Object In section.ReportObjects
                     If TypeOf obj Is TextObject Then
                         Dim textObj As TextObject = CType(obj, TextObject)
@@ -109,11 +121,22 @@ Public Class Report_Viewer
             '==== PRINT DIALOG ====
             Using dialog1 As New PrintDialog()
                 dialog1.AllowSomePages = True
+                dialog1.AllowPrintToFile = False
+
+                If PrinterSettings.InstalledPrinters.Count = 0 Then
+                    MsgBox("Windows me koi printer installed nahi hai. Printer install/online karke dobara try karein.", MsgBoxStyle.Exclamation, "Printer unavailable")
+                    Exit Sub
+                End If
 
                 If dialog1.ShowDialog() = DialogResult.OK Then
-                    Rpt.PrintOptions.PrinterName = dialog1.PrinterSettings.PrinterName
+                    If Not dialog1.PrinterSettings.IsValid Then
+                        MsgBox("Selected printer available nahi hai. Printers & scanners me printer status check karein.", MsgBoxStyle.Exclamation, "Printer unavailable")
+                        Exit Sub
+                    End If
 
-                    Rpt.PrintToPrinter(
+                    printReportDocument.PrintOptions.PrinterName = dialog1.PrinterSettings.PrinterName
+
+                    printReportDocument.PrintToPrinter(
                         dialog1.PrinterSettings.Copies,
                         dialog1.PrinterSettings.Collate,
                         dialog1.PrinterSettings.FromPage,
@@ -122,14 +145,19 @@ Public Class Report_Viewer
                 End If
             End Using
 
-            '==== CLEANUP (ONLY ONCE) ====
-            Rpt.Close()
-            Rpt.Dispose()
             Dim PreviewClose As String = clsFun.ExecScalarStr( _
                  "SELECT IFNULL(PreviewClose,'Yes') FROM Controls LIMIT 1")
             If PreviewClose = "Yes" Then Me.Close()
         Catch ex As Exception
-            MsgBox("Error: " & ex.Message)
+            MsgBox("Print failed: " & ex.Message, MsgBoxStyle.Critical, "Print Report")
+        Finally
+            If printReportDocument IsNot Nothing Then
+                Try
+                    printReportDocument.Close()
+                Finally
+                    printReportDocument.Dispose()
+                End Try
+            End If
         End Try
 
     End Sub

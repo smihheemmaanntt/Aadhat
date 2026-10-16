@@ -11,6 +11,8 @@ Public Class Super_Sale_Register
     Private Const MobileSendingMethod As String = "From Mobile"
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
+    Private WithEvents searchTimer As New Timer With {.Interval = 180}
+    Private pendingSearchCondition As String = String.Empty
 
     Public Sub New()
         InitializeComponent()
@@ -30,7 +32,7 @@ Public Class Super_Sale_Register
     End Sub
 
     Private Sub Super_Sale_Register_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-      If e.KeyCode = Keys.Escape Then
+        If e.KeyCode = Keys.Escape Then
             If isBackgroundWorkerRunning Then
                 Me.Hide()
                 Me.Top = 0 : Me.Left = 0
@@ -112,91 +114,93 @@ Public Class Super_Sale_Register
         Next
     End Sub
     Private Sub txtTotalSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtTotalSearch.KeyUp
-        If txtTotalSearch.Text.Trim() <> "" Then
-            retrive("And t.TotalAmount Like '" & txtTotalSearch.Text.Trim() & "%'")
-        End If
-        If txtTotalSearch.Text.Trim() = "" Then
-            retrive()
-        End If
+        QueueSearch("And t.TotalAmount Like '" & EscapeLikeValue(txtTotalSearch.Text.Trim()) & "%'")
     End Sub
     Private Sub txtItemSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtItemSearch.KeyUp
-        If txtItemSearch.Text.Trim() <> "" Then
-            retrive("And i.ItemName Like '" & txtItemSearch.Text.Trim() & "%'")
-        End If
-        If txtItemSearch.Text.Trim() = "" Then
-            retrive()
-        End If
+        QueueSearch("And i.ItemName Like '" & EscapeLikeValue(txtItemSearch.Text.Trim()) & "%'")
     End Sub
 
 
     Private Sub txtCustomerSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCustomerSearch.KeyUp
-        If txtCustomerSearch.Text.Trim() <> "" Then
-            retrive("And a.AccountName Like '" & txtCustomerSearch.Text.Trim() & "%'")
-        End If
-        If txtCustomerSearch.Text.Trim() = "" Then
-            retrive()
-        End If
+        QueueSearch("And a.AccountName Like '" & EscapeLikeValue(txtCustomerSearch.Text.Trim()) & "%'")
+    End Sub
+    Private Sub QueueSearch(ByVal condition As String)
+        pendingSearchCondition = If(condition.Replace("%", "").Replace("'", "").Trim() = String.Empty, String.Empty, condition)
+        searchTimer.Stop()
+        searchTimer.Start()
+    End Sub
+
+    Private Shared Function EscapeLikeValue(ByVal value As String) As String
+        Return value.Replace("'", "''").Replace("%", "[%]").Replace("_", "[_]")
+    End Function
+
+    Private Sub searchTimer_Tick(sender As Object, e As EventArgs) Handles searchTimer.Tick
+        searchTimer.Stop()
+        retrive(pendingSearchCondition)
     End Sub
     Dim recordCount As Integer = 0
     Public Sub retrive(Optional ByVal condtion As String = "")
-        dg1.Rows.Clear()
         Dim dt As New DataTable
         Dim RecordCount As Integer = 0
         dt = clsFun.ExecDataTable("Select * FROM Vouchers v INNER JOIN Transaction2 t ON v.id = t.VoucherID INNER JOIN Accounts a1 ON a1.ID = v.sallerID INNER JOIN Accounts a ON a.ID = t.AccountID INNER JOIN Items i ON i.ID = t.ItemID Where v.EntryDate Between '" & CDate(txtFromDate.Text).ToString("yyyy-MM-dd") & "' And '" & CDate(txtToDate.Text).ToString("yyyy-MM-dd") & "' and v.transtype='" & Me.Text & "' " & condtion & "  order by  v.InvoiceID,v.EntryDate ")
         Dim vchid As Integer = 0
         Try
             If dt.Rows.Count > 20 Then dg1.Columns(14).Width = 60 Else dg1.Columns(14).Width = 80
-            If dt.Rows.Count > 0 Then
+            dg1.SuspendLayout()
+            Try
                 dg1.Rows.Clear()
-                For i = 0 To dt.Rows.Count - 1
-                    '    Application.DoEvents()
-                    dg1.Rows.Add()
-                    With dg1.Rows(i)
-                        .Cells(0).Value = dt.Rows(i)("Voucherid").ToString()
-                        If i = 0 Then
-                            '   pb1.Value = i : pnlWait.Visible = True
-                            .Cells(1).Value = Format(dt.Rows(i)("EntryDate"), "dd-MM-yyyy")
-                            .Cells(2).Value = dt.Rows(i)("BillNo").ToString()
-                            .Cells(3).Value = dt.Rows(i)("VehicleNo").ToString()
-                            .Cells(4).Value = dt.Rows(i)("AccountName2").ToString()
-                            lblbillCount.Visible = True
-                            RecordCount = RecordCount + 1
-                        ElseIf vchid = dt.Rows(i)("Voucherid").ToString() Then
-                            '  pb1.Value = i
-                            .Cells(1).Value = ""
-                            .Cells(2).Value = ""
-                            .Cells(3).Value = ""
-                            .Cells(4).Value = ""
-                        Else
-                            '           pb1.Value = i
-                            .Cells(1).Value = Format(dt.Rows(i)("EntryDate"), "dd-MM-yyyy")
-                            .Cells(2).Value = dt.Rows(i)("BillNo").ToString()
-                            .Cells(3).Value = dt.Rows(i)("VehicleNo").ToString()
-                            .Cells(4).Value = dt.Rows(i)("AccountName2").ToString()
-                            RecordCount = RecordCount + 1
-                        End If
-                        .Cells(5).Value = dt.Rows(i)("ItemName2").ToString()
-                        .Cells(6).Value = dt.Rows(i)("Lot").ToString()
-                        .Cells(7).Value = dt.Rows(i)("AccountName3").ToString()
-                        .Cells(8).Value = Format(Val(dt.Rows(i)("Nug1").ToString()), "0.00")
-                        .Cells(9).Value = Format(Val(dt.Rows(i)("Weight").ToString()), "0.00")
-                        .Cells(10).Value = Format(Val(dt.Rows(i)("Rate1").ToString()), "0.00")
-                        .Cells(11).Value = dt.Rows(i)("Per1").ToString()
-                        .Cells(12).Value = Format(Val(dt.Rows(i)("Amount").ToString()), "0.00")
-                        .Cells(13).Value = Format(Val(dt.Rows(i)("Charges").ToString()), "0.00")
-                        .Cells(15).Value = Format(Val(dt.Rows(i)("TotalAmount1").ToString()), "0.00")
-                        .Cells(14).Value = Format(Val(.Cells(15).Value) - Val(Val(.Cells(13).Value) + Val(.Cells(12).Value)), "0.00")
-                        .Cells(1).readOnly = True : .Cells(2).readOnly = True
-                        .Cells(3).readOnly = True : .Cells(4).readOnly = True
-                        .Cells(5).readOnly = True : .Cells(6).readOnly = True
-                        .Cells(7).readOnly = True : .Cells(8).readOnly = True
-                        .Cells(9).readOnly = True : .Cells(10).readOnly = True
-                        .Cells(11).readOnly = True : .Cells(12).readOnly = True
-                        .Cells(13).readOnly = True : .Cells(14).readOnly = True
-                    End With
-                    vchid = dt.Rows(i)("Voucherid").ToString()
-                Next
-            End If
+                If dt.Rows.Count > 0 Then
+                    dg1.Rows.Add(dt.Rows.Count)
+                    For i = 0 To dt.Rows.Count - 1
+                        With dg1.Rows(i)
+                            .Cells(0).Value = dt.Rows(i)("Voucherid").ToString()
+                            If i = 0 Then
+                                '   pb1.Value = i : pnlWait.Visible = True
+                                .Cells(1).Value = Format(dt.Rows(i)("EntryDate"), "dd-MM-yyyy")
+                                .Cells(2).Value = dt.Rows(i)("BillNo").ToString()
+                                .Cells(3).Value = dt.Rows(i)("VehicleNo").ToString()
+                                .Cells(4).Value = dt.Rows(i)("AccountName2").ToString()
+                                lblbillCount.Visible = True
+                                RecordCount = RecordCount + 1
+                            ElseIf vchid = dt.Rows(i)("Voucherid").ToString() Then
+                                '  pb1.Value = i
+                                .Cells(1).Value = ""
+                                .Cells(2).Value = ""
+                                .Cells(3).Value = ""
+                                .Cells(4).Value = ""
+                            Else
+                                '           pb1.Value = i
+                                .Cells(1).Value = Format(dt.Rows(i)("EntryDate"), "dd-MM-yyyy")
+                                .Cells(2).Value = dt.Rows(i)("BillNo").ToString()
+                                .Cells(3).Value = dt.Rows(i)("VehicleNo").ToString()
+                                .Cells(4).Value = dt.Rows(i)("AccountName2").ToString()
+                                RecordCount = RecordCount + 1
+                            End If
+                            .Cells(5).Value = dt.Rows(i)("ItemName2").ToString()
+                            .Cells(6).Value = dt.Rows(i)("Lot").ToString()
+                            .Cells(7).Value = dt.Rows(i)("AccountName3").ToString()
+                            .Cells(8).Value = Format(Val(dt.Rows(i)("Nug1").ToString()), "0.00")
+                            .Cells(9).Value = Format(Val(dt.Rows(i)("Weight").ToString()), "0.00")
+                            .Cells(10).Value = Format(Val(dt.Rows(i)("Rate1").ToString()), "0.00")
+                            .Cells(11).Value = dt.Rows(i)("Per1").ToString()
+                            .Cells(12).Value = Format(Val(dt.Rows(i)("Amount").ToString()), "0.00")
+                            .Cells(13).Value = Format(Val(dt.Rows(i)("Charges").ToString()), "0.00")
+                            .Cells(15).Value = Format(Val(dt.Rows(i)("TotalAmount1").ToString()), "0.00")
+                            .Cells(14).Value = Format(Val(.Cells(15).Value) - Val(Val(.Cells(13).Value) + Val(.Cells(12).Value)), "0.00")
+                            .Cells(1).readOnly = True : .Cells(2).readOnly = True
+                            .Cells(3).readOnly = True : .Cells(4).readOnly = True
+                            .Cells(5).readOnly = True : .Cells(6).readOnly = True
+                            .Cells(7).readOnly = True : .Cells(8).readOnly = True
+                            .Cells(9).readOnly = True : .Cells(10).readOnly = True
+                            .Cells(11).readOnly = True : .Cells(12).readOnly = True
+                            .Cells(13).readOnly = True : .Cells(14).readOnly = True
+                        End With
+                        vchid = dt.Rows(i)("Voucherid").ToString()
+                    Next
+                End If
+            Finally
+                dg1.ResumeLayout()
+            End Try
             dt.Dispose()
         Catch ex As Exception
             MsgBox(ex.Message, vbOKOnly + vbInformation, "AADHAT")
@@ -876,11 +880,13 @@ Public Class Super_Sale_Register
         Return "91" & mobile
     End Function
 
-    Private Function ExportSuperSaleRegisterPdfForMobile(ByVal row As DataGridViewRow) As String
+    Private Function ExportSuperSaleRegisterPdfForMobile(ByVal row As DataGridViewRow, Optional ByVal officialApi As Boolean = False) As String
         GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(row.Cells(4).Value.ToString() & "(" & row.Cells(2).Value.ToString() & ")-" & txtFromDate.Text, "Bill.pdf")
         retrive3(row.Cells(1).Value) : PrintBills()
         Pdf_Genrate.ExportReport("\SuperSaleBeejak.rpt")
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Sub SendPhoneMsgzData()
@@ -933,7 +939,7 @@ Public Class Super_Sale_Register
                     .Cells(5).Value = "Invalid Mobile"
                     Continue For
                 End If
-                Dim fileUrl As String = ExportSuperSaleRegisterPdfForMobile(row)
+                Dim fileUrl As String = ExportSuperSaleRegisterPdfForMobile(row, True)
                 Dim apiResponse As String = ""
                 If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, Convert.ToString(.Cells(4).Value), txtFromDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
                     .Cells(5).Value = "Sent via Official API"

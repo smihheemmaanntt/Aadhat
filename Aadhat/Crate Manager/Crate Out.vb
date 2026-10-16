@@ -1202,7 +1202,7 @@ Public Class Crate_Out
                         GlobalData.PdfName = System.Text.RegularExpressions.Regex.Replace(.Cells(4).Value.ToString(), "[\\\/\:\*\?\""<>\|]", "") & "(" & .Cells(1).Value & ")-" & txtEntryDate.Text & ".pdf"
                         retrive2(.Cells(1).Value) : PrintReceipts()
                         Pdf_Genrate.ExportReport("\transCrate.rpt")
-                        fileUrl = PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+                        fileUrl = WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
                         If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
                             .Cells(5).Value = "PDF upload failed" : .Cells(5).ToolTipText = fileUrl : .Cells(5).Style.ForeColor = Color.Red
                             Continue For

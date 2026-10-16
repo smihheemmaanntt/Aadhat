@@ -53,7 +53,7 @@ Partial Class Report_Viewer
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel4.Location = New System.Drawing.Point(1582, 64)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(13, 728)
         Me.Panel4.TabIndex = 40197
@@ -63,7 +63,7 @@ Partial Class Report_Viewer
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 64)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(13, 728)
         Me.Panel3.TabIndex = 40196
@@ -73,7 +73,7 @@ Partial Class Report_Viewer
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 792)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1595, 12)
         Me.Panel2.TabIndex = 40195
@@ -99,7 +99,7 @@ Partial Class Report_Viewer
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
         Me.btnClose.Location = New System.Drawing.Point(1524, 0)
-        Me.btnClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91115
@@ -119,7 +119,7 @@ Partial Class Report_Viewer
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.Color.Teal
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1595, 64)
         Me.Panel1.TabIndex = 40050
@@ -132,11 +132,11 @@ Partial Class Report_Viewer
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(1237, 12)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(83, 39)
         Me.Button1.TabIndex = 91213
-        Me.Button1.Text = "PDF"
+        Me.Button1.Text = "P&DF"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -147,11 +147,11 @@ Partial Class Report_Viewer
         Me.Button2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.Button2.ForeColor = System.Drawing.Color.White
         Me.Button2.Location = New System.Drawing.Point(1320, 12)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(100, 39)
         Me.Button2.TabIndex = 91214
-        Me.Button2.Text = "Excel"
+        Me.Button2.Text = "Ex&cel"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
@@ -162,11 +162,11 @@ Partial Class Report_Viewer
         Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.Button3.ForeColor = System.Drawing.Color.White
         Me.Button3.Location = New System.Drawing.Point(1420, 12)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(73, 39)
         Me.Button3.TabIndex = 91215
-        Me.Button3.Text = "CSV"
+        Me.Button3.Text = "CS&V"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'ButtonPrint
@@ -177,18 +177,18 @@ Partial Class Report_Viewer
         Me.ButtonPrint.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.ButtonPrint.ForeColor = System.Drawing.Color.White
         Me.ButtonPrint.Location = New System.Drawing.Point(1146, 12)
-        Me.ButtonPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonPrint.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonPrint.Name = "ButtonPrint"
         Me.ButtonPrint.Size = New System.Drawing.Size(91, 39)
         Me.ButtonPrint.TabIndex = 91216
-        Me.ButtonPrint.Text = "Print"
+        Me.ButtonPrint.Text = "&Print"
         Me.ButtonPrint.UseVisualStyleBackColor = True
         '
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
         Me.PictureBox4.Location = New System.Drawing.Point(532, 0)
-        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -201,7 +201,7 @@ Partial Class Report_Viewer
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(20, 64)
-        Me.CrystalReportViewer1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CrystalReportViewer1.Margin = New System.Windows.Forms.Padding(4)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.ReuseParameterValuesOnRefresh = True
         Me.CrystalReportViewer1.ShowCloseButton = False
@@ -218,7 +218,7 @@ Partial Class Report_Viewer
         Me.Panel9.BackColor = System.Drawing.Color.SkyBlue
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel9.Location = New System.Drawing.Point(20, 64)
-        Me.Panel9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel9.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(1555, 6)
         Me.Panel9.TabIndex = 40223
@@ -228,7 +228,7 @@ Partial Class Report_Viewer
         Me.Panel10.BackColor = System.Drawing.Color.SkyBlue
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel10.Location = New System.Drawing.Point(20, 786)
-        Me.Panel10.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel10.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(1555, 6)
         Me.Panel10.TabIndex = 40222
@@ -238,7 +238,7 @@ Partial Class Report_Viewer
         Me.Panel11.BackColor = System.Drawing.Color.SkyBlue
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel11.Location = New System.Drawing.Point(1575, 64)
-        Me.Panel11.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel11.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(7, 728)
         Me.Panel11.TabIndex = 40221
@@ -248,7 +248,7 @@ Partial Class Report_Viewer
         Me.Panel12.BackColor = System.Drawing.Color.SkyBlue
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel12.Location = New System.Drawing.Point(13, 64)
-        Me.Panel12.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel12.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel12.Name = "Panel12"
         Me.Panel12.Size = New System.Drawing.Size(7, 728)
         Me.Panel12.TabIndex = 40220
@@ -267,7 +267,7 @@ Partial Class Report_Viewer
         Me.BtnPrintO.Image = CType(resources.GetObject("BtnPrintO.Image"), System.Drawing.Image)
         Me.BtnPrintO.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnPrintO.Location = New System.Drawing.Point(56, 101)
-        Me.BtnPrintO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnPrintO.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnPrintO.Name = "BtnPrintO"
         Me.BtnPrintO.Size = New System.Drawing.Size(33, 27)
         Me.BtnPrintO.TabIndex = 40225
@@ -284,7 +284,7 @@ Partial Class Report_Viewer
         Me.btnPdf.Image = CType(resources.GetObject("btnPdf.Image"), System.Drawing.Image)
         Me.btnPdf.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnPdf.Location = New System.Drawing.Point(24, 101)
-        Me.btnPdf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnPdf.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPdf.Name = "btnPdf"
         Me.btnPdf.Size = New System.Drawing.Size(33, 27)
         Me.btnPdf.TabIndex = 40226
@@ -301,7 +301,7 @@ Partial Class Report_Viewer
         Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
         Me.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnRefresh.Location = New System.Drawing.Point(89, 101)
-        Me.btnRefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnRefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(33, 27)
         Me.btnRefresh.TabIndex = 40227
@@ -325,7 +325,7 @@ Partial Class Report_Viewer
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CrystalReportViewer1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Report_Viewer"
         Me.Text = "Report_Viewer"
         Me.Panel1.ResumeLayout(False)

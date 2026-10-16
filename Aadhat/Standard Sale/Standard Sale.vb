@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Net
 Imports Newtonsoft.Json
@@ -3156,7 +3156,7 @@ Public Class Standard_Sale
         Return "STANDARD SALE VIEW : " & fileUrl.Trim()
     End Function
 
-    Private Function ExportStandardSalePdfForMobile() As String
+    Private Function ExportStandardSalePdfForMobile(Optional ByVal officialApi As Boolean = False) As String
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         If Directory.Exists(directoryName) Then
             For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
@@ -3173,7 +3173,9 @@ Public Class Standard_Sale
         Else
             Pdf_Genrate.ExportReport("\Formats\StandardSale.rpt")
         End If
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Sub SendPhoneMsgzData()
@@ -3203,7 +3205,7 @@ Public Class Standard_Sale
             MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             Exit Sub
         End If
-        Dim fileUrl As String = ExportStandardSalePdfForMobile()
+        Dim fileUrl As String = ExportStandardSalePdfForMobile(True)
         Dim apiResponse As String = ""
         If WhatsAppOfficialSendHelper.SendAadhatDocument("standard_sale", "STANDARD_SALE", mobile, txtAccount.Text, txtEntryDate.Text, txtTotalNetAmount.Text, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"), apiResponse) Then
             MsgBox("Standard Sale sent via Official API." & vbCrLf & apiResponse, MsgBoxStyle.Information, "Official API")

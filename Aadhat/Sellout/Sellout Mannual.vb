@@ -2410,7 +2410,7 @@ Public Class Sellout_Mannual
         Else
             Pdf_Genrate.ExportReport("\Formats\MannualBeejak2.rpt")
         End If
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
     End Function
 
     Private Sub SendOfficialSelloutManualData()

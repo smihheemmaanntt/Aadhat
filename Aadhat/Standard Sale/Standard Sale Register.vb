@@ -16,6 +16,8 @@ Public Class Standard_Sale_Register
     Private Const MobileSendingMethod As String = "From Mobile"
     Private WithEvents bgWorker As New System.ComponentModel.BackgroundWorker
     Private isBackgroundWorkerRunning As Boolean = False
+    Private Const RegisterGridDesignWidth As Integer = 1172
+    Private _gridResponsiveLayoutReady As Boolean = False
 
     Public Sub New()
         InitializeComponent()
@@ -32,7 +34,7 @@ Public Class Standard_Sale_Register
     End Sub
 
     Private Sub txtFromDate_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFromDate.KeyDown, txttoDate.KeyDown, dtp1.KeyDown, dtp2.KeyDown
-              If e.KeyCode = Keys.Enter Then
+        If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
             e.SuppressKeyPress = True
             'SendKeys.Send("{TAB}")
@@ -106,6 +108,16 @@ Public Class Standard_Sale_Register
         txtFromDate.Text = SmartDate(txtFromDate.Text) : txtToDate.Text = SmartDate(txtToDate.Text)
         rowColums() : lblitemSearch.Visible = False : txtItemSearch.Visible = False
     End Sub
+
+    Private Sub Standard_Sale_Register_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        _gridResponsiveLayoutReady = True
+    End Sub
+
+    Private Function RegisterColumnWidth(ByVal designWidth As Integer) As Integer
+        If Not _gridResponsiveLayoutReady OrElse dg1 Is Nothing OrElse dg1.Width <= 0 Then Return designWidth
+        Dim scaleX As Double = CDbl(dg1.Width) / RegisterGridDesignWidth
+        Return Math.Max(10, CInt(Math.Round(designWidth * scaleX)))
+    End Function
     Private Sub rowColums()
         dg1.Columns.Clear()
         dg1.ColumnCount = 13
@@ -124,18 +136,18 @@ Public Class Standard_Sale_Register
         'Assign Click event to the DataGridView Cell.
         AddHandler dg1.CellContentClick, AddressOf dg1_CellClick
         dg1.Columns(1).Name = "ID" : dg1.Columns(1).Visible = False
-        dg1.Columns(2).Name = "Date" : dg1.Columns(2).Width = 100
-        dg1.Columns(3).Name = "V.No." : dg1.Columns(3).Width = 100
-        dg1.Columns(4).Name = "Vehicle" : dg1.Columns(4).Width = 100
-        dg1.Columns(5).Name = "Account Name" : dg1.Columns(5).Width = 200
-        dg1.Columns(6).Name = "Nug" : dg1.Columns(6).Width = 100
-        dg1.Columns(7).Name = "Weight" : dg1.Columns(7).Width = 100
+        dg1.Columns(2).Name = "Date" : dg1.Columns(2).Width = RegisterColumnWidth(100)
+        dg1.Columns(3).Name = "V.No." : dg1.Columns(3).Width = RegisterColumnWidth(100)
+        dg1.Columns(4).Name = "Vehicle" : dg1.Columns(4).Width = RegisterColumnWidth(100)
+        dg1.Columns(5).Name = "Account Name" : dg1.Columns(5).Width = RegisterColumnWidth(200)
+        dg1.Columns(6).Name = "Nug" : dg1.Columns(6).Width = RegisterColumnWidth(100)
+        dg1.Columns(7).Name = "Weight" : dg1.Columns(7).Width = RegisterColumnWidth(100)
         dg1.Columns(8).Name = "Rate" : dg1.Columns(8).Visible = False
-        dg1.Columns(9).Name = "Net" : dg1.Columns(9).Width = 100
-        dg1.Columns(10).Name = "Charges" : dg1.Columns(10).Width = 100
-        dg1.Columns(11).Name = "Oth.exp." : dg1.Columns(11).Width = 100
-        dg1.Columns(12).Name = "R.O." : dg1.Columns(12).Width = 50
-        dg1.Columns(13).Name = "Total" : dg1.Columns(13).Width = 100
+        dg1.Columns(9).Name = "Net" : dg1.Columns(9).Width = RegisterColumnWidth(100)
+        dg1.Columns(10).Name = "Charges" : dg1.Columns(10).Width = RegisterColumnWidth(100)
+        dg1.Columns(11).Name = "Oth.exp." : dg1.Columns(11).Width = RegisterColumnWidth(100)
+        dg1.Columns(12).Name = "R.O." : dg1.Columns(12).Width = RegisterColumnWidth(50)
+        dg1.Columns(13).Name = "Total" : dg1.Columns(13).Width = RegisterColumnWidth(100)
         dg1.Columns(0).ReadOnly = False
         ' dg1.Rows(0).ReadOnly = False
     End Sub
@@ -198,12 +210,12 @@ Public Class Standard_Sale_Register
         If ckShowItems.Checked = True Then
             dg1.Controls.Remove(headerCheckBox)
             lblitemSearch.Visible = True : txtItemSearch.Visible = True
-            rowColums1() : retrive1()
+            retrive1()
             lblArea.Visible = False : txtItemSearch.BringToFront()
         Else
             dg1.Controls.Add(headerCheckBox)
             lblitemSearch.Visible = False : txtItemSearch.Visible = False
-            rowColums() : retrive() : TempRowColumn()
+            retrive() : TempRowColumn()
             lblArea.Visible = False
         End If
 
@@ -212,21 +224,21 @@ Public Class Standard_Sale_Register
         dg1.Columns.Clear()
         dg1.ColumnCount = 16
         dg1.Columns(0).Name = "ID" : dg1.Columns(0).Visible = False
-        dg1.Columns(1).Name = "Date" : dg1.Columns(1).Width = 100
-        dg1.Columns(2).Name = "No." : dg1.Columns(2).Width = 60
+        dg1.Columns(1).Name = "Date" : dg1.Columns(1).Width = RegisterColumnWidth(100)
+        dg1.Columns(2).Name = "No." : dg1.Columns(2).Width = RegisterColumnWidth(60)
         dg1.Columns(3).Name = "V.No." : dg1.Columns(3).Visible = False
-        dg1.Columns(4).Name = "Customer" : dg1.Columns(4).Width = 150
-        dg1.Columns(5).Name = "Item" : dg1.Columns(5).Width = 100
-        dg1.Columns(6).Name = "Lot" : dg1.Columns(6).Width = 80
-        dg1.Columns(7).Name = "Seller" : dg1.Columns(7).Width = 140
-        dg1.Columns(8).Name = "Nug" : dg1.Columns(8).Width = 60
-        dg1.Columns(9).Name = "Kg" : dg1.Columns(9).Width = 60
-        dg1.Columns(10).Name = "Rate" : dg1.Columns(10).Width = 60
-        dg1.Columns(11).Name = "Per" : dg1.Columns(11).Width = 50
-        dg1.Columns(12).Name = "Basic" : dg1.Columns(12).Width = 80
-        dg1.Columns(13).Name = "Charges" : dg1.Columns(13).Width = 80
-        dg1.Columns(14).Name = "Oth.Ch." : dg1.Columns(14).Width = 60
-        dg1.Columns(15).Name = "Total" : dg1.Columns(15).Width = 100
+        dg1.Columns(4).Name = "Customer" : dg1.Columns(4).Width = RegisterColumnWidth(150)
+        dg1.Columns(5).Name = "Item" : dg1.Columns(5).Width = RegisterColumnWidth(100)
+        dg1.Columns(6).Name = "Lot" : dg1.Columns(6).Width = RegisterColumnWidth(80)
+        dg1.Columns(7).Name = "Seller" : dg1.Columns(7).Width = RegisterColumnWidth(140)
+        dg1.Columns(8).Name = "Nug" : dg1.Columns(8).Width = RegisterColumnWidth(60)
+        dg1.Columns(9).Name = "Kg" : dg1.Columns(9).Width = RegisterColumnWidth(60)
+        dg1.Columns(10).Name = "Rate" : dg1.Columns(10).Width = RegisterColumnWidth(60)
+        dg1.Columns(11).Name = "Per" : dg1.Columns(11).Width = RegisterColumnWidth(50)
+        dg1.Columns(12).Name = "Basic" : dg1.Columns(12).Width = RegisterColumnWidth(80)
+        dg1.Columns(13).Name = "Charges" : dg1.Columns(13).Width = RegisterColumnWidth(80)
+        dg1.Columns(14).Name = "Oth.Ch." : dg1.Columns(14).Width = RegisterColumnWidth(60)
+        dg1.Columns(15).Name = "Total" : dg1.Columns(15).Width = RegisterColumnWidth(100)
     End Sub
     Public Sub retrive1(Optional ByVal Primary As String = "", Optional ByVal Secondary As String = "")
         dg1.Rows.Clear()
@@ -1068,7 +1080,7 @@ Public Class Standard_Sale_Register
         Return "91" & mobile
     End Function
 
-    Private Function ExportRegisterPdfForMobile(ByVal row As DataGridViewRow) As String
+    Private Function ExportRegisterPdfForMobile(ByVal row As DataGridViewRow, Optional ByVal officialApi As Boolean = False) As String
         If RadioMsgOnly.Checked = True Then Return ""
         retrive2(row.Cells(1).Value)
         GlobalData.PdfName = row.Cells(2).Value & "-" & txtFromDate.Text & ".pdf"
@@ -1078,7 +1090,9 @@ Public Class Standard_Sale_Register
         Else
             Pdf_Genrate.ExportReport("\Formats\StandardSale2.rpt")
         End If
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Function BuildRegisterPhoneMsgBody(ByVal row As DataGridViewRow, ByVal fileUrl As String) As String
@@ -1146,7 +1160,7 @@ Public Class Standard_Sale_Register
                     .Cells(7).Value = "Invalid Mobile"
                     Continue For
                 End If
-                Dim fileUrl As String = ExportRegisterPdfForMobile(row)
+                Dim fileUrl As String = ExportRegisterPdfForMobile(row, True)
                 If RadioMsgOnly.Checked = False AndAlso fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
                     .Cells(7).Value = "PDF upload failed"
                     Continue For

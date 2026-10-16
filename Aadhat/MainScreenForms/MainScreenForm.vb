@@ -6,6 +6,7 @@ Imports Ionic.Zip
 Public Class MainScreenForm
     Private hybridSettingsMenuItem As ToolStripMenuItem
     Private hybridSettingsSeparator As ToolStripSeparator
+    Private isHandlingApplicationClose As Boolean = False
 
     Public Sub New()
         Me.SetStyle(ControlStyles.DoubleBuffer Or ControlStyles.AllPaintingInWmPaint, True)
@@ -82,7 +83,7 @@ Public Class MainScreenForm
         ReportsToolStripMenuItem1.DropDownItems.Clear()
 
         Dim financialMenu As ToolStripMenuItem = CreateReportGroup("Financial Statements")
-        financialMenu.DropDownItems.AddRange(New ToolStripItem() {BalanceSheetExpendedToolStripMenuItem, ProfitLossToolStripMenuItem1, TradingAccountToolStripMenuItem1, TrailBalanceToolStripMenuItem1, TrialBalanceGroupToolStripMenuItem})
+        financialMenu.DropDownItems.AddRange(New ToolStripItem() {BalanceSheetExpendedToolStripMenuItem, ProfitLossToolStripMenuItem1, TradingAccountToolStripMenuItem1, TrailBalanceToolStripMenuItem1, TrialBalanceGroupToolStripMenuItem, TrialBalanceMovementToolStripMenuItem})
 
         Dim booksMenu As ToolStripMenuItem = CreateReportGroup("Books && Ledger Reports")
         booksMenu.DropDownItems.AddRange(New ToolStripItem() {DayBookToolStripMenuItem1, LedgerToolStripMenuItem, SettleLedgerToolStripMenuItem1, SettleLedgerToolStripMenuItem2, GroupLedgwerToolStripMenuItem})
@@ -334,13 +335,19 @@ Public Class MainScreenForm
     End Sub
 
     Private Sub MainScreenForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If isHandlingApplicationClose Then Return
+        isHandlingApplicationClose = True
         If ClsCommon.IsInternetConnect() Then
             Me.Hide()
             Backup_On_Server.Show()
             Backup_On_Server.BringToFront()
             BackUp() : Exit Sub
         Else
-            BackUp() : Backup_On_Server.ZipBackup() : Application.Exit()
+            BackUp()
+            Me.Hide()
+            Backup_On_Server.Show()
+            Backup_On_Server.BringToFront()
+            Exit Sub
         End If
     End Sub
     Public Sub BackUp()
@@ -388,7 +395,9 @@ Public Class MainScreenForm
             customerCode = " Trail "
             ComplaintsToolStripMenuItem.Visible = False
         End If
-        GenericResponsiveFormScaler.ApplyMdiImmediately(Me, 1369, 707)
+        ' Use the same MDI-parent layout path as the responsive implementation's
+        ' MDI reference. The designer dimensions are the scaling baseline.
+        GenericResponsiveFormScaler.ApplyMdiImmediately(Me, 1827, 870)
         MainScreenPicture.MdiParent = Me
         GenericResponsiveFormScaler.Bind(MainScreenPicture)
         MainScreenPicture.Show()
@@ -1466,6 +1475,12 @@ Public Class MainScreenForm
         Trial_Balance_Grouped.Show()
         Trial_Balance_Grouped.BringToFront()
     End Sub
+
+    Private Sub TrialBalanceMovementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TrialBalanceMovementToolStripMenuItem.Click
+        Trial_Balance_Movement.MdiParent = Me
+        Trial_Balance_Movement.Show()
+        Trial_Balance_Movement.BringToFront()
+    End Sub
     Private Sub TestBalanceSheetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestBalanceSheetToolStripMenuItem.Click
         Balance_Sheet.MdiParent = Me
         Balance_Sheet.Show()
@@ -1981,7 +1996,4 @@ Public Class MainScreenForm
         ComplaintListForm.BringToFront()
     End Sub
 
-    Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        'GenericResponsiveFormScaler.BindMdiParent(Me, RightDockPanel)
-    End Sub
 End Class

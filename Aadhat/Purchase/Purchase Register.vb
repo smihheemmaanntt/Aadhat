@@ -649,11 +649,13 @@ Public Class Purchase_Register
         Return "91" & mobile
     End Function
 
-    Private Function ExportPurchaseRegisterPdfForMobile(ByVal row As DataGridViewRow) As String
+    Private Function ExportPurchaseRegisterPdfForMobile(ByVal row As DataGridViewRow, Optional ByVal officialApi As Boolean = False) As String
         GlobalData.PdfName = WhatsAppOfficialApi.CleanDocumentName(row.Cells(4).Value.ToString() & "(" & row.Cells(2).Value.ToString() & ")-" & txtFromDate.Text, "Purchase.pdf")
         retrive3(row.Cells(1).Value) : PrintBills()
         Pdf_Genrate.ExportReport("\Purchase.rpt")
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Sub SendPhoneMsgzData()
@@ -706,7 +708,7 @@ Public Class Purchase_Register
                     .Cells(5).Value = "Invalid Mobile"
                     Continue For
                 End If
-                Dim fileUrl As String = ExportPurchaseRegisterPdfForMobile(row)
+                Dim fileUrl As String = ExportPurchaseRegisterPdfForMobile(row, True)
                 Dim apiResponse As String = ""
                 If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, Convert.ToString(.Cells(4).Value), txtFromDate.Text, "", fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Purchase.pdf"), apiResponse) Then
                     .Cells(5).Value = "Sent via Official API"

@@ -135,6 +135,86 @@ Public Class GenericResponsiveFormScaler
 
     Private Shared ReadOnly FontCache As New Dictionary(Of String, Font)(StringComparer.OrdinalIgnoreCase)
     Private Shared ReadOnly ActiveScalers As New Dictionary(Of Form, GenericResponsiveFormScaler)()
+    Private Shared ReadOnly MdiParentLayouts As New Dictionary(Of Form, MdiParentSidebarLayout)()
+
+    Public Shared Sub BindMdiParent(ByVal parentForm As Form, ByVal rightDockPanel As Panel)
+        If parentForm Is Nothing OrElse rightDockPanel Is Nothing Then Return
+        SyncLock MdiParentLayouts
+            If MdiParentLayouts.ContainsKey(parentForm) Then Return
+            MdiParentLayouts(parentForm) = New MdiParentSidebarLayout(parentForm, rightDockPanel)
+        End SyncLock
+    End Sub
+
+    Private NotInheritable Class MdiParentSidebarLayout
+        Private NotInheritable Class SidebarControlState
+            Public Bounds As Rectangle
+            Public Font As Font
+        End Class
+
+        Private ReadOnly parentForm As Form
+        Private ReadOnly sidebar As Panel
+        Private ReadOnly states As New Dictionary(Of Control, SidebarControlState)()
+        Private contentWidth As Integer
+        Private contentHeight As Integer
+        Private applying As Boolean
+
+        Public Sub New(ByVal owner As Form, ByVal panel As Panel)
+            parentForm = owner
+            sidebar = panel
+            For Each child As Control In sidebar.Controls
+                states(child) = New SidebarControlState With {.Bounds = child.Bounds, .Font = child.Font}
+                GenericResponsiveFormScaler.EnableDoubleBuffer(child)
+                contentWidth = Math.Max(contentWidth, child.Right)
+                contentHeight = Math.Max(contentHeight, child.Bottom)
+            Next
+            contentWidth = Math.Max(1, contentWidth)
+            contentHeight = Math.Max(1, contentHeight)
+            GenericResponsiveFormScaler.EnableDoubleBuffer(parentForm)
+            GenericResponsiveFormScaler.EnableDoubleBuffer(sidebar)
+            AddHandler parentForm.Resize, AddressOf ApplyLayout
+            AddHandler sidebar.Resize, AddressOf ApplyLayout
+            AddHandler parentForm.FormClosed, AddressOf ParentClosed
+            ApplyLayout(Nothing, EventArgs.Empty)
+        End Sub
+
+        Private Sub ApplyLayout(ByVal sender As Object, ByVal e As EventArgs)
+            If applying OrElse sidebar.IsDisposed OrElse sidebar.ClientSize.Width < 1 OrElse sidebar.ClientSize.Height < 1 Then Return
+            applying = True
+            sidebar.SuspendLayout()
+            Try
+                Dim scaleX As Double = CDbl(sidebar.ClientSize.Width) / contentWidth
+                Dim scaleY As Double = CDbl(sidebar.ClientSize.Height) / contentHeight
+                Dim fontScale As Double = Math.Min(scaleX, scaleY)
+                For Each entry As KeyValuePair(Of Control, SidebarControlState) In states
+                    Dim child As Control = entry.Key
+                    Dim state As SidebarControlState = entry.Value
+                    If child Is Nothing OrElse child.IsDisposed Then Continue For
+                    Dim scaledBounds As New Rectangle(
+                        CInt(Math.Round(state.Bounds.Left * scaleX)),
+                        CInt(Math.Round(state.Bounds.Top * scaleY)),
+                        Math.Max(1, CInt(Math.Round(state.Bounds.Width * scaleX))),
+                        Math.Max(1, CInt(Math.Round(state.Bounds.Height * scaleY))))
+                    If child.Bounds <> scaledBounds Then child.Bounds = scaledBounds
+                    If state.Font IsNot Nothing Then
+                        Dim size As Single = Math.Max(6.5!, CSng(Math.Round(state.Font.Size * fontScale, 1)))
+                        Dim targetFont As Font = GenericResponsiveFormScaler.GetCachedFont(state.Font.FontFamily, size, state.Font.Style)
+                        If Not Object.ReferenceEquals(child.Font, targetFont) Then child.Font = targetFont
+                    End If
+                Next
+            Finally
+                sidebar.ResumeLayout(True)
+                applying = False
+            End Try
+        End Sub
+
+        Private Sub ParentClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs)
+            RemoveHandler parentForm.Resize, AddressOf ApplyLayout
+            RemoveHandler sidebar.Resize, AddressOf ApplyLayout
+            SyncLock MdiParentLayouts
+                MdiParentLayouts.Remove(parentForm)
+            End SyncLock
+        End Sub
+    End Class
 
     Private ReadOnly _targetForm As Form
     Private ReadOnly _controlMap As New Dictionary(Of Control, ControlSnapshot)()
@@ -765,14 +845,14 @@ Public Class GenericResponsiveFormScaler
 
     Private Sub OnRuntimeGridColumnAdded(ByVal sender As Object, ByVal e As DataGridViewColumnEventArgs)
         Dim dgv As DataGridView = TryCast(sender, DataGridView)
-        If IsSearchOrChargeLookupGrid(dgv) Then
+        If IsSearchOrChargeLookupGrid(dgv) OrElse IsStandardSaleRegisterGrid(dgv) OrElse IsWhatsappPanelGrid(dgv) Then
             Dim snap As ControlSnapshot = Nothing
             If _controlMap.TryGetValue(dgv, snap) Then
                 ' Lookup grids are created after the form is shown. Their code
                 ' assigns explicit design widths after ColumnAdded, so retain
                 ' those widths as design metrics when the deferred batch runs.
                 snap.PreserveRuntimeGridWidths = True
-                snap.RuntimeGridWidthsAreDesignSpace = True
+                snap.RuntimeGridWidthsAreDesignSpace = Not _hasBeenShown OrElse IsSearchOrChargeLookupGrid(dgv) OrElse IsWhatsappPanelGrid(dgv)
                 snap.HasRuntimeGridWidthBaseline = False
             End If
         End If
@@ -805,8 +885,8 @@ Public Class GenericResponsiveFormScaler
                 ' design dimensions. Lookup grids create their columns on demand
                 ' after the form is shown, but their code-assigned widths are still
                 ' design dimensions and must scale with the form.
-                Dim isLookupGrid As Boolean = IsSearchOrChargeLookupGrid(dgv)
-                snap.RuntimeGridWidthsAreDesignSpace = Not _hasBeenShown OrElse isLookupGrid
+                Dim hasDesignSpaceRuntimeWidths As Boolean = IsSearchOrChargeLookupGrid(dgv) OrElse IsWhatsappPanelGrid(dgv)
+                snap.RuntimeGridWidthsAreDesignSpace = Not _hasBeenShown OrElse hasDesignSpaceRuntimeWidths
                 snap.HasRuntimeGridWidthBaseline = False
             End If
         End If
@@ -863,7 +943,7 @@ Public Class GenericResponsiveFormScaler
             ' A lookup grid can first be created after the form is already at a
             ' scaled size. Capture its finished code-assigned width only after
             ' ColumnAdded has unwound (the queued batch), never at default 100px.
-            If IsSearchOrChargeLookupGrid(dgv) AndAlso
+            If (IsSearchOrChargeLookupGrid(dgv) OrElse IsWhatsappPanelGrid(dgv)) AndAlso
                snap.RuntimeGridWidthsAreDesignSpace AndAlso
                Not snap.HasRuntimeGridWidthBaseline Then
                 For columnIndex As Integer = 0 To dgv.Columns.Count - 1
@@ -893,12 +973,99 @@ Public Class GenericResponsiveFormScaler
                     snap.DgvColWidths(columnIndex) = designW
                 End If
             Next
+
+            If IsWhatsappPanelGrid(dgv) Then ApplyWhatsappPanelGridRules(dgv)
         Next
         _pendingRuntimeGrids.Clear()
 
         ' One suspended, coalesced pass handles all grids and their rows without
         ' flicker. Existing controls keep their same stored snapshots.
         ApplyScale(force:=True)
+    End Sub
+
+    Private Function IsStandardSaleRegisterGrid(ByVal dgv As DataGridView) As Boolean
+        Return dgv IsNot Nothing AndAlso
+               String.Equals(_targetForm.Name, "Standard_Sale_Register", StringComparison.OrdinalIgnoreCase) AndAlso
+               String.Equals(dgv.Name, "dg1", StringComparison.OrdinalIgnoreCase)
+    End Function
+
+    Private Function IsPrintBillsWhatsappGrid(ByVal dgv As DataGridView) As Boolean
+        Return dgv IsNot Nothing AndAlso
+               String.Equals(_targetForm.Name, "Print_Bills", StringComparison.OrdinalIgnoreCase) AndAlso
+               String.Equals(dgv.Name, "DgWhatsapp", StringComparison.OrdinalIgnoreCase)
+    End Function
+
+    Private Function IsWhatsappPanelGrid(ByVal dgv As DataGridView) As Boolean
+        If dgv Is Nothing OrElse Not String.Equals(dgv.Name, "DgWhatsapp", StringComparison.OrdinalIgnoreCase) Then Return False
+        If IsPrintBillsWhatsappGrid(dgv) Then Return True
+        If Not (String.Equals(_targetForm.Name, "ReceiptForm", StringComparison.OrdinalIgnoreCase) OrElse
+                String.Equals(_targetForm.Name, "PayMentform", StringComparison.OrdinalIgnoreCase)) Then Return False
+
+        ' Entry-form WhatsApp grids are runtime populated. Match them by their
+        ' containing WhatsApp panel so ordinary transaction grids stay untouched.
+        Dim parent As Control = dgv.Parent
+        While parent IsNot Nothing AndAlso Not TypeOf parent Is Form
+            If TypeOf parent Is Panel AndAlso parent.Name.IndexOf("Whatsapp", StringComparison.OrdinalIgnoreCase) >= 0 Then Return True
+            parent = parent.Parent
+        End While
+        Return False
+    End Function
+
+    Private Sub ApplyWhatsappPanelGridRules(ByVal dgv As DataGridView)
+        If dgv Is Nothing OrElse dgv.IsDisposed Then Return
+        If dgv.Columns.Contains("Msg1") Then dgv.Columns("Msg1").Visible = False
+        If dgv.Columns.Contains("Msg2") Then dgv.Columns("Msg2").Visible = False
+        If dgv.Columns.Contains("Mobile No") Then
+            dgv.Columns("Mobile No").HeaderCell.Style.WrapMode = DataGridViewTriState.False
+        End If
+        If dgv.Columns.Contains("Path") Then dgv.Columns("Path").Visible = False
+
+        ' Refit from the grid's current client width after control scaling.
+        Dim visibleColumns As New List(Of DataGridViewColumn)()
+        Dim baselineWidths As New Dictionary(Of DataGridViewColumn, Integer)()
+        Dim totalBaselineWidth As Double = 0
+        Dim snap As ControlSnapshot = Nothing
+        _controlMap.TryGetValue(dgv, snap)
+        For columnIndex As Integer = 0 To dgv.Columns.Count - 1
+            Dim column As DataGridViewColumn = dgv.Columns(columnIndex)
+            If Not column.Visible Then Continue For
+            visibleColumns.Add(column)
+            Dim baseWidth As Integer = Math.Max(10, column.Width)
+            If snap IsNot Nothing AndAlso columnIndex < snap.DgvColWidths.Count Then
+                baseWidth = Math.Max(10, snap.DgvColWidths(columnIndex))
+            End If
+            baselineWidths(column) = baseWidth
+            totalBaselineWidth += baseWidth
+        Next
+        If visibleColumns.Count = 0 OrElse totalBaselineWidth <= 0 Then Return
+
+        Dim availableWidth As Integer = dgv.ClientSize.Width - If(dgv.RowHeadersVisible, dgv.RowHeadersWidth, 0) - 2
+        If availableWidth <= 0 Then Return
+        Dim assignedWidth As Integer = 0
+        For index As Integer = 0 To visibleColumns.Count - 1
+            Dim column As DataGridViewColumn = visibleColumns(index)
+            Dim targetWidth As Integer = If(index = visibleColumns.Count - 1,
+                Math.Max(10, availableWidth - assignedWidth),
+                Math.Max(10, CInt(Math.Round(availableWidth * CDbl(baselineWidths(column)) / totalBaselineWidth))))
+            assignedWidth += targetWidth
+            If column.Width <> targetWidth Then column.Width = targetWidth
+        Next
+    End Sub
+
+    Private Sub ApplyWhatsappPanelGridRulesToAll()
+        If _targetForm Is Nothing OrElse _targetForm.IsDisposed Then Return
+        For Each control As Control In _targetForm.Controls
+            ApplyWhatsappPanelGridRulesRecursive(control)
+        Next
+    End Sub
+
+    Private Sub ApplyWhatsappPanelGridRulesRecursive(ByVal parent As Control)
+        If parent Is Nothing OrElse parent.IsDisposed Then Return
+        Dim dgv As DataGridView = TryCast(parent, DataGridView)
+        If dgv IsNot Nothing AndAlso IsWhatsappPanelGrid(dgv) Then ApplyWhatsappPanelGridRules(dgv)
+        For Each child As Control In parent.Controls
+            ApplyWhatsappPanelGridRulesRecursive(child)
+        Next
     End Sub
 
     Private Sub ApplyRuntimeRowHeights(ByVal dgv As DataGridView, ByVal firstRow As Integer, ByVal rowCount As Integer)
@@ -1495,6 +1662,8 @@ Public Class GenericResponsiveFormScaler
                             End If
                         Next
 
+                        If IsWhatsappPanelGrid(dgv) Then ApplyWhatsappPanelGridRules(dgv)
+
                         ' CompanyList's visible columns should stay inside this
                         ' grid's viewport at every scale. Other grids preserve their
                         ' own horizontal scrolling and column visibility behavior.
@@ -1581,6 +1750,8 @@ Public Class GenericResponsiveFormScaler
                 Dim responsiveUserControl = TryCast(ctl, IResponsiveUserControlLayout)
                 If responsiveUserControl IsNot Nothing Then responsiveUserControl.ApplyResponsiveLayout()
             Next
+
+            ApplyWhatsappPanelGridRulesToAll()
 
             AlignDateTimePickerHeights()
 

@@ -78,9 +78,10 @@ Partial Class Ledger
         Me.Label41.AutoSize = True
         Me.Label41.Font = New System.Drawing.Font("Bodoni Bk BT", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label41.ForeColor = System.Drawing.Color.Black
-        Me.Label41.Location = New System.Drawing.Point(518, 9)
+        Me.Label41.Location = New System.Drawing.Point(691, 11)
+        Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(168, 48)
+        Me.Label41.Size = New System.Drawing.Size(211, 59)
         Me.Label41.TabIndex = 20
         Me.Label41.Text = "LEDGER"
         '
@@ -89,9 +90,10 @@ Partial Class Ledger
         Me.Label42.BackColor = System.Drawing.Color.CadetBlue
         Me.Label42.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label42.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label42.Location = New System.Drawing.Point(12, 83)
+        Me.Label42.Location = New System.Drawing.Point(16, 102)
+        Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(140, 25)
+        Me.Label42.Size = New System.Drawing.Size(187, 31)
         Me.Label42.TabIndex = 6
         Me.Label42.Text = "Account Name :"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -101,9 +103,10 @@ Partial Class Ledger
         Me.Label1.BackColor = System.Drawing.Color.CadetBlue
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label1.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label1.Location = New System.Drawing.Point(602, 83)
+        Me.Label1.Location = New System.Drawing.Point(803, 102)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(109, 26)
+        Me.Label1.Size = New System.Drawing.Size(145, 32)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "From Date :"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -113,9 +116,10 @@ Partial Class Ledger
         Me.Label2.BackColor = System.Drawing.Color.CadetBlue
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label2.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label2.Location = New System.Drawing.Point(827, 83)
+        Me.Label2.Location = New System.Drawing.Point(1103, 102)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(80, 27)
+        Me.Label2.Size = New System.Drawing.Size(107, 33)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "To Date :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -146,7 +150,8 @@ Partial Class Ledger
         Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
-        Me.dg1.Location = New System.Drawing.Point(12, 138)
+        Me.dg1.Location = New System.Drawing.Point(16, 170)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
@@ -156,7 +161,7 @@ Partial Class Ledger
         Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1171, 452)
+        Me.dg1.Size = New System.Drawing.Size(1561, 556)
         Me.dg1.TabIndex = 11
         '
         'Label6
@@ -164,9 +169,10 @@ Partial Class Ledger
         Me.Label6.BackColor = System.Drawing.Color.CadetBlue
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.Label6.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label6.Location = New System.Drawing.Point(907, 109)
+        Me.Label6.Location = New System.Drawing.Point(1209, 134)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(145, 29)
+        Me.Label6.Size = New System.Drawing.Size(193, 36)
         Me.Label6.TabIndex = 10
         Me.Label6.Text = "Opening Balance :"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -177,10 +183,11 @@ Partial Class Ledger
         Me.txtOpBal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtOpBal.Font = New System.Drawing.Font("Times New Roman", 14.0!)
         Me.txtOpBal.ForeColor = System.Drawing.Color.Red
-        Me.txtOpBal.Location = New System.Drawing.Point(1052, 110)
+        Me.txtOpBal.Location = New System.Drawing.Point(1403, 135)
+        Me.txtOpBal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtOpBal.Name = "txtOpBal"
         Me.txtOpBal.ReadOnly = True
-        Me.txtOpBal.Size = New System.Drawing.Size(131, 29)
+        Me.txtOpBal.Size = New System.Drawing.Size(174, 34)
         Me.txtOpBal.TabIndex = 9
         Me.txtOpBal.TabStop = False
         Me.txtOpBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -190,9 +197,10 @@ Partial Class Ledger
         Me.Label9.BackColor = System.Drawing.Color.CadetBlue
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label9.Location = New System.Drawing.Point(996, 590)
+        Me.Label9.Location = New System.Drawing.Point(1328, 726)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(64, 26)
+        Me.Label9.Size = New System.Drawing.Size(85, 32)
         Me.Label9.TabIndex = 17
         Me.Label9.Text = "Balance :"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -203,10 +211,11 @@ Partial Class Ledger
         Me.txtBalAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtBalAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtBalAmt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.txtBalAmt.Location = New System.Drawing.Point(1060, 590)
+        Me.txtBalAmt.Location = New System.Drawing.Point(1413, 726)
+        Me.txtBalAmt.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtBalAmt.Name = "txtBalAmt"
         Me.txtBalAmt.ReadOnly = True
-        Me.txtBalAmt.Size = New System.Drawing.Size(123, 26)
+        Me.txtBalAmt.Size = New System.Drawing.Size(163, 30)
         Me.txtBalAmt.TabIndex = 14
         Me.txtBalAmt.TabStop = False
         Me.txtBalAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -216,9 +225,10 @@ Partial Class Ledger
         Me.Label8.BackColor = System.Drawing.Color.CadetBlue
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label8.Location = New System.Drawing.Point(819, 590)
+        Me.Label8.Location = New System.Drawing.Point(1092, 726)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(54, 26)
+        Me.Label8.Size = New System.Drawing.Size(72, 32)
         Me.Label8.TabIndex = 16
         Me.Label8.Text = "Credit :"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -229,10 +239,11 @@ Partial Class Ledger
         Me.txtcrAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtcrAmt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtcrAmt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.txtcrAmt.Location = New System.Drawing.Point(873, 590)
+        Me.txtcrAmt.Location = New System.Drawing.Point(1164, 726)
+        Me.txtcrAmt.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtcrAmt.Name = "txtcrAmt"
         Me.txtcrAmt.ReadOnly = True
-        Me.txtcrAmt.Size = New System.Drawing.Size(123, 26)
+        Me.txtcrAmt.Size = New System.Drawing.Size(163, 30)
         Me.txtcrAmt.TabIndex = 13
         Me.txtcrAmt.TabStop = False
         Me.txtcrAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -242,9 +253,10 @@ Partial Class Ledger
         Me.Label7.BackColor = System.Drawing.Color.CadetBlue
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label7.Location = New System.Drawing.Point(641, 590)
+        Me.Label7.Location = New System.Drawing.Point(855, 726)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(55, 26)
+        Me.Label7.Size = New System.Drawing.Size(73, 32)
         Me.Label7.TabIndex = 15
         Me.Label7.Text = "Debit :"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -255,10 +267,11 @@ Partial Class Ledger
         Me.txtDramt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDramt.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtDramt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.txtDramt.Location = New System.Drawing.Point(696, 590)
+        Me.txtDramt.Location = New System.Drawing.Point(928, 726)
+        Me.txtDramt.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtDramt.Name = "txtDramt"
         Me.txtDramt.ReadOnly = True
-        Me.txtDramt.Size = New System.Drawing.Size(123, 26)
+        Me.txtDramt.Size = New System.Drawing.Size(163, 30)
         Me.txtDramt.TabIndex = 12
         Me.txtDramt.TabStop = False
         Me.txtDramt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -272,9 +285,10 @@ Partial Class Ledger
         Me.cbAccountName.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbAccountName.ForeColor = System.Drawing.Color.Navy
         Me.cbAccountName.IntegralHeight = False
-        Me.cbAccountName.Location = New System.Drawing.Point(152, 83)
+        Me.cbAccountName.Location = New System.Drawing.Point(203, 102)
+        Me.cbAccountName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbAccountName.Name = "cbAccountName"
-        Me.cbAccountName.Size = New System.Drawing.Size(450, 25)
+        Me.cbAccountName.Size = New System.Drawing.Size(599, 29)
         Me.cbAccountName.TabIndex = 0
         '
         'ckJoin
@@ -282,9 +296,10 @@ Partial Class Ledger
         Me.ckJoin.AutoSize = True
         Me.ckJoin.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckJoin.ForeColor = System.Drawing.Color.Navy
-        Me.ckJoin.Location = New System.Drawing.Point(289, 115)
+        Me.ckJoin.Location = New System.Drawing.Point(385, 142)
+        Me.ckJoin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckJoin.Name = "ckJoin"
-        Me.ckJoin.Size = New System.Drawing.Size(170, 20)
+        Me.ckJoin.Size = New System.Drawing.Size(213, 24)
         Me.ckJoin.TabIndex = 7
         Me.ckJoin.Text = "Print Without Description"
         Me.ckJoin.UseVisualStyleBackColor = True
@@ -294,9 +309,10 @@ Partial Class Ledger
         Me.ckPrintHindi.AutoSize = True
         Me.ckPrintHindi.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckPrintHindi.ForeColor = System.Drawing.Color.Navy
-        Me.ckPrintHindi.Location = New System.Drawing.Point(184, 115)
+        Me.ckPrintHindi.Location = New System.Drawing.Point(245, 142)
+        Me.ckPrintHindi.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckPrintHindi.Name = "ckPrintHindi"
-        Me.ckPrintHindi.Size = New System.Drawing.Size(104, 20)
+        Me.ckPrintHindi.Size = New System.Drawing.Size(129, 24)
         Me.ckPrintHindi.TabIndex = 6
         Me.ckPrintHindi.Text = "Print in Hindi"
         Me.ckPrintHindi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -307,9 +323,10 @@ Partial Class Ledger
         Me.ckMerge.AutoSize = True
         Me.ckMerge.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckMerge.ForeColor = System.Drawing.Color.Navy
-        Me.ckMerge.Location = New System.Drawing.Point(12, 115)
+        Me.ckMerge.Location = New System.Drawing.Point(16, 142)
+        Me.ckMerge.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckMerge.Name = "ckMerge"
-        Me.ckMerge.Size = New System.Drawing.Size(168, 20)
+        Me.ckMerge.Size = New System.Drawing.Size(215, 24)
         Me.ckMerge.TabIndex = 5
         Me.ckMerge.Text = "Merge Same Date Entries"
         Me.ckMerge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -317,27 +334,30 @@ Partial Class Ledger
         '
         'Dtp2
         '
-        Me.Dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.Dtp2.Location = New System.Drawing.Point(916, 83)
+        Me.Dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Dtp2.Location = New System.Drawing.Point(1217, 102)
+        Me.Dtp2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Dtp2.Name = "Dtp2"
-        Me.Dtp2.Size = New System.Drawing.Size(100, 26)
+        Me.Dtp2.Size = New System.Drawing.Size(132, 30)
         Me.Dtp2.TabIndex = 91222
         '
         'dtp1
         '
-        Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        Me.dtp1.Location = New System.Drawing.Point(717, 84)
+        Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtp1.Location = New System.Drawing.Point(954, 103)
+        Me.dtp1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtp1.Name = "dtp1"
-        Me.dtp1.Size = New System.Drawing.Size(110, 26)
+        Me.dtp1.Size = New System.Drawing.Size(145, 30)
         Me.dtp1.TabIndex = 91221
         '
         'lblCrate
         '
         Me.lblCrate.AutoSize = True
         Me.lblCrate.ForeColor = System.Drawing.Color.Black
-        Me.lblCrate.Location = New System.Drawing.Point(13, 592)
+        Me.lblCrate.Location = New System.Drawing.Point(17, 729)
+        Me.lblCrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCrate.Name = "lblCrate"
-        Me.lblCrate.Size = New System.Drawing.Size(13, 13)
+        Me.lblCrate.Size = New System.Drawing.Size(16, 17)
         Me.lblCrate.TabIndex = 91224
         Me.lblCrate.Text = "0"
         Me.lblCrate.Visible = False
@@ -345,9 +365,10 @@ Partial Class Ledger
         'lblCrateDetails
         '
         Me.lblCrateDetails.ForeColor = System.Drawing.Color.Black
-        Me.lblCrateDetails.Location = New System.Drawing.Point(12, 609)
+        Me.lblCrateDetails.Location = New System.Drawing.Point(16, 750)
+        Me.lblCrateDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCrateDetails.Name = "lblCrateDetails"
-        Me.lblCrateDetails.Size = New System.Drawing.Size(624, 35)
+        Me.lblCrateDetails.Size = New System.Drawing.Size(832, 43)
         Me.lblCrateDetails.TabIndex = 91225
         Me.lblCrateDetails.Text = "0"
         Me.lblCrateDetails.Visible = False
@@ -363,9 +384,10 @@ Partial Class Ledger
         Me.pnlWahtsappNo.Controls.Add(Me.Button2)
         Me.pnlWahtsappNo.Controls.Add(Me.Label3)
         Me.pnlWahtsappNo.Controls.Add(Me.txtWhatsappNo)
-        Me.pnlWahtsappNo.Location = New System.Drawing.Point(581, 139)
+        Me.pnlWahtsappNo.Location = New System.Drawing.Point(775, 171)
+        Me.pnlWahtsappNo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlWahtsappNo.Name = "pnlWahtsappNo"
-        Me.pnlWahtsappNo.Size = New System.Drawing.Size(261, 196)
+        Me.pnlWahtsappNo.Size = New System.Drawing.Size(348, 241)
         Me.pnlWahtsappNo.TabIndex = 10
         Me.pnlWahtsappNo.Visible = False
         '
@@ -374,9 +396,10 @@ Partial Class Ledger
         Me.lblOfficialTemplate.BackColor = System.Drawing.Color.CadetBlue
         Me.lblOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.lblOfficialTemplate.ForeColor = System.Drawing.Color.GhostWhite
-        Me.lblOfficialTemplate.Location = New System.Drawing.Point(7, 103)
+        Me.lblOfficialTemplate.Location = New System.Drawing.Point(9, 127)
+        Me.lblOfficialTemplate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOfficialTemplate.Name = "lblOfficialTemplate"
-        Me.lblOfficialTemplate.Size = New System.Drawing.Size(95, 25)
+        Me.lblOfficialTemplate.Size = New System.Drawing.Size(127, 31)
         Me.lblOfficialTemplate.TabIndex = 91234
         Me.lblOfficialTemplate.Text = "Template"
         Me.lblOfficialTemplate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -391,9 +414,10 @@ Partial Class Ledger
         Me.cbOfficialTemplate.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.cbOfficialTemplate.ForeColor = System.Drawing.Color.Black
         Me.cbOfficialTemplate.FormattingEnabled = True
-        Me.cbOfficialTemplate.Location = New System.Drawing.Point(108, 104)
+        Me.cbOfficialTemplate.Location = New System.Drawing.Point(144, 128)
+        Me.cbOfficialTemplate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbOfficialTemplate.Name = "cbOfficialTemplate"
-        Me.cbOfficialTemplate.Size = New System.Drawing.Size(147, 23)
+        Me.cbOfficialTemplate.Size = New System.Drawing.Size(195, 25)
         Me.cbOfficialTemplate.TabIndex = 91235
         Me.cbOfficialTemplate.Visible = False
         '
@@ -402,9 +426,10 @@ Partial Class Ledger
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Red
-        Me.Label11.Location = New System.Drawing.Point(3, 20)
+        Me.Label11.Location = New System.Drawing.Point(4, 25)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(86, 21)
+        Me.Label11.Size = New System.Drawing.Size(109, 27)
         Me.Label11.TabIndex = 91232
         Me.Label11.Text = "Send Via :"
         '
@@ -419,9 +444,10 @@ Partial Class Ledger
         Me.cbType.ForeColor = System.Drawing.Color.Black
         Me.cbType.FormattingEnabled = True
         Me.cbType.Items.AddRange(New Object() {"Easy WhatsApp", "WhatsApp Official API", "From Mobile"})
-        Me.cbType.Location = New System.Drawing.Point(109, 19)
+        Me.cbType.Location = New System.Drawing.Point(145, 23)
+        Me.cbType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbType.Name = "cbType"
-        Me.cbType.Size = New System.Drawing.Size(146, 23)
+        Me.cbType.Size = New System.Drawing.Size(193, 27)
         Me.cbType.TabIndex = 91231
         '
         'lblSim
@@ -429,9 +455,10 @@ Partial Class Ledger
         Me.lblSim.BackColor = System.Drawing.Color.CadetBlue
         Me.lblSim.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblSim.ForeColor = System.Drawing.Color.GhostWhite
-        Me.lblSim.Location = New System.Drawing.Point(10, 45)
+        Me.lblSim.Location = New System.Drawing.Point(13, 55)
+        Me.lblSim.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSim.Name = "lblSim"
-        Me.lblSim.Size = New System.Drawing.Size(92, 29)
+        Me.lblSim.Size = New System.Drawing.Size(123, 36)
         Me.lblSim.TabIndex = 91232
         Me.lblSim.Text = "SIM"
         Me.lblSim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -445,9 +472,10 @@ Partial Class Ledger
         Me.cbSim.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.cbSim.ForeColor = System.Drawing.Color.Black
         Me.cbSim.FormattingEnabled = True
-        Me.cbSim.Location = New System.Drawing.Point(7, 76)
+        Me.cbSim.Location = New System.Drawing.Point(9, 94)
+        Me.cbSim.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbSim.Name = "cbSim"
-        Me.cbSim.Size = New System.Drawing.Size(95, 23)
+        Me.cbSim.Size = New System.Drawing.Size(125, 27)
         Me.cbSim.TabIndex = 91233
         Me.cbSim.Visible = False
         '
@@ -460,9 +488,10 @@ Partial Class Ledger
         Me.Button2.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button2.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(109, 145)
+        Me.Button2.Location = New System.Drawing.Point(145, 178)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(146, 33)
+        Me.Button2.Size = New System.Drawing.Size(195, 41)
         Me.Button2.TabIndex = 91228
         Me.Button2.Text = "&Send ledger"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -473,9 +502,10 @@ Partial Class Ledger
         Me.Label3.BackColor = System.Drawing.Color.CadetBlue
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(108, 45)
+        Me.Label3.Location = New System.Drawing.Point(144, 55)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(147, 29)
+        Me.Label3.Size = New System.Drawing.Size(196, 36)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Enter Whatsapp No. "
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -486,9 +516,10 @@ Partial Class Ledger
         Me.txtWhatsappNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtWhatsappNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtWhatsappNo.ForeColor = System.Drawing.Color.Black
-        Me.txtWhatsappNo.Location = New System.Drawing.Point(109, 74)
+        Me.txtWhatsappNo.Location = New System.Drawing.Point(145, 91)
+        Me.txtWhatsappNo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtWhatsappNo.Name = "txtWhatsappNo"
-        Me.txtWhatsappNo.Size = New System.Drawing.Size(146, 26)
+        Me.txtWhatsappNo.Size = New System.Drawing.Size(194, 30)
         Me.txtWhatsappNo.TabIndex = 3
         Me.txtWhatsappNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -497,9 +528,10 @@ Partial Class Ledger
         Me.ckDaywisePrint.AutoSize = True
         Me.ckDaywisePrint.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckDaywisePrint.ForeColor = System.Drawing.Color.Navy
-        Me.ckDaywisePrint.Location = New System.Drawing.Point(1013, 60)
+        Me.ckDaywisePrint.Location = New System.Drawing.Point(1351, 74)
+        Me.ckDaywisePrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckDaywisePrint.Name = "ckDaywisePrint"
-        Me.ckDaywisePrint.Size = New System.Drawing.Size(168, 20)
+        Me.ckDaywisePrint.Size = New System.Drawing.Size(212, 24)
         Me.ckDaywisePrint.TabIndex = 12
         Me.ckDaywisePrint.Text = "Send Whatsapp Day Wise"
         Me.ckDaywisePrint.UseVisualStyleBackColor = True
@@ -509,9 +541,10 @@ Partial Class Ledger
         Me.ckWithoutCrate.AutoSize = True
         Me.ckWithoutCrate.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ckWithoutCrate.ForeColor = System.Drawing.Color.Navy
-        Me.ckWithoutCrate.Location = New System.Drawing.Point(831, 61)
+        Me.ckWithoutCrate.Location = New System.Drawing.Point(1108, 75)
+        Me.ckWithoutCrate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckWithoutCrate.Name = "ckWithoutCrate"
-        Me.ckWithoutCrate.Size = New System.Drawing.Size(182, 20)
+        Me.ckWithoutCrate.Size = New System.Drawing.Size(226, 24)
         Me.ckWithoutCrate.TabIndex = 11
         Me.ckWithoutCrate.Text = "Show Without Crate Record"
         Me.ckWithoutCrate.UseVisualStyleBackColor = True
@@ -521,9 +554,10 @@ Partial Class Ledger
         Me.lblStatus.AutoSize = True
         Me.lblStatus.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatus.ForeColor = System.Drawing.Color.Green
-        Me.lblStatus.Location = New System.Drawing.Point(614, 59)
+        Me.lblStatus.Location = New System.Drawing.Point(819, 73)
+        Me.lblStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(56, 21)
+        Me.lblStatus.Size = New System.Drawing.Size(70, 27)
         Me.lblStatus.TabIndex = 91233
         Me.lblStatus.Text = "Status"
         Me.lblStatus.Visible = False
@@ -537,9 +571,10 @@ Partial Class Ledger
         Me.Button1.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(763, 110)
+        Me.Button1.Location = New System.Drawing.Point(1017, 135)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(144, 29)
+        Me.Button1.Size = New System.Drawing.Size(192, 36)
         Me.Button1.TabIndex = 9
         Me.Button1.Text = "&Day Wise Print"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -554,9 +589,10 @@ Partial Class Ledger
         Me.Button5.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(602, 109)
+        Me.Button5.Location = New System.Drawing.Point(803, 134)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(161, 30)
+        Me.Button5.Size = New System.Drawing.Size(215, 37)
         Me.Button5.TabIndex = 8
         Me.Button5.Text = "Send Whatsapp"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -565,7 +601,8 @@ Partial Class Ledger
         'PictureBox2
         '
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(462, 9)
+        Me.PictureBox2.Location = New System.Drawing.Point(616, 11)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -580,9 +617,10 @@ Partial Class Ledger
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.Location = New System.Drawing.Point(1143, 0)
+        Me.btnClose.Location = New System.Drawing.Point(1524, 0)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(53, 47)
+        Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91117
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
@@ -596,9 +634,10 @@ Partial Class Ledger
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnPrint.Image = Global.Aadhat.My.Resources.Resources.icons8_printer_24px
         Me.BtnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPrint.Location = New System.Drawing.Point(1104, 83)
+        Me.BtnPrint.Location = New System.Drawing.Point(1472, 102)
+        Me.BtnPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnPrint.Name = "BtnPrint"
-        Me.BtnPrint.Size = New System.Drawing.Size(79, 27)
+        Me.BtnPrint.Size = New System.Drawing.Size(105, 33)
         Me.BtnPrint.TabIndex = 4
         Me.BtnPrint.TabStop = False
         Me.BtnPrint.Text = "&Print"
@@ -614,9 +653,10 @@ Partial Class Ledger
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = Global.Aadhat.My.Resources.Resources.icons8_event_accepted_24px
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(1016, 83)
+        Me.btnShow.Location = New System.Drawing.Point(1355, 102)
+        Me.btnShow.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(88, 27)
+        Me.btnShow.Size = New System.Drawing.Size(117, 33)
         Me.btnShow.TabIndex = 3
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -626,26 +666,27 @@ Partial Class Ledger
         '
         Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttoDate.Location = New System.Drawing.Point(904, 83)
+        Me.txttoDate.Location = New System.Drawing.Point(1205, 102)
+        Me.txttoDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txttoDate.Name = "txttoDate"
-        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.Size = New System.Drawing.Size(126, 30)
         Me.txttoDate.TabIndex = 2
         '
         'txtFromDate
         '
         Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFromDate.Location = New System.Drawing.Point(711, 84)
+        Me.txtFromDate.Location = New System.Drawing.Point(948, 103)
+        Me.txtFromDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFromDate.Name = "txtFromDate"
-        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.Size = New System.Drawing.Size(133, 30)
         Me.txtFromDate.TabIndex = 1
         '
         'Ledger
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
+        Me.ClientSize = New System.Drawing.Size(1595, 804)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblStatus)
@@ -679,6 +720,7 @@ Partial Class Ledger
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.Dtp2)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Ledger"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Ledger"

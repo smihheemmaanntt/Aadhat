@@ -163,16 +163,17 @@ Public Class MainScreenPicture
     Private Sub rowColums()
         dg1.ColumnCount = 6
         dg1.Columns(0).Name = "ID" : dg1.Columns(0).Visible = False
-        dg1.Columns(1).Name = "Type" : dg1.Columns(1).Width = 80
+        dg1.Columns(1).Name = "Type" : dg1.Columns(1).Width = 92
         Me.dg1.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        dg1.Columns(2).Name = "Name" : dg1.Columns(2).Width = 100
+        dg1.Columns(2).Name = "Name" : dg1.Columns(2).Width = 132
         Me.dg1.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        dg1.Columns(3).Name = "Nug" : dg1.Columns(3).Width = 50
+        dg1.Columns(3).Name = "Nug" : dg1.Columns(3).Width = 62
         Me.dg1.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        dg1.Columns(4).Name = "Kg" : dg1.Columns(4).Width = 50
+        dg1.Columns(4).Name = "Kg" : dg1.Columns(4).Width = 62
         Me.dg1.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        dg1.Columns(5).Name = "Total" : dg1.Columns(5).Width = 80
+        dg1.Columns(5).Name = "Total" : dg1.Columns(5).Width = 88
         Me.dg1.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        ConfigureDashboardGridColumns(dg1)
     End Sub
     Public Sub retrive()
         Dashboard()
@@ -225,11 +226,12 @@ Public Class MainScreenPicture
     Private Sub rowColums2()
         dg2.ColumnCount = 6
         dg2.Columns(0).Name = "ID" : dg2.Columns(0).Visible = False
-        dg2.Columns(1).Name = "Type" : dg2.Columns(1).Width = 80
-        dg2.Columns(2).Name = "Name" : dg2.Columns(2).Width = 100
-        dg2.Columns(3).Name = "Basic" : dg2.Columns(3).Width = 50
-        dg2.Columns(4).Name = "Dis" : dg2.Columns(4).Width = 50
-        dg2.Columns(5).Name = "Total" : dg2.Columns(5).Width = 80
+        dg2.Columns(1).Name = "Type" : dg2.Columns(1).Width = 92
+        dg2.Columns(2).Name = "Name" : dg2.Columns(2).Width = 132
+        dg2.Columns(3).Name = "Basic" : dg2.Columns(3).Width = 68
+        dg2.Columns(4).Name = "Dis" : dg2.Columns(4).Width = 58
+        dg2.Columns(5).Name = "Total" : dg2.Columns(5).Width = 88
+        ConfigureDashboardGridColumns(dg2)
     End Sub
     Public Sub retrive2()
         Dim dt As DataTable = clsFun.ExecDataTable("Select ID, Transtype, AccountName, BasicAmount, DiscountAmount, TotalAmount FROM Vouchers where Transtype in('Payment','Receipt') and EntryDate='" & CDate(DateTime.Now).ToString("yyyy-MM-dd") & "'  Order By ID Desc LIMIT 10")
@@ -269,5 +271,16 @@ Public Class MainScreenPicture
 
     Private Sub GenericResponsiveFormScaler_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         GenericResponsiveFormScaler.Bind(Me)
+    End Sub
+
+    Private Shared Sub ConfigureDashboardGridColumns(ByVal grid As DataGridView)
+        If grid Is Nothing OrElse grid.Columns.Count = 0 Then Return
+        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Dim baseWidths As Integer() = {0, 92, 132, 62, 62, 88}
+        For index As Integer = 0 To grid.Columns.Count - 1
+            If index < baseWidths.Length AndAlso baseWidths(index) > 0 Then
+                grid.Columns(index).FillWeight = baseWidths(index)
+            End If
+        Next
     End Sub
 End Class

@@ -932,6 +932,7 @@ Public Class Print_Bills
                 Continue For
             End If
             Dim FileURL As String = ""
+            Dim documentMediaId As String = ""
             ' ================= PDF GENERATE =================
             If RadioPDFMsg.Checked Or RadioPdfOnly.Checked Then
                 If SlipType = "Group Wise" Then
@@ -951,18 +952,20 @@ Public Class Print_Bills
                 If mode = 0 Then
                     FileURL = GlobalData.PdfPath
                 ElseIf mode = 1 Then
-                    FileURL = PhoneMSg.UploadPDF_Local(fullPath)
+                    ' Upload the PDF through Wahsoft to WhatsApp Cloud API and pass its media ID.
+                    FileURL = WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(fullPath)
+                    documentMediaId = WhatsAppOfficialApi.GetUploadedMediaIdFromReference(FileURL)
                 ElseIf mode = 2 Then
                     FileURL = PhoneMSg.UploadPDF_Local(fullPath)
                 End If
                 r.Cells(8).Value = FileURL
 
-                If mode = 1 AndAlso IsValidUrl(FileURL) = False Then
+                If mode = 1 AndAlso (RadioPDFMsg.Checked OrElse RadioPdfOnly.Checked) AndAlso documentMediaId = "" Then
                     r.Cells(7).Value = "PDF upload failed"
                     r.Cells(7).Style.ForeColor = Color.Red
                     r.Cells(7).ToolTipText = FileURL
-                    If firstFailure = "" Then firstFailure = "PDF upload failed: " & FileURL
-                    WhatsAppOfficialDb.AddMessageLog(Mobile, officialTemplateCode, "PRINT_BILL", "FAILED", "PDF upload failed: " & FileURL)
+                    If firstFailure = "" Then firstFailure = "PDF upload failed: no WhatsApp media ID was returned. " & FileURL
+                    WhatsAppOfficialDb.AddMessageLog(Mobile, officialTemplateCode, "PRINT_BILL", "FAILED", "PDF upload failed: no WhatsApp media ID was returned. " & FileURL)
                     failedCount += 1
                     count += 1
                     Continue For
@@ -1008,20 +1011,23 @@ Public Class Print_Bills
                 r.Cells(7).ToolTipText = apiResult
                 Application.DoEvents()
             ElseIf mode = 1 Then
-                Dim fields As List(Of String) = BuildOfficialTemplateFields(Name, AccID, Mobile, FileURL, MsgTxt, officialParameterFields)
+                Dim fieldDocumentValue As String = If(documentMediaId <> "", "PDF attached", FileURL)
+                Dim fields As List(Of String) = BuildOfficialTemplateFields(Name, AccID, Mobile, fieldDocumentValue, MsgTxt, officialParameterFields)
                 Dim apiResponse As String = ""
                 Dim sent As Boolean = WhatsAppOfficialApi.SendSmartMessage(
                     officialVendorUid,
                     officialAccessToken,
                     Mobile,
                     body,
-                    FileURL,
+                    If(documentMediaId <> "", "", FileURL),
                     officialTemplateCode,
                     officialLanguageCode,
                     fields,
                     apiResponse,
                     WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Bill.pdf"),
-                    officialBodyParamCount)
+                    officialBodyParamCount,
+                    documentMediaId,
+                    WhatsAppOfficialApi.GetUploadTraceIdFromReference(FileURL))
 
                 If sent Then
                     r.Cells(7).Value = WhatsAppOfficialApi.GetSendGridStatus(apiResponse, officialTemplateCode)

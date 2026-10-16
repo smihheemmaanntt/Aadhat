@@ -87,7 +87,7 @@ Partial Class Combine_Reports
         Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(703, 498)
+        Me.dg1.Size = New System.Drawing.Size(918, 498)
         Me.dg1.TabIndex = 0
         '
         'Label26
@@ -97,7 +97,7 @@ Partial Class Combine_Reports
         Me.Label26.ForeColor = System.Drawing.Color.Black
         Me.Label26.Location = New System.Drawing.Point(12, 89)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(390, 21)
+        Me.Label26.Size = New System.Drawing.Size(306, 19)
         Me.Label26.TabIndex = 40157
         Me.Label26.Text = "Select Company to Merge With this Current Year"
         '
@@ -110,7 +110,7 @@ Partial Class Combine_Reports
         Me.txtPath.Location = New System.Drawing.Point(12, 617)
         Me.txtPath.Name = "txtPath"
         Me.txtPath.ReadOnly = True
-        Me.txtPath.Size = New System.Drawing.Size(703, 24)
+        Me.txtPath.Size = New System.Drawing.Size(703, 23)
         Me.txtPath.TabIndex = 5
         Me.txtPath.TabStop = False
         '
@@ -120,9 +120,9 @@ Partial Class Combine_Reports
         Me.Panel1.Controls.Add(Me.BtnCrate)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.btnLedgers)
-        Me.Panel1.Location = New System.Drawing.Point(721, 113)
+        Me.Panel1.Location = New System.Drawing.Point(936, 113)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(463, 528)
+        Me.Panel1.Size = New System.Drawing.Size(248, 528)
         Me.Panel1.TabIndex = 2
         '
         'BtnCrate
@@ -175,7 +175,6 @@ Partial Class Combine_Reports
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 653)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.txtPath)

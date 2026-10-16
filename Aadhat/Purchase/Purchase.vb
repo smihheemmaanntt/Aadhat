@@ -2666,7 +2666,7 @@ Public Class Purchase
         Return "PURCHASE VIEW : " & fileUrl.Trim()
     End Function
 
-    Private Function ExportPurchasePdfForMobile() As String
+    Private Function ExportPurchasePdfForMobile(Optional ByVal officialApi As Boolean = False) As String
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         If Directory.Exists(directoryName) Then
             For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
@@ -2677,7 +2677,9 @@ Public Class Purchase
         GlobalData.PdfName = txtAccount.Text & "-" & txtEntryDate.Text & ".pdf"
         PrintOnly() : PrintRecord()
         Pdf_Genrate.ExportReport("\Purchase.rpt")
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Sub SendPhoneMsgzData()
@@ -2707,7 +2709,7 @@ Public Class Purchase
             MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             Exit Sub
         End If
-        Dim fileUrl As String = ExportPurchasePdfForMobile()
+        Dim fileUrl As String = ExportPurchasePdfForMobile(True)
         Dim apiResponse As String = ""
         Dim amountText As String = txtTotalNetAmount.Text
         If WhatsAppOfficialSendHelper.SendAadhatDocument("purchase", "PURCHASE", mobile, txtAccount.Text, txtEntryDate.Text, amountText, fileUrl, WhatsAppOfficialApi.CleanDocumentName(GlobalData.PdfName, "Purchase.pdf"), apiResponse) Then

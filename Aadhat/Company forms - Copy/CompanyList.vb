@@ -8,6 +8,7 @@ Public Class CompanyList
     Public newconnection As String = ""
 
     Private Sub CompanyList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        GenericResponsiveFormScaler.RegisterViewportFitGrid(dg1)
         EnsureWhatsAppOfficialLocalUpdate()
         txtMainPath.Text = ClsFunPrimary.ExecScalarStr("Select DefaultPath From Path")
         rowColums() : getCompanies()

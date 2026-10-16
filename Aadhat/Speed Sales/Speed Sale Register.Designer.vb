@@ -23,10 +23,10 @@ Partial Class Speed_Sale_Register
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Speed_Sale_Register))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnShow = New System.Windows.Forms.Button()
@@ -104,9 +104,10 @@ Partial Class Speed_Sale_Register
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.Location = New System.Drawing.Point(1143, 0)
+        Me.btnClose.Location = New System.Drawing.Point(1524, 0)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(53, 47)
+        Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91114
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
@@ -116,9 +117,10 @@ Partial Class Speed_Sale_Register
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Bodoni Bk BT", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(411, 5)
+        Me.Label1.Location = New System.Drawing.Point(548, 6)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(428, 48)
+        Me.Label1.Size = New System.Drawing.Size(536, 59)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "SPEED SALE REGISTER"
         '
@@ -131,9 +133,10 @@ Partial Class Speed_Sale_Register
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = CType(resources.GetObject("btnShow.Image"), System.Drawing.Image)
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(334, 80)
+        Me.btnShow.Location = New System.Drawing.Point(441, 98)
+        Me.btnShow.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(110, 27)
+        Me.btnShow.Size = New System.Drawing.Size(114, 33)
         Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -148,9 +151,10 @@ Partial Class Speed_Sale_Register
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnPrint.Image = CType(resources.GetObject("BtnPrint.Image"), System.Drawing.Image)
         Me.BtnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPrint.Location = New System.Drawing.Point(444, 80)
+        Me.BtnPrint.Location = New System.Drawing.Point(555, 98)
+        Me.BtnPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnPrint.Name = "BtnPrint"
-        Me.BtnPrint.Size = New System.Drawing.Size(108, 27)
+        Me.BtnPrint.Size = New System.Drawing.Size(111, 33)
         Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -162,9 +166,10 @@ Partial Class Speed_Sale_Register
         Me.txtPrimarySearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPrimarySearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtPrimarySearch.ForeColor = System.Drawing.Color.Gray
-        Me.txtPrimarySearch.Location = New System.Drawing.Point(552, 80)
+        Me.txtPrimarySearch.Location = New System.Drawing.Point(665, 99)
+        Me.txtPrimarySearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPrimarySearch.Name = "txtPrimarySearch"
-        Me.txtPrimarySearch.Size = New System.Drawing.Size(293, 26)
+        Me.txtPrimarySearch.Size = New System.Drawing.Size(390, 30)
         Me.txtPrimarySearch.TabIndex = 40038
         Me.txtPrimarySearch.TabStop = False
         '
@@ -174,9 +179,10 @@ Partial Class Speed_Sale_Register
         Me.txtSecondarySearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSecondarySearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtSecondarySearch.ForeColor = System.Drawing.Color.Gray
-        Me.txtSecondarySearch.Location = New System.Drawing.Point(844, 80)
+        Me.txtSecondarySearch.Location = New System.Drawing.Point(1054, 99)
+        Me.txtSecondarySearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSecondarySearch.Name = "txtSecondarySearch"
-        Me.txtSecondarySearch.Size = New System.Drawing.Size(186, 26)
+        Me.txtSecondarySearch.Size = New System.Drawing.Size(307, 30)
         Me.txtSecondarySearch.TabIndex = 40039
         Me.txtSecondarySearch.TabStop = False
         '
@@ -186,9 +192,10 @@ Partial Class Speed_Sale_Register
         Me.txtThirdSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtThirdSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtThirdSearch.ForeColor = System.Drawing.Color.Gray
-        Me.txtThirdSearch.Location = New System.Drawing.Point(1029, 80)
+        Me.txtThirdSearch.Location = New System.Drawing.Point(1360, 99)
+        Me.txtThirdSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtThirdSearch.Name = "txtThirdSearch"
-        Me.txtThirdSearch.Size = New System.Drawing.Size(155, 26)
+        Me.txtThirdSearch.Size = New System.Drawing.Size(218, 30)
         Me.txtThirdSearch.TabIndex = 40040
         Me.txtThirdSearch.TabStop = False
         '
@@ -197,9 +204,10 @@ Partial Class Speed_Sale_Register
         Me.lblRecordCount.AutoSize = True
         Me.lblRecordCount.Font = New System.Drawing.Font("Times New Roman", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblRecordCount.ForeColor = System.Drawing.Color.Navy
-        Me.lblRecordCount.Location = New System.Drawing.Point(390, 596)
+        Me.lblRecordCount.Location = New System.Drawing.Point(520, 734)
+        Me.lblRecordCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRecordCount.Name = "lblRecordCount"
-        Me.lblRecordCount.Size = New System.Drawing.Size(16, 17)
+        Me.lblRecordCount.Size = New System.Drawing.Size(20, 22)
         Me.lblRecordCount.TabIndex = 40044
         Me.lblRecordCount.Text = "0"
         Me.lblRecordCount.Visible = False
@@ -209,9 +217,10 @@ Partial Class Speed_Sale_Register
         Me.Label9.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label9.Location = New System.Drawing.Point(12, 80)
+        Me.Label9.Location = New System.Drawing.Point(16, 98)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(58, 27)
+        Me.Label9.Size = New System.Drawing.Size(77, 33)
         Me.Label9.TabIndex = 40045
         Me.Label9.Text = "From : "
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -221,9 +230,10 @@ Partial Class Speed_Sale_Register
         Me.Label10.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label10.Location = New System.Drawing.Point(184, 80)
+        Me.Label10.Location = New System.Drawing.Point(243, 98)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(42, 27)
+        Me.Label10.Size = New System.Drawing.Size(59, 33)
         Me.Label10.TabIndex = 40046
         Me.Label10.Text = "To :"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -235,36 +245,37 @@ Partial Class Speed_Sale_Register
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle29.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle29.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle29.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle29
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle30.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle30
         Me.dg1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Crimson
-        Me.dg1.Location = New System.Drawing.Point(12, 104)
+        Me.dg1.Location = New System.Drawing.Point(16, 128)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dg1.Name = "dg1"
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle31.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.dg1.RowHeadersDefaultCellStyle = DataGridViewCellStyle31
         Me.dg1.RowHeadersVisible = False
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle32.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        DataGridViewCellStyle32.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle32
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1172, 467)
+        Me.dg1.Size = New System.Drawing.Size(1563, 575)
         Me.dg1.TabIndex = 40182
         Me.dg1.TabStop = False
         '
@@ -273,9 +284,10 @@ Partial Class Speed_Sale_Register
         Me.lblTotalRecord.AutoSize = True
         Me.lblTotalRecord.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblTotalRecord.ForeColor = System.Drawing.Color.Navy
-        Me.lblTotalRecord.Location = New System.Drawing.Point(885, 623)
+        Me.lblTotalRecord.Location = New System.Drawing.Point(1180, 767)
+        Me.lblTotalRecord.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalRecord.Name = "lblTotalRecord"
-        Me.lblTotalRecord.Size = New System.Drawing.Size(14, 15)
+        Me.lblTotalRecord.Size = New System.Drawing.Size(18, 19)
         Me.lblTotalRecord.TabIndex = 40184
         Me.lblTotalRecord.Text = "0"
         Me.lblTotalRecord.Visible = False
@@ -285,9 +297,10 @@ Partial Class Speed_Sale_Register
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPrevious.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnPrevious.ForeColor = System.Drawing.Color.Navy
-        Me.btnPrevious.Location = New System.Drawing.Point(1040, 615)
+        Me.btnPrevious.Location = New System.Drawing.Point(1387, 757)
+        Me.btnPrevious.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(44, 23)
+        Me.btnPrevious.Size = New System.Drawing.Size(59, 28)
         Me.btnPrevious.TabIndex = 40273
         Me.btnPrevious.Text = "<<"
         Me.btnPrevious.UseVisualStyleBackColor = True
@@ -297,9 +310,10 @@ Partial Class Speed_Sale_Register
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNext.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnNext.ForeColor = System.Drawing.Color.Navy
-        Me.btnNext.Location = New System.Drawing.Point(1090, 615)
+        Me.btnNext.Location = New System.Drawing.Point(1453, 757)
+        Me.btnNext.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(44, 23)
+        Me.btnNext.Size = New System.Drawing.Size(59, 28)
         Me.btnNext.TabIndex = 40274
         Me.btnNext.Text = ">>"
         Me.btnNext.UseVisualStyleBackColor = True
@@ -309,9 +323,10 @@ Partial Class Speed_Sale_Register
         Me.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLast.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnLast.ForeColor = System.Drawing.Color.Navy
-        Me.btnLast.Location = New System.Drawing.Point(1140, 615)
+        Me.btnLast.Location = New System.Drawing.Point(1520, 757)
+        Me.btnLast.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnLast.Name = "btnLast"
-        Me.btnLast.Size = New System.Drawing.Size(44, 23)
+        Me.btnLast.Size = New System.Drawing.Size(59, 28)
         Me.btnLast.TabIndex = 40275
         Me.btnLast.Text = ">|"
         Me.btnLast.UseVisualStyleBackColor = True
@@ -321,9 +336,10 @@ Partial Class Speed_Sale_Register
         Me.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFirst.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnFirst.ForeColor = System.Drawing.Color.Navy
-        Me.btnFirst.Location = New System.Drawing.Point(990, 615)
+        Me.btnFirst.Location = New System.Drawing.Point(1320, 757)
+        Me.btnFirst.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFirst.Name = "btnFirst"
-        Me.btnFirst.Size = New System.Drawing.Size(44, 23)
+        Me.btnFirst.Size = New System.Drawing.Size(59, 28)
         Me.btnFirst.TabIndex = 40276
         Me.btnFirst.Text = "|<"
         Me.btnFirst.UseVisualStyleBackColor = True
@@ -337,18 +353,20 @@ Partial Class Speed_Sale_Register
         Me.pnlprint.Controls.Add(Me.Label2)
         Me.pnlprint.Controls.Add(Me.radioCurrent)
         Me.pnlprint.Controls.Add(Me.radioAll)
-        Me.pnlprint.Location = New System.Drawing.Point(444, 105)
+        Me.pnlprint.Location = New System.Drawing.Point(561, 128)
+        Me.pnlprint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlprint.Name = "pnlprint"
-        Me.pnlprint.Size = New System.Drawing.Size(354, 170)
+        Me.pnlprint.Size = New System.Drawing.Size(471, 209)
         Me.pnlprint.TabIndex = 40278
         Me.pnlprint.Visible = False
         '
         'ProgressBar1
         '
         Me.ProgressBar1.BackColor = System.Drawing.Color.GhostWhite
-        Me.ProgressBar1.Location = New System.Drawing.Point(4, 121)
+        Me.ProgressBar1.Location = New System.Drawing.Point(5, 149)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(247, 30)
+        Me.ProgressBar1.Size = New System.Drawing.Size(329, 37)
         Me.ProgressBar1.TabIndex = 40280
         Me.ProgressBar1.Visible = False
         '
@@ -361,9 +379,10 @@ Partial Class Speed_Sale_Register
         Me.btnPrintNew.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnPrintNew.Image = CType(resources.GetObject("btnPrintNew.Image"), System.Drawing.Image)
         Me.btnPrintNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPrintNew.Location = New System.Drawing.Point(257, 121)
+        Me.btnPrintNew.Location = New System.Drawing.Point(343, 149)
+        Me.btnPrintNew.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrintNew.Name = "btnPrintNew"
-        Me.btnPrintNew.Size = New System.Drawing.Size(92, 30)
+        Me.btnPrintNew.Size = New System.Drawing.Size(123, 37)
         Me.btnPrintNew.TabIndex = 2
         Me.btnPrintNew.Text = "&Print"
         Me.btnPrintNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -374,9 +393,10 @@ Partial Class Speed_Sale_Register
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Navy
-        Me.Label3.Location = New System.Drawing.Point(148, 72)
+        Me.Label3.Location = New System.Drawing.Point(197, 89)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(17, 19)
+        Me.Label3.Size = New System.Drawing.Size(20, 22)
         Me.Label3.TabIndex = 40279
         Me.Label3.Text = "0"
         Me.Label3.Visible = False
@@ -386,9 +406,10 @@ Partial Class Speed_Sale_Register
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Navy
-        Me.Label2.Location = New System.Drawing.Point(148, 45)
+        Me.Label2.Location = New System.Drawing.Point(197, 55)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(17, 19)
+        Me.Label2.Size = New System.Drawing.Size(20, 22)
         Me.Label2.TabIndex = 40278
         Me.Label2.Text = "0"
         Me.Label2.Visible = False
@@ -397,9 +418,10 @@ Partial Class Speed_Sale_Register
         '
         Me.radioCurrent.AutoSize = True
         Me.radioCurrent.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioCurrent.Location = New System.Drawing.Point(17, 43)
+        Me.radioCurrent.Location = New System.Drawing.Point(23, 53)
+        Me.radioCurrent.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.radioCurrent.Name = "radioCurrent"
-        Me.radioCurrent.Size = New System.Drawing.Size(107, 23)
+        Me.radioCurrent.Size = New System.Drawing.Size(133, 26)
         Me.radioCurrent.TabIndex = 0
         Me.radioCurrent.TabStop = True
         Me.radioCurrent.Text = "Current Page"
@@ -409,9 +431,10 @@ Partial Class Speed_Sale_Register
         '
         Me.radioAll.AutoSize = True
         Me.radioAll.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioAll.Location = New System.Drawing.Point(17, 70)
+        Me.radioAll.Location = New System.Drawing.Point(23, 86)
+        Me.radioAll.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.radioAll.Name = "radioAll"
-        Me.radioAll.Size = New System.Drawing.Size(84, 23)
+        Me.radioAll.Size = New System.Drawing.Size(108, 26)
         Me.radioAll.TabIndex = 1
         Me.radioAll.TabStop = True
         Me.radioAll.Text = "All Pages"
@@ -422,9 +445,10 @@ Partial Class Speed_Sale_Register
         Me.lbltotNug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lbltotNug.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltotNug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lbltotNug.Location = New System.Drawing.Point(144, 615)
+        Me.lbltotNug.Location = New System.Drawing.Point(192, 757)
+        Me.lbltotNug.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbltotNug.Name = "lbltotNug"
-        Me.lbltotNug.Size = New System.Drawing.Size(120, 23)
+        Me.lbltotNug.Size = New System.Drawing.Size(159, 28)
         Me.lbltotNug.TabIndex = 40279
         Me.lbltotNug.Text = "0"
         Me.lbltotNug.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -435,9 +459,10 @@ Partial Class Speed_Sale_Register
         Me.lblTotalWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblTotalWeight.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotalWeight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTotalWeight.Location = New System.Drawing.Point(263, 615)
+        Me.lblTotalWeight.Location = New System.Drawing.Point(351, 757)
+        Me.lblTotalWeight.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalWeight.Name = "lblTotalWeight"
-        Me.lblTotalWeight.Size = New System.Drawing.Size(120, 23)
+        Me.lblTotalWeight.Size = New System.Drawing.Size(159, 28)
         Me.lblTotalWeight.TabIndex = 40280
         Me.lblTotalWeight.Text = "0"
         Me.lblTotalWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -448,9 +473,10 @@ Partial Class Speed_Sale_Register
         Me.lblBasic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblBasic.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblBasic.Location = New System.Drawing.Point(382, 615)
+        Me.lblBasic.Location = New System.Drawing.Point(509, 757)
+        Me.lblBasic.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBasic.Name = "lblBasic"
-        Me.lblBasic.Size = New System.Drawing.Size(120, 23)
+        Me.lblBasic.Size = New System.Drawing.Size(159, 28)
         Me.lblBasic.TabIndex = 40281
         Me.lblBasic.Text = "0"
         Me.lblBasic.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -461,9 +487,10 @@ Partial Class Speed_Sale_Register
         Me.lblCharges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblCharges.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCharges.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblCharges.Location = New System.Drawing.Point(501, 615)
+        Me.lblCharges.Location = New System.Drawing.Point(668, 757)
+        Me.lblCharges.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCharges.Name = "lblCharges"
-        Me.lblCharges.Size = New System.Drawing.Size(140, 23)
+        Me.lblCharges.Size = New System.Drawing.Size(186, 28)
         Me.lblCharges.TabIndex = 40282
         Me.lblCharges.Text = "0"
         Me.lblCharges.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -474,9 +501,10 @@ Partial Class Speed_Sale_Register
         Me.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblTotal.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTotal.Location = New System.Drawing.Point(759, 615)
+        Me.lblTotal.Location = New System.Drawing.Point(1012, 757)
+        Me.lblTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(120, 23)
+        Me.lblTotal.Size = New System.Drawing.Size(159, 28)
         Me.lblTotal.TabIndex = 40283
         Me.lblTotal.Text = "0"
         Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -487,9 +515,10 @@ Partial Class Speed_Sale_Register
         Me.lblTotalRecordCount.AutoSize = True
         Me.lblTotalRecordCount.Font = New System.Drawing.Font("Times New Roman", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblTotalRecordCount.ForeColor = System.Drawing.Color.Navy
-        Me.lblTotalRecordCount.Location = New System.Drawing.Point(141, 597)
+        Me.lblTotalRecordCount.Location = New System.Drawing.Point(188, 735)
+        Me.lblTotalRecordCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalRecordCount.Name = "lblTotalRecordCount"
-        Me.lblTotalRecordCount.Size = New System.Drawing.Size(16, 17)
+        Me.lblTotalRecordCount.Size = New System.Drawing.Size(20, 22)
         Me.lblTotalRecordCount.TabIndex = 40284
         Me.lblTotalRecordCount.Text = "0"
         Me.lblTotalRecordCount.Visible = False
@@ -501,9 +530,10 @@ Partial Class Speed_Sale_Register
         Me.txtTotalRoff.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalRoff.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
         Me.txtTotalRoff.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotalRoff.Location = New System.Drawing.Point(895, 571)
+        Me.txtTotalRoff.Location = New System.Drawing.Point(1193, 703)
+        Me.txtTotalRoff.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotalRoff.Name = "txtTotalRoff"
-        Me.txtTotalRoff.Size = New System.Drawing.Size(96, 23)
+        Me.txtTotalRoff.Size = New System.Drawing.Size(127, 27)
         Me.txtTotalRoff.TabIndex = 91127
         Me.txtTotalRoff.TabStop = False
         Me.txtTotalRoff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -514,9 +544,10 @@ Partial Class Speed_Sale_Register
         Me.Label37.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label37.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.Label37.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label37.Location = New System.Drawing.Point(817, 571)
+        Me.Label37.Location = New System.Drawing.Point(1090, 703)
+        Me.Label37.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(81, 23)
+        Me.Label37.Size = New System.Drawing.Size(105, 27)
         Me.Label37.TabIndex = 91126
         Me.Label37.Text = "Round :"
         Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -528,10 +559,11 @@ Partial Class Speed_Sale_Register
         Me.TxtGrandTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtGrandTotal.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
         Me.TxtGrandTotal.ForeColor = System.Drawing.Color.Navy
-        Me.TxtGrandTotal.Location = New System.Drawing.Point(1057, 571)
+        Me.TxtGrandTotal.Location = New System.Drawing.Point(1409, 703)
+        Me.TxtGrandTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TxtGrandTotal.Name = "TxtGrandTotal"
         Me.TxtGrandTotal.ReadOnly = True
-        Me.TxtGrandTotal.Size = New System.Drawing.Size(127, 23)
+        Me.TxtGrandTotal.Size = New System.Drawing.Size(169, 27)
         Me.TxtGrandTotal.TabIndex = 91125
         Me.TxtGrandTotal.TabStop = False
         Me.TxtGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -542,9 +574,10 @@ Partial Class Speed_Sale_Register
         Me.Label22.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label22.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.Label22.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label22.Location = New System.Drawing.Point(982, 571)
+        Me.Label22.Location = New System.Drawing.Point(1320, 703)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(81, 23)
+        Me.Label22.Size = New System.Drawing.Size(90, 27)
         Me.Label22.TabIndex = 91122
         Me.Label22.Text = "Total : "
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -556,9 +589,10 @@ Partial Class Speed_Sale_Register
         Me.txtTotCharge.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotCharge.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
         Me.txtTotCharge.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotCharge.Location = New System.Drawing.Point(741, 571)
+        Me.txtTotCharge.Location = New System.Drawing.Point(988, 703)
+        Me.txtTotCharge.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotCharge.Name = "txtTotCharge"
-        Me.txtTotCharge.Size = New System.Drawing.Size(79, 23)
+        Me.txtTotCharge.Size = New System.Drawing.Size(105, 27)
         Me.txtTotCharge.TabIndex = 91124
         Me.txtTotCharge.TabStop = False
         Me.txtTotCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -569,9 +603,10 @@ Partial Class Speed_Sale_Register
         Me.Label21.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label21.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.Label21.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label21.Location = New System.Drawing.Point(650, 571)
+        Me.Label21.Location = New System.Drawing.Point(867, 703)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(92, 23)
+        Me.Label21.Size = New System.Drawing.Size(123, 28)
         Me.Label21.TabIndex = 91120
         Me.Label21.Text = "Charges :"
         Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -583,9 +618,10 @@ Partial Class Speed_Sale_Register
         Me.txtTotBasic.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotBasic.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
         Me.txtTotBasic.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotBasic.Location = New System.Drawing.Point(520, 571)
+        Me.txtTotBasic.Location = New System.Drawing.Point(693, 703)
+        Me.txtTotBasic.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotBasic.Name = "txtTotBasic"
-        Me.txtTotBasic.Size = New System.Drawing.Size(135, 23)
+        Me.txtTotBasic.Size = New System.Drawing.Size(179, 27)
         Me.txtTotBasic.TabIndex = 91123
         Me.txtTotBasic.TabStop = False
         Me.txtTotBasic.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -596,9 +632,10 @@ Partial Class Speed_Sale_Register
         Me.Label20.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label20.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.Label20.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label20.Location = New System.Drawing.Point(459, 571)
+        Me.Label20.Location = New System.Drawing.Point(612, 703)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(63, 23)
+        Me.Label20.Size = New System.Drawing.Size(84, 28)
         Me.Label20.TabIndex = 91118
         Me.Label20.Text = "Basic :"
         Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -610,9 +647,10 @@ Partial Class Speed_Sale_Register
         Me.txtTotweight.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotweight.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
         Me.txtTotweight.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotweight.Location = New System.Drawing.Point(362, 571)
+        Me.txtTotweight.Location = New System.Drawing.Point(483, 703)
+        Me.txtTotweight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotweight.Name = "txtTotweight"
-        Me.txtTotweight.Size = New System.Drawing.Size(100, 23)
+        Me.txtTotweight.Size = New System.Drawing.Size(133, 27)
         Me.txtTotweight.TabIndex = 91121
         Me.txtTotweight.TabStop = False
         Me.txtTotweight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -623,9 +661,10 @@ Partial Class Speed_Sale_Register
         Me.Label19.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label19.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.Label19.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label19.Location = New System.Drawing.Point(280, 571)
+        Me.Label19.Location = New System.Drawing.Point(373, 703)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(84, 23)
+        Me.Label19.Size = New System.Drawing.Size(112, 28)
         Me.Label19.TabIndex = 91117
         Me.Label19.Text = "Weight :"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -637,10 +676,11 @@ Partial Class Speed_Sale_Register
         Me.txtTotNug.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotNug.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Bold)
         Me.txtTotNug.ForeColor = System.Drawing.Color.Navy
-        Me.txtTotNug.Location = New System.Drawing.Point(182, 571)
+        Me.txtTotNug.Location = New System.Drawing.Point(243, 703)
+        Me.txtTotNug.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotNug.Name = "txtTotNug"
         Me.txtTotNug.ReadOnly = True
-        Me.txtTotNug.Size = New System.Drawing.Size(100, 23)
+        Me.txtTotNug.Size = New System.Drawing.Size(133, 27)
         Me.txtTotNug.TabIndex = 91119
         Me.txtTotNug.TabStop = False
         Me.txtTotNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -651,9 +691,10 @@ Partial Class Speed_Sale_Register
         Me.Label4.BackColor = System.Drawing.Color.DarkSlateGray
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.Label4.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label4.Location = New System.Drawing.Point(126, 571)
+        Me.Label4.Location = New System.Drawing.Point(168, 703)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(57, 23)
+        Me.Label4.Size = New System.Drawing.Size(76, 28)
         Me.Label4.TabIndex = 91116
         Me.Label4.Text = "Nugs :"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -661,7 +702,8 @@ Partial Class Speed_Sale_Register
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(355, 5)
+        Me.PictureBox1.Location = New System.Drawing.Point(473, 6)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -673,9 +715,10 @@ Partial Class Speed_Sale_Register
         Me.lblPageNumber.AutoSize = True
         Me.lblPageNumber.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblPageNumber.ForeColor = System.Drawing.Color.Navy
-        Me.lblPageNumber.Location = New System.Drawing.Point(885, 608)
+        Me.lblPageNumber.Location = New System.Drawing.Point(1180, 748)
+        Me.lblPageNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPageNumber.Name = "lblPageNumber"
-        Me.lblPageNumber.Size = New System.Drawing.Size(14, 15)
+        Me.lblPageNumber.Size = New System.Drawing.Size(18, 19)
         Me.lblPageNumber.TabIndex = 91135
         Me.lblPageNumber.Text = "0"
         Me.lblPageNumber.Visible = False
@@ -685,9 +728,10 @@ Partial Class Speed_Sale_Register
         Me.lblRounfOff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblRounfOff.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRounfOff.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblRounfOff.Location = New System.Drawing.Point(640, 615)
+        Me.lblRounfOff.Location = New System.Drawing.Point(853, 757)
+        Me.lblRounfOff.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRounfOff.Name = "lblRounfOff"
-        Me.lblRounfOff.Size = New System.Drawing.Size(120, 23)
+        Me.lblRounfOff.Size = New System.Drawing.Size(159, 28)
         Me.lblRounfOff.TabIndex = 91136
         Me.lblRounfOff.Text = "0"
         Me.lblRounfOff.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -696,17 +740,19 @@ Partial Class Speed_Sale_Register
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp2.Location = New System.Drawing.Point(224, 80)
+        Me.dtp2.Location = New System.Drawing.Point(300, 98)
+        Me.dtp2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtp2.Name = "dtp2"
-        Me.dtp2.Size = New System.Drawing.Size(109, 27)
+        Me.dtp2.Size = New System.Drawing.Size(144, 32)
         Me.dtp2.TabIndex = 91137
         '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp1.Location = New System.Drawing.Point(75, 80)
+        Me.dtp1.Location = New System.Drawing.Point(93, 98)
+        Me.dtp1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtp1.Name = "dtp1"
-        Me.dtp1.Size = New System.Drawing.Size(109, 27)
+        Me.dtp1.Size = New System.Drawing.Size(152, 32)
         Me.dtp1.TabIndex = 91138
         '
         'Label11
@@ -714,9 +760,10 @@ Partial Class Speed_Sale_Register
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(548, 56)
+        Me.Label11.Location = New System.Drawing.Point(669, 69)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(101, 19)
+        Me.Label11.Size = New System.Drawing.Size(126, 22)
         Me.Label11.TabIndex = 91139
         Me.Label11.Text = "Account Name"
         '
@@ -725,9 +772,10 @@ Partial Class Speed_Sale_Register
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(840, 56)
+        Me.Label5.Location = New System.Drawing.Point(1058, 69)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 19)
+        Me.Label5.Size = New System.Drawing.Size(95, 22)
         Me.Label5.TabIndex = 91140
         Me.Label5.Text = "Item Name"
         '
@@ -736,9 +784,10 @@ Partial Class Speed_Sale_Register
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(1025, 56)
+        Me.Label6.Location = New System.Drawing.Point(1367, 69)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(90, 19)
+        Me.Label6.Size = New System.Drawing.Size(116, 22)
         Me.Label6.TabIndex = 91141
         Me.Label6.Text = "Total Amount"
         '
@@ -746,9 +795,10 @@ Partial Class Speed_Sale_Register
         '
         Me.ckAll.AutoSize = True
         Me.ckAll.ForeColor = System.Drawing.Color.Black
-        Me.ckAll.Location = New System.Drawing.Point(1115, 597)
+        Me.ckAll.Location = New System.Drawing.Point(1487, 735)
+        Me.ckAll.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ckAll.Name = "ckAll"
-        Me.ckAll.Size = New System.Drawing.Size(67, 17)
+        Me.ckAll.Size = New System.Drawing.Size(83, 21)
         Me.ckAll.TabIndex = 91142
         Me.ckAll.Text = "Show All"
         Me.ckAll.UseVisualStyleBackColor = True
@@ -762,9 +812,10 @@ Partial Class Speed_Sale_Register
         Me.Button1.ForeColor = System.Drawing.Color.GhostWhite
         Me.Button1.Image = Global.Aadhat.My.Resources.Resources.Delete
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(12, 572)
+        Me.Button1.Location = New System.Drawing.Point(16, 704)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(108, 51)
+        Me.Button1.Size = New System.Drawing.Size(144, 63)
         Me.Button1.TabIndex = 91143
         Me.Button1.Text = "&Delete" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Entries"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -777,9 +828,10 @@ Partial Class Speed_Sale_Register
         Me.PnlDeleteBills.Controls.Add(Me.PictureBox4)
         Me.PnlDeleteBills.Controls.Add(Me.txtDelete)
         Me.PnlDeleteBills.Controls.Add(Me.btnDelete)
-        Me.PnlDeleteBills.Location = New System.Drawing.Point(370, 213)
+        Me.PnlDeleteBills.Location = New System.Drawing.Point(493, 262)
+        Me.PnlDeleteBills.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PnlDeleteBills.Name = "PnlDeleteBills"
-        Me.PnlDeleteBills.Size = New System.Drawing.Size(457, 210)
+        Me.PnlDeleteBills.Size = New System.Drawing.Size(609, 258)
         Me.PnlDeleteBills.TabIndex = 91144
         Me.PnlDeleteBills.Visible = False
         '
@@ -789,18 +841,20 @@ Partial Class Speed_Sale_Register
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(54, 38)
+        Me.Label7.Location = New System.Drawing.Point(72, 47)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(319, 19)
+        Me.Label7.Size = New System.Drawing.Size(400, 23)
         Me.Label7.TabIndex = 91374
         Me.Label7.Text = "Type [SURE] For Delete Bills Comfirmation...."
         '
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(3, 90)
+        Me.PictureBox4.Location = New System.Drawing.Point(4, 111)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(141, 86)
+        Me.PictureBox4.Size = New System.Drawing.Size(188, 106)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox4.TabIndex = 91373
         Me.PictureBox4.TabStop = False
@@ -812,9 +866,10 @@ Partial Class Speed_Sale_Register
         Me.txtDelete.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtDelete.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtDelete.ForeColor = System.Drawing.Color.Black
-        Me.txtDelete.Location = New System.Drawing.Point(150, 92)
+        Me.txtDelete.Location = New System.Drawing.Point(200, 113)
+        Me.txtDelete.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtDelete.Name = "txtDelete"
-        Me.txtDelete.Size = New System.Drawing.Size(278, 26)
+        Me.txtDelete.Size = New System.Drawing.Size(370, 30)
         Me.txtDelete.TabIndex = 91372
         Me.txtDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -826,9 +881,10 @@ Partial Class Speed_Sale_Register
         Me.btnDelete.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.btnDelete.ForeColor = System.Drawing.Color.White
         Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(150, 125)
+        Me.btnDelete.Location = New System.Drawing.Point(200, 154)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(278, 51)
+        Me.btnDelete.Size = New System.Drawing.Size(371, 63)
         Me.btnDelete.TabIndex = 91269
         Me.btnDelete.TabStop = False
         Me.btnDelete.Text = "&Delete Selected Bills "
@@ -838,18 +894,20 @@ Partial Class Speed_Sale_Register
         '
         Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttoDate.Location = New System.Drawing.Point(224, 80)
+        Me.txttoDate.Location = New System.Drawing.Point(299, 98)
+        Me.txttoDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txttoDate.Name = "txttoDate"
-        Me.txttoDate.Size = New System.Drawing.Size(95, 26)
+        Me.txttoDate.Size = New System.Drawing.Size(126, 30)
         Me.txttoDate.TabIndex = 1
         '
         'txtFromDate
         '
         Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFromDate.Location = New System.Drawing.Point(70, 80)
+        Me.txtFromDate.Location = New System.Drawing.Point(93, 98)
+        Me.txtFromDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFromDate.Name = "txtFromDate"
-        Me.txtFromDate.Size = New System.Drawing.Size(100, 26)
+        Me.txtFromDate.Size = New System.Drawing.Size(133, 30)
         Me.txtFromDate.TabIndex = 0
         '
         'lblManualPageSearch
@@ -857,9 +915,10 @@ Partial Class Speed_Sale_Register
         Me.lblManualPageSearch.AutoSize = True
         Me.lblManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblManualPageSearch.ForeColor = System.Drawing.Color.Black
-        Me.lblManualPageSearch.Location = New System.Drawing.Point(334, 56)
+        Me.lblManualPageSearch.Location = New System.Drawing.Point(347, 69)
+        Me.lblManualPageSearch.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblManualPageSearch.Name = "lblManualPageSearch"
-        Me.lblManualPageSearch.Size = New System.Drawing.Size(88, 19)
+        Me.lblManualPageSearch.Size = New System.Drawing.Size(112, 22)
         Me.lblManualPageSearch.TabIndex = 91380
         Me.lblManualPageSearch.Text = "Manual Page"
         '
@@ -870,9 +929,10 @@ Partial Class Speed_Sale_Register
         Me.btnPreviousManualPageSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPreviousManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnPreviousManualPageSearch.ForeColor = System.Drawing.Color.White
-        Me.btnPreviousManualPageSearch.Location = New System.Drawing.Point(444, 52)
+        Me.btnPreviousManualPageSearch.Location = New System.Drawing.Point(494, 64)
+        Me.btnPreviousManualPageSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPreviousManualPageSearch.Name = "btnPreviousManualPageSearch"
-        Me.btnPreviousManualPageSearch.Size = New System.Drawing.Size(25, 26)
+        Me.btnPreviousManualPageSearch.Size = New System.Drawing.Size(33, 30)
         Me.btnPreviousManualPageSearch.TabIndex = 91382
         Me.btnPreviousManualPageSearch.Text = "<"
         Me.btnPreviousManualPageSearch.UseVisualStyleBackColor = False
@@ -884,10 +944,11 @@ Partial Class Speed_Sale_Register
         Me.txtManualPageSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtManualPageSearch.ForeColor = System.Drawing.Color.Navy
-        Me.txtManualPageSearch.Location = New System.Drawing.Point(470, 52)
+        Me.txtManualPageSearch.Location = New System.Drawing.Point(529, 64)
+        Me.txtManualPageSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtManualPageSearch.MaxLength = 6
         Me.txtManualPageSearch.Name = "txtManualPageSearch"
-        Me.txtManualPageSearch.Size = New System.Drawing.Size(42, 26)
+        Me.txtManualPageSearch.Size = New System.Drawing.Size(55, 30)
         Me.txtManualPageSearch.TabIndex = 91381
         Me.txtManualPageSearch.Text = "0"
         Me.txtManualPageSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -899,9 +960,10 @@ Partial Class Speed_Sale_Register
         Me.btnNextManualPageSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNextManualPageSearch.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnNextManualPageSearch.ForeColor = System.Drawing.Color.White
-        Me.btnNextManualPageSearch.Location = New System.Drawing.Point(513, 52)
+        Me.btnNextManualPageSearch.Location = New System.Drawing.Point(586, 64)
+        Me.btnNextManualPageSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnNextManualPageSearch.Name = "btnNextManualPageSearch"
-        Me.btnNextManualPageSearch.Size = New System.Drawing.Size(26, 26)
+        Me.btnNextManualPageSearch.Size = New System.Drawing.Size(35, 30)
         Me.btnNextManualPageSearch.TabIndex = 91383
         Me.btnNextManualPageSearch.Text = ">"
         Me.btnNextManualPageSearch.UseVisualStyleBackColor = False
@@ -909,10 +971,10 @@ Partial Class Speed_Sale_Register
         '
         'Speed_Sale_Register
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(111, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.ClientSize = New System.Drawing.Size(1595, 804)
         Me.Controls.Add(Me.btnNextManualPageSearch)
         Me.Controls.Add(Me.btnPreviousManualPageSearch)
         Me.Controls.Add(Me.txtManualPageSearch)
@@ -965,6 +1027,7 @@ Partial Class Speed_Sale_Register
         Me.Controls.Add(Me.dtp2)
         Me.Controls.Add(Me.dtp1)
         Me.Controls.Add(Me.Label9)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Speed_Sale_Register"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Speed Sale"

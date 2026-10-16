@@ -96,6 +96,13 @@ Public Class FinalStore
     Public Property is_blocked As Boolean
 End Class
 
+Public Class LicenseReleaseResponse
+    Public Property status As String
+    Public Property message As String
+    Public Property affected_rows As Integer
+    Public Property remaining_board_ids As List(Of String)
+End Class
+
 '=====================================================
 ' MAIN HELPER
 '=====================================================
@@ -184,11 +191,19 @@ Public Class AccentStorageHelper
                 Return Nothing
             End If
 
-            If obj.ContainsKey("is_blocked") Then
-                Dim apiBlocked As Boolean = Convert.ToBoolean(obj("is_blocked"))
-                SetLocalBlock(apiBlocked)
-                Return apiBlocked
-            End If
+            If Not obj.ContainsKey("is_blocked") OrElse
+               Not obj.ContainsKey("board_authorized") OrElse
+               Not obj.ContainsKey("can_use_license") Then Return Nothing
+
+            Dim apiBlocked As Boolean = Convert.ToBoolean(obj("is_blocked")) OrElse
+                                        Not Convert.ToBoolean(obj("board_authorized")) OrElse
+                                        Not Convert.ToBoolean(obj("can_use_license"))
+
+            ' CRM is authoritative for the current board. Once a seat is
+            ' assigned back to this PC, the successful status response can
+            ' clear its released marker; otherwise it remains locally blocked.
+            SetLocalBlock(apiBlocked)
+            Return apiBlocked
 
             Return Nothing
         Catch
@@ -200,9 +215,13 @@ Public Class AccentStorageHelper
     ' SET LOCAL BLOCK
     '=====================================================
     Public Shared Sub SetLocalBlock(status As Boolean)
-        Dim store = LoadStore()
-        store.is_blocked = status
-        SaveStore(store)
+        Try
+            Dim store = LoadStore()
+            If store Is Nothing Then Return
+            store.is_blocked = status
+            SaveStore(store)
+        Catch
+        End Try
     End Sub
 
     Public Shared Function IsLocallyBlocked() As Boolean
@@ -481,15 +500,61 @@ Public Class AccentStorageHelper
     Public Shared Function ReleaseBoardOnly() As Boolean
         Try
             Dim store = LoadStore()
+            If store Is Nothing OrElse store.response_data Is Nothing OrElse store.license_data Is Nothing Then
+                LastLicenseError = "Local license data is missing."
+                Return False
+            End If
+
+            Dim boardId As String = GetMotherboardID()
+            If String.IsNullOrEmpty(boardId) Then
+                LastLicenseError = "Unable to read this PC's motherboard ID."
+                Return False
+            End If
+
             Dim payload = New With {
                 .customer_code = store.response_data.customer_code,
-                .board_id = GetMotherboardID(),
+                .license_key = store.license_data.license_key,
+                .board_id = boardId,
                 .action = "revoke_board",
                 .reason = "Released from VB app"
             }
             Dim res = PostJson(ReleaseLicenseUrl, payload)
-            Return res.ToLower().Contains("success")
+            Dim response As LicenseReleaseResponse = Nothing
+            Try
+                response = JsonConvert.DeserializeObject(Of LicenseReleaseResponse)(res)
+            Catch
+            End Try
+
+            If response Is Nothing OrElse response.status <> "success" OrElse response.affected_rows <> 1 Then
+                LastLicenseError = If(response Is Nothing OrElse String.IsNullOrEmpty(response.message),
+                                      "CRM did not confirm that this PC's license was released.",
+                                      response.message)
+                Return False
+            End If
+
+            ' This PC must stay locked even if it goes offline after release.
+            store.is_blocked = True
+            ' Remove this machine binding from the local encrypted store so the
+            ' old PC returns to the license/apply screen after a successful
+            ' release. Other LAN seats remain listed and usable.
+            If store.license_data IsNot Nothing Then
+                store.license_data.board_id = ""
+                store.license_data.pc_name = ""
+            End If
+            If store.response_data IsNot Nothing Then
+                store.response_data.board_ids = If(response.remaining_board_ids Is Nothing,
+                    store.response_data.board_ids,
+                    String.Join(",", response.remaining_board_ids.ToArray()))
+            End If
+            If response.remaining_board_ids IsNot Nothing Then
+                Dim activeBoards As String = String.Join(",", response.remaining_board_ids.ToArray())
+                If store.license_data IsNot Nothing Then store.license_data.board_ids = activeBoards
+            End If
+            SaveStore(store)
+            LastLicenseError = ""
+            Return True
         Catch
+            LastLicenseError = "Could not contact CRM to release this PC's license."
             Return False
         End Try
     End Function
@@ -502,37 +567,52 @@ Public Class AccentStorageHelper
             If Not IsInternetAvailable() AndAlso Not UseLegacyHttpMode() Then Return False
             ConfigureSecureConnection()
 
+            Dim currentStore As FinalStore = LoadStore()
+            Dim currentLicenseKey As String = ""
+            If currentStore IsNot Nothing AndAlso currentStore.license_data IsNot Nothing Then
+                currentLicenseKey = currentStore.license_data.license_key
+            End If
+
             Dim url As String = GetWindows7FallbackUrl(RetrieveLicenseUrl) & _
                 "?customer_code=" & Uri.EscapeDataString(customerCode) & _
+                "&license_key=" & Uri.EscapeDataString(If(currentLicenseKey, "")) & _
                 "&board_id=" & Uri.EscapeDataString(AccentStorageHelper.GetMotherboardID()) & _
                 "&pc_name=" & Uri.EscapeDataString(Environment.MachineName)
 
+            Dim tempPath As String = storePath & ".tmp"
+            If File.Exists(tempPath) Then File.Delete(tempPath)
+
             If UseLegacyHttpMode() Then
-                Dim tempPath As String = storePath & ".tmp"
-                If File.Exists(tempPath) Then File.Delete(tempPath)
+                If Not WinHttpHelper.DownloadFile(url, tempPath) Then Return False
+            Else
+                Using wc As New WebClient()
+                    wc.Headers(HttpRequestHeader.ContentType) = "application/octet-stream"
+                    Dim data = wc.DownloadData(url)
+                    If data Is Nothing OrElse data.Length < 50 Then Return False
+                    File.WriteAllBytes(tempPath, data)
+                End Using
+            End If
 
-                If WinHttpHelper.DownloadFile(url, tempPath) AndAlso IsValidStoreFile(tempPath) Then
-                    If File.Exists(storePath) Then File.Delete(storePath)
-                    File.Move(tempPath, storePath)
-                    Return True
-                End If
-
+            If Not IsValidStoreFile(tempPath) Then
                 If File.Exists(tempPath) Then File.Delete(tempPath)
                 Return False
             End If
 
-            Using wc As New WebClient()
-                wc.Headers(HttpRequestHeader.ContentType) = "application/octet-stream"
-                Dim data = wc.DownloadData(url)
-                If data Is Nothing OrElse data.Length < 50 Then Return False
-                File.WriteAllBytes(storePath, data)
-                Return True
-            End Using
+            If File.Exists(storePath) Then File.Delete(storePath)
+            File.Move(tempPath, storePath)
+            Return True
         Catch
             If UseLegacyHttpMode() Then
                 Try
+                    Dim currentStore As FinalStore = LoadStore()
+                    Dim currentLicenseKey As String = ""
+                    If currentStore IsNot Nothing AndAlso currentStore.license_data IsNot Nothing Then
+                        currentLicenseKey = currentStore.license_data.license_key
+                    End If
+
                     Dim url As String = GetWindows7FallbackUrl(RetrieveLicenseUrl) & _
                         "?customer_code=" & Uri.EscapeDataString(customerCode) & _
+                        "&license_key=" & Uri.EscapeDataString(If(currentLicenseKey, "")) & _
                         "&board_id=" & Uri.EscapeDataString(AccentStorageHelper.GetMotherboardID()) & _
                         "&pc_name=" & Uri.EscapeDataString(Environment.MachineName)
 
@@ -683,18 +763,19 @@ Public Class AccentStorageHelper
             Return True
         End If
 
-        ' A locally blocked license may be unblocked by a successful server refresh.
-        ' If the server cannot be reached quickly, keep honoring the local block.
-        Dim localBlocked As Boolean = IsLocallyBlocked()
-        If localBlocked Then
-            Dim refreshedBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
-            If Not refreshedBlock.HasValue OrElse refreshedBlock.Value Then
-                LastLicenseError = "blocked"
-                Return False
-            End If
+        ' Every licensed login must be confirmed by CRM for this exact board.
+        ' Offline fallback would let an old released PC keep using its cached file.
+        Dim onlineBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
+        If Not onlineBlock.HasValue Then
+            LastLicenseError = "server_unavailable"
+            Return False
+        End If
+        If onlineBlock.Value Then
+            LastLicenseError = "blocked"
+            Return False
         End If
 
-        ' Board authorization hamesha local coreaccess.smx file se hota hai.
+        ' Keep the local board list check as an additional consistency guard.
         If Not EnsureBoardAuthorized() Then
             If LastLicenseError = "" Then LastLicenseError = "not_authorized"
             Return False
@@ -708,16 +789,6 @@ Public Class AccentStorageHelper
             End If
             If LastLicenseError = "" Then LastLicenseError = "expired"
             Return False
-        End If
-
-        ' Refresh server block status only after the local license has passed.
-        ' A missing/slow network response leaves the verified local result intact.
-        If Not localBlocked Then
-            Dim onlineBlock As Boolean? = CheckOnlineBlock(store.response_data.customer_code)
-            If onlineBlock.HasValue AndAlso onlineBlock.Value = True Then
-                LastLicenseError = "blocked"
-                Return False
-            End If
         End If
 
         LastLicenseError = ""

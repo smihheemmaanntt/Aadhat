@@ -952,3 +952,5 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\Aadhat\obj\Debug\Aadhat.Whats_New.resour
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\Aadhat\obj\Debug\Aadhat.WhatsAppTemplateEditor.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\Aadhat\obj\Debug\Aadhat.WhatsApp_API.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\Aadhat\obj\Debug\Aadhat.vbproj.GenerateResource.cache
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\Aadhat\obj\Debug\Aadhat.Trial_Balance_Movement.resources
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\Aadhat\obj\Debug\Aadhat.CloudBackupConfiguration.resources

@@ -319,7 +319,8 @@ Public Class ApplyLicenseKey
 
     Private Sub btnReleaseKey_Click(sender As Object, e As EventArgs) Handles btnReleaseKey.Click
         Dim confirm = MsgBox(
-            "This will release license from this PC." & vbCrLf &
+            "Save and close your work before continuing." & vbCrLf &
+            "This will release the license from this PC and close Aadhat." & vbCrLf &
             "You can activate it on another PC." & vbCrLf & vbCrLf &
             "Continue?",
             MsgBoxStyle.Question Or MsgBoxStyle.YesNo,
@@ -330,9 +331,14 @@ Public Class ApplyLicenseKey
 
         If AccentStorageHelper.ReleaseBoardOnly() Then
             MsgBox("License released successfully." & vbCrLf &
-                   "Now activate on new PC.",
+                   "Aadhat will now close. Enter your customer code on the other PC to retrieve the license.",
                    MsgBoxStyle.Information)
-            'Application.Exit()
+            Application.Exit()
+        Else
+            MsgBox("License was not released." & vbCrLf &
+                   AccentStorageHelper.LastLicenseError,
+                   MsgBoxStyle.Exclamation,
+                   "Transfer not completed")
         End If
 
 

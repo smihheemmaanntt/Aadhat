@@ -38,7 +38,6 @@ Public NotInheritable Class GenericResponsiveFormScaler
 
     Private Const WM_SETREDRAW As Integer = &HB
     Private Const WorkspaceContentInset As Integer = 14
-    Private Const CreateAccountControlScaleLimit As Double = 1.4R
 
     <DllImport("user32.dll")> _
     Private Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal msg As Integer,
@@ -61,15 +60,6 @@ Public NotInheritable Class GenericResponsiveFormScaler
 
     Public Shared Function Bind(ByVal form As Form) As GenericResponsiveFormScaler
         If form Is Nothing Then Throw New ArgumentNullException("form")
-
-        ' These workspace/overlay forms are borderless at runtime, but their
-        ' designer definitions remain sizable. Normalize the non-client frame
-        ' before the first display so Windows cannot paint a temporary title
-        ' bar while the responsive layout is being applied.
-        If IsBorderlessResponsiveForm(form) AndAlso form.FormBorderStyle <> FormBorderStyle.None Then
-            form.FormBorderStyle = FormBorderStyle.None
-        End If
-
         SyncLock activeScalers
             Dim existing As GenericResponsiveFormScaler = Nothing
             If activeScalers.TryGetValue(form, existing) Then Return existing
@@ -78,16 +68,6 @@ Public NotInheritable Class GenericResponsiveFormScaler
             activeScalers(form) = scaler
             Return scaler
         End SyncLock
-    End Function
-
-    Private Shared Function IsBorderlessResponsiveForm(ByVal form As Form) As Boolean
-        If form Is Nothing Then Return False
-        Select Case form.Name
-            Case "MainScreenPicture", "Login", "CompanyList"
-                Return True
-            Case Else
-                Return False
-        End Select
     End Function
 
     ' Lets an overlay capture its designer dimensions before it is moved to
@@ -158,14 +138,10 @@ Public NotInheritable Class GenericResponsiveFormScaler
                     Dim child As Control = entry.Key
                     Dim state As SidebarControlState = entry.Value
                     If child Is Nothing OrElse child.IsDisposed Then Continue For
-                    Dim scaledBounds As New Rectangle(
-                        CInt(Math.Round(state.Bounds.Left * scaleX)),
-                        CInt(Math.Round(state.Bounds.Top * scaleY)),
-                        Math.Max(1, CInt(Math.Round(state.Bounds.Width * scaleX))),
-                        Math.Max(1, CInt(Math.Round(state.Bounds.Height * scaleY))))
-                    ' Preserve the exact layout but avoid redundant layout
-                    ' and paint work when a sidebar control is already placed.
-                    If child.Bounds <> scaledBounds Then child.Bounds = scaledBounds
+                    child.SetBounds(CInt(Math.Round(state.Bounds.Left * scaleX)),
+                                    CInt(Math.Round(state.Bounds.Top * scaleY)),
+                                    Math.Max(1, CInt(Math.Round(state.Bounds.Width * scaleX))),
+                                    Math.Max(1, CInt(Math.Round(state.Bounds.Height * scaleY))))
                     If state.Font IsNot Nothing Then
                         Dim size As Single = Math.Max(6.5F, CSng(Math.Round(state.Font.Size * fontScale, 1)))
                         If Math.Abs(child.Font.Size - size) > 0.05F Then child.Font = New Font(state.Font.FontFamily, size, state.Font.Style)
@@ -196,11 +172,11 @@ Public NotInheritable Class GenericResponsiveFormScaler
 
     Private Sub OnFormShown(sender As Object, e As EventArgs)
         ConfigureMdiChildBounds()
-        ' Only MDI children can receive their final MDI-client bounds after
-        ' Load. Standalone forms are already laid out during Load, so do not
-        ' run a second visible full-tree layout/repaint for them.
-        Dim finalLayoutPending As Boolean = targetForm.MdiParent IsNot Nothing AndAlso
-                                            targetForm.ClientSize <> lastAppliedClientSize
+        ' A form can receive final client bounds after its Load handler (for
+        ' example, after an MDI layout or a borderless top-level form settles).
+        ' If that Resize was suppressed during setup, do the one missing pass
+        ' now—the same layout pass a minimise/restore would trigger.
+        Dim finalLayoutPending As Boolean = targetForm.ClientSize <> lastAppliedClientSize
         If finalLayoutPending OrElse CaptureRuntimeGridMetrics() Then Apply(True)
     End Sub
 
@@ -309,35 +285,6 @@ Public NotInheritable Class GenericResponsiveFormScaler
         Return String.Equals(If(marker, "").Trim(), "ResponsiveOverlay", StringComparison.OrdinalIgnoreCase)
     End Function
 
-    Private Function IsCreateAccount() As Boolean
-        Return String.Equals(targetForm.Name, "CreateAccount", StringComparison.OrdinalIgnoreCase)
-    End Function
-
-    ' Keep the dashboard's first and last sale-card margins symmetrical.  The
-    ' Purchase panel is deliberately wider than the middle cards, so shifting
-    ' it would make it overlap them; trim only its excess right-side width.
-    Private Sub ApplyRightEdgeSafetySpacing()
-        If String.Equals(targetForm.Name, "MainScreenPicture", StringComparison.OrdinalIgnoreCase) Then
-            Dim firstCard As Control = targetForm.Controls("Panel2")
-            Dim purchaseCard As Control = targetForm.Controls("Panel1")
-            If firstCard IsNot Nothing AndAlso purchaseCard IsNot Nothing Then
-                Dim desiredRight As Integer = targetForm.ClientSize.Width - firstCard.Left
-                If purchaseCard.Right > desiredRight Then
-                    purchaseCard.Width = Math.Max(1, purchaseCard.Width - (purchaseCard.Right - desiredRight))
-                End If
-            End If
-        End If
-
-        ' Legacy entry forms place CLOSE on the outer canvas edge.  Leave a
-        ' small visual buffer so it cannot look clipped by the shortcut bar.
-        For Each child As Control In targetForm.Controls
-            If String.Equals(child.Name, "btnClose", StringComparison.OrdinalIgnoreCase) AndAlso
-               child.Right > targetForm.ClientSize.Width - WorkspaceContentInset Then
-                child.Left = Math.Max(0, targetForm.ClientSize.Width - WorkspaceContentInset - child.Width)
-            End If
-        Next
-    End Sub
-
     Private Sub CaptureChildren(ByVal parent As Control)
         EnableDoubleBuffer(parent)
         For Each child As Control In parent.Controls
@@ -402,13 +349,13 @@ Public NotInheritable Class GenericResponsiveFormScaler
             Dim insetScaleY As Double = CDbl(Math.Max(1, targetForm.ClientSize.Height - WorkspaceContentInset)) / baseClientSize.Height
             layoutScale = Math.Min(layoutScale, Math.Min(insetScaleX, insetScaleY))
         End If
-        If IsCreateAccount() Then
-            layoutScale = Math.Min(layoutScale, CreateAccountControlScaleLimit)
-        End If
         Dim fontScale As Double = layoutScale
-        ' Keep X and Y on the same scale so controls retain their designer
-        ' spacing rather than drifting toward the right edge.
+        ' Keep the vertical ratio intact, but let MDI-child controls use a
+        ' very small amount of the spare horizontal workspace.  This applies
+        ' only to child forms (never the MDI parent/sidebar) and avoids the
+        ' noticeably empty strip at the right on 1366x768.
         Dim horizontalControlScale As Double = layoutScale
+        If targetForm.MdiParent IsNot Nothing Then horizontalControlScale *= 1.02R
         isApplying = True
         Try
             SetRedraw(False)
@@ -418,15 +365,10 @@ Public NotInheritable Class GenericResponsiveFormScaler
                 Dim state As ControlState = entry.Value
                 If control Is Nothing OrElse control.IsDisposed Then Continue For
 
-                Dim scaledBounds As New Rectangle(
-                    CInt(Math.Round(state.Bounds.Left * horizontalControlScale)),
-                    CInt(Math.Round(state.Bounds.Top * layoutScale)),
-                    Math.Max(1, CInt(Math.Round(state.Bounds.Width * horizontalControlScale))),
-                    Math.Max(1, CInt(Math.Round(state.Bounds.Height * layoutScale))))
-                ' Avoid firing layout/paint work for controls already at their
-                ' final responsive bounds. This preserves the exact geometry
-                ' while reducing lag on lower-powered PCs.
-                If control.Bounds <> scaledBounds Then control.Bounds = scaledBounds
+                control.SetBounds(CInt(Math.Round(state.Bounds.Left * horizontalControlScale)),
+                                   CInt(Math.Round(state.Bounds.Top * layoutScale)),
+                                  Math.Max(1, CInt(Math.Round(state.Bounds.Width * horizontalControlScale))),
+                                  Math.Max(1, CInt(Math.Round(state.Bounds.Height * layoutScale))))
 
                 ' A PictureBox in Normal mode keeps the bitmap at its original
                 ' pixel size even though the responsive pass has enlarged the
@@ -466,7 +408,6 @@ Public NotInheritable Class GenericResponsiveFormScaler
 
                 ApplyGridScale(TryCast(control, DataGridView), state, horizontalControlScale, layoutScale)
             Next
-            ApplyRightEdgeSafetySpacing()
         Finally
             targetForm.ResumeLayout(True)
             SetRedraw(True)
@@ -643,9 +584,9 @@ Public NotInheritable Class NonModalFormFrontGuard
             ' Let Windows complete the click behind the form first; then restore
             ' only this form's z-order without changing any other form's state.
             guardedForm.BeginInvoke(New MethodInvoker(Sub()
-                                                           If disposed OrElse guardedForm.IsDisposed OrElse Not guardedForm.Visible Then Return
-                                                           guardedForm.BringToFront()
-                                                       End Sub))
+                                                          If disposed OrElse guardedForm.IsDisposed OrElse Not guardedForm.Visible Then Return
+                                                          guardedForm.BringToFront()
+                                                      End Sub))
         Catch
             ' The form may have been disposed before the queued callback runs.
         End Try

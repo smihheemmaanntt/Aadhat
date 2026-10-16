@@ -822,7 +822,7 @@ Public Class Settle_Ledger
         Return "LEDGER VIEW : " & fileUrl.Trim()
     End Function
 
-    Private Function ExportLedgerPdfForMobile() As String
+    Private Function ExportLedgerPdfForMobile(Optional ByVal officialApi As Boolean = False) As String
         Dim directoryName As String = Application.StartupPath & "\Pdfs"
         If Directory.Exists(directoryName) Then
             For Each deleteFile In Directory.GetFiles(directoryName, "*.pdf*", SearchOption.TopDirectoryOnly)
@@ -837,7 +837,9 @@ Public Class Settle_Ledger
         Else
             Pdf_Genrate.ExportReport("\Ledger.rpt")
         End If
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Dim pdfPath As String = Application.StartupPath & "\Pdfs\" & GlobalData.PdfName
+        If officialApi Then Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(pdfPath)
+        Return PhoneMSg.UploadPDF_Local(pdfPath)
     End Function
 
     Private Sub SendPhoneMsgzData()
@@ -867,7 +869,7 @@ Public Class Settle_Ledger
             MsgBox("Please Enter Valid Whatsapp Contact", MsgBoxStyle.Critical, "Invalid Contact") : txtWhatsappNo.Focus()
             Exit Sub
         End If
-        Dim fileUrl As String = ExportLedgerPdfForMobile()
+        Dim fileUrl As String = ExportLedgerPdfForMobile(True)
         If fileUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase) = False Then
             MsgBox("PDF upload failed: " & fileUrl, MsgBoxStyle.Critical, "Official API")
             Exit Sub

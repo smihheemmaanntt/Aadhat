@@ -2530,7 +2530,7 @@ Public Class Loose_Sale
         GlobalData.PdfName = txtAccount.Text.Replace("/", "") & "-" & txtEntryDate.Text & ".pdf"
         retrive2() : PrintRecord()
         Pdf_Genrate.ExportReport("\LooseSale.rpt")
-        Return PhoneMSg.UploadPDF_Local(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
+        Return WhatsAppOfficialSendHelper.UploadDocumentToWahsoft(Application.StartupPath & "\Pdfs\" & GlobalData.PdfName)
     End Function
 
     Private Sub SendOfficialLooseSaleData()

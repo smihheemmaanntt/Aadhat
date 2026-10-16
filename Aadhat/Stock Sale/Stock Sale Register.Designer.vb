@@ -23,9 +23,9 @@ Partial Class Stock_Sale_Register
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Stock_Sale_Register))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.btnShow = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -75,9 +75,10 @@ Partial Class Stock_Sale_Register
         Me.BtnPrint.ForeColor = System.Drawing.Color.GhostWhite
         Me.BtnPrint.Image = CType(resources.GetObject("BtnPrint.Image"), System.Drawing.Image)
         Me.BtnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPrint.Location = New System.Drawing.Point(360, 116)
+        Me.BtnPrint.Location = New System.Drawing.Point(480, 143)
+        Me.BtnPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnPrint.Name = "BtnPrint"
-        Me.BtnPrint.Size = New System.Drawing.Size(96, 25)
+        Me.BtnPrint.Size = New System.Drawing.Size(128, 31)
         Me.BtnPrint.TabIndex = 3
         Me.BtnPrint.Text = "&Print"
         Me.BtnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -92,9 +93,10 @@ Partial Class Stock_Sale_Register
         Me.btnShow.ForeColor = System.Drawing.Color.GhostWhite
         Me.btnShow.Image = CType(resources.GetObject("btnShow.Image"), System.Drawing.Image)
         Me.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnShow.Location = New System.Drawing.Point(262, 116)
+        Me.btnShow.Location = New System.Drawing.Point(349, 143)
+        Me.btnShow.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(98, 25)
+        Me.btnShow.Size = New System.Drawing.Size(131, 31)
         Me.btnShow.TabIndex = 2
         Me.btnShow.Text = "&Show"
         Me.btnShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -105,9 +107,10 @@ Partial Class Stock_Sale_Register
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Bodoni Bk BT", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(392, 9)
+        Me.Label1.Location = New System.Drawing.Point(523, 11)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(430, 48)
+        Me.Label1.Size = New System.Drawing.Size(539, 59)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "STOCK SALE REGISTER"
         '
@@ -119,9 +122,10 @@ Partial Class Stock_Sale_Register
         Me.btnClose.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Red
         Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.Location = New System.Drawing.Point(1143, 0)
+        Me.btnClose.Location = New System.Drawing.Point(1524, 0)
+        Me.btnClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(53, 47)
+        Me.btnClose.Size = New System.Drawing.Size(71, 58)
         Me.btnClose.TabIndex = 91115
         Me.btnClose.TabStop = False
         Me.btnClose.UseVisualStyleBackColor = False
@@ -132,9 +136,10 @@ Partial Class Stock_Sale_Register
         Me.txtSearchPrimary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearchPrimary.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtSearchPrimary.ForeColor = System.Drawing.Color.Black
-        Me.txtSearchPrimary.Location = New System.Drawing.Point(632, 115)
+        Me.txtSearchPrimary.Location = New System.Drawing.Point(843, 142)
+        Me.txtSearchPrimary.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearchPrimary.Name = "txtSearchPrimary"
-        Me.txtSearchPrimary.Size = New System.Drawing.Size(190, 26)
+        Me.txtSearchPrimary.Size = New System.Drawing.Size(253, 30)
         Me.txtSearchPrimary.TabIndex = 5
         Me.txtSearchPrimary.TabStop = False
         '
@@ -143,9 +148,10 @@ Partial Class Stock_Sale_Register
         Me.Label10.BackColor = System.Drawing.Color.CadetBlue
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label10.Location = New System.Drawing.Point(12, 95)
+        Me.Label10.Location = New System.Drawing.Point(16, 117)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(129, 21)
+        Me.Label10.Size = New System.Drawing.Size(172, 26)
         Me.Label10.TabIndex = 40072
         Me.Label10.Text = "Date From"
         '
@@ -154,9 +160,10 @@ Partial Class Stock_Sale_Register
         Me.Label11.BackColor = System.Drawing.Color.CadetBlue
         Me.Label11.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label11.Location = New System.Drawing.Point(140, 95)
+        Me.Label11.Location = New System.Drawing.Point(187, 117)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(122, 21)
+        Me.Label11.Size = New System.Drawing.Size(163, 26)
         Me.Label11.TabIndex = 40073
         Me.Label11.Text = "Date to"
         '
@@ -166,9 +173,10 @@ Partial Class Stock_Sale_Register
         Me.Label22.BackColor = System.Drawing.Color.CadetBlue
         Me.Label22.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label22.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label22.Location = New System.Drawing.Point(987, 604)
+        Me.Label22.Location = New System.Drawing.Point(1316, 743)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(101, 26)
+        Me.Label22.Size = New System.Drawing.Size(135, 32)
         Me.Label22.TabIndex = 40191
         Me.Label22.Text = "Total Amount : "
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -179,9 +187,10 @@ Partial Class Stock_Sale_Register
         Me.Label21.BackColor = System.Drawing.Color.CadetBlue
         Me.Label21.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label21.Location = New System.Drawing.Point(699, 604)
+        Me.Label21.Location = New System.Drawing.Point(932, 743)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(66, 26)
+        Me.Label21.Size = New System.Drawing.Size(88, 32)
         Me.Label21.TabIndex = 40190
         Me.Label21.Text = "Charges :"
         Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -192,9 +201,10 @@ Partial Class Stock_Sale_Register
         Me.Label20.BackColor = System.Drawing.Color.CadetBlue
         Me.Label20.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label20.Location = New System.Drawing.Point(553, 604)
+        Me.Label20.Location = New System.Drawing.Point(737, 743)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(49, 26)
+        Me.Label20.Size = New System.Drawing.Size(65, 32)
         Me.Label20.TabIndex = 40189
         Me.Label20.Text = "Basic :"
         Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -205,9 +215,10 @@ Partial Class Stock_Sale_Register
         Me.Label19.BackColor = System.Drawing.Color.CadetBlue
         Me.Label19.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label19.Location = New System.Drawing.Point(406, 604)
+        Me.Label19.Location = New System.Drawing.Point(541, 743)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(58, 26)
+        Me.Label19.Size = New System.Drawing.Size(77, 32)
         Me.Label19.TabIndex = 40188
         Me.Label19.Text = "Weight :"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -218,9 +229,10 @@ Partial Class Stock_Sale_Register
         Me.Label2.BackColor = System.Drawing.Color.CadetBlue
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label2.Location = New System.Drawing.Point(286, 604)
+        Me.Label2.Location = New System.Drawing.Point(381, 743)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 26)
+        Me.Label2.Size = New System.Drawing.Size(64, 32)
         Me.Label2.TabIndex = 40187
         Me.Label2.Text = "Nugs :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -232,10 +244,11 @@ Partial Class Stock_Sale_Register
         Me.TxtGrandTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtGrandTotal.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.TxtGrandTotal.ForeColor = System.Drawing.Color.Red
-        Me.TxtGrandTotal.Location = New System.Drawing.Point(1087, 604)
+        Me.TxtGrandTotal.Location = New System.Drawing.Point(1449, 743)
+        Me.TxtGrandTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TxtGrandTotal.Name = "TxtGrandTotal"
         Me.TxtGrandTotal.ReadOnly = True
-        Me.TxtGrandTotal.Size = New System.Drawing.Size(97, 26)
+        Me.TxtGrandTotal.Size = New System.Drawing.Size(129, 30)
         Me.TxtGrandTotal.TabIndex = 40186
         Me.TxtGrandTotal.TabStop = False
         Me.TxtGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -247,10 +260,11 @@ Partial Class Stock_Sale_Register
         Me.txtTotCharge.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotCharge.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotCharge.ForeColor = System.Drawing.Color.Red
-        Me.txtTotCharge.Location = New System.Drawing.Point(765, 604)
+        Me.txtTotCharge.Location = New System.Drawing.Point(1020, 743)
+        Me.txtTotCharge.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotCharge.Name = "txtTotCharge"
         Me.txtTotCharge.ReadOnly = True
-        Me.txtTotCharge.Size = New System.Drawing.Size(84, 26)
+        Me.txtTotCharge.Size = New System.Drawing.Size(111, 30)
         Me.txtTotCharge.TabIndex = 40185
         Me.txtTotCharge.TabStop = False
         Me.txtTotCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -262,10 +276,11 @@ Partial Class Stock_Sale_Register
         Me.txtTotBasic.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotBasic.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotBasic.ForeColor = System.Drawing.Color.Red
-        Me.txtTotBasic.Location = New System.Drawing.Point(602, 604)
+        Me.txtTotBasic.Location = New System.Drawing.Point(803, 743)
+        Me.txtTotBasic.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotBasic.Name = "txtTotBasic"
         Me.txtTotBasic.ReadOnly = True
-        Me.txtTotBasic.Size = New System.Drawing.Size(97, 26)
+        Me.txtTotBasic.Size = New System.Drawing.Size(129, 30)
         Me.txtTotBasic.TabIndex = 40184
         Me.txtTotBasic.TabStop = False
         Me.txtTotBasic.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -277,10 +292,11 @@ Partial Class Stock_Sale_Register
         Me.txtTotweight.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotweight.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotweight.ForeColor = System.Drawing.Color.Red
-        Me.txtTotweight.Location = New System.Drawing.Point(464, 604)
+        Me.txtTotweight.Location = New System.Drawing.Point(619, 743)
+        Me.txtTotweight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotweight.Name = "txtTotweight"
         Me.txtTotweight.ReadOnly = True
-        Me.txtTotweight.Size = New System.Drawing.Size(89, 26)
+        Me.txtTotweight.Size = New System.Drawing.Size(118, 30)
         Me.txtTotweight.TabIndex = 40183
         Me.txtTotweight.TabStop = False
         Me.txtTotweight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -292,10 +308,11 @@ Partial Class Stock_Sale_Register
         Me.txtTotNug.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotNug.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotNug.ForeColor = System.Drawing.Color.Red
-        Me.txtTotNug.Location = New System.Drawing.Point(334, 604)
+        Me.txtTotNug.Location = New System.Drawing.Point(445, 743)
+        Me.txtTotNug.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotNug.Name = "txtTotNug"
         Me.txtTotNug.ReadOnly = True
-        Me.txtTotNug.Size = New System.Drawing.Size(73, 26)
+        Me.txtTotNug.Size = New System.Drawing.Size(97, 30)
         Me.txtTotNug.TabIndex = 40182
         Me.txtTotNug.TabStop = False
         Me.txtTotNug.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -308,14 +325,15 @@ Partial Class Stock_Sale_Register
         Me.CbSearchPrimary.DropDownHeight = 100
         Me.CbSearchPrimary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CbSearchPrimary.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CbSearchPrimary.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.CbSearchPrimary.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CbSearchPrimary.ForeColor = System.Drawing.Color.Black
         Me.CbSearchPrimary.FormattingEnabled = True
         Me.CbSearchPrimary.IntegralHeight = False
         Me.CbSearchPrimary.Items.AddRange(New Object() {"Seller Name", "Customer Name", "Item Name", "Lot No.", "Voucher No.", "Vehicle No.", "Nug", "Weight", "rate", "Basic", "Charges", "Total"})
-        Me.CbSearchPrimary.Location = New System.Drawing.Point(456, 117)
+        Me.CbSearchPrimary.Location = New System.Drawing.Point(608, 144)
+        Me.CbSearchPrimary.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CbSearchPrimary.Name = "CbSearchPrimary"
-        Me.CbSearchPrimary.Size = New System.Drawing.Size(176, 23)
+        Me.CbSearchPrimary.Size = New System.Drawing.Size(233, 30)
         Me.CbSearchPrimary.TabIndex = 4
         '
         'cbSearchSecondary
@@ -326,14 +344,15 @@ Partial Class Stock_Sale_Register
         Me.cbSearchSecondary.DropDownHeight = 100
         Me.cbSearchSecondary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSearchSecondary.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbSearchSecondary.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.cbSearchSecondary.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSearchSecondary.ForeColor = System.Drawing.Color.Black
         Me.cbSearchSecondary.FormattingEnabled = True
         Me.cbSearchSecondary.IntegralHeight = False
         Me.cbSearchSecondary.Items.AddRange(New Object() {"Nug", "Weight", "rate", "Basic", "Charges", "Total", "Seller Name", "Customer Name", "Item Name", "Lot No.", "Voucher No.", "Vehicle No."})
-        Me.cbSearchSecondary.Location = New System.Drawing.Point(822, 117)
+        Me.cbSearchSecondary.Location = New System.Drawing.Point(1096, 144)
+        Me.cbSearchSecondary.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbSearchSecondary.Name = "cbSearchSecondary"
-        Me.cbSearchSecondary.Size = New System.Drawing.Size(183, 23)
+        Me.cbSearchSecondary.Size = New System.Drawing.Size(243, 30)
         Me.cbSearchSecondary.TabIndex = 6
         '
         'txtSearchSecondary
@@ -342,9 +361,10 @@ Partial Class Stock_Sale_Register
         Me.txtSearchSecondary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearchSecondary.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtSearchSecondary.ForeColor = System.Drawing.Color.Black
-        Me.txtSearchSecondary.Location = New System.Drawing.Point(1005, 115)
+        Me.txtSearchSecondary.Location = New System.Drawing.Point(1340, 142)
+        Me.txtSearchSecondary.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearchSecondary.Name = "txtSearchSecondary"
-        Me.txtSearchSecondary.Size = New System.Drawing.Size(179, 26)
+        Me.txtSearchSecondary.Size = New System.Drawing.Size(238, 30)
         Me.txtSearchSecondary.TabIndex = 7
         Me.txtSearchSecondary.TabStop = False
         '
@@ -355,26 +375,27 @@ Partial Class Stock_Sale_Register
         Me.dg1.AllowUserToResizeRows = False
         Me.dg1.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.dg1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dg1.ColumnHeadersHeight = 28
         Me.dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Times New Roman", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Times New Roman", 12.0!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1.DefaultCellStyle = DataGridViewCellStyle5
         Me.dg1.EnableHeadersVisualStyles = False
         Me.dg1.GridColor = System.Drawing.Color.Gray
-        Me.dg1.Location = New System.Drawing.Point(12, 140)
+        Me.dg1.Location = New System.Drawing.Point(16, 172)
+        Me.dg1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dg1.MultiSelect = False
         Me.dg1.Name = "dg1"
         Me.dg1.ReadOnly = True
@@ -382,11 +403,11 @@ Partial Class Stock_Sale_Register
         Me.dg1.RowHeadersVisible = False
         Me.dg1.RowHeadersWidth = 42
         Me.dg1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        Me.dg1.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.dg1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dg1.Size = New System.Drawing.Size(1172, 465)
+        Me.dg1.Size = New System.Drawing.Size(1563, 572)
         Me.dg1.TabIndex = 8
         '
         'Label3
@@ -395,9 +416,10 @@ Partial Class Stock_Sale_Register
         Me.Label3.BackColor = System.Drawing.Color.CadetBlue
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label3.Location = New System.Drawing.Point(849, 604)
+        Me.Label3.Location = New System.Drawing.Point(1132, 743)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(54, 26)
+        Me.Label3.Size = New System.Drawing.Size(72, 32)
         Me.Label3.TabIndex = 40292
         Me.Label3.Text = "R. Off :"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -409,10 +431,11 @@ Partial Class Stock_Sale_Register
         Me.txtTotROff.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotROff.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtTotROff.ForeColor = System.Drawing.Color.Red
-        Me.txtTotROff.Location = New System.Drawing.Point(903, 604)
+        Me.txtTotROff.Location = New System.Drawing.Point(1204, 743)
+        Me.txtTotROff.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotROff.Name = "txtTotROff"
         Me.txtTotROff.ReadOnly = True
-        Me.txtTotROff.Size = New System.Drawing.Size(84, 26)
+        Me.txtTotROff.Size = New System.Drawing.Size(111, 30)
         Me.txtTotROff.TabIndex = 40291
         Me.txtTotROff.TabStop = False
         Me.txtTotROff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -420,7 +443,8 @@ Partial Class Stock_Sale_Register
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(342, 9)
+        Me.PictureBox4.Location = New System.Drawing.Point(456, 11)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -430,17 +454,19 @@ Partial Class Stock_Sale_Register
         'dtp2
         '
         Me.dtp2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp2.Location = New System.Drawing.Point(153, 115)
+        Me.dtp2.Location = New System.Drawing.Point(187, 142)
+        Me.dtp2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtp2.Name = "dtp2"
-        Me.dtp2.Size = New System.Drawing.Size(109, 26)
+        Me.dtp2.Size = New System.Drawing.Size(161, 30)
         Me.dtp2.TabIndex = 9
         '
         'dtp1
         '
         Me.dtp1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.dtp1.Location = New System.Drawing.Point(25, 115)
+        Me.dtp1.Location = New System.Drawing.Point(16, 142)
+        Me.dtp1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtp1.Name = "dtp1"
-        Me.dtp1.Size = New System.Drawing.Size(116, 26)
+        Me.dtp1.Size = New System.Drawing.Size(170, 30)
         Me.dtp1.TabIndex = 10
         '
         'Label4
@@ -448,9 +474,10 @@ Partial Class Stock_Sale_Register
         Me.Label4.BackColor = System.Drawing.Color.CadetBlue
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label4.Location = New System.Drawing.Point(453, 95)
+        Me.Label4.Location = New System.Drawing.Point(604, 117)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(178, 21)
+        Me.Label4.Size = New System.Drawing.Size(237, 26)
         Me.Label4.TabIndex = 91143
         Me.Label4.Text = "Select I"
         '
@@ -459,9 +486,10 @@ Partial Class Stock_Sale_Register
         Me.Label5.BackColor = System.Drawing.Color.CadetBlue
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label5.Location = New System.Drawing.Point(628, 95)
+        Me.Label5.Location = New System.Drawing.Point(837, 117)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(194, 21)
+        Me.Label5.Size = New System.Drawing.Size(259, 26)
         Me.Label5.TabIndex = 91144
         Me.Label5.Text = "Search I"
         '
@@ -470,9 +498,10 @@ Partial Class Stock_Sale_Register
         Me.Label6.BackColor = System.Drawing.Color.CadetBlue
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label6.Location = New System.Drawing.Point(1000, 95)
+        Me.Label6.Location = New System.Drawing.Point(1333, 117)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(184, 21)
+        Me.Label6.Size = New System.Drawing.Size(245, 26)
         Me.Label6.TabIndex = 91146
         Me.Label6.Text = "Search II"
         '
@@ -481,9 +510,10 @@ Partial Class Stock_Sale_Register
         Me.Label7.BackColor = System.Drawing.Color.CadetBlue
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label7.Location = New System.Drawing.Point(822, 95)
+        Me.Label7.Location = New System.Drawing.Point(1096, 117)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(178, 21)
+        Me.Label7.Size = New System.Drawing.Size(237, 26)
         Me.Label7.TabIndex = 91145
         Me.Label7.Text = "Select II"
         '
@@ -492,18 +522,20 @@ Partial Class Stock_Sale_Register
         Me.Label8.BackColor = System.Drawing.Color.CadetBlue
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.GhostWhite
-        Me.Label8.Location = New System.Drawing.Point(258, 95)
+        Me.Label8.Location = New System.Drawing.Point(344, 117)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(198, 21)
+        Me.Label8.Size = New System.Drawing.Size(264, 26)
         Me.Label8.TabIndex = 91147
         '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.ForeColor = System.Drawing.Color.Black
-        Me.CheckBox1.Location = New System.Drawing.Point(16, 607)
+        Me.CheckBox1.Location = New System.Drawing.Point(21, 747)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(89, 30)
+        Me.CheckBox1.Size = New System.Drawing.Size(114, 38)
         Me.CheckBox1.TabIndex = 91148
         Me.CheckBox1.Text = "&Marge Same " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Rate Entries"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -513,9 +545,10 @@ Partial Class Stock_Sale_Register
         Me.lblvoucherCount.AutoSize = True
         Me.lblvoucherCount.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblvoucherCount.ForeColor = System.Drawing.Color.Navy
-        Me.lblvoucherCount.Location = New System.Drawing.Point(109, 623)
+        Me.lblvoucherCount.Location = New System.Drawing.Point(145, 767)
+        Me.lblvoucherCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblvoucherCount.Name = "lblvoucherCount"
-        Me.lblvoucherCount.Size = New System.Drawing.Size(14, 15)
+        Me.lblvoucherCount.Size = New System.Drawing.Size(18, 19)
         Me.lblvoucherCount.TabIndex = 91224
         Me.lblvoucherCount.Text = "0"
         Me.lblvoucherCount.Visible = False
@@ -525,9 +558,10 @@ Partial Class Stock_Sale_Register
         Me.lblbillCount.AutoSize = True
         Me.lblbillCount.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.lblbillCount.ForeColor = System.Drawing.Color.Navy
-        Me.lblbillCount.Location = New System.Drawing.Point(109, 607)
+        Me.lblbillCount.Location = New System.Drawing.Point(145, 747)
+        Me.lblbillCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblbillCount.Name = "lblbillCount"
-        Me.lblbillCount.Size = New System.Drawing.Size(14, 15)
+        Me.lblbillCount.Size = New System.Drawing.Size(18, 19)
         Me.lblbillCount.TabIndex = 91223
         Me.lblbillCount.Text = "0"
         Me.lblbillCount.Visible = False
@@ -536,25 +570,27 @@ Partial Class Stock_Sale_Register
         '
         Me.txttoDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txttoDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttoDate.Location = New System.Drawing.Point(140, 115)
+        Me.txttoDate.Location = New System.Drawing.Point(187, 142)
+        Me.txttoDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txttoDate.Name = "txttoDate"
-        Me.txttoDate.Size = New System.Drawing.Size(107, 26)
+        Me.txttoDate.Size = New System.Drawing.Size(142, 30)
         Me.txttoDate.TabIndex = 1
         '
         'txtFromDate
         '
         Me.txtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtFromDate.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFromDate.Location = New System.Drawing.Point(12, 115)
+        Me.txtFromDate.Location = New System.Drawing.Point(16, 142)
+        Me.txtFromDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFromDate.Name = "txtFromDate"
-        Me.txtFromDate.Size = New System.Drawing.Size(113, 26)
+        Me.txtFromDate.Size = New System.Drawing.Size(150, 30)
         Me.txtFromDate.TabIndex = 0
         '
         'Stock_Sale_Register
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1196, 653)
+        Me.ClientSize = New System.Drawing.Size(1595, 804)
         Me.Controls.Add(Me.txttoDate)
         Me.Controls.Add(Me.txtFromDate)
         Me.Controls.Add(Me.lblvoucherCount)
@@ -591,6 +627,7 @@ Partial Class Stock_Sale_Register
         Me.Controls.Add(Me.dg1)
         Me.Controls.Add(Me.btnShow)
         Me.Controls.Add(Me.BtnPrint)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Stock_Sale_Register"
         Me.Text = "Stock Sale"
         CType(Me.dg1, System.ComponentModel.ISupportInitialize).EndInit()

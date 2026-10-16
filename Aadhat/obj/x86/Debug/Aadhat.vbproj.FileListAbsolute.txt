@@ -2154,6 +2154,7 @@ D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.CustomerWise
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet_Expended.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Balance_Sheet.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Grouped.resources
+D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trial_Balance_Movement.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Group_Summary.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Profit_and_Loss.resources
 D:\xampp82\htdocs\Aadhat_offical\Aadhat\AADHAT\obj\x86\Debug\Aadhat.Trading_Account.resources
